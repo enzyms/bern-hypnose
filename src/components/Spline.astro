@@ -1,0 +1,11 @@
+---
+
+---
+
+<canvas transition:persist id="canvas3d" class="fixed inset-0 z-0"></canvas>
+<script type="module">
+    import { Application } from '../node_modules/@splinetool/runtime';
+    const canvas = document.getElementById('canvas3d');
+    const app = new Application(canvas);
+    app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode');
+</script>
