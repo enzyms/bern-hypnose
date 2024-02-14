@@ -4,6 +4,7 @@ import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro'
 import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import Spline from '../components/Spline.astro';
+import Blur from '../components/Blur.astro';
 
 export type Props = HeadProps;
 
@@ -22,6 +23,7 @@ const { ...head } = Astro.props;
         <ViewTransitions />
     </head>
     <body class="bg-main text-main">
+        <Blur />
         <Spline />
         <div class="flex flex-col min-h-screen px-4 md:px-8 relative z-10">
             <Nav />
