@@ -5,7 +5,7 @@ import siteConfig from '../data/site-config';
 const navLinks = siteConfig.headerNavLinks || [];
 ---
 
-<nav class="p-4 md:p-6 fixed z-20">
+<nav class="p-4 md:p-6 fixed z-20" transition:persist>
     {
         navLinks.length > 0 && (
             <div>
