@@ -51,21 +51,21 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
-            text: 'Coaching',
-            href: '/coaching'
-        },
-        {
             text: 'Hypnosetherapie',
             href: '/hypnosetherapie'
         },
         {
-            text: 'Blog',
-            href: '/blog'
+            text: 'Angebote',
+            href: '/angebote'
         },
         {
-            text: 'Contact',
-            href: '/contact'
-        }
+            text: 'Über mich',
+            href: '/janine-aerni'
+        },
+        {
+            text: 'Kontakt',
+            href: '/kontakt'
+        },
     ],
     footerNavLinks: [
         {
@@ -73,20 +73,20 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
-            text: 'Coaching',
-            href: '/coaching'
-        },
-        {
             text: 'Hypnosetherapie',
             href: '/hypnosetherapie'
         },
         {
-            text: 'Blog',
-            href: '/blog'
+            text: 'Angebote',
+            href: '/angebote'
         },
         {
-            text: 'Contact',
-            href: '/contact'
+            text: 'Über mich',
+            href: '/janine-aerni'
+        },
+        {
+            text: 'Kontakt',
+            href: '/kontakt'
         },
     ],
     socialLinks: [
@@ -100,12 +100,12 @@ const siteConfig: SiteConfig = {
         text: "Janine Aerni, introduction here",
         actions: [
             {
-                text: 'Get in Touch',
-                href: '/contact'
+                text: 'Angebote',
+                href: '/angebote'
             },
             {
-                text: 'About me',
-                href: '/about'
+                text: 'Kontakt',
+                href: '/kontakt'
             }
         ]
     },
