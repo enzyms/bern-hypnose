@@ -8,12 +8,21 @@
         const canvas = document.getElementById('canvas3d');
         import('@splinetool/runtime').then(({ Application }) => {
             const app = new Application(canvas);
-            app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
+            app.load('https://draft.spline.design/eLscww5xFoCqhigg/scene.splinecode').then(() => {
                 document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
                     app.emitEvent('mouseDown', 'trigger-to-1');
                 });
                 document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
                     app.emitEvent('mouseDown', 'trigger-to-2');
+                });
+                document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
+                    app.emitEvent('mouseDown', 'trigger-to-3');
+                });
+                document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
+                    app.emitEvent('mouseDown', 'trigger-to-4');
+                });
+                document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
+                    app.emitEvent('mouseDown', 'trigger-to-5');
                 });
             });
         });
