@@ -30,6 +30,6 @@ Ausschlaggebend für den Erfolg einer Sitzung ist deine Bereitschaft, dich auf d
 Bist du bereit? Ich freu mich sowas von!
 
 <a
-href="/angebote"
-class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50 no-underline "
-onclick="document.app.emitEvent('mouseDown', 'trigger-to-3');"> Angebote</a>
+  href="/angebote"
+  class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50 no-underline "
+  onclick="document.app.emitEvent('mouseDown', 'trigger-to-3');"> Entdecke die Angebote</a>
