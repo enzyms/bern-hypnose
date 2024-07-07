@@ -5,18 +5,18 @@ module.exports = {
     darkMode: 'class',
     theme: {
         fontFamily: {
-            sans: ['Satoshi', ...defaultTheme.fontFamily.sans],
+            sans: ['Satoshi', ...defaultTheme.fontFamily.sans]
         },
         extend: {
             screens: {
-                'xs': '480px',
-                'sm': '640px',
-                'md': '768px',
-                'lg': '1024px',
-                'xl': '1280px',
+                xs: '480px',
+                sm: '640px',
+                md: '768px',
+                lg: '1024px',
+                xl: '1280px',
                 '2xl': '1536px',
                 '3xl': '1980px',
-                '4xl': '2800px',
+                '4xl': '2800px'
             },
             textColor: {
                 main: 'rgb(var(--color-text-main) / <alpha-value>)'
@@ -32,7 +32,7 @@ module.exports = {
                 dante: {
                     css: {
                         '--tw-prose-body': theme('textColor.main / 100%'),
-                        '--tw-prose-headings': theme('textColor.main / 100%'),
+                        '--tw-prose-headings': theme('colors.red.400 / 100%'),
                         '--tw-prose-lead': theme('textColor.main / 100%'),
                         '--tw-prose-links': theme('textColor.main / 100%'),
                         '--tw-prose-bold': theme('textColor.main / 100%'),
@@ -61,9 +61,14 @@ module.exports = {
                                 textDecorationStyle: 'solid'
                             }
                         },
-                        'h1,h2,h3,h4,h5,h6': {
+                        h1: {
                             fontFamily: theme('fontFamily.serif'),
-                            fontWeight: 500
+                            fontWeight: 100,
+                            color: theme('colors.red.500 / 100%')
+                        },
+                        'h2,h3,h4,h5,h6': {
+                            fontFamily: theme('fontFamily.serif'),
+                            fontWeight: 800
                         },
                         blockquote: {
                             border: 0,

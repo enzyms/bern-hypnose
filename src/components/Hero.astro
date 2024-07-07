@@ -9,7 +9,7 @@ const hero = siteConfig.hero;
 {
     (hero?.title || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
         <section class="w-full justify-self-center justify-center flex flex-col gap-8 mb-16 sm:mb-24">
-            {hero.title && <h1 class="text-4xl xs:text-5xl sm:text-7xl sm:leading-tight hyphens-auto">{hero.title}</h1>}
+            {hero.title && <h1 class="text-4xl xs:text-5xl sm:text-7xl sm:leading-tight hyphens-auto text-red-400">{hero.title}</h1>}
             {hero.image?.src && (
                 <figure>
                     <img class="w-full" src={hero.image.src} loading="lazy" decoding="async" alt={hero.image.alt || ''} />

@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Hero from '../components/Hero.astro';
+import PostPreview from '../components/PostPreview.astro';
+import ProjectPreview from '../components/ProjectPreview.astro';
+import siteConfig from '../data/site-config';
+import { sortItemsByDateDesc } from '../utils/data-utils';
+
+const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
+const featuredPosts = posts.filter(({ data }) => data.isFeatured);
+
+const projects = (await getCollection('projects')).sort(sortItemsByDateDesc);
+const featuredProjects = projects.filter(({ data }) => data.isFeatured);
+---
+
+<BaseLayout description={siteConfig.description} image={siteConfig.image}>
+    <!-- Début de widget en ligne Calendly -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/coaching-hypnosetherapie" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Fin de widget en ligne Calendly -->
+</BaseLayout>

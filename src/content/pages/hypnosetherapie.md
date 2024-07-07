@@ -8,22 +8,23 @@ seo:
     alt: Janine Aerni - Hypnosetherapie
 ---
 
+Bei der Hypnose wirst du von mir angeleitet und begleitet. Zu jedem Zeitpunkt hast du Einfluss darauf, was mit dir geschieht. Hypnose setzt da an, wo dein Selbst sitzt, dein innerster Kern. Der Filter der Vernunft entfällt. Daher ist sie ein sehr kraftvolles Tool, um gewünschte Verhaltensänderungen herbeizuführen. Solche können zum Beispiel sein:
 
-Bei der Hypnose wirst du von mir angeleitet und auf eine Reise
-geschickt. Dorthin zurück, wo du etwas auflösen möchtest. Zu
-jedem Zeitpunkt hast du Einfluss darauf, was mit dir geschieht.
-Hypnose setzt da an, wo dein Selbst sitzt, dein innerster Kern.
-Der Filter der Vernunft entfällt. Daher ist sie ein sehr kraftvolles
-Tool, um gewünschte Verhaltensänderungen herbeizuführen.
+<ul class="not-prose list list-disc px-4 grid grid-cols-3">
+  <li class="marker:text-red-400">Rauchen</li>
+  <li class="marker:text-red-400">Ängste</li>
+  <li class="marker:text-red-400">Blockaden</li>
+  <li class="marker:text-red-400">Schlafstörungen</li>
+  <li class="marker:text-red-400">Ernährung</li>
+  <li class="marker:text-red-400">Stress</li>
+</ul>
 
-Solche können zum Beispiel sein:
-- Rauchen
-- Ängste
-- Blockaden
-- Schlafstörungen
-- Stress
+Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend sehr hilfreich sein. Ich behandle auch Kinder. Dabei darf eine erwachsene Begleitperson anwesend sein.
 
-Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend
-sehr hilfreich sein.
-Ich behandle auch Kinder. Dabei darf eine erwachsene
-Begleitperson anwesend sein.
+## Ablauf einer Sitzung
+
+In einem Gespräch finden wir zusammen heraus, in welchem Bereich du dir eine Verbesserung wünschst. Ich versuche, dir Raum zu geben und herauszufiltern, was du brauchst. Ich begleite dich achtsam und freudvoll auf deinem Weg. Dies ist von Mensch zu Mensch sehr individuell und daher für mich auch so spannend. Keine Sitzung ist wie die andere. Dies macht es gerade so spannend. Ich bin keine Psychologin und keine Ärztin. Solltest du weiterführende Unterstützung benötigen, werden wir zusammen schauen, wie diese für dich aussehen kann. Bitte informiere mich auch über laufende Behandlungen.
+
+Ausschlaggebend für den Erfolg einer Sitzung ist deine Bereitschaft, dich auf die mentale Reise einzulassen.
+
+Bist du bereit? Ich freu mich sowas von!
