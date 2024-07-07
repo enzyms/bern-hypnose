@@ -27,4 +27,9 @@
     h1 {
         @apply text-3xl text-red-500 leading-tight font-black sm:text-5xl sm:leading-tight;
     }
+
+    .has-no-animation {
+        background-position: 0% 50%;
+        background: radial-gradient(circle at center bottom, rgba(252, 233, 138, 1) -25%, rgba(233, 215, 235, 1) 75%);
+    }
 }
