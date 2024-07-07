@@ -11,12 +11,12 @@ seo:
 Bei der Hypnose wirst du von mir angeleitet und begleitet. Zu jedem Zeitpunkt hast du Einfluss darauf, was mit dir geschieht. Hypnose setzt da an, wo dein Selbst sitzt, dein innerster Kern. Der Filter der Vernunft entfällt. Daher ist sie ein sehr kraftvolles Tool, um gewünschte Verhaltensänderungen herbeizuführen. Solche können zum Beispiel sein:
 
 <ul class="not-prose list list-disc px-4 grid xs:grid-cols-2 sm:grid-cols-3">
-  <li class="marker:text-red-400">Rauchen</li>
-  <li class="marker:text-red-400">Ängste</li>
-  <li class="marker:text-red-400">Blockaden</li>
-  <li class="marker:text-red-400">Schlafstörungen</li>
-  <li class="marker:text-red-400">Ernährung</li>
-  <li class="marker:text-red-400">Stress</li>
+  <li class="marker:text-red-500">Rauchen</li>
+  <li class="marker:text-red-500">Ängste</li>
+  <li class="marker:text-red-500">Blockaden</li>
+  <li class="marker:text-red-500">Schlafstörungen</li>
+  <li class="marker:text-red-500">Ernährung</li>
+  <li class="marker:text-red-500">Stress</li>
 </ul>
 
 Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend sehr hilfreich sein. Ich behandle auch Kinder. Dabei darf eine erwachsene Begleitperson anwesend sein.

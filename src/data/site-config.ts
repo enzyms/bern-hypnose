@@ -63,7 +63,7 @@ const siteConfig: SiteConfig = {
             href: '/janine-aerni'
         },
         {
-            text: 'Kontakt',
+            text: 'Kontakt & Termin',
             href: '/kontakt'
         },
     ],
@@ -85,7 +85,7 @@ const siteConfig: SiteConfig = {
             href: '/janine-aerni'
         },
         {
-            text: 'Kontakt',
+            text: 'Kontakt & Termin',
             href: '/kontakt'
         },
     ],
@@ -96,7 +96,7 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Coaching & Hypnosetherapie',
+        title: 'Hypnosetherapie',
         text: "Janine Aerni, introduction here",
         actions: [
             {
@@ -104,9 +104,10 @@ const siteConfig: SiteConfig = {
                 href: '/angebote'
             },
             {
-                text: 'Kontakt',
+                text: 'Kontakt & Termin buchen',
                 href: '/kontakt'
-            }
+            },
+            
         ]
     },
     subscribe: {

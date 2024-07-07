@@ -17,3 +17,7 @@ Nach abgeschlossener Ausbildung Fr. 140.- pro Sitzung.
 
 Du darst gerne bar oder per Twint bezahlen.
 Die Kosten werden nicht von der Krankenkasse übernommen.
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<button class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/coaching-hypnosetherapie'});return false;">Termin buchen</button>

@@ -25,6 +25,6 @@
     }
 
     h1 {
-        @apply text-3xl text-red-400 leading-tight font-black sm:text-5xl sm:leading-tight;
+        @apply text-3xl text-red-500 leading-tight font-black sm:text-5xl sm:leading-tight;
     }
 }
