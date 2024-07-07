@@ -4,8 +4,8 @@ seo:
   title: Janine Aerni
   description: Get in touch through email or social media! Let me know how I can help.
 ---
-![Alt text for image](/janine-aerni.jpg)
 
+![Alt text for image](/janine-aerni.jpg)
 
 ## Über mich
 
@@ -32,3 +32,8 @@ Die Coachingausbildung bei Patrice Wyrsch hat mich persönlich
 sehr geprägt und hat mich Schritte in eine abenteuerliche
 Zukunft gehen lassen. Sein Herzensthema ist die erhöhte
 Neurosensitivität, welche mich auch enorm fasziniert.
+
+<a
+href="/kontakt"
+class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50 no-underline "
+onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"> Kontakt und Termin</a>

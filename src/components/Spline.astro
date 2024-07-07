@@ -1,5 +1,12 @@
+<div transition:persist id="fallbackBg" class="has-no-animation fixed inset-0 z-0 hidden"></div>
 <canvas transition:persist id="canvas3d" class="fixed inset-0 z-0"></canvas>
 <script>
+    import { Application } from '@splinetool/runtime';
+    declare global {
+        interface Document {
+            app: Application;
+        }
+    }
     window.addEventListener('load', (event) => {
         function menuClose() {
             const menu = document.querySelector('.menu');
@@ -10,33 +17,39 @@
         }
 
         function isAndroid() {
-            document.body.classList.add('has-no-animation');
             return /Android/i.test(navigator.userAgent);
+        }
+
+        if (isAndroid()) {
+            const fallbackBg = document.getElementById('fallbackBg');
+            fallbackBg?.classList.remove('hidden');
         }
 
         if (!isAndroid()) {
             const canvas = document.getElementById('canvas3d');
             import('@splinetool/runtime').then(({ Application }) => {
-                const app = new Application(canvas);
-                app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
+                const canvas = document.getElementById('canvas3d') as HTMLCanvasElement;
+
+                document.app = new Application(canvas);
+                document.app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
                     document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
-                        app.emitEvent('mouseDown', 'trigger-to-1');
+                        document.app.emitEvent('mouseDown', 'trigger-to-1');
                         menuClose();
                     });
                     document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
-                        app.emitEvent('mouseDown', 'trigger-to-2');
+                        document.app.emitEvent('mouseDown', 'trigger-to-2');
                         menuClose();
                     });
                     document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
-                        app.emitEvent('mouseDown', 'trigger-to-3');
+                        document.app.emitEvent('mouseDown', 'trigger-to-3');
                         menuClose();
                     });
                     document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
-                        app.emitEvent('mouseDown', 'trigger-to-4');
+                        document.app.emitEvent('mouseDown', 'trigger-to-4');
                         menuClose();
                     });
                     document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
-                        app.emitEvent('mouseDown', 'trigger-to-5');
+                        document.app.emitEvent('mouseDown', 'trigger-to-5');
                         menuClose();
                     });
                 });

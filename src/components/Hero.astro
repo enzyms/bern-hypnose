@@ -1,6 +1,6 @@
 ---
 import { marked } from 'marked';
-import Button from './Button.astro';
+import NavLink from './NavLink.astro';
 import siteConfig from '../data/site-config';
 
 const hero = siteConfig.hero;
@@ -8,7 +8,7 @@ const hero = siteConfig.hero;
 
 {
     (hero?.title || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
-        <section class="w-full justify-self-center justify-center flex flex-col gap-8 mb-16 sm:mb-24">
+        <section class="w-full justify-self-center justify-center flex flex-col gap-8 mb-16">
             {hero.title && <h1 class="text-4xl xs:text-5xl sm:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>}
             {hero.image?.src && (
                 <figure>
@@ -19,9 +19,20 @@ const hero = siteConfig.hero;
             {hero.text && <div class="max-w-none prose prose-dante sm:prose-lg" set:html={marked.parse(hero.text)} />}
             {hero.actions && hero.actions.length > 0 && (
                 <div class="flex flex-wrap gap-4">
-                    {hero.actions.map((action) => (
-                        <Button href={action.href}>{action.text}</Button>
-                    ))}
+                    <a
+                        href="/angebote"
+                        class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50"
+                        onclick="document.app.emitEvent('mouseDown', 'trigger-to-2');"
+                    >
+                        Angebote
+                    </a>
+                    <a
+                        href="/kontakt"
+                        class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50"
+                        onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"
+                    >
+                        Kontakt & Termin
+                    </a>
                 </div>
             )}
         </section>
