@@ -1,8 +1,3 @@
----
-
----
-
-<!--
 <canvas transition:persist id="canvas3d" class="fixed inset-0 z-0"></canvas>
 <script>
     window.addEventListener('load', (event) => {
@@ -14,32 +9,37 @@
             menu?.classList.remove('is-visible');
         }
 
-        const canvas = document.getElementById('canvas3d');
-        import('@splinetool/runtime').then(({ Application }) => {
-            const app = new Application(canvas);
-            app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
-                document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
-                    app.emitEvent('mouseDown', 'trigger-to-1');
-                    menuClose();
-                });
-                document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
-                    app.emitEvent('mouseDown', 'trigger-to-2');
-                    menuClose();
-                });
-                document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
-                    app.emitEvent('mouseDown', 'trigger-to-3');
-                    menuClose();
-                });
-                document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
-                    app.emitEvent('mouseDown', 'trigger-to-4');
-                    menuClose();
-                });
-                document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
-                    app.emitEvent('mouseDown', 'trigger-to-5');
-                    menuClose();
+        function isAndroid() {
+            return /Android/i.test(navigator.userAgent);
+        }
+
+        if (!isAndroid()) {
+            const canvas = document.getElementById('canvas3d');
+            import('@splinetool/runtime').then(({ Application }) => {
+                const app = new Application(canvas);
+                app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
+                    document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
+                        app.emitEvent('mouseDown', 'trigger-to-1');
+                        menuClose();
+                    });
+                    document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
+                        app.emitEvent('mouseDown', 'trigger-to-2');
+                        menuClose();
+                    });
+                    document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
+                        app.emitEvent('mouseDown', 'trigger-to-3');
+                        menuClose();
+                    });
+                    document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
+                        app.emitEvent('mouseDown', 'trigger-to-4');
+                        menuClose();
+                    });
+                    document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
+                        app.emitEvent('mouseDown', 'trigger-to-5');
+                        menuClose();
+                    });
                 });
             });
-        });
+        }
     });
 </script>
- -->
