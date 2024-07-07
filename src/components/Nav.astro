@@ -39,13 +39,13 @@ const navLinks = siteConfig.headerNavLinks || [];
 <style>
     @media (max-width: 767px) {
         .menu {
-            @apply flex-col gap-1 absolute left-0 w-screen px-3 pt-32 pb-10 z-20 bg-main  invisible opacity-50 top-0 -translate-y-full;
+            @apply flex-col gap-1 absolute left-0 w-screen px-3 pt-32 pb-10 z-20 bg-main top-0 -translate-y-full;
             transition:
                 opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
                 transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .menu.is-visible {
-            @apply visible opacity-100 translate-y-0;
+            @apply translate-y-0;
         }
         .menu-toggle-icon {
             transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
