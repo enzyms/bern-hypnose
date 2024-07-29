@@ -38,9 +38,9 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Coaching & Hypnotherapie',
+    title: 'Hypnotherapie in Bern',
     subtitle: 'Janine Aerni',
-    description: 'Coaching & Hypnotherapie in Bern',
+    description: 'Hypnosetherapie in Bern',
     image: {
         src: '/dante-preview.jpg',
         alt: 'Dante - Astro.js and Tailwind CSS theme'
@@ -96,8 +96,8 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Hypnosetherapie',
-        text: "Janine Aerni, introduction here",
+        title: 'Hypnosetherapie in Bern',
+        text: "Ich bin Janine Aerni, eine engagierte Hypnosetherapeutin in Ausbildung in Bern. Mit einer warmen und unterstützenden Herangehensweise helfe ich dir, Stress, Angst, Phobien und mehr zu überwinden. Entdecke die transformative Kraft der Hypnotherapie in einer sicheren, unterstützenden Umgebung.",
         actions: [
             {
                 text: 'Angebote',

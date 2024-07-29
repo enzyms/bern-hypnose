@@ -9,10 +9,10 @@ Meine Praxis befindet sich an der Eigerstrasse 56 in Bern
 (Lageplan, Parkplätze, Anreise)
 Nimm gerne mit mir Kontakt auf, wenn du dich für eine Sitzung
 interessierst (Terminbuchung, Kalender)
-Ich bin von Montag bis Donnerstag für dich da.
+Ich bin von Montag bis Freitag für dich da.
 
 <div class="mb-8">
-E-Mail: <a href="mailto:janineaerni@bluewin.ch">janineaerni@bluewin.ch</a> <br>
+E-Mail: <a href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br>
 Telefon: <a href="tel:079 833 03 85">079 833 03 85</a>
 </div>
 

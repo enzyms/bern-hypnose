@@ -23,7 +23,7 @@ Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend sehr hilfreich sein
 
 ## Ablauf einer Sitzung
 
-In einem Gespräch finden wir zusammen heraus, in welchem Bereich du dir eine Verbesserung wünschst. Ich versuche, dir Raum zu geben und herauszufiltern, was du brauchst. Ich begleite dich achtsam und freudvoll auf deinem Weg. Dies ist von Mensch zu Mensch sehr individuell und daher für mich auch so spannend. Keine Sitzung ist wie die andere. Dies macht es gerade so spannend. Ich bin keine Psychologin und keine Ärztin. Solltest du weiterführende Unterstützung benötigen, werden wir zusammen schauen, wie diese für dich aussehen kann. Bitte informiere mich auch über laufende Behandlungen.
+In einem Gespräch finden wir zusammen heraus, in welchem Bereich du dir eine Verbesserung wünschst. Ich versuche, dir Raum zu geben und herauszufiltern, was du brauchst. Ich begleite dich achtsam und freudvoll auf deinem Weg. Dies ist von Mensch zu Mensch sehr individuell und daher für mich auch so spannend. Keine Sitzung ist wie die andere. Ich bin keine Psychologin und keine Ärztin. Solltest du weiterführende Unterstützung benötigen, werden wir zusammen schauen, wie diese für dich aussehen kann. Bitte informiere mich auch über laufende Behandlungen.
 
 Ausschlaggebend für den Erfolg einer Sitzung ist deine Bereitschaft, dich auf die mentale Reise einzulassen.
 
