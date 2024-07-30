@@ -2,7 +2,7 @@
 title: Angebote
 seo:
   title: Angebote
-  description: Angebote description here.
+  description: Hypnosetherapie in Bern, Angebote und Preise
   image:
     src: '/janine-aerni.jpg'
     alt: Janine Aerni - coaching

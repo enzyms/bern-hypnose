@@ -2,7 +2,7 @@
 title: Janine Aerni
 seo:
   title: Janine Aerni
-  description: Get in touch through email or social media! Let me know how I can help.
+  description: Janine Aerni, über mich
 ---
 
 ![Alt text for image](/janine-aerni.jpg)

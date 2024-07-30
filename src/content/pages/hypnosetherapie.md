@@ -2,7 +2,7 @@
 title: Was ist Hypnose?
 seo:
   title: Was ist Hypnose?
-  description: Coachiung description here.
+  description: Hypnosetherapie in Bern, was ist Hypnose?
   image:
     src: '/post-4.jpg'
     alt: Janine Aerni - Hypnosetherapie
