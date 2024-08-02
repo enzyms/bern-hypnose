@@ -8,7 +8,7 @@ seo:
     alt: Janine Aerni - Hypnosetherapie
 ---
 
-Bei der Hypnose wirst du von mir angeleitet und begleitet. Zu jedem Zeitpunkt hast du Einfluss darauf, was mit dir geschieht. Hypnose setzt da an, wo dein Selbst sitzt, dein innerster Kern. Der Filter der Vernunft entfällt. Daher ist sie ein sehr kraftvolles Tool, um gewünschte Verhaltensänderungen herbeizuführen. Solche können zum Beispiel sein:
+Bei der Hypnose geht es darum, gewisse Ereignisse oder Angewohnheiten neu zu bewerten. Dein Unterbewusstsein hat eine enorme Kraft. In der Hypnose versuchen wir, positive Emotionen anzusteuern und Verhaltensweisen in eine gewünschte Richtung zu leiten. Hypnose kann hilfreich sein bei:
 
 <ul class="not-prose list list-disc px-4 grid xs:grid-cols-2 sm:grid-cols-3">
   <li class="marker:text-red-500">Rauchen</li>
