@@ -9,9 +9,9 @@ seo:
 ---
 
 <img
-  srcset="praxis-400w.avif 400w, praxis-600w.avif 600w, praxis-800w.avif 800w"
+  srcset="src/images/praxis-400w.avif 400w, src/images/praxis-600w.avif 600w, src/images/praxis-800w.avif 800w"
   sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (min-width: 601px) 800px"
-  src="praxis.jpg"
+  src="src/images/praxis-800w.avif"
   alt="Janine Aerni Praxis"
   width="4032"
   height="3024"

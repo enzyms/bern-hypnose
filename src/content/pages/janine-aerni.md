@@ -6,9 +6,9 @@ seo:
 ---
 
 <img
-  srcset="portrait-janine-400w.avif 400w, portrait-janine-600w.avif 600w, portrait-janine-800w.avif 800w"
+  srcset="src/images/portrait-janine-400w.avif 400w, src/images/portrait-janine-600w.avif 600w, src/images/portrait-janine-800w.avif 800w"
   sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (min-width: 601px) 800px"
-  src="portrait-janine.jpg"
+  src="portrait-janine-800w.avif 800w"
   alt="Janine Aerni Hypnosetherapeutin"
   width="800"
   height="915"
