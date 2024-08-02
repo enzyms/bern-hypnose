@@ -5,7 +5,15 @@ seo:
   description: Janine Aerni, über mich
 ---
 
-![Alt text for image](/janine-aerni.jpg)
+<img
+  srcset="portrait-janine-400w.avif 400w, portrait-janine-600w.avif 600w, portrait-janine-800w.avif 800w"
+  sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (min-width: 601px) 800px"
+  src="portrait-janine.jpg"
+  alt="Janine Aerni Hypnosetherapeutin"
+  width="800"
+  height="915"
+  loading="lazy"
+/>
 
 ## Über mich
 
