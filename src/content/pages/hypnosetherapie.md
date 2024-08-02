@@ -19,7 +19,7 @@ Bei der Hypnose wirst du von mir angeleitet und begleitet. Zu jedem Zeitpunkt ha
   <li class="marker:text-red-500">Stress</li>
 </ul>
 
-Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend sehr hilfreich sein. Ich behandle auch Kinder. Dabei darf eine erwachsene Begleitperson anwesend sein.
+Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend sehr hilfreich sein. Ich behandle ab Oktober auch Kinder.
 
 ## Ablauf einer Sitzung
 
