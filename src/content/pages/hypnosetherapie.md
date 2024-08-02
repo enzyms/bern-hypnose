@@ -8,7 +8,7 @@ seo:
     alt: Janine Aerni - Hypnosetherapie
 ---
 
-Bei der Hypnose geht es darum, gewisse Ereignisse oder Angewohnheiten neu zu bewerten. Dein Unterbewusstsein hat eine enorme Kraft. In der Hypnose versuchen wir, positive Emotionen anzusteuern und Verhaltensweisen in eine gewünschte Richtung zu leiten. Hypnose kann hilfreich sein bei:
+Bei der Hypnose geht es darum, gewisse Ereignisse oder Angewohnheiten neu zu bewerten. Dein Unterbewusstsein hat eine enorme Kraft. In der Hypnose versuchen wir, positive Emotionen anzusteuern und Verhaltensweisen in eine gewünschte Richtung zu leiten. Wann kann Hypnose helfen:
 
 <ul class="not-prose list list-disc px-4 grid xs:grid-cols-2 sm:grid-cols-3">
   <li class="marker:text-red-500">Rauchen</li>
@@ -19,11 +19,11 @@ Bei der Hypnose geht es darum, gewisse Ereignisse oder Angewohnheiten neu zu bew
   <li class="marker:text-red-500">Stress</li>
 </ul>
 
-Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend sehr hilfreich sein. Ich behandle ab Oktober auch Kinder.
-
 ## Ablauf einer Sitzung
 
-In einem Gespräch finden wir zusammen heraus, in welchem Bereich du dir eine Verbesserung wünschst. Ich versuche, dir Raum zu geben und herauszufiltern, was du brauchst. Ich begleite dich achtsam und freudvoll auf deinem Weg. Dies ist von Mensch zu Mensch sehr individuell und daher für mich auch so spannend. Keine Sitzung ist wie die andere. Ich bin keine Psychologin und keine Ärztin. Solltest du weiterführende Unterstützung benötigen, werden wir zusammen schauen, wie diese für dich aussehen kann. Bitte informiere mich auch über laufende Behandlungen.
+In einem Gespräch finden wir zusammen heraus, in welchem Bereich du dir eine Verbesserung wünschst. Ich versuche, dir Raum zu geben und herauszufiltern, was du brauchst. Ich begleite dich achtsam und freudvoll auf deinem Weg. Dies ist von Mensch zu Mensch sehr individuell und daher für mich auch so spannend. Keine Sitzung ist wie die andere.
+
+Eine Hypnose ersetzt keinen Arztbesuch, kann aber begleitend sehr hilfreich sein. Ich bin keine Psychologin und keine Ärztin. Solltest du weiterführende Unterstützung benötigen, werden wir zusammen schauen, wie diese für dich aussehen kann. Bitte informiere mich auch über laufende Behandlungen.
 
 Ausschlaggebend für den Erfolg einer Sitzung ist deine Bereitschaft, dich auf die mentale Reise einzulassen.
 
