@@ -21,9 +21,9 @@ const navLinks = siteConfig.headerNavLinks || [];
                 </button>
                 <ul id="menu-items" class="menu flex gap-6 md:pl-1" transition:persist>
                     {navLinks.map((link) => (
-                        <li class="py-1">
+                        <li class="py-0">
                             <NavLink
-                                class="text-3xl font-bold text-red-500 hover:text-red-600 md:font-normal md:text-gray-700 md:text-lg transition-colors"
+                                class="block py-1 text-3xl font-bold text-red-500 hover:text-red-600 md:font-normal md:text-gray-700 md:text-lg transition-colors"
                                 href={link.href}
                             >
                                 {link.text}
