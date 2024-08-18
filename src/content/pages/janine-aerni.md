@@ -9,7 +9,7 @@ seo:
   srcset="../janine-400w.avif 400w, ../janine-600w.avif 600w, ../janine-800w.avif 800w, ../janine-1000w.avif 1000w"
   sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (min-width: 801px) 1000px"
   src="../janine-1000w.avif"
-  alt="Janine Aerni – Hypnoosetherapeutin"
+  alt="Janine Aerni – Hypnosetherapeutin"
   width="2673"
   height="3397"
   loading="lazy"
