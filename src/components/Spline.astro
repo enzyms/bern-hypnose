@@ -26,34 +26,36 @@
         }
 
         if (!isAndroid()) {
-            const canvas = document.getElementById('canvas3d');
-            import('@splinetool/runtime').then(({ Application }) => {
-                const canvas = document.getElementById('canvas3d') as HTMLCanvasElement;
+            setTimeout(() => {
+                const canvas = document.getElementById('canvas3d');
+                import('@splinetool/runtime').then(({ Application }) => {
+                    const canvas = document.getElementById('canvas3d') as HTMLCanvasElement;
 
-                document.app = new Application(canvas);
-                document.app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
-                    document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-1');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-2');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-3');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-4');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-3');
-                        menuClose();
+                    document.app = new Application(canvas);
+                    document.app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
+                        document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-1');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-2');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-3');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-4');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-3');
+                            menuClose();
+                        });
                     });
                 });
-            });
+            }, 1000);
         }
     });
 </script>
