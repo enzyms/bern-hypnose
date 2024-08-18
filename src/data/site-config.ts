@@ -38,7 +38,7 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Hypnotherapie in Bern',
+    title: 'Hypnosetherapie in Bern',
     subtitle: 'Janine Aerni',
     description: 'Hypnosetherapie in Bern',
     image: {
