@@ -1,12 +1,6 @@
 <div transition:persist id="fallbackBg" class="has-no-animation fixed inset-0 z-0 hidden"></div>
 <canvas transition:persist id="canvas3d" class="fixed inset-0 z-0"></canvas>
 <script>
-    import { Application } from '@splinetool/runtime';
-    declare global {
-        interface Document {
-            app: Application;
-        }
-    }
     window.addEventListener('load', (event) => {
         function menuClose() {
             const menu = document.querySelector('.menu');
