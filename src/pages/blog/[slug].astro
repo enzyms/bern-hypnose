@@ -66,8 +66,8 @@ const { Content } = await post.render();
     </article>
     {
         (prevPost || nextPost) && (
-            <div class="my-16 sm:my-24">
-                <h2 class="mb-12 text-xl italic sm:mb-16 sm:text-2xl">Read Next</h2>
+            <div class="my-12 py-12 sm:my-24 border-t border-gray-400">
+                <h2 class="mb-6 font-black">Weiter lesen</h2>
                 {nextPost && <PostPreview post={nextPost} class="mb-10 sm:mb-12" headingLevel="h3" />}
                 {prevPost && <PostPreview post={prevPost} class="mb-10 sm:mb-12" headingLevel="h3" />}
             </div>
