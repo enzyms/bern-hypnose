@@ -107,5 +107,5 @@ const navLinks = siteConfig.headerNavLinks || [];
         });
     }
     menuToggle();
-    document.addEventListener('astro:after-swap', menuToggle);
+    document.addEventListener('astro:after-swap', menuToggle, { passive: true });
 </script>
