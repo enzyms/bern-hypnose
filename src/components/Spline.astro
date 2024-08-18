@@ -1,53 +1,61 @@
 <div transition:persist id="fallbackBg" class="has-no-animation fixed inset-0 z-0 hidden"></div>
 <canvas transition:persist id="canvas3d" class="fixed inset-0 z-0"></canvas>
+
 <script>
-    window.addEventListener('load', (event) => {
-        function menuClose() {
-            const menu = document.querySelector('.menu');
-            const menuToggleBtn = document.querySelector('.menu-toggle');
-            menuToggleBtn?.setAttribute('aria-expanded', 'false');
-            menuToggleBtn?.setAttribute('aria-label', 'Close Menu');
-            menu?.classList.remove('is-visible');
-        }
+    async function loadSplineScene() {
+        try {
+            function isAndroid() {
+                return /Android/i.test(navigator.userAgent);
+            }
 
-        function isAndroid() {
-            return /Android/i.test(navigator.userAgent);
-        }
+            if (isAndroid()) {
+                const fallbackBg = document.getElementById('fallbackBg');
+                fallbackBg?.classList.remove('hidden');
+            }
 
-        if (isAndroid()) {
-            const fallbackBg = document.getElementById('fallbackBg');
-            fallbackBg?.classList.remove('hidden');
-        }
+            if (!isAndroid()) {
+                const canvas = document.getElementById('canvas3d');
+                import('@splinetool/runtime').then(async ({ Application }) => {
+                    const canvas = document.getElementById('canvas3d') as HTMLCanvasElement;
 
-        if (!isAndroid()) {
-            const canvas = document.getElementById('canvas3d');
-            import('@splinetool/runtime').then(({ Application }) => {
-                const canvas = document.getElementById('canvas3d') as HTMLCanvasElement;
+                    document.app = new Application(canvas);
 
-                document.app = new Application(canvas);
-                document.app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
-                    document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-1');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-2');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-3');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-4');
-                        menuClose();
-                    });
-                    document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
-                        document.app.emitEvent('mouseDown', 'trigger-to-3');
-                        menuClose();
+                    function menuClose() {
+                        const menu = document.querySelector('.menu');
+                        const menuToggleBtn = document.querySelector('.menu-toggle');
+                        menuToggleBtn?.setAttribute('aria-expanded', 'false');
+                        menuToggleBtn?.setAttribute('aria-label', 'Close Menu');
+                        menu?.classList.remove('is-visible');
+                    }
+
+                    await document.app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
+                        document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-1');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(2) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-2');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-3');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-4');
+                            menuClose();
+                        });
+                        document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
+                            document.app.emitEvent('mouseDown', 'trigger-to-3');
+                            menuClose();
+                        });
                     });
                 });
-            });
+            }
+        } catch (error) {
+            console.error('Failed to load Spline scene:', error);
         }
-    });
+    }
+
+    loadSplineScene();
 </script>
