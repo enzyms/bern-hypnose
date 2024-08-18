@@ -1,0 +1,25 @@
+backend:
+    name: git-gateway
+    branch: main # The branch where Decap CMS will push changes
+
+media_folder: 'public/uploads' # Where uploaded media files are stored in your repository
+public_folder: '/uploads' # Public path to the media files
+
+collections:
+    - name: 'blog'
+      label: 'Blog Posts'
+      folder: 'src/content/blog' # Path to your blog content
+      create: true # Allow creation of new posts
+      slug: '{{slug}}' # Slug for the post URLs
+      fields: # Define the fields in your blog post front-matter
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - { label: 'Publish Date', name: 'publishDate', widget: 'datetime' }
+          - { label: 'Tags', name: 'tags', widget: 'list' }
+          - {
+                label: 'SEO Image',
+                name: 'seo',
+                widget: 'object',
+                fields: [{ label: 'Image Src', name: 'src', widget: 'string' }, { label: 'Alt Text', name: 'alt', widget: 'string' }]
+            }
+          - { label: 'Body', name: 'body', widget: 'markdown' }

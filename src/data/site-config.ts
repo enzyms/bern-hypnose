@@ -59,6 +59,10 @@ const siteConfig: SiteConfig = {
             href: '/angebote'
         },
         {
+            text: 'Blog',
+            href: '/blog'
+        },
+        {
             text: 'Über mich',
             href: '/janine-aerni'
         },
@@ -79,6 +83,10 @@ const siteConfig: SiteConfig = {
         {
             text: 'Angebote',
             href: '/angebote'
+        },
+        {
+            text: 'Blog',
+            href: '/blog'
         },
         {
             text: 'Über mich',
