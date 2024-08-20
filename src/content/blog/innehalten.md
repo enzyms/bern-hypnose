@@ -1,7 +1,7 @@
 ---
 title: Innehalten
 excerpt: Feierst du dich auch mal selbst?
-publishDate: 2024-08-20T08:35:00.000Z
+publishDate: 2024-08-20T08:52:00.000Z
 ---
 Hältst du manchmal inne? Nimmst du dir Zeit zum Durchatmen?
 
