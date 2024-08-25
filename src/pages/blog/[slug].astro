@@ -45,7 +45,7 @@ const { Content } = await post.render();
                     )
                 }
             </div>
-            {seo?.image && <img class="w-full h-64 object-cover object-center mb-6 rounded-lg sm:h-96" src={seo.image.src} alt={seo.image.alt} />}
+            {seo?.image && <img class="w-full h-64 pt-8 object-cover object-center mb-6 rounded-lg sm:h-96" src={seo.image.src || ''} alt={seo.image.alt} />}
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />
