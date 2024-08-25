@@ -3,6 +3,9 @@ title: Was kann Hypnose?
 excerpt: Viele Menschen haben mich gefragt, wann Hypnose helfen kann. Hier
   einige Beispiele.
 publishDate: 2024-08-18T11:10:00.000Z
+seo:
+  image:
+    src: /uploads/acrophobia.avif
 ---
 Die Voraussetzung, mittels Hypnose eine Linderung der Symptome oder gar ein Wegfallen zu erzielen, ist die Bereitschaft von dir, dich auf diese Reise einzulassen. Es bedeutet, dass du bereit bist, dich auch mal überraschen zu lassen, welche inneren Bilder und Gefühle aufkommen bei dir. Es ist erstaunlich, wie man sich manchmal auf etwas einstellt, und dann ganz plötzlich etwas anderes aufploppt.
 
