@@ -28,9 +28,10 @@ const { title, publishDate, updatedDate, excerpt, tags = [], seo } = post.data;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image} pageType="article">
+<BaseLayout title={title} description={excerpt} image={seo?.image} pageType="article">
     <article class="mb-16">
         <header class="mb-8">
+            {seo?.image && <img class="w-full h-64 object-cover object-center mb-6 rounded-lg sm:h-96" src={seo.image.src} alt={seo.image.alt} />}
             <h1 class="text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">{title}</h1>
             <div class="mt-4 text-sm">
                 <FormattedDate date={publishDate} />

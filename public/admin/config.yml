@@ -23,8 +23,19 @@ collections:
                 required: false,
                 fields:
                     [
-                        { label: 'Image Src', name: 'src', widget: 'image', required: false },
-                        { label: 'Alt Text', name: 'alt', widget: 'string', required: false }
+                        { label: 'Title', name: 'title', widget: 'string', required: false, min: 5, max: 120 },
+                        { label: 'Description', name: 'description', widget: 'text', required: false, min: 15, max: 160 },
+                        {
+                            label: 'Image',
+                            name: 'image',
+                            widget: 'object',
+                            required: false,
+                            fields:
+                                [
+                                    { label: 'Image Src', name: 'src', widget: 'image', required: false },
+                                    { label: 'Alt Text', name: 'alt', widget: 'string', required: false }
+                                ]
+                        }
                     ]
             }
           - { label: 'Body', name: 'body', widget: 'markdown' }
