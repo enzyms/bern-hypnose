@@ -3,6 +3,9 @@ title: Wann ist eine Lehrperson eine gute Lehrperson?
 excerpt: Nachdem ich zwanzig Jahre lang Lehrerin war, tut es gut, selbst die
   Schulbank zu drücken. Was sind wünschenswerte Eigenschaften einer Lehrperson?
 publishDate: 2024-08-23T20:27:00.000Z
+seo:
+  image:
+    src: /uploads/trail-two-persons.png
 ---
 Jemand, der es schafft, in mir ein Feuer für ein Thema zu entfachen, einen Wissensdurst zu wecken, mich begleitet und leitet, mit Geduld, mit Freude und einer Leidenschaft, der ist für mich eine gute Lehrperson. Der mir das Gefühl gibt, dass keine Frage eine doofe Frage ist, der  ruhig bleibt und bei sich bleibt. Dass all dies nicht immer umsetzbar ist, gerade, wenn man mit Kindern arbeitet, versteht sich von selbst. Dies ist mir als Lehrerin nicht immer gelungen. 
 
