@@ -20,6 +20,11 @@ collections:
                 label: 'SEO Image',
                 name: 'seo',
                 widget: 'object',
-                fields: [{ label: 'Image Src', name: 'src', widget: 'string' }, { label: 'Alt Text', name: 'alt', widget: 'string' }]
+                required: false,
+                fields:
+                    [
+                        { label: 'Image Src', name: 'src', widget: 'string', required: false },
+                        { label: 'Alt Text', name: 'alt', widget: 'string', required: false }
+                    ]
             }
           - { label: 'Body', name: 'body', widget: 'markdown' }
