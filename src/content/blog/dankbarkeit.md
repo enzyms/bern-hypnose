@@ -2,6 +2,10 @@
 title: Dankbarkeit
 excerpt: Sich öffnen und Vertrauen schenken braucht Mut- danke!
 publishDate: 2024-08-21T20:08:00.000Z
+seo:
+  image:
+    src: /uploads/thankfulness.png
+    alt: Dankbarkeit - Hypnose
 ---
 Noch in den Babyschuhen steht meine Tätigkeit als Hypnosetherapeutin. Was mich jetzt schon berührt, ist, dass sich die Menschen öffnen und verletzlich zeigen. Das ist keine Selbstverständlichkeit. Im Alltag sind wir es uns gewohnt, uns zu schützen, nicht alles preiszugeben. Dies hat seine Berechtigung und darf sein. 
 
