@@ -6,6 +6,7 @@ publishDate: 2024-08-25T13:22:00.000Z
 seo:
   image:
     src: /uploads/chrystal.png
+    alt: Sich annehmen
 ---
 Ich habe mir in letzter Zeit viele Gedanken über Selbstakzeptanz gemacht. Es ist mal wieder ein Verlassen der Komfortzone, darüber zu schreiben. In meinem Kopf gehen Filme ab: Was denkt Person X darüber? Und findet Person Y das nun doof und zu gewagt? Ich bin aber schon zu weit, um mich davon abhalten zu können. Ich freue mich, wenn meine Worte im Gegenüber etwas auslösen. Und eine Form von Selbsttherapie ist es auch. 
 
