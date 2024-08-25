@@ -6,7 +6,7 @@ tags:
   - test
 seo:
   image:
-    src: /uploads/robot__hand-left.png
+    src: /uploads/robot__head.png
     alt: seo image alt text test
   title: seo image title test
   description: description seo test
