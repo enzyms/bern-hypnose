@@ -23,7 +23,7 @@ collections:
                 required: false,
                 fields:
                     [
-                        { label: 'Image Src', name: 'src', widget: 'string', required: false },
+                        { label: 'Image Src', name: 'src', widget: 'image', required: false },
                         { label: 'Alt Text', name: 'alt', widget: 'string', required: false }
                     ]
             }
