@@ -6,13 +6,29 @@ import FormattedDate from './FormattedDate.astro';
 type Props = { post: CollectionEntry<'blog'>; class?: string; headingLevel?: 'h2' | 'h3' };
 
 const { post, class: className, headingLevel = 'h2' } = Astro.props;
-const { title, publishDate, updatedDate, excerpt } = post.data;
+const { title, publishDate, updatedDate, excerpt, seo } = post.data;
 const TitleTag = headingLevel;
 ---
 
-<a class:list={['block justify-between items-start gap-8 group', className]} href={`/blog/${post.slug}/`}>
-    <div class="grow">
-        <TitleTag class="text-2xl text-main font-black hyphens-auto group-hover:text-red-500 transition-colors">
+<a class:list={['block justify-between items-start gap-8 group relative', className]} href={`/blog/${post.slug}/`}>
+    <div
+        class="absolute z-0 inset-0 rounded-xl transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-20 group-hover:scale-[1.4] bg-yellow-300 blur-3xl pointer-events-none"
+    >
+        s
+    </div>
+    <div class="mt-8 rounded-xl overflow-hidden relative z-2">
+        {
+            seo?.image && (
+                <img
+                    class="group-hover:scale-[1.05] transition-transform duration-1000 ease-in-out w-full h-64 object-cover object-center  sm:h-96"
+                    src={seo.image.src || ''}
+                    alt={seo.image.alt}
+                />
+            )
+        }
+    </div>
+    <div class="grow relative z-2">
+        <TitleTag class="mt-4 text-2xl font-black hyphens-auto text-main group-hover:text-red-500 transition-colors">
             {title}
         </TitleTag>
         <div class="mt-1 leading-normal">
