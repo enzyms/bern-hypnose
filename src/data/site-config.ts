@@ -41,8 +41,8 @@ const siteConfig: SiteConfig = {
     subtitle: 'Janine Aerni',
     description: 'Hypnosetherapie in Bern',
     image: {
-        src: '/dante-preview.jpg',
-        alt: 'Dante - Astro.js and Tailwind CSS theme'
+        src: '/hypnose1.png',
+        alt: 'Janine Aerni – Hypnosetherapie in Bern'
     },
     headerNavLinks: [
         {
