@@ -17,14 +17,12 @@ collections:
           - { label: 'Publish Date', name: 'publishDate', widget: 'datetime' }
           - { label: 'Tags', name: 'tags', widget: 'list' }
           - {
-                label: 'SEO Image',
+                label: 'Image',
                 name: 'seo',
                 widget: 'object',
                 required: false,
                 fields:
                     [
-                        { label: 'Title', name: 'title', widget: 'string', required: false, min: 5, max: 120 },
-                        { label: 'Description', name: 'description', widget: 'text', required: false, min: 15, max: 160 },
                         {
                             label: 'Image',
                             name: 'image',
