@@ -9,6 +9,11 @@ const seoSchema = z.object({
         .optional(),                    
 });
 
+const backlinkSchema = z.object({
+    title: z.string().optional(),  
+    url: z.string().optional()                 
+});
+
 const blog = defineCollection({
     schema: z.object({
         title: z.string(),
@@ -17,14 +22,16 @@ const blog = defineCollection({
         updatedDate: z.coerce.date().optional(),
         isFeatured: z.boolean().default(false),
         tags: z.array(z.string()).default([]),
-        seo: seoSchema.optional()
+        seo: seoSchema.optional(),
     })
 });
 
 const pages = defineCollection({
     schema: z.object({
         title: z.string(),
-        seo: seoSchema.optional()
+        description: z.string().optional(),
+        seo: seoSchema.optional(),
+        backlink: backlinkSchema.optional(),
     })
 });
 

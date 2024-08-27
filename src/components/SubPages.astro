@@ -1,0 +1,18 @@
+---
+import Card from './Card.astro';
+import siteConfig from '../data/site-config';
+---
+
+<nav class="py-4 md:py-6">
+    {
+        siteConfig.headerNavLinks?.[1]?.subLinks?.length > 0 && (
+            <ul class="grid xs:grid-cols-2 gap-4 not-prose">
+                {siteConfig.headerNavLinks[1].subLinks.map((subLink) => (
+                    <li key={subLink.href}>
+                        <Card href={subLink.href} image={subLink.image} title={subLink.text} />
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</nav>

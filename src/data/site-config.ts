@@ -7,6 +7,8 @@ export type Image = {
 export type Link = {
     text: string;
     href: string;
+    subLinks?: Link[];
+    image?: Image;
 };
 
 export type Hero = {
@@ -41,8 +43,8 @@ const siteConfig: SiteConfig = {
     subtitle: 'Janine Aerni',
     description: 'Hypnosetherapie in Bern',
     image: {
-        src: '/hypnose1.png',
-        alt: 'Janine Aerni – Hypnosetherapie in Bern'
+        src: '/dante-preview.jpg',
+        alt: 'Dante - Astro.js and Tailwind CSS theme'
     },
     headerNavLinks: [
         {
@@ -51,7 +53,57 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Hypnosetherapie',
-            href: '/hypnosetherapie'
+            href: '/hypnosetherapie',
+            subLinks: [
+                { 
+                    text: 'Süchte und Rauchen', 
+                    href: '/hypnosetherapie/suechte-rauchen', 
+                    image: { 
+                        src: '/uploads/cigarette.avif', 
+                        alt: 'Süchte und Rauchen',
+                     } 
+                },
+                {   
+                    text: 'Ernährung', 
+                    href: '/hypnosetherapie/ernaehrung', 
+                    image: { 
+                        src: '/uploads/food.avif', 
+                        alt: 'Ernährung',
+                     } 
+                },
+                {   
+                    text: 'Ängste und Phobien', 
+                    href: '/hypnosetherapie/aengste-und-phobien', 
+                    image: { 
+                        src: '/uploads/fears.avif', 
+                        alt: 'Ängste und Phobien',
+                     }
+                },
+                { 
+                    text: 'Stress, Burnout und Depression', 
+                    href: '/hypnosetherapie/stress-burnout-und-depression', 
+                    image: { 
+                        src: '/uploads/depression.avif', 
+                        alt: 'Stress, Burnout und Depression',
+                     }
+                },
+                { 
+                    text: 'Selbstvertrauen', 
+                    href: '/hypnosetherapie/selbstvertrauen', 
+                    image: { 
+                        src: '/uploads/glowing-blocks.avif', 
+                        alt: 'Selbstvertrauen',
+                     }
+                },
+                { 
+                    text: 'Schlafstörungen', 
+                    href: '/hypnosetherapie/schlafstoerungen',
+                    image: { 
+                        src: '/uploads/sleep.avif', 
+                        alt: 'Schlafstörungen',
+                     } }
+                
+            ]
         },
         {
             text: 'Angebote',

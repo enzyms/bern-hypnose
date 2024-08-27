@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowLeft from '../icons/ArrowLeft.astro';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -15,13 +16,22 @@ export async function getStaticPaths() {
 type Props = { page: CollectionEntry<'pages'> };
 
 const { page } = Astro.props;
-const { title, seo } = page.data;
+const { title, seo, backlink, description } = page.data;
 const { Content } = await page.render();
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image}>
+<BaseLayout title={title} description={description} image={seo?.image}>
     <article class="mb-16">
-        <header class="mb-8">
+        <header class="mb-8 relative">
+            {
+                backlink && (
+                    <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-medium" href={backlink.url}>
+                        <ArrowLeft class="w-4 h-4 fill-current" />
+                        <span>{backlink.title}</span>
+                    </a>
+                )
+            }
+
             <h1>{title}</h1>
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">

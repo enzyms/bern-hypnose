@@ -21,13 +21,24 @@ const navLinks = siteConfig.headerNavLinks || [];
                 </button>
                 <ul id="menu-items" class="menu flex gap-6 md:pl-1" transition:persist>
                     {navLinks.map((link) => (
-                        <li class="py-0">
+                        <li class="py-0 relative" key={link.href}>
                             <NavLink
-                                class="block py-1 text-3xl font-bold text-red-500 hover:text-red-600 md:font-normal md:text-gray-700 md:text-lg transition-colors"
+                                class="block py-1 md:py-2 text-3xl font-bold text-red-500 hover:text-red-600 md:font-normal md:text-gray-700 md:text-lg transition-colors"
                                 href={link.href}
                             >
                                 {link.text}
                             </NavLink>
+                            {link.subLinks && link.subLinks.length > 0 && (
+                                <ul class="sub-menu ">
+                                    {link.subLinks.map((subLink) => (
+                                        <li key={subLink.href}>
+                                            <NavLink class="block py-2 px-4" href={subLink.href}>
+                                                {subLink.text}
+                                            </NavLink>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </li>
                     ))}
                 </ul>
@@ -81,6 +92,26 @@ const navLinks = siteConfig.headerNavLinks || [];
         .menu-toggle.is-active .menu-toggle-icon:after {
             @apply -rotate-45;
         }
+    }
+
+    .menu li:has(.sub-menu) > a::after {
+        content: '▼';
+        font-size: 0.75em;
+        @apply hidden md:inline text-red-300 hover:text-red-600 transition-colors ease-in-out duration-500;
+    }
+
+    /* Styling for sub-menu on desktop */
+    .sub-menu {
+        @apply absolute md:block bg-main  py-4 shadow-lg rounded-lg w-[200%];
+        @apply opacity-0 invisible delay-200 transition-all duration-300 ease-in-out transform-gpu scale-y-95 origin-top;
+    }
+
+    .sub-menu a {
+        @apply block font-normal text-main hover:text-red-500 transition-colors;
+    }
+
+    li:hover > .sub-menu {
+        @apply md:opacity-100 md:visible md:scale-100;
     }
 </style>
 
