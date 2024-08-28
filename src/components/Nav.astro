@@ -110,7 +110,9 @@ const navLinks = siteConfig.headerNavLinks || [];
         @apply block font-normal text-main hover:text-red-500 transition-colors;
     }
 
-    li:hover > .sub-menu {
+    li:hover > .sub-menu,
+    li:focus > .sub-menu,
+    li:focus-within > .sub-menu {
         @apply md:opacity-100 md:visible md:scale-100;
     }
 </style>
