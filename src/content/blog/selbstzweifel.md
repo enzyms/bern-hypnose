@@ -5,6 +5,7 @@ publishDate: 2024-08-18T10:44:00.000Z
 seo:
   image:
     src: /uploads/self-doubt.png
+    alt: Selbstzweifel
 ---
 Ich freue mich, dass du hier bist und diesen Text liest. Auch wenn eine leise Stimme in mir sagt:"Was hast du schon Wichtiges zu sagen? Wen interessiert das? Wurde doch eh alles schon erwähnt und diskutiert." 
 
