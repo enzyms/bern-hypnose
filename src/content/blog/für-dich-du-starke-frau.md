@@ -1,7 +1,7 @@
 ---
 title: Für dich, du starke Frau
 excerpt: Du hast Träume, du hast Sehnsüchte. Sie sollen deine Leitplanken sein.
-publishDate: 2024-08-30T17:16:00.000Z
+publishDate: 2024-08-30T17:26:00.000Z
 seo:
   image:
     src: /uploads/woman-and-lion.avif
