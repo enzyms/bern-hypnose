@@ -12,7 +12,7 @@ seo:
   srcset="../praxis-400w.avif 400w, ../praxis-600w.avif 600w, ../praxis-800w.avif 800w"
   sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (min-width: 601px) 800px"
   src="../praxis-800w.avif"
-  alt="Janine Aerni Praxis"
+  alt="Hypnose Praxis – Janine Aerni"
   width="4032"
   height="3024"
   loading="lazy"
