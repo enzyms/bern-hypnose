@@ -7,9 +7,11 @@ const hero = siteConfig.hero;
 ---
 
 {
-    (hero?.title || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
-        <section class="w-full justify-self-center justify-center flex flex-col gap-8 mb-16">
-            {hero.title && <h1 class="text-4xl xs:text-5xl sm:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>}
+    (hero?.title || hero?.subtitle || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
+        <header class="w-full justify-self-center justify-center flex flex-col gap-8 mb-16">
+            <h1 class="text-balance text-5xl sm:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>
+            <p class="text-lg font-bold text-main">{hero.subtitle}</p>
+
             {hero.image?.src && (
                 <figure>
                     <img class="w-full" src={hero.image.src} loading="lazy" decoding="async" alt={hero.image.alt || ''} />
@@ -23,7 +25,7 @@ const hero = siteConfig.hero;
                         data-umami-event="Home – Button Kontakt"
                         href="/kontakt"
                         class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-50 bg-red-500 border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50 no-underline"
-                        onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"
+                        onclick="document.app.emitEvent('mouseDown', 'trigger-to-3');"
                     >
                         Kontakt & Termin
                     </a>
@@ -37,6 +39,6 @@ const hero = siteConfig.hero;
                     </a>
                 </div>
             )}
-        </section>
+        </header>
     )
 }

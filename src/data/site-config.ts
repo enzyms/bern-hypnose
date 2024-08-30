@@ -13,6 +13,7 @@ export type Link = {
 
 export type Hero = {
     title?: string;
+    subtitle?: string;
     text?: string;
     image?: Image;
     actions?: Link[];
@@ -39,12 +40,27 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Hypnosetherapie in Bern',
-    subtitle: 'Janine Aerni',
-    description: 'Hypnosetherapie in Bern',
+    title: 'Hypnose in Bern – Hypnosetherapie | Janine Aerni',
+    description: 'Hypnose in Bern – Hypnosetherapie bei Janine Aerni. Ich helfe ich dir, Stress, Angst, Phobien und mehr zu überwinden',
     image: {
-        src: '/dante-preview.jpg',
-        alt: 'Dante - Astro.js and Tailwind CSS theme'
+        src: '/uploads/glowing-blocks.avif',
+        alt: 'Hypnose und Hypnosetherapie in Bern'
+    },
+    hero: {
+        title: 'Bern Hypnose',
+        subtitle: 'Hypnosetherapie – Janine Aerni', 
+        text: "Ich bin Janine Aerni, Hypnosetherapeutin in Ausbildung in Bern. Mit einer warmen und unterstützenden Herangehensweise helfe ich dir, Stress, Angst, Phobien und mehr zu überwinden. Entdecke die transformative Kraft der Hypnose in einer sicheren Umgebung.",
+        actions: [
+            {
+                text: 'Angebote',
+                href: '/angebote'
+            },
+            {
+                text: 'Kontakt & Termin buchen',
+                href: '/kontakt'
+            },
+            
+        ]
     },
     headerNavLinks: [
         {
@@ -154,21 +170,6 @@ const siteConfig: SiteConfig = {
             href: 'https://www.linkedin.com/'
         }
     ],
-    hero: {
-        title: 'Hypnosetherapie in Bern',
-        text: "Ich bin Janine Aerni, Hypnosetherapeutin in Ausbildung in Bern. Mit einer warmen und unterstützenden Herangehensweise helfe ich dir, Stress, Angst, Phobien und mehr zu überwinden. Entdecke die transformative Kraft der Hypnosetherapie in einer sicheren Umgebung.",
-        actions: [
-            {
-                text: 'Angebote',
-                href: '/angebote'
-            },
-            {
-                text: 'Kontakt & Termin buchen',
-                href: '/kontakt'
-            },
-            
-        ]
-    },
     subscribe: {
         title: 'Subscribe to Dante Newsletter',
         text: 'One update per week. All the latest posts directly in your inbox.',
