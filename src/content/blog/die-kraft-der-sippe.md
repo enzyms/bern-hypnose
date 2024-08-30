@@ -5,6 +5,7 @@ publishDate: 2024-08-29T09:27:00.000Z
 seo:
   image:
     src: /uploads/firecamp2.png
+    alt: Die Kraft der Sippe
 ---
 Erlebst du auch regelrecht einen Aufschwung, wenn du dich von jemandem gesehen und unterstützt fühlst? Hast du jemanden, der dich pusht,  gerade so viel, dass es dich fordert und nicht überfordert? Kennst du Menschen, bei denen du dich selbst sein kannst und auch in deiner schlechtesten Version genügst?
 
