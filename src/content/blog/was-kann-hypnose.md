@@ -2,7 +2,7 @@
 title: Was kann Hypnose?
 excerpt: Viele Menschen haben mich gefragt, wann Hypnose helfen kann. Hier
   einige Beispiele.
-publishDate: 2024-08-18T11:10:00.000Z
+publishDate: 2024-08-18T13:11:00.000Z
 seo:
   image:
     src: /uploads/thinking.png
