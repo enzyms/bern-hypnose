@@ -2,6 +2,10 @@
 title: Für dich, du starke Frau
 excerpt: Du hast Träume, du hast Sehnsüchte. Sie sollen deine Leitplanken sein.
 publishDate: 2024-08-30T17:16:00.000Z
+seo:
+  image:
+    src: /uploads/woman-and-lion.avif
+    alt: Für dich, du starke Frau
 ---
 Du hast Träume. Du hast Sehnsüchte. Du hast Entdeckerinnendrang, Neugierde und Offenheit. Du hast aber auch Widerstände. Du hast Ängste. Du hast Zweifel und Respekt.
 
