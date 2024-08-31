@@ -10,14 +10,23 @@ const hero = siteConfig.hero;
     (hero?.title || hero?.subtitle || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
         <header class="w-full justify-self-center justify-center flex flex-col gap-8 mb-16">
             <h1 class="text-balance text-5xl sm:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>
-            <p class="text-lg font-bold text-main">{hero.subtitle}</p>
-
-            {hero.image?.src && (
-                <figure>
-                    <img class="w-full" src={hero.image.src} loading="lazy" decoding="async" alt={hero.image.alt || ''} />
-                    {hero.image.caption && <figcaption class="mt-1.5 text-xs sm:text-sm">{hero.image.caption}</figcaption>}
-                </figure>
-            )}
+            <div class="flex gap-6 items-center">
+                <picture class="portrait-janine portrait-janine--disc shadow-sm">
+                    <img
+                        srcset="../janine-aerni-face-400w.webp 400w, ../janine-aerni-face-600w.webp 600w, ../janine-aerni-face-800w.webp 800w, ../janine-aerni-face-1200w.webp 1000w"
+                        sizes="(max-width: 800px) 400px"
+                        src="../janine-aerni-face-600w.webp"
+                        alt="Janine Aerni – Hypnosetherapeutin in Bern"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                    />
+                </picture>
+                <p class="text-lg font-bold text-main">
+                    {hero.subtitle} <br />
+                    {hero.name}
+                </p>
+            </div>
             {hero.text && <div class="max-w-none prose prose-dante sm:prose-lg" set:html={marked.parse(hero.text)} />}
             {hero.actions && hero.actions.length > 0 && (
                 <div class="flex flex-wrap gap-4">

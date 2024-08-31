@@ -17,9 +17,24 @@ interessierst.
 Ich bin von Montag bis Freitag für dich da.
 </p>
 
-<a data-umami-event="Open Calendly" href="https://calendly.com/bern-hypnose" target="_blank" class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-50 bg-red-500 border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50 no-underline">Termin buchen</a>
+<a data-umami-event="Open Calendly" href="https://calendly.com/bern-hypnose" target="_blank" class="inline-flex not-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-50 bg-red-500 border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50 no-underline">Termin buchen</a>
 
-<div class="mb-8">
-E-Mail: <a href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br>
-Telefon: <a href="tel:079 833 03 85">079 833 03 85</a>
+<hr class="border-gray-400" />
+
+<div class="flex gap-4 items-center">
+    <picture class="portrait-janine portrait-janine--disc shadow-sm not-prose">
+        <img
+            srcset="../janine-aerni-face-400w.webp 400w, ../janine-aerni-face-600w.webp 600w, ../janine-aerni-face-800w.webp 800w, ../janine-aerni-face-1200w.webp 1000w"
+            sizes="(max-width: 800px) 400px"
+            src="../janine-aerni-face-600w.webp"
+            alt="Janine Aerni – Hypnosetherapeutin in Bern"
+            width="800"
+            height="600"
+            loading="lazy"
+        />
+    </picture>
+    <div class="text-main not-prose">
+        E-Mail: <a href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br>
+        Telefon: <a href="tel:079 833 03 85">079 833 03 85</a>
+    </div>
 </div>

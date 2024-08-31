@@ -5,15 +5,17 @@ seo:
   description: Janine Aerni, über mich
 ---
 
-<img
-  srcset="../janine-400w.avif 400w, ../janine-600w.avif 600w, ../janine-800w.avif 800w, ../janine-1000w.avif 1000w"
-  sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (min-width: 801px) 1000px"
-  src="../janine-1000w.avif"
-  alt="Janine Aerni – Hypnosetherapeutin"
-  width="2673"
-  height="3397"
-  loading="lazy"
-/>
+<picture class="portrait-janine">
+  <img
+    srcset="../janine-aerni-400w.webp 400w, ../janine-aerni-600w.webp 600w, ../janine-aerni-800w.webp 800w, ../janine-aerni-1200w.webp 1000w"
+    sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (min-width: 801px) 1000px"
+    src="../janine-aerni-1200w.webp"
+    alt="Janine Aerni – Hypnosetherapeutin in Bern"
+    width="800"
+    height="600"
+    loading="lazy"
+  />
+</picture>
 
 ## Über mich
 

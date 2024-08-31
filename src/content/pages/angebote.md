@@ -8,6 +8,7 @@ seo:
     alt: Janine Aerni - coaching
 ---
 
+<picture class="overflow-hidden rounded-xl">
 <img
   srcset="../praxis-400w.avif 400w, ../praxis-600w.avif 600w, ../praxis-800w.avif 800w"
   sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (min-width: 601px) 800px"
@@ -17,6 +18,7 @@ seo:
   height="3024"
   loading="lazy"
 />
+</picture>
 
 Eine Erstsitzung dauert ungefähr 90 Minuten. Plane circa eine Stunde für eine eventuelle Folgesitzung ein.
 

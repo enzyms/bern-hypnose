@@ -14,6 +14,7 @@ export type Link = {
 export type Hero = {
     title?: string;
     subtitle?: string;
+    name?: string;
     text?: string;
     image?: Image;
     actions?: Link[];
@@ -48,7 +49,8 @@ const siteConfig: SiteConfig = {
     },
     hero: {
         title: 'Bern Hypnose',
-        subtitle: 'Hypnosetherapie Praxis in Bern – Janine Aerni', 
+        subtitle: 'Hypnosetherapie Praxis in Bern', 
+        name: 'Janine Aerni', 
         text: "Ich bin Janine Aerni, Hypnosetherapeutin in Ausbildung in Bern. Mit einer warmen und unterstützenden Herangehensweise helfe ich dir, Stress, Angst, Phobien und mehr zu überwinden. Entdecke die transformative Kraft der Hypnose in einer sicheren Umgebung.",
         actions: [
             {
