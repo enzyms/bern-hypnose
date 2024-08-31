@@ -33,6 +33,7 @@ export type SiteConfig = {
     subtitle?: string;
     description: string;
     image?: Image;
+    imageHomepage?: Image;
     headerNavLinks?: Link[];
     footerNavLinks?: Link[];
     socialLinks?: Link[];
@@ -47,6 +48,10 @@ const siteConfig: SiteConfig = {
     image: {
         src: '/uploads/glowing-blocks.avif',
         alt: 'Hypnose und Hypnosetherapie in Bern'
+    },
+    imageHomepage: {
+        src: '/janine-aerni-face-112w.avif',
+        alt: 'Janine Aerni – Hypnosetherapie in Bern'
     },
     hero: {
         title: 'Bern Hypnose',

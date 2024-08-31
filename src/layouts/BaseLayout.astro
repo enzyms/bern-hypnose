@@ -22,6 +22,71 @@ const { ...head } = Astro.props;
         <ViewTransitions />
         <script defer src="https://umami-eta-inky.vercel.app/script.js" data-website-id="b71481a2-1aaa-4300-a2cc-907a8ed24d37"></script>
         <link rel="sitemap" href="/sitemap-index.xml" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "name": "Janine Aerni Hypnosetherapeutin",
+                "image": "https://bern-hypnose.ch/janine-aerni-face-600w.webp",
+                "description": "Janine Aerni ist eine zertifizierte Hypnosetherapeutin in Bern, die personalisierte Sitzungen anbietet, um Klienten bei Stress, Angstzuständen und anderen psychischen Herausforderungen zu unterstützen.",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Eigerstrasse 56",
+                    "addressLocality": "Bern",
+                    "postalCode": "3007",
+                    "addressCountry": "CH"
+                },
+                "telephone": "+41 79 833 83 05",
+                "email": "contact@bern-hypnose.ch",
+                "url": "https://bern-hypnose.ch",
+                "priceRange": "120 CHF - 150 CHF",
+                "openingHours": "Mo,Tu,We,Th,Fr 07:00-19:00",
+                "sameAs": ["https://www.facebook.com/profile.php?id=61564940341284", "https://www.instagram.com/janineaerni/"],
+                "founder": {
+                    "@type": "Person",
+                    "name": "Janine Aerni",
+                    "jobTitle": "Zertifizierte Hypnosetherapeutin",
+                    "telephone": "+41 79 833 83 05",
+                    "email": "janine@bern-hypnose.ch"
+                },
+                "areaServed": {
+                    "@type": "Place",
+                    "name": "Bern, Switzerland"
+                },
+                "services": [
+                    {
+                        "@type": "Service",
+                        "name": "Hypnose gegen Rauchen oder Süchte",
+                        "description": "Hypnosesitzungen, die darauf abzielen, Rauchgewohnheiten oder andere Süchte zu überwinden."
+                    },
+                    {
+                        "@type": "Service",
+                        "name": "Hypnose für eine gesunde Ernährung",
+                        "description": "Hypnosesitzungen zur Unterstützung einer gesunden Ernährungsweise und zur Förderung eines bewussten Essverhaltens."
+                    },
+                    {
+                        "@type": "Service",
+                        "name": "Ängste und Phobien mit Hypnose überwinden",
+                        "description": "Maßgeschneiderte Hypnosesitzungen, um Klienten bei der Überwindung von Ängsten und Phobien zu helfen."
+                    },
+                    {
+                        "@type": "Service",
+                        "name": "Hypnose gegen Stress, Burnout und Depression",
+                        "description": "Hypnosesitzungen zur Stressbewältigung und zur Linderung von Burnout-Symptomen und Depressionen."
+                    },
+                    {
+                        "@type": "Service",
+                        "name": "Selbstvertrauen mit Hypnose stärken",
+                        "description": "Hypnosesitzungen zur Stärkung des Selbstvertrauens und zur Förderung eines positiven Selbstbildes."
+                    },
+                    {
+                        "@type": "Service",
+                        "name": "Schlafstörungen mit Hypnose behandeln",
+                        "description": "Hypnosesitzungen, die darauf abzielen, Schlafstörungen zu lindern und gesunden Schlaf zu fördern."
+                    }
+                ]
+            }
+        </script>
     </head>
     <body class="bg-main text-main">
         <Blur />

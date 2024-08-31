@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
 const featuredPosts = posts.filter(({ data }) => data.isFeatured);
 ---
 
-<BaseLayout description={siteConfig.description} image={siteConfig.image}>
+<BaseLayout description={siteConfig.description} image={siteConfig.imageHomepage}>
     <Hero />
     {
         featuredPosts?.length > 0 && (
