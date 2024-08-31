@@ -28,7 +28,7 @@ mich erfüllt.
 
 Was ich liebe, sind Waldspaziergänge, Stunden mit
 spannenden Menschen, Bücher, die mich persönlich wachsen
-lassen, Fitness, Yoga und die Schönheit der Natur.
+lassen, Fitness, Yoga, die Schönheit der Natur und Zeit mit meiner Familie verbringen.
 
 In meiner zwanzigjährigen Tätigkeit als Primarlehrerin durfte ich
 unzählige Sternstunden erleben und an schwierigen Situationen
@@ -38,6 +38,8 @@ Die Coachingausbildung bei Patrice Wyrsch hat mich persönlich
 sehr geprägt und hat mich Schritte in eine abenteuerliche
 Zukunft gehen lassen. Sein Herzensthema ist die erhöhte
 Neurosensitivität, welche mich auch enorm fasziniert.
+
+Der Weg hat mich zur Ausbildung als Hypnosetherapeutin bei dem Hypnose Experten Gabriel Palacios geführt.
 
 <a
 data-umami-event="Janine – Button Kontakt"
