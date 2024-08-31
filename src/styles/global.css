@@ -41,7 +41,10 @@
 
     .portrait-janine--disc {
         aspect-ratio: 1 / 1;
-        @apply rounded-full w-28 h-28;
+        @apply rounded-full;
+        @apply w-20 h-20;
+        @apply xs:w-24 xs:h-24;
+        @apply md:w-28 md:h-28;
     }
 
     .portrait-janine img {

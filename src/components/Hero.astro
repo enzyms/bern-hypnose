@@ -9,9 +9,9 @@ const hero = siteConfig.hero;
 {
     (hero?.title || hero?.subtitle || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
         <header class="w-full justify-self-center justify-center flex flex-col gap-8 mb-16">
-            <h1 class="text-balance text-5xl sm:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>
-            <div class="flex gap-6 items-center">
-                <picture class="portrait-janine portrait-janine--disc shadow-sm">
+            <h1 class="text-balance text-5xl xs:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>
+            <div class="flex gap-4 md:gap-6 items-center">
+                <picture class="portrait-janine portrait-janine--disc shadow-sm shrink-0">
                     <img
                         srcset="../janine-aerni-face-400w.webp 400w, ../janine-aerni-face-600w.webp 600w, ../janine-aerni-face-800w.webp 800w, ../janine-aerni-face-1200w.webp 1000w"
                         sizes="(max-width: 800px) 400px"
@@ -22,7 +22,7 @@ const hero = siteConfig.hero;
                         loading="lazy"
                     />
                 </picture>
-                <p class="text-lg font-bold text-main">
+                <p class="font-bold text-main text-balance">
                     {hero.subtitle} <br />
                     {hero.name}
                 </p>

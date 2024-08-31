@@ -34,7 +34,7 @@ Ich bin von Montag bis Freitag für dich da.
         />
     </picture>
     <div class="text-main not-prose">
-        E-Mail: <a href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br>
-        Telefon: <a href="tel:079 833 03 85">079 833 03 85</a>
+        E-Mail: <a class="text-red-700 border-b border-red-700 underline-offset-2 hover:text-red-500 transition-colors" href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br>
+        Telefon: <a class="text-red-700 border-b border-red-700 underline-offset-2 hover:text-red-500 transition-colors" href="tel:079 833 03 85">079 833 03 85</a>
     </div>
 </div>
