@@ -31,5 +31,5 @@ Die Kosten werden nicht von der Krankenkasse übernommen.
 
 <a
 href="/janine-aerni"
-class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50 no-underline "
+class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline "
 onclick="document.app.emitEvent('mouseDown', 'trigger-to-4');"> Über mich</a>
