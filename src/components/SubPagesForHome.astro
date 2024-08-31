@@ -1,6 +1,8 @@
 ---
 import siteConfig from '../data/site-config';
 
+import ArrowLeft from '../icons/ArrowLeft.astro';
+
 const subLinks = siteConfig.headerNavLinks?.[1]?.subLinks;
 ---
 
@@ -10,8 +12,10 @@ const subLinks = siteConfig.headerNavLinks?.[1]?.subLinks;
             <ul class="grid xs:grid-cols-2 gap-4 not-prose list">
                 {subLinks.map((subLink) => (
                     <li class="flex items-baseline ">
-                        <span class="w-2 h-2 bg-red-500 rounded-full mr-2 -top-[1px] relative" />
-                        <a class="link text-pretty sm:pr-4" href={subLink.href}>
+                        <div class="bg-red-600 rounded-full mr-2 top-[3px] relative">
+                            <ArrowLeft class="w-4 h-4 fill-red-200 rotate-180" />
+                        </div>
+                        <a class="text-pretty sm:pr-4 hover:text-red-700 transition-colors" href={subLink.href}>
                             {subLink.longText}
                         </a>
                     </li>

@@ -57,7 +57,7 @@
         @apply underline decoration-dashed underline-offset-4;
         @apply hover:text-red-700 transition-colors;
         text-decoration-style: dashed;
-        text-decoration-thickness: 1px; /* Thinner dash */
+        text-decoration-thickness: 1px;
         text-decoration-skip-ink: none;
         text-decoration-color: currentColor;
     }
