@@ -6,6 +6,7 @@ export type Image = {
 
 export type Link = {
     text: string;
+    longText?: string;
     href: string;
     subLinks?: Link[];
     image?: Image;
@@ -75,6 +76,7 @@ const siteConfig: SiteConfig = {
             subLinks: [
                 { 
                     text: 'Süchte und Rauchen', 
+                    longText: 'Hypnose gegen Rauchen oder Süchte',
                     href: '/hypnosetherapie/suechte-rauchen', 
                     image: { 
                         src: '/uploads/cigarette.avif', 
@@ -83,14 +85,16 @@ const siteConfig: SiteConfig = {
                 },
                 {   
                     text: 'Ernährung', 
+                    longText: 'Hypnose für eine gesunde Ernährung',
                     href: '/hypnosetherapie/ernaehrung', 
                     image: { 
                         src: '/uploads/food.avif', 
-                        alt: 'Ernährung',
+                        alt: 'Hypnose für eine gesunde Ernährung',
                      } 
                 },
                 {   
                     text: 'Ängste und Phobien', 
+                    longText: 'Ängste und Phobien mit Hypnose überwinden',
                     href: '/hypnosetherapie/aengste-und-phobien', 
                     image: { 
                         src: '/uploads/fears.avif', 
@@ -99,6 +103,7 @@ const siteConfig: SiteConfig = {
                 },
                 { 
                     text: 'Stress, Burnout und Depression', 
+                    longText: 'Hypnose gegen Stress, Burnout und Depression',
                     href: '/hypnosetherapie/stress-burnout-und-depression', 
                     image: { 
                         src: '/uploads/depression.avif', 
@@ -107,6 +112,7 @@ const siteConfig: SiteConfig = {
                 },
                 { 
                     text: 'Selbstvertrauen', 
+                    longText: 'Selbstvertrauen mit Hypnose stärken',
                     href: '/hypnosetherapie/selbstvertrauen', 
                     image: { 
                         src: '/uploads/glowing-blocks.avif', 
@@ -115,6 +121,7 @@ const siteConfig: SiteConfig = {
                 },
                 { 
                     text: 'Schlafstörungen', 
+                    longText: 'Schlafstörungen mit Hypnose behandeln',
                     href: '/hypnosetherapie/schlafstoerungen',
                     image: { 
                         src: '/uploads/sleep.avif', 

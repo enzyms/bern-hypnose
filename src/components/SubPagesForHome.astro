@@ -1,0 +1,22 @@
+---
+import siteConfig from '../data/site-config';
+
+const subLinks = siteConfig.headerNavLinks?.[1]?.subLinks;
+---
+
+<nav class="py-4 md:py-6">
+    {
+        subLinks && subLinks.length > 0 && (
+            <ul class="grid xs:grid-cols-2 gap-4 not-prose list">
+                {subLinks.map((subLink) => (
+                    <li class="flex items-baseline ">
+                        <span class="w-2 h-2 bg-red-500 rounded-full mr-2 -top-[1px] relative" />
+                        <a class="link text-pretty sm:pr-4" href={subLink.href}>
+                            {subLink.longText}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</nav>

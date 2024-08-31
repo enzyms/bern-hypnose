@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import Hero from '../components/Hero.astro';
 import PostPreview from '../components/PostPreview.astro';
+import SubPagesForHome from '../components/SubPagesForHome.astro';
 import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
@@ -26,4 +27,8 @@ const featuredPosts = posts.filter(({ data }) => data.isFeatured);
             </div>
         )
     }
+    <div class="prose">
+        <h2>Was kann Hypnose für dich tun?</h2>
+    </div>
+    <SubPagesForHome />
 </BaseLayout>

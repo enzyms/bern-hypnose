@@ -27,7 +27,7 @@ const hero = siteConfig.hero;
                     {hero.name}
                 </p>
             </div>
-            {hero.text && <div class="max-w-none prose prose-dante sm:prose-lg" set:html={marked.parse(hero.text)} />}
+            {hero.text && <div class="max-w-none prose prose-dante sm:prose-lg text-pretty " set:html={marked.parse(hero.text)} />}
             {hero.actions && hero.actions.length > 0 && (
                 <div class="flex flex-wrap gap-4">
                     <a
