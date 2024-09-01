@@ -4,7 +4,8 @@ description: Ich bin Janine Aerni, Deine Hypnosetherapeutin in Bern. Mit Leidens
 seo:
   title: Janine Aerni - Hypnosetherapeutin in Bern
   image:
-    src: /uploads/fears.avif
+    src: /janine-aerni-face-800w.png
+    alt: Janine Aerni – Hypnosetherapeutin in Bern
 ---
 
 <picture class="portrait-janine">

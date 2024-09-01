@@ -50,7 +50,7 @@ const siteConfig: SiteConfig = {
         alt: 'Hypnose und Hypnosetherapie in Bern'
     },
     imageHomepage: {
-        src: '/janine-aerni-face-112w.avif',
+        src: '/janine-aerni-face-800w.png',
         alt: 'Janine Aerni – Hypnosetherapie in Bern'
     },
     hero: {
