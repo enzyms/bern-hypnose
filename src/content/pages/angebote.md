@@ -1,8 +1,8 @@
 ---
 title: Angebote
+description: Entdecke meine Hypnose-Angebote in Bern. Individuelle Sitzungen gegen Stress, Ängste und mehr. Erstsitzungen 90 Min., Folgesitzungen 60 Min.
 seo:
   title: Angebote
-  description: Hypnosetherapie in Bern, Angebote und Preise
   image:
     src: '/janine-aerni.jpg'
     alt: Janine Aerni - coaching

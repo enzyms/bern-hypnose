@@ -44,7 +44,7 @@ export type SiteConfig = {
 
 const siteConfig: SiteConfig = {
     title: 'Hypnose in Bern – Hypnosetherapie | Janine Aerni',
-    description: 'Hypnose in Bern – Hypnosetherapie bei Janine Aerni. Ich helfe ich dir, Stress, Angst, Phobien und mehr zu überwinden',
+    description: 'Ich bin Janine Aerni, Ihre Hypnosetherapeutin in Bern. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen. Vereinbaren Sie noch heute einen Termin und starten Sie Ihre transformative Reise!',
     image: {
         src: '/uploads/glowing-blocks.avif',
         alt: 'Hypnose und Hypnosetherapie in Bern'

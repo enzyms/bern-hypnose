@@ -1,8 +1,10 @@
 ---
 title: Janine Aerni
+description: Ich bin Janine Aerni, Deine Hypnosetherapeutin in Bern. Mit Leidenschaft helfe ich Menschen dabei, Süchte, Ängste und Stress durch Hypnose zu überwinden.
 seo:
-  title: Janine Aerni
-  description: Janine Aerni, über mich
+  title: Janine Aerni - Hypnosetherapeutin in Bern
+  image:
+    src: /uploads/fears.avif
 ---
 
 <picture class="portrait-janine">
