@@ -33,8 +33,9 @@ Ich bin von Montag bis Freitag für dich da.
             loading="lazy"
         />
     </picture>
-    <div class="text-main not-prose">
+    <address class="text-main not-prose not-italic">
+        <a data-umami-event="Open Google Map" href="https://www.google.com/maps/place/Hypnosetherapie+Janine+Aerni/@46.939631,7.4338689,17z/data=!3m1!4b1!4m6!3m5!1s0x478e3919098aba6d:0xc134d9016ead528c!8m2!3d46.939631!4d7.4364438!16s%2Fg%2F11w9gt4g0k?entry=ttu" target="_blank" class="link" >Eigerstrasse 56 – 3007 Bern</a> <br>
         E-Mail: <a class="link" href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br>
-        Telefon: <a class="link" href="tel:079 833 03 85">079 833 03 85</a>
-    </div>
+        Telefon: <a class="link" href="tel:079 833 03 85">079 833 03 85</a> <br>
+    </address>
 </div>
