@@ -1,6 +1,6 @@
 ---
 import siteConfig from '../data/site-config';
-import ArrowLeft from '../icons/ArrowLeft.astro';
+import Bullet from '../icons/Bullet.astro';
 
 // Props
 const { exclude, columns = 2 } = Astro.props; // default to 2 columns
@@ -20,9 +20,9 @@ const gridColumnsClass = columns === 1 ? 'grid-cols-1' : 'grid-cols-2';
         filteredSubLinks && filteredSubLinks.length > 0 && (
             <ul class={`grid ${gridColumnsClass} gap-4 not-prose list`}>
                 {filteredSubLinks.map((subLink) => (
-                    <li class="flex items-baseline" key={subLink.href}>
-                        <div class="bg-red-600 rounded-full mr-2 top-[3px] relative">
-                            <ArrowLeft class="w-4 h-4 fill-red-200 rotate-180" />
+                    <li class="flex items-baseline group" key={subLink.href}>
+                        <div class="mr-2 top-[3px] relative">
+                            <Bullet class="w-4 h-4 fill-red-200 transform transition-transform duration-1000 group-hover:scale-[1.25] group-hover:rotate-90" />
                         </div>
                         <a class="text-pretty sm:pr-4 hover:text-red-700 transition-colors" href={subLink.href}>
                             {subLink.longText}
