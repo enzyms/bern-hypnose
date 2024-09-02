@@ -65,7 +65,7 @@ const siteConfig: SiteConfig = {
             },
             {
                 text: 'Kontakt & Termin buchen',
-                href: '/kontakt'
+                href: '/kontakt/'
             },
             
         ]
@@ -77,12 +77,12 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Hypnosetherapie',
-            href: '/hypnosetherapie',
+            href: '/hypnosetherapie/',
             subLinks: [
                 { 
                     text: 'Süchte und Rauchen', 
                     longText: 'Hypnose gegen Rauchen oder Süchte',
-                    href: '/hypnosetherapie/suechte-rauchen', 
+                    href: '/hypnosetherapie/suechte-rauchen/', 
                     image: { 
                         src: '/uploads/cigarette.avif', 
                         alt: 'Süchte und Rauchen',
@@ -91,7 +91,7 @@ const siteConfig: SiteConfig = {
                 {   
                     text: 'Ernährung', 
                     longText: 'Hypnose für eine gesunde Ernährung',
-                    href: '/hypnosetherapie/ernaehrung', 
+                    href: '/hypnosetherapie/ernaehrung/', 
                     image: { 
                         src: '/uploads/food.avif', 
                         alt: 'Hypnose für eine gesunde Ernährung',
@@ -100,7 +100,7 @@ const siteConfig: SiteConfig = {
                 {   
                     text: 'Ängste und Phobien', 
                     longText: 'Ängste und Phobien mit Hypnose überwinden',
-                    href: '/hypnosetherapie/aengste-und-phobien', 
+                    href: '/hypnosetherapie/aengste-und-phobien/', 
                     image: { 
                         src: '/uploads/fears.avif', 
                         alt: 'Ängste und Phobien',
@@ -109,7 +109,7 @@ const siteConfig: SiteConfig = {
                 { 
                     text: 'Stress, Burnout und Depression', 
                     longText: 'Hypnose gegen Stress, Burnout und Depression',
-                    href: '/hypnosetherapie/stress-burnout-und-depression', 
+                    href: '/hypnosetherapie/stress-burnout-und-depression/', 
                     image: { 
                         src: '/uploads/depression.avif', 
                         alt: 'Stress, Burnout und Depression',
@@ -118,7 +118,7 @@ const siteConfig: SiteConfig = {
                 { 
                     text: 'Selbstvertrauen', 
                     longText: 'Selbstvertrauen mit Hypnose stärken',
-                    href: '/hypnosetherapie/selbstvertrauen', 
+                    href: '/hypnosetherapie/selbstvertrauen/', 
                     image: { 
                         src: '/uploads/glowing-blocks.avif', 
                         alt: 'Selbstvertrauen',
@@ -127,7 +127,7 @@ const siteConfig: SiteConfig = {
                 { 
                     text: 'Schlafstörungen', 
                     longText: 'Schlafstörungen mit Hypnose behandeln',
-                    href: '/hypnosetherapie/schlafstoerungen',
+                    href: '/hypnosetherapie/schlafstoerungen/',
                     image: { 
                         src: '/uploads/sleep.avif', 
                         alt: 'Schlafstörungen',
@@ -137,19 +137,19 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Angebote',
-            href: '/angebote'
+            href: '/angebote/'
         },
         {
             text: 'Blog',
-            href: '/blog'
+            href: '/blog/'
         },
         {
             text: 'Über mich',
-            href: '/janine-aerni'
+            href: '/janine-aerni/'
         },
         {
             text: 'Kontakt & Termin',
-            href: '/kontakt'
+            href: '/kontakt/'
         },
     ],
     footerNavLinks: [
@@ -159,23 +159,23 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Hypnosetherapie',
-            href: '/hypnosetherapie'
+            href: '/hypnosetherapie/'
         },
         {
             text: 'Angebote',
-            href: '/angebote'
+            href: '/angebote/'
         },
         {
             text: 'Blog',
-            href: '/blog'
+            href: '/blog/'
         },
         {
             text: 'Über mich',
-            href: '/janine-aerni'
+            href: '/janine-aerni/'
         },
         {
             text: 'Kontakt & Termin',
-            href: '/kontakt'
+            href: '/kontakt/'
         },
     ],
     socialLinks: [
