@@ -8,7 +8,9 @@ export default defineConfig({
     site: 'https://bern-hypnose.ch',
     integrations: [
         mdx(),
-        sitemap(),
+        sitemap({
+            filter: (page) => !page.includes('/admin/')
+        }),
         tailwind({
             applyBaseStyles: false
         })
