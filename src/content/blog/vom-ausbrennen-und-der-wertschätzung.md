@@ -3,6 +3,9 @@ title: Vom Ausbrennen und der Wertschätzung
 excerpt: Manchmal fürchte ich mich vor einem Flächenbrand. Wie können wir dies
   verhindern?
 publishDate: 2024-09-03T09:11:00.000Z
+seo:
+  image:
+    src: /uploads/space.png
 ---
 Bin es nur ich, oder nehmt ihr auch eine kollektive Müdigkeit wahr? Ein Ausbrennen, kleine Explosionen hier und da? Woran liegt das? Ich höre von vielen Bekannten und Freunden, welche in pädagogischen Berufen tätig sind, dass sie überfordert und ausgelaugt sind. Ebenso in der Pflege. In Berufen, in welchen man sehr viel von sich verschenkt. Natürlich auch in anderen Bereichen. Nun frage ich mich, warum?
 
