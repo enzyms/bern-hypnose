@@ -13,7 +13,7 @@ const testimonials = siteConfig.testimonials;
   </div>
   {testimonials && testimonials.length > 0 ? (
     testimonials.map((testimonial) => (
-      <article class="sm:text-lg !leading-relaxed pb-4 md:pb-6 group">
+      <article class="sm:text-lg !leading-relaxed pb-4 md:pb-6 group" itemscope itemprop="review" itemtype="http://schema.org/Review">
         <blockquote class="relative pl-6" itemprop="reviewBody">
           <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform -translate-x-2" />
           <p class="inline-block">{testimonial.quote}</p>
@@ -22,23 +22,25 @@ const testimonials = siteConfig.testimonials;
           <span itemprop="author">{testimonial.author}</span>
           {testimonial.url && (
             <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <span class="">|</span>
+              <span>|</span>
               <a href={testimonial.url} target="_blank" rel="noopener noreferrer" class="link underline">
                 Bewertung auf Google lesen
               </a>
             </span>
           )}
         </footer>
-        <!-- Include itemReviewed as a nested object -->
-        <meta itemprop="itemReviewed" itemscope itemtype="http://schema.org/LocalBusiness">
-        <meta itemprop="name" itemscope content="Hypnose und Hypnosetherapie in Bern – Janine Aerni">
-        <meta itemprop="image" itemscope content="https://bern-hypnose.ch/janine-aerni-face-600w.webp">
-        <meta itemprop="address" itemscope content="Eigerstrasse 56, 3007 Bern, Switzerland">
+        <!-- Correct placement of itemReviewed metadata -->
+        <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/LocalBusiness">
+          <meta itemprop="name" content="Hypnose und Hypnosetherapie in Bern – Janine Aerni" />
+          <meta itemprop="image" content="https://bern-hypnose.ch/janine-aerni-face-600w.webp" />
+          <meta itemprop="address" content="Eigerstrasse 56, 3007 Bern, Switzerland" />
+        </div>
       </article>
     ))
   ) : (
     <!-- no testimonials -->
   )}
 </section>
+
 
 
