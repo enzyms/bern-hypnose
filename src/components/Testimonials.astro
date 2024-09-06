@@ -7,44 +7,33 @@ import Quote from '../icons/Quote.astro';
 const testimonials = siteConfig.testimonials;
 ---
 
-<section class="mt-12 testimonials" itemscope itemtype="http://schema.org/Review">
+<section class="mt-12 testimonials">
   <div class="prose">
     <h2 class="mb-5">Klient:innenstimmen</h2>
   </div>
   {testimonials && testimonials.length > 0 ? (
     testimonials.map((testimonial) => (
-      <article class="sm:text-lg !leading-relaxed pb-4 md:pb-6 group" itemscope itemprop="review" itemtype="http://schema.org/Review">
-        <blockquote class="relative pl-6" itemprop="reviewBody">
+      <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group">
+        <blockquote class="relative pl-6" >
           <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform -translate-x-2" />
           <p class="inline-block">{testimonial.quote}</p>
         </blockquote>
-        <footer class="py-1 pl-6 italic text-gray-700">
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="name" content={testimonial.author} /> {testimonial.author}
-          </span>
+        <footer class="text-sm py-2 pl-6">
+          <span>{testimonial.author}</span>
           {testimonial.url && (
-            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <span>|</span>
+            <span class="opacity-0 group-hover:opacity-100">
+              <span class="">|</span>
               <a href={testimonial.url} target="_blank" rel="noopener noreferrer" class="link underline">
                 Bewertung auf Google lesen
               </a>
-            </span>
+            </>
           )}
         </footer>
-        <!-- Correct placement of itemReviewed metadata -->
-        <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/LocalBusiness">
-          <meta itemprop="name" content="Hypnose und Hypnosetherapie in Bern – Janine Aerni" />
-          <meta itemprop="image" content="https://bern-hypnose.ch/janine-aerni-face-600w.webp" />
-          <meta itemprop="address" content="Eigerstrasse 56, 3007 Bern, Switzerland" />
-          <meta itemprop="telephone" content="+41 79 833 83 05" />
-        </div>
       </article>
     ))
   ) : (
     <!-- no testimonials -->
   )}
 </section>
-
-
 
 
