@@ -19,7 +19,9 @@ const testimonials = siteConfig.testimonials;
           <p class="inline-block">{testimonial.quote}</p>
         </blockquote>
         <footer class="py-1 pl-6 italic text-gray-700">
-          <span itemprop="author">{testimonial.author}</span>
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="name" content={testimonial.author} /> {testimonial.author}
+          </span>
           {testimonial.url && (
             <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               <span>|</span>
@@ -34,6 +36,7 @@ const testimonials = siteConfig.testimonials;
           <meta itemprop="name" content="Hypnose und Hypnosetherapie in Bern – Janine Aerni" />
           <meta itemprop="image" content="https://bern-hypnose.ch/janine-aerni-face-600w.webp" />
           <meta itemprop="address" content="Eigerstrasse 56, 3007 Bern, Switzerland" />
+          <meta itemprop="telephone" content="+41 79 833 83 05" />
         </div>
       </article>
     ))
@@ -41,6 +44,7 @@ const testimonials = siteConfig.testimonials;
     <!-- no testimonials -->
   )}
 </section>
+
 
 
 
