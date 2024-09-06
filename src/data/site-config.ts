@@ -27,6 +27,13 @@ export type Subscribe = {
     formUrl: string;
 };
 
+export type Testimonial = {
+    id: number;
+    quote: string;
+    author: string;
+    url?: string;
+}
+
 export type SiteConfig = {
     logo?: Image;
     title: string;
@@ -40,9 +47,29 @@ export type SiteConfig = {
     hero?: Hero;
     subscribe?: Subscribe;
     postsPerPage?: number;
+    testimonials?: Testimonial[];
 };
 
 const siteConfig: SiteConfig = {
+    testimonials: [
+    {
+      "id": 1,
+      "quote": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser. Ich habe mich während der Sitzung stehts geborgen und sicher gefühlt. Alles in allem eine sehr tolle Erfahrung, die ich nur weiterempfehlen kann.",
+      "author": "Paula B.",
+      "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
+    },
+    // {
+    //   "id": 2,
+    //   "quote": "I had trouble sleeping for months, but after the hypnotherapy sessions, I started sleeping through the night. It was a life-changing experience.",
+    //   "author": "Michael Thompson",
+    // },
+    // {
+    //   "id": 3,
+    //   "quote": "The smoking cessation program worked wonders! I’ve been smoke-free for six months now and feel better than ever. Highly recommended!",
+    //   "author": "Emma Wilson",
+    //   "url": "https://www.google.com/review/67890"
+    // }
+  ],
     title: 'Hypnose in Bern – Hypnosetherapie | Janine Aerni',
     description: 'Hypnose und Hypnosetherapie in Bern – Janine Aerni. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen. ',
     image: {
