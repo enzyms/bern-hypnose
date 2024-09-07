@@ -26,7 +26,7 @@ Nach abgeschlossener Ausbildung verrechne ich CHF 150.- pro Sitzung für Erwachs
 
 Zurzeit geniesse ich die Ausbildung zur Hypnosetherapeutin bei Gabriel Palacios. Bis ich abgeschlossen habe, berechne ich 50%.
 
-Du darfst gerne bar oder per Twint bezahlen.
+Du darfst gerne bar, per Twint oder auf Rechnung bezahlen.
 Die Kosten werden nicht von der Krankenkasse übernommen.
 
 <a

@@ -31,7 +31,7 @@ mich erfüllt.
 
 Was ich liebe, sind Waldspaziergänge, Stunden mit
 spannenden Menschen, Bücher, die mich persönlich wachsen
-lassen, Fitness, Yoga, die Schönheit der Natur und Zeit mit meiner Familie verbringen.
+lassen, Fitness, Yoga, die Schönheit der Natur und Zeit mit meiner Familie zu verbringen.
 
 In meiner zwanzigjährigen Tätigkeit als Primarlehrerin durfte ich
 unzählige Sternstunden erleben und an schwierigen Situationen

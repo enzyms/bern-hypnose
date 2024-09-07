@@ -58,16 +58,15 @@ const siteConfig: SiteConfig = {
       "author": "Paula B.",
       "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
     },
+    {
+      "id": 2,
+      "quote": "Ich habe die Hypnosetherapie besucht, weil ich grosse Angst vor einem medizischen Eingriff hatte. Janine Aerni hat es verstanden, mich in einen Zustand von Entspannung, innerer Ruhe und Vertrauen zu führen. Ihre kompetente und einfühlsame Art haben mich sehr überzeugt. Die mit ihr festgelegten «Anker» konnte ich vor dem Eingriff wieder herholen, so dass ich recht gelassen sein konnte.",
+      "author": "Vroni Geschwend",
+    },
     // {
-    //   "id": 2,
-    //   "quote": "I had trouble sleeping for months, but after the hypnotherapy sessions, I started sleeping through the night. It was a life-changing experience.",
-    //   "author": "Michael Thompson",
-    // },
-    // {
-    //   "id": 3,
-    //   "quote": "The smoking cessation program worked wonders! I’ve been smoke-free for six months now and feel better than ever. Highly recommended!",
-    //   "author": "Emma Wilson",
-    //   "url": "https://www.google.com/review/67890"
+    //     "id": 3,
+    //     "quote": "Für mich persönlich Hypnose wirkt Wunder ✨ und das durfte ich bei der lieben Janine in einer Hypnosetherapie wieder erfahren. Mein Thema in der Session war, ich habe grossen Scham vor dem Schreiben und Vorlesen. Gestern hab ich mich vor meinem Arbeitsteam Team geoutet dass ich Legasthenie habe und darum ich nie ein Journal schreibe oder sonst was im Büro erledige, was mit Schreiben zu tun hat. NOCH NICHT 💪😁 voller Motivation und Wille bleibe ich an diesem Thema dran. Es fühlt sich so leicht an, dieses Geheimnis gelüftet zu haben 🙏 Von Herzen empfehle ich Janine weiter.",
+    //   "author": "D.S.",
     // }
   ],
     title: 'Hypnose in Bern – Hypnosetherapie | Janine Aerni',
