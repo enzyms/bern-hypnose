@@ -24,6 +24,11 @@
         font-display: swap;
     }
 
+    html {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
     h1 {
         @apply text-balance text-3xl text-red-500 leading-tight font-black sm:text-5xl sm:leading-tight;
     }
