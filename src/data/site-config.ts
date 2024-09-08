@@ -106,8 +106,8 @@ const siteConfig: SiteConfig = {
             href: '/hypnosetherapie/',
             subLinks: [
                 { 
-                    text: 'Süchte und Rauchen', 
-                    longText: 'Hypnose gegen Rauchen oder Süchte',
+                    text: 'Rauchen und Abhängigkeiten', 
+                    longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
                     href: '/hypnosetherapie/suechte-rauchen/', 
                     image: { 
                         src: '/uploads/cigarette.avif', 
