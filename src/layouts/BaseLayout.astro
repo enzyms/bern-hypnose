@@ -4,6 +4,7 @@ import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro'
 import Nav from '../components/Nav.astro';
 import Spline from '../components/Spline.astro';
 import Blur from '../components/Blur.astro';
+import SocialFooter from '../components/SocialFooter.astro';
 
 export type Props = HeadProps;
 
@@ -30,6 +31,7 @@ const { ...head } = Astro.props;
         <main class="min-h-[85vh] max-w-3xl relative z-10
             px-5 md:px-6 lg:px-8 py-10 lg:py-14">
             <slot />
+            <SocialFooter />
         </main>
     </body>
 </html>
