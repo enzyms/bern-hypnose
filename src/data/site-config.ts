@@ -111,7 +111,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/aengste-und-phobien/', 
                     image: { 
                         src: '/uploads/fears.avif', 
-                        alt: 'Ängste und Phobien',
+                        alt: '',
                      }
                 },
                 { 
@@ -120,7 +120,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/suechte-und-abhaegigkeiten/', 
                     image: { 
                         src: '/uploads/cigarette.avif', 
-                        alt: 'Süchte und Rauchen',
+                        alt: '',
                      } 
                 },
                 {   
@@ -129,7 +129,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/ernaehrung/', 
                     image: { 
                         src: '/uploads/food.avif', 
-                        alt: 'Hypnose für eine gesunde Ernährung',
+                        alt: '',
                      } 
                 },
                 { 
@@ -138,7 +138,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/stress-burnout-und-depression/', 
                     image: { 
                         src: '/uploads/depression.avif', 
-                        alt: 'Stress, Burnout und Depression',
+                        alt: '',
                      }
                 },
                 { 
@@ -147,7 +147,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/selbstvertrauen/', 
                     image: { 
                         src: '/uploads/glowing-blocks.avif', 
-                        alt: 'Selbstvertrauen',
+                        alt: '',
                      }
                 },
                 { 
@@ -156,7 +156,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/schlafstoerungen/',
                     image: { 
                         src: '/uploads/sleep.avif', 
-                        alt: 'Schlafstörungen',
+                        alt: '',
                      } }
                 
             ]
