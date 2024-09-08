@@ -21,7 +21,8 @@ const testimonials = siteConfig.testimonials;
         <footer class="text-sm py-2 pl-6">
           <span>{testimonial.author}</span>
           {testimonial.url && (
-            <span class="opacity-0 group-hover:opacity-100">
+            <span class="ml-2 text-yellow-500">★ ★ ★ ★ ★ </span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity">
               <span class="">|</span>
               <a href={testimonial.url} target="_blank" rel="noopener noreferrer" class="link underline">
                 Bewertung auf Google lesen
@@ -34,6 +35,10 @@ const testimonials = siteConfig.testimonials;
   ) : (
     <!-- no testimonials -->
   )}
+  <div class="flex items-center gap-4">
+    <div class="border-t border-gray-400 grow"></div>
+    <a href="https://www.google.com/search?q=aerni+hypnose&oq=aerni+hypnose&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDwyBggDEEUYPTIGCAQQRRhB0gEINzYxNWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#lrd=0x478e3919098aba6d:0xc134d9016ead528c,1,,,," class="block link">Alle reviews auf Google lesen</a>
+  </div>
 </section>
 
 
