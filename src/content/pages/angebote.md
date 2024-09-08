@@ -20,7 +20,7 @@ seo:
 />
 </picture>
 
-Eine Erstsitzung dauert ungefähr 90 Minuten. Plane circa eine Stunde für eine eventuelle Folgesitzung ein.
+Eine Erstsitzung dauert ungefähr 90 Minuten. Plane circa eine Stunde für eine allfällige Folgesitzung ein.
 
 Nach abgeschlossener Ausbildung verrechne ich CHF 150.- pro Sitzung für Erwachsene, CHF 120.– für Kinder.
 
