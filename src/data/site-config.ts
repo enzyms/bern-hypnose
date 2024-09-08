@@ -105,10 +105,19 @@ const siteConfig: SiteConfig = {
             text: 'Hypnosetherapie',
             href: '/hypnosetherapie/',
             subLinks: [
+                {   
+                    text: 'Ängste und Phobien', 
+                    longText: 'Ängste und Phobien mit Hypnose überwinden',
+                    href: '/hypnosetherapie/aengste-und-phobien/', 
+                    image: { 
+                        src: '/uploads/fears.avif', 
+                        alt: 'Ängste und Phobien',
+                     }
+                },
                 { 
-                    text: 'Rauchen und Abhängigkeiten', 
+                    text: 'Süchte und Abhängigkeiten', 
                     longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
-                    href: '/hypnosetherapie/suechte-rauchen/', 
+                    href: '/hypnosetherapie/suechte-und-abhaegigkeiten/', 
                     image: { 
                         src: '/uploads/cigarette.avif', 
                         alt: 'Süchte und Rauchen',
@@ -122,15 +131,6 @@ const siteConfig: SiteConfig = {
                         src: '/uploads/food.avif', 
                         alt: 'Hypnose für eine gesunde Ernährung',
                      } 
-                },
-                {   
-                    text: 'Ängste und Phobien', 
-                    longText: 'Ängste und Phobien mit Hypnose überwinden',
-                    href: '/hypnosetherapie/aengste-und-phobien/', 
-                    image: { 
-                        src: '/uploads/fears.avif', 
-                        alt: 'Ängste und Phobien',
-                     }
                 },
                 { 
                     text: 'Stress, Burnout und Depression', 
