@@ -1,5 +1,5 @@
-<div transition:persist id="fallbackBg" class="has-no-animation fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>
-<canvas transition:persist id="canvas3d" class="fixed top-0 right-0 bottom-0 left-0 z-0"></canvas>
+<div transition:persist id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>
+<canvas transition:persist id="canvas3d" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></canvas>
 
 <script>
     async function loadSplineScene() {
@@ -11,6 +11,8 @@
             const fallbackBg = document.getElementById('fallbackBg');
             fallbackBg?.classList.remove('hidden');
         } else {
+            const canvas3d = document.getElementById('canvas3d');
+            canvas3d?.classList.remove('hidden');
             if ('requestIdleCallback' in window) {
                 requestIdleCallback(() => {
                     setTimeout(() => loadSpline(), 1000);
