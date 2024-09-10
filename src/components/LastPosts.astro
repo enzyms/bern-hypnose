@@ -1,0 +1,21 @@
+---
+import PostPreview from '../components/PostPreview.astro';
+import Card from './Card.astro';
+const { posts } = Astro.props;
+---
+
+<section>
+    <div class="prose mt-12">
+        <h2>Letzte Blog posts</h2>
+    </div>
+    {
+        posts?.length > 0 && (
+            <div class="mb-16 flex gap-4">
+                {posts.map((post: any) => (
+                    <PostPreview post={post} class="mb-12 sm:mb-16" headingLevel="h3" />
+                ))}
+            </div>
+        )
+    }
+    <div class="mt-12 sm:mt-16">View All Posts</div>
+</section>
