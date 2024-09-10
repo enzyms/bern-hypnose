@@ -1,7 +1,7 @@
 ---
 title: Gedanken zum Herbst
 excerpt: Wovon darf ich mich lösen? Was bleibt? Eine kleine EIN-Sicht.
-publishDate: 2024-09-10T06:05:00.000Z
+publishDate: 2024-09-10T06:09:00.000Z
 seo:
   image:
     src: /uploads/diamond-bath.avif
