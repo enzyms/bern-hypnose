@@ -2,7 +2,7 @@
 title: Dein richtiger Platz
 excerpt: "Wenn du zufrieden bist mit deinem Platz im Leben, wird so viel Kraft
   frei gesetzt. Und wenn du es noch nicht bist, hast du Entfaltungspotential. "
-publishDate: 2024-09-11T08:33:00.000Z
+publishDate: 2024-09-11T08:35:00.000Z
 seo:
   image:
     src: /uploads/flowers.avif
