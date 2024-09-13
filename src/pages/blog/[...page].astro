@@ -24,6 +24,10 @@ const blog = page.data;
 <BaseLayout title="Blog" description="Bern Hypnose – Blog" image={{ src: '/uploads/glowing-blocks.png', alt: 'Blog' }}>
     <div>
         <h1 class="mb-8 text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">Blog</h1>
+        <p>
+            Liebe alle, folgende Texte beinhalten meine Gedanken und meine Sichtweise auf die Dinge. Sie sind nicht wissenschaftlich fundiert und es steht jedem
+            und jeder frei, seine eigene Haltung zu haben. Ich freue mich, wenn ich dir einige Inputs mit auf den Weg geben kann!
+        </p>
         {blog.map((post) => <PostPreview post={post} class="mb-12 sm:mb-16" />)}
         <Pagination page={page} class="my-16 sm:my-24" />
     </div>
