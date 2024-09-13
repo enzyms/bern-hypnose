@@ -1,7 +1,7 @@
 ---
 title: Lasst uns schamlos frei von Scham sein!
 excerpt: Wofür schämen wir uns? Und wozu eigentlich?
-publishDate: 2024-09-13T08:17:00.000Z
+publishDate: 2024-09-13T10:50:00.000Z
 seo:
   image:
     alt: ""
@@ -22,3 +22,7 @@ Ganz ehrlich, ich denken, Scham hat in seltenen Fällen seine Berechtigung. Wenn
 Wo kannst du heute versuchen, die Scham abzulegen? Natürlich, ohne jemandem bewusst zu schaden. Trage das verrückte Kleidungsstück. Sag mutig deine Meinung. Setzte dich öffentlich für jemanden ein. Setzte dich öffentlich für DICH ein. Steh zu deinen vermeintlichen Schwächen, niemand ist perfekt. Du kannst daran arbeiten, wenn du willst. Steh zu dir und deinem Körper oder trau dich, eine Veränderung anzustreben. Ohne Scham. Und geniesse den Antrieb, der entsteht, wenn du offen über ein schambehaftetes Thema sprichst. Du wirst merken, es wird an Macht verlieren, wenn du es teilst mit jemandem.
 
 Sei einfach.
+
+Nachtrag
+
+Eine Freundin hat mir einen Denkanstoss gegeben. Sie sagt, dass Scham hilft, Grenzüberschreitungen zu vermeiden. Sich zu reflektieren. Der Meinung bin ich auch. Vielleicht spreche ich eher von der "falschen Scham"? Und spreche von der angebrachten Scham, welche uns auch schützen kann, eher von Introspektion, Selbstreflexion? Dies erachte ich als äusserst wichtig, denn für ein harmonisches Miteinander ist es wichtig, sich in manchen Situationen zurückzuhalten oder zu regulieren. Und doch finde ich, dass wir im Allgemeinen zu schambehaftet sind und uns viel Lebensfreude verloren geht, wenn wir uns Kleinhalten für Äusserlichkeiten oder Angewohnheiten, für die wir uns schämen.
