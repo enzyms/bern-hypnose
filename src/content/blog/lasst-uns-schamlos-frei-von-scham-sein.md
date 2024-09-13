@@ -1,5 +1,5 @@
 ---
-title: Lasst uns schamlos frei von Scham sein!
+title: Lasst uns unnötige Scham ablegen!
 excerpt: Wofür schämen wir uns? Und wozu eigentlich?
 publishDate: 2024-09-13T10:51:00.000Z
 seo:
