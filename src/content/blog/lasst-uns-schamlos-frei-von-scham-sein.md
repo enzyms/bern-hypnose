@@ -1,7 +1,7 @@
 ---
 title: Lasst uns schamlos frei von Scham sein!
 excerpt: Wofür schämen wir uns? Und wozu eigentlich?
-publishDate: 2024-09-13T08:16:00.000Z
+publishDate: 2024-09-13T08:17:00.000Z
 seo:
   image:
     alt: ""
