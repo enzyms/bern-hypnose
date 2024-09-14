@@ -60,7 +60,7 @@ const currentTag = allTags.find((tag) => {
         <span>Alle Blogartikel </span>
     </a>
     <h1 class="mb-8 text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">
-        {currentTag?.name === 'Hypnose' ? currentTag?.name : `Hypnose und ${currentTag?.name}`}
+        {currentTag?.name === 'Hypnose' || currentTag?.name === 'Selbstreflexion' ? currentTag?.name : `Hypnose und ${currentTag?.name}`}
     </h1>
     <div class="prose">
         {ContentComponent && <ContentComponent />}
