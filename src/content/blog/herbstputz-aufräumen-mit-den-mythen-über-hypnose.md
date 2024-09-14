@@ -7,8 +7,7 @@ seo:
   image:
     src: /uploads/giant crystals.avif
 tags:
-  - Trauer
-  - Ängste
+  - Hypnose
 ---
 
 Mit Magie meine ich die feine Veränderung deiner Bewertung eines Anliegens, die eintreten kann, wenn du in einer Hypnosetherapie-Sitzung warst. Vielleicht fühlst du dich danach leichter, freier, positiver, entspannter und stellst bald eine Linderung der Symptome und somit eine Verbesserung deines Allgemeinzustandes fest. Eventuell gleich nach der Sitzung, vielleicht einige Tage danach. Mit der Selbsthypnose, die du mit auf den Weg bekommst, kannst du die erwünschten und neu erworbenen Glaubenssätze vertiefen.

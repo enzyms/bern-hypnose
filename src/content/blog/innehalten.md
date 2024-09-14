@@ -6,7 +6,10 @@ seo:
   image:
     src: /uploads/energy.png
     alt: Innehalten
+tags:
+  - Wohlbefinden
 ---
+
 Hältst du manchmal inne? Nimmst du dir Zeit zum Durchatmen?
 
 Wir sind es uns so gewohnt, zu funktionieren und zu liefern. Was, wenn wir öfters Pausen einlegen würden? Atmen, entspannen, auftanken, uns inspirieren lassen? Ich bin überzeugt, wir wären sogar effizienter. Kreativer. Mutiger. Authentischer. Gelassener. Erholter.

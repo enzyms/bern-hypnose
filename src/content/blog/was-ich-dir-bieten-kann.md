@@ -5,7 +5,16 @@ publishDate: 2024-09-11T14:35:00.000Z
 seo:
   image:
     src: /uploads/landscape3.avif
+tags:
+  - Trauer
+  - Ängste
+  - Zweifel
+  - Wohlbefinden
+  - Sport
+  - Ernährung
+  - Hypnose
 ---
+
 Wenn du zu mir kommst, kann ich dir Folgendes bieten:
 
 Einen Raum, in dem du dich wohlfühlen und dich selbst sein darfst

@@ -8,6 +8,7 @@ seo:
     src: /uploads/stairs2.avif
 tags:
   - Ängste
+  - Zweifel
 ---
 
 Ich erinnere mich lebhaft an die Schlangensteh-Situationen an der Migroskasse vor zwanzig Jahren. Da habe ich mich geschämt. Wofür? Das weiss ich auch nicht genau. Denn passiert ist jeweils - nichts. In meiner Vorstellung ist mir aber die Brieftasche runtergefallen, meine Karte hat nicht funktioniert beim Bezahlen, ich habe nur gestammelt, wenn mich die Kassiererin etwas gefragt hat. Mein gedankliches Pannenszenario war voller kreativer Ängste. Und das hat Scham ausgelöst bei mir. Mein Gesicht war ganz rot, wenn ich an der Reihe war.

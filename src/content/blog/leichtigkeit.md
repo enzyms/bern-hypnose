@@ -6,6 +6,8 @@ publishDate: 2024-09-08T17:23:00.000Z
 seo:
   image:
     src: /uploads/fear-of-dogs.avif
+tags:
+  - Wohlbefinden
 ---
 
 Ich kenne das nur zu gut: die Angst vor Hunden. Die Angst vor der Höhe. Zwanghaftes Verhalten. Perfektionismus. Überflüssige Kompenssationskäufe. Du kannst es überwinden und somit dein Leben freudiger und leichter machen. Eine persönliche Balance finden.
