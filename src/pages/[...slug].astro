@@ -25,7 +25,7 @@ const { Content } = await page.render();
         <header class="mb-8 relative">
             {
                 backlink && (
-                    <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-medium" href={backlink.url}>
+                    <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href={backlink.url}>
                         <ArrowLeft class="w-4 h-4 fill-current" />
                         <span>{backlink.title}</span>
                     </a>

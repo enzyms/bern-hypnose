@@ -4,12 +4,15 @@ excerpt: Wofür schämen wir uns? Und wozu eigentlich?
 publishDate: 2024-09-13T10:57:00.000Z
 seo:
   image:
-    alt: ""
+    alt: ''
     src: /uploads/stairs2.avif
+tags:
+  - Ängste
 ---
+
 Ich erinnere mich lebhaft an die Schlangensteh-Situationen an der Migroskasse vor zwanzig Jahren. Da habe ich mich geschämt. Wofür? Das weiss ich auch nicht genau. Denn passiert ist jeweils - nichts. In meiner Vorstellung ist mir aber die Brieftasche runtergefallen, meine Karte hat nicht funktioniert beim Bezahlen, ich habe nur gestammelt, wenn mich die Kassiererin etwas gefragt hat. Mein gedankliches Pannenszenario war voller kreativer Ängste. Und das hat Scham ausgelöst bei mir. Mein Gesicht war ganz rot, wenn ich an der Reihe war.
 
-Das war es auch dann, wenn ich vor einer Gruppe etwas gesagt habe. Meinen Mut gefasst habe und meine Meinung kundgegeben habe. Es könnte ja doof sein, was ich denke. Oder jemanden vor den Kopf stossen. Ich habe auch einen Anflug von Scham, wenn ich diese Texte publiziere. Ich erfinde damit ja nicht das Rad neu, diese Themen wurden alle schon besprochen. Und meine Schreibweise ist nicht sehr hochstehend. 
+Das war es auch dann, wenn ich vor einer Gruppe etwas gesagt habe. Meinen Mut gefasst habe und meine Meinung kundgegeben habe. Es könnte ja doof sein, was ich denke. Oder jemanden vor den Kopf stossen. Ich habe auch einen Anflug von Scham, wenn ich diese Texte publiziere. Ich erfinde damit ja nicht das Rad neu, diese Themen wurden alle schon besprochen. Und meine Schreibweise ist nicht sehr hochstehend.
 
 Sind das Gründe, sich zu schämen? Wer impft uns das eigentlich ein? Wer darf bestimmen, wann man sich zu schämen hat? Für eine Meinung, für eine Handlung, für eine Körperstelle, seine Nase, sein Gewicht oder für's Nägelkauen? Decken wir mit Scham nicht einen grossen Teil unseres inneren Leuchtens ab und kreieren Schatten? Könnten wir nicht so viel energievoller durchs Leben gehen ohne Scham-Ballast?
 
