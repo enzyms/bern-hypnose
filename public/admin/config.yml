@@ -6,46 +6,59 @@ media_folder: 'public/uploads' # Where uploaded media files are stored in your r
 public_folder: '/uploads' # Public path to the media files
 
 collections:
-  - name: 'blog'
-    label: 'Blog Posts'
-    folder: 'src/content/blog'
-    create: true
-    slug: '{{slug}}'
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
-      - { label: 'Publish Date', name: 'publishDate', widget: 'datetime' }
-      - label: 'Tags'
-        name: 'tags'
-        widget: 'relation'
-        collection: 'tags'
-        search_fields: ['title']
-        value_field: 'title'
-        display_fields: ['title']
-        multiple: true
-        required: false
-        allow_add: true
-      - {
-          label: 'Image',
-          name: 'seo',
-          widget: 'object',
-          required: false,
-          fields:
-            - label: 'Image'
-              name: 'image'
-              widget: 'object'
-              required: false
-              fields:
-                - { label: 'Image Src', name: 'src', widget: 'image', required: false }
-                - { label: 'Alt Text', name: 'alt', widget: 'string', required: false }
-        }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+    - name: 'blog'
+      label: 'Blog Posts'
+      folder: 'src/content/blog' # Path to your blog content
+      create: true # Allow creation of new posts
+      slug: '{{slug}}' # Slug for the post URLs
+      fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+          - label: 'Excerpt'
+            name: 'excerpt'
+            widget: 'text'
+          - label: 'Publish Date'
+            name: 'publishDate'
+            widget: 'datetime'
+          - label: 'Tags'
+            name: 'tags'
+            widget: 'relation'
+            collection: 'tags'
+            search_fields: ['title']
+            value_field: 'title'
+            display_fields: ['title']
+            multiple: true
+            required: false
+            allow_add: true
+          - label: 'Image'
+            name: 'seo'
+            widget: 'object'
+            required: false
+            fields:
+                - label: 'Image'
+                  name: 'image'
+                  widget: 'object'
+                  required: false
+                  fields:
+                      - label: 'Image Src'
+                        name: 'src'
+                        widget: 'image'
+                        required: false
+                      - label: 'Alt Text'
+                        name: 'alt'
+                        widget: 'string'
+                        required: false
+          - label: 'Body'
+            name: 'body'
+            widget: 'markdown'
 
-collections:
-  - name: 'tags'
-    label: 'Tags'
-    folder: 'src/content/tags'
-    create: true
-    slug: '{{slug}}'
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
+    - name: 'tags'
+      label: 'Tags'
+      folder: 'src/content/tags'
+      create: true
+      slug: '{{slug}}'
+      fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
