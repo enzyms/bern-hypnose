@@ -15,7 +15,17 @@ collections:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
           - { label: 'Publish Date', name: 'publishDate', widget: 'datetime' }
-          - { label: 'Tags', name: 'tags', widget: 'list' }
+          - label: 'Tags'
+            name: 'tags'
+            widget: 'select'
+            multiple: true
+            options:
+                - 'Hypnose'
+                - 'Meditation'
+                - 'Wellness'
+                - 'Mindfulness'
+            # Add more predefined tags here
+            create: true
           - {
                 label: 'Image',
                 name: 'seo',
