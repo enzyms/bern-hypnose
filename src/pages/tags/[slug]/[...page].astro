@@ -62,12 +62,17 @@ const currentTag = allTags.find((tag) => {
     <h1 class="mb-8 text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">
         {currentTag?.name === 'Hypnose' ? currentTag?.name : `Hypnose und ${currentTag?.name}`}
     </h1>
-    {ContentComponent && <ContentComponent />}
+    <div class="prose">
+        {ContentComponent && <ContentComponent />}
+    </div>
     <h2 class="text-lg font-bold mt-10">Alle Blogartikel zum Thema «{currentTag?.name}»</h2>
 
     {blog.map((post) => <PostPreview post={post} class="mb-12 sm:mb-16" />)}
     <Pagination page={page} class="my-16 sm:my-24" />
-    <ul class="flex flex-wrap gap-2">
+
+    <hr class="border-gray-400" />
+    <h2 class="text-lg font-bold mt-10">Alle Themen</h2>
+    <ul class="flex flex-wrap gap-2 mt-4 mb-10">
         {
             allTags.map((tag) => (
                 <Tag href={`/tags/${slugify(tag.slug)}/`}>
