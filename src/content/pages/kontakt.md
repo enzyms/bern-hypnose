@@ -17,7 +17,7 @@ interessierst.
 Ich bin von Montag bis Freitag für dich da.
 </p>
 
-<a data-umami-event="Open Calendly" href="https://calendly.com/bern-hypnose" target="_blank" class="inline-flex not-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline">Termin buchen</a>
+<a data-umami-event="Open Calendly" href="https://calendly.com/bern-hypnose/erstsitzung" target="_blank" class="inline-flex not-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline">Termin buchen</a>
 
 <hr class="border-gray-400" />
 
