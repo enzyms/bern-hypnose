@@ -6,7 +6,7 @@ tags:
   - Wohlbefinden
 seo:
   image:
-    src: /uploads/flowers(1).avif
+    src: /uploads/flowers(1).png
 ---
 Gerade eben war ich joggen. Das Wetter: ein wunderbarer Mix aus Sonne, Wolken und Wind. Das pure Leben! Dies hat ich auf den Gedanken gebracht, dir einige Wünsche zukommen zu lassen.
 
