@@ -3,6 +3,9 @@ title: Kontakt und Termin
 seo:
   title: Kontakt
   description: Hypnosetherapie in Bern, Kontakt und Adresse
+backlink:
+  title: Home
+  url: /
 ---
 
 <p>Meine Praxis befindet sich an der Eigerstrasse 56 in Bern. <br>

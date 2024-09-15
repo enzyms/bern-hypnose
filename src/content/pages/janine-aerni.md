@@ -6,6 +6,9 @@ seo:
   image:
     src: /janine-aerni-face-800w.png
     alt: Janine Aerni – Hypnosetherapeutin in Bern
+backlink:
+  title: Home
+  url: /
 ---
 
 <picture class="portrait-janine">

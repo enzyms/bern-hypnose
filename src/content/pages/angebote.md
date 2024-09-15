@@ -6,6 +6,9 @@ seo:
   image:
     src: '/janine-aerni.jpg'
     alt: Janine Aerni - coaching
+backlink:
+  title: Home
+  url: /
 ---
 
 <picture class="overflow-hidden rounded-xl">
