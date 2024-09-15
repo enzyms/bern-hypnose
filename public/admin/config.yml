@@ -4,6 +4,7 @@ backend:
 
 media_folder: 'public/uploads' # Where uploaded media files are stored in your repository
 public_folder: '/uploads' # Public path to the media files
+publish_mode: editorial_workflow # Enable save drafts and publish posts
 
 collections:
     - name: 'blog'
