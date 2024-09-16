@@ -1,9 +1,9 @@
 ---
 title: Der freie Fall
 excerpt: Wenn sich Angst und Freude abwechseln.
-publishDate: 2024-09-16T09:11:00.000Z
+publishDate: 2024-09-16T09:12:00.000Z
 tags:
-  - Selbstreflexion
+  - Ängste
 seo:
   image:
     src: /uploads/pain-free.avif
