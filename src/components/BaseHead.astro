@@ -40,8 +40,8 @@ function formatCanonicalURL(url: string | URL) {
         "@type": "LocalBusiness",
         "name": "Hypnose und Hypnosetherapie in Bern – Janine Aerni",
         "image": "https://bern-hypnose.ch/janine-aerni-face-600w.webp",
-        "logo": "janine-aerni-face-112w.avif",
-        "description": "Hypnose und Hypnosetherapie in Bern – Janine Aerni. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen. ",
+        "logo": "https://bern-hypnose.ch/janine-aerni-face-112w.avif",
+        "description": "Hypnose und Hypnosetherapie in Bern – Janine Aerni. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen.",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Eigerstrasse 56",
@@ -59,7 +59,11 @@ function formatCanonicalURL(url: string | URL) {
         "url": "https://bern-hypnose.ch",
         "priceRange": "120 CHF - 150 CHF",
         "openingHours": "Mo,Tu,We,Th,Fr 07:00-19:00",
-        "sameAs": ["https://www.facebook.com/profile.php?id=61564940341284", "https://www.instagram.com/janineaerni/"],
+        "sameAs": [
+            "https://www.facebook.com/profile.php?id=61564940341284",
+            "https://www.linkedin.com/in/janine-aerni-b7452a321/",
+            "https://www.instagram.com/janineaerni/"
+        ],
         "founder": {
             "@type": "Person",
             "name": "Janine Aerni",
@@ -74,35 +78,60 @@ function formatCanonicalURL(url: string | URL) {
         "makesOffer": [
             {
                 "@type": "Offer",
-                "name": "Hypnose gegen Rauchen und Abhängigkeiten",
-                "description": "Hypnosesitzungen, die darauf abzielen, Rauchgewohnheiten oder andere Süchte zu überwinden."
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Hypnose gegen Rauchen und Abhängigkeiten",
+                    "description": "Rauchstopp mit Hypnose und andere Abhängigkeiten überwinden."
+                },
+                "validFrom": "2024-09-16"
             },
             {
                 "@type": "Offer",
-                "name": "Hypnose für eine gesunde Ernährung",
-                "description": "Hypnosesitzungen zur Unterstützung einer gesunden Ernährungsweise und zur Förderung eines bewussten Essverhaltens."
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Hypnose für eine gesunde Ernährung",
+                    "description": "Gesunde Ernährung mit Unterstützung durch Hypnose."
+                },
+                "validFrom": "2024-09-16"
             },
             {
                 "@type": "Offer",
-                "name": "Ängste und Phobien mit Hypnose überwinden",
-                "description": "Maßgeschneiderte Hypnosesitzungen, um Klienten bei der Überwindung von Ängsten und Phobien zu helfen."
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Ängste und Phobien mit Hypnose überwinden",
+                    "description": "Ängste und Phobien durch Hypnose bewältigen."
+                },
+                "validFrom": "2024-09-16"
             },
             {
                 "@type": "Offer",
-                "name": "Hypnose gegen Stress, Burnout und Depression",
-                "description": "Hypnosesitzungen zur Stressbewältigung und zur Linderung von Burnout-Symptomen und Depressionen."
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Hypnose gegen Stress, Burnout und Depression",
+                    "description": "Stress, Burnout und Depression mit Hypnose lindern."
+                },
+                "validFrom": "2024-09-16"
             },
             {
                 "@type": "Offer",
-                "name": "Selbstvertrauen mit Hypnose stärken",
-                "description": "Hypnosesitzungen zur Stärkung des Selbstvertrauens und zur Förderung eines positiven Selbstbildes."
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Selbstvertrauen mit Hypnose stärken",
+                    "description": "Mehr Selbstvertrauen durch Hypnose aufbauen."
+                },
+                "validFrom": "2024-09-16"
             },
             {
                 "@type": "Offer",
-                "name": "Schlafstörungen mit Hypnose behandeln",
-                "description": "Hypnosesitzungen, die darauf abzielen, Schlafstörungen zu lindern und gesunden Schlaf zu fördern."
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Schlafstörungen mit Hypnose behandeln",
+                    "description": "Schlafstörungen mit Hypnose verbessern."
+                },
+                "validFrom": "2024-09-16"
             }
         ],
+
         "review": {
             "@type": "Review",
             "author": {
