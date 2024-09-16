@@ -1,7 +1,7 @@
 ---
 title: Der freie Fall
 excerpt: Wenn sich Angst und Freude abwechseln.
-publishDate: 2024-09-16T09:12:00.000Z
+publishDate: 2024-09-16T09:17:00.000Z
 tags:
   - Ängste
 seo:
