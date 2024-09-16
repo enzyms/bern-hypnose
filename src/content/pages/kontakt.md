@@ -1,5 +1,6 @@
 ---
 title: Kontakt und Termin
+description: Kontaktier mich, Janine Aerni, deine Hypnosetherapeutin in Bern. Ich helfe dir beim Rauchstopp und unterstütze dich bei Stress oder Ängsten.
 seo:
   title: Kontakt
   description: Hypnosetherapie in Bern, Kontakt und Adresse
