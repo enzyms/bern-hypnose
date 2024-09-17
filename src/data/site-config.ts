@@ -143,7 +143,7 @@ const siteConfig: SiteConfig = {
                             longText: 'Alkoholsucht mit Hypnose behandeln',
                             href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/', 
                             image: { 
-                                src: '/uploads/cigarette.avif', 
+                                src: '/disorders/glass2.avif', 
                                 alt: '',
                              }
                         },
