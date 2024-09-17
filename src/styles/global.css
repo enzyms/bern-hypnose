@@ -4,7 +4,7 @@
 
 @layer base {
     :root {
-        --color-text-main: 23 23 23; /* #171717 */
+        --color-text-main: 11 11 11; /* #171717 */
         --color-bg-main: 233 215 235; /* #F2F1EC */
         --color-bg-muted: 234 233 225; /* #EAE9E1 */
         --color-border-main: 23 23 23; /* #171717 */

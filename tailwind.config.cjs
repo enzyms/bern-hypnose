@@ -19,7 +19,7 @@ module.exports = {
                 '4xl': '2800px'
             },
             textColor: {
-                main: 'rgb(var(--color-text-main) / <alpha-value>)'
+                main: 'rgba(11 11 11 / 100%)'
             },
             backgroundColor: {
                 main: 'rgb(var(--color-bg-main) / <alpha-value>)',
@@ -32,9 +32,9 @@ module.exports = {
                 dante: {
                     css: {
                         '--tw-prose-body': theme('textColor.main / 100%'),
-                        '--tw-prose-headings': theme('colors.red.500 / 100%'),
+                        '--tw-prose-headings': theme('textColor.main / 100%'),
                         '--tw-prose-lead': theme('textColor.main / 100%'),
-                        '--tw-prose-links': theme('textColor.main / 100%'),
+                        '--tw-prose-links': theme('colors.red.700 / 100%'),
                         '--tw-prose-bold': theme('textColor.main / 100%'),
                         '--tw-prose-counters': theme('textColor.main / 100%'),
                         '--tw-prose-bullets': theme('textColor.main / 100%'),
