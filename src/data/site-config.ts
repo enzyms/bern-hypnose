@@ -121,13 +121,33 @@ const siteConfig: SiteConfig = {
                      }
                 },
                 { 
-                    text: 'Süchte und Abhängigkeiten', 
+                    text: 'Abhängigkeiten', 
                     longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
-                    href: '/hypnosetherapie/suechte-und-abhaegigkeiten/', 
+                    href: '/hypnosetherapie/abhaengigkeit/', 
                     image: { 
                         src: '/uploads/cigarette.avif', 
                         alt: '',
-                     } 
+                    },
+                    subLinks: [
+                        {   
+                            text: 'Rauchstopp mit Hypnose', 
+                            longText: 'Rauchen durch Hypnose aufgeben',
+                            href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/', 
+                            image: { 
+                                src: '/uploads/cigarette.avif', 
+                                alt: '',
+                             }
+                        },
+                        {   
+                            text: 'Hypnose gegen Alkoholsucht', 
+                            longText: 'Alkoholsucht mit Hypnose behandeln',
+                            href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/', 
+                            image: { 
+                                src: '/disorders/glass2.avif', 
+                                alt: '',
+                             }
+                        },
+                    ] 
                 },
                 {   
                     text: 'Ernährung', 

@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "astro build && node scripts/convert-images.js && cp _redirects dist/_redirects",
+        "build": "astro build && cp _redirects dist/_redirects",
         "preview": "astro preview",
         "astro": "astro"
     },

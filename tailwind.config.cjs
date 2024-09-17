@@ -61,13 +61,17 @@ module.exports = {
                                 textDecorationStyle: 'solid'
                             }
                         },
+                        p: {
+                            color: theme('textColor.main')
+                        },
                         h1: {
                             fontFamily: theme('fontFamily.serif'),
                             fontWeight: 100
                         },
                         'h2,h3,h4,h5,h6': {
                             fontFamily: theme('fontFamily.serif'),
-                            fontWeight: 800
+                            fontWeight: 800,
+                            color: theme('textColor.main')
                         },
                         blockquote: {
                             border: 0,
