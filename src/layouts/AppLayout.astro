@@ -1,0 +1,31 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro';
+import Blur from '../components/Blur.astro';
+
+export type Props = HeadProps;
+
+const { ...head } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de" class="antialiased break-words">
+    <head>
+        <BaseHead {...head} />
+        <script>
+            if (localStorage.theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        </script>
+        <ViewTransitions />
+        <script defer src="https://umami-eta-inky.vercel.app/script.js" data-website-id="b71481a2-1aaa-4300-a2cc-907a8ed24d37"></script>
+        <link rel="sitemap" href="/sitemap-index.xml" />
+    </head>
+    <body class="bg-main text-main overflow-x-hidden">
+        <Blur />
+        <main class="min-h-[85vh] relative z-10
+            px-5 md:px-6 lg:px-8 py-10 lg:py-14">
+            <slot />
+        </main>
+    </body>
+</html>
