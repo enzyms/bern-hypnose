@@ -6,16 +6,17 @@
     (function () {
         // Defer the loading of the Spline scene
         function deferLoading() {
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(() => {
+            window.addEventListener('load', () => {
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(() => {
+                        setTimeout(() => loadSplineScene(), 500);
+                    });
+                } else {
                     setTimeout(() => loadSplineScene(), 500);
-                });
-            } else {
-                setTimeout(() => loadSplineScene(), 500);
-            }
+                }
+            });
         }
 
-        // Call deferLoading immediately to start the deferral
         deferLoading();
 
         async function loadSplineScene() {
