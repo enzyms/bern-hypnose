@@ -10,12 +10,12 @@
         "astro": "astro"
     },
     "dependencies": {
-        "@astrojs/mdx": "^2.1.1",
-        "@astrojs/rss": "^4.0.5",
-        "@astrojs/sitemap": "^3.1.6",
-        "@astrojs/tailwind": "^5.1.0",
+        "@astrojs/mdx": "4.0.0-beta.1",
+        "@astrojs/rss": "4.0.7",
+        "@astrojs/sitemap": "3.1.6",
+        "@astrojs/tailwind": "5.1.1",
         "@splinetool/runtime": "^1.0.51",
-        "astro": "^4.3.5",
+        "astro": "5.0.0-beta.1",
         "decap-cms-app": "^3.3.2",
         "marked": "^12.0.0",
         "sharp": "^0.33.5",
