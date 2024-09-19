@@ -15,10 +15,10 @@
             canvas3d?.classList.remove('hidden');
             if ('requestIdleCallback' in window) {
                 requestIdleCallback(() => {
-                    setTimeout(() => loadSpline(), 1000);
+                    setTimeout(() => loadSpline(), 500);
                 });
             } else {
-                setTimeout(() => loadSpline(), 1000); // Fallback in case requestIdleCallback is not supported
+                setTimeout(() => loadSpline(), 500); // Fallback in case requestIdleCallback is not supported
             }
         }
     }
