@@ -2,7 +2,7 @@
 title: Kontrolle abgeben
 excerpt: Viele Menschen sind interessiert an Hypnose, ängstigen sich aber davor,
   die Kontrolle zu verlieren. Hier ein kleiner Mutmacher.
-publishDate: 2024-09-19T17:00:00.000Z
+publishDate: 2024-09-19T17:03:00.000Z
 tags:
   - Hypnose
 seo:
