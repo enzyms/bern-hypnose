@@ -2,74 +2,81 @@
 <canvas transition:persist id="canvas3d" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></canvas>
 
 <script>
-    async function loadSplineScene() {
-        function isMobileDevice() {
-            return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        }
-
-        if (isMobileDevice()) {
-            const fallbackBg = document.getElementById('fallbackBg');
-            fallbackBg?.classList.remove('hidden');
-        } else {
-            const canvas3d = document.getElementById('canvas3d');
-            canvas3d?.classList.remove('hidden');
+    // Wrap your code in an IIFE (Immediately Invoked Function Expression)
+    (function () {
+        // Defer the loading of the Spline scene
+        function deferLoading() {
             if ('requestIdleCallback' in window) {
                 requestIdleCallback(() => {
-                    setTimeout(() => loadSpline(), 500);
+                    setTimeout(() => loadSplineScene(), 500);
                 });
             } else {
-                setTimeout(() => loadSpline(), 500); // Fallback in case requestIdleCallback is not supported
+                setTimeout(() => loadSplineScene(), 500);
             }
         }
-    }
 
-    function loadSpline() {
-        import('@splinetool/runtime')
-            .then(async ({ Application }) => {
+        // Call deferLoading immediately to start the deferral
+        deferLoading();
+
+        async function loadSplineScene() {
+            function isMobileDevice() {
+                return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            }
+
+            if (isMobileDevice()) {
+                const fallbackBg = document.getElementById('fallbackBg');
+                fallbackBg?.classList.remove('hidden');
+            } else {
+                const canvas3d = document.getElementById('canvas3d');
+                canvas3d?.classList.remove('hidden');
+                await loadSpline();
+            }
+        }
+
+        async function loadSpline() {
+            try {
+                const { Application } = await import('@splinetool/runtime');
                 const canvas = document.getElementById('canvas3d');
                 document.app = new Application(canvas);
 
-                await document.app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode').then(() => {
-                    setupEventListeners();
-                });
-            })
-            .catch((error) => {
+                await document.app.load('https://prod.spline.design/Q-ARPU7hL1T2t409/scene.splinecode');
+                setupEventListeners();
+            } catch (error) {
                 console.error('Failed to load Spline scene:', error);
-            });
-    }
-
-    function setupEventListeners() {
-        function menuClose() {
-            const menu = document.querySelector('.menu');
-            const menuToggleBtn = document.querySelector('.menu-toggle');
-            menuToggleBtn?.setAttribute('aria-expanded', 'false');
-            menuToggleBtn?.setAttribute('aria-label', 'Close Menu');
-            menu?.classList.remove('is-visible');
+            }
         }
 
-        document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
-            document.app.emitEvent('mouseDown', 'trigger-to-1');
-            menuClose();
-        });
-        document.querySelectorAll('#menu-items li:nth-child(2) a').forEach((item) => {
-            item?.addEventListener('click', () => {
-                document.app.emitEvent('mouseDown', 'trigger-to-2');
+        function setupEventListeners() {
+            function menuClose() {
+                const menu = document.querySelector('.menu');
+                const menuToggleBtn = document.querySelector('.menu-toggle');
+                menuToggleBtn?.setAttribute('aria-expanded', 'false');
+                menuToggleBtn?.setAttribute('aria-label', 'Close Menu');
+                menu?.classList.remove('is-visible');
+            }
+
+            document.querySelector('#menu-items li:nth-child(1) a')?.addEventListener('click', () => {
+                document.app.emitEvent('mouseDown', 'trigger-to-1');
                 menuClose();
             });
-        });
-        document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
-            document.app.emitEvent('mouseDown', 'trigger-to-3');
-            menuClose();
-        });
-        document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
-            document.app.emitEvent('mouseDown', 'trigger-to-4');
-            menuClose();
-        });
-        document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
-            document.app.emitEvent('mouseDown', 'trigger-to-3');
-            menuClose();
-        });
-    }
-
-    loadSplineScene();
+            document.querySelectorAll('#menu-items li:nth-child(2) a').forEach((item) => {
+                item?.addEventListener('click', () => {
+                    document.app.emitEvent('mouseDown', 'trigger-to-2');
+                    menuClose();
+                });
+            });
+            document.querySelector('#menu-items li:nth-child(3) a')?.addEventListener('click', () => {
+                document.app.emitEvent('mouseDown', 'trigger-to-3');
+                menuClose();
+            });
+            document.querySelector('#menu-items li:nth-child(4) a')?.addEventListener('click', () => {
+                document.app.emitEvent('mouseDown', 'trigger-to-4');
+                menuClose();
+            });
+            document.querySelector('#menu-items li:nth-child(5) a')?.addEventListener('click', () => {
+                document.app.emitEvent('mouseDown', 'trigger-to-3');
+                menuClose();
+            });
+        }
+    })();
 </script>
