@@ -23,7 +23,7 @@
 {/if}
 
 <div class="py-20 flex flex-col items-center text-center">
-    <div>
+    <div class="max-w-[340px] w-full">
         {#if step === 1}
             <ProfileSelection />
         {:else if step === 2}

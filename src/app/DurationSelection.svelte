@@ -10,7 +10,7 @@
     }
 </script>
 
-<h2 class="text-3xl font-black mb-8">Select Duration</h2>
+<h2 class="text-3xl font-black mb-10">Select Duration</h2>
 <ul class="flex flex-col gap-4">
     {#each durations as duration}
         <li>

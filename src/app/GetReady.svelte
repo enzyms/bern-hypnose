@@ -3,9 +3,9 @@
     import SButton from './SButton.svelte';
 </script>
 
-<h2 class="text-3xl font-black mb-8">Get Ready</h2>
+<h2 class="text-3xl font-black mb-10">Get Ready</h2>
 <ul class="mb-8">
-    <li>Find a place</li>
+    <li>Find a quiet place</li>
     <li>Get comfortable</li>
     <li>Prepare to relax</li>
 </ul>
