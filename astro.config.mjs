@@ -1,21 +1,17 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
+
+import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://bern-hypnose.ch',
     trailingSlash: 'always',
-    integrations: [
-        mdx(),
-        svelte(),
-        sitemap({
-            filter: (page) => !page.includes('/admin/')
-        }),
-        tailwind({
-            applyBaseStyles: false
-        })
-    ]
+    integrations: [mdx(), sitemap({
+        filter: (page) => !page.includes('/admin/')
+    }), tailwind({
+        applyBaseStyles: false
+    }), svelte()]
 });
