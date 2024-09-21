@@ -1,7 +1,7 @@
 ---
 title: Liebevolle Selbstdisziplin
 excerpt: Ich finde ja, dass der Begriff 'Selbstdisziplin' mehr Glitzer verdient.
-publishDate: 2024-09-21T08:46:00.000Z
+publishDate: 2024-09-21T08:47:00.000Z
 tags:
   - Wohlbefinden
 seo:
