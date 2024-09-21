@@ -1,10 +1,8 @@
-<div transition:persist id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>
-<canvas transition:persist id="canvas3d" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></canvas>
-
 <script>
-    // Wrap your code in an IIFE (Immediately Invoked Function Expression)
-    (function () {
-        // Defer the loading of the Spline scene
+    console.log('Spline component mounted');
+    import { onMount } from 'svelte';
+
+    onMount(() => {
         function deferLoading() {
             window.addEventListener('load', () => {
                 if ('requestIdleCallback' in window) {
@@ -79,5 +77,5 @@
                 menuClose();
             });
         }
-    })();
+    });
 </script>

@@ -2,7 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
-import Spline from '../components/Spline.astro';
+import Spline from '../components/Spline.svelte';
 import Blur from '../components/Blur.astro';
 import SocialFooter from '../components/SocialFooter.astro';
 
@@ -26,7 +26,11 @@ const { ...head } = Astro.props;
     </head>
     <body class="bg-main text-main overflow-x-hidden">
         <Blur />
-        <Spline />
+        <div transition:persist id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>
+        <canvas transition:persist id="canvas3d" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></canvas>
+        <canvas id="canvas3d" class="hidden"></canvas>
+        <div id="fallbackBg" class="hidden">Fallback background</div>
+        <Spline client:load />
         <Nav />
         <main class="min-h-[85vh] max-w-3xl relative z-10
             px-5 md:px-6 lg:px-8 py-10 lg:py-14">
