@@ -1,7 +1,7 @@
 ---
 title: Ablauf einer Kinderhypnose
 excerpt: Und warum der Begriff 'Kinderhypnose' eigentlich gar nicht passt.
-publishDate: 2024-09-21T09:50:00.000Z
+publishDate: 2024-09-21T09:51:00.000Z
 tags:
   - Kinderhypnose
 seo:
