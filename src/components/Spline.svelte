@@ -1,18 +1,15 @@
 <script>
-    console.log('Spline component mounted');
     import { onMount } from 'svelte';
 
     onMount(() => {
         function deferLoading() {
-            window.addEventListener('load', () => {
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(() => {
-                        setTimeout(() => loadSplineScene(), 500);
-                    });
-                } else {
-                    setTimeout(() => loadSplineScene(), 500);
-                }
-            });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => {
+                    setTimeout(() => loadSplineScene(), 100);
+                });
+            } else {
+                setTimeout(() => loadSplineScene(), 100);
+            }
         }
 
         deferLoading();

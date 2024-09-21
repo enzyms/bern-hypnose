@@ -94,7 +94,6 @@ const { Content } = await post.render();
     document.addEventListener('astro:page-load', () => {
         const copyUrlButton = document.querySelector('.copy-url-button') as HTMLButtonElement;
         copyUrlButton?.addEventListener('click', async () => {
-            console.log('copying url');
             await copyUrl(copyUrlButton);
         });
 
