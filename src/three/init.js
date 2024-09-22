@@ -185,21 +185,14 @@ if (isMobileDevice()) {
     fallbackBg?.classList.remove('hidden');
 } else {
     const checkDocumentReadyState = () => {
-        if (document.readyState === 'interactive') {
-            // Optional: Do something when it's interactive (optional stage)
-        }
-
         if (document.readyState === 'complete') {
-            // After the document is fully loaded, delay initialization by an additional 200ms
             setTimeout(() => {
-                init(); // Initialize the Three.js scene
-            }, 200);
+                init();
+            }, 2100);
         } else {
-            // Keep checking until the document state is "complete"
             document.addEventListener('readystatechange', checkDocumentReadyState);
         }
     };
 
-    // Start checking the document state after DOMContentLoaded event
     document.addEventListener('DOMContentLoaded', checkDocumentReadyState);
 }
