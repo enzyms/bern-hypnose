@@ -188,7 +188,7 @@ if (isMobileDevice()) {
         if (document.readyState === 'complete') {
             setTimeout(() => {
                 init();
-            }, 2100);
+            }, 100);
         } else {
             document.addEventListener('readystatechange', checkDocumentReadyState);
         }
