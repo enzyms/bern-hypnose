@@ -12,6 +12,7 @@ import {
     PlaneGeometry,
     Clock
 } from 'three';
+import { gsap } from 'gsap'; // Import GSAP
 import createReflectiveMaterial from './reflectiveMaterial';
 import createBackgroundShaderMaterial from './backgroundShader';
 
@@ -26,15 +27,20 @@ let clock;
 function init() {
     const container = document.getElementById('container');
 
+    // Ensure the container exists
+    if (!container) {
+        console.error('Container element not found');
+        return;
+    }
+
     // Main Scene & Camera
     scene = new Scene();
     camera = new PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 50;
-    camera.rotation.y = 0; // 0.3;
+
     // Renderer
     renderer = new WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-
     renderer.setClearColor(0xe9d7eb);
 
     container.appendChild(renderer.domElement);
@@ -59,28 +65,70 @@ function init() {
     // Create a Clock instance
     clock = new Clock();
 
-    // Create the reflective material and diamonds asynchronously
     createReflectiveMaterial(function (reflectiveMaterial) {
-        // Create Three diamonds using the advanced reflective material
         const geometry1 = new DodecahedronGeometry(5);
         const geometry2 = new IcosahedronGeometry(5);
 
         const diamondsData = [
-            { x: 8, y: -5, z: 35, geometry: geometry1, rotationRatioX: 1, rotationRatioY: 1 },
-            { x: 16, y: 0, z: -15, geometry: geometry2, rotationRatioX: -2, rotationRatioY: -3 },
-            { x: 16, y: 5, z: 12, geometry: geometry1, rotationRatioX: 1, rotationRatioY: -1 }
+            {
+                x0: 8,
+                y0: -10,
+                z0: 35,
+                x1: 8,
+                y1: -5,
+                z1: 35,
+                geometry: geometry1,
+                rotationRatioX: 1,
+                rotationRatioY: 1
+            },
+            {
+                x0: 16,
+                y0: 20,
+                z0: -15,
+                x1: 16,
+                y1: 0,
+                z1: -15,
+                geometry: geometry2,
+                rotationRatioX: -2,
+                rotationRatioY: -3
+            },
+            {
+                x0: 20,
+                y0: -5,
+                z0: 35,
+                x1: 16,
+                y1: 5,
+                z1: 12,
+                geometry: geometry1,
+                rotationRatioX: 1,
+                rotationRatioY: -1
+            }
         ];
 
-        diamondsData.forEach((pos) => {
-            const diamond = new Mesh(pos.geometry, reflectiveMaterial);
-            diamond.position.set(pos.x, pos.y, pos.z);
-            diamond.rotationRatioX = pos.rotationRatioX;
-            diamond.rotationRatioY = pos.rotationRatioY;
+        diamondsData.forEach((data) => {
+            const diamond = new Mesh(data.geometry, reflectiveMaterial);
+            diamond.position.set(data.x0, data.y0, data.z0);
+            diamond.rotationRatioX = data.rotationRatioX;
+            diamond.rotationRatioY = data.rotationRatioY;
+            diamond.position0 = { x: data.x0, y: data.y0, z: data.z0 };
+            diamond.position1 = { x: data.x1, y: data.y1, z: data.z1 };
             scene.add(diamond);
             diamonds.push(diamond);
         });
 
+        // Start the animation loop
         animate();
+
+        // Animate the diamonds using GSAP
+        diamonds.forEach((diamond) => {
+            gsap.to(diamond.position, {
+                x: diamond.position1.x,
+                y: diamond.position1.y,
+                z: diamond.position1.z,
+                duration: 5,
+                ease: 'power5.out'
+            });
+        });
     });
 }
 
@@ -88,7 +136,8 @@ function animate() {
     requestAnimationFrame(animate);
 
     // Update the uniform for time in the shader
-    shaderMaterial.uniforms.u_time.value += clock.getDelta();
+    const delta = clock.getDelta();
+    shaderMaterial.uniforms.u_time.value += delta;
 
     // Render the background scene to the render target
     renderer.setRenderTarget(renderTarget);
@@ -98,7 +147,7 @@ function animate() {
     // Set the main scene's background to the render target's texture
     scene.background = renderTarget.texture;
 
-    // Rotate
+    // Rotate diamonds
     diamonds.forEach((diamond) => {
         diamond.rotation.x += 0.0002 * diamond.rotationRatioX;
         diamond.rotation.y += 0.0002 * diamond.rotationRatioY;
@@ -129,5 +178,6 @@ if (isMobileDevice()) {
     const fallbackBg = document.getElementById('fallbackBg');
     fallbackBg?.classList.remove('hidden');
 } else {
-    document.addEventListener('load', init());
+    // Ensure init() is called after the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', init);
 }
