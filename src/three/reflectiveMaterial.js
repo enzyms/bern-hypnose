@@ -1,8 +1,8 @@
-import * as THREE from 'three';
+import { TextureLoader, CubeTextureLoader, RepeatWrapping, MeshStandardMaterial } from 'three';
 
 export default function createReflectiveMaterial(onMaterialReady) {
-    const textureLoader = new THREE.TextureLoader();
-    const cubeTextureLoader = new THREE.CubeTextureLoader();
+    const textureLoader = new TextureLoader();
+    const cubeTextureLoader = new CubeTextureLoader();
 
     // Variables to hold textures
     let albedoTexture;
@@ -17,13 +17,13 @@ export default function createReflectiveMaterial(onMaterialReady) {
         if (texturesLoaded === 2) {
             // Both textures are loaded
             // Set texture properties
-            albedoTexture.encoding = THREE.sRGBEncoding;
-            albedoTexture.wrapS = THREE.RepeatWrapping;
-            albedoTexture.wrapT = THREE.RepeatWrapping;
+
+            albedoTexture.wrapS = RepeatWrapping;
+            albedoTexture.wrapT = RepeatWrapping;
             albedoTexture.repeat.set(1, 1);
 
             // Create the reflective material
-            const reflectiveMaterial = new THREE.MeshStandardMaterial({
+            const reflectiveMaterial = new MeshStandardMaterial({
                 map: albedoTexture,
                 metalness: 0.1,
                 roughness: 0.07,
@@ -49,12 +49,12 @@ export default function createReflectiveMaterial(onMaterialReady) {
     // Load the cube environment map
     envMap = cubeTextureLoader.load(
         [
-            '/three/environnement/posx.png',
-            '/three/environnement/negx.png',
-            '/three/environnement/posy.png',
-            '/three/environnement/negy.png',
-            '/three/environnement/posz.png',
-            '/three/environnement/negz.png'
+            '/three/environnement/posx.avif',
+            '/three/environnement/negx.avif',
+            '/three/environnement/posy.avif',
+            '/three/environnement/negy.avif',
+            '/three/environnement/posz.avif',
+            '/three/environnement/negz.avif'
         ],
         checkIfTexturesLoaded, // onLoad callback
         undefined, // onProgress callback

@@ -85,10 +85,10 @@ const createBackgroundShaderMaterial = () => {
                 float dist = length(pos);
 
                 // Add wavy deformation with pulsation
-                float noiseScale = 3.0;
+                float noiseScale = 1.0;
                 float baseNoiseStrength = 0.2;
-                float pulsationSpeed = 0.2;
-                float amplitude = 0.1;
+                float pulsationSpeed = .2;
+                float amplitude = 0.2;
                 float noiseStrength = baseNoiseStrength + sin(u_time * pulsationSpeed) * amplitude;
 
                 float n = snoise(pos * noiseScale + u_time * 0.1);

@@ -102,7 +102,6 @@ function animate() {
 
     // Rotate
     diamonds.forEach((diamond) => {
-        console.log(diamond);
         diamond.rotation.x += 0.001 * diamond.rotationRatioX;
         diamond.rotation.y += 0.001 * diamond.rotationRatioY;
     });
