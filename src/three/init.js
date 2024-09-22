@@ -121,4 +121,13 @@ function onWindowResize() {
     shaderMaterial.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
 }
 
-document.addEventListener('load', init());
+function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+if (isMobileDevice()) {
+    const fallbackBg = document.getElementById('fallbackBg');
+    fallbackBg?.classList.remove('hidden');
+} else {
+    document.addEventListener('load', init());
+}
