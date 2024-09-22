@@ -23,8 +23,6 @@ let shaderMaterial, renderTarget;
 let backgroundScene, backgroundCamera;
 let clock;
 
-init();
-
 function init() {
     const container = document.getElementById('container');
 
@@ -68,9 +66,9 @@ function init() {
         const geometry2 = new IcosahedronGeometry(5);
 
         const diamondsData = [
-            { x: 7, y: -5, z: 35, geometry: geometry1, rotationRatioX: 1, rotationRatioY: 1 },
-            { x: 15, y: 0, z: -15, geometry: geometry2, rotationRatioX: -1, rotationRatioY: -1 },
-            { x: 18, y: 5, z: 12, geometry: geometry1, rotationRatioX: 1, rotationRatioY: -1 }
+            { x: 8, y: -5, z: 35, geometry: geometry1, rotationRatioX: 1, rotationRatioY: 1 },
+            { x: 16, y: 0, z: -15, geometry: geometry2, rotationRatioX: -2, rotationRatioY: -3 },
+            { x: 16, y: 5, z: 12, geometry: geometry1, rotationRatioX: 1, rotationRatioY: -1 }
         ];
 
         diamondsData.forEach((pos) => {
@@ -102,8 +100,8 @@ function animate() {
 
     // Rotate
     diamonds.forEach((diamond) => {
-        diamond.rotation.x += 0.001 * diamond.rotationRatioX;
-        diamond.rotation.y += 0.001 * diamond.rotationRatioY;
+        diamond.rotation.x += 0.0002 * diamond.rotationRatioX;
+        diamond.rotation.y += 0.0002 * diamond.rotationRatioY;
     });
 
     // Render the main scene
@@ -122,3 +120,5 @@ function onWindowResize() {
     // Update shader resolution uniform
     shaderMaterial.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
 }
+
+document.addEventListener('load', init());
