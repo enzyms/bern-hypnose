@@ -135,12 +135,6 @@ function init() {
                 ease: 'power5.out'
             });
         });
-
-        gsap.to(shaderMaterial.uniforms.u_opacity, {
-            value: 1,
-            duration: 5,
-            ease: 'power2.out'
-        });
     });
 }
 
@@ -191,5 +185,5 @@ if (isMobileDevice()) {
     fallbackBg?.classList.remove('hidden');
 } else {
     // Ensure init() is called after the DOM is fully loaded
-    document.addEventListener('load', () => setTimeout(() => init(), 2100));
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => init(), 2100));
 }
