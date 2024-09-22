@@ -191,5 +191,5 @@ if (isMobileDevice()) {
     fallbackBg?.classList.remove('hidden');
 } else {
     // Ensure init() is called after the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', () => setTimeout(() => init(), 2100));
+    document.addEventListener('load', () => setTimeout(() => init(), 2100));
 }
