@@ -23,15 +23,16 @@ let scene,
 let shaderMaterial, renderTarget;
 let backgroundScene, backgroundCamera;
 let clock;
+const container = document.getElementById('container');
 
 function init() {
-    const container = document.getElementById('container');
-
     // Ensure the container exists
     if (!container) {
         console.error('Container element not found');
         return;
     }
+
+    container.classList.remove('opacity-0');
 
     // Main Scene & Camera
     scene = new Scene();
@@ -42,6 +43,11 @@ function init() {
     renderer = new WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0xe9d7eb);
+
+    renderer = new WebGLRenderer({ antialias: true, alpha: true }); // 'alpha: true' to allow transparent background
+    renderer.setClearColor(0x000000, 0); // Transparent background (alpha = 0)
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
 
     container.appendChild(renderer.domElement);
 
@@ -129,6 +135,12 @@ function init() {
                 ease: 'power5.out'
             });
         });
+
+        gsap.to(shaderMaterial.uniforms.u_opacity, {
+            value: 1,
+            duration: 5,
+            ease: 'power2.out'
+        });
     });
 }
 
@@ -179,5 +191,5 @@ if (isMobileDevice()) {
     fallbackBg?.classList.remove('hidden');
 } else {
     // Ensure init() is called after the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => init(), 2100));
 }
