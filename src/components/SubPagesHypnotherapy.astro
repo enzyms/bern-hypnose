@@ -21,7 +21,7 @@ const gridColumnsClass = columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-c
             <ul class={`grid ${gridColumnsClass} gap-4 not-prose list`}>
                 {filteredSubLinks.map((subLink) => (
                     <li class="flex items-baseline group" key={subLink.href}>
-                        <Card href={subLink.href} image={subLink.image} title={subLink.text} />
+                        <Card href={subLink.href} image={subLink.thumb} title={subLink.text} />
                     </li>
                 ))}
             </ul>

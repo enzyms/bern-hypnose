@@ -10,6 +10,7 @@ export type Link = {
     href: string;
     subLinks?: Link[];
     image?: Image;
+    thumb?: Image;
 };
 
 export type Hero = {
@@ -118,6 +119,10 @@ const siteConfig: SiteConfig = {
                     image: { 
                         src: '/uploads/fears.avif', 
                         alt: '',
+                    },
+                    thumb: { 
+                        src: '/hypnosetherapie/fears-sm.avif', 
+                        alt: '',
                      }
                 },
                 { 
@@ -128,6 +133,10 @@ const siteConfig: SiteConfig = {
                         src: '/uploads/cigarette.avif', 
                         alt: '',
                     },
+                    thumb: { 
+                        src: '/hypnosetherapie/cigarette-sm.avif', 
+                        alt: '',
+                     },
                     subLinks: [
                         {   
                             text: 'Rauchstopp mit Hypnose', 
@@ -156,7 +165,11 @@ const siteConfig: SiteConfig = {
                     image: { 
                         src: '/uploads/food.avif', 
                         alt: '',
-                     } 
+                    },
+                    thumb: { 
+                        src: '/hypnosetherapie/food-sm.avif', 
+                        alt: '',
+                    } 
                 },
                 { 
                     text: 'Stress, Burnout und Depression', 
@@ -165,7 +178,11 @@ const siteConfig: SiteConfig = {
                     image: { 
                         src: '/uploads/depression.avif', 
                         alt: '',
-                     }
+                    },
+                    thumb: { 
+                        src: '/hypnosetherapie/depression-sm.avif', 
+                        alt: '',
+                    }
                 },
                 { 
                     text: 'Selbstvertrauen', 
@@ -174,7 +191,11 @@ const siteConfig: SiteConfig = {
                     image: { 
                         src: '/uploads/glowing-blocks.avif', 
                         alt: '',
-                     }
+                    },
+                    thumb: { 
+                        src: '/hypnosetherapie/glowing-blocks-sm.avif', 
+                        alt: '',
+                    }
                 },
                 { 
                     text: 'Schlafstörungen', 
@@ -183,7 +204,12 @@ const siteConfig: SiteConfig = {
                     image: { 
                         src: '/uploads/sleep.avif', 
                         alt: '',
-                     } }
+                    },
+                    thumb: { 
+                        src: '/hypnosetherapie/sleep-sm.avif', 
+                        alt: '',
+                     }
+                }
                 
             ]
         },
