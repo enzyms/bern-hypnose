@@ -3,84 +3,35 @@
 ---
 
 <script>
-    const worker = new Worker('/three/worker.js', { type: 'module' });
-    const container = document.getElementById('threeContainer');
-
-    if (!container) {
-        console.error('Container element not found');
-        // return;
+    function isMobileDevice() {
+        return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     }
 
-    // Create a canvas element
-    const canvas = document.createElement('canvas');
-    canvas.id = 'three-canvas';
-    container?.appendChild(canvas);
-    const offscreenCanvas = canvas.transferControlToOffscreen();
-
-    worker.addEventListener('message', (event) => {
-        console.log('worker said:', event.data);
-    });
-
-    worker.postMessage(
-        {
-            action: 'init',
-            width: window.innerWidth,
-            height: window.innerHeight,
-            canvas: offscreenCanvas
-        },
-        [offscreenCanvas] // Transfer the canvas
-    );
-    // to do: get postMessage when worker is ready
-    setTimeout(() => {
-        document.getElementById('threeContainer')?.classList.remove('opacity-0');
-    }, 1000);
-</script>
-
-<div transition:persist id="threeContainer" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 opacity-0 transition-opacity duration-[5000ms]"></div>
-<div transition:persist id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>
-
-<!-- <div id="container"></div>
-<style>
-    #container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const container = document.getElementById('container');
-        if (!container) {
-            console.error('Container element not found');
-            return;
-        }
-
-        // Create a canvas element
+    if (isMobileDevice()) {
+        const fallbackBg = document.getElementById('fallbackBg');
+        fallbackBg?.classList.remove('hidden');
+    } else {
+        const worker = new Worker('/three/worker.js', { type: 'module' });
+        const container = document.getElementById('threeContainer');
         const canvas = document.createElement('canvas');
         canvas.id = 'three-canvas';
-        container.appendChild(canvas);
-
-        // Convert the canvas to an OffscreenCanvas
+        container?.appendChild(canvas);
         const offscreenCanvas = canvas.transferControlToOffscreen();
 
-        // Create a new web worker
-        const worker = new Worker('three/initWorker.js', { type: 'module' });
+        // worker.addEventListener('message', (event) => {
+        //     console.log('worker said:', event.data);
+        // });
 
-        // Send initial message to initialize the scene in the worker
         worker.postMessage(
             {
                 action: 'init',
-                canvas: offscreenCanvas,
                 width: window.innerWidth,
-                height: window.innerHeight
+                height: window.innerHeight,
+                canvas: offscreenCanvas
             },
             [offscreenCanvas] // Transfer the canvas
         );
 
-        // Handle window resizing
         window.addEventListener('resize', () => {
             worker.postMessage({
                 action: 'resize',
@@ -89,14 +40,21 @@
             });
         });
 
-        // Optional: Stop rendering on tab change or unload
-        window.addEventListener('beforeunload', () => {
-            worker.postMessage({ action: 'stop' });
+        document.querySelectorAll('#menu-items [data-diamond-position]').forEach((item) => {
+            item?.addEventListener('click', () => {
+                worker.postMessage({
+                    action: 'animate',
+                    diamondPosition: item.getAttribute('data-diamond-position')
+                });
+            });
         });
 
-        // Clean up worker when the container is removed or page is unloaded
-        window.addEventListener('unload', () => {
-            worker.terminate();
-        });
-    });
-</script> -->
+        // to do: get postMessage when worker is ready
+        setTimeout(() => {
+            document.getElementById('threeContainer')?.classList.remove('opacity-0');
+        }, 500);
+    }
+</script>
+
+<div transition:persist id="threeContainer" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 opacity-0 transition-opacity duration-[5000ms]"></div>
+<div transition:persist id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>

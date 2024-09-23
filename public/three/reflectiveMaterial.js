@@ -1,6 +1,4 @@
 export default function createReflectiveMaterial(onMaterialReady, THREE) {
-    console.log('createReflectiveMaterial');
-
     const { ImageBitmapLoader, RepeatWrapping, MeshStandardMaterial, Texture, CubeTexture, LinearFilter } = THREE;
 
     const imageBitmapLoader = new ImageBitmapLoader();

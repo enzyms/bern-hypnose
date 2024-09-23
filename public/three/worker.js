@@ -8,7 +8,8 @@ import createBackgroundShaderMaterial from '/three/backgroundShader.js';
 let scene,
     camera,
     renderer,
-    diamonds = [];
+    diamonds = [],
+    diamondsData = [];
 let shaderMaterial, renderTarget;
 let backgroundScene, backgroundCamera;
 let clock;
@@ -16,7 +17,7 @@ let isRendering = false;
 
 addEventListener('message', function (event) {
     const { action } = event.data;
-    console.log('Worker received action:', action);
+
     switch (action) {
         case 'init':
             initializeScene(event.data);
@@ -29,8 +30,13 @@ addEventListener('message', function (event) {
         case 'stop':
             isRendering = false;
             break;
+        case 'animate':
+            console.log('animate to: ', event.data.diamondPosition);
+            animateDiamondsTo(event.data.diamondPosition);
+
+            break;
         case 'resize':
-            onWindowResize(event.data.width, event.data.height);
+            onWindowResize(event.data);
             break;
     }
 });
@@ -42,8 +48,6 @@ async function initializeScene(data) {
     camera = new THREE.PerspectiveCamera(30, width / height, 0.1, 1000);
     camera.position.z = 50;
 
-    console.log('Scene initialized wdfw', canvas, width, height);
-
     renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true,
@@ -52,17 +56,16 @@ async function initializeScene(data) {
     renderer.setSize(width, height, false);
     renderer.setClearColor(0x000000, 0); // Transparent background
 
-    // // Render Target
+    // Render Target
     renderTarget = new THREE.WebGLRenderTarget(width, height);
 
-    // // Background Scene and Camera
+    // Background Scene and Camera
     backgroundScene = new THREE.Scene();
     backgroundCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-    // // Use the imported Shader Material
+    // Use the imported Shader Material
     shaderMaterial = createBackgroundShaderMaterial(THREE, width, height);
-    console.log('Shader Material', shaderMaterial);
-    // Ensure the shader has the necessary uniforms
+
     if (shaderMaterial.uniforms.u_time === undefined) {
         shaderMaterial.uniforms.u_time = { value: 0 };
     }
@@ -81,64 +84,73 @@ async function initializeScene(data) {
     clock = new THREE.Clock();
 
     // Reflective Diamonds
-    createReflectiveMaterial(function (reflectiveMaterial) {
-        const geometry1 = new THREE.DodecahedronGeometry(5);
-        const geometry2 = new THREE.IcosahedronGeometry(5);
+    createReflectiveMaterial((reflectiveMaterial) => {
+        const geometries = [new THREE.DodecahedronGeometry(5), new THREE.IcosahedronGeometry(5)];
 
-        const diamondsData = [
+        // Simplify diamonds data using arrays for positions and geometry
+        diamondsData = [
             {
-                x0: 8,
-                y0: -10,
-                z0: 35,
-                x1: 8,
-                y1: -5,
-                z1: 35,
-                geometry: geometry1,
-                rotationRatioX: 1,
-                rotationRatioY: 1
+                positions: [
+                    [8, -10, 35],
+                    [8, -5, 35],
+                    [16, 5, 12],
+                    [20, -5, 35]
+                ],
+                geometry: geometries[0],
+                rotationRatios: { x: 1, y: 1 }
             },
             {
-                x0: 16,
-                y0: 20,
-                z0: -15,
-                x1: 16,
-                y1: 0,
-                z1: -15,
-                geometry: geometry2,
-                rotationRatioX: -2,
-                rotationRatioY: -3
+                positions: [
+                    [16, 20, -15],
+                    [16, 0, -15],
+                    [8, -5, 35],
+                    [16, 0, 0]
+                ],
+                geometry: geometries[1],
+                rotationRatios: { x: -2, y: -3 }
             },
             {
-                x0: 20,
-                y0: -5,
-                z0: 35,
-                x1: 16,
-                y1: 5,
-                z1: 12,
-                geometry: geometry1,
-                rotationRatioX: 1,
-                rotationRatioY: -1
+                positions: [
+                    [20, -5, 35],
+                    [16, 5, 12],
+                    [16, 0, -15],
+                    [16, 0, 15]
+                ],
+                geometry: geometries[0],
+                rotationRatios: { x: 1, y: -1 }
             }
         ];
 
+        // Helper function to create a diamond mesh
+        function createDiamond({ positions, geometry, rotationRatios }) {
+            const diamond = new THREE.Mesh(geometry, reflectiveMaterial);
+            const [initialPos, targetPos] = positions;
+
+            // Set initial position and rotation
+            diamond.position.set(...initialPos);
+            diamond.rotationRatioX = rotationRatios.x;
+            diamond.rotationRatioY = rotationRatios.y;
+
+            // Store positions for animation
+            diamond.position0 = { x: initialPos[0], y: initialPos[1], z: initialPos[2] };
+            diamond.position1 = { x: targetPos[0], y: targetPos[1], z: targetPos[2] };
+
+            return diamond;
+        }
+
+        // Create diamonds and add them to the scene
         diamondsData.forEach((data) => {
-            const diamond = new THREE.Mesh(data.geometry, reflectiveMaterial);
-            diamond.position.set(data.x0, data.y0, data.z0);
-            diamond.rotationRatioX = data.rotationRatioX;
-            diamond.rotationRatioY = data.rotationRatioY;
-            diamond.position0 = { x: data.x0, y: data.y0, z: data.z0 };
-            diamond.position1 = { x: data.x1, y: data.y1, z: data.z1 };
+            const diamond = createDiamond(data);
             scene.add(diamond);
             diamonds.push(diamond);
         });
 
-        // Start the animation loop
+        // Start rendering
         isRendering = true;
         render();
 
-        // Animate the diamonds using GSAP
+        // Animate diamonds using GSAP
         diamonds.forEach((diamond) => {
-            console.log('Diamond', diamond);
             gsap.to(diamond.position, {
                 x: diamond.position1.x,
                 y: diamond.position1.y,
@@ -178,14 +190,40 @@ function render() {
     self.requestAnimationFrame(render);
 }
 
-function onWindowResize(width, height) {
+function animateDiamondsTo(diamondPosition) {
+    // Ensure the position is within bounds (0 = first position, 1 = second position, 2 = third position)
+    if (diamondPosition < 0 || diamondPosition > 5) {
+        console.error('Invalid diamond position index:', diamondPosition);
+        return;
+    }
+
+    // Animate all diamonds to the selected position
+    diamonds.forEach((diamond, index) => {
+        const targetPosition = diamondsData[index].positions[diamondPosition];
+
+        if (targetPosition) {
+            console.log('Animating diamond:', index, 'to position:', targetPosition);
+            gsap.to(diamond.position, {
+                x: targetPosition[0],
+                y: targetPosition[1],
+                z: targetPosition[2],
+                duration: 5,
+                ease: 'back.inOut'
+            });
+        }
+    });
+}
+
+function onWindowResize(data) {
+    const { width, height } = data;
+
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(width, height);
+    renderer.setSize(width, height, false);
 
     // Update render target size
-    renderTarget.setSize(width, height);
+    renderTarget.setSize(width, height, false);
 
     // Update shader resolution uniform
     if (shaderMaterial.uniforms.u_resolution) {

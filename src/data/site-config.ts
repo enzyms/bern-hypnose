@@ -11,6 +11,7 @@ export type Link = {
     subLinks?: Link[];
     image?: Image;
     thumb?: Image;
+    diamondPosition?: number;
 };
 
 export type Hero = {
@@ -106,16 +107,19 @@ const siteConfig: SiteConfig = {
     headerNavLinks: [
         {
             text: 'Home',
-            href: '/'
+            href: '/',
+            diamondPosition: 1
         },
         {
             text: 'Hypnosetherapie',
             href: '/hypnosetherapie/',
+            diamondPosition: 2,
             subLinks: [
                 {   
                     text: 'Ängste und Phobien', 
                     longText: 'Ängste und Phobien mit Hypnose überwinden',
                     href: '/hypnosetherapie/aengste-und-phobien/', 
+                    diamondPosition: 2,
                     image: { 
                         src: '/uploads/fears.avif', 
                         alt: '',
@@ -129,6 +133,7 @@ const siteConfig: SiteConfig = {
                     text: 'Abhängigkeiten', 
                     longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
                     href: '/hypnosetherapie/abhaengigkeit/', 
+                    diamondPosition: 2,
                     image: { 
                         src: '/uploads/cigarette.avif', 
                         alt: '',
@@ -162,6 +167,7 @@ const siteConfig: SiteConfig = {
                     text: 'Ernährung', 
                     longText: 'Hypnose für eine gesunde Ernährung',
                     href: '/hypnosetherapie/ernaehrung/', 
+                    diamondPosition: 2,
                     image: { 
                         src: '/uploads/food.avif', 
                         alt: '',
@@ -175,6 +181,7 @@ const siteConfig: SiteConfig = {
                     text: 'Stress, Burnout und Depression', 
                     longText: 'Hypnose gegen Stress, Burnout und Depression',
                     href: '/hypnosetherapie/stress-burnout-und-depression/', 
+                    diamondPosition: 2,
                     image: { 
                         src: '/uploads/depression.avif', 
                         alt: '',
@@ -188,6 +195,7 @@ const siteConfig: SiteConfig = {
                     text: 'Selbstvertrauen', 
                     longText: 'Selbstvertrauen mit Hypnose stärken',
                     href: '/hypnosetherapie/selbstvertrauen/', 
+                    diamondPosition: 2,
                     image: { 
                         src: '/uploads/glowing-blocks.avif', 
                         alt: '',
@@ -201,6 +209,7 @@ const siteConfig: SiteConfig = {
                     text: 'Schlafstörungen', 
                     longText: 'Schlafstörungen mit Hypnose behandeln',
                     href: '/hypnosetherapie/schlafstoerungen/',
+                    diamondPosition: 2,
                     image: { 
                         src: '/uploads/sleep.avif', 
                         alt: '',
@@ -215,19 +224,23 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Angebote',
-            href: '/angebote/'
+            href: '/angebote/',
+            diamondPosition: 3,
         },
         {
             text: 'Blog',
-            href: '/blog/'
+            href: '/blog/',
+            diamondPosition: 1,
         },
         {
             text: 'Über mich',
-            href: '/janine-aerni/'
+            href: '/janine-aerni/',
+            diamondPosition: 2,
         },
         {
             text: 'Kontakt & Termin',
-            href: '/kontakt/'
+            href: '/kontakt/',
+            diamondPosition: 3,
         },
     ],
     footerNavLinks: [

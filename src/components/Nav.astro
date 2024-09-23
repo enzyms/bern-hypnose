@@ -25,6 +25,7 @@ const navLinks = siteConfig.headerNavLinks || [];
                     {navLinks.map((link) => (
                         <li class="py-0 relative" key={link.href}>
                             <NavLink
+                                data-diamond-position={link.diamondPosition}
                                 class="block py-1 md:py-2 text-3xl font-bold text-red-500 hover:text-red-600 md:font-normal md:text-gray-700 md:text-lg transition-colors"
                                 href={link.href}
                             >
