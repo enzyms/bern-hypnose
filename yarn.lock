@@ -123,6 +123,11 @@
     is-wsl "^3.0.0"
     which-pm-runs "^1.1.0"
 
+"@astropub/worker@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@astropub/worker/-/worker-0.2.0.tgz#b74c8739c2e871d24b9ebbea36739e44b1e19c01"
+  integrity sha512-DkvD+H3N3n9XqRV66Jh3nYq0fPkfPwlbuOcKmLgSINms0z5VcHALVUmneceMJ1ni/MexkqffezWtGgKAiglYbw==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.24.7":
   version "7.24.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.24.7.tgz#882fd9e09e8ee324e496bd040401c6f046ef4465"
