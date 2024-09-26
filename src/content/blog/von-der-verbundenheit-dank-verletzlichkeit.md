@@ -1,7 +1,7 @@
 ---
 title: Von der Verbundenheit dank Verletzlichkeit
 excerpt: Ist Schwäche zeigen nicht gerade heute sehr wichtig?
-publishDate: 2024-09-26T12:51:00.000Z
+publishDate: 2024-09-26T12:52:00.000Z
 seo:
   image:
     src: /uploads/eye.avif
