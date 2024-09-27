@@ -5,7 +5,7 @@ excerpt: Nachdem ich zwanzig Jahre lang Lehrerin war, tut es gut, selbst die
 publishDate: 2024-08-23T20:27:00.000Z
 seo:
   image:
-    src: /uploads/trail-two-persons.png
+    src: src/assets/uploads/trail-two-persons.png
     alt: Wann ist eine Lehrperson eine gute Lehrperson?
 tags:
   - Selbstreflexion

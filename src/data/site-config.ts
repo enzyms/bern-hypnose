@@ -80,7 +80,7 @@ const siteConfig: SiteConfig = {
     title: 'Hypnose in Bern – Hypnosetherapie | Janine Aerni',
     description: 'Hypnose und Hypnosetherapie in Bern – Janine Aerni. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen. ',
     image: {
-        src: '/uploads/glowing-blocks.png',
+        src: 'src/assets/uploads/glowing-blocks.png',
         alt: 'Hypnose und Hypnosetherapie in Bern'
     },
     imageHomepage: {
@@ -121,7 +121,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/aengste-und-phobien/', 
                     diamondPosition: 2,
                     image: { 
-                        src: '/uploads/fears.avif', 
+                        src: 'src/assets/uploads/fears.avif', 
                         alt: '',
                     },
                     thumb: { 
@@ -135,7 +135,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/abhaengigkeit/', 
                     diamondPosition: 2,
                     image: { 
-                        src: '/uploads/cigarette.avif', 
+                        src: 'src/assets/uploads/cigarette.avif', 
                         alt: '',
                     },
                     thumb: { 
@@ -148,7 +148,7 @@ const siteConfig: SiteConfig = {
                             longText: 'Rauchen durch Hypnose aufgeben',
                             href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/', 
                             image: { 
-                                src: '/uploads/cigarette.avif', 
+                                src: 'src/assets/uploads/cigarette.avif', 
                                 alt: '',
                              }
                         },
@@ -169,7 +169,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/ernaehrung/', 
                     diamondPosition: 2,
                     image: { 
-                        src: '/uploads/food.avif', 
+                        src: 'src/assets/uploads/food.avif', 
                         alt: '',
                     },
                     thumb: { 
@@ -183,7 +183,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/stress-burnout-und-depression/', 
                     diamondPosition: 2,
                     image: { 
-                        src: '/uploads/depression.avif', 
+                        src: 'src/assets/uploads/depression.avif', 
                         alt: '',
                     },
                     thumb: { 
@@ -197,7 +197,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/selbstvertrauen/', 
                     diamondPosition: 2,
                     image: { 
-                        src: '/uploads/glowing-blocks.avif', 
+                        src: 'src/assets/uploads/glowing-blocks.avif', 
                         alt: '',
                     },
                     thumb: { 
@@ -211,7 +211,7 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/schlafstoerungen/',
                     diamondPosition: 2,
                     image: { 
-                        src: '/uploads/sleep.avif', 
+                        src: 'src/assets/uploads/sleep.avif', 
                         alt: '',
                     },
                     thumb: { 

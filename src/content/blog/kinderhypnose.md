@@ -6,7 +6,7 @@ tags:
   - Kinderhypnose
 seo:
   image:
-    src: /uploads/child.avif
+    src: src/assets/uploads/child.avif
 ---
 
 Am Freitag, 20. September, erfahren wir, wie eine Kinderhypnose-Sitzung ablaufen kann. Voller Vorfreude und Spannung warte ich auf dieses Modul. Als ehemalige Lehrerin und Mutter dreier Kinder liegt mir das Wohl der Kinder am Herzen. Und auch das Wohl der Erwachsenen, welche die Kinder begleiten. Ich weiss um die Sorge, die auftreten kann, wenn ein Kind Blockaden oder Ängste hat. Wenn es gerade nicht fliesst. Ich weiss auch, dass es Mut braucht, um Hilfe zu bitten. Die Gefahr besteht, dass man an sich zweifelt, ein schlechtes Gewissen hat, die "Schuld" für die Ängste der Kinder auf sich nimmt.

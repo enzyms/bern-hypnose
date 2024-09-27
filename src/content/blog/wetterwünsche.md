@@ -6,8 +6,9 @@ tags:
   - Wohlbefinden
 seo:
   image:
-    src: /uploads/flowers(1).png
+    src: src/assets/uploads/flowers(1).png
 ---
+
 Gerade eben war ich joggen. Das Wetter: ein wunderbarer Mix aus Sonne, Wolken und Wind. Das pure Leben! Dies hat ich auf den Gedanken gebracht, dir einige Wünsche zukommen zu lassen.
 
 Ich wünsche dir Regen, wenn dir danach ist, zu weinen und die Trauer zuzulassen. Wie an einem verregneten Tag, eingekuschelt in eine wohlig-warme Decke, deinen Gedanken nachhängend und die Melancholie begrüssend.

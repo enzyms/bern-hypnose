@@ -7,7 +7,7 @@ tags:
   - Hypnose
 seo:
   image:
-    src: /uploads/landscape5.avif
+    src: src/assets/uploads/landscape5.avif
 ---
 
 ## Neue Erfahrung

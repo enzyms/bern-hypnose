@@ -5,7 +5,7 @@ excerpt: Warum tut es manchmal weh, sie selbst anzunehmen? Doch was sind die
 publishDate: 2024-08-25T13:22:00.000Z
 seo:
   image:
-    src: /uploads/chrystal.png
+    src: src/assets/uploads/chrystal.png
     alt: Sich annehmen
 tags:
   - Wohlbefinden

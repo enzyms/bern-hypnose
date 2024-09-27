@@ -4,7 +4,7 @@ excerpt: 'Ein bekannter aber oftmals ungebetener Gast: die Trauer.'
 publishDate: 2024-09-11T14:52:00.000Z
 seo:
   image:
-    src: /uploads/forest.avif
+    src: src/assets/uploads/forest.avif
 tags:
   - Trauer
 ---

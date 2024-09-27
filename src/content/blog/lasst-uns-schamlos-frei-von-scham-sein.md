@@ -5,7 +5,7 @@ publishDate: 2024-09-13T10:57:00.000Z
 seo:
   image:
     alt: ''
-    src: /uploads/stairs2.avif
+    src: src/assets/uploads/stairs2.avif
 tags:
   - Ängste
   - Zweifel

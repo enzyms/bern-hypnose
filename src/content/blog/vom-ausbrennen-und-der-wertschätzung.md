@@ -5,7 +5,7 @@ excerpt: Manchmal fürchte ich mich vor einem Flächenbrand. Wie können wir die
 publishDate: 2024-09-03T09:11:00.000Z
 seo:
   image:
-    src: /uploads/space.png
+    src: src/assets/uploads/space.png
 tags:
   - Selbstreflexion
 ---

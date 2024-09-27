@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArrowLeft from '../icons/ArrowLeft.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -20,7 +21,7 @@ const { title, seo, description, backlink } = page.data;
 const { Content } = await page.render();
 ---
 
-<BaseLayout title={title} description={description} image={seo?.image}>
+<BaseLayout title={title} description={description}>
     <article class="mb-16">
         <header class="mb-8 relative">
             {
@@ -32,6 +33,7 @@ const { Content } = await page.render();
                 )
             }
             <h1 class="text-balance">{title}</h1>
+            <Image src={seo?.image.src} class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg" alt="" />
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />

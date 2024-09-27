@@ -5,7 +5,7 @@ excerpt: Mit Hokuspokus hat therapeutische Hypnose nichts zu tun. Mit ein wenig
 publishDate: 2024-09-14T07:37:00.000Z
 seo:
   image:
-    src: /uploads/giant crystals.avif
+    src: src/assets/uploads/giant crystals.avif
 tags:
   - Hypnose
 ---

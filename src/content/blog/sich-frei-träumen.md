@@ -4,7 +4,7 @@ excerpt: Verdienen wir es nicht alle, Träume zu haben?
 publishDate: 2024-09-05T09:12:00.000Z
 seo:
   image:
-    src: /uploads/bird1.avif
+    src: src/assets/uploads/bird1.avif
 tags:
   - Wohlbefinden
   - Sport

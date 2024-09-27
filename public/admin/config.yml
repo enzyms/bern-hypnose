@@ -2,8 +2,8 @@ backend:
     name: git-gateway
     branch: main # The branch where Decap CMS will push changes
 
-media_folder: 'public/uploads' # Where uploaded media files are stored in your repository
-public_folder: '/uploads' # Public path to the media files
+media_folder: 'src/assets/uploads' # Where uploaded media files are stored in your repository
+public_folder: 'src/assets/uploads' # Public path to the media files
 publish_mode: editorial_workflow # Enable save drafts and publish posts
 
 collections:

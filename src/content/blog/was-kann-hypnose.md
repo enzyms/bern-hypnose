@@ -5,7 +5,7 @@ excerpt: Viele Menschen haben mich gefragt, wann Hypnose helfen kann. Hier
 publishDate: 2024-08-18T13:11:00.000Z
 seo:
   image:
-    src: /uploads/thinking.png
+    src: src/assets/uploads/thinking.png
     alt: Was kann Hypnose?
 tags:
   - Trauer

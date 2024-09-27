@@ -4,7 +4,7 @@ excerpt: Hypnose kann vieles - vorausgesetzt...
 publishDate: 2024-09-02T09:31:00.000Z
 seo:
   image:
-    src: /uploads/person-looking-at-the-sun.avif
+    src: src/assets/uploads/person-looking-at-the-sun.avif
     alt: Die Wirkung von Hypnose
 ---
 

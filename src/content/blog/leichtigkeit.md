@@ -5,7 +5,7 @@ excerpt: Wünschst du dir, dich leicht zu fühlen und frei von unangenehmen
 publishDate: 2024-09-08T17:23:00.000Z
 seo:
   image:
-    src: /uploads/fear-of-dogs.avif
+    src: src/assets/uploads/fear-of-dogs.avif
 tags:
   - Wohlbefinden
 ---
