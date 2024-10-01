@@ -10,7 +10,7 @@ const { href, image, imageWidth, title, ...props } = Astro.props;
     >
     </div>
     <div class="card__image">
-        <Image src={image} alt={title} width={imageWidth ?? null} class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg" />
+        <Image src={image} alt="" width={imageWidth ?? null} class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg" />
     </div>
     <h3 class="card__title">{title}</h3>
 </a>
