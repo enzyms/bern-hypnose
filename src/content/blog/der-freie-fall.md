@@ -4,9 +4,8 @@ excerpt: Wenn sich Angst und Freude abwechseln.
 publishDate: 2024-09-16T09:18:00.000Z
 tags:
   - Ängste
-seo:
-  image:
-    src: src/assets/uploads/pain-free.avif
+image:
+  src: src/assets/uploads/pain-free.png
 ---
 
 Vielleicht hast du auf dein Bauchgefühl gehört und dich beruflich umorientiert. Das braucht Mut. Vielleicht hat sich deine familiäre Situation verändert, entweder, weil es deine Entscheidung war oder weil jemand anderes die Entscheidung getroffen hat. Beides durchzustehen, verlangt Mut. Vielleicht hast du öfters Sorgen um deine Kinder oder benötigst sehr viel Geduld und Nerven in der Erziehung. Hier dranzubleiben, braucht Mut. Vielleicht fühlst du dich einsam, traurig, entmutigt, kraftlos. Das anzuerkennen benötigt Mut. Vielleicht bist du gekränkt oder frustriert, dies anzusprechen braucht Mut. Vielleicht benötigst du Hilfe. Darum zu bitten, verlangt Mut. Vielleicht möchtest du dein Leben anders leben als bis anhin und fürchtest dich vor den Reaktionen deines Umfeldes. Du tust es ohnehin - und das erfordert Mut.

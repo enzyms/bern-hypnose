@@ -4,9 +4,10 @@ excerpt: Und warum der Begriff 'Kinderhypnose' eigentlich gar nicht passt.
 publishDate: 2024-09-21T09:51:00.000Z
 tags:
   - Kinderhypnose
-seo:
-  image:
-    src: src/assets/uploads/elephants.avif
+
+image:
+  src: src/assets/uploads/blocks.png
+  alt: ''
 ---
 
 ## Zu einfach, um wahr zu sein oder sehr herausfordernd?

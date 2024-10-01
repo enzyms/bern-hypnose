@@ -1,17 +1,17 @@
 ---
 title: Ängste und Phobien mit Hypnose überwinden
 description: Ängste und Phobien überwinden? Hypnose hilft dir, dich deinen Ängsten zu stellen und freier zu leben.
-seo:
-  image:
-    src: ../../../assets/uploads/fears.png
-    alt: Ängste und Phobien mit Hypnose überwinden
+
+image:
+  src: '@assets/uploads/fears.png'
+  alt: Ängste und Phobien mit Hypnose überwinden
 
 backlink:
   title: Hypnosetherapie
   url: /hypnosetherapie/
 ---
 
-import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro';
+import SubPages from '@components/SubPages.astro';
 
 <div class="relative">
 
@@ -60,4 +60,5 @@ import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro
 
 <hr class="border-gray-400" />
 <h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
-<SubPagesHypnotherapy exclude="/hypnosetherapie/aengste-und-phobien/" columns={3} />
+<SubPages id="hypnotherapy" exclude="/hypnosetherapie/aengste-und-phobien/" columns={3} />
+

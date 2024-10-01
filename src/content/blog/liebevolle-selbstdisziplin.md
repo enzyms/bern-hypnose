@@ -4,9 +4,8 @@ excerpt: Ich finde ja, dass der Begriff 'Selbstdisziplin' mehr Glitzer verdient.
 publishDate: 2024-09-21T08:47:00.000Z
 tags:
   - Wohlbefinden
-seo:
-  image:
-    src: src/assets/uploads/city2.avif
+image:
+  src: src/assets/uploads/city2.png
 ---
 
 ## Was tut dir gut?

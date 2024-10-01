@@ -5,9 +5,8 @@ excerpt: Viele Menschen sind interessiert an Hypnose, ängstigen sich aber davor
 publishDate: 2024-09-19T17:03:00.000Z
 tags:
   - Hypnose
-seo:
-  image:
-    src: src/assets/uploads/landscape5.avif
+image:
+  src: src/assets/uploads/landscape5.png
 ---
 
 ## Neue Erfahrung

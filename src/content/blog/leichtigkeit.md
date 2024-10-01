@@ -3,9 +3,8 @@ title: Leichtigkeit
 excerpt: Wünschst du dir, dich leicht zu fühlen und frei von unangenehmen
   Angewohnheiten oder Ängsten zu sein?
 publishDate: 2024-09-08T17:23:00.000Z
-seo:
-  image:
-    src: src/assets/uploads/fear-of-dogs.avif
+image:
+  src: src/assets/uploads/fear-of-dogs.png
 tags:
   - Wohlbefinden
 ---

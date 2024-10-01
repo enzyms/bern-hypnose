@@ -1,27 +1,15 @@
 ---
 title: Angebote
 description: Entdecke meine Hypnose-Angebote in Bern. Individuelle Sitzungen gegen Stress, Ängste und mehr. Erstsitzungen 90 Min., Folgesitzungen 60 Min.
-seo:
-  title: Angebote
-  image:
-    src: '/janine-aerni.jpg'
-    alt: Janine Aerni - coaching
+
+image:
+  src: '@assets/images/praxis.png'
+  alt: Janine Aerni - Hypnosetherapie Praxis
+
 backlink:
   title: Home
   url: /
 ---
-
-<picture class="overflow-hidden rounded-xl">
-<img
-  srcset="../praxis-400w.avif 400w, ../praxis-600w.avif 600w, ../praxis-800w.avif 800w"
-  sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (min-width: 601px) 800px"
-  src="../praxis-800w.avif"
-  alt="Hypnose Praxis – Janine Aerni"
-  width="4032"
-  height="3024"
-  loading="lazy"
-/>
-</picture>
 
 Eine Erstsitzung dauert ungefähr 90 Minuten. Plane circa eine Stunde für eine allfällige Folgesitzung ein.
 

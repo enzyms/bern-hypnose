@@ -6,9 +6,8 @@ tags:
   - Selbstreflexion
   - Wohlbefinden
   - Ängste
-seo:
-  image:
-    src: src/assets/uploads/giant crystals.avif
+image:
+  src: src/assets/uploads/giant crystals.png
 ---
 
 ## Was hält dich zurück?

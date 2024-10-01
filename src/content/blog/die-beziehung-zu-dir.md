@@ -2,9 +2,8 @@
 title: Die Beziehung zu dir
 excerpt: Floskel oder Lebenshilfe?
 publishDate: 2024-09-09T11:04:00.000Z
-seo:
-  image:
-    src: src/assets/uploads/introspection.avif
+image:
+  src: src/assets/uploads/introspection.png
 ---
 
 Früher empfand ich solche Sätze als nervig und egoistisch:

@@ -1,18 +1,17 @@
 ---
 title: Rauchstopp mit Hypnose
 description: Mit Hypnose das Rauchen aufgeben? Ich helfe dir, dein Ziel zu erreichen.
-seo:
-  image:
-    src: src/assets/uploads/cigarette.avif
-    alt: Hypnose gegen Rauchen
+
+image:
+  src: '@assets/uploads/cigarette.png'
+  alt: Hypnose gegen Rauchen
 
 backlink:
   title: Abhängigkeiten
   url: /hypnosetherapie/abhaengigkeit/
 ---
 
-<img class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg" src="src/assets/uploads/cigarette.avif" alt="Rauchen aufhören mit Hypnose" />
-
+import SubPages from '@components/SubPages.astro';
 
 ## Wie funktioniert Raucherentwöhnung mit Hypnose?
 
@@ -73,3 +72,8 @@ wird aktuell nicht von der Krankenkasse übernommen.
   <span>Termin buchen</span>
 </a>
 </div>
+
+<hr />
+
+## Weitere Abhängigkeiten mit Hypnosetherapie behandeln
+<SubPages id="dependencies" exclude="/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/" columns={2} />

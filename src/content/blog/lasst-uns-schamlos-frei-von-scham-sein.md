@@ -2,10 +2,8 @@
 title: Lasst uns unnötige Scham ablegen!
 excerpt: Wofür schämen wir uns? Und wozu eigentlich?
 publishDate: 2024-09-13T10:57:00.000Z
-seo:
-  image:
-    alt: ''
-    src: src/assets/uploads/stairs2.avif
+image:
+  src: src/assets/uploads/stairs2.png
 tags:
   - Ängste
   - Zweifel

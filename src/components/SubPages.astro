@@ -1,18 +1,57 @@
 ---
 import Card from './Card.astro';
 import siteConfig from '../data/site-config';
+
+type Props = {
+    id: string;
+    exclude?: string[];
+    columns?: number;
+};
+
+const { id, exclude = [], columns = 2 } = Astro.props;
+
+// Recursive function to find the item by id
+function findItemById(items, id) {
+    for (const item of items) {
+        if (item.id === id) {
+            return item;
+        }
+        if (item.subPages) {
+            const found = findItemById(item.subPages, id);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+// Find the parent item using the recursive function
+const parentItem = findItemById(siteConfig.headerNavLinks, id);
+
+// Retrieve the immediate `subPages` from the matched item
+let subPages = parentItem?.subPages || [];
+
+// Exclude subPages based on `exclude` prop
+if (exclude.length > 0) {
+    subPages = subPages.filter((subPage) => !exclude.includes(subPage.href));
+}
+
+// Use the provided logic for grid columns
+const gridColumnsClass = columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3';
+
+// Set the grid classes
+const gridClasses = `grid ${gridColumnsClass} gap-4 not-prose`;
 ---
 
-<nav class="py-4 md:py-6">
-    {
-        siteConfig.headerNavLinks?.[1]?.subLinks?.length > 0 && (
-            <ul class="grid xs:grid-cols-2 gap-4 not-prose">
-                {siteConfig.headerNavLinks[1].subLinks.map((subLink) => (
-                    <li key={subLink.href}>
-                        <Card href={subLink.href} image={subLink.image} title={subLink.text} />
+{
+    subPages.length > 0 && (
+        <nav class="py-4 md:py-6">
+            <ul class={gridClasses}>
+                {subPages.map((subPage) => (
+                    <li key={subPage.href}>
+                        <Card href={subPage.href} image={subPage.image} title={subPage.text} />
                     </li>
                 ))}
             </ul>
-        )
-    }
-</nav>
+        </nav>
+    )
+}

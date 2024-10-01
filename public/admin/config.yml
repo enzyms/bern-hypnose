@@ -33,23 +33,18 @@ collections:
             required: false
             allow_add: true
           - label: 'Image'
-            name: 'seo'
+            name: 'image'
             widget: 'object'
             required: false
             fields:
-                - label: 'Image'
-                  name: 'image'
-                  widget: 'object'
+                - label: 'Image Src'
+                  name: 'src'
+                  widget: 'image'
                   required: false
-                  fields:
-                      - label: 'Image Src'
-                        name: 'src'
-                        widget: 'image'
-                        required: false
-                      - label: 'Alt Text'
-                        name: 'alt'
-                        widget: 'string'
-                        required: false
+                - label: 'Alt Text'
+                  name: 'alt'
+                  widget: 'string'
+                  required: false
           - label: 'Body'
             name: 'body'
             widget: 'markdown'

@@ -2,10 +2,9 @@
 title: Gönnst du dir das Glück?
 excerpt: Ist es dir auch schon schwergefallen, die schönen Seiten des Lebens anzunehmen?
 publishDate: 2024-08-22T09:27:00.000Z
-seo:
-  image:
-    src: src/assets/uploads/flowers-field.png
-    alt: Gönnst du dir das Glück?
+image:
+  src: src/assets/uploads/flowers-field.png
+  alt: Gönnst du dir das Glück?
 ---
 
 Da denkt man, dass man gerne glücklich sei, aber hoppla- so einfach ist das ja gar nicht.
