@@ -2,10 +2,9 @@
 title: Selbstzweifel
 excerpt: Kennst du? Dann lies gern weiter!
 publishDate: 2024-08-18T10:44:00.000Z
-seo:
-  image:
-    src: /uploads/self-doubt.png
-    alt: Selbstzweifel
+image:
+  src: src/assets/uploads/self-doubt.png
+  alt: Selbstzweifel
 tags:
   - Ängste
   - Zweifel

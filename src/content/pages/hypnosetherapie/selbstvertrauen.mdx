@@ -1,21 +1,19 @@
 ---
 title: Selbstvertrauen durch Hypnose steigern
 description: Selbstvertrauen steigern? Hypnose hilft dir, gelassener zu sprechen und dich stärker zu fühlen. Erlebe, wie Hypnose dein Selbstbewusstsein im Alltag stärkt.
-seo:
-  image:
-    src: /uploads/glowing-blocks.avif
-    alt: Selbstvertrauen durch Hypnose steigern
+
+image:
+  src: '@assets/uploads/glowing-blocks.png'
+  alt: Selbstvertrauen durch Hypnose steigern
 
 backlink:
   title: Hypnosetherapie
   url: /hypnosetherapie/
 ---
 
-import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro';
+import SubPages from '@components/SubPages.astro';
 
 <div class="relative">
-
-<img class="w-full h-64 object-cover object-center sm:h-96" src="/uploads/glowing-blocks.avif" alt="Rauchen aufhören mit Hypnose" />
 
 <p>
   Wünschst du dir, entspannter deine Meinung vertreten zu können, gelassener vor Menschen zu sprechen, dich im Alltag stärker und in deiner Kraft zu fühlen?
@@ -41,4 +39,4 @@ import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro
 
 <hr class="border-gray-400" />
 <h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
-<SubPagesHypnotherapy exclude="/hypnosetherapie/selbstvertrauen/" columns={3} />
+<SubPages id="hypnotherapy" exclude="/hypnosetherapie/selbstvertrauen/" columns={3} />

@@ -2,10 +2,9 @@
 title: Die Wirkung von Hypnose
 excerpt: Hypnose kann vieles - vorausgesetzt...
 publishDate: 2024-09-02T09:31:00.000Z
-seo:
-  image:
-    src: /uploads/person-looking-at-the-sun.avif
-    alt: Die Wirkung von Hypnose
+image:
+  src: src/assets/uploads/person-looking-at-the-sun.png
+  alt: Die Wirkung von Hypnose
 ---
 
 "Aber dann ist Hypnose ja fast zu schön, um wahr zu sein?" hat ein Freund von mir angemerkt, als ich ihm von der Kraft der Hypnose erzählt habe.

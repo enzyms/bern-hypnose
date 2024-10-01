@@ -1,21 +1,19 @@
 ---
 title: Stress, Burnout und Depression mit Hypnose behandeln
 description: Stress, Burnout und Depression überwinden? Hypnose hilft dir, gelassener zu werden und Denkmuster zu durchbrechen. Finde mit Hypnose zu mehr Freude und Leichtigkeit.
-seo:
-  image:
-    src: /uploads/depression.avif
-    alt: Stress, Burnout und Depression überwinden
+
+image:
+  src: '@assets/uploads/depression.png'
+  alt: Stress, Burnout und Depression überwinden
 
 backlink:
   title: Hypnosetherapie
   url: /hypnosetherapie/
 ---
 
-import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro';
+import SubPages from '@components/SubPages.astro';
 
 <div class="relative">
-
-<img class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg" src="/uploads/depression.avif" alt="Rauchen aufhören mit Hypnose" />
 
 <p>
   Wünschst du dir, aus der Überforderung herauszufinden, dich gelassener und sorgloser zu fühlen? Du möchtest gerne mehr Freude verspüren und Denkmuster oder
@@ -40,4 +38,4 @@ import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro
 
 <hr class="border-gray-400" />
 <h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
-<SubPagesHypnotherapy exclude="/hypnosetherapie/stress-burnout-und-depression/" columns={3} />
+<SubPages id="hypnotherapy" exclude="/hypnosetherapie/stress-burnout-und-depression/" columns={3} />

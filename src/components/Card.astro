@@ -1,7 +1,5 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-
-type Props = HTMLAttributes<'a'>;
+import { Image } from 'astro:assets';
 
 const { href, image, title, ...props } = Astro.props;
 ---
@@ -12,7 +10,7 @@ const { href, image, title, ...props } = Astro.props;
     >
     </div>
     <div class="card__image">
-        <img src={image.src} alt={image.alt} />
+        <Image src={image} alt={title} class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg" />
     </div>
     <h3 class="card__title">{title}</h3>
 </a>

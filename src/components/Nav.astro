@@ -31,12 +31,12 @@ const navLinks = siteConfig.headerNavLinks || [];
                             >
                                 {link.text}
                             </NavLink>
-                            {link.subLinks && link.subLinks.length > 0 && (
+                            {link.subPages && link.subPages.length > 0 && (
                                 <ul class="sub-menu ">
-                                    {link.subLinks.map((subLink) => (
-                                        <li key={subLink.href}>
-                                            <NavLink class="block py-2 px-4" href={subLink.href}>
-                                                {subLink.text}
+                                    {link.subPages.map((subPage) => (
+                                        <li key={subPage.href}>
+                                            <NavLink class="block py-2 px-4" href={subPage.href}>
+                                                {subPage.text}
                                             </NavLink>
                                         </li>
                                     ))}

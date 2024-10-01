@@ -1,38 +1,48 @@
 import { defineCollection, z } from 'astro:content';
 
 const seoSchema = z.object({
-    image: z
-        .object({
-            src: z.string().optional(),  
-            alt: z.string().optional()   
-        })
-        .optional(),                    
+  image: z.object({
+    src: z.string(),  // This expects `image` to be an object with a `src` string field
+  }).optional(),
+  alt: z.string().optional(),
 });
 
 const backlinkSchema = z.object({
-    title: z.string().optional(),  
-    url: z.string().optional()                 
+  title: z.string().optional(),
+  url: z.string().optional(),
 });
 
 const blog = defineCollection({
-    schema: z.object({
-        title: z.string(),
-        excerpt: z.string().optional(),
-        publishDate: z.coerce.date(),
-        updatedDate: z.coerce.date().optional(),
-        isFeatured: z.boolean().default(false),
-        tags: z.array(z.string()).default([]),
-        seo: seoSchema.optional(),
-    })
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    excerpt: z.string().optional(),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    isFeatured: z.boolean().default(false),
+    tags: z.array(z.string()).default([]),
+    image: z.object({
+      src: image().refine((img) => img.width >= 600, {
+        message: 'Cover image must be at least 600 pixels wide!',
+      }),
+      alt: z.string().optional(),
+    }).optional(),
+  })
 });
 
 const pages = defineCollection({
-    schema: z.object({
-        title: z.string(),
-        description: z.string().optional(),
-        seo: seoSchema.optional(),
-        backlink: backlinkSchema.optional(),
-    })
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    backlink: backlinkSchema.optional(),
+    image: z.object({
+      src: image().refine((img) => img.width >= 600, {
+        message: 'Cover image must be at least 600 pixels wide!',
+      }),
+      alt: z.string().optional(),
+    }).optional(),
+    id: z.string().optional(),
+  })
 });
+
 
 export const collections = { blog, pages };

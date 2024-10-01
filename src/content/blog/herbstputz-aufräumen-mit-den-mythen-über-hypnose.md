@@ -3,9 +3,8 @@ title: Herbstputz - aufräumen mit den Mythen über Hypnose
 excerpt: Mit Hokuspokus hat therapeutische Hypnose nichts zu tun. Mit ein wenig
   Magie vielleicht schon.
 publishDate: 2024-09-14T07:37:00.000Z
-seo:
-  image:
-    src: /uploads/giant crystals.avif
+image:
+  src: src/assets/uploads/giant crystals.png
 tags:
   - Hypnose
 ---

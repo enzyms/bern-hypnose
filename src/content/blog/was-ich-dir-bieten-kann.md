@@ -2,9 +2,8 @@
 title: Was ich dir bieten kann
 excerpt: Was mir am Herzen liegt und ich dir gerne geben möchte
 publishDate: 2024-09-11T14:35:00.000Z
-seo:
-  image:
-    src: /uploads/landscape3.avif
+image:
+  src: src/assets/uploads/landscape3.png
 tags:
   - Trauer
   - Ängste
