@@ -8,7 +8,7 @@ backlink:
   
 ---
 
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import JanineFace from '@assets/images/janine-aerni-face.jpg';
 
 <p>Meine Praxis befindet sich an der Eigerstrasse 56 in Bern. <br />
@@ -28,11 +28,17 @@ Ich bin von Montag bis Freitag für dich da.
 <hr class="border-gray-400" />
 
 <div class="flex gap-4 items-center">
-  <Picture src={JanineFace} quality={90} width={224} height={224} class="w-32 h-32 object-cover object-center rounded-full shadow-lg" alt="Janine Aerni" />
-    
-    <address class="text-main not-prose not-italic">
-        <a data-umami-event="Open Google Map" href="https://www.google.com/maps/place/Hypnosetherapie+Janine+Aerni/@46.939631,7.4338689,17z/data=!3m1!4b1!4m6!3m5!1s0x478e3919098aba6d:0xc134d9016ead528c!8m2!3d46.939631!4d7.4364438!16s%2Fg%2F11w9gt4g0k?entry=ttu" target="_blank" class="link" >Eigerstrasse 56 – 3007 Bern</a> <br />
-        E-Mail: <a class="link" href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br />
-        Telefon: <a class="link" href="tel:079 833 03 85">079 833 03 85</a> <br />
-    </address>
+  <Image
+      width={112}
+      src={JanineFace}
+      class="w-32 h-32 object-cover object-center rounded-full shadow-lg"
+      alt="Janine Aerni"
+      widths={[112, 224]}
+      sizes="112px"
+  />  
+  <address class="text-main not-prose not-italic">
+      <a data-umami-event="Open Google Map" href="https://www.google.com/maps/place/Hypnosetherapie+Janine+Aerni/@46.939631,7.4338689,17z/data=!3m1!4b1!4m6!3m5!1s0x478e3919098aba6d:0xc134d9016ead528c!8m2!3d46.939631!4d7.4364438!16s%2Fg%2F11w9gt4g0k?entry=ttu" target="_blank" class="link" >Eigerstrasse 56 – 3007 Bern</a> <br />
+      E-Mail: <a class="link" href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a> <br />
+      Telefon: <a class="link" href="tel:079 833 03 85">079 833 03 85</a> <br />
+  </address>
 </div>

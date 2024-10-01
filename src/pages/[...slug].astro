@@ -33,7 +33,18 @@ const { Content } = await page.render();
                 )
             }
             <h1 class="text-balance mb-8">{title}</h1>
-            {image && <Image src={image.src} class="w-full rounded-xl shadow-lg" alt={image.alt ?? ''} />}
+            {
+                image && (
+                    <Image
+                        width={704}
+                        src={image.src}
+                        class="w-full rounded-xl shadow-lg"
+                        alt={image.alt ?? ''}
+                        widths={[360, 520, 704]}
+                        sizes="(max-width: 768px) calc(100vw - 40px), 704px"
+                    />
+                )
+            }
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />

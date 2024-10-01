@@ -1,6 +1,6 @@
 ---
 import { marked } from 'marked';
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import siteConfig from '../data/site-config';
 import JanineFace from '@assets/images/janine-aerni-face.jpg';
 
@@ -12,13 +12,13 @@ const hero = siteConfig.hero;
         <header class="w-full justify-self-center justify-center flex flex-col gap-8 mb-20">
             <h1 class="text-balance text-5xl xs:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>
             <div class="flex gap-4 md:gap-6 items-center">
-                <Picture
+                <Image
+                    width={112}
                     src={JanineFace}
-                    quality={90}
-                    width={224}
-                    height={224}
                     class="w-32 h-32 object-cover object-center rounded-full shadow-lg"
                     alt="Janine Aerni"
+                    widths={[112, 224]}
+                    sizes="112px"
                 />
 
                 <p class="font-bold text-main text-balance">

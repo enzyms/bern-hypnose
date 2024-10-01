@@ -53,7 +53,18 @@ const { Content } = await post.render();
                 }
             </div>
             <div class="my-8 rounded-xl overflow-hidden">
-                <Image src={image.src} alt={image.alt ? image.alt : title} class="w-full h-64 object-cover object-center sm:h-96" />
+                {
+                    image && (
+                        <Image
+                            width={704}
+                            src={image.src}
+                            class="w-full h-64 object-cover object-center sm:h-96"
+                            alt={image.alt ?? ''}
+                            widths={[360, 520, 704]}
+                            sizes="(max-width: 768px) calc(100vw - 40px), 704px"
+                        />
+                    )
+                }
             </div>
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
