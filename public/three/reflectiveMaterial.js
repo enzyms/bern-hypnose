@@ -47,7 +47,7 @@ export default function createReflectiveMaterial(onMaterialReady, THREE) {
 
     // Load the albedo texture
     imageBitmapLoader.load(
-        '/three/texture.png',
+        '/three/texture.avif',
         function (imageBitmap) {
             albedoTexture = new Texture(imageBitmap);
             albedoTexture.needsUpdate = true;
@@ -62,11 +62,11 @@ export default function createReflectiveMaterial(onMaterialReady, THREE) {
     // Load the cube environment map faces
     const cubeUrls = [
         '/three/environnement/posx.avif',
-        '/three/environnement/negx.avif',
+        '/three/environnement/posx.avif',
         '/three/environnement/posy.avif',
-        '/three/environnement/negy.avif',
+        '/three/environnement/posy.avif',
         '/three/environnement/posz.avif',
-        '/three/environnement/negz.avif'
+        '/three/environnement/posz.avif'
     ];
 
     cubeUrls.forEach((url, index) => {

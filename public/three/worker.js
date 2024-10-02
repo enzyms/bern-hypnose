@@ -1,7 +1,7 @@
 // initWorker.js
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js';
-import { gsap } from '/three/gsap/all.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.min.js';
+import { gsap } from '/three/gsap/gsap-core-compressed.js';
 import createReflectiveMaterial from '/three/reflectiveMaterial.js';
 import createBackgroundShaderMaterial from '/three/backgroundShader.js';
 
