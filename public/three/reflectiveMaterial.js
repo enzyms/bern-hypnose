@@ -61,12 +61,12 @@ export default function createReflectiveMaterial(onMaterialReady, THREE) {
 
     // Load the cube environment map faces
     const cubeUrls = [
-        '/three/environnement/posx.avif',
-        '/three/environnement/posx.avif',
-        '/three/environnement/posy.avif',
-        '/three/environnement/posy.avif',
-        '/three/environnement/posz.avif',
-        '/three/environnement/posz.avif'
+        '/three/environnement/posx.jpg',
+        '/three/environnement/posx.jpg',
+        '/three/environnement/posy.jpg',
+        '/three/environnement/posy.jpg',
+        '/three/environnement/posz.jpg',
+        '/three/environnement/posz.jpg'
     ];
 
     cubeUrls.forEach((url, index) => {
