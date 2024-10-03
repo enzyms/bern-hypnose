@@ -15,8 +15,6 @@ Eine Erstsitzung dauert ungefähr 90 Minuten. Plane circa eine Stunde für eine 
 
 Nach abgeschlossener Ausbildung verrechne ich CHF 150.- pro Sitzung für Erwachsene, CHF 120.– für Kinder.
 
-Zurzeit geniesse ich die Ausbildung zur Hypnosetherapeutin bei Gabriel Palacios. Bis ich abgeschlossen habe, berechne ich 50%.
-
 Du darfst gerne bar, per Twint oder auf Rechnung bezahlen.
 Die Kosten werden nicht von der Krankenkasse übernommen.
 
