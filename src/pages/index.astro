@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import LastPosts from '../components/LastPosts.astro';
-import SubPagesHypnotherapy from '../components/SubPagesHypnotherapy.astro';
+import SubPages from '../components/SubPages.astro';
 import Testimonials from '../components/Testimonials.astro';
 import WhatIsHypnose from '../components/WhatIsHypnose.astro';
 import siteConfig from '../data/site-config';
@@ -11,7 +11,6 @@ import { sortItemsByDateDesc } from '../utils/data-utils';
 
 const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
 const lastPosts = posts.slice(0, 2);
-console.log(lastPosts);
 ---
 
 <BaseLayout description={siteConfig.description} image={siteConfig.imageHomepage}>
@@ -19,7 +18,7 @@ console.log(lastPosts);
     <div class="prose sm:prose-lg text-main">
         <h2>Was kann Hypnose für dich tun?</h2>
     </div>
-    <SubPagesHypnotherapy columns={3} />
+    <SubPages id="hypnotherapy" columns={3} />
     <WhatIsHypnose />
     <hr class="border-t border-gray-400 mt-12" />
     <Testimonials />

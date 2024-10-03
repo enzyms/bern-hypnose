@@ -2,14 +2,14 @@
 title: Gönnst du dir das Glück?
 excerpt: Ist es dir auch schon schwergefallen, die schönen Seiten des Lebens anzunehmen?
 publishDate: 2024-08-22T09:27:00.000Z
-seo:
-  image:
-    src: /uploads/flowers-field.png
-    alt: Gönnst du dir das Glück?
+image:
+  src: src/assets/uploads/flowers-field.png
+  alt: Gönnst du dir das Glück?
 ---
+
 Da denkt man, dass man gerne glücklich sei, aber hoppla- so einfach ist das ja gar nicht.
 
-Kann es sein, dass wir uns zwar Glück und Zufriedenheit wünschen, wenn sich aber beides abzeichnet, man sich schwer tut, danach zu greifen? Ist es möglich, dass wir es uns gewohnt sind, in unangenehmen Situationen auszuharren und es uns da bequem eingerichtet haben? In einer Komfortzone, die so komfortabel aber gar nicht ist? 
+Kann es sein, dass wir uns zwar Glück und Zufriedenheit wünschen, wenn sich aber beides abzeichnet, man sich schwer tut, danach zu greifen? Ist es möglich, dass wir es uns gewohnt sind, in unangenehmen Situationen auszuharren und es uns da bequem eingerichtet haben? In einer Komfortzone, die so komfortabel aber gar nicht ist?
 
 Was hindert uns daran, aufzubrechen und uns eine frische, freudige Umgebung zu erschaffen? Sind es Glaubenssätze, die uns sagen, wir hätten etwas Besseres nicht verdient? Ist es die Angst vor Neid und somit Ablehnung? Ist es, weil wir das kurze, aber greifbare Glück dem längerfristigen Glück, das Training erfordert, vorziehen? Eine Mischung aus allem?
 

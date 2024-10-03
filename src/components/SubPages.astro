@@ -1,18 +1,71 @@
 ---
 import Card from './Card.astro';
-import siteConfig from '../data/site-config';
+import siteConfig, { type Link } from '../data/site-config';
+
+type Props = {
+    id: string;
+    exclude?: string[];
+    columns?: number;
+};
+
+const { id, exclude = [], columns = 2 } = Astro.props;
+
+// Recursive function to find the item by id
+function findItemById(items: Link[] | undefined, id: string): any {
+    if (!items) {
+        return null;
+    }
+    for (const item of items) {
+        if (item.id === id) {
+            return item;
+        }
+        if (item.subPages) {
+            const found = findItemById(item.subPages, id);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+const parentItem = findItemById(siteConfig.headerNavLinks, id);
+
+let subPages = parentItem?.subPages || [];
+
+if (exclude.length > 0) {
+    subPages = subPages.filter((subPage: { href: string }) => !exclude.includes(subPage.href));
+}
+
+const gridColumnsClass = columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3';
+const gridClasses = `grid ${gridColumnsClass} gap-4 not-prose`;
+
+const imgWidth = columns === 2 ? 600 : 400;
+
+const imgWidths2cols = [300, 400, 600];
+const imgWidths3cols = [200, 300, 400];
+const imgSizes2cols = '(max-width: 640px) calc(100vw - 40px), (max-width: 768px) calc(50vw - 56px), 352px';
+const imgSizes3cols = '(max-width: 640px) calc(50vw - 56px), (max-width: 768px) calc(33vw - 72px), 230px';
+
+const imgWidths = columns === 2 ? imgWidths2cols : imgWidths3cols;
+const imgSizes = columns === 2 ? imgSizes2cols : imgSizes3cols;
 ---
 
-<nav class="py-4 md:py-6">
-    {
-        siteConfig.headerNavLinks?.[1]?.subLinks?.length > 0 && (
-            <ul class="grid xs:grid-cols-2 gap-4 not-prose">
-                {siteConfig.headerNavLinks[1].subLinks.map((subLink) => (
-                    <li key={subLink.href}>
-                        <Card href={subLink.href} image={subLink.image} title={subLink.text} />
+{
+    subPages.length > 0 && (
+        <nav class="py-4 md:py-6">
+            <ul class={gridClasses}>
+                {subPages.map((subPage: { href: any; image: any; text: any }) => (
+                    <li>
+                        <Card
+                            href={subPage.href}
+                            image={subPage.image}
+                            imageWidth={imgWidth}
+                            imageWidths={imgWidths}
+                            imageSizes={imgSizes}
+                            title={subPage.text}
+                        />
                     </li>
                 ))}
             </ul>
-        )
-    }
-</nav>
+        </nav>
+    )
+}

@@ -8,6 +8,7 @@ import PostPreview from '../../components/PostPreview.astro';
 import ArrowLeft from '../../icons/ArrowLeft.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
@@ -26,11 +27,11 @@ type Props = { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>;
 
 const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props;
-const { title, publishDate, updatedDate, excerpt, tags = [], seo } = post.data;
+const { title, publishDate, updatedDate, excerpt, tags = [], image } = post.data;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={title} description={excerpt} image={seo?.image} pageType="article">
+<BaseLayout title={title} description={excerpt} image={image} pageType="article">
     <article class="mb-16">
         <header class="mb-8 relative">
             <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
@@ -52,7 +53,18 @@ const { Content } = await post.render();
                 }
             </div>
             <div class="my-8 rounded-xl overflow-hidden">
-                {seo?.image && <img class="w-full h-64 object-cover object-center  sm:h-96" src={seo.image.src || ''} alt={seo.image.alt} />}
+                {
+                    image && (
+                        <Image
+                            width={704}
+                            src={image.src}
+                            class="w-full h-64 object-cover object-center sm:h-96"
+                            alt={image.alt ?? ''}
+                            widths={[360, 520, 704]}
+                            sizes="(max-width: 768px) calc(100vw - 40px), 704px"
+                        />
+                    )
+                }
             </div>
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
@@ -94,7 +106,6 @@ const { Content } = await post.render();
     document.addEventListener('astro:page-load', () => {
         const copyUrlButton = document.querySelector('.copy-url-button') as HTMLButtonElement;
         copyUrlButton?.addEventListener('click', async () => {
-            console.log('copying url');
             await copyUrl(copyUrlButton);
         });
 

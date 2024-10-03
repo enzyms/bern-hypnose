@@ -1,20 +1,19 @@
 ---
 title: Schlafstörungen – Besser schlafen mit Hypnose
 description: Schlafstörungen? Hypnose hilft dir, leichter ein- und durchzuschlafen. Finde zur Ruhe und begleite dich auf dem Weg zu erholsamem Schlaf.
-seo:
-  image:
-    src: /uploads/sleep.avif
-    alt: Schlafstörungen beheilen
+
+image:
+  src: '@assets/uploads/sleep.png'
+  alt: Schlafstörungen beheilen
+
 backlink:
   title: Hypnosetherapie
   url: /hypnosetherapie/
 ---
 
-import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro';
+import SubPages from '@components/SubPages.astro';
 
 <div class="relative">
-
-<img class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg" src="/uploads/sleep.avif" alt="Rauchen aufhören mit Hypnose" />
 
 <p>
   Wünschst du dir leichteres Ein- oder Durchschlafen? Kreisen deine Gedanken in der Nacht und du hast Schwierigkeiten, zur Ruhe zu kommen? Ich begleite dich
@@ -40,4 +39,4 @@ import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro
 
 <hr class="border-gray-400" />
 <h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
-<SubPagesHypnotherapy exclude="/hypnosetherapie/schlafstoerungen/" columns={3} />
+<SubPages id="hypnotherapy" exclude="/hypnosetherapie/schlafstoerungen/" columns={3} />

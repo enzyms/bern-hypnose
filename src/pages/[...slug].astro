@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArrowLeft from '../icons/ArrowLeft.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -16,11 +17,11 @@ export async function getStaticPaths() {
 type Props = { page: CollectionEntry<'pages'> };
 
 const { page } = Astro.props;
-const { title, seo, description, backlink } = page.data;
+const { title, image, description, backlink } = page.data;
 const { Content } = await page.render();
 ---
 
-<BaseLayout title={title} description={description} image={seo?.image}>
+<BaseLayout title={title} description={description}>
     <article class="mb-16">
         <header class="mb-8 relative">
             {
@@ -31,7 +32,19 @@ const { Content } = await page.render();
                     </a>
                 )
             }
-            <h1 class="text-balance">{title}</h1>
+            <h1 class="text-balance mb-8">{title}</h1>
+            {
+                image && (
+                    <Image
+                        width={704}
+                        src={image.src}
+                        class="w-full rounded-xl shadow-lg"
+                        alt={image.alt ?? ''}
+                        widths={[360, 520, 704]}
+                        sizes="(max-width: 768px) calc(100vw - 40px), 704px"
+                    />
+                )
+            }
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />

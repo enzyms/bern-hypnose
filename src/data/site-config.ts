@@ -1,3 +1,13 @@
+// Import images statically
+import fearsImage from '@assets/uploads/fears.png';
+import cigaretteImage from '@assets/uploads/cigarette.png';
+import glassImage from '@assets/uploads/glass2.png';
+import foodImage from '@assets/uploads/food.png';
+import depressionImage from '@assets/uploads/depression.png';
+import glowingBlocksImage from '@assets/uploads/glowing-blocks.png';
+import sleepImage from '@assets/uploads/sleep.png';
+
+
 export type Image = {
     src: string;
     alt?: string;
@@ -8,8 +18,11 @@ export type Link = {
     text: string;
     longText?: string;
     href: string;
-    subLinks?: Link[];
+    subPages?: Link[];
     image?: Image;
+    thumb?: Image;
+    diamondPosition?: number;
+    id?: string;
 };
 
 export type Hero = {
@@ -52,12 +65,19 @@ export type SiteConfig = {
 
 const siteConfig: SiteConfig = {
     testimonials: [
+
     {
-      "id": 1,
-      "quote": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser. Ich habe mich während der Sitzung stehts geborgen und sicher gefühlt. Alles in allem eine sehr tolle Erfahrung, die ich nur weiterempfehlen kann.",
-      "author": "Paula B.",
-      "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
-    },
+        "id": 0,
+        "quote": "Die Hypnosesitzung bei Janine Aerni möchte ich deshalb weiter empfehlen weil das Eingehen auf die Klienten mit besonderem Einfühlungsvermögen und Empathie geschieht. Als neurosensitiver Mensch ist mir   Authentizität und individuelle Arbeitsweise besonders wichtig, um mich vertrauensvoll zu öffnen. Das Interesse am Klienten und die  Begeisterung, für die Arbeit sind erfrischend. Das liebevolle Eingehen auf die Menschen unterstützt den Prozess nachhaltig. Ich kann Frau Aerni wärmstens weiterempfehlen.",
+        "author": "Franziska Fiedler",
+        "url": "https://g.co/kgs/2j43d2y"
+      },
+      {
+        "id": 1,
+        "quote": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser. Ich habe mich während der Sitzung stehts geborgen und sicher gefühlt. Alles in allem eine sehr tolle Erfahrung, die ich nur weiterempfehlen kann.",
+        "author": "Paula Bozic",
+        "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
+      },
     {
         "id": 2,
         "quote": "Wähernd eines stressigen Tages hatte ich eine Hypnosesitzung bei Janine. Ich war unsicher, ob ich zur Ruhe komme. Dank der einfühlsamen und professionellen Art von Janine konnte ich mich total entspannen und Energie tanken. Eine sehr empfehlenswerte Auszeit, welche nachgeklungen hat.",
@@ -74,15 +94,15 @@ const siteConfig: SiteConfig = {
         "quote": "Für mich persönlich Hypnose wirkt Wunder ✨ und das durfte ich bei der lieben Janine in einer Hypnosetherapie wieder erfahren. Mein Thema in der Session war, ich habe grossen Scham vor dem Schreiben und Vorlesen. Gestern hab ich mich vor meinem Arbeitsteam geoutet dass ich Legasthenie habe und darum ich nie ein Journal schreibe oder sonst was im Büro erledige, was mit Schreiben zu tun hat. NOCH NICHT 💪😁 voller Motivation und Wille bleibe ich an diesem Thema dran. Es fühlt sich so leicht an, dieses Geheimnis gelüftet zu haben 🙏 Von Herzen empfehle ich Janine weiter.",
       "author": "D.S.",
     }
-  ],
+    ],
     title: 'Hypnose in Bern – Hypnosetherapie | Janine Aerni',
     description: 'Hypnose und Hypnosetherapie in Bern – Janine Aerni. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen. ',
     image: {
-        src: '/uploads/glowing-blocks.png',
+        src: 'src/assets/uploads/glowing-blocks.png',
         alt: 'Hypnose und Hypnosetherapie in Bern'
     },
     imageHomepage: {
-        src: '/hypnose1.png',
+        src: 'src/assets/images/hypnose1.png',
         alt: 'Janine Aerni – Hypnosetherapie in Bern'
     },
     hero: {
@@ -105,103 +125,93 @@ const siteConfig: SiteConfig = {
     headerNavLinks: [
         {
             text: 'Home',
-            href: '/'
+            href: '/',
+            diamondPosition: 1
         },
         {
             text: 'Hypnosetherapie',
             href: '/hypnosetherapie/',
-            subLinks: [
-                {   
-                    text: 'Ängste und Phobien', 
-                    longText: 'Ängste und Phobien mit Hypnose überwinden',
-                    href: '/hypnosetherapie/aengste-und-phobien/', 
-                    image: { 
-                        src: '/uploads/fears.avif', 
-                        alt: '',
-                     }
+            diamondPosition: 2,
+            id: 'hypnotherapy',
+            subPages: [
+                {
+                  text: 'Ängste und Phobien',
+                  longText: 'Ängste und Phobien mit Hypnose überwinden',
+                  href: '/hypnosetherapie/aengste-und-phobien/',
+                  diamondPosition: 2,
+                  image: fearsImage,
                 },
-                { 
-                    text: 'Abhängigkeiten', 
-                    longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
-                    href: '/hypnosetherapie/abhaengigkeit/', 
-                    image: { 
-                        src: '/uploads/cigarette.avif', 
-                        alt: '',
+                {
+                  text: 'Abhängigkeiten',
+                  longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
+                  href: '/hypnosetherapie/abhaengigkeit/',
+                  diamondPosition: 2,
+                  image: cigaretteImage,
+                  id: 'dependencies',
+                  subPages: [
+                    {
+                      text: 'Rauchstopp mit Hypnose',
+                      longText: 'Rauchen durch Hypnose aufgeben',
+                      href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/',
+                      image: cigaretteImage,
                     },
-                    subLinks: [
-                        {   
-                            text: 'Rauchstopp mit Hypnose', 
-                            longText: 'Rauchen durch Hypnose aufgeben',
-                            href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/', 
-                            image: { 
-                                src: '/uploads/cigarette.avif', 
-                                alt: '',
-                             }
-                        },
-                        {   
-                            text: 'Hypnose gegen Alkoholsucht', 
-                            longText: 'Alkoholsucht mit Hypnose behandeln',
-                            href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/', 
-                            image: { 
-                                src: '/disorders/glass2.avif', 
-                                alt: '',
-                             }
-                        },
-                    ] 
+                    {
+                      text: 'Hypnose gegen Alkoholsucht',
+                      longText: 'Alkoholsucht mit Hypnose behandeln',
+                      href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/',
+                      image: glassImage,
+                    },
+                  ],
                 },
-                {   
-                    text: 'Ernährung', 
-                    longText: 'Hypnose für eine gesunde Ernährung',
-                    href: '/hypnosetherapie/ernaehrung/', 
-                    image: { 
-                        src: '/uploads/food.avif', 
-                        alt: '',
-                     } 
+                {
+                  text: 'Ernährung',
+                  longText: 'Hypnose für eine gesunde Ernährung',
+                  href: '/hypnosetherapie/ernaehrung/',
+                  diamondPosition: 2,
+                  image: foodImage,
                 },
-                { 
-                    text: 'Stress, Burnout und Depression', 
-                    longText: 'Hypnose gegen Stress, Burnout und Depression',
-                    href: '/hypnosetherapie/stress-burnout-und-depression/', 
-                    image: { 
-                        src: '/uploads/depression.avif', 
-                        alt: '',
-                     }
+                {
+                  text: 'Stress, Burnout und Depression',
+                  longText: 'Hypnose gegen Stress, Burnout und Depression',
+                  href: '/hypnosetherapie/stress-burnout-und-depression/',
+                  diamondPosition: 2,
+                  image: depressionImage,
                 },
-                { 
-                    text: 'Selbstvertrauen', 
-                    longText: 'Selbstvertrauen mit Hypnose stärken',
-                    href: '/hypnosetherapie/selbstvertrauen/', 
-                    image: { 
-                        src: '/uploads/glowing-blocks.avif', 
-                        alt: '',
-                     }
+                {
+                  text: 'Selbstvertrauen',
+                  longText: 'Selbstvertrauen mit Hypnose stärken',
+                  href: '/hypnosetherapie/selbstvertrauen/',
+                  diamondPosition: 2,
+                  image: glowingBlocksImage,
                 },
-                { 
-                    text: 'Schlafstörungen', 
-                    longText: 'Schlafstörungen mit Hypnose behandeln',
-                    href: '/hypnosetherapie/schlafstoerungen/',
-                    image: { 
-                        src: '/uploads/sleep.avif', 
-                        alt: '',
-                     } }
-                
-            ]
+                {
+                  text: 'Schlafstörungen',
+                  longText: 'Schlafstörungen mit Hypnose behandeln',
+                  href: '/hypnosetherapie/schlafstoerungen/',
+                  diamondPosition: 2,
+                  image: sleepImage,
+                },
+            ],
         },
         {
             text: 'Angebote',
-            href: '/angebote/'
+            href: '/angebote/',
+            diamondPosition: 3,
         },
         {
             text: 'Blog',
-            href: '/blog/'
+            href: '/blog/',
+            diamondPosition: 1,
         },
         {
             text: 'Über mich',
-            href: '/janine-aerni/'
+            href: '/janine-aerni/',
+            diamondPosition: 2,
         },
         {
             text: 'Kontakt & Termin',
-            href: '/kontakt/'
+            href: '/kontakt/',
+            diamondPosition: 3,
         },
     ],
     footerNavLinks: [

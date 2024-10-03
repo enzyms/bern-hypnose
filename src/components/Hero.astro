@@ -1,6 +1,8 @@
 ---
 import { marked } from 'marked';
+import { Image } from 'astro:assets';
 import siteConfig from '../data/site-config';
+import JanineFace from '@assets/images/janine-aerni-face.jpg';
 
 const hero = siteConfig.hero;
 ---
@@ -10,9 +12,15 @@ const hero = siteConfig.hero;
         <header class="w-full justify-self-center justify-center flex flex-col gap-8 mb-20">
             <h1 class="text-balance text-5xl xs:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>
             <div class="flex gap-4 md:gap-6 items-center">
-                <picture class="portrait-janine portrait-janine--disc shadow-sm shrink-0">
-                    <img src="../janine-aerni-face-112w.avif" alt="Janine Aerni – Hypnosetherapeutin in Bern" width="112" height="112" loading="lazy" />
-                </picture>
+                <Image
+                    width={112}
+                    src={JanineFace}
+                    class="w-32 h-32 object-cover object-center rounded-full shadow-lg"
+                    alt="Janine Aerni"
+                    widths={[112, 224]}
+                    sizes="112px"
+                />
+
                 <p class="font-bold text-main text-balance">
                     {hero.subtitle} <br />
                     {hero.name}

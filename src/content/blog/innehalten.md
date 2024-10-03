@@ -2,10 +2,9 @@
 title: Innehalten
 excerpt: Feierst du dich auch mal selbst?
 publishDate: 2024-08-20T08:52:00.000Z
-seo:
-  image:
-    src: /uploads/energy.png
-    alt: Innehalten
+image:
+  src: src/assets/uploads/energy.png
+  alt: Innehalten
 tags:
   - Wohlbefinden
 ---

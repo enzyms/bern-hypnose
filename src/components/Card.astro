@@ -1,9 +1,7 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import { Image } from 'astro:assets';
 
-type Props = HTMLAttributes<'a'>;
-
-const { href, image, title, ...props } = Astro.props;
+const { href, image, imageWidth, imageWidths, imageSizes, title, ...props } = Astro.props;
 ---
 
 <a class="card group" href={href} {...props}>
@@ -12,9 +10,18 @@ const { href, image, title, ...props } = Astro.props;
     >
     </div>
     <div class="card__image">
-        <img src={image.src} alt={image.alt} />
+        <Image
+            src={image}
+            alt=""
+            width={imageWidth ?? null}
+            sizes={imageSizes ?? null}
+            widths={imageWidths ?? null}
+            class="w-full h-64 object-cover object-center sm:h-96 rounded-xl shadow-lg"
+        />
     </div>
-    <h3 class="card__title">{title}</h3>
+    <h3 class="card__title">
+        {title}<span class="sr-only"> mit Hypnose behandeln</span>
+    </h3>
 </a>
 
 <style>

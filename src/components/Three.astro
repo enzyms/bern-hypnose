@@ -1,0 +1,60 @@
+---
+
+---
+
+<script>
+    function isMobileDevice() {
+        return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    if (isMobileDevice()) {
+        const fallbackBg = document.getElementById('fallbackBg');
+        fallbackBg?.classList.remove('hidden');
+    } else {
+        const worker = new Worker('/three/worker.js', { type: 'module' });
+        const container = document.getElementById('threeContainer');
+        const canvas = document.createElement('canvas');
+        canvas.id = 'three-canvas';
+        container?.appendChild(canvas);
+        const offscreenCanvas = canvas.transferControlToOffscreen();
+
+        // worker.addEventListener('message', (event) => {
+        //     console.log('worker said:', event.data);
+        // });
+
+        worker.postMessage(
+            {
+                action: 'init',
+                width: window.innerWidth,
+                height: window.innerHeight,
+                canvas: offscreenCanvas
+            },
+            [offscreenCanvas] // Transfer the canvas
+        );
+
+        window.addEventListener('resize', () => {
+            worker.postMessage({
+                action: 'resize',
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        });
+
+        document.querySelectorAll('#menu-items [data-diamond-position]').forEach((item) => {
+            item?.addEventListener('click', () => {
+                worker.postMessage({
+                    action: 'animate',
+                    diamondPosition: item.getAttribute('data-diamond-position')
+                });
+            });
+        });
+
+        // to do: get postMessage when worker is ready
+        setTimeout(() => {
+            document.getElementById('threeContainer')?.classList.remove('opacity-0');
+        }, 500);
+    }
+</script>
+
+<div transition:persist id="threeContainer" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 opacity-0 transition-opacity duration-[5000ms]"></div>
+<div transition:persist id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>

@@ -1,24 +1,23 @@
 ---
 title: Abängigkeiten und Hypnose
 description: Mit Hypnose das Rauchen aufgeben oder eine Sucht überwinden? Ich helfe dir, dein Ziel zu erreichen.
-seo:
-  image:
-    src: /uploads/cigarette.avif
-    alt: Hypnose gegen Rauchen und Abängigkeiten
+
+image:
+  src: '@assets/uploads/cigarette.png'
+  alt: Hypnose gegen Rauchen und Abängigkeiten
 
 backlink:
   title: Hypnosetherapie
   url: /hypnosetherapie/
 ---
 
-import SubPagesHypnotherapy from '../../../components/SubPagesHypnotherapy.astro';
-import SubPagesAddicitons from '../../../components/SubPagesAddictions.astro';
+import SubPages from '@components/SubPages.astro';
 
 <p>Bist du bereit, mit dem Rauchen oder einer anderen Angewohnheit aufzuhören und wünschst dir dabei Unterstützung? Hypnosetherapie kann helfen.</p>
 
 <h2 class="text-balance">Abhängigkeiten mit Hypnose behandeln</h2>
 
-<SubPagesAddicitons columns={2} />
+<SubPages id="dependencies" columns={2} />
 
 <ul class="grid xs:grid-cols-2 gap-4 list-disc not-prose pl-4">
   <li>Spielsucht</li>
@@ -41,4 +40,4 @@ import SubPagesAddicitons from '../../../components/SubPagesAddictions.astro';
 
 <hr class="border-gray-400" />
 <h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
-<SubPagesHypnotherapy exclude="/hypnosetherapie/abhaengigkeit/" columns={3} />
+<SubPages id="hypnotherapy" exclude="/hypnosetherapie/abhaengigkeit/" columns={3} />

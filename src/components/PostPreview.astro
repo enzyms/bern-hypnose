@@ -1,11 +1,12 @@
 ---
 import { type CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
+import { Image } from 'astro:assets';
 
 type Props = { post: CollectionEntry<'blog'>; class?: string; headingLevel?: 'h2' | 'h3' };
 
 const { post, class: className, headingLevel = 'h2' } = Astro.props;
-const { title, publishDate, updatedDate, excerpt, seo } = post.data;
+const { title, publishDate, updatedDate, excerpt, image } = post.data;
 const TitleTag = headingLevel;
 ---
 
@@ -16,12 +17,14 @@ const TitleTag = headingLevel;
     </div>
     <div class="mt-8 rounded-xl overflow-hidden relative z-2">
         {
-            seo?.image && (
-                <img
-                    class="group-hover:scale-[1.05] transition-transform duration-1000 ease-in-out w-full h-64 object-cover object-center  sm:h-96"
-                    src={seo.image.src || ''}
-                    alt={`Bern Hypnose${seo.image.alt ? ' – ${seo.image.alt}' : ''}`}
-                    loading="lazy"
+            image && (
+                <Image
+                    width={704}
+                    src={image.src}
+                    class="group-hover:scale-[1.05] transition-transform duration-1000 ease-in-out w-full object-cover object-center"
+                    alt={image.alt ?? ''}
+                    widths={[360, 520, 704]}
+                    sizes="(max-width: 768px) calc(100vw - 40px), 704px"
                 />
             )
         }
