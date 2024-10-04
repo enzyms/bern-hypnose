@@ -78,6 +78,7 @@
             playCurrent(); // Play the next audio
         } else if (onPlaybackComplete) {
             onPlaybackComplete(); // Complete the playback if all files have been played
+            ambientElement.pause();
         }
     }
 

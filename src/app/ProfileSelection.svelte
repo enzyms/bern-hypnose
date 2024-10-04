@@ -2,9 +2,12 @@
     import { selectedProfile, nextStep } from './store.js';
     import SButton from './SButton.svelte';
 
+    import imgAdult from '@assets/app/introspection.png';
+    import imgChild from '@assets/app/child.png';
+
     const profiles = [
-        { id: 'adult', name: 'Erwachsene', description: 'Short description here', image: '/uploads/introspection.avif' },
-        { id: 'child', name: 'Kinder', description: 'Short description here', image: '/uploads/child.avif' }
+        { id: 'adult', name: 'Erwachsene', description: 'Short description here', image: imgAdult },
+        { id: 'child', name: 'Kinder', description: 'Short description here', image: imgChild }
     ];
 
     function selectProfile(profile) {
@@ -22,7 +25,7 @@
                     class="absolute z-0 top-0 right-0 bottom-0 left-0 rounded-xl transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-50 group-hover:scale-[1.4] bg-yellow-300 blur-3xl pointer-events-none"
                 ></div>
                 <div class="card__image">
-                    <img src={profile.image} alt="" />
+                    <img src={profile.image.src} alt="" />
                 </div>
                 <h3 class="card__title">{profile.name}</h3>
             </button>

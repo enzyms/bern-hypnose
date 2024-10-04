@@ -213,6 +213,11 @@ const siteConfig: SiteConfig = {
             href: '/kontakt/',
             diamondPosition: 3,
         },
+        {
+            text: 'App',
+            href: '/selbsthypnose/',
+            diamondPosition: 2,
+        },
     ],
     footerNavLinks: [
         {
