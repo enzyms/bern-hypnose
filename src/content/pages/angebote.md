@@ -13,7 +13,7 @@ backlink:
 
 Eine Erstsitzung dauert ungefähr 90 Minuten. Plane circa eine Stunde für eine allfällige Folgesitzung ein.
 
-Nach abgeschlossener Ausbildung verrechne ich CHF 150.- pro Sitzung für Erwachsene, CHF 120.– für Kinder.
+Ich verrechne CHF 150.- pro Sitzung für Erwachsene, CHF 120.– für Kinder.
 
 Du darfst gerne bar, per Twint oder auf Rechnung bezahlen.
 Die Kosten werden nicht von der Krankenkasse übernommen.
