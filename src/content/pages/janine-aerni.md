@@ -33,7 +33,7 @@ sehr geprägt und hat mich Schritte in eine abenteuerliche
 Zukunft gehen lassen. Sein Herzensthema ist die erhöhte
 Neurosensitivität, welche mich auch enorm fasziniert.
 
-Der Weg hat mich zur Ausbildung als Hypnosetherapeutin bei dem Hypnose Experten Gabriel Palacios geführt. Seit 2024 bin ich nun [zertifizierte Hypnosetherapeutin VSH ](/diplomierte-hypnosetherapeutin/).
+Der Weg hat mich zur Ausbildung als Hypnosetherapeutin bei dem Hypnose Experten Gabriel Palacios geführt. Seit 2024 bin ich nun [diplomierte Hypnosetherapeutin VSH ](/diplomierte-hypnosetherapeutin/).
 
 <a
 data-umami-event="Janine – Button Kontakt"
