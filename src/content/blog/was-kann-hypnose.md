@@ -24,7 +24,7 @@ Hypnose kann helfen, dein Stresslevel zu senken.
 
 Hypnose kann helfen, dass du einen entspannteren Schlaf hast.
 
-Hypnose kann helfen, Ängste kleiner werden und gar verschwinden zu lassen.
+[Hypnose kann helfen, Ängstörungen kleiner werden](/hypnosetherapie/aengste-und-phobien/) und gar verschwinden zu lassen.
 
 Hypnose kann helfen, Suchtverhalten wie [Rauchen](https://bern-hypnose.ch/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/) oder [Alkoholkonsum](https://bern-hypnose.ch/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/) aufzudecken und abzulegen.
 
