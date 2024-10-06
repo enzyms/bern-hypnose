@@ -35,5 +35,11 @@ import SubPages from '@components/SubPages.astro';
 </div>
 
 <hr class="border-gray-400" />
+<h2 class="text-balance">Über Ernährung und Hypnose weiterlesen</h2>
+<a href="/tags/ernaehrung/" class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline" onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"> 
+    <span class="">Blogartikel über Ernährung und Hypnose lesen</span>
+</a>
+
+<hr class="border-gray-400" />
 <h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
 <SubPages id="hypnotherapy" exclude="/hypnosetherapie/ernaehrung/" columns={3} />

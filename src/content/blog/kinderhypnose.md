@@ -2,6 +2,7 @@
 title: Kinderhypnose
 excerpt: 'Ich freue mich, in Zukunft mit Kindern arbeiten zu können. '
 publishDate: 2024-09-15T11:57:00.000Z
+canonical: https://bern-hypnose.ch/hypnosetherapie/kinderhypnose/
 tags:
   - Kinderhypnose
 image:

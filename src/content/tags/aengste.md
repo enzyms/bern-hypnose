@@ -1,5 +1,6 @@
 ---
 title: Ängste
+canonical: https://bern-hypnose.ch/hypnosetherapie/aengste-und-phobien/
 ---
 
 Ängste sind wohl so alt wie die Menschheit und gehören zum Leben

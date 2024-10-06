@@ -1,4 +1,5 @@
 ---
+import { undefined } from 'astro:schema';
 import siteConfig from '../data/site-config';
 import '../styles/global.css';
 
@@ -7,6 +8,7 @@ export type Props = {
     description?: string;
     image?: { src: string; alt?: string };
     pageType?: 'website' | 'article';
+    canonical?: string;
 };
 
 const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props;
@@ -17,7 +19,8 @@ const resolvedImage = image?.src
           alt: image.alt
       }
     : undefined;
-const canonicalURL = new URL(Astro.request.url, Astro.site);
+
+const canonicalURL = Astro.props.canonical ?? new URL(Astro.request.url, Astro.site);
 
 /**
  * Enforce some standard canonical URL formatting across the site.

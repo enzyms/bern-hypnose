@@ -32,15 +32,29 @@ const navLinks = siteConfig.headerNavLinks || [];
                                 {link.text}
                             </NavLink>
                             {link.subPages && link.subPages.length > 0 && (
-                                <ul class="sub-menu ">
-                                    {link.subPages.map((subPage) => (
-                                        <li key={subPage.href}>
-                                            <NavLink class="block py-2 px-4" href={subPage.href}>
-                                                {subPage.text}
-                                            </NavLink>
-                                        </li>
-                                    ))}
-                                </ul>
+                                <div class="sub-menu ">
+                                    <ul>
+                                        {link.subPages.map((subPage) => (
+                                            <li key={subPage.href}>
+                                                <NavLink class="block py-2 px-4" href={subPage.href}>
+                                                    {subPage.text}
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    {link.subPages2 && link.subPages2.length > 0 && (
+                                        <hr class="my-4 border-t border-t-red-500 opacity-30" />
+                                        <ul>
+                                            {link.subPages2.map((subPage) => (
+                                                <li key={subPage.href}>
+                                                    <NavLink class="block py-2 px-4" href={subPage.href}>
+                                                        {subPage.text}
+                                                    </NavLink>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
                             )}
                         </li>
                     ))}
