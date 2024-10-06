@@ -19,6 +19,7 @@ export type Link = {
     longText?: string;
     href: string;
     subPages?: Link[];
+    subPages2?: Link[];
     image?: Image;
     thumb?: Image;
     diamondPosition?: number;
@@ -191,6 +192,15 @@ const siteConfig: SiteConfig = {
                   diamondPosition: 2,
                   image: sleepImage,
                 },
+            ],
+            subPages2: [
+                {
+                  text: 'Kinderhypnose',
+                  longText: 'Ängste und Phobien mit Hypnose überwinden',
+                  href: '/hypnosetherapie/kinderhypnose/',
+                  diamondPosition: 2,
+                },
+                
             ],
         },
         {

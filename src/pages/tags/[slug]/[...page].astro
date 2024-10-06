@@ -44,28 +44,28 @@ if (currentTagEntry) {
     ContentComponent = Content;
 }
 
-// You can still get currentTag from allTags if needed for other properties
-const currentTag = allTags.find((tag) => {
-    return tag.slug === params.slug;
-});
+// Use 'currentTagEntry' for properties like 'canonical' and 'title' as it holds the metadata from the tag .md files
+const canonicalUrl = currentTagEntry?.data.canonical;
+const tagName = currentTagEntry?.data.title;
 ---
 
 <BaseLayout
-    title={`Posts Tagged ${currentTag?.name}`}
-    description={`Explore a curated collection of blog posts under ${currentTag?.name}`}
-    image={{ src: '/dante-preview.jpg', alt: 'The preview of the site' }}
+    title={`BlogArtikel über ${tagName}`}
+    description={`Alle meine Blogartikel über ${tagName}`}
+    image={{ src: '/hypnose1.png', alt: '' }}
+    canonical={canonicalUrl}
 >
     <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
         <ArrowLeft class="w-4 h-4 fill-current" />
         <span>Alle Blogartikel </span>
     </a>
     <h1 class="mb-8 text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">
-        {currentTag?.name === 'Hypnose' || currentTag?.name === 'Selbstreflexion' ? currentTag?.name : `Hypnose und ${currentTag?.name}`}
+        {tagName === 'Hypnose' || tagName === 'Selbstreflexion' ? tagName : `Hypnose und ${tagName}`}
     </h1>
     <div class="prose">
         {ContentComponent && <ContentComponent />}
     </div>
-    <h2 class="text-lg font-bold mt-10">Alle Blogartikel zum Thema «{currentTag?.name}»</h2>
+    <h2 class="text-lg font-bold mt-10">Blogartikel zum Thema «{tagName}»</h2>
 
     {blog.map((post) => <PostPreview post={post} class="mb-12 sm:mb-16" />)}
     <Pagination page={page} class="my-16 sm:my-24" />

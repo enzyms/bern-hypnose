@@ -26,6 +26,7 @@ const blog = defineCollection({
       }),
       alt: z.string().optional(),
     }).optional(),
+    canonical: z.string().optional(),
   })
 });
 
@@ -41,6 +42,7 @@ const pages = defineCollection({
       alt: z.string().optional(),
     }).optional(),
     id: z.string().optional(),
+    canonical: z.string().optional(),
   })
 });
 
