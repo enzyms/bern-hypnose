@@ -1,6 +1,6 @@
 // Import images statically
 import fearsImage from '@assets/uploads/fears.png';
-import cavernImage from '@assets/uploads/cavern3.png';
+import thinkingImage from '@assets/uploads/thinking.png';
 import cigaretteImage from '@assets/uploads/cigarette.png';
 import glassImage from '@assets/uploads/glass2.png';
 import foodImage from '@assets/uploads/food.png';
@@ -198,7 +198,7 @@ const siteConfig: SiteConfig = {
                     longText: 'Zwangsstörungen mit Hypnose behandeln',
                     href: '/hypnosetherapie/zwangsstoerungen/',
                     diamondPosition: 2,
-                    image: cavernImage,
+                    image: thinkingImage,
                   },
             ],
             subPages2: [
