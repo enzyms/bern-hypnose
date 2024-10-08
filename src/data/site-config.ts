@@ -7,6 +7,7 @@ import foodImage from '@assets/uploads/food.png';
 import depressionImage from '@assets/uploads/depression.png';
 import glowingBlocksImage from '@assets/uploads/glowing-blocks.png';
 import sleepImage from '@assets/uploads/sleep.png';
+import childImage from '@assets/uploads/child.png';
 
 
 export type Image = {
@@ -207,6 +208,7 @@ const siteConfig: SiteConfig = {
                   longText: 'Ängste und Phobien mit Hypnose überwinden',
                   href: '/hypnosetherapie/kinderhypnose/',
                   diamondPosition: 2,
+                  image: childImage,
                 },
                 
             ],
