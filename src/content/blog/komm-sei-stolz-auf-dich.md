@@ -1,7 +1,7 @@
 ---
 title: Komm, sei stolz auf dich.
 excerpt: Ist die Freude über Erfolge womöglich schwieriger als gedacht?
-publishDate: 2024-10-08T13:19:00.000Z
+publishDate: 2024-10-08T13:20:00.000Z
 canonical: https://www.bern-hypnose.ch
 tags:
   - Selbstreflexion
