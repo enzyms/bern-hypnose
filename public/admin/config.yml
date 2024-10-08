@@ -25,6 +25,7 @@ collections:
           - label: 'Canonical URL'
             name: 'canonical'
             widget: 'string'
+            required: false
           - label: 'Tags'
             name: 'tags'
             widget: 'relation'
@@ -67,3 +68,4 @@ collections:
           - label: 'Canonical URL'
             name: 'canonical'
             widget: 'string'
+            required: false
