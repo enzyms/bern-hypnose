@@ -87,7 +87,13 @@ console.log('post', title, canonical);
             }
             <div class="mt-4 w-full flex gap-4 items-center">
                 <div class="w-full border-t border-gray-400"></div>
-                <Button class="copy-url-button" aria-label="Link kopieren" data-url={href} data-tooltip-default="Link kopieren" data-tooltip-success="Kopiert">
+                <Button
+                    class="copy-url-button text-nowrap"
+                    aria-label="Link kopieren"
+                    data-url={href}
+                    data-tooltip-default="Link kopieren"
+                    data-tooltip-success="Kopiert"
+                >
                     Teilen
                 </Button>
             </div>
