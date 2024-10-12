@@ -167,9 +167,9 @@ const siteConfig: SiteConfig = {
                   ],
                 },
                 {
-                  text: 'Ernährung',
+                  text: 'Ernährung und Abnehmen',
                   longText: 'Hypnose für eine gesunde Ernährung',
-                  href: '/hypnosetherapie/ernaehrung/',
+                  href: '/hypnosetherapie/ernaehrung-und-abnehmen/',
                   diamondPosition: 2,
                   image: foodImage,
                 },
