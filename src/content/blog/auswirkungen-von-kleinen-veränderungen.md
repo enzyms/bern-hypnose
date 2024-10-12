@@ -8,6 +8,8 @@ tags:
   - Selbstreflexion
   - Hypnose
   - Wohlbefinden
+image:
+  src: src/assets/uploads/butterfly1.png
 ---
 ## Wünschst du dir eine Veränderung in deinem Leben?
 
