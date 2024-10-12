@@ -3,7 +3,7 @@ title: Auswirkungen von kleinen Veränderungen
 excerpt: Der berühmte Flügelschlag eines Schmetterlings, der Auswirkungen auf
   der anderen Seite der Erde zur Folge hat- was ist da dran im übertragenen
   Sinne?
-publishDate: 2024-10-12T14:18:00.000Z
+publishDate: 2024-10-12T14:22:00.000Z
 tags:
   - Selbstreflexion
   - Hypnose
