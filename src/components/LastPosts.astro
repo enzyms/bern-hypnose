@@ -9,7 +9,7 @@ const { posts } = Astro.props;
     </div>
     {
         posts?.length > 0 && (
-            <div class="sm:flex gap-4">
+            <div class="sm:grid grid-cols-2	 gap-4">
                 {posts.map((post: any) => (
                     <PostPreview post={post} headingLevel="h3" />
                 ))}
