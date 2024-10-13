@@ -8,6 +8,7 @@ import depressionImage from '@assets/uploads/depression.png';
 import glowingBlocksImage from '@assets/uploads/glowing-blocks.png';
 import sleepImage from '@assets/uploads/sleep.png';
 import childImage from '@assets/uploads/child.png';
+import painImage from '@assets/uploads/pain2.png';
 
 
 export type Image = {
@@ -194,6 +195,13 @@ const siteConfig: SiteConfig = {
                   diamondPosition: 2,
                   image: sleepImage,
                 },
+                {
+                    text: 'Schmerzen',
+                    longText: 'Schmerzen mit Hypnose behandeln',
+                    href: '/hypnosetherapie/schmerzen/',
+                    diamondPosition: 2,
+                    image: painImage,
+                  },
                 {
                     text: 'Zwangsstörungen',
                     longText: 'Zwangsstörungen mit Hypnose behandeln',

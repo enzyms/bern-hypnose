@@ -31,10 +31,28 @@ Ausschlaggebend für den Erfolg einer Sitzung ist deine Bereitschaft, dich auf d
 
 Bist du bereit? Ich freu mich sowas von!
 
-<a
+<div class="flex flex-wrap gap-4">
+  <a
   href="/angebote/"
   class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-700 bg-transparent border border-red-700 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline "
   onclick="document.app.emitEvent('mouseDown', 'trigger-to-3');"
 >
   <span>Entdecke die Angebote</span>
+</a>
+  <a href="/kontakt/" class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline" onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"> 
+    <span class="">Kontakt</span>
+  </a>
+  <a
+    href="https://calendly.com/bern-hypnose/erstsitzung"
+    target="_blank"
+    class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
+  >
+    <span>Termin buchen</span>
+  </a>
+</div>
+
+<hr class="border-gray-400" />
+<h2 class="text-balance">Über Hypnose weiterlesen</h2>
+<a href="/tags/hypnose/" class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline" onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"> 
+    <span class="">Blogartikel über Hypnose lesen</span>
 </a>
