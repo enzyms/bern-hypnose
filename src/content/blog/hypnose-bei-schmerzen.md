@@ -8,7 +8,7 @@ tags:
   - Sport
   - Wohlbefinden
 image:
-  src: src/assets/uploads/pain.png
+  src: src/assets/uploads/pain2.png
 ---
 
 ## Geduld, Geduld
