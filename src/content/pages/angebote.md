@@ -13,8 +13,6 @@ backlink:
 
 ## Preise für Hypnosetherapie in Bern
 
-**Individuelle Hypnosetherapie gegen Stress, Ängste und mehr**
-
 Ich biete individuelle Hypnosesitzungen an, um dir zu helfen, Stress, Angst und andere Herausforderungen zu bewältigen. Jede Sitzung dauert zwischen 60 und 90 Minuten. Der Preis bleibt gleich.
 
 ### Sitzungsdauer

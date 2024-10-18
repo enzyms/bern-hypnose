@@ -8,7 +8,7 @@ import depressionImage from '@assets/uploads/depression.png';
 import glowingBlocksImage from '@assets/uploads/glowing-blocks.png';
 import sleepImage from '@assets/uploads/sleep.png';
 import childImage from '@assets/uploads/child.png';
-import painImage from '@assets/uploads/pain2.png';
+import painImage from '@assets/uploads/pain-free.png';
 
 
 export type Image = {
