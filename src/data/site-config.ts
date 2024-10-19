@@ -185,7 +185,7 @@ const siteConfig: SiteConfig = {
                   diamondPosition: 2,
                   image: cigaretteImage,
                   id: 'dependencies',
-                  subPages: [
+                  subPagesTopics: [
                     {
                       text: 'Rauchstopp mit Hypnose',
                       longText: 'Rauchen durch Hypnose aufgeben',
