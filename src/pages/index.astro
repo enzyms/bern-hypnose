@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import LastPosts from '../components/LastPosts.astro';
 import SubPages from '../components/SubPages.astro';
+import SubPagesTopics from '../components/SubPagesTopics.astro';
 import Testimonials from '../components/Testimonials.astro';
 import WhatIsHypnose from '../components/WhatIsHypnose.astro';
 import siteConfig from '../data/site-config';
@@ -16,9 +17,23 @@ const lastPosts = posts.slice(0, 2);
 <BaseLayout description={siteConfig.description} image={siteConfig.imageHomepage}>
     <Hero />
     <div class="prose sm:prose-lg text-main">
-        <h2>Was kann Hypnose für dich tun?</h2>
+        <h2>Was ist Hypnose, für wen?</h2>
+        <p>
+            Ob du Entspannung suchst, deine sportlichen Ziele erreichen oder deinem Kind Unterstützung bieten möchtest – Hypnose kann für viele Menschen der
+            Schlüssel sein.
+        </p>
     </div>
     <SubPages id="hypnotherapy" columns={3} />
+
+    <div class="prose sm:prose-lg text-main mt-12">
+        <h2>Was kann Hypnosetherapie für dich tun?</h2>
+        <p>
+            Mit Hypnosetherapie kannst du auf sanfte Weise verschiedene Herausforderungen im Leben bewältigen. Von der Behandlung von Stress und Ängsten bis hin
+            zu Abhängigkeiten und Schlafstörungen – Hypnose bietet vielfältige Unterstützung für Körper und Geist.
+        </p>
+    </div>
+    <SubPagesTopics id="hypnotherapy" columns={3} />
+
     <WhatIsHypnose />
     <hr class="border-t border-gray-400 mt-12" />
     <Testimonials />

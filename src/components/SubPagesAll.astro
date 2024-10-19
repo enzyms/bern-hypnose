@@ -23,6 +23,10 @@ function findItemById(items: Link[] | undefined, id: string): any {
             const found = findItemById(item.subPages, id);
             if (found) return found;
         }
+        if (item.subPagesTopics) {
+            const found = findItemById(item.subPagesTopics, id);
+            if (found) return found;
+        }
     }
     return null;
 }
@@ -30,9 +34,14 @@ function findItemById(items: Link[] | undefined, id: string): any {
 const parentItem = findItemById(siteConfig.headerNavLinks, id);
 
 let subPages = parentItem?.subPages || [];
+let subPagesTopics = parentItem?.subPagesTopics || [];
+
+let subPagesAll = [...subPages, ...subPagesTopics];
+
+console.log(subPagesAll);
 
 if (exclude.length > 0) {
-    subPages = subPages.filter((subPage: { href: string }) => !exclude.includes(subPage.href));
+    subPagesAll = subPagesAll.filter((subPage: { href: string }) => !exclude.includes(subPage.href));
 }
 
 const gridColumnsClass = columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3';
@@ -50,10 +59,10 @@ const imgSizes = columns === 2 ? imgSizes2cols : imgSizes3cols;
 ---
 
 {
-    subPages.length > 0 && (
+    subPagesAll.length > 0 && (
         <nav class="py-4 md:py-6">
             <ul class={gridClasses}>
-                {subPages.map((subPage: { href: any; image: any; text: any }) => (
+                {subPagesAll.map((subPage: { href: any; image: any; text: any }) => (
                     <li>
                         <Card
                             href={subPage.href}

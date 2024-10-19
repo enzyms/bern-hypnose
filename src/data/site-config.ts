@@ -9,7 +9,8 @@ import glowingBlocksImage from '@assets/uploads/glowing-blocks.png';
 import sleepImage from '@assets/uploads/sleep.png';
 import childImage from '@assets/uploads/child.png';
 import painImage from '@assets/uploads/pain-free.png';
-
+import runnerImage from '@assets/uploads/runner.png';
+import birdImage from '@assets/uploads/bird1.png';
 
 export type Image = {
     src: string;
@@ -22,7 +23,7 @@ export type Link = {
     longText?: string;
     href: string;
     subPages?: Link[];
-    subPages2?: Link[];
+    subPagesTopics?: Link[];
     image?: Image;
     thumb?: Image;
     diamondPosition?: number;
@@ -139,6 +140,38 @@ const siteConfig: SiteConfig = {
             id: 'hypnotherapy',
             subPages: [
                 {
+                    text: 'Hypnosetherapie allgemein',
+                    longText: 'Wann kann Hypnose helfen und für wen?',
+                    href: '/hypnosetherapie/',
+                    id: 'hypnotherapy2',
+                    diamondPosition: 2,
+                    image: birdImage,
+                },
+                {
+                    text: 'Sporthypnose',
+                    longText: 'Wann kann Hypnose helfen und für wen?',
+                    href: '/hypnosetherapie/sporthypnose/',
+                    diamondPosition: 2,
+                    image: runnerImage,
+                },
+                {
+                    text: 'Kinderhypnose',
+                    longText: 'Ängste und Phobien mit Hypnose überwinden',
+                    href: '/hypnosetherapie/kinderhypnose/',
+                    diamondPosition: 2,
+                    image: childImage,
+                  },
+                
+            ],
+            subPagesTopics: [
+                {
+                    text: 'Stress, Burnout und Depression',
+                    longText: 'Hypnose gegen Stress, Burnout und Depression',
+                    href: '/hypnosetherapie/stress-burnout-und-depression/',
+                    diamondPosition: 2,
+                    image: depressionImage,
+                },
+                {
                   text: 'Ängste und Phobien',
                   longText: 'Ängste und Phobien mit Hypnose überwinden',
                   href: '/hypnosetherapie/aengste-und-phobien/',
@@ -175,13 +208,6 @@ const siteConfig: SiteConfig = {
                   image: foodImage,
                 },
                 {
-                  text: 'Stress, Burnout und Depression',
-                  longText: 'Hypnose gegen Stress, Burnout und Depression',
-                  href: '/hypnosetherapie/stress-burnout-und-depression/',
-                  diamondPosition: 2,
-                  image: depressionImage,
-                },
-                {
                   text: 'Selbstvertrauen',
                   longText: 'Selbstvertrauen mit Hypnose stärken',
                   href: '/hypnosetherapie/selbstvertrauen/',
@@ -210,16 +236,7 @@ const siteConfig: SiteConfig = {
                     image: thinkingImage,
                   },
             ],
-            subPages2: [
-                {
-                  text: 'Kinderhypnose',
-                  longText: 'Ängste und Phobien mit Hypnose überwinden',
-                  href: '/hypnosetherapie/kinderhypnose/',
-                  diamondPosition: 2,
-                  image: childImage,
-                },
-                
-            ],
+            
         },
         {
             text: 'Angebote',
