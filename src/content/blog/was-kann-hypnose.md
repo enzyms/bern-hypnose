@@ -3,6 +3,8 @@ title: Was kann Hypnose?
 excerpt: Viele Menschen haben mich gefragt, wann Hypnose helfen kann. Hier
   einige Beispiele.
 publishDate: 2024-08-18T13:11:00.000Z
+canonical: https://bern-hypnose.ch/hypnosetherapie/
+
 image:
   src: src/assets/uploads/thinking.png
   alt: Was kann Hypnose?
