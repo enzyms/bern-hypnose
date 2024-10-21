@@ -1,6 +1,9 @@
 ---
 import siteConfig from '../data/site-config';
 import '../styles/global.css';
+import SchemaDefault from '../schemas/SchemaDefault.astro';
+import SchemaHome from '../schemas/SchemaHome.astro';
+import SchemaHypnotherapy from '../schemas/SchemaHypnotherapy.astro';
 
 export type Props = {
     title?: string;
@@ -8,6 +11,7 @@ export type Props = {
     image?: { src: string; alt?: string };
     pageType?: 'website' | 'article';
     canonical?: string;
+    schema?: string;
 };
 
 const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props;
@@ -42,190 +46,7 @@ function formatCanonicalURL(url: string | URL) {
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Hypnose und Hypnosetherapie in Bern – Janine Aerni",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://bern-hypnose.ch/bern-hypnose-janine-aerni.jpg",
-            "width": 800,
-            "height": 800,
-            "caption": "Janine Aerni – Diplomierte Hypnosetherapeutin in Bern"
-        },
-        "logo": "https://bern-hypnose.ch/bern-hypnose-janine-aerni.jpg",
-        "description": "Hypnose und Hypnosetherapie in Bern – Janine Aerni. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen.",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Eigerstrasse 56",
-            "addressLocality": "Bern",
-            "postalCode": "3007",
-            "addressCountry": "CH"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "46.9400119148607",
-            "longitude": "7.436508173013693"
-        },
-        "telephone": "+41 79 833 83 05",
-        "email": "contact@bern-hypnose.ch",
-        "url": "https://bern-hypnose.ch",
-        "priceRange": "120 CHF - 150 CHF",
-        "openingHours": "Mo,Tu,We,Th,Fr 07:00-19:00",
-        "sameAs": [
-            "https://www.facebook.com/profile.php?id=61564940341284",
-            "https://www.linkedin.com/in/janine-aerni-b7452a321/",
-            "https://www.instagram.com/janineaerni/"
-        ],
-        "founder": {
-            "@type": "Person",
-            "name": "Janine Aerni",
-            "jobTitle": "Diplomierte Hypnosetherapeutin",
-            "telephone": "+41 79 833 83 05",
-            "email": "janine@bern-hypnose.ch"
-        },
-        "areaServed": {
-            "@type": "Place",
-            "name": "Bern, Switzerland"
-        },
-        "makesOffer": [
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Hypnose gegen Rauchen und Abhängigkeiten",
-                    "description": "Rauchstopp mit Hypnose und andere Abhängigkeiten überwinden."
-                },
-                "validFrom": "2024-10-05"
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Hypnose für eine gesunde Ernährung",
-                    "description": "Gesunde Ernährung mit Unterstützung durch Hypnose."
-                },
-                "validFrom": "2024-09-16"
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Ängste und Phobien mit Hypnose überwinden",
-                    "description": "Ängste und Phobien durch Hypnose bewältigen."
-                },
-                "validFrom": "2024-09-16"
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Hypnose gegen Stress, Burnout und Depression",
-                    "description": "Stress, Burnout und Depression mit Hypnose lindern."
-                },
-                "validFrom": "2024-09-16"
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Selbstvertrauen mit Hypnose stärken",
-                    "description": "Mehr Selbstvertrauen durch Hypnose aufbauen."
-                },
-                "validFrom": "2024-09-16"
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Schlafstörungen mit Hypnose behandeln",
-                    "description": "Schlafstörungen mit Hypnose verbessern."
-                },
-                "validFrom": "2024-09-16"
-            }
-        ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "bestRating": "5",
-            "ratingCount": "4"
-        },
-        "review": [
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Vroni Gschwend"
-                },
-                "reviewBody": "Ich habe die Hypnosetherapie besucht, weil ich grosse Angst vor einem medizinischen Eingriff hatte. Janine Aerni hat es verstanden, mich in einen Zustand von Entspannung, innerer Ruhe und Vertrauen zu führen. Ihre kompetente und einfühlsame Art haben mich sehr überzeugt.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/yJrAfVx"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Franziska Fiedler"
-                },
-                "reviewBody": "Die Hypnosesitzung bei Janine Aerni möchte ich deshalb weiter empfehlen weil das Eingehen auf die Klienten mit besonderem Einfühlungsvermögen und Empathie geschieht. Als neurosensitiver Mensch ist mir Authentizität und individuelle Arbeitsweise besonders wichtig, um mich vertrauensvoll zu öffnen.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/2j43d2y"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Paula Bozic"
-                },
-                "reviewBody": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser. Ich habe mich während der Sitzung stets geborgen und sicher gefühlt.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Michelle Fankhauser"
-                },
-                "reviewBody": "Während eines stressigen Tages hatte ich eine Hypnosesitzung bei Janine. Dank ihrer einfühlsamen und professionellen Art konnte ich mich total entspannen und Energie tanken.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/LDT8sut"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "D.S."
-                },
-                "reviewBody": "Für mich persönlich wirkt Hypnose Wunder. Ich habe bei Janine Aerni eine Hypnosetherapie besucht und konnte mein Thema mit Scham vor dem Schreiben und Vorlesen angehen. Voller Motivation bleibe ich dran.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                }
-            }
-        ],
-        "hasMap": "https://maps.app.goo.gl/6ztgohYSpsWiT9CB8",
-        "paymentAccepted": "Bargeld, TWINT, auf Rechnung"
-    }
-</script>
+{Astro.props.schema === 'hypnosetherapie' ? <SchemaHypnotherapy /> : Astro.props.schema === 'home' ? <SchemaHome /> : <SchemaDefault />}
 
 <!-- Low Priority Global Metadata -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
