@@ -239,6 +239,11 @@ const siteConfig: SiteConfig = {
             
         },
         {
+            text: 'Fragen',
+            href: '/was-ist-hypnose/',
+            diamondPosition: 2,
+        },
+        {
             text: 'Angebote',
             href: '/angebote/',
             diamondPosition: 3,
