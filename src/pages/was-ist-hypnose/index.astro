@@ -81,7 +81,7 @@ const faqSchemaData = {
             {
                 renderedFaqs.map((faq) => {
                     return (
-                        <div class="grow mb-4" key={faq.id}>
+                        <div class="grow mb-4" key={faq.id} data-order={faq.data.order}>
                             <h2 class="text-xl leading-tight font-black sm:text-2xl">{faq.data.title}</h2>
                             <div class="mb-1">
                                 <faq.Content /> {/* Render HTML content */}

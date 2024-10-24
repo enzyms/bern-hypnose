@@ -86,3 +86,8 @@ collections:
             name: 'promoted'
             widget: 'boolean'
             required: false
+          - label: 'Order'
+            name: 'order'
+            widget: 'number'
+            default: 1000
+            value_type: 'int'
