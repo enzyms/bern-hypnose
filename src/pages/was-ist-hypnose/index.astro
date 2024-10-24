@@ -7,7 +7,7 @@ import { Image } from 'astro:assets';
 import faqImage from '@assets/uploads/thinking.png';
 
 // Simple function to convert Markdown to plain text
-function markdownToPlainText(markdown) {
+function markdownToPlainText(markdown: string) {
     if (!markdown) return '';
     return markdown
         .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
@@ -23,7 +23,10 @@ const backlink = {
 };
 
 // Fetch and sort the FAQs
-const faqs = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+const faqs = (await getCollection('faq')).sort((a, b) => {
+    console.log('ORDER: ', a.data.order, b.data.order, a.data.order - b.data.order);
+    return a.data.order - b.data.order;
+});
 
 // For each FAQ, render its body content as HTML and extract plain text for schema
 const renderedFaqs = await Promise.all(
