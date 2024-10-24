@@ -24,7 +24,6 @@ const backlink = {
 
 // Fetch and sort the FAQs
 const faqs = (await getCollection('faq')).sort((a, b) => {
-    console.log('ORDER: ', a.data.order, b.data.order, a.data.order - b.data.order);
     return a.data.order - b.data.order;
 });
 
