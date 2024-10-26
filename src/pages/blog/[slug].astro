@@ -8,7 +8,7 @@ import PostPreview from '../../components/PostPreview.astro';
 import ArrowLeft from '../../icons/ArrowLeft.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import JanineFace from '@assets/images/bern-hypnose-janine-aerni.jpg';
 
 export async function getStaticPaths() {
@@ -33,7 +33,7 @@ const { Content } = await post.render();
 
 const schemaPubDate = publishDate.toISOString();
 const schemaUpdateDate = updatedDate ? updatedDate.toISOString() : '';
-const schemaImage = image ? image.src : '';
+const schemaImage = image ? (await getImage({ src: image.src, width: 704 })).src : '';
 
 const blogSchemaData = {
     '@context': 'https://schema.org',
