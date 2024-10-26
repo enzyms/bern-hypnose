@@ -46,15 +46,15 @@ function toISO8601WithOffset(dateString: string | number | Date, offsetHours = 1
 const schemaPubDate = toISO8601WithOffset(publishDate);
 const schemaUpdateDate = updatedDate ? toISO8601WithOffset(updatedDate) : '';
 const baseUrl = Astro.site?.origin;
-const schemaImage = image && baseUrl ? `${baseUrl}${(await getImage({ src: image.src, width: 704 })).src}` : '';
+const CACAschemaImage = image ? `${baseUrl}${(await getImage({ src: image.src, width: 704 })).src}` : '';
 
 const blogSchemaData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    headline: { title },
-    image: [{ schemaImage }],
-    datePublished: { schemaPubDate },
-    dateModified: { schemaUpdateDate },
+    headline: title,
+    image: [CACAschemaImage],
+    datePublished: schemaPubDate,
+    dateModified: schemaUpdateDate,
     author: [
         {
             '@type': 'Person',
@@ -73,6 +73,7 @@ const blogSchemaData = {
                 <ArrowLeft class="w-4 h-4 fill-current" />
                 <span>Zurück zur Liste</span>
             </a>
+            {CACAschemaImage}
             <h1 class="text-balance text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">{title}</h1>
             <div class="my-8 rounded-xl overflow-hidden">
                 {
