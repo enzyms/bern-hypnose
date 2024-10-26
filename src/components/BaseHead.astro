@@ -46,7 +46,17 @@ function formatCanonicalURL(url: string | URL) {
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 
-{Astro.props.schema === 'hypnosetherapie' ? <SchemaHypnotherapy /> : Astro.props.schema === 'home' ? <SchemaHome /> : <SchemaDefault />}
+{
+    Astro.props.schema === 'none' ? (
+        ''
+    ) : Astro.props.schema === 'hypnosetherapie' ? (
+        <SchemaHypnotherapy />
+    ) : Astro.props.schema === 'home' ? (
+        <SchemaHome />
+    ) : (
+        <SchemaDefault />
+    )
+}
 
 <!-- Low Priority Global Metadata -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

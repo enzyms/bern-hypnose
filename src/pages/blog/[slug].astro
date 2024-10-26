@@ -53,9 +53,9 @@ const blogSchemaData = {
 };
 ---
 
-<BaseLayout title={title} description={excerpt} image={image} canonical={canonical} pageType="article">
-    <script type="application/ld+json" set:html={JSON.stringify(blogSchemaData)} />
+<script type="application/ld+json" set:html={JSON.stringify(blogSchemaData)} />
 
+<BaseLayout title={title} description={excerpt} image={image} canonical={canonical} pageType="article" schema="none">
     <article class="mb-16">
         <header class="mb-8 relative">
             <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
