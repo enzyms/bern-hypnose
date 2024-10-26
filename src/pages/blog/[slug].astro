@@ -31,8 +31,20 @@ const { post, prevPost, nextPost } = Astro.props;
 const { title, publishDate, updatedDate, excerpt, tags = [], image, canonical } = post.data;
 const { Content } = await post.render();
 
-const schemaPubDate = publishDate.toISOString();
-const schemaUpdateDate = updatedDate ? updatedDate.toISOString() : '';
+function toISO8601WithOffset(dateString: string | number | Date, offsetHours = 1) {
+    const date = new Date(dateString);
+
+    // Adjust the time by the specified offset
+    const adjustedDate = new Date(date.getTime() + offsetHours * 60 * 60 * 1000);
+
+    // Format the adjusted date with ISO 8601 and include the offset in hours
+    const isoString = adjustedDate.toISOString().replace('Z', `+${String(offsetHours).padStart(2, '0')}:00`);
+
+    return isoString;
+}
+
+const schemaPubDate = toISO8601WithOffset(publishDate);
+const schemaUpdateDate = updatedDate ? toISO8601WithOffset(updatedDate) : '';
 const baseUrl = Astro.site?.origin;
 const schemaImage = image && baseUrl ? `${baseUrl}${(await getImage({ src: image.src, width: 704 })).src}` : '';
 
@@ -40,7 +52,7 @@ const blogSchemaData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: { title },
-    image: { schemaImage },
+    image: [{ schemaImage }],
     datePublished: { schemaPubDate },
     dateModified: { schemaUpdateDate },
     author: [
@@ -53,9 +65,8 @@ const blogSchemaData = {
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(blogSchemaData)} />
-
 <BaseLayout title={title} description={excerpt} image={image} canonical={canonical} pageType="article" schema="none">
+    <script type="application/ld+json" set:html={JSON.stringify(blogSchemaData)} />
     <article class="mb-16">
         <header class="mb-8 relative">
             <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
