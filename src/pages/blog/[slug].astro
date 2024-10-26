@@ -33,7 +33,8 @@ const { Content } = await post.render();
 
 const schemaPubDate = publishDate.toISOString();
 const schemaUpdateDate = updatedDate ? updatedDate.toISOString() : '';
-const schemaImage = image ? (await getImage({ src: image.src, width: 704 })).src : '';
+const baseUrl = Astro.site?.origin;
+const schemaImage = image && baseUrl ? `${baseUrl}${(await getImage({ src: image.src, width: 704 })).src}` : '';
 
 const blogSchemaData = {
     '@context': 'https://schema.org',
@@ -89,7 +90,7 @@ const blogSchemaData = {
                 <p>
                     <a href="/janine-aerni/" class="font-bold text-red-600 hover:text-red-500">Janine Aerni</a>
                     <br />
-                    <FormattedDate date={publishDate} />
+                    am <FormattedDate date={publishDate} />
                     {
                         updatedDate && (
                             <>
