@@ -31,10 +31,30 @@ const { post, prevPost, nextPost } = Astro.props;
 const { title, publishDate, updatedDate, excerpt, tags = [], image, canonical } = post.data;
 const { Content } = await post.render();
 
-console.log('post', title, canonical);
+const schemaPubDate = publishDate.toISOString();
+const schemaUpdateDate = updatedDate ? updatedDate.toISOString() : '';
+const schemaImage = image ? image.src : '';
+
+const blogSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: { title },
+    image: { schemaImage },
+    datePublished: { schemaPubDate },
+    dateModified: { schemaUpdateDate },
+    author: [
+        {
+            '@type': 'Person',
+            name: 'Janine Aerni',
+            url: 'https://bern-hypnose.ch/janine-aerni/'
+        }
+    ]
+};
 ---
 
 <BaseLayout title={title} description={excerpt} image={image} canonical={canonical} pageType="article">
+    <script type="application/ld+json" set:html={JSON.stringify(blogSchemaData)} />
+
     <article class="mb-16">
         <header class="mb-8 relative">
             <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
