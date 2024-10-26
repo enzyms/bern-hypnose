@@ -9,6 +9,7 @@ import ArrowLeft from '../../icons/ArrowLeft.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
 import { Image } from 'astro:assets';
+import JanineFace from '@assets/images/bern-hypnose-janine-aerni.jpg';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
@@ -41,19 +42,6 @@ console.log('post', title, canonical);
                 <span>Zurück zur Liste</span>
             </a>
             <h1 class="text-balance text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">{title}</h1>
-            <div class="mt-4 text-sm">
-                <FormattedDate date={publishDate} />
-                {
-                    updatedDate && (
-                        <>
-                            {' '}
-                            <span>
-                                (Updated on <FormattedDate date={updatedDate} />)
-                            </span>
-                        </>
-                    )
-                }
-            </div>
             <div class="my-8 rounded-xl overflow-hidden">
                 {
                     image && (
@@ -67,6 +55,32 @@ console.log('post', title, canonical);
                         />
                     )
                 }
+            </div>
+            <div class="flex gap-4 items-center">
+                <Image
+                    width={48}
+                    src={JanineFace}
+                    class="w-12 h-12 object-cover object-center rounded-full shadow-lg"
+                    alt="Bern Hypnose – Janine Aerni"
+                    widths={[48, 96]}
+                    sizes="48px"
+                />
+
+                <p>
+                    <a href="/janine-aerni/" class="font-bold text-red-600 hover:text-red-500">Janine Aerni</a>
+                    <br />
+                    <FormattedDate date={publishDate} />
+                    {
+                        updatedDate && (
+                            <>
+                                {' '}
+                                <span>
+                                    (Updated on <FormattedDate date={updatedDate} />)
+                                </span>
+                            </>
+                        )
+                    }
+                </p>
             </div>
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
@@ -101,7 +115,7 @@ console.log('post', title, canonical);
     </article>
     {
         (prevPost || nextPost) && (
-            <div class="my-12 py-12 sm:my-24 ">
+            <div class="my-12">
                 <h2 class="mb-6 font-black">Weiter lesen</h2>
                 {nextPost && <PostPreview post={nextPost} class="mb-12 sm:mb-16" headingLevel="h3" />}
                 {prevPost && <PostPreview post={prevPost} class="mb-12 sm:mb-16" headingLevel="h3" />}
