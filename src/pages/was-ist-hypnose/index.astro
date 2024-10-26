@@ -40,7 +40,7 @@ const renderedFaqs = await Promise.all(
 const faqSchemaData = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    headline: 'Was ist Hypnose? Häufige Fragen',
+    name: 'Was ist Hypnose? Häufige Fragen',
     mainEntity: renderedFaqs.map((faq) => ({
         '@type': 'Question',
         name: faq.data.title,
