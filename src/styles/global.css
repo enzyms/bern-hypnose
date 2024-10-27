@@ -67,4 +67,21 @@
         text-decoration-skip-ink: none;
         text-decoration-color: currentColor;
     }
+
+    a[target='_blank']:not(.rounded-full) {
+        position: relative;
+    }
+
+    a[target='_blank']::after {
+        content: '';
+        display: inline-block;
+        margin-left: 5px;
+        width: 16px;
+        height: 16px;
+        background-color: transparent;
+        background-image: url('/external.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
 }
