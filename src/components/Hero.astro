@@ -23,7 +23,9 @@ const hero = siteConfig.hero;
 
                 <p class="font-bold text-main text-balance">
                     {hero.subtitle} <br />
-                    {hero.name}
+                    <a href="/janine-aerni/" class="text-red-600 hover:text-red-500">
+                        {hero.name}
+                    </a>
                 </p>
             </div>
             {hero.text && <div class="max-w-none prose prose-dante sm:prose-lg text-pretty " set:html={marked.parse(hero.text)} />}
