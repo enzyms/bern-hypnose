@@ -2,6 +2,7 @@
 title: Trauer
 excerpt: 'Ein bekannter aber oftmals ungebetener Gast: die Trauer.'
 publishDate: 2024-09-11T14:52:00.000Z
+canonical: https://bern-hypnose.ch/hypnosetherapie/stress-burnout-und-depression/
 image:
   src: src/assets/uploads/forest.png
 tags:
