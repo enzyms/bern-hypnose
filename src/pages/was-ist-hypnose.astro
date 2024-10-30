@@ -76,28 +76,17 @@ const faqSchemaData = {
                 Frage entdeckst, zögere bitte nicht, mich direkt zu kontaktieren.
             </p>
         </header>
-
         <!-- Embedding FAQ Schema with JSON-LD -->
         <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
 
-        <!-- Accordion HTML Structure -->
-        <div class="accordion">
+        <div class="max-w-none prose prose-dante sm:prose-lg">
             {
                 renderedFaqs.map((faq) => {
                     return (
-                        <div class="accordion-item" id={faq.id.slice(0, -3)} data-order={faq.data.order}>
-                            <h2 class="accordion-heading">
-                                <button class="accordion-heading__button" aria-expanded="false">
-                                    {faq.data.title}
-                                    <svg class="accordion-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 11L3 6h10L8 11z" />
-                                    </svg>
-                                </button>
-                            </h2>
-                            <div class="accordion-content">
-                                <div class="px-2 pb-8">
-                                    <faq.Content />
-                                </div>
+                        <div class="grow mb-4" key={faq.id} data-order={faq.data.order}>
+                            <h2 class="text-xl leading-tight font-black sm:text-2xl">{faq.data.title}</h2>
+                            <div class="mb-1">
+                                <faq.Content /> {/* Render HTML content */}
                             </div>
                         </div>
                     );
@@ -106,74 +95,3 @@ const faqSchemaData = {
         </div>
     </article>
 </BaseLayout>
-
-<!-- Include JavaScript for Accordion Functionality -->
-<script is:inline>
-    const accordionHeaders = document.querySelectorAll('.accordion-heading__button');
-
-    accordionHeaders.forEach((header) => {
-        header.addEventListener('click', () => {
-            const expanded = header.getAttribute('aria-expanded') === 'true';
-            header.setAttribute('aria-expanded', (!expanded).toString());
-
-            const content = header.parentElement.nextElementSibling;
-            content.classList.toggle('open');
-        });
-    });
-</script>
-
-<style>
-    .accordion {
-        @apply border-t border-gray-400;
-    }
-
-    .accordion-item {
-        @apply border-b border-gray-400;
-    }
-
-    .accordion-heading {
-        margin: 0;
-    }
-
-    .accordion-heading__button {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-
-        @apply px-2 py-5;
-
-        font-weight: bold;
-        text-align: left;
-        cursor: pointer;
-
-        transition:
-            color 0.3s ease,
-            background-color 0.3s ease;
-    }
-
-    .accordion-heading__button:hover {
-        @apply text-red-600;
-        @apply bg-red-300 bg-opacity-5;
-    }
-
-    .accordion-icon {
-        flex-shrink: 0;
-        transition: transform 0.3s ease;
-    }
-
-    .accordion-heading__button[aria-expanded='true'] .accordion-icon {
-        transform: rotate(180deg);
-    }
-
-    .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 500ms ease;
-    }
-
-    .accordion-content.open {
-        max-height: 1000px;
-        transition: max-height 2000ms ease;
-    }
-</style>
