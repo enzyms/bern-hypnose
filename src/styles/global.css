@@ -84,4 +84,8 @@
         background-repeat: no-repeat;
         vertical-align: middle;
     }
+
+    a[target='_blank'].rounded-full::after {
+        background-image: url('/external-negative.svg');
+    }
 }
