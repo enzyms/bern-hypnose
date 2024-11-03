@@ -6,7 +6,7 @@ tags:
   - Kinderhypnose
 
 image:
-  src: src/assets/uploads/blocks.png
+  src: src/assets/uploads/child.png
   alt: ''
 ---
 
