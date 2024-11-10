@@ -27,10 +27,27 @@ const hero = siteConfig.hero;
                         {hero.name}
                     </a>
                 </p>
+
+                <a
+                    href="/angebote/#gutscheine"
+                    class="
+                        absolute top-[-104px] -right-2 sm:static
+                        mr-0 ml-auto w-32 h-32 shadow-sm shadow-yellow-200 -rotate-6 bg-yellow-100 text-red-600  rounded-full flex justify-center items-center
+                        hover:rotate-0 hover:scale-105 hover:shadow-xl hover:shadow-yellow-100 transition-all
+                        "
+                >
+                    <span class="text-sm font-black leading-5 text-center pointer-events-auto">
+                        Verschenke
+                        <br />
+                        einen
+                        <br />
+                        Gutschein
+                    </span>
+                </a>
             </div>
             {hero.text && <div class="max-w-none prose prose-dante sm:prose-lg text-pretty " set:html={marked.parse(hero.text)} />}
             {hero.actions && hero.actions.length > 0 && (
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 items-center">
                     <a
                         data-umami-event="Home – Button Kontakt"
                         href="/kontakt/"
