@@ -85,7 +85,11 @@
         vertical-align: middle;
     }
 
-    a[target='_blank'].rounded-full::after {
+    a[target='_blank'].rounded-full.text-white::after {
+        background-image: url('/external-negative.svg');
+    }
+
+    a[target='_blank'].rounded-full:hover::after {
         background-image: url('/external-negative.svg');
     }
 }
