@@ -1,5 +1,5 @@
 ---
-title: Lasst uns unnötigen Scham ablegen!
+title: Lasst uns unnötige Scham ablegen!
 excerpt: Wofür schämen wir uns? Und wozu eigentlich?
 publishDate: 2024-09-13T10:57:00.000Z
 image:
