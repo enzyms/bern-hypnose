@@ -10,36 +10,39 @@ import Tag from '../../components/Tag.astro';
 import { getAllTags } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
 
-// Export the required getStaticPaths function
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-    // Sorting function
     const sortItemsByDateDesc = (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => {
         return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
     };
-
-    // Get all posts for pagination
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
-
-    // Return paginated paths
     return paginate(posts, { pageSize: siteConfig.postsPerPage || 4 });
 }
 
-// Access pagination data from Astro.props
 const { page } = Astro.props;
 const blog = page.data;
 
-// Fetch all posts again to calculate tags
-// This is necessary because getStaticPaths runs before the component render
 const allPosts = (await getCollection('blog')).sort((a, b) => {
     return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
 });
 
-// Get all tags from all posts
 const tags = getAllTags(allPosts);
 
-// Page description
-const description =
-    'Entdecke meine Blogartikel über Hypnose und Hypnosetherapie. Themen wie Ängste, Wohlbefinden, Kinderhypnose, Sport, Ernährung, Trauer und Selbstreflexion. Alles, was du über mentale Gesundheit und Hypnose wissen musst.';
+// Array of possible descriptions
+const descriptions = [
+    'Entdecke spannende Artikel über Hypnose und ihre Anwendung zur Überwindung von Ängsten und zur Förderung des Wohlbefindens.',
+    'Erfahre mehr über die Kraft der Hypnose in unseren Artikeln – von Selbstreflexion bis hin zu mentaler Gesundheit.',
+    'Lies unsere Blogbeiträge zu Themen wie Hypnosetherapie, Stressbewältigung und Unterstützung für Kinder und Erwachsene.',
+    'Tauche in die Welt der Hypnose ein und entdecke Tipps zur Selbsthypnose, Entspannung und emotionalen Heilung.',
+    'Unsere Artikel über Hypnose und mentales Wohlbefinden bieten dir Einblicke in die Anwendung für Sport, Ernährung und Schlaf.',
+    'Lerne, wie Hypnose helfen kann, innere Ruhe zu finden und alltägliche Herausforderungen zu meistern.',
+    'Von der Förderung gesunder Gewohnheiten bis zur Verarbeitung von Trauer – entdecke unsere Blogartikel zur Hypnose.',
+    'Finde heraus, wie Hypnose dich in Lebensbereichen wie Angstbewältigung, Schlaf und Stress unterstützen kann.',
+    'In unserem Blog erfährst du, wie Hypnose ein gesünderes Leben fördern und tiefere Selbstreflexion ermöglichen kann.',
+    'Lies spannende Beiträge über die positiven Wirkungen der Hypnose und wie sie deine mentale Stärke steigern kann.'
+];
+
+// Use the page number to select a description
+const description = `${descriptions[(page.currentPage - 1) % descriptions.length]} Seite ${page.currentPage} von Blogbeiträgen.`;
 ---
 
 <BaseLayout title="Blog" description={description} image={{ src: '@assets/uploads/glowing-blocks.png', alt: 'Blog' }}>
