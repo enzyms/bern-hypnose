@@ -45,7 +45,7 @@ const descriptions = [
 const description = `${descriptions[(page.currentPage - 1) % descriptions.length]} Seite ${page.currentPage} von Blogbeiträgen.`;
 ---
 
-<BaseLayout title="Blog" description={description} image={{ src: '@assets/uploads/glowing-blocks.png', alt: 'Blog' }}>
+<BaseLayout title={`Blog - Seite ${page.currentPage}`} description={description} image={{ src: '@assets/uploads/glowing-blocks.png', alt: 'Blog' }}>
     <div>
         <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/">
             <ArrowLeft class="w-4 h-4 fill-current" />
