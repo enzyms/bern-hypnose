@@ -8,5 +8,27 @@ import ArrowLeft from '../icons/ArrowLeft.astro';
         <ArrowLeft class="w-4 h-4 fill-current" />
         <span>Home</span>
     </a>
-    <h1 class="mb-8">Danke für deine Bestellung :)</h1>
+
+    <h1 class="mb-8">Danke für deine Bestellung&nbsp;:)</h1>
+    <div class="max-w-lg mx-auto bg-red-50 shadow-lg rounded-lg p-6 space-y-6 text-lg">
+        <p>Vielen Dank, dass du einen Gutschein bestellt hast! Hier sind die nächsten Schritte:</p>
+
+        <ul class="list-disc space-y-2 ml-4">
+            <li class="text-balance">Bitte bezahle den Betrag von <strong>150 CHF</strong> mit Twint über den untenstehenden Button.</li>
+            <li class="text-balance">Du erhältst den Gutschein innerhalb von 24 Stunden per E-Mail.</li>
+        </ul>
+
+        <div>
+            <a
+                href="https://go.twint.ch/1/e/tw?tw=acq.rqez8x6zRLOrtaz_8BoU97lVX-ye1asWEVHbIwQKLHGUYgHyBpKGluRPr3PY94Bv."
+                class="inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50"
+            >
+                Mit Twint 150 CHF bezahlen
+            </a>
+        </div>
+        <hr class="pt-4 border-t-0 border-b border-gray-500" />
+        <div class="py-4">
+            Kein Twint? Bitte <a href="mailto:janine@bern-hypnose.ch" class="text-red-700 underline">sende mir eine E-Mail</a>.
+        </div>
+    </div>
 </BaseLayout>
