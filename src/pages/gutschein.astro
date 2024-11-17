@@ -16,7 +16,8 @@ import ArrowLeft from '../icons/ArrowLeft.astro';
 
     <form netlify action="/gutschein-danke/" name="gutschein" method="POST" class="max-w-lg mx-auto bg-red-50 shadow-md rounded-lg p-6 space-y-4 text-lg mb-12">
         <input type="hidden" name="form-name" value="gutschein" />
-        <input type="hidden" name="subject" value="New lead from %{first-name} (%{submissionId})" />
+        <input type="hidden" name="subject" value="Neue Bestellung für einen Gutschein" />
+        <input type="hidden" name="remark" value="Check if Twint payment has been done" />
 
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Gutschein verschenken</h2>
 
