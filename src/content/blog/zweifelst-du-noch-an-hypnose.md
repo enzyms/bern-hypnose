@@ -1,12 +1,14 @@
 ---
 title: Zweifelst du noch an Hypnose?
 excerpt: Ich möchte dich nicht von mir, sondern von DIR überzeugen in der Hypnose.
-publishDate: 2024-11-17T15:23:00.000Z
+publishDate: 2024-11-17T15:28:00.000Z
 tags:
   - Hypnose
   - Selbstreflexion
   - Wohlbefinden
   - Zweifel
+image:
+  src: src/assets/uploads/bridge-2.png
 ---
 ## Warum einige Menschen sich fürchten vor der Hypnose
 
