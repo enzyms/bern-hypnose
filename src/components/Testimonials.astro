@@ -1,22 +1,25 @@
 ---
+// Testimonials.astro
 import siteConfig from '../data/site-config';
-
 import Quote from '../icons/Quote.astro';
 
-// Get the testimonials array from the siteConfig
-const testimonials = siteConfig.testimonials;
+const { testimonials } = siteConfig;
+
+// Accept the `ids` and `noTitle` props
+const { ids, noTitle } = Astro.props;
+
+// Filter testimonials by the provided `ids` array
+const selectedTestimonials = ids ? ids.map(id => testimonials?.[id]).filter(Boolean) : (testimonials ?? []);
 ---
 
 <section class="mt-12 testimonials">
-  <div class="prose sm:prose-lg">
-    <h2 class="pb-5">Klient:innenstimmen</h2>
-  </div>
-  {testimonials && testimonials.length > 0 ? (
-    testimonials.map((testimonial) => (
+  {!noTitle &&  <div class="prose sm:prose-lg"><h2 class="pb-5">Klient:innenstimmen</h2></div>}
+  {selectedTestimonials && selectedTestimonials.length > 0 ? (
+    selectedTestimonials.map((testimonial) => (
       <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group">
-        <blockquote class="relative pl-6" >
+        <blockquote class="relative pl-6">
           <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform -translate-x-2" />
-          <p class="inline-block text-pretty ">{testimonial.quote}</p>
+          <p class="inline-block text-pretty">{testimonial.quote}</p>
         </blockquote>
         <footer class="text-sm py-2 pl-6">
           <span>{testimonial.author}</span>
@@ -33,12 +36,12 @@ const testimonials = siteConfig.testimonials;
       </article>
     ))
   ) : (
-    <!-- no testimonials -->
+    <p>No testimonials available.</p>
   )}
   <div class="flex items-center gap-4">
     <div class="border-t border-gray-400 grow"></div>
-    <a href="https://www.google.com/search?q=aerni+hypnose&oq=aerni+hypnose&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDwyBggDEEUYPTIGCAQQRRhB0gEINzYxNWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#lrd=0x478e3919098aba6d:0xc134d9016ead528c,1,,,," class="block link">Alle reviews auf Google lesen</a>
+    <a href="https://www.google.com/search?q=aerni+hypnose&oq=aerni+hypnose&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDwyBggDEEUYPTIGCAQQRRhB0gEINzYxNWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#lrd=0x478e3919098aba6d:0xc134d9016ead528c,1,,,," class="block link">
+      Alle reviews auf Google lesen
+    </a>
   </div>
 </section>
-
-

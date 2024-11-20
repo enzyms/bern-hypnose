@@ -10,6 +10,7 @@ backlink:
 ---
 
 import CertificateImage from '@assets/images/certificate.jpg';
+import Testimonials from '@components/Testimonials.astro';
 
 ## Diplomierte Hypnosetherapeutin VSH in Bern
 
@@ -46,10 +47,14 @@ Kaum etwas erdet mich dabei so sehr wie der Sport – sei es im Fitnessstudio, b
 bei mentalen Herausforderungen, Blockaden oder der Erholung nach Verletzungen zu unterstützen. Im Januar 2025 werde ich dieses Thema noch vertiefen mit einer Weiterbildung in Sporthypnose.
 
 
-
-
 <a
 data-umami-event="Janine – Button Kontakt"
 href="/kontakt/"
-class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
+class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
 onclick="document.app.emitEvent('mouseDown', 'trigger-to-contact');"> Kontakt und Termin</a>
+
+<hr class="border-t border-gray-400 mt-12" />
+### Klient:innenstimmen
+<div className="not-prose">
+  <Testimonials ids={[8, 1, 4]} noTitle />
+</div>
