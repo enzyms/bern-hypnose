@@ -25,3 +25,5 @@ Drückt's in einem Bereich, werden auch die anderen in Mitleidenschaft gezogen- 
 ## Hypnose als Unterstützung
 
 Falls du dich gerufen fühlst und Hypnose ausprobieren möchtest, freue ich mich und bin für dich da. Eine Investition in sich selbst lohnt sich, du bist immer bei dir, also gestalte diese Reise so angenehm als möglich :)
+
+Ein Leben zu leben, welches wir zwar nicht im Griff haben, aber immer wieder mit Freude, Kraft und Selbstbestimmung angehen, scheint mir erstrebenswert und möglich. Gegen Stürme gewappnet zu sein und sogar Gefallen an ihnen zu finden, auch.
