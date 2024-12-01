@@ -46,7 +46,7 @@ export type Subscribe = {
 };
 
 export type Testimonial = {
-    id: number;
+    tid: number;
     quote: string;
     author: string;
     url?: string;
@@ -71,66 +71,66 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
     testimonials: [
         {
-            "id": 3,
+            "tid": 0,
             "quote": "Ich habe die Hypnosetherapie besucht, weil ich grosse Angst vor einem medizischen Eingriff hatte. Janine Aerni hat es verstanden, mich in einen Zustand von Entspannung, innerer Ruhe und Vertrauen zu führen. Ihre kompetente und einfühlsame Art haben mich sehr überzeugt. Die mit ihr festgelegten «Anker» konnte ich vor dem Eingriff wieder herholen, so dass ich recht gelassen sein konnte.",
             "author": "Vroni Gschwend",
             "url": "https://g.co/kgs/yJrAfVx"
         },
         {
-            "id": 0,
+            "tid": 1,
             "quote": "Die Hypnosesitzung bei Janine Aerni möchte ich deshalb weiter empfehlen weil das Eingehen auf die Klienten mit besonderem Einfühlungsvermögen und Empathie geschieht. Als neurosensitiver Mensch ist mir   Authentizität und individuelle Arbeitsweise besonders wichtig, um mich vertrauensvoll zu öffnen. Das Interesse am Klienten und die  Begeisterung, für die Arbeit sind erfrischend. Das liebevolle Eingehen auf die Menschen unterstützt den Prozess nachhaltig. Ich kann Frau Aerni wärmstens weiterempfehlen.",
             "author": "Franziska Fiedler",
             "url": "https://g.co/kgs/2j43d2y"
         },
         {
-            "id": 1,
+            "tid": 2,
             "quote": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser. Ich habe mich während der Sitzung stehts geborgen und sicher gefühlt. Alles in allem eine sehr tolle Erfahrung, die ich nur weiterempfehlen kann.",
             "author": "Paula Bozic",
             "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
         },
         {
-            "id": 2,
+            "tid": 3,
             "quote": "Wähernd eines stressigen Tages hatte ich eine Hypnosesitzung bei Janine. Ich war unsicher, ob ich zur Ruhe komme. Dank der einfühlsamen und professionellen Art von Janine konnte ich mich total entspannen und Energie tanken. Eine sehr empfehlenswerte Auszeit, welche nachgeklungen hat.",
             "author": "Michelle Fankhauser",
             "url": "https://g.co/kgs/LDT8sut"
         },
         {
-            "id": 4,
+            "tid": 4,
             "quote": "Für mich persönlich Hypnose wirkt Wunder ✨ und das durfte ich bei der lieben Janine in einer Hypnosetherapie wieder erfahren. Mein Thema in der Session war, ich habe grossen Scham vor dem Schreiben und Vorlesen. Gestern hab ich mich vor meinem Arbeitsteam geoutet dass ich Legasthenie habe und darum ich nie ein Journal schreibe oder sonst was im Büro erledige, was mit Schreiben zu tun hat. NOCH NICHT 💪😁 voller Motivation und Wille bleibe ich an diesem Thema dran. Es fühlt sich so leicht an, dieses Geheimnis gelüftet zu haben 🙏 Von Herzen empfehle ich Janine weiter.",
             "author": "D.S.",
         },
         {
-            "id": 5,
+            "tid": 5,
             "quote": "In einer angenehmen Umgebung wurde ich von Janine gut über den Ablauf aufgeklärt. Ich habe mich jederzeit sehr wohl gefühlt und bin voller neuer Energie nach Hause gegangen. Mit der Hypnosetherapie und den mitgegebenen Übungen konnte ich mein Thema ideal behandeln und überwinden. Die Anwendung kann ich auch auf andere Themen übertragen. Es hat mir eine neue Lebensqualität gebracht. Ich empfehle die Hypnosetherapie von Janine sehr.",
             "author": "Katrin Breuer",
             "url": "https://g.co/kgs/g9JUYgs"
         },
         {
-            "id": 6,
+            "tid": 6,
             "quote": "Es war meine erste Hypnose und bei Janine und ich fühlte mich bei Ihr direkt Wohl . Sie hat sich Zeit genommen und mich mit Ihrer Freundlichen Art und mit viel Geduld und Positiven Aspekten geleitet und für das bin ich sehr dankbar. Vielen Dank! Ich kann Janine nur weiterempfehlen",
             "author": "Jasmin Miescher",
             "url": "https://g.co/kgs/MUQ2kpX"
         },
         {
-            "id": 7,
+            "tid": 7,
             "quote": "die hypnose war sehr intensiv und tiefgründig. vielen dank janine!",
             "author": "Yves",
             "url": "https://g.co/kgs/sUhiE6p"
         },
         {
-            "id": 8,
+            "tid": 8,
             "quote": "Janine Aerni ist eine sehr authentische, kompetente Hypnosetherapeutin, mit einem grossen Herz. Man fühlt sich schon bei der Begrüssung in der schönen Praxis sehr wohl  und gut aufgehoben. Ich wurde sehr achtsam und doch auch kraftvoll durch die Hypnose begleitet , bzw. angeleitet, genau so, wie ich es mir wünschte. Die Selbsthypnose Anleitung konnte ich gut in meinem Alltag integrieren und sie unterstützt mich in meinem Anliegen. Ich bin Janine Aerni für diese einfühlsame und effektive Hypnosetherapie sehr dankbar und kann sie wärmstens weiterempfehlen.",
             "author": "Alexandra Sidler",
             "url": "https://g.co/kgs/p1syPib"
         },
         {
-            "id": 9,
+            "tid": 9,
             "quote": "Sehr kompetente, rücksichtsvolle und feinfühlige Hypnosetherapeutin. In einem sehr angenehmen und entspannenden Setting. Nachhaltiges und wirkungsvolles Erlebnis. Sehr zu empfehlen",
             "author": "Anemone Brunner",
             "url": "https://g.co/kgs/Rpj2hhC"
         },
         {
-            "id": 10,
+            "tid": 10,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
             "author": "Name or initials",
             "url": "https://google.link"
