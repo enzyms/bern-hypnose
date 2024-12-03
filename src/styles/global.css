@@ -28,6 +28,11 @@
         max-width: 100%;
         overflow-x: hidden;
         scroll-behavior: smooth;
+
+        @apply xl:text-[1.0625rem] 3xl:text-lg;
+    }
+
+    body {
     }
 
     h1 {
