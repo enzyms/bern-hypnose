@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import JanineFace from '@assets/images/janine-aerni-face.jpg';
+import CalendlyWidget from '@components/CalendlyComponent.svelte';
+
+const pageTitle = 'Termin buchen';
+const pageDescription = 'Vereinbare einen Termin für eine Hypnotherapiesitzung in Bern';
+---
+
+<BaseLayout hidePickaboo={true} title={pageTitle} description={pageDescription}>
+    <h1 class="mb-8">{pageTitle}</h1>
+    <div class="prose sm:prose-lg text-main">
+        <!-- Use the Calendly widget component -->
+        <CalendlyWidget client:only="svelte" />
+
+        <div class="text-sm p-2 relative z-10">
+            Bei der Terminvereinbarung werden persönliche Daten gespeichert. <a href="/datenschutzrichtlinie/">Alles über den Datenschutz</a>
+        </div>
+
+        <hr class="border-gray-400" />
+
+        <div class="flex flex-wrap gap-4 items-center">
+            <Image
+                width={112}
+                src={JanineFace}
+                class="w-32 h-32 object-cover object-center rounded-full shadow-lg"
+                alt="Janine Aerni"
+                widths={[112, 224]}
+                sizes="112px"
+            />
+            <address class="text-main not-italic">
+                Eigerstrasse 56 – 3007 Bern | <a
+                    data-umami-event="Open Google Map"
+                    href="https://www.google.com/maps/place/Hypnosetherapie+Janine+Aerni/@46.939631,7.4338689,17z/data=!3m1!4b1!4m6!3m5!1s0x478e3919098aba6d:0xc134d9016ead528c!8m2!3d46.939631!4d7.4364438!16s%2Fg%2F11w9gt4g0k?entry=ttu"
+                    target="_blank">Plan</a
+                >
+                <br />
+                E-Mail: <a href="mailto:janine@bern-hypnose.ch">janine@bern-hypnose.ch</a>
+                <br />
+                Telefon: <a href="tel:0798330385">079 833 03 85</a>
+                <br />
+            </address>
+        </div>
+    </div>
+</BaseLayout>

@@ -158,7 +158,7 @@ const siteConfig: SiteConfig = {
                 href: '/angebote'
             },
             {
-                text: 'Kontakt & Termin buchen',
+                text: 'Kontakt buchen',
                 href: '/kontakt/'
             },
             
@@ -296,9 +296,14 @@ const siteConfig: SiteConfig = {
             diamondPosition: 2,
         },
         {
-            text: 'Kontakt & Termin',
+            text: 'Kontakt',
             href: '/kontakt/',
             diamondPosition: 3,
+        },
+        {
+            text: 'Termin',
+            href: '/termin/',
+            diamondPosition: 2,
         },
     ],
     footerNavLinks: [
@@ -323,7 +328,7 @@ const siteConfig: SiteConfig = {
             href: '/janine-aerni/'
         },
         {
-            text: 'Kontakt & Termin',
+            text: 'Kontakt',
             href: '/kontakt/'
         },
     ],

@@ -97,4 +97,8 @@
     a[target='_blank'].rounded-full:hover::after {
         background-image: url('/external-negative.svg');
     }
+
+    main:has(.calendly-wrapper) .display-after-scroll {
+        display: none;
+    }
 }

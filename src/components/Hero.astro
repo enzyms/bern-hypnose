@@ -49,20 +49,20 @@ const hero = siteConfig.hero;
             {hero.actions && hero.actions.length > 0 && (
                 <div class="flex flex-wrap gap-4 items-center">
                     <a
-                        data-umami-event="Home – Button Kontakt"
-                        href="/kontakt/"
-                        class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
-                        onclick="document.app.emitEvent('mouseDown', 'trigger-to-3');"
-                    >
-                        Kontakt & Termin
-                    </a>
-                    <a
                         data-umami-event="Home – Button Hypnosetherapie"
-                        href="/hypnosetherapie/"
+                        href="/kontakt/"
                         class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50"
                         onclick="document.app.emitEvent('mouseDown', 'trigger-to-2');"
                     >
-                        Was ist Hypnose?
+                        Kontakt aufnehmen
+                    </a>
+                    <a
+                        data-umami-event="Home – Button Kontakt"
+                        href="/termin/"
+                        class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
+                        onclick="document.app.emitEvent('mouseDown', 'trigger-to-3');"
+                    >
+                        Termin buchen
                     </a>
                 </div>
             )}

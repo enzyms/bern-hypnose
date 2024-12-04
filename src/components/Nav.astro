@@ -3,6 +3,7 @@ import NavLink from './NavLink.astro';
 import siteConfig from '../data/site-config';
 
 const navLinks = siteConfig.headerNavLinks || [];
+const hidePickaboo = Astro.props.hidePickaboo;
 ---
 
 <nav class="p-4 md:p-6 relative z-20 w-1/2 sm:w-full">
@@ -26,7 +27,7 @@ const navLinks = siteConfig.headerNavLinks || [];
                         <li class="py-0 relative" key={link.href}>
                             <NavLink
                                 data-diamond-position={link.diamondPosition}
-                                class="block py-1 md:py-2 text-3xl font-bold text-red-500 hover:text-red-600 md:font-normal md:text-gray-700 md:text-base transition-colors"
+                                class="block py-1 md:py-2 text-3xl font-bold text-red-500 hover:text-red-600 md:font-normal md:text-gray-900 md:text-base transition-colors"
                                 href={link.href}
                             >
                                 {link.text}
@@ -63,9 +64,24 @@ const navLinks = siteConfig.headerNavLinks || [];
             </div>
         )
     }
+    { !hidePickaboo && (
+        <a href="/termin/" id="pickaboo" class="display-after-scroll">Termin buchen</a>
+    )}
+    
 </nav>
 
 <style>
+    .display-after-scroll {
+   
+        @apply inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline;
+
+        @apply fixed z-10 bottom-4 left-1/2 transform -translate-x-1/2 translate-y-[150px] opacity-0 transition-all duration-500;
+
+    }
+    .display-after-scroll.is-visible {
+        @apply translate-y-0 opacity-100;
+    }
+    
     @media (max-width: 767px) {
         .menu {
             @apply flex-col gap-1 absolute left-0 w-screen px-3 pt-32 pb-10 z-20 bg-main top-0 -translate-y-full;
@@ -130,7 +146,7 @@ const navLinks = siteConfig.headerNavLinks || [];
     .menu li:has(.sub-menu) > a::after {
         content: '▼';
         font-size: 0.75em;
-        @apply hidden md:inline text-red-300 hover:text-red-600 transition-colors ease-in-out duration-500;
+        @apply hidden md:inline text-red-500 hover:text-red-600 transition-colors ease-in-out duration-500;
     }
 
     /* Styling for sub-menu on desktop */
@@ -151,6 +167,43 @@ const navLinks = siteConfig.headerNavLinks || [];
 </style>
 
 <script>
+    function throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function (...args) {
+            const context = this;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function () {
+                    if (Date.now() - lastRan >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
+        };
+    }
+
+    function handleScroll() {
+        const pickaboo = document.getElementById('pickaboo');
+        if (window.scrollY > 200) {
+            pickaboo?.classList.add('is-visible');
+        } else {
+            pickaboo?.classList.remove('is-visible');
+        }
+    }
+
+    const throttledScroll = throttle(handleScroll, 100);
+    window.addEventListener('scroll', throttledScroll);
+
+    document.addEventListener('astro:after-swap', () => {
+        window.removeEventListener('scroll', throttledScroll);
+        window.addEventListener('scroll', throttledScroll);
+    });
+
     function menuToggle() {
         const menu = document.querySelector('.menu');
         const menuToggleBtn = document.querySelector('.menu-toggle');

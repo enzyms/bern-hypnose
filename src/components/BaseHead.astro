@@ -12,6 +12,7 @@ export type Props = {
     pageType?: 'website' | 'article';
     canonical?: string;
     schema?: string;
+    hidePickaboo?: boolean;
 };
 
 const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props;
