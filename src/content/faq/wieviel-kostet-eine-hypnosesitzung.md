@@ -4,4 +4,4 @@ promoted: true
 order: 80
 ---
 
-Die Kosten für eine Hypnosetherapie-Sitzung liegen zwischen 120 CHF und 150 CHF. Der genaue Preis hängt von der Dauer der Sitzung und den spezifischen Anforderungen ab.
+Die Kosten für eine Kinderhypnose-Sitzung belaufen sich auf 120 CHF und 150 CHF für Erwachsene.
