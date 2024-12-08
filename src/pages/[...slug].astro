@@ -36,12 +36,12 @@ const { Content } = await page.render();
             {
                 image && (
                     <Image
-                        width={704}
+                        width={1024}
                         src={image.src}
                         class="w-full rounded-xl shadow-lg"
                         alt={image.alt ?? ''}
-                        widths={[360, 520, 704]}
-                        sizes="(max-width: 768px) calc(100vw - 40px), 704px"
+                        widths={[360, 520, 1024]}
+                        sizes="(max-width: 768px) calc(100vw - 40px), 1024px"
                     />
                 )
             }
