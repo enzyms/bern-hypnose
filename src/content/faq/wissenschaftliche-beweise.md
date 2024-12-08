@@ -4,8 +4,17 @@ promoted: true
 order: 30
 ---
 
-Ja, es gibt wissenschaftliche Belege für die Wirksamkeit der Hypnose. Eine Studie beispielsweise beschreibt Hypnosesitzungen, bei denen Teilnehmern suggeriert wurde, sich stark zu fühlen. Die Teilnehmer berichteten nicht nur über ein gesteigertes Kraftempfinden, sondern zeigten auch messbare Zunahmen ihrer physischen Stärke. Diese Effekte können nachhaltig sein und unterstreichen das Potenzial der Hypnose, sowohl mentale Blockaden zu lösen als auch die körperliche Leistungsfähigkeit zu verbessern. Link zur Studie: <a href="https://www.nature.com/articles/s41598-024-73117-0" class="text-red-700 underline" target="_blank">nature.com</a> (auf Englisch).
+Ja, es gibt klare wissenschaftliche Belege für die Wirksamkeit der Hypnose. Eine Studie zeigt beispielsweise, dass Teilnehmende, denen in Hypnosesitzungen suggeriert wurde, sich stärker zu fühlen, nicht nur subjektiv von gesteigerter Kraft berichteten, sondern tatsächlich messbare Zunahmen ihrer körperlichen Leistungsfähigkeit zeigten. Diese anhaltenden Effekte verdeutlichen das Potenzial der Hypnose, nicht nur mentale Barrieren abzubauen, sondern auch physische Ressourcen zu aktivieren.  
+Link zur Studie: <a href="https://www.nature.com/articles/s41598-024-73117-0" class="text-red-700 underline" target="_blank">nature.com</a> (auf Englisch).
 
-<h3 class="mt-4 font-bold">Anerkennung in Spitälern</h3>
+### Anerkennung durch Fachgremien in Deutschland
 
-Die Anwendung von Hypnose ist ebenfalls in einigen Krankenhäusern gut integriert, zum Beispiel in den Genfer Universitätskliniken (HUG). HUG hat ein umfassendes Hypnose-Programm entwickelt, das darauf abzielt, Patienten eine ganzheitliche Betreuung durch klinische Hypnose anzubieten. Dieses Programm umfasst auch Schulungen für Ärzte und Pflegepersonal und fördert die Integration der Hypnose in verschiedene medizinische Praktiken. Informationen zum <a href="https://www.hug.ch/programme-hypnose-hug" class="text-red-700 underline" target="_blank">Hypnose-Programm HUG</a> (auf Französisch oder Englisch).
+Die Wirksamkeit von Hypnotherapie wurde auch von renommierten Fachgremien wie dem Wissenschaftlichen Beirat Psychotherapie (WBP) in Deutschland anerkannt. Der WBP bestätigte in seinem Gutachten, dass Hypnose eine wissenschaftlich fundierte psychotherapeutische Methode ist.  
+<a href="https://www.wbpsychotherapie.de/fileadmin/user_upload/_old-files/downloads/pdf-Ordner/WBP/Gutachten_zur_wissenschaftlichen_Anerkennung_der_Hypnotherapie.pdf" class="text-red-700 underline" target="_blank">Gutachten des Wissenschaftlichen Beirats Psychotherapie</a>
+
+### Integration in medizinische Einrichtungen
+
+Auch in Spitälern findet Hypnose erfolgreich Anwendung. Ein Beispiel hierfür sind die Genfer Universitätskliniken (HUG), die ein umfassendes Hypnose-Programm etabliert haben. Dieses Programm bietet Patientinnen und Patienten ganzheitliche Betreuung durch klinische Hypnose, bildet Ärztinnen und Ärzte sowie Pflegekräfte weiter und fördert die Integration dieser Methode in unterschiedliche medizinische Fachbereiche.  
+Weitere Informationen zum <a href="https://www.hug.ch/programme-hypnose-hug" class="text-red-700 underline" target="_blank">Hypnose-Programm HUG</a> (auf Französisch oder Englisch).
+
+Auch das Inselspital in Bern hat damit begonnen, Hypnose in den klinischen Alltag zu integrieren, insbesondere im pädiatrischen Notfallzentrum, um den Kindern und ihren Eltern einen stressfreieren Aufenthalt zu ermöglichen und Schmerzen zu lindern. <a href="https://www.hug.ch/programme-hypnose-hug" class="text-red-700 underline" target="_blank">Hypnose im InselSpital Notfallzentrum</a>.
