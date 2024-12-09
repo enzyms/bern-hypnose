@@ -202,7 +202,7 @@ const siteConfig: SiteConfig = {
                     image: childImage,
                   },
                 {
-                    text: 'Hypnose für Frauen',
+                    text: 'Hypnose spezifisch für Frauen',
                     longText: 'Unterstützung in jeder Lebensphase durch Hypnose',
                     href: '/hypnosetherapie/hypnose-fuer-frauen/',
                     id:'hypnotherapy-women',

@@ -8,6 +8,7 @@ tags:
 image:
   src: src/assets/uploads/animal-wolf.png
 ---
+
 ## So richtig ruhig wird's nie
 
 Manchmal denke ich, dass wir Frauen schon sehr vielen lauen Winden bis hin zu Stürmen ausgesetzt sind. Angefangen mit den hormonellen Veränderungen im Teenageralter, dann im jungen Erwachsenenalter, wo die Selbstfindung Fahrt aufnimmt, hin zu Kinderwunsch- oder Berufsfindungsfragen und immer schön weiter im Text. Ganz zu schweigen von all den Ansprüchen, die an uns getragen werden oder wir uns aufbürden. Es soll hier kein Gejammer werden, aber es scheint mir halt schon so, als wäre das Frausein manchmal wie eine Achterbahnfahrt.
@@ -26,4 +27,4 @@ Drückt's in einem Bereich, werden auch die anderen in Mitleidenschaft gezogen- 
 
 Falls du dich gerufen fühlst und Hypnose ausprobieren möchtest, freue ich mich und bin für dich da. Eine Investition in sich selbst lohnt sich, du bist immer bei dir, also gestalte diese Reise so angenehm als möglich :)
 
-Ein Leben zu leben, welches wir zwar nicht im Griff haben, aber immer wieder mit Freude, Kraft und Selbstbestimmung angehen, scheint mir erstrebenswert und möglich. Gegen Stürme gewappnet zu sein und sogar Gefallen an ihnen zu finden, auch.
+Ein Leben zu leben, welches wir zwar nicht im Griff haben, aber immer wieder mit Freude, Kraft und Selbstbestimmung angehen, scheint mir erstrebenswert und möglich. Gegen Stürme gewappnet zu sein und sogar Gefallen an ihnen zu finden, auch. [Mehr über Hypnose für Frauen lesen](/hypnosetherapie/hypnose-fuer-frauen/).
