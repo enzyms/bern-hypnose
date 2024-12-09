@@ -11,6 +11,7 @@ import childImage from '@assets/uploads/child.png';
 import painImage from '@assets/uploads/pain-free.png';
 import runnerImage from '@assets/uploads/runner.png';
 import birdImage from '@assets/uploads/bird1.png';
+import womanImage from '@assets/uploads/woman-abstract-2.png';
 
 export type Image = {
     src: string;
@@ -188,15 +189,25 @@ const siteConfig: SiteConfig = {
                     text: 'Sporthypnose',
                     longText: 'Wann kann Hypnose helfen und für wen?',
                     href: '/hypnosetherapie/sporthypnose/',
+                    id:'hypnotherapy-sport',
                     diamondPosition: 2,
                     image: runnerImage,
                 },
                 {
                     text: 'Kinderhypnose',
-                    longText: 'Ängste und Phobien mit Hypnose überwinden',
+                    longText: 'Sanfte Unterstützung für dein Kind',
                     href: '/hypnosetherapie/kinderhypnose/',
+                    id:'hypnotherapy-children',
                     diamondPosition: 2,
                     image: childImage,
+                  },
+                {
+                    text: 'Hypnose spezifisch für Frauen',
+                    longText: 'Unterstützung in jeder Lebensphase durch Hypnose',
+                    href: '/hypnosetherapie/hypnose-fuer-frauen/',
+                    id:'hypnotherapy-women',
+                    diamondPosition: 2,
+                    image: womanImage,
                   },
                 
             ],
