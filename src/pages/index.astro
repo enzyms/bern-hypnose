@@ -7,6 +7,7 @@ import SubPages from '../components/SubPages.astro';
 import SubPagesTopics from '../components/SubPagesTopics.astro';
 import Testimonials from '../components/Testimonials.astro';
 import WhatIsHypnose from '../components/WhatIsHypnose.astro';
+import VideoIntroduction from '../components/VideoIntroduction.astro';
 import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
@@ -36,6 +37,7 @@ const lastPosts = posts.slice(0, 2);
 
     <WhatIsHypnose />
     <hr class="border-t border-gray-400 mt-12" />
+    <VideoIntroduction />
     <Testimonials ids={[5, 2, 3, 0, 6, 7, 9]} />
     <LastPosts posts={lastPosts} />
 </BaseLayout>
