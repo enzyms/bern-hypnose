@@ -1,47 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowLeft from '../icons/ArrowLeft.astro';
 ---
 
 <BaseLayout description="Newsletter abonnieren">
+    <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/">
+        <ArrowLeft class="w-4 h-4 fill-current" />
+        <span>Home</span>
+    </a>
     <h1 class="mb-8">Newsletter</h1>
     <p>Trage dich in meiner Liste ein und bleibe auf dem Laufenden.</p>
 
     <!-- Begin Brevo Form -->
     <!-- START - We recommend to place the below code in head tag of your website html  -->
-    <style>
-        #sib-container input:-ms-input-placeholder {
-            text-align: left;
-            font-family: Helvetica, sans-serif;
-            color: #c0ccda;
-        }
 
-        #sib-container input::placeholder {
-            text-align: left;
-            font-family: Helvetica, sans-serif;
-            color: #c0ccda;
-        }
-
-        #sib-container textarea::placeholder {
-            text-align: left;
-            font-family: Helvetica, sans-serif;
-            color: #c0ccda;
-        }
-
-        #sib-container a {
-            text-decoration: underline;
-            color: #2bb2fc;
-        }
-    </style>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
     <!--  END - We recommend to place the above code in head tag of your website html -->
 
     <!-- START - We recommend to place the below code where you want the form in your website html  -->
-    <div class="sib-form" style="text-align: center;                               ">
+    <div class="sib-form" style="text-align: center;
+           background-color: transparent;                                 ">
         <div id="sib-form-container" class="sib-form-container">
             <div
                 id="error-message"
                 class="sib-form-message-panel"
-                style="text-align:left; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;"
+                style="font-size:16px; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;"
             >
                 <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
                     <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
@@ -56,7 +39,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div
                 id="success-message"
                 class="sib-form-message-panel"
-                style="text-align:left; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;"
+                style="font-size:16px; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;"
             >
                 <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
                     <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
@@ -76,7 +59,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <form
                     id="sib-form"
                     method="POST"
-                    action="https://add8e055.sibforms.com/serve/MUIFAJrUfOQeQuOQQp6G60Sq5ujW8xfUBifRE2KNL18EqHmreKwzZ0RFX9W0ItnAdniXSmOuuwgQETqLl7wQC45A_ltERpxgbGLPYKg2_lur6TbwgqOogL2ZGwgh-b1J7QMAd6G6dQK_ajFzl-X6JhI-P98yiAU6ncqwj69OQfJZ2jtt5u42ZbprAma0LidZ2K8ZVFUk6kkYX9GJ"
+                    action="https://add8e055.sibforms.com/serve/MUIFADSq5zvPnjsGgOV5iX3GXHnSgGjNM7q8QopqJwgEM5iJ3Y8-5vS-9l02PZ6CkeGYlF9E8WQLVJ68XHoJjX2iFWH2vgACMDx8mpsYkrwWxNEhsHQolWci5kwl_qfB3JTpqufSmnO98VNE1COVaFsD81A5MHcaSFVhL3n9yvlM8VhYm3_vqPs78xqv_lhpBWZcGUZor0iUWCS1"
                     data-type="subscription"
                 >
                     <div style="padding: 16px 0;">
@@ -85,9 +68,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                                 <div class="form__label-row">
                                     <label
                                         class="entry__label"
-                                        style="font-weight: 700; text-align:left; text-align:left; font-weight:700; color:#3c4858;"
+                                        style="font-weight: 700; font-size:16px; font-weight:700; color:#444;"
                                         for="EMAIL"
-                                        data-required="*">Deine Email Addresse:</label
+                                        data-required="*">E-Mail Addresse:</label
                                     >
 
                                     <div class="entry__field">
@@ -97,7 +80,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                                             id="EMAIL"
                                             name="EMAIL"
                                             autocomplete="off"
-                                            placeholder="EMAIL"
+                                            placeholder="E-Mail Addresse"
                                             data-required="true"
                                             required
                                         />
@@ -106,12 +89,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
                                 <label
                                     class="entry__error entry__error--primary"
-                                    style="text-align:left; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"
+                                    style="font-size:16px; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"
                                 >
                                 </label>
-                                <!-- <label class="entry__specification" style="font-size:12px; text-align:left; color:#444; text-align:left">
-                                    Beispiel: abc@xyz.com
-                                </label> -->
                             </div>
                         </div>
                     </div>
@@ -122,50 +102,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                                     <div class="entry__choice" style="">
                                         <label>
                                             <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" />
-                                            <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span
-                                                style="text-align:left; color:#444; background-color:transparent;"
-                                                ><p class="text-balance block">
-                                                    Ich bin mit dem Erhalt des Newsletters einverstanden und akzeptiere die Datenschutzerklärung.
-                                                </p></span
+                                            <span class="checkbox checkbox_tick_positive text-sm"></span><span
+                                                ><p>Ich bin mit dem Erhalt des Newsletters einverstanden und akzeptiere die Datenschutzerklärung.</p></span
                                             >
                                         </label>
                                     </div>
                                 </div>
                                 <label
                                     class="entry__error entry__error--primary"
-                                    style="text-align:left; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"
+                                    style="font-size:16px; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"
                                 >
                                 </label>
-                                <label class="entry__specification text-sm pt-3 text-balance" style="text-align:left; color:#444; text-align:left">
+                                <label class="entry__specification text-sm pl-5" style="color:#444;">
                                     Du kannst dich jederzeit über den Link in meinem Newsletter abmelden.
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div style="padding: 0px 0;">
-                        <div
-                            class="g-recaptcha"
-                            data-sitekey="6LeMF6MqAAAAAC1IVhtw7rKeK1PiyWgDTvvhPIeh"
-                            data-callback="invisibleCaptchaCallback"
-                            data-size="invisible"
-                            onclick="executeCaptcha"
-                        >
-                        </div>
+                    <div style="padding: 16px 0;">
+                        <div class="g-recaptcha-v3" data-sitekey="6LfaE6sqAAAAAC50oHz7DNCy8ChCLvNDB-jdO7VG" style="display: none"></div>
                     </div>
-                    <div style="padding: 16px 0 24px 0;">
+                    <div style="padding: 16px 0;">
                         <div class="sib-form-block" style="text-align: left">
                             <button
-                                class="sib-form-block__button sib-form-block__button-with-loader"
-                                style="text-align:left; font-weight:700; color:#FFFFFF; background-color:#dc2626; border-radius:20px; border-width:0px;"
+                                class="inline-flex gap-4 no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
                                 form="sib-form"
                                 type="submit"
                             >
+                                Newsletter abonnieren
                                 <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
                                     <path
                                         d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"
                                     ></path>
                                 </svg>
-                                Newsletter abonnieren
                             </button>
                         </div>
                     </div>
@@ -201,7 +170,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
-    <script src="https://www.google.com/recaptcha/api.js?render=6LeJtaoqAAAAABSq897Vk_UI8pMhIMefxDrr9SPV&hl=en" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfaE6sqAAAAAC50oHz7DNCy8ChCLvNDB-jdO7VG&hl=en" async defer></script>
 
     <!-- END - We recommend to place the above code in footer or bottom of your website html  -->
     <!-- End Brevo Form -->

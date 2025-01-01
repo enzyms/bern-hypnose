@@ -4,23 +4,32 @@ import LinkedIn from '../icons/LinkedIn.astro';
 import VSH from '../icons/VSH.astro';
 ---
 
-<div class="flex items-center justify-between gap-4 pt-16 pb-5">
+<div class="flex flex-wrap items-center justify-between gap-4 pt-16 pb-5">
     <a href="/diplomierte-hypnosetherapeutin/" class="text-gray-800 hover:text-red-500">
         <VSH class="h-10 sm:h-12 md:h-14" color="currentColor" />
         <span class="sr-only">Diplomierte Hypnosetherapeutin VSH (Verband Schweizer Hypnosetherapeuten)</span>
     </a>
     <div class="grow"></div>
-    <a href="https://www.facebook.com/profile.php?id=61564940341284" class="text-red-600 hover:text-red-500">
-        <Facebook size="40" color="currentColor" />
-        <span class="sr-only">Bern Hypnose auf Facebook folgen</span>
-    </a>
     <a
-        href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAFFp-AgBm-rm_huvm7-mlx4EbsGWVRKTqSI&keywords=janine%20aerni&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=301a14c8-0107-41cc-99d6-01507d339803&sid=4*b&spellCorrectionEnabled=true"
-        class="text-red-600 hover:text-red-500"
+        href="/newsletter/"
+        class="text-sm inline-flex items-center justify-center px-4 py-2 leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-600 hover:text-red-50"
     >
-        <LinkedIn size="40" color="currentColor" />
-        <span class="sr-only">Janine Aerni auf Instagram folgen</span>
+        <span class="sr-only">Newsletter abonnieren</span>
+        Newsletter
     </a>
+    <div class="flex gap-4">
+        <a href="https://www.facebook.com/profile.php?id=61564940341284" class="text-red-600 hover:text-red-500">
+            <Facebook size="40" color="currentColor" />
+            <span class="sr-only">Bern Hypnose auf Facebook folgen</span>
+        </a>
+        <a
+            href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAFFp-AgBm-rm_huvm7-mlx4EbsGWVRKTqSI&keywords=janine%20aerni&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=301a14c8-0107-41cc-99d6-01507d339803&sid=4*b&spellCorrectionEnabled=true"
+            class="text-red-600 hover:text-red-500"
+        >
+            <LinkedIn size="40" color="currentColor" />
+            <span class="sr-only">Janine Aerni auf Instagram folgen</span>
+        </a>
+    </div>
 </div>
 <div class="border-t border-gray-400 grow"></div>
 <div class="flex flex-wrap items-center justify-center md:justify-between gap-1 pt-5 pb-32">
