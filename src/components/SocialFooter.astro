@@ -2,10 +2,11 @@
 import Facebook from '../icons/Facebook.astro';
 import LinkedIn from '../icons/LinkedIn.astro';
 import Instagram from '../icons/Instagram.astro';
+import Youtube from '../icons/Youtube.astro';
 import VSH from '../icons/VSH.astro';
 ---
 
-<div class="flex flex-wrap items-center justify-between gap-4 pt-16 pb-5">
+<div class="flex flex-wrap flex-col sm:flex-row items-center justify-between gap-4 pt-16 pb-5">
     <a href="/diplomierte-hypnosetherapeutin/" class="text-gray-800 hover:text-red-500">
         <VSH class="h-10 sm:h-12 md:h-14" color="currentColor" />
         <span class="sr-only">Diplomierte Hypnosetherapeutin VSH (Verband Schweizer Hypnosetherapeuten)</span>
@@ -18,10 +19,14 @@ import VSH from '../icons/VSH.astro';
         <span class="sr-only">Newsletter abonnieren</span>
         Newsletter
     </a>
-    <div class="flex gap-4">
+    <div class="flex gap-4 mt-4 sm:mt-0">
         <a href="https://www.instagram.com/janineaerni_bern_hypnose/" class="text-red-600 hover:text-red-500">
             <Instagram size="40" color="currentColor" />
             <span class="sr-only">Bern Hypnose auf Instagram folgen</span>
+        </a>
+        <a href="https://www.youtube.com/@BernHypnose" class="text-red-600 hover:text-red-500">
+            <Youtube size="40" color="currentColor" />
+            <span class="sr-only">Bern Hypnose Videos auf Youtube schauen</span>
         </a>
         <a href="https://www.facebook.com/profile.php?id=61564940341284" class="text-red-600 hover:text-red-500">
             <Facebook size="40" color="currentColor" />
