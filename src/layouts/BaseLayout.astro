@@ -4,6 +4,7 @@ import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro'
 import Nav from '../components/Nav.astro';
 import Three from '../components/Three.astro';
 import Blur from '../components/Blur.astro';
+import Notification from '../components/Notification.astro';
 import SocialFooter from '../components/SocialFooter.astro';
 
 export type Props = HeadProps;
@@ -25,6 +26,7 @@ const { ...head } = Astro.props;
         <link rel="sitemap" href="/sitemap-index.xml" />
     </head>
     <body class="bg-main text-main overflow-x-hidden">
+        <Notification />
         <Blur />
         <Three />
         <Nav hidePickaboo={Astro.props.hidePickaboo} />
