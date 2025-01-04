@@ -18,3 +18,5 @@ Auch in Spitälern findet Hypnose erfolgreich Anwendung. Ein Beispiel hierfür s
 Weitere Informationen zum <a href="https://www.hug.ch/programme-hypnose-hug" class="text-red-700 underline" target="_blank">Hypnose-Programm HUG</a> (auf Französisch oder Englisch).
 
 Auch das Inselspital in Bern hat damit begonnen, Hypnose in den klinischen Alltag zu integrieren, insbesondere im pädiatrischen Notfallzentrum, um den Kindern und ihren Eltern einen stressfreieren Aufenthalt zu ermöglichen und Schmerzen zu lindern. <a href="https://www.hug.ch/programme-hypnose-hug" class="text-red-700 underline" target="_blank">Hypnose im InselSpital Notfallzentrum</a>.
+
+Eine weitere interessante Ressource ist der Artikel <a href="https://www.apa.org/monitor/2011/01/hypnosis" class="text-red-700 underline" target="_blank">«Hypnosis Today»</a> (auf English) der American Psychological Association (APA). Darin erhältst du einen umfassenden Überblick darüber, wie Hypnose heute in ganz unterschiedlichen Bereichen – von der Schmerztherapie bis hin zur Verhaltenspsychologie – erfolgreich angewendet wird.
