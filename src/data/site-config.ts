@@ -213,6 +213,20 @@ const siteConfig: SiteConfig = {
             ],
             subPagesTopics: [
                 {
+                    text: 'Selbstvertrauen',
+                    longText: 'Selbstvertrauen mit Hypnose stärken',
+                    href: '/hypnosetherapie/selbstvertrauen/',
+                    diamondPosition: 2,
+                    image: glowingBlocksImage,
+                  },
+                {
+                    text: 'Ernährung und Abnehmen',
+                    longText: 'Hypnose für eine gesunde Ernährung',
+                    href: '/hypnosetherapie/ernaehrung-und-abnehmen/',
+                    diamondPosition: 2,
+                    image: foodImage,
+                  },
+                {
                     text: 'Stress, Burnout und Depression',
                     longText: 'Hypnose gegen Stress, Burnout und Depression',
                     href: '/hypnosetherapie/stress-burnout-und-depression/',
@@ -247,20 +261,6 @@ const siteConfig: SiteConfig = {
                       image: glassImage,
                     },
                   ],
-                },
-                {
-                  text: 'Ernährung und Abnehmen',
-                  longText: 'Hypnose für eine gesunde Ernährung',
-                  href: '/hypnosetherapie/ernaehrung-und-abnehmen/',
-                  diamondPosition: 2,
-                  image: foodImage,
-                },
-                {
-                  text: 'Selbstvertrauen',
-                  longText: 'Selbstvertrauen mit Hypnose stärken',
-                  href: '/hypnosetherapie/selbstvertrauen/',
-                  diamondPosition: 2,
-                  image: glowingBlocksImage,
                 },
                 {
                   text: 'Schlafstörungen',
