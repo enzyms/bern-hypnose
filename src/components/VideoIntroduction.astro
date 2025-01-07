@@ -9,19 +9,39 @@
             "@context": "https://schema.org",
             "@type": "VideoObject",
             "name": "Bern Hypnose | Einführung in Hypnosetherapie",
-            "description": "Janine Aerni, Hypnosetherapeutin aus Bern, spricht über die Überwindung von Ängsten und die Rolle der Hypnosetherapie. ",
+            "description": "Janine Aerni, Hypnosetherapeutin aus Bern, spricht über die Überwindung von Ängsten und die Rolle der Hypnosetherapie.",
             "uploadDate": "2024-12-30T08:00:00+08:00",
             "embedUrl": "https://www.youtube.com/embed/Lcf0gWXu-C8?si=W3ahyzOJd_7ze5lq",
             "thumbnailUrl": "https://img.youtube.com/vi/Lcf0gWXu-C8/maxresdefault.jpg",
             "duration": "PT1M28S"
         }
     </script>
-    <iframe
-        class="w-full aspect-video"
-        src="https://www.youtube.com/embed/Lcf0gWXu-C8?rel=0&controls=1&modestbranding=1&showinfo=0&color=white"
-        title="Bern Hypnose | Einführung in Hypnosetherapie"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+    <div
+        class="video-placeholder w-full aspect-video bg-gray-200 flex items-center justify-center cursor-pointer"
+        style="background-image: url('https://img.youtube.com/vi/Lcf0gWXu-C8/maxresdefault.jpg'); background-size: cover; background-position: center;"
+        id="video-placeholder"
+    >
+        <button class="bg-white text-gray-800 px-4 py-2 rounded shadow-lg" aria-label="Play Video"> ▶ Play Video </button>
+    </div>
 </section>
+
+<script>
+    function loadVideo(container: { replaceWith: (arg0: HTMLIFrameElement) => void }, videoId: string) {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&controls=1&modestbranding=1&showinfo=0&color=white&autoplay=1`;
+        iframe.className = 'w-full aspect-video';
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.loading = 'lazy';
+        iframe.title = 'Bern Hypnose | Einführung in Hypnosetherapie';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        container.replaceWith(iframe);
+    }
+
+    if (typeof window !== 'undefined') {
+        document.querySelector('.video-placeholder')?.addEventListener('click', function (this: HTMLDivElement) {
+            loadVideo(this, 'Lcf0gWXu-C8');
+        });
+    }
+</script>
