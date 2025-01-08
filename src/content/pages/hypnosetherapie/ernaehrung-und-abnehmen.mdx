@@ -12,6 +12,7 @@ backlink:
 ---
 
 import SubPagesTopics from '@components/SubPagesTopics.astro';
+import { YouTube } from 'astro-embed';
 
 <div class="relative">
 
@@ -32,15 +33,7 @@ import SubPagesTopics from '@components/SubPagesTopics.astro';
     }
   `}
 </script> 
-<iframe
-  class="w-full aspect-video"
-  src="https://www.youtube.com/embed/sLTsqWmrBPQ?controls=1&modestbranding=1&showinfo=0&color=white"
-  title="Hypnose zur Unterstützung einer gesunden Ernährung"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerpolicy="strict-origin-when-cross-origin"
-  allowfullscreen
-></iframe>
+<YouTube id="sLTsqWmrBPQ" />
 
 ## Wie funktioniert Hypnose bei Abnehmen?
 

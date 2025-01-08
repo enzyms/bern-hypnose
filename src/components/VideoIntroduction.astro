@@ -1,5 +1,5 @@
 ---
-
+import { YouTube } from 'astro-embed';
 ---
 
 <section class="prose sm:prose-lg mt-12">
@@ -16,32 +16,5 @@
             "duration": "PT1M28S"
         }
     </script>
-    <div
-        class="video-placeholder w-full aspect-video bg-gray-200 flex items-center justify-center cursor-pointer"
-        style="background-image: url('https://img.youtube.com/vi/Lcf0gWXu-C8/maxresdefault.jpg'); background-size: cover; background-position: center;"
-        id="video-placeholder"
-    >
-        <button class="bg-white text-gray-800 px-4 py-2 rounded shadow-lg" aria-label="Play Video"> ▶ Play Video </button>
-    </div>
+    <YouTube id="Lcf0gWXu-C8" />
 </section>
-
-<script>
-    function loadVideo(container: { replaceWith: (arg0: HTMLIFrameElement) => void }, videoId: string) {
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&controls=1&modestbranding=1&showinfo=0&color=white&autoplay=1`;
-        iframe.className = 'w-full aspect-video';
-        iframe.frameBorder = '0';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-        iframe.loading = 'lazy';
-        iframe.title = 'Bern Hypnose | Einführung in Hypnosetherapie';
-        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-        container.replaceWith(iframe);
-    }
-
-    if (typeof window !== 'undefined') {
-        document.querySelector('.video-placeholder')?.addEventListener('click', function (this: HTMLDivElement) {
-            loadVideo(this, 'Lcf0gWXu-C8');
-        });
-    }
-</script>

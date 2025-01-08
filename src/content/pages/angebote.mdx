@@ -12,6 +12,7 @@ backlink:
 ---
 
 import VoucherImage from '@assets/images/voucher.png';
+import { YouTube } from 'astro-embed';
 
 ## Preise für Hypnosetherapie in Bern
 
@@ -57,15 +58,7 @@ Den Gutschein kannst du ganz einfach über das <a href="/gutschein/" class="text
         }
       `}
     </script> 
-    <iframe
-        class="w-full aspect-video"
-        loading="lazy"
-        src="https://www.youtube.com/embed/l6ELoEgEtJQ?si=aVLjQBT5rzYqIVqL?rel=0&controls=1&modestbranding=1&showinfo=0&color=white&vq=hd1080"
-        title="Einblick in meine Praxis"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+    <YouTube id="l6ELoEgEtJQ" />
 </section>
 
 <hr class="border-gray-400" />

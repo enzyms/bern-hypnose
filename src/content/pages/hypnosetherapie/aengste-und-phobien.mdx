@@ -13,6 +13,7 @@ backlink:
 
 import SubPagesTopics from '@components/SubPagesTopics.astro';
 import Testimonials from '@components/Testimonials.astro';
+import { YouTube } from 'astro-embed';
 
 ## Angststörungen mit Hypnose überwinden
 
@@ -35,16 +36,7 @@ Die therapeutische Hypnose dient als ergänzende Methode und ist kein Ersatz fü
         }
       `}
     </script>    
-    <iframe
-        class="w-full aspect-video"
-        loading="lazy"
-        src="https://www.youtube.com/embed/ihGt_nq_NhU?rel=0&controls=1&modestbranding=1&showinfo=0&color=white&vq=hd1080"
-        title="Überwinde deine Ängste mit Hypnose"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-    </iframe>
+    <YouTube id="ihGt_nq_NhU" />
 </section>
 
 

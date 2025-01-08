@@ -11,6 +11,7 @@ backlink:
 
 import SubPagesTopics from '@components/SubPagesTopics.astro';
 import Testimonials from '@components/Testimonials.astro';
+import { YouTube } from 'astro-embed';
 
 ## Selbstvertrauen durch Hypnose aufbauen
 
@@ -33,14 +34,7 @@ Hypnosetherapie ersetzt keine ärztliche oder psychotherapeutische Behandlung, k
         }
       `}
     </script> 
-    <iframe
-        class="w-full aspect-video"
-        src="https://www.youtube.com/embed/gFI81bx633g?rel=0&controls=1&modestbranding=1&showinfo=0&color=white&vq=hd1080"
-        title="Stärke dein Selbstwertgefühl mit Hypnose"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+    <YouTube id="gFI81bx633g" />
 </section>
 
 ### Wie wirkt Hypnose auf das Selbstvertrauen?
