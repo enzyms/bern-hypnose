@@ -10,6 +10,7 @@ backlink:
 ---
 
 import CertificateImage from '@assets/images/certificate.jpg';
+import CertificateSportImage from '@assets/images/certificate-sport.jpg';
 import Testimonials from '@components/Testimonials.astro';
 
 ## Diplomierte Hypnosetherapeutin VSH in Bern
@@ -29,14 +30,23 @@ Seit 2024 bin ich stolzes Mitglied des <a href="https://verband-schweizer-hypnos
 ### Zertifizierung
 
 <div class="sm:flex gap-6 items-start">
-
   <div class="sm:w-3/4 relative -mt-6">
-  Als diplomierte Hypnosetherapeutin biete ich meinen Klient:innen eine fundierte und professionelle Unterstützung, die auf ethischen und bewährten Methoden beruht. Die Mitgliedschaft im VSH steht für höchste Standards in der Hypnosetherapie und stellt sicher, dass meine Arbeit von Fachkompetenz und Verantwortungsbewusstsein geprägt ist. [Mehr erfahren über das Diplom und meine Arbeitsethik](/diplomierte-hypnosetherapeutin/)
+    Als diplomierte Hypnosetherapeutin biete ich meinen Klient:innen eine fundierte und professionelle Unterstützung, die auf ethischen und bewährten Methoden beruht. Die Mitgliedschaft im VSH steht für höchste Standards in der Hypnosetherapie und stellt sicher, dass meine Arbeit von Fachkompetenz und Verantwortungsbewusstsein geprägt ist. 
+    
+    Zusätzlich verfüge ich über das Zertifikat in Sporthypnose, das es mir ermöglicht, gezielt mit Sportler:innen an mentalen Techniken zu arbeiten. 
+    
+    [Mehr erfahren über das Diplom und meine Arbeitsethik](/diplomierte-hypnosetherapeutin/)
   </div>
-  <figure class="w-1/2 sm:w-1/4 not-prose mt-2">
-    <img src={CertificateImage.src} alt="Janine Aerni – Diplomierte Hypnosetherapeutin in Bern" width="100%" height="auto" />
-    <figcaption class="text-xs my-2 text">VSH Diplom</figcaption>
-  </figure>
+  <div class="w-1/1 sm:w-1/4 grid grid-cols-2 sm:grid-cols-1 gap-4 not-prose mt-2">
+    <figure class="not-prose">
+      <img src={CertificateImage.src} alt="Janine Aerni – Diplomierte Hypnosetherapeutin in Bern" width="100%" height="auto" />
+      <figcaption class="text-xs my-2 text">VSH Diplom</figcaption>
+    </figure>
+    <figure class="not-prose">
+      <img src={CertificateSportImage.src} alt="Janine Aerni – Diplomierte Hypnosetherapeutin in Bern" width="100%" height="auto" />
+      <figcaption class="text-xs my-2 text">Sporthypnose Zertifikat</figcaption>
+    </figure>
+  </div>
 </div>
 
 ### Qualitätssicherung
