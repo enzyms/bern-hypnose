@@ -31,8 +31,6 @@ const parentItem = findItemById(siteConfig.headerNavLinks, id);
 
 let subPagesTopics = parentItem?.subPagesTopics || [];
 
-console.log(subPagesTopics);
-
 if (exclude.length > 0) {
     subPagesTopics = subPagesTopics.filter((subPage: { href: string }) => !exclude.includes(subPage.href));
 }
