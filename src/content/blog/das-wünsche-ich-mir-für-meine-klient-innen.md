@@ -6,7 +6,7 @@ publishDate: 2025-02-04T08:26:00.000Z
 tags:
   - Hypnose
 image:
-  src: src/assets/uploads/women-face-to-face.png
+  src: src/assets/uploads/tree-1.png
 ---
 ## Ein Raum wie ein Cocon
 
