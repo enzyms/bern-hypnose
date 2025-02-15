@@ -2,7 +2,7 @@
 import { marked } from 'marked';
 import { Image } from 'astro:assets';
 import siteConfig from '../data/site-config';
-import JanineFace from '@assets/images/bern-hypnose-janine-aerni.jpg';
+import JanineFace from '@assets/images/janine-aerni-2025-circle-3.jpg';
 
 const hero = siteConfig.hero;
 ---
@@ -13,12 +13,12 @@ const hero = siteConfig.hero;
             <h1 class="text-balance text-5xl xs:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500">{hero.title}</h1>
             <div class="flex gap-4 md:gap-6 items-center">
                 <Image
-                    width={112}
+                    width={224}
                     src={JanineFace}
                     class="w-32 h-32 object-cover object-center rounded-full shadow-lg"
                     alt="Bern Hypnose – Janine Aerni"
                     widths={[112, 224, 800]}
-                    sizes="112px"
+                    sizes="224px"
                 />
 
                 <p class="font-bold text-main text-balance">
