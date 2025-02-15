@@ -17,9 +17,8 @@
         ambient = value;
     });
 
-    let audioFiles = [];
+    let audioFile;
     let ambientFile;
-    let currentAudioIndex = 0;
     let audioElement;
     let ambientElement;
 
@@ -27,13 +26,12 @@
 
     // Function to get audio files based on the profile and topic
     $: if (profile && topic) {
-        audioFiles = getAudioFiles(profile, topic);
+        audioFile = getAudioFile(profile, topic);
         ambientFile = getAmbientFile(ambient);
-        currentAudioIndex = 0; // Reset index when profile or topic changes
     }
 
-    function getAudioFiles(profile, topic) {
-        return [`/audio/${profile.id}-${topic.id}-intro.mp3`, `/audio/${profile.id}-${topic.id}-session.mp3`, `/audio/${profile.id}-${topic.id}-outro.mp3`];
+    function getAudioFile(profile, topic) {
+        return `/audio/${profile.id}-${topic.id}.mp3`;
     }
     function getAmbientFile(ambient) {
         if (ambient !== 'none') {
@@ -45,40 +43,34 @@
 
     // Function to play the current audio in the sequence
     async function playCurrent() {
-        if (currentAudioIndex < audioFiles.length) {
-            audioElement.src = audioFiles[currentAudioIndex]; // Set the audio source to the current file
-            try {
-                await audioElement.play(); // Play the audio file and handle promise
-                isPlaying = true; // Set playing state to true
-            } catch (error) {
-                console.error('Error playing audio:', error); // Handle play error
-            }
-        } else if (onPlaybackComplete) {
-            onPlaybackComplete(); // Trigger playback complete action if all files are done
+        audioElement.src = audioFile; // Set the audio source to the file
+        try {
+            await audioElement.play();
+            isPlaying = true;
+            console.log('audioElement', audioElement);
+        } catch (error) {
+            console.error('Error playing audio:', error);
         }
     }
 
     async function playAmbient() {
-        if (currentAudioIndex < audioFiles.length) {
-            //TO DO:  THIS HAS TO BE CHECK
-            ambientElement.src = ambientFile; // Set the audio source to the current file
+        if (ambientFile) {
+            // Only check if we have an ambient file
+            ambientElement.src = ambientFile;
             try {
-                await ambientElement.play(); // Play the audio file and handle promise
+                await ambientElement.play();
                 ambientElement.volume = 0.05;
-                isPlaying = true; // Set playing state to true
+                isPlaying = true;
             } catch (error) {
-                console.error('Error playing audio:', error); // Handle play error
+                console.error('Error playing audio:', error);
             }
         }
     }
 
     // Function to play the next audio file after the current one ends
     function playNext() {
-        if (currentAudioIndex < audioFiles.length - 1) {
-            currentAudioIndex++; // Move to the next audio in the list
-            playCurrent(); // Play the next audio
-        } else if (onPlaybackComplete) {
-            onPlaybackComplete(); // Complete the playback if all files have been played
+        if (onPlaybackComplete) {
+            onPlaybackComplete();
             ambientElement.pause();
         }
     }

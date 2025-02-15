@@ -5,7 +5,6 @@
     const ambientSounds = [
         { id: 'forest', name: 'Bird songs' },
         { id: 'sea', name: 'Noise of the sea' },
-        { id: 'underwater', name: 'Submarine world' },
         { id: 'none', name: 'None' }
     ];
     function selectDuration(sound) {
