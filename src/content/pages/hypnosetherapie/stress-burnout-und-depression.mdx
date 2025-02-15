@@ -11,31 +11,83 @@ backlink:
   url: /hypnosetherapie/
 ---
 
-import SubPages from '@components/SubPages.astro';
+import SubPagesTopics from '@components/SubPagesTopics.astro';
+import Testimonials from '@components/Testimonials.astro';
 
-<div class="relative">
 
-<p>
-  Wünschst du dir, aus der Überforderung herauszufinden, dich gelassener und sorgloser zu fühlen? Du möchtest gerne mehr Freude verspüren und Denkmuster oder
-  Zwänge durchbrechen? Gerne unterstütze ich dich dabei.
-</p>
+## Stress, Burnout und Depression mit Hypnose überwinden
 
-<div class="flex gap-4">
-  <a data-umami-event="Home – Button Kontakt" href="/kontakt/" class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline" onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"> 
-    <span class="">Kontakt</span>
-  </a>
+**Hypnose bei Stress, Burnout oder Depression** bietet dir eine sanfte und effektive Möglichkeit, aus der Überforderung herauszufinden und wieder mehr Lebensfreude zu verspüren. Als Hypnosetherapeutin unterstütze ich dich dabei, negative Denkmuster zu durchbrechen und deine innere Balance wiederzufinden.
+
+Die Hypnosetherapie dient als ergänzende Methode und ersetzt keine medizinische Behandlung oder Psychotherapie.
+
+### Wie hilft Hypnose bei Stress oder Burnout?
+
+Stress und Burnout sind oft das Ergebnis von chronischer Überlastung und negativen Gedankenmustern. Hypnose ermöglicht es dir, in einen tief entspannten Zustand zu gelangen, in dem dein Unterbewusstsein empfänglich für positive Veränderungen ist. Gemeinsam identifizieren wir stressauslösende Faktoren und entwickeln neue, gesunde Bewältigungsstrategien. Das führt zu mehr Gelassenheit und innerer Ruhe im Alltag.
+
+### Hypnose bei Depressionen
+
+Depressionen äußern sich häufig in Gefühlen von Traurigkeit, Antriebslosigkeit und Hoffnungslosigkeit. In der Hypnosetherapie unterstütze ich dich dabei, emotionale Blockaden zu lösen und dein Selbstwertgefühl zu stärken. Durch positive Suggestionen fördern wir eine optimistischere Sichtweise und neue Lebensfreude.
+
+### Was passiert während einer Hypnosesitzung?
+
+In einer ruhigen und vertrauensvollen Atmosphäre führen wir ein ausführliches Vorgespräch, um deine individuellen Bedürfnisse zu besprechen. Während der Hypnose wirst du in einen entspannten Zustand geführt, in dem du dich auf deine inneren Ressourcen konzentrieren kannst. Du bist dabei jederzeit bei vollem Bewusstsein und behältst die Kontrolle. Gemeinsam arbeiten wir daran, belastende Gedankenmuster zu verändern und positive Veränderungen zu initiieren.
+
+### Wie viele Sitzungen sind notwendig?
+
+Die Anzahl der benötigten Sitzungen variiert von Person zu Person und hängt von deinen individuellen Zielen ab. Bei mir buchst du immer nur eine Sitzung, kein vorgefertigtes Paket. Nach der ersten Sitzung besprechen wir gemeinsam, ob und wie wir weiterarbeiten möchten, basierend auf deinen Fortschritten und Bedürfnissen. So bleibt die Entscheidung flexibel und individuell auf dich abgestimmt.
+
+### Ist Hypnose bei Depressionen wissenschaftlich anerkannt?
+
+Hypnose wird als komplementäre Methode zunehmend anerkannt. Studien zeigen, dass Hypnosetherapie helfen kann, Stress abzubauen und depressive Symptome zu lindern. Sie kann eine wertvolle Ergänzung zu herkömmlichen Therapien sein. Für eine umfassende Behandlung ist es wichtig, auch mit medizinischen Fachpersonen zusammenzuarbeiten.
+
+Ein wissenschaftlicher Artikel beschreibt, wie kognitive Hypnotherapie erfolgreich zur Behandlung von Depressionen eingesetzt werden kann. Entdecke mehr darüber in dieser Studie: <a href="https://www.tandfonline.com/doi/full/10.1080/00207140903523194#abstract" class="text-red-700 underline" target="_blank">Evidenzbasierte Hypnotherapie bei Depression</a>
+
+### Was kostet die Hypnose bei Stress, Burnout oder Depression?
+
+- **Dauer einer Sitzung:** circa 90 Minuten.
+- **Kosten:** 150 CHF pro Sitzung.
+- **Krankenkassenleistung:** Die Kosten werden derzeit nicht von der Krankenkasse übernommen.
+
+### Mache den ersten Schritt zu mehr Lebensqualität
+
+Wenn du bereit bist, Stress, Burnout oder Depressionen hinter dir zu lassen und wieder mehr Freude und Leichtigkeit in dein Leben zu bringen, stehe ich dir gerne zur Seite.
+
+<div class="flex flex-wrap gap-4">
   <a
-  data-umami-event="Open Calendly"
-  href="https://calendly.com/bern-hypnose/erstsitzung"
-  target="_blank"
-  class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
->
-  <span>Termin buchen</span>
-</a>
+    data-umami-event="Termin buchen – Stress, Burnout und Depression"
+    href="/termin/"
+    class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
+  >
+    <span>Termin buchen</span>
+  </a>
 
-</div>
+  <a
+    data-umami-event="Kontakt – Stress, Burnout und Depression"
+    href="/kontakt/"
+    class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
+  >
+    <span>Kontakt</span>
+  </a>
 </div>
 
 <hr class="border-gray-400" />
-<h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
-<SubPages id="hypnotherapy" exclude="/hypnosetherapie/stress-burnout-und-depression/" columns={3} />
+
+## Mehr über Hypnose erfahren
+
+Wenn du tiefer in das Thema eintauchen möchtest, findest du hier weitere Artikel über die Möglichkeiten der Hypnosetherapie.
+
+<a href="/blog/" class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline">
+  <span>Blogartikel über Hypnose lesen</span>
+</a>
+
+<hr class="border-gray-400" />
+
+## Klient:innenstimmen
+<div className="not-prose">
+  <Testimonials ids={[3]} noTitle />
+</div>
+
+## Weitere Anwendungsgebiete der Hypnosetherapie
+
+<SubPagesTopics id="hypnotherapy" exclude="/hypnosetherapie/stress-burnout-und-depression/" columns={3} />

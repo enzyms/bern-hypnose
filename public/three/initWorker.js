@@ -26,15 +26,12 @@ let backgroundScene, backgroundCamera;
 let clock;
 let isRendering = false;
 
-console.log('Worker initialized');
-
 self.onmessage = function (event) {
     const { action } = event.data;
 
     switch (action) {
         case 'init':
             initializeScene(event.data);
-            console.log('Scene initialized');
             break;
         case 'resume':
             isRendering = true;

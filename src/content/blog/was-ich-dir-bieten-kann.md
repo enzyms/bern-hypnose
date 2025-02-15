@@ -18,7 +18,7 @@ Wenn du zu mir kommst, kann ich dir Folgendes bieten:
 
 Einen Raum, in dem du dich wohlfühlen und dich selbst sein darfst
 
-60 bis 90 Minuten ungeteilte Aufmerksamkeit
+circa 90 Minuten ungeteilte Aufmerksamkeit
 
 Fragen, die dich beim Weiterkommen unterstützen können
 

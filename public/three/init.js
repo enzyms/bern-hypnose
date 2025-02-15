@@ -22,7 +22,6 @@ let shaderMaterial, renderTarget;
 let backgroundScene, backgroundCamera;
 let clock = new Clock();
 let isRendering = false;
-console.log('Worker initialized YAY');
 
 self.onmessage = async function (event) {
     const { action } = event.data;
@@ -30,7 +29,6 @@ self.onmessage = async function (event) {
     switch (action) {
         case 'init':
             await initializeScene(event.data);
-            console.log('Scene initialized');
             break;
         case 'resume':
             isRendering = true;

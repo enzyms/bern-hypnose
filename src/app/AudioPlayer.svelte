@@ -64,6 +64,7 @@
             ambientElement.src = ambientFile; // Set the audio source to the current file
             try {
                 await ambientElement.play(); // Play the audio file and handle promise
+                ambientElement.volume = 0.05;
                 isPlaying = true; // Set playing state to true
             } catch (error) {
                 console.error('Error playing audio:', error); // Handle play error
@@ -112,7 +113,7 @@
 
 <audio bind:this={audioElement} on:ended={onEnded} on:play={onPlay} on:pause={onPause}> </audio>
 
-<audio bind:this={ambientElement} on:play={onPlay} on:pause={onPause} loop> </audio>
+<audio bind:this={ambientElement} on:play={onPlay} on:pause={onPause} loop volume="0.5"> </audio>
 
 <!-- Play/Pause Button -->
 <button on:click={togglePlayPause}>
@@ -122,3 +123,20 @@
         ▶️ Play
     {/if}
 </button>
+
+<!-- Volume Slider for Ambient Sound -->
+{#if ambient && ambient !== 'none' && ambientElement}
+    <div class="volume-control">
+        <label for="ambient-volume">Ambient Volume:</label>
+        <input type="range" id="ambient-volume" min="0" max="0.25" step="0.02" bind:value={ambientElement.volume} />
+    </div>
+{/if}
+
+<style>
+    .volume-control {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+</style>

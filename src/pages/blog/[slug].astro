@@ -8,7 +8,8 @@ import PostPreview from '../../components/PostPreview.astro';
 import ArrowLeft from '../../icons/ArrowLeft.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
+import JanineFace from '@assets/images/bern-hypnose-janine-aerni.jpg';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
@@ -27,11 +28,45 @@ type Props = { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>;
 
 const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props;
-const { title, publishDate, updatedDate, excerpt, tags = [], image } = post.data;
+const { title, publishDate, updatedDate, excerpt, tags = [], image, canonical } = post.data;
 const { Content } = await post.render();
+
+function toISO8601WithOffset(dateString: string | number | Date, offsetHours = 1) {
+    const date = new Date(dateString);
+
+    // Adjust the time by the specified offset
+    const adjustedDate = new Date(date.getTime() + offsetHours * 60 * 60 * 1000);
+
+    // Format the adjusted date with ISO 8601 and include the offset in hours
+    const isoString = adjustedDate.toISOString().replace('Z', `+${String(offsetHours).padStart(2, '0')}:00`);
+
+    return isoString;
+}
+
+const schemaPubDate = toISO8601WithOffset(publishDate);
+const schemaUpdateDate = updatedDate ? toISO8601WithOffset(updatedDate) : '';
+const baseUrl = Astro.site?.origin;
+const schemaImage = image ? `${baseUrl}${(await getImage({ src: image.src, width: 704 })).src}` : '';
+
+const blogSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    image: [schemaImage],
+    datePublished: schemaPubDate,
+    dateModified: schemaUpdateDate,
+    author: [
+        {
+            '@type': 'Person',
+            name: 'Janine Aerni',
+            url: 'https://bern-hypnose.ch/janine-aerni/'
+        }
+    ]
+};
 ---
 
-<BaseLayout title={title} description={excerpt} image={image} pageType="article">
+<BaseLayout title={title} description={excerpt} image={image} canonical={canonical} pageType="article" schema="none">
+    <script type="application/ld+json" set:html={JSON.stringify(blogSchemaData)} />
     <article class="mb-16">
         <header class="mb-8 relative">
             <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
@@ -39,32 +74,45 @@ const { Content } = await post.render();
                 <span>Zurück zur Liste</span>
             </a>
             <h1 class="text-balance text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">{title}</h1>
-            <div class="mt-4 text-sm">
-                <FormattedDate date={publishDate} />
-                {
-                    updatedDate && (
-                        <>
-                            {' '}
-                            <span>
-                                (Updated on <FormattedDate date={updatedDate} />)
-                            </span>
-                        </>
-                    )
-                }
-            </div>
             <div class="my-8 rounded-xl overflow-hidden">
                 {
                     image && (
                         <Image
                             width={704}
                             src={image.src}
-                            class="w-full h-64 object-cover object-center sm:h-96"
+                            class="w-full object-cover object-center sm:h-96"
                             alt={image.alt ?? ''}
                             widths={[360, 520, 704]}
                             sizes="(max-width: 768px) calc(100vw - 40px), 704px"
                         />
                     )
                 }
+            </div>
+            <div class="flex gap-4 items-center">
+                <Image
+                    width={48}
+                    src={JanineFace}
+                    class="w-12 h-12 object-cover object-center rounded-full shadow-lg"
+                    alt="Bern Hypnose – Janine Aerni"
+                    widths={[48, 96]}
+                    sizes="48px"
+                />
+
+                <p>
+                    <a href="/janine-aerni/" class="font-bold text-red-600 hover:text-red-500">Janine Aerni</a>
+                    <br />
+                    am <FormattedDate date={publishDate} />
+                    {
+                        updatedDate && (
+                            <>
+                                {' '}
+                                <span>
+                                    (Updated on <FormattedDate date={updatedDate} />)
+                                </span>
+                            </>
+                        )
+                    }
+                </p>
             </div>
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
@@ -85,7 +133,13 @@ const { Content } = await post.render();
             }
             <div class="mt-4 w-full flex gap-4 items-center">
                 <div class="w-full border-t border-gray-400"></div>
-                <Button class="copy-url-button" aria-label="Link kopieren" data-url={href} data-tooltip-default="Link kopieren" data-tooltip-success="Kopiert">
+                <Button
+                    class="copy-url-button text-nowrap"
+                    aria-label="Link kopieren"
+                    data-url={href}
+                    data-tooltip-default="Link kopieren"
+                    data-tooltip-success="Kopiert"
+                >
                     Teilen
                 </Button>
             </div>
@@ -93,7 +147,7 @@ const { Content } = await post.render();
     </article>
     {
         (prevPost || nextPost) && (
-            <div class="my-12 py-12 sm:my-24 ">
+            <div class="my-12">
                 <h2 class="mb-6 font-black">Weiter lesen</h2>
                 {nextPost && <PostPreview post={nextPost} class="mb-12 sm:mb-16" headingLevel="h3" />}
                 {prevPost && <PostPreview post={prevPost} class="mb-12 sm:mb-16" headingLevel="h3" />}

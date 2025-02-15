@@ -1,0 +1,50 @@
+<div class="relative" transition:persist>
+    <!-- Button -->
+    <button
+        data-drawer-toggler="drawer"
+        class="px-5 md:px-6 lg:px-8 bg-yellow-100 text-red-700 relative z-40 w-full text-left hover:bg-red-600 hover:text-white focus:bg-yellow-100 focus:text-red-700 transition-colors"
+    >
+        <div class="font-black py-3">
+            💎 Januar Aktion: <span class="underline underline-offset-2">30&nbsp;CHF geschenkt</span> 💎
+        </div>
+    </button>
+
+    <!-- Drawer -->
+    <div id="drawer" class="px-5 md:px-6 lg:px-8 bg-yellow-100 z-30 relative w-full transition-all duration-1000 max-h-[0] overflow-hidden">
+        <div class="font-medium text-gray-800 max-w-3xl py-4 md:pr-8">
+            Spürst du das Januarloch, ist dein Budget ein wenig kleiner nach Weihnachten? Ich schenke dir 30&nbsp;CHF für deine Sitzung im Januar. Du bezahlst
+            120&nbsp;CHF anstatt 150&nbsp;CHF (für Kinder 90&nbsp;CHF anstatt 120&nbsp;CHF) für eine Sitzung im Januar. Ausgeschlossen sind Gutscheinkäufe.
+        </div>
+
+        <a
+            data-drawer-toggler="drawer"
+            data-umami-event="Open Calendly – January Action"
+            href="/termin/"
+            class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline mt-4 mb-8"
+        >
+            <span>Termin buchen</span>
+        </a>
+
+        <button
+            data-drawer-toggler="drawer"
+            class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50"
+        >
+            <span>Schliessen</span>
+        </button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('click', (event) => {
+        const toggler = event.target.closest('[data-drawer-toggler]');
+        if (!toggler) return;
+
+        const targetId = toggler.getAttribute('data-drawer-toggler');
+        const drawer = document.getElementById(targetId);
+
+        if (drawer) {
+            drawer.classList.toggle('max-h-[0]');
+            drawer.classList.toggle('max-h-[500px]');
+        }
+    });
+</script>

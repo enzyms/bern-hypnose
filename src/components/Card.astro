@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-const { href, image, imageWidth, imageWidths, imageSizes, title, ...props } = Astro.props;
+const { href, image, imageWidth, imageWidths, imageSizes, title, hiddenHypnoText, ...props } = Astro.props;
 ---
 
 <a class="card group" href={href} {...props}>
@@ -20,7 +20,8 @@ const { href, image, imageWidth, imageWidths, imageSizes, title, ...props } = As
         />
     </div>
     <h3 class="card__title">
-        {title}<span class="sr-only"> mit Hypnose behandeln</span>
+        {title}
+        {hiddenHypnoText && <span class="sr-only"> mit Hypnose behandeln</span>}
     </h3>
 </a>
 

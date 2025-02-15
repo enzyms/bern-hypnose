@@ -11,7 +11,7 @@ backlink:
   url: /hypnosetherapie/
 ---
 
-import SubPages from '@components/SubPages.astro';
+import SubPagesTopics from '@components/SubPagesTopics.astro';
 
 <div class="relative">
 
@@ -22,14 +22,13 @@ import SubPages from '@components/SubPages.astro';
 
 </div>
 
-<div class="flex gap-4">
+<div class="flex flex-wrap gap-4">
   <a data-umami-event="Home – Button Kontakt" href="/kontakt/" class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline" onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"> 
     <span class="">Kontakt</span>
   </a>
   <a
   data-umami-event="Open Calendly"
-  href="https://calendly.com/bern-hypnose/erstsitzung"
-  target="_blank"
+  href="/termin/"
   class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
 >
   <span>Termin buchen</span>
@@ -39,4 +38,4 @@ import SubPages from '@components/SubPages.astro';
 
 <hr class="border-gray-400" />
 <h2 class="text-balance">Weitere Anwendungsgebiete der Hypnosetherapie</h2>
-<SubPages id="hypnotherapy" exclude="/hypnosetherapie/schlafstoerungen/" columns={3} />
+<SubPagesTopics id="hypnotherapy" exclude="/hypnosetherapie/schlafstoerungen/" columns={3} />

@@ -13,17 +13,18 @@
         { id: 'fears', name: 'Fears' }
     ];
 
-    const topicsChild = [
-        { id: 'focus', name: 'Focus' },
-        { id: 'relaxation', name: 'Relaxation' },
-        { id: 'self-confidence', name: 'Self confidence' },
-        { id: 'nutrition', name: 'Nutrition' },
-        { id: 'fears', name: 'Fears' }
-    ];
+    // const topicsChild = [
+    //     { id: 'focus', name: 'Focus' },
+    //     { id: 'relaxation', name: 'Relaxation' },
+    //     { id: 'self-confidence', name: 'Self confidence' },
+    //     { id: 'nutrition', name: 'Nutrition' },
+    //     { id: 'fears', name: 'Fears' }
+    // ];
 
     $: selectedProfile.subscribe((value) => {
-        console.log(value);
-        topics = value.id === 'adult' ? topicsAdult : topicsChild;
+        // console.log(value);
+        // topics = value.id === 'adult' ? topicsAdult : topicsChild;
+        topics = topicsAdult;
     });
 
     function selectTopic(topic) {

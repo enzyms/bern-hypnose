@@ -12,6 +12,22 @@ const backlinkSchema = z.object({
   url: z.string().optional(),
 });
 
+const faq = defineCollection({
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    promoted: z.boolean().default(false),
+    image: z.object({
+      src: image().refine((img) => img.width >= 600, {
+        message: 'Cover image must be at least 600 pixels wide!',
+      }),
+      alt: z.string().optional(),
+    }).optional(),
+  })
+});
+
 const blog = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
@@ -26,6 +42,7 @@ const blog = defineCollection({
       }),
       alt: z.string().optional(),
     }).optional(),
+    canonical: z.string().optional(),
   })
 });
 
@@ -41,6 +58,7 @@ const pages = defineCollection({
       alt: z.string().optional(),
     }).optional(),
     id: z.string().optional(),
+    canonical: z.string().optional(),
   })
 });
 

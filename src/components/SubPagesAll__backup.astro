@@ -1,0 +1,81 @@
+---
+import Card from './Card.astro';
+import siteConfig, { type Link } from '../data/site-config';
+
+type Props = {
+    id: string;
+    exclude?: string[];
+    columns?: number;
+};
+
+const { id, exclude = [], columns = 2 } = Astro.props;
+
+// Recursive function to find the item by id
+function findItemById(items: Link[] | undefined, id: string): any {
+    if (!items) {
+        return null;
+    }
+    for (const item of items) {
+        if (item.id === id) {
+            return item;
+        }
+        if (item.subPages) {
+            const found = findItemById(item.subPages, id);
+            if (found) return found;
+        }
+        if (item.subPagesTopics) {
+            const found = findItemById(item.subPagesTopics, id);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+const parentItem = findItemById(siteConfig.headerNavLinks, id);
+
+let subPages = parentItem?.subPages || [];
+let subPagesTopics = parentItem?.subPagesTopics || [];
+
+let subPagesAll = [...subPages, ...subPagesTopics];
+
+console.log(subPagesAll);
+
+if (exclude.length > 0) {
+    subPagesAll = subPagesAll.filter((subPage: { href: string }) => !exclude.includes(subPage.href));
+}
+
+const gridColumnsClass = columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3';
+const gridClasses = `grid ${gridColumnsClass} gap-4 not-prose`;
+
+const imgWidth = columns === 2 ? 600 : 400;
+
+const imgWidths2cols = [300, 400, 600];
+const imgWidths3cols = [200, 300, 400];
+const imgSizes2cols = '(max-width: 640px) calc(100vw - 40px), (max-width: 768px) calc(50vw - 56px), 352px';
+const imgSizes3cols = '(max-width: 640px) calc(50vw - 56px), (max-width: 768px) calc(33vw - 72px), 230px';
+
+const imgWidths = columns === 2 ? imgWidths2cols : imgWidths3cols;
+const imgSizes = columns === 2 ? imgSizes2cols : imgSizes3cols;
+---
+
+{
+    subPagesAll.length > 0 && (
+        <nav class="py-4 md:py-6">
+            <ul class={gridClasses}>
+                {subPagesAll.map((subPage: { href: any; image: any; text: any }) => (
+                    <li>
+                        <Card
+                            href={subPage.href}
+                            image={subPage.image}
+                            imageWidth={imgWidth}
+                            imageWidths={imgWidths}
+                            imageSizes={imgSizes}
+                            title={subPage.text}
+                            hiddenHypnoText={true}
+                        />
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    )
+}

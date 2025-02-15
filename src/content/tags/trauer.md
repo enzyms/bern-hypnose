@@ -1,5 +1,6 @@
 ---
 title: Trauer
+canonical: https://bern-hypnose.ch/hypnosetherapie/stress-burnout-und-depression/
 ---
 
 Nicht immer wollen wir der Trauer Raum geben. Schade eigentlich, denn

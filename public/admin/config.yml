@@ -22,6 +22,10 @@ collections:
           - label: 'Publish Date'
             name: 'publishDate'
             widget: 'datetime'
+          - label: 'Canonical URL'
+            name: 'canonical'
+            widget: 'string'
+            required: false
           - label: 'Tags'
             name: 'tags'
             widget: 'relation'
@@ -61,3 +65,30 @@ collections:
           - label: 'Body'
             name: 'body'
             widget: 'markdown'
+          - label: 'Canonical URL'
+            name: 'canonical'
+            widget: 'string'
+            required: false
+
+    - name: 'faq'
+      label: 'FAQ'
+      folder: 'src/content/faq'
+      create: true
+      slug: '{{slug}}'
+      fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+          - label: 'Body'
+            name: 'body'
+            widget: 'markdown'
+          - label: 'Promoted to Homepage'
+            name: 'promoted'
+            widget: 'boolean'
+            required: false
+            default: false
+          - label: 'Order'
+            name: 'order'
+            widget: 'number'
+            default: 1000
+            value_type: 'int'

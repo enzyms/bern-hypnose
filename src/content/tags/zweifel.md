@@ -1,5 +1,6 @@
 ---
 title: Zweifel
+canonical: https://bern-hypnose.ch/hypnosetherapie/selbstvertrauen/
 ---
 
 Bist du eine Person, die oft zweifelt und grübelt? In der Hypnose kannst

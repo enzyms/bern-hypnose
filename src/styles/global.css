@@ -27,6 +27,12 @@
     html {
         max-width: 100%;
         overflow-x: hidden;
+        scroll-behavior: smooth;
+
+        @apply xl:text-[1.0625rem] 3xl:text-lg;
+    }
+
+    body {
     }
 
     h1 {
@@ -65,5 +71,34 @@
         text-decoration-thickness: 1px;
         text-decoration-skip-ink: none;
         text-decoration-color: currentColor;
+    }
+
+    a[target='_blank']:not(.rounded-full) {
+        position: relative;
+    }
+
+    a[target='_blank']::after {
+        content: '';
+        display: inline-block;
+        margin-left: 5px;
+        width: 16px;
+        height: 16px;
+        background-color: transparent;
+        background-image: url('/external.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+
+    a[target='_blank'].rounded-full.text-white::after {
+        background-image: url('/external-negative.svg');
+    }
+
+    a[target='_blank'].rounded-full:hover::after {
+        background-image: url('/external-negative.svg');
+    }
+
+    main:has(.calendly-wrapper) .display-after-scroll {
+        display: none;
     }
 }

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowLeft from '../icons/ArrowLeft.astro';
+---
+
+<BaseLayout description="Gutschein">
+    <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/">
+        <ArrowLeft class="w-4 h-4 fill-current" />
+        <span>Home</span>
+    </a>
+    <h1 class="mb-8">Danke!</h1>
+    <p>
+        Vielen Dank für deine Anmeldung zu meinem Newsletter! Du wirst in Kürze Neuigkeiten direkt in deinem Posteingang erhalten. Natürlich kannst du dich
+        jederzeit von der Liste abmelden, falls du es dir anders überlegst.
+    </p>
+    <a
+        href="/"
+        class="mt-12 inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
+    >
+        <span>Zurück zur Homepage</span>
+    </a>
+</BaseLayout>

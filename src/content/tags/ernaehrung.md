@@ -1,5 +1,6 @@
 ---
 title: Ernährung
+canonical: https://bern-hypnose.ch/hypnosetherapie/ernaehrung-und-abnehmen/
 ---
 
 Bei so vielen Menschen ist das Thema Ernährung sehr präsent. Wie

@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowLeft from '../icons/ArrowLeft.astro';
+import { Image } from 'astro:assets';
+import faqImage from '@assets/uploads/thinking.png';
+
+// Simple function to convert Markdown to plain text
+function markdownToPlainText(markdown: string) {
+    if (!markdown) return '';
+    return markdown
+        .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove links but keep the link text
+        .replace(/[#_*`~>+\-=|{}.!]/g, '') // Remove Markdown symbols
+        .replace(/[\r\n]+/g, ' ') // Replace newlines with spaces
+        .trim();
+}
+
+const backlink = {
+    title: 'Home',
+    url: '/'
+};
+
+// Fetch and sort the FAQs
+const faqs = (await getCollection('faq')).sort((a, b) => {
+    return a.data.order - b.data.order;
+});
+
+// For each FAQ, render its body content as HTML and extract plain text for schema
+const renderedFaqs = await Promise.all(
+    faqs.map(async (faq) => {
+        const { Content } = await faq.render();
+        const plainText = markdownToPlainText(faq.body); // Convert Markdown to plain text
+        return { ...faq, Content, plainText };
+    })
+);
+
+// Build the FAQPage schema data with plain text answers
+const faqSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    name: 'Was ist Hypnose? Häufige Fragen',
+    mainEntity: renderedFaqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.data.title,
+        acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.plainText // Use plain text for JSON-LD schema
+        }
+    }))
+};
+---
+
+<BaseLayout title="Was ist Hypnose" description="Alle häufig gestellten Fragen über Hypnose und Hypnosetherapie">
+    <article class="mb-16">
+        <header class="mb-8 relative">
+            {
+                backlink && (
+                    <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href={backlink.url}>
+                        <ArrowLeft class="w-4 h-4 fill-current" />
+                        <span>{backlink.title}</span>
+                    </a>
+                )
+            }
+            <h1 class="text-balance mb-8">Was ist Hypnose? Häufige Fragen</h1>
+            <Image
+                width={704}
+                src={faqImage}
+                class="w-full rounded-xl shadow-lg"
+                alt="Was ist Hypnose"
+                widths={[360, 520, 704]}
+                sizes="(max-width: 768px) calc(100vw - 40px), 704px"
+            />
+            <p class="my-8 text-lg">
+                Auf dieser Seite findest du Antworten auf häufig gestellte Fragen rund um Hypnose und Hypnosetherapie. Wenn du hier keine Antwort auf deine
+                Frage entdeckst, zögere bitte nicht, mich direkt zu kontaktieren.
+            </p>
+        </header>
+        <!-- Embedding FAQ Schema with JSON-LD -->
+        <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
+
+        <div class="max-w-none prose prose-dante sm:prose-lg">
+            {
+                renderedFaqs.map((faq) => {
+                    return (
+                        <div class="grow mb-4" key={faq.id} data-order={faq.data.order}>
+                            <h2 class="text-2xl leading-tight font-black sm:text-3xl">{faq.data.title}</h2>
+                            <div class="mb-1">
+                                <faq.Content /> {/* Render HTML content */}
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </article>
+</BaseLayout>

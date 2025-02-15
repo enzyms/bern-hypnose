@@ -11,7 +11,7 @@ backlink:
   url: /hypnosetherapie/abhaengigkeit/
 ---
 
-import SubPages from '@components/SubPages.astro';
+import SubPagesTopics from '@components/SubPagesTopics.astro';
 
 ## Wie funktioniert Raucherentwöhnung mit Hypnose?
 
@@ -26,7 +26,9 @@ zum Rauchen und siehst die störenden Aspekte. Du stellst dir vor, wie angenehm
 eine rauchfreie Zukunft sein wird).
 
 Für die Zeit nach der Sitzung bekommst du eine für dich passende Selbsthypnose-
-Aufgabe.
+Aufgabe, wenn du das möchtest.
+
+Hypnosetherapie ist eine ergänzende Behandlungsmethode und ersetzt weder den Arztbesuch noch eine Therapie bei einem Psychologen oder einer Psychologin.
 
 ## Wie lange dauert Raucherentwöhnung mit Hypnose?
 
@@ -56,17 +58,16 @@ Verständlicherweise kann ich keine Angabe über die Anzahl Sitzungen machen.
 Jede Person darf zu jedem Zeitpunkt selbst entscheiden, ob eine weitere Begleitung
 erwünscht ist.
 
-Eine Sitzung dauert bei mir zwischen 60 und 90 Minuten und kostet Fr. 150.- und
+Eine Sitzung dauert bei mir circa 90 Minuten und kostet 150 CHF und
 wird aktuell nicht von der Krankenkasse übernommen.
 
-<div class="flex gap-4">
+<div class="flex flex-wrap gap-4">
   <a data-umami-event="Home – Button Kontakt" href="/kontakt/" class="inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-600 bg-transparent border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline" onclick="document.app.emitEvent('mouseDown', 'trigger-to-5');"> 
     <span class="">Kontakt</span>
   </a>
   <a
   data-umami-event="Open Calendly"
-  href="https://calendly.com/bern-hypnose/erstsitzung"
-  target="_blank"
+  href="/termin/"
   class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline"
 >
   <span>Termin buchen</span>
@@ -76,4 +77,4 @@ wird aktuell nicht von der Krankenkasse übernommen.
 <hr />
 
 ## Weitere Abhängigkeiten mit Hypnosetherapie behandeln
-<SubPages id="dependencies" exclude="/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/" columns={2} />
+<SubPagesTopics id="dependencies" exclude="/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/" columns={2} />

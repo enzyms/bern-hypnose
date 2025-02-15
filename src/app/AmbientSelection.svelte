@@ -3,8 +3,9 @@
     import SButton from './SButton.svelte';
 
     const ambientSounds = [
-        { id: 'bird', name: 'Bird songs' },
+        { id: 'forest', name: 'Bird songs' },
         { id: 'sea', name: 'Noise of the sea' },
+        { id: 'underwater', name: 'Submarine world' },
         { id: 'none', name: 'None' }
     ];
     function selectDuration(sound) {
