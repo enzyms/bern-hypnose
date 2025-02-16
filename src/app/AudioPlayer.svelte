@@ -24,10 +24,16 @@
 
     let isPlaying = false; // Track play/pause state
 
+    let currentTime = 0;
+    let duration = 0;
+
     // Function to get audio files based on the profile and topic
     $: if (profile && topic) {
         audioFile = getAudioFile(profile, topic);
         ambientFile = getAmbientFile(ambient);
+        if (audioElement) {
+            audioElement.src = audioFile; // Set the audio source when profile/topic changes
+        }
     }
 
     function getAudioFile(profile, topic) {
@@ -84,10 +90,11 @@
     async function togglePlayPause() {
         if (isPlaying) {
             audioElement.pause(); // Pause the audio
-            ambientElement.pause();
+            ambientElement.pause(); // This line is already pausing the ambient sound
             isPlaying = false; // Set playing state to false
         } else {
-            playCurrent(); // Start or resume playback from the current file
+            // No need to set src again, just resume from current position
+            audioElement.play(); // Resume playback from current position
             playAmbient();
         }
     }
@@ -101,9 +108,27 @@
     function onPause() {
         isPlaying = false; // Set playing state to false when paused
     }
+
+    // Format time in MM:SS
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
+
+    // Handle seeking when user drags the slider
+    function handleSeek() {
+        audioElement.currentTime = currentTime;
+    }
+
+    // Update currentTime when timeupdate event fires
+    function onTimeUpdate() {
+        currentTime = audioElement.currentTime;
+        duration = audioElement.duration;
+    }
 </script>
 
-<audio bind:this={audioElement} on:ended={onEnded} on:play={onPlay} on:pause={onPause}> </audio>
+<audio bind:this={audioElement} on:ended={onEnded} on:play={onPlay} on:pause={onPause} on:timeupdate={onTimeUpdate}> </audio>
 
 <audio bind:this={ambientElement} on:play={onPlay} on:pause={onPause} loop volume="0.5"> </audio>
 
@@ -124,11 +149,31 @@
     </div>
 {/if}
 
+<!-- Progress Slider -->
+{#if duration > 0}
+    <div class="progress-control">
+        <span>{formatTime(currentTime)}</span>
+        <input type="range" min="0" max={duration} step="0.1" bind:value={currentTime} on:change={handleSeek} />
+        <span>{formatTime(duration)}</span>
+    </div>
+{/if}
+
 <style>
     .volume-control {
         margin-top: 1rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
+    }
+
+    .progress-control {
+        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .progress-control input[type='range'] {
+        flex: 1;
     }
 </style>
