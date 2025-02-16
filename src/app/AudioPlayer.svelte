@@ -1,5 +1,7 @@
 <script>
     import { selectedProfile, selectedTopic, selectedAmbientSound } from './store.js'; // Import stores
+    import CircleProgressBar from './CircleProgressBar.svelte';
+
     export let onPlaybackComplete; // Optional callback when playback completes
 
     let profile;
@@ -26,6 +28,9 @@
 
     let currentTime = 0;
     let duration = 0;
+
+    // Calculate progress in degrees (0-360) based on current time and duration
+    $: progress = duration > 0 ? currentTime / duration : 0;
 
     // Function to get audio files based on the profile and topic
     $: if (profile && topic) {
@@ -157,6 +162,8 @@
         <span>{formatTime(duration)}</span>
     </div>
 {/if}
+
+<CircleProgressBar {progress} />
 
 <style>
     .volume-control {
