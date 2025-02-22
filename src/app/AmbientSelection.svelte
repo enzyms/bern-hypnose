@@ -1,5 +1,5 @@
 <script>
-    import { selectedAmbientSound, nextStep } from './store.js';
+    import { selectedAmbientSound, nextStep, pageTitle } from './store.js';
     import SButton from './SButton.svelte';
 
     const ambientSounds = [
@@ -8,12 +8,13 @@
         { id: 'none', name: 'None' }
     ];
     function selectDuration(sound) {
-        selectedAmbientSound.set(sound.id);
+        selectedAmbientSound.set(sound);
         nextStep();
     }
+
+    pageTitle.set('Select Ambient Sound');
 </script>
 
-<h2 class="text-3xl font-black mb-10">Select ambient sound</h2>
 <ul class="flex flex-col gap-4">
     {#each ambientSounds as sound}
         <li>

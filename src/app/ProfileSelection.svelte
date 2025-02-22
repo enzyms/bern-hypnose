@@ -1,6 +1,5 @@
 <script>
     import { selectedProfile, nextStep } from './store.js';
-    import SButton from './SButton.svelte';
 
     import imgAdult from '@assets/app/introspection.png';
     import imgChild from '@assets/app/child.png';
@@ -32,20 +31,3 @@
         </li>
     {/each}
 </ul>
-
-<style>
-    .card {
-        @apply block relative cursor-pointer;
-    }
-    .card__image {
-        @apply w-full rounded-xl overflow-hidden relative z-10 shadow-lg aspect-[5/3];
-    }
-
-    .card__image img {
-        @apply w-full h-full object-cover object-center;
-        @apply group-hover:scale-[1.05] transition-transform duration-500 ease-in-out object-cover object-center;
-    }
-    .card__title {
-        @apply px-2 py-2 !text-base md:!text-lg font-bold !leading-snug text-red-700 group-hover:text-red-500 transition-colors relative z-10;
-    }
-</style>

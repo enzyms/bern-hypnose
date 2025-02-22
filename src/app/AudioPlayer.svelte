@@ -1,186 +1,206 @@
 <script>
     import { selectedProfile, selectedTopic, selectedAmbientSound } from './store.js'; // Import stores
-    import CircleProgressBar from './CircleProgressBar.svelte';
+    import Slider from './Slider.svelte';
+    import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle } from './store.js';
+    import { format } from './utilities.js';
+    import PlayButton from './PlayButton.svelte';
+    import { onMount } from 'svelte';
 
-    export let onPlaybackComplete; // Optional callback when playback completes
-
-    let profile;
-    let topic;
-    let ambient;
-
-    // Subscribe to the stores to get selected profile and topic
-    $: selectedProfile.subscribe((value) => {
-        profile = value;
-    });
-    $: selectedTopic.subscribe((value) => {
-        topic = value;
-    });
-    $: selectedAmbientSound.subscribe((value) => {
-        ambient = value;
-    });
-
-    let audioFile;
-    let ambientFile;
-    let audioElement;
-    let ambientElement;
-
-    let isPlaying = false; // Track play/pause state
-
-    let currentTime = 0;
     let duration = 0;
+    let currentTime = 0;
+    let paused = true;
+    let volume = 0.5;
+    let ambientVolume = 0.08;
 
-    // Calculate progress in degrees (0-360) based on current time and duration
-    $: progress = duration > 0 ? currentTime / duration : 0;
+    let slider;
+    let rAF = null;
 
-    // Function to get audio files based on the profile and topic
-    $: if (profile && topic) {
-        audioFile = getAudioFile(profile, topic);
-        ambientFile = getAmbientFile(ambient);
-        if (audioElement) {
-            audioElement.src = audioFile; // Set the audio source when profile/topic changes
+    $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
+    $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
+
+    pageTitle.set(' ');
+
+    function whilePlaying() {
+        slider.value = audio.currentTime;
+        currentTime = slider.value;
+        rAF = requestAnimationFrame(whilePlaying);
+    }
+
+    function movePosition() {
+        time = slider.value;
+        if (!audio.paused) {
+            cancelAnimationFrame(rAF);
         }
     }
 
-    function getAudioFile(profile, topic) {
-        return `/audio/${profile.id}-${topic.id}.mp3`;
-    }
-    function getAmbientFile(ambient) {
-        if (ambient !== 'none') {
-            return `/audio/ambient-${ambient}.mp3`;
-        } else {
-            return undefined;
+    function updatePosition() {
+        audio.currentTime = slider.value;
+        if (!audio.paused) {
+            requestAnimationFrame(whilePlaying);
         }
     }
 
-    // Function to play the current audio in the sequence
-    async function playCurrent() {
-        audioElement.src = audioFile; // Set the audio source to the file
-        try {
-            await audioElement.play();
-            isPlaying = true;
-            console.log('audioElement', audioElement);
-        } catch (error) {
-            console.error('Error playing audio:', error);
-        }
-    }
-
-    async function playAmbient() {
-        if (ambientFile) {
-            // Only check if we have an ambient file
-            ambientElement.src = ambientFile;
-            try {
-                await ambientElement.play();
-                ambientElement.volume = 0.05;
-                isPlaying = true;
-            } catch (error) {
-                console.error('Error playing audio:', error);
-            }
-        }
-    }
-
-    // Function to play the next audio file after the current one ends
-    function playNext() {
-        if (onPlaybackComplete) {
-            onPlaybackComplete();
-            ambientElement.pause();
-        }
-    }
-
-    // Move to the next audio file after the current one ends
-    function onEnded() {
-        playNext();
-    }
-
-    // Toggle between play and pause
-    async function togglePlayPause() {
-        if (isPlaying) {
-            audioElement.pause(); // Pause the audio
-            ambientElement.pause(); // This line is already pausing the ambient sound
-            isPlaying = false; // Set playing state to false
-        } else {
-            // No need to set src again, just resume from current position
-            audioElement.play(); // Resume playback from current position
-            playAmbient();
-        }
-    }
-
-    // Update play state when audio starts playing
-    function onPlay() {
-        isPlaying = true; // Set the playing state to true
-    }
-
-    // Update play state when audio is paused
-    function onPause() {
-        isPlaying = false; // Set playing state to false when paused
-    }
-
-    // Format time in MM:SS
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = Math.floor(seconds % 60);
-        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-    }
-
-    // Handle seeking when user drags the slider
-    function handleSeek() {
-        audioElement.currentTime = currentTime;
-    }
-
-    // Update currentTime when timeupdate event fires
-    function onTimeUpdate() {
-        currentTime = audioElement.currentTime;
-        duration = audioElement.duration;
-    }
+    onMount(() => {
+        $audioPlayer.load();
+        $ambientPlayer.load();
+    });
 </script>
 
-<audio bind:this={audioElement} on:ended={onEnded} on:play={onPlay} on:pause={onPause} on:timeupdate={onTimeUpdate}> </audio>
+<audio
+    bind:this={$audioPlayer}
+    bind:duration
+    bind:currentTime
+    bind:paused
+    bind:volume
+    on:canplay={() => ($status = 'can play some')}
+    on:canplaythrough={() => ($status = 'can play all')}
+    on:waiting={() => ($status = 'waiting')}
+    on:timeupdate={() => ($status = 'playing')}
+    on:seeking={() => ($status = 'seeking')}
+    on:ended={() => {
+        $isPlaying = false;
+        currentTime = 0;
+    }}
+    src={currentAudioSource}
+/>
 
-<audio bind:this={ambientElement} on:play={onPlay} on:pause={onPause} loop volume="0.5"> </audio>
+<audio
+    bind:this={$ambientPlayer}
+    bind:paused
+    bind:volume={ambientVolume}
+    on:ended={() => {
+        $isPlaying = false;
+        currentTime = 0;
+    }}
+    src={currentAmbientSource}
+/>
 
-<!-- Play/Pause Button -->
-<button on:click={togglePlayPause}>
-    {#if isPlaying}
-        ⏸ Pause
-    {:else}
-        ▶️ Play
-    {/if}
-</button>
+<div class="box">
+    <PlayButton />
 
-<!-- Volume Slider for Ambient Sound -->
-{#if ambient && ambient !== 'none' && ambientElement}
-    <div class="volume-control">
-        <label for="ambient-volume">Ambient Volume:</label>
-        <input type="range" id="ambient-volume" min="0" max="0.25" step="0.02" bind:value={ambientElement.volume} />
+    <div class="volume-slider mb-6">
+        <strong>Volume</strong>
+        <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={volume} />
     </div>
-{/if}
 
-<!-- Progress Slider -->
-{#if duration > 0}
-    <div class="progress-control">
-        <span>{formatTime(currentTime)}</span>
-        <input type="range" min="0" max={duration} step="0.1" bind:value={currentTime} on:change={handleSeek} />
-        <span>{formatTime(duration)}</span>
+    <div class="volume-slider mb-6">
+        <strong>AmbientVolume</strong>
+        <Slider min={0} max={0.12} step={0.01} precision={3} formatter={(v) => Math.round(v * 100)} bind:value={ambientVolume} />
     </div>
-{/if}
 
-<CircleProgressBar {progress} />
+    <div class="fixed top-0 z-[200] left-0 right-0 border-t border-gray-200">
+        <div class="progress-slider">
+            <Slider
+                bind:this={slider}
+                min={0}
+                bind:value={currentTime}
+                max={duration}
+                step={0.01}
+                precision={2}
+                formatter={(v) => format(v)}
+                on:input={movePosition}
+                on:change={updatePosition}
+            />
+        </div>
+    </div>
+
+    <!-- 	<div class='debugger'> -->
+
+    <!-- 		<p><strong>Index</strong></p><p>{$index}</p> -->
+    <!-- 		<p><strong>Volume</strong></p><p>{volume}</p> -->
+    <!-- 		<p><strong>Loading</strong></p><p>{$status}</p> -->
+    <!-- 		<p><strong>Playing</strong></p><p>{$isPlaying}</p> -->
+    <!-- 		<p><strong>Time</strong></p><p>{currentTime}</p> -->
+    <!-- 		<p><strong>Duration</strong></p><p>{duration}</p> -->
+
+    <!-- 	</div> -->
+</div>
 
 <style>
-    .volume-control {
-        margin-top: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+    audio {
+        display: none;
     }
 
-    .progress-control {
-        margin: 1rem 0;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+    div {
+        display: grid;
+        grid-auto-flow: row;
     }
 
-    .progress-control input[type='range'] {
-        flex: 1;
+    button {
+        margin: 0;
+        padding: 0;
+        width: 4rem;
+        height: 2rem;
+        border-radius: 4px;
+        border: 1px solid #bbb;
+        background: #fcfcfc;
     }
+
+    p {
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        user-select: none;
+    }
+
+    strong {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    span {
+        display: inline-grid;
+        margin: 0;
+        padding: 0.25rem 0.75rem;
+        width: 2.5rem;
+        background: #f3f3f3;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        place-items: center;
+        font-size: 14px;
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .info {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 2;
+        justify-items: start;
+        row-gap: 0.75rem;
+    }
+
+    .buttons {
+        grid-template-columns: 4rem 4rem 4rem 4rem 1fr;
+        place-items: center;
+        column-gap: 1rem;
+    }
+
+    .volume-slider {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* 	.debugger {
+		padding: 1rem;
+		place-items: center;
+		column-gap: 1rem;
+		border: 1px solid #bbb;
+		border-radius: 8px;
+		background: #ddd;
+		grid-template-columns: 4rem 1fr 4rem 1fr;
+		justify-items: start;
+		align-items: center;
+		row-gap: 0.5rem;
+	} */
 </style>

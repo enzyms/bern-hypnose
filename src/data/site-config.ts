@@ -316,11 +316,11 @@ const siteConfig: SiteConfig = {
             href: '/termin/',
             diamondPosition: 2,
         },
-        {
-            text: 'App',
-            href: '/selbsthypnose/',
-            diamondPosition: 2,
-        },
+        // {
+        //     text: 'App',
+        //     href: '/app/',
+        //     diamondPosition: 2,
+        // },
     ],
     footerNavLinks: [
         {

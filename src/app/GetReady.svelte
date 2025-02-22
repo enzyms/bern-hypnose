@@ -1,9 +1,10 @@
 <script>
-    import { nextStep, selectedDuration, selectedAmbientSound } from './store.js';
+    import { nextStep, selectedDuration, selectedAmbientSound, pageTitle } from './store.js';
     import SButton from './SButton.svelte';
+
+    pageTitle.set('Get Ready');
 </script>
 
-<h2 class="text-3xl font-black mb-10">Get Ready</h2>
 <ul class="mb-8">
     <li>Find a quiet place</li>
     <li>Get comfortable</li>

@@ -1,35 +1,42 @@
 <script>
-    import ProfileSelection from './ProfileSelection.svelte';
+    /* import ProfileSelection from './ProfileSelection.svelte'; */
     import TopicSelection from './TopicSelection.svelte';
     import AmbientSelection from './AmbientSelection.svelte';
     import GetReady from './GetReady.svelte';
     import AudioPlayer from './AudioPlayer.svelte';
     import SButton from './SButton.svelte';
 
-    import { currentStep, prevStep, clearStore } from './store.js';
+    import { currentStep, prevStep, clearStore, pageTitle } from './store.js';
 
     let step;
+    let isMenuOpen = false;
 
     $: currentStep.subscribe((value) => {
         step = value;
     });
-    function handlePlaybackComplete() {
-        alert('Session complete!');
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        const button = document.querySelector('button');
+        button?.classList.toggle('is-active');
     }
     function handleClose() {
         clearStore();
-        window.location.href = '/selbsthypnose/';
+        window.location.href = '/app/';
+    }
+    function restartApp() {
+        toggleMenu();
+        clearStore();
     }
 </script>
 
-{#if step > 2 && step < 6}
-    <SButton className="absolute top-6 left-4" on:click={prevStep}>Back</SButton>
-{/if}
-{#if step === 2 || step === 5}
-    <SButton className="absolute __top-6 top-24 left-4" on:click={handleClose}>Close</SButton>
-{/if}
+<div class="fixed left-0 top-0 right-0 z-20 py-6 md:py-8 lg:py-10 bg-primary/5 backdrop-blur-lg text-center">
+    <h1 class="text-2xl font-black text-gray-950">
+        {$pageTitle}
+    </h1>
+</div>
 
-<div class="py-20 flex flex-col items-center text-center">
+<div class="py-10 md:py-12 lg:py-14 flex flex-col items-center text-center">
     <div class="max-w-[340px] w-full">
         <!-- {#if step === 1}
             <ProfileSelection /> -->
@@ -40,7 +47,61 @@
         {:else if step === 4}
             <GetReady />
         {:else if step === 5}
-            <AudioPlayer onPlaybackComplete={handlePlaybackComplete} />
+            <AudioPlayer />
         {/if}
     </div>
 </div>
+
+<div class="fixed left-0 bottom-0 right-0 z-50 py-4 md:py-6 lg:py-8 bg-primary/5 backdrop-blur-lg text-center">
+    <SButton variant="solid" on:click={toggleMenu} class="relative !p-1" aria-label="Toggle Menu" aria-expanded={isMenuOpen}>
+        <span class={`burger-icon ${isMenuOpen ? 'is-active' : ''}`}>
+            <span class="bar" />
+        </span>
+    </SButton>
+</div>
+<div class={`menu ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
+    <div class="py-12 max-w-[340px] mx-auto flex flex-col gap-4">
+        <SButton className="w-full" on:click={restartApp}>Restart App</SButton>
+        <SButton className="w-full" on:click={handleClose}>Visit website</SButton>
+    </div>
+</div>
+
+<style>
+    .menu {
+        @apply fixed top-0 left-0 bottom-0 w-full z-40 backdrop-blur-lg transition-all duration-500 ease-in-out;
+    }
+    .burger-icon {
+        @apply w-6 h-6 flex items-center justify-center relative;
+    }
+
+    .bar {
+        @apply w-6 h-[2px] bg-white rounded-full relative transition-all duration-300;
+    }
+
+    .bar::before,
+    .bar::after {
+        content: '';
+        @apply w-6 h-[2px] bg-white rounded-full absolute left-0 transition-all duration-300;
+    }
+
+    .bar::before {
+        transform: translateY(-8px);
+    }
+
+    .bar::after {
+        transform: translateY(8px);
+    }
+
+    /* Active state */
+    .is-active .bar {
+        @apply bg-transparent;
+    }
+
+    .is-active .bar::before {
+        transform: rotate(45deg);
+    }
+
+    .is-active .bar::after {
+        transform: rotate(-45deg);
+    }
+</style>
