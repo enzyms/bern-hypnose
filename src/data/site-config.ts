@@ -136,7 +136,7 @@ const siteConfig: SiteConfig = {
             "author": "Name or initials",
             "url": "https://google.link"
         }
-        
+
     ],
     title: 'Hypnose in Bern – Hypnosetherapie | Janine Aerni',
     description: 'Hypnose und Hypnosetherapie in Bern – Janine Aerni. In meiner Praxis biete ich Hypnosetherapie an, um Stress, Ängste, Phobien und mehr zu überwinden. Entdecken Sie, wie Hypnose Ihnen helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen. ',
@@ -150,8 +150,8 @@ const siteConfig: SiteConfig = {
     },
     hero: {
         title: 'Bern Hypnose',
-        subtitle: 'Hypnosetherapie Praxis in Bern', 
-        name: 'Janine Aerni', 
+        subtitle: 'Hypnosetherapie Praxis in Bern',
+        name: 'Janine Aerni',
         text: "Ich bin Janine Aerni, diplomierte Hypnosetherapeutin in Bern. Mit einer warmen und unterstützenden Herangehensweise helfe ich dir, Stress, Angst, Phobien und mehr zu überwinden. Entdecke die transformative Kraft der Hypnose in einer sicheren Umgebung.",
         actions: [
             {
@@ -162,7 +162,7 @@ const siteConfig: SiteConfig = {
                 text: 'Kontakt buchen',
                 href: '/kontakt/'
             },
-            
+
         ]
     },
     headerNavLinks: [
@@ -189,7 +189,7 @@ const siteConfig: SiteConfig = {
                     text: 'Sporthypnose',
                     longText: 'Wann kann Hypnose helfen und für wen?',
                     href: '/hypnosetherapie/sporthypnose/',
-                    id:'hypnotherapy-sport',
+                    id: 'hypnotherapy-sport',
                     diamondPosition: 2,
                     image: runnerImage,
                 },
@@ -197,19 +197,19 @@ const siteConfig: SiteConfig = {
                     text: 'Kinderhypnose',
                     longText: 'Sanfte Unterstützung für dein Kind',
                     href: '/hypnosetherapie/kinderhypnose/',
-                    id:'hypnotherapy-children',
+                    id: 'hypnotherapy-children',
                     diamondPosition: 2,
                     image: childImage,
-                  },
+                },
                 {
                     text: 'Hypnose spezifisch für Frauen',
                     longText: 'Unterstützung in jeder Lebensphase durch Hypnose',
                     href: '/hypnosetherapie/hypnose-fuer-frauen/',
-                    id:'hypnotherapy-women',
+                    id: 'hypnotherapy-women',
                     diamondPosition: 2,
                     image: womanImage,
-                  },
-                
+                },
+
             ],
             subPagesTopics: [
                 {
@@ -218,14 +218,14 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/selbstvertrauen/',
                     diamondPosition: 2,
                     image: glowingBlocksImage,
-                  },
+                },
                 {
                     text: 'Ernährung und Abnehmen',
                     longText: 'Hypnose für eine gesunde Ernährung',
                     href: '/hypnosetherapie/ernaehrung-und-abnehmen/',
                     diamondPosition: 2,
                     image: foodImage,
-                  },
+                },
                 {
                     text: 'Stress, Burnout und Depression',
                     longText: 'Hypnose gegen Stress, Burnout und Depression',
@@ -234,40 +234,40 @@ const siteConfig: SiteConfig = {
                     image: depressionImage,
                 },
                 {
-                  text: 'Ängste und Phobien',
-                  longText: 'Ängste und Phobien mit Hypnose überwinden',
-                  href: '/hypnosetherapie/aengste-und-phobien/',
-                  diamondPosition: 2,
-                  image: fearsImage,
+                    text: 'Ängste und Phobien',
+                    longText: 'Ängste und Phobien mit Hypnose überwinden',
+                    href: '/hypnosetherapie/aengste-und-phobien/',
+                    diamondPosition: 2,
+                    image: fearsImage,
                 },
                 {
-                  text: 'Abhängigkeiten',
-                  longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
-                  href: '/hypnosetherapie/abhaengigkeit/',
-                  diamondPosition: 2,
-                  image: cigaretteImage,
-                  id: 'dependencies',
-                  subPagesTopics: [
-                    {
-                      text: 'Rauchstopp mit Hypnose',
-                      longText: 'Rauchen durch Hypnose aufgeben',
-                      href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/',
-                      image: cigaretteImage,
-                    },
-                    {
-                      text: 'Hypnose gegen Alkoholsucht',
-                      longText: 'Alkoholsucht mit Hypnose behandeln',
-                      href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/',
-                      image: glassImage,
-                    },
-                  ],
+                    text: 'Abhängigkeiten',
+                    longText: 'Hypnose gegen Rauchen und Abhängigkeiten',
+                    href: '/hypnosetherapie/abhaengigkeit/',
+                    diamondPosition: 2,
+                    image: cigaretteImage,
+                    id: 'dependencies',
+                    subPagesTopics: [
+                        {
+                            text: 'Rauchstopp mit Hypnose',
+                            longText: 'Rauchen durch Hypnose aufgeben',
+                            href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/',
+                            image: cigaretteImage,
+                        },
+                        {
+                            text: 'Hypnose gegen Alkoholsucht',
+                            longText: 'Alkoholsucht mit Hypnose behandeln',
+                            href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/',
+                            image: glassImage,
+                        },
+                    ],
                 },
                 {
-                  text: 'Schlafstörungen',
-                  longText: 'Schlafstörungen mit Hypnose behandeln',
-                  href: '/hypnosetherapie/schlafstoerungen/',
-                  diamondPosition: 2,
-                  image: sleepImage,
+                    text: 'Schlafstörungen',
+                    longText: 'Schlafstörungen mit Hypnose behandeln',
+                    href: '/hypnosetherapie/schlafstoerungen/',
+                    diamondPosition: 2,
+                    image: sleepImage,
                 },
                 {
                     text: 'Schmerzen',
@@ -275,16 +275,16 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/schmerzen/',
                     diamondPosition: 2,
                     image: painImage,
-                  },
+                },
                 {
                     text: 'Zwangsstörungen',
                     longText: 'Zwangsstörungen mit Hypnose behandeln',
                     href: '/hypnosetherapie/zwangsstoerungen/',
                     diamondPosition: 2,
                     image: thinkingImage,
-                  },
+                },
             ],
-            
+
         },
         {
             text: 'Fragen',
@@ -295,6 +295,18 @@ const siteConfig: SiteConfig = {
             text: 'Angebote',
             href: '/angebote/',
             diamondPosition: 3,
+            subPages: [
+                {
+                    text: 'Preise Hypnosetherapie',
+                    href: '/angebote/',
+                    diamondPosition: 3,
+                },
+                {
+                    text: 'Präsentationen über Hypnose',
+                    href: '/angebote/praesentationen-ueber-hypnose/',
+                    diamondPosition: 3,
+                },
+            ],
         },
         {
             text: 'Blog',
