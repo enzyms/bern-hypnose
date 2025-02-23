@@ -9,7 +9,7 @@ import ArrowLeft from '../../icons/ArrowLeft.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
 import { Image, getImage } from 'astro:assets';
-import JanineFace from '@assets/images/bern-hypnose-janine-aerni.jpg';
+import JanineFace from '@assets/images/janine-aerni-2025-circle-4.jpg';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);

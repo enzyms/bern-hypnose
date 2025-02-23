@@ -295,6 +295,18 @@ const siteConfig: SiteConfig = {
             text: 'Angebote',
             href: '/angebote/',
             diamondPosition: 3,
+            subPages: [
+                {
+                    text: 'Preise Hypnosetherapie',
+                    href: '/angebote/',
+                    diamondPosition: 3,
+                },
+                {
+                    text: 'Präsentationen über Hypnose',
+                    href: '/angebote/praesentationen-ueber-hypnose/',
+                    diamondPosition: 3,
+                },
+            ],
         },
         {
             text: 'Blog',
