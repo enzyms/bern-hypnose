@@ -4,16 +4,21 @@
     import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle } from './store.js';
     import { format } from './utilities.js';
     import PlayButton from './PlayButton.svelte';
-    import { onMount } from 'svelte';
+    import CircularProgress from './CircularProgress.svelte';
+    import { onMount, onDestroy } from 'svelte';
+    import SButton from './SButton.svelte';
+    import Audio from './audio-icon.svelte';
 
     let duration = 0;
     let currentTime = 0;
     let paused = true;
     let volume = 0.5;
-    let ambientVolume = 0.08;
+    let ambientVolume = 0.1;
 
     let slider;
     let rAF = null;
+
+    let isDrawerOpen = false;
 
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
@@ -44,9 +49,26 @@
         $audioPlayer.load();
         $ambientPlayer.load();
     });
+
+    onDestroy(() => {
+        // Reset audio states
+        if ($audioPlayer) {
+            $audioPlayer.pause();
+            $audioPlayer.currentTime = 0;
+        }
+        if ($ambientPlayer) {
+            $ambientPlayer.pause();
+            $ambientPlayer.currentTime = 0;
+        }
+        $isPlaying = false;
+        $status = 'idle'; // Add this status to your store
+    });
+
+    $: progressValue = duration ? (currentTime / duration) * 100 : 0;
 </script>
 
 <audio
+    id="audioPlayer"
     bind:this={$audioPlayer}
     bind:duration
     bind:currentTime
@@ -65,6 +87,7 @@
 />
 
 <audio
+    id="ambientPlayer"
     bind:this={$ambientPlayer}
     bind:paused
     bind:volume={ambientVolume}
@@ -75,19 +98,35 @@
     src={currentAmbientSource}
 />
 
-<div class="box">
-    <PlayButton />
-
-    <div class="volume-slider mb-6">
-        <strong>Volume</strong>
-        <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={volume} />
+<div class="h-[65dvh] relative flex flex-col gap-8 items-center justify-center">
+    <div>
+        <div class="absolute w-[10rem] h-[10rem] pointer-events-none">
+            <CircularProgress bind:value={progressValue}></CircularProgress>
+        </div>
+        <PlayButton />
     </div>
 
-    <div class="volume-slider mb-6">
-        <strong>AmbientVolume</strong>
-        <Slider min={0} max={0.12} step={0.01} precision={3} formatter={(v) => Math.round(v * 100)} bind:value={ambientVolume} />
+    <div class="relative w-full">
+        <SButton on:click={() => (isDrawerOpen = !isDrawerOpen)}>
+            <Audio class="w-4 h-4" />
+        </SButton>
+
+        {#if isDrawerOpen}
+            <div class="drawer">
+                <div class="volume-slider mb-6">
+                    <div class="text-sm font-bold mb-2">Volume</div>
+                    <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={volume} />
+                </div>
+
+                <div class="volume-slider mb-6">
+                    <div class="text-sm font-bold mb-2">AmbientVolume</div>
+                    <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={ambientVolume} />
+                </div>
+            </div>
+        {/if}
     </div>
 
+    <!-- TODO maybe: add progress controller into a drawer? 
     <div class="fixed top-0 z-[200] left-0 right-0 border-t border-gray-200">
         <div class="progress-slider">
             <Slider
@@ -103,6 +142,7 @@
             />
         </div>
     </div>
+    -->
 
     <!-- 	<div class='debugger'> -->
 
@@ -121,74 +161,23 @@
         display: none;
     }
 
-    div {
-        display: grid;
-        grid-auto-flow: row;
-    }
-
-    button {
-        margin: 0;
-        padding: 0;
-        width: 4rem;
-        height: 2rem;
-        border-radius: 4px;
-        border: 1px solid #bbb;
-        background: #fcfcfc;
-    }
-
-    p {
-        margin: 0;
-        padding: 0;
-        line-height: 1;
-        user-select: none;
-    }
-
-    strong {
-        margin: 0;
-        padding: 0;
-        font-size: 14px;
-        line-height: 1;
-    }
-
-    span {
-        display: inline-grid;
-        margin: 0;
-        padding: 0.25rem 0.75rem;
-        width: 2.5rem;
-        background: #f3f3f3;
-        border: 1px solid #bbb;
-        border-radius: 6px;
-        place-items: center;
-        font-size: 14px;
-    }
-
-    .box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .info {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        grid-template-columns: 1fr;
-        grid-template-rows: 2;
-        justify-items: start;
-        row-gap: 0.75rem;
-    }
-
-    .buttons {
-        grid-template-columns: 4rem 4rem 4rem 4rem 1fr;
-        place-items: center;
-        column-gap: 1rem;
-    }
-
     .volume-slider {
         margin: 0;
         padding: 0;
         width: 100%;
+    }
+
+    .drawer {
+        position: absolute;
+        top: 120%;
+        left: 0%;
+        right: 0%;
+        padding: 1rem 0;
+        z-index: 10;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     /* 	.debugger {

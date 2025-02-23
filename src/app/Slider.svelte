@@ -391,40 +391,40 @@
     }
 
     .slider {
-        background-color: hsla(0, 0%, 40%, 1);
+        border: 1px solid rgb(239, 68, 68, 0.25); /* red-100 */
     }
 
     .slider .fill {
-        background-color: hsla(0, 0%, 75%, 1);
+        background-color: rgb(239, 68, 68); /* red-500 */
     }
 
     .slider .nub {
-        background-color: hsla(0, 0%, 100%, 1);
-        box-shadow: inset 0px 0px 1px 0px hsla(0, 0%, 50%, 1);
+        background-color: rgb(255, 255, 255); /* white */
+        box-shadow: inset 0px 0px 1px 0px rgb(127, 29, 29); /* red-900 */
         box-shadow:
-            inset 0px 0px 1px 0px hsla(0, 0%, 0%, 1),
-            0px 0px 4px 0px hsla(0, 0%, 50%, 0.25);
+            inset 0px 0px 1px 0px rgb(127, 29, 29),
+            /* red-900 */ 0px 0px 4px 0px rgba(127, 29, 29, 0.25); /* red-900 with opacity */
     }
 
     .slider.focus .fill {
-        background-color: hsla(182, 100%, 40%, 1);
+        background-color: rgb(239, 68, 68); /* red-500 */
     }
 
     .slider.focus .nub {
-        background-color: hsla(182, 100%, 90%, 1);
+        background-color: rgb(254, 226, 226); /* red-100 */
     }
 
     .slider .handle.active .nub {
-        background-color: hsla(182, 100%, 50%, 1);
+        background-color: rgb(239, 68, 68); /* red-500 */
     }
 
     .slider .float {
-        color: hsla(0, 0%, 100%, 1);
-        background-color: hsla(182, 100%, 40%, 1);
+        color: rgb(255, 255, 255); /* white */
+        background-color: rgb(239, 68, 68); /* red-500 */
     }
 
     .slider.focus .float {
-        background-color: hsla(182, 100%, 40%, 1);
+        background-color: rgb(239, 68, 68); /* red-500 */
     }
 
     .square {

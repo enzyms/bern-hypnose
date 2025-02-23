@@ -6,7 +6,7 @@
     import AudioPlayer from './AudioPlayer.svelte';
     import SButton from './SButton.svelte';
 
-    import { currentStep, prevStep, clearStore, pageTitle } from './store.js';
+    import { currentStep, clearStore, pageTitle } from './store.js';
 
     let step;
     let isMenuOpen = false;
@@ -59,10 +59,10 @@
         </span>
     </SButton>
 </div>
-<div class={`menu ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
+<div class={`menu flex items-center ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
     <div class="py-12 max-w-[340px] mx-auto flex flex-col gap-4">
-        <SButton className="w-full" on:click={restartApp}>Restart App</SButton>
-        <SButton className="w-full" on:click={handleClose}>Visit website</SButton>
+        <SButton variant="solid" className="w-full" on:click={restartApp}>Restart App</SButton>
+        <SButton variant="solid" className="w-full" on:click={handleClose}>Visit website</SButton>
     </div>
 </div>
 

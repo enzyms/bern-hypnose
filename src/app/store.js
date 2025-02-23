@@ -8,6 +8,12 @@ export const selectedDuration = writable(null);
 export const selectedAmbientSound = writable(null);
 export const currentStep = writable(2); // set to 1 when we have children profile
 
+export const audioPlayer = writable();
+export const ambientPlayer = writable();
+export const status = writable('default');
+export const isPlaying = writable(false);
+export const index = writable(0);
+
 export function nextStep() {
     currentStep.update((n) => (n < 5 ? n + 1 : n));
 }
@@ -25,11 +31,6 @@ export function selectAmbientSound() {
 }
 
 
-export const audioPlayer = writable();
-export const ambientPlayer = writable();
-export const status = writable('default');
-export const isPlaying = writable(false);
-export const index = writable(0);
 
 
 // export const trackList = writable([
