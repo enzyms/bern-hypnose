@@ -61,8 +61,8 @@
 </div>
 <div class={`menu flex items-center ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
     <div class="py-12 max-w-[340px] mx-auto flex flex-col gap-4">
-        <SButton variant="solid" className="w-full" on:click={restartApp}>Restart App</SButton>
-        <SButton variant="solid" className="w-full" on:click={handleClose}>Visit website</SButton>
+        <SButton variant="solid" className="w-full" on:click={restartApp}>Erneut starten</SButton>
+        <SButton variant="solid" className="w-full" on:click={handleClose}>zurück zur Webseite</SButton>
     </div>
 </div>
 

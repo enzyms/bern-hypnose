@@ -163,7 +163,7 @@
     src={currentAmbientSource}
 />
 
-<div class="h-[65dvh] relative flex flex-col gap-8 items-center justify-center">
+<div class="h-[65dvh] relative flex flex-col gap-6 items-center justify-center">
     <div>
         <div class="absolute w-[10rem] h-[10rem] pointer-events-none">
             <CircularProgress bind:value={progressValue}></CircularProgress>
@@ -178,13 +178,13 @@
 
         {#if isDrawerOpen}
             <div class="drawer">
-                <div class="volume-slider mb-6">
-                    <div class="text-sm font-bold mb-2">Volume</div>
+                <div class="w-full py-1">
+                    <div class="text-sm font-medium pb-4">Lautstärke Stimme</div>
                     <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={volume} />
                 </div>
 
-                <div class="volume-slider mb-6">
-                    <div class="text-sm font-bold mb-2">AmbientVolume</div>
+                <div class="w-full py-1">
+                    <div class="text-sm font-medium pb-4">Lautstärke Hintergrundgeräusch</div>
                     <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={ambientVolume} />
                 </div>
             </div>
@@ -224,12 +224,6 @@
 <style>
     audio {
         display: none;
-    }
-
-    .volume-slider {
-        margin: 0;
-        padding: 0;
-        width: 100%;
     }
 
     .drawer {

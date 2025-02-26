@@ -3,16 +3,16 @@
     import SButton from './SButton.svelte';
 
     const ambientSounds = [
-        { id: 'forest', name: 'Bird songs' },
-        { id: 'sea', name: 'Noise of the sea' },
-        { id: 'none', name: 'None' }
+        { id: 'forest', name: 'Vogelstimmen' },
+        { id: 'sea', name: 'Meeresgeräusche' },
+        { id: 'none', name: 'Ohne Geräusche' }
     ];
     function selectDuration(sound) {
         selectedAmbientSound.set(sound);
         nextStep();
     }
 
-    pageTitle.set('Select Ambient Sound');
+    pageTitle.set('Wähle ein Hintergrundgeräusch');
 </script>
 
 <ul class="flex flex-col gap-4">

@@ -6,7 +6,7 @@
     let topics;
 
     const topicsAdult = [
-        { id: 'relaxation', name: 'Relaxation', duration: 12, image: imgRelaxation },
+        { id: 'relaxation', name: 'Entspannung', duration: 12, image: imgRelaxation },
         { id: 'positive-affirmations', name: 'Positive Affirmationen', duration: 7, image: imgPositiveAffirmations }
     ];
 
@@ -14,7 +14,7 @@
         topics = topicsAdult;
     });
 
-    pageTitle.set('Select a Topic');
+    pageTitle.set('Wähle ein Thema');
 
     function selectTopic(topic) {
         selectedTopic.set(topic);

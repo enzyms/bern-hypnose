@@ -1,5 +1,5 @@
 ---
-title: Webapp für Selbsthypnose
+title: App für geführte Kurzhypnose
 description: Nimm dir einen ruhigen Moment Zeit, mach es dir bequem und lass dich von meiner App in einen Zustand tiefer Entspannung führen.
 
 # image:
@@ -11,7 +11,7 @@ backlink:
   url: /
 ---
 
-Nimm dir einen ruhigen Moment Zeit, mach es dir bequem und lass dich von meiner App in einen Zustand tiefer Entspannung führen.
+Nimm dir einen Moment Zeit, mach es dir bequem und entspanne dich in einer geführten Hypnose.
 
 <a
   href="/app/start/"
