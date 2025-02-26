@@ -53,7 +53,26 @@
 
     async function initAudioContext() {
         if (!audioContext) {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            // Force new audio context creation with specific options for iOS
+            audioContext = new (window.AudioContext || window.webkitAudioContext)({
+                sampleRate: 44100,
+                latencyHint: 'playback'
+            });
+
+            // iOS specific setup
+            if (audioContext.state === 'suspended' && /iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                const unlockAudio = async () => {
+                    await audioContext.resume();
+                    document.body.removeEventListener('touchstart', unlockAudio);
+                    document.body.removeEventListener('touchend', unlockAudio);
+                    document.body.removeEventListener('click', unlockAudio);
+                };
+
+                document.body.addEventListener('touchstart', unlockAudio, false);
+                document.body.addEventListener('touchend', unlockAudio, false);
+                document.body.addEventListener('click', unlockAudio, false);
+            }
+
             mainGainNode = audioContext.createGain();
             ambientGainNode = audioContext.createGain();
 
@@ -93,6 +112,43 @@
     }
 
     onMount(() => {
+        // iOS specific setup
+        const setupAudio = () => {
+            // Enable background audio playback on iOS
+            $audioPlayer.setAttribute('playsinline', '');
+            $audioPlayer.setAttribute('webkit-playsinline', '');
+            $ambientPlayer.setAttribute('playsinline', '');
+            $ambientPlayer.setAttribute('webkit-playsinline', '');
+
+            // Critical iOS settings
+            $audioPlayer.setAttribute('preload', 'auto');
+            $ambientPlayer.setAttribute('preload', 'auto');
+
+            // Set audio session category for iOS
+            if (window.MediaSession) {
+                navigator.mediaSession.setActionHandler('play', () => {
+                    $audioPlayer.play();
+                    $ambientPlayer.play();
+                });
+                navigator.mediaSession.setActionHandler('pause', () => {
+                    $audioPlayer.pause();
+                    $ambientPlayer.pause();
+                });
+            }
+        };
+
+        setupAudio();
+
+        // Initialize audio on first user interaction
+        const initOnInteraction = async () => {
+            await initAudioContext();
+            document.removeEventListener('touchstart', initOnInteraction);
+            document.removeEventListener('click', initOnInteraction);
+        };
+
+        document.addEventListener('touchstart', initOnInteraction, false);
+        document.addEventListener('click', initOnInteraction, false);
+
         // Add audio session configuration for iOS
         if (typeof AudioContext !== 'undefined') {
             document.addEventListener('visibilitychange', async () => {
@@ -100,15 +156,6 @@
                     await requestWakeLock();
                 }
             });
-        }
-
-        // Configure audio session for iOS
-        if (typeof AudioContext !== 'undefined') {
-            // Enable background audio playback on iOS
-            $audioPlayer.setAttribute('playsinline', '');
-            $audioPlayer.setAttribute('webkit-playsinline', '');
-            $ambientPlayer.setAttribute('playsinline', '');
-            $ambientPlayer.setAttribute('webkit-playsinline', '');
         }
 
         // Initialize Web Audio API
@@ -260,6 +307,15 @@
 
     <!-- 	</div> -->
 </div>
+
+<!-- Add these meta tags to your Astro layout file -->
+<!-- 
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Your App Name">
+</head>
+-->
 
 <style>
     audio {
