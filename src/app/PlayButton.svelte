@@ -4,28 +4,44 @@
     import PauseIcon from './pause-icon.svelte';
     import LoadingIcon from './loading-icon.svelte';
 
-    function playTrack() {
-        // Create a promise for each audio play attempt
-        const playPromises = [
-            $audioPlayer.play().catch((err) => console.log('Audio play failed:', err)),
-            $ambientPlayer.play().catch((err) => console.log('Ambient play failed:', err))
-        ];
+    async function playTrack() {
+        try {
+            // Force user interaction for iOS
+            await document.body.click();
 
-        // Wait for both to complete
-        Promise.all(playPromises)
-            .then(() => {
-                $isPlaying = true;
-            })
-            .catch((error) => {
-                console.error('Error playing audio:', error);
-                $isPlaying = false;
-            });
+            // Create a promise for each audio play attempt
+            const playPromises = [
+                $audioPlayer.play().catch((err) => {
+                    console.log('Audio play failed:', err);
+                    return Promise.reject(err);
+                }),
+                $ambientPlayer.play().catch((err) => {
+                    console.log('Ambient play failed:', err);
+                    return Promise.reject(err);
+                })
+            ];
+
+            // Wait for both to complete
+            await Promise.all(playPromises);
+            $isPlaying = true;
+        } catch (error) {
+            console.error('Error playing audio:', error);
+            $isPlaying = false;
+            // Try to recover
+            $audioPlayer.currentTime = 0;
+            $ambientPlayer.currentTime = 0;
+        }
     }
 
     function pauseTrack() {
-        $audioPlayer.pause();
-        $ambientPlayer.pause();
-        $isPlaying = false;
+        try {
+            $audioPlayer.pause();
+            $ambientPlayer.pause();
+        } catch (err) {
+            console.error('Error pausing:', err);
+        } finally {
+            $isPlaying = false;
+        }
     }
 </script>
 

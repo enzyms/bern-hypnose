@@ -52,7 +52,17 @@ export default defineConfig({
             },
             workbox: {
                 navigateFallback: '/app/',
-                globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}']
+                globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,mp3,wav}'],
+                runtimeCaching: [{
+                    urlPattern: /\.(mp3|wav)$/,
+                    handler: 'CacheFirst',
+                    options: {
+                        cacheName: 'audio-cache',
+                        expiration: {
+                            maxAgeSeconds: 60 * 60 * 24 * 7, // 1 week
+                        },
+                    },
+                }],
             },
             devOptions: {
                 enabled: true,

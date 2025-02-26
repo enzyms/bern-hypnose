@@ -25,10 +25,11 @@
     let ambientGainNode;
 
     let wakeLock = null;
-    let noSleepVideo;
 
     let mainSource;
     let ambientSource;
+
+    let noSleepVideo;
 
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
@@ -36,7 +37,14 @@
     pageTitle.set(' ');
 
     function whilePlaying() {
-        slider.value = audio.currentTime;
+        if (currentTime >= duration) {
+            cancelAnimationFrame(rAF);
+            $isPlaying = false;
+            currentTime = 0;
+            return;
+        }
+
+        slider.value = Math.min(audio.currentTime, duration);
         currentTime = slider.value;
         rAF = requestAnimationFrame(whilePlaying);
     }
@@ -55,71 +63,6 @@
         }
     }
 
-    async function initAudioContext() {
-        if (!audioContext) {
-            // Force new audio context creation with specific options for iOS
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            audioContext = new AudioContext({
-                latencyHint: 'playback',
-                sampleRate: 44100
-            });
-
-            mainGainNode = audioContext.createGain();
-            ambientGainNode = audioContext.createGain();
-
-            // Only create media element sources if they haven't been created yet
-            if (!mainSource) {
-                mainSource = audioContext.createMediaElementSource($audioPlayer);
-                mainSource.connect(mainGainNode);
-                mainGainNode.connect(audioContext.destination);
-            }
-
-            if (!ambientSource) {
-                ambientSource = audioContext.createMediaElementSource($ambientPlayer);
-                ambientSource.connect(ambientGainNode);
-                ambientGainNode.connect(audioContext.destination);
-            }
-
-            mainGainNode.gain.value = volume;
-            ambientGainNode.gain.value = ambientVolume;
-
-            // iOS specific unlock
-            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                const unlockAudio = async () => {
-                    if (audioContext.state === 'suspended') {
-                        await audioContext.resume();
-                    }
-
-                    const playAttempt = async () => {
-                        try {
-                            await $audioPlayer.play();
-                            await $audioPlayer.pause();
-                            await $ambientPlayer.play();
-                            await $ambientPlayer.pause();
-                        } catch (error) {
-                            console.log('Audio unlock failed:', error);
-                        }
-                    };
-                    await playAttempt();
-
-                    document.body.removeEventListener('touchstart', unlockAudio);
-                    document.body.removeEventListener('touchend', unlockAudio);
-                    document.body.removeEventListener('click', unlockAudio);
-                };
-
-                document.body.addEventListener('touchstart', unlockAudio, false);
-                document.body.addEventListener('touchend', unlockAudio, false);
-                document.body.addEventListener('click', unlockAudio, false);
-            }
-        }
-
-        // Resume audio context if it's suspended
-        if (audioContext.state === 'suspended') {
-            await audioContext.resume();
-        }
-    }
-
-    // iOS-specific no sleep solution
     function createNoSleepVideo() {
         if (!noSleepVideo) {
             noSleepVideo = document.createElement('video');
@@ -140,30 +83,78 @@
 
     async function enableNoSleep() {
         createNoSleepVideo();
-        if (noSleepVideo) {
-            try {
-                await noSleepVideo.play();
-            } catch (err) {
-                console.log('NoSleep video play error:', err);
-            }
-        }
 
         try {
+            // Try multiple wake lock strategies
             if ('wakeLock' in navigator) {
                 wakeLock = await navigator.wakeLock.request('screen');
             }
+
+            if (noSleepVideo) {
+                await noSleepVideo.play();
+            }
+
+            // iOS specific audio session configuration
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                await audioContext.resume();
+                $audioPlayer.setAttribute('webkit-playsinline', '');
+                $ambientPlayer.setAttribute('webkit-playsinline', '');
+
+                // Request audio focus (iOS 13+)
+                if ('audioSession' in navigator) {
+                    try {
+                        // @ts-ignore - iOS specific API
+                        await navigator.audioSession.requestPermission();
+                    } catch (e) {
+                        console.log('Audio session permission error:', e);
+                    }
+                }
+            }
         } catch (err) {
-            console.log('Wake Lock error:', err);
+            console.log('No sleep enable error:', err);
         }
     }
 
     async function disableNoSleep() {
-        if (noSleepVideo) {
-            noSleepVideo.pause();
+        try {
+            if (wakeLock) {
+                await wakeLock.release();
+                wakeLock = null;
+            }
+            if (noSleepVideo) {
+                noSleepVideo.pause();
+            }
+        } catch (err) {
+            console.log('No sleep disable error:', err);
         }
-        if (wakeLock) {
-            await wakeLock.release();
-            wakeLock = null;
+    }
+
+    async function initAudioContext() {
+        if (!audioContext) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioContext = new AudioContext({
+                latencyHint: 'playback',
+                sampleRate: 44100
+            });
+
+            mainGainNode = audioContext.createGain();
+            ambientGainNode = audioContext.createGain();
+
+            const mainSource = audioContext.createMediaElementSource($audioPlayer);
+            const ambientSource = audioContext.createMediaElementSource($ambientPlayer);
+
+            mainSource.connect(mainGainNode);
+            mainGainNode.connect(audioContext.destination);
+
+            ambientSource.connect(ambientGainNode);
+            ambientGainNode.connect(audioContext.destination);
+
+            mainGainNode.gain.value = volume;
+            ambientGainNode.gain.value = ambientVolume;
+        }
+
+        if (audioContext.state === 'suspended') {
+            await audioContext.resume();
         }
     }
 
@@ -173,15 +164,28 @@
         // ... rest of your play logic
     }
 
-    async function handlePause() {
-        await disableNoSleep();
-        // ... rest of your pause logic
+    // iOS Audio Session setup
+    async function setupIOSAudio() {
+        // Create and play a silent audio buffer to keep audio session active
+        const silentAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const buffer = silentAudioContext.createBuffer(1, 1, 22050);
+        const source = silentAudioContext.createBufferSource();
+        source.buffer = buffer;
+        source.connect(silentAudioContext.destination);
+        source.start();
+
+        // Configure audio elements for iOS
+        $audioPlayer.setAttribute('playsinline', '');
+        $audioPlayer.setAttribute('webkit-playsinline', '');
+        $ambientPlayer.setAttribute('playsinline', '');
+        $ambientPlayer.setAttribute('webkit-playsinline', '');
+
+        // Set audio to play in background
+        $audioPlayer.setAttribute('x-webkit-airplay', 'allow');
+        $ambientPlayer.setAttribute('x-webkit-airplay', 'allow');
     }
 
-    onMount(() => {
-        // Remove the duplicate audio context creation and media element source connections
-        // from onMount since we're handling it in initAudioContext
-
+    onMount(async () => {
         const setupAudio = () => {
             $audioPlayer.setAttribute('playsinline', '');
             $audioPlayer.setAttribute('webkit-playsinline', '');
@@ -193,6 +197,10 @@
 
         setupAudio();
 
+        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            await setupIOSAudio();
+        }
+
         // Initialize audio on first user interaction
         const initOnInteraction = async () => {
             await initAudioContext();
@@ -203,19 +211,42 @@
         document.addEventListener('touchstart', initOnInteraction, false);
         document.addEventListener('click', initOnInteraction, false);
 
-        // Add audio session configuration for iOS
-        if (typeof AudioContext !== 'undefined') {
-            document.addEventListener('visibilitychange', async () => {
-                if (wakeLock !== null && document.visibilityState === 'visible') {
-                    await requestWakeLock();
+        // Handle audio interruptions
+        $audioPlayer.addEventListener('pause', async () => {
+            if ($isPlaying) {
+                try {
+                    await $audioPlayer.play();
+                } catch (e) {
+                    console.log('Auto-resume failed:', e);
                 }
-            });
-        }
+            }
+        });
+
+        $ambientPlayer.addEventListener('pause', async () => {
+            if ($isPlaying) {
+                try {
+                    await $ambientPlayer.play();
+                } catch (e) {
+                    console.log('Auto-resume failed:', e);
+                }
+            }
+        });
+
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', async () => {
+            if (document.visibilityState === 'visible' && $isPlaying) {
+                try {
+                    await Promise.all([$audioPlayer.play(), $ambientPlayer.play()]);
+                } catch (e) {
+                    console.log('Visibility change resume failed:', e);
+                }
+            }
+        });
     });
 
     onDestroy(() => {
         disableNoSleep();
-        if (noSleepVideo) {
+        if (noSleepVideo && document.body.contains(noSleepVideo)) {
             document.body.removeChild(noSleepVideo);
         }
         if ($audioPlayer) {
