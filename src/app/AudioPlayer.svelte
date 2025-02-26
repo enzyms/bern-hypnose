@@ -25,6 +25,10 @@
     let ambientGainNode;
 
     let wakeLock = null;
+    let noSleepVideo;
+
+    let mainSource;
+    let ambientSource;
 
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
@@ -60,6 +64,25 @@
                 sampleRate: 44100
             });
 
+            mainGainNode = audioContext.createGain();
+            ambientGainNode = audioContext.createGain();
+
+            // Only create media element sources if they haven't been created yet
+            if (!mainSource) {
+                mainSource = audioContext.createMediaElementSource($audioPlayer);
+                mainSource.connect(mainGainNode);
+                mainGainNode.connect(audioContext.destination);
+            }
+
+            if (!ambientSource) {
+                ambientSource = audioContext.createMediaElementSource($ambientPlayer);
+                ambientSource.connect(ambientGainNode);
+                ambientGainNode.connect(audioContext.destination);
+            }
+
+            mainGainNode.gain.value = volume;
+            ambientGainNode.gain.value = ambientVolume;
+
             // iOS specific unlock
             if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                 const unlockAudio = async () => {
@@ -67,43 +90,27 @@
                         await audioContext.resume();
                     }
 
-                    // Also try to unlock the audio elements directly
                     const playAttempt = async () => {
                         try {
                             await $audioPlayer.play();
                             await $audioPlayer.pause();
                             await $ambientPlayer.play();
                             await $ambientPlayer.pause();
-
-                            document.body.removeEventListener('touchstart', unlockAudio);
-                            document.body.removeEventListener('touchend', unlockAudio);
-                            document.body.removeEventListener('click', unlockAudio);
                         } catch (error) {
                             console.log('Audio unlock failed:', error);
                         }
                     };
                     await playAttempt();
+
+                    document.body.removeEventListener('touchstart', unlockAudio);
+                    document.body.removeEventListener('touchend', unlockAudio);
+                    document.body.removeEventListener('click', unlockAudio);
                 };
 
                 document.body.addEventListener('touchstart', unlockAudio, false);
                 document.body.addEventListener('touchend', unlockAudio, false);
                 document.body.addEventListener('click', unlockAudio, false);
             }
-
-            mainGainNode = audioContext.createGain();
-            ambientGainNode = audioContext.createGain();
-
-            const mainSource = audioContext.createMediaElementSource($audioPlayer);
-            const ambientSource = audioContext.createMediaElementSource($ambientPlayer);
-
-            mainSource.connect(mainGainNode);
-            mainGainNode.connect(audioContext.destination);
-
-            ambientSource.connect(ambientGainNode);
-            ambientGainNode.connect(audioContext.destination);
-
-            mainGainNode.gain.value = volume;
-            ambientGainNode.gain.value = ambientVolume;
         }
 
         // Resume audio context if it's suspended
@@ -112,46 +119,76 @@
         }
     }
 
-    async function requestWakeLock() {
+    // iOS-specific no sleep solution
+    function createNoSleepVideo() {
+        if (!noSleepVideo) {
+            noSleepVideo = document.createElement('video');
+            noSleepVideo.setAttribute('playsinline', '');
+            noSleepVideo.setAttribute('webkit-playsinline', '');
+            noSleepVideo.setAttribute('loop', '');
+            noSleepVideo.setAttribute('muted', '');
+            noSleepVideo.setAttribute('title', 'no-sleep');
+            noSleepVideo.style.display = 'none';
+
+            const source = document.createElement('source');
+            source.src =
+                'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAu1tZGF0AAACrQYF//+p3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE1NSByMjkyMSA3ZDBlYjRiIC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxOCAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTEgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTEwIHNjZW5lY3V0PTQwIGludHJhX3JlZnJlc2g9MCByY19sb29rYWhlYWQ9NDAgcmM9Y3JmIG1idHJlZT0xIGNyZj0yMy4wIHFjb21wPTAuNjAgcXBtaW49MCBxcG1heD02OSBxcHN0ZXA9NCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAAD2WIhAA3//728P4FNjuZQQAAAu5tb292AAAAbG12aGQAAAAAAAAAAAAAAAAAAAPoAAAAZAABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACGHRyYWsAAABcdGtoZAAAAAMAAAAAAAAAAAAAAAEAAAAAAAAAZAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAIAAAAAACRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAAGQAAAAAAAEAAAAAAZBtZGlhAAAAIG1kaGQAAAAAAAAAAAAAAAAAACgAAAAEAFXEAAAAAAAtaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAFZpZGVvSGFuZGxlcgAAAAE7bWluZgAAABR2bWhkAAAAAQAAAAAAAAAAAAAAJGRpbmYAAAAcZHJlZgAAAAAAAAABAAAADHVybCAAAAABAAAA+3N0YmwAAACXc3RzZAAAAAAAAAABAAAAh2F2YzEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAgACAEgAAABIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY//8AAAAxYXZjQwFkAAr/4QAYZ2QACqzZX4iIhAAAAwAEAAADAFA8SJZYAQAGaOvjyyLAAAAAGHN0dHMAAAAAAAAAAQAAAAEAAAQAAAAAHHN0c2MAAAAAAAAAAQAAAAEAAAABAAAAAQAAABRzdHN6AAAAAAAAAsUAAAABAAAAFHN0Y28AAAAAAAAAAQAAADAAAABidWR0YQAAAFptZXRhAAAAAAAAACFoZGxyAAAAAAAAAABtZGlyYXBwbAAAAAAAAAAAAAAAAC1pbHN0AAAAJal0b28AAAAdZGF0YQAAAAEAAAAATGF2ZjU4LjI5LjEwMA==';
+            noSleepVideo.appendChild(source);
+            document.body.appendChild(noSleepVideo);
+        }
+    }
+
+    async function enableNoSleep() {
+        createNoSleepVideo();
+        if (noSleepVideo) {
+            try {
+                await noSleepVideo.play();
+            } catch (err) {
+                console.log('NoSleep video play error:', err);
+            }
+        }
+
         try {
             if ('wakeLock' in navigator) {
                 wakeLock = await navigator.wakeLock.request('screen');
             }
         } catch (err) {
-            console.log(`Wake Lock error: ${err.name}, ${err.message}`);
+            console.log('Wake Lock error:', err);
+        }
+    }
+
+    async function disableNoSleep() {
+        if (noSleepVideo) {
+            noSleepVideo.pause();
+        }
+        if (wakeLock) {
+            await wakeLock.release();
+            wakeLock = null;
         }
     }
 
     async function handlePlay() {
         await initAudioContext();
-        await requestWakeLock();
+        await enableNoSleep();
         // ... rest of your play logic
     }
 
+    async function handlePause() {
+        await disableNoSleep();
+        // ... rest of your pause logic
+    }
+
     onMount(() => {
-        // iOS specific setup
+        // Remove the duplicate audio context creation and media element source connections
+        // from onMount since we're handling it in initAudioContext
+
         const setupAudio = () => {
-            // Enable background audio playback on iOS
             $audioPlayer.setAttribute('playsinline', '');
             $audioPlayer.setAttribute('webkit-playsinline', '');
             $ambientPlayer.setAttribute('playsinline', '');
             $ambientPlayer.setAttribute('webkit-playsinline', '');
-
-            // Critical iOS settings
             $audioPlayer.setAttribute('preload', 'auto');
             $ambientPlayer.setAttribute('preload', 'auto');
-
-            // Set audio session category for iOS
-            if (window.MediaSession) {
-                navigator.mediaSession.setActionHandler('play', () => {
-                    $audioPlayer.play();
-                    $ambientPlayer.play();
-                });
-                navigator.mediaSession.setActionHandler('pause', () => {
-                    $audioPlayer.pause();
-                    $ambientPlayer.pause();
-                });
-            }
         };
 
         setupAudio();
@@ -174,39 +211,13 @@
                 }
             });
         }
-
-        // Initialize Web Audio API
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-        // Create gain nodes
-        mainGainNode = audioContext.createGain();
-        ambientGainNode = audioContext.createGain();
-
-        // Connect audio elements to the audio context
-        const mainSource = audioContext.createMediaElementSource($audioPlayer);
-        const ambientSource = audioContext.createMediaElementSource($ambientPlayer);
-
-        // Connect the audio graph
-        mainSource.connect(mainGainNode);
-        mainGainNode.connect(audioContext.destination);
-
-        ambientSource.connect(ambientGainNode);
-        ambientGainNode.connect(audioContext.destination);
-
-        // Set initial volumes
-        mainGainNode.gain.value = volume;
-        ambientGainNode.gain.value = ambientVolume;
-
-        $audioPlayer.load();
-        $ambientPlayer.load();
     });
 
     onDestroy(() => {
-        if (wakeLock) {
-            wakeLock.release();
-            wakeLock = null;
+        disableNoSleep();
+        if (noSleepVideo) {
+            document.body.removeChild(noSleepVideo);
         }
-        // Reset audio states
         if ($audioPlayer) {
             $audioPlayer.pause();
             $audioPlayer.currentTime = 0;
@@ -216,7 +227,7 @@
             $ambientPlayer.currentTime = 0;
         }
         $isPlaying = false;
-        $status = 'idle'; // Add this status to your store
+        $status = 'idle';
 
         if (audioContext) {
             audioContext.close();
