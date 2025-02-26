@@ -20,6 +20,7 @@ export default defineConfig({
         svelte(),
         worker(),
         AstroPWA({
+            mode: 'development',
             registerType: 'autoUpdate',
             manifest: {
                 name: 'Bern Hypnose Web App',
@@ -51,7 +52,7 @@ export default defineConfig({
                 ]
             },
             workbox: {
-                navigateFallback: '/app/',
+                maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
                 globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,mp3,wav}'],
                 runtimeCaching: [{
                     urlPattern: /\.(mp3|wav)$/,
@@ -59,14 +60,17 @@ export default defineConfig({
                     options: {
                         cacheName: 'audio-cache',
                         expiration: {
-                            maxAgeSeconds: 60 * 60 * 24 * 7, // 1 week
+                            maxEntries: 10,
+                            maxAgeSeconds: 60 * 60 * 24 * 7,
                         },
+                        rangeRequests: true,
                     },
                 }],
             },
             devOptions: {
                 enabled: true,
-                type: 'module'
+                type: 'module',
+                navigateFallback: '/app/'
             }
         })
     ],
