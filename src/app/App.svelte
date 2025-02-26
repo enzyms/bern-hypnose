@@ -36,7 +36,7 @@
     </h1>
 </div>
 
-<div class="py-10 md:py-12 lg:py-14 flex flex-col items-center text-center">
+<div class="py-24 flex flex-col items-center text-center">
     <div class="max-w-[340px] w-full">
         <!-- {#if step === 1}
             <ProfileSelection /> -->
