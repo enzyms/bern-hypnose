@@ -4,10 +4,18 @@
     import PauseIcon from './pause-icon.svelte';
     import LoadingIcon from './loading-icon.svelte';
 
+    let isInitialized = false;
+
     async function playTrack() {
         try {
-            // Force user interaction for iOS
-            await document.body.click();
+            if (!isInitialized) {
+                // Force audio context initialization
+                const event = new Event('initAudio');
+                document.dispatchEvent(event);
+                isInitialized = true;
+                // Small delay to ensure audio context is ready
+                await new Promise((resolve) => setTimeout(resolve, 100));
+            }
 
             // Create a promise for each audio play attempt
             const playPromises = [
@@ -27,9 +35,7 @@
         } catch (error) {
             console.error('Error playing audio:', error);
             $isPlaying = false;
-            // Try to recover
-            $audioPlayer.currentTime = 0;
-            $ambientPlayer.currentTime = 0;
+            isInitialized = false; // Reset initialization on error
         }
     }
 

@@ -137,25 +137,35 @@
                 sampleRate: 44100
             });
 
+            // Initialize gain nodes
             mainGainNode = audioContext.createGain();
             ambientGainNode = audioContext.createGain();
 
-            const mainSource = audioContext.createMediaElementSource($audioPlayer);
-            const ambientSource = audioContext.createMediaElementSource($ambientPlayer);
+            try {
+                const mainSource = audioContext.createMediaElementSource($audioPlayer);
+                const ambientSource = audioContext.createMediaElementSource($ambientPlayer);
 
-            mainSource.connect(mainGainNode);
-            mainGainNode.connect(audioContext.destination);
+                mainSource.connect(mainGainNode);
+                mainGainNode.connect(audioContext.destination);
 
-            ambientSource.connect(ambientGainNode);
-            ambientGainNode.connect(audioContext.destination);
+                ambientSource.connect(ambientGainNode);
+                ambientGainNode.connect(audioContext.destination);
 
-            mainGainNode.gain.value = volume;
-            ambientGainNode.gain.value = ambientVolume;
+                mainGainNode.gain.value = volume;
+                ambientGainNode.gain.value = ambientVolume;
+
+                // For iOS, we need to resume the context immediately
+                if (audioContext.state === 'suspended') {
+                    await audioContext.resume();
+                }
+
+                return true;
+            } catch (error) {
+                console.error('Audio initialization error:', error);
+                return false;
+            }
         }
-
-        if (audioContext.state === 'suspended') {
-            await audioContext.resume();
-        }
+        return true;
     }
 
     async function handlePlay() {
@@ -186,16 +196,20 @@
     }
 
     onMount(async () => {
-        const setupAudio = () => {
-            $audioPlayer.setAttribute('playsinline', '');
-            $audioPlayer.setAttribute('webkit-playsinline', '');
-            $ambientPlayer.setAttribute('playsinline', '');
-            $ambientPlayer.setAttribute('webkit-playsinline', '');
-            $audioPlayer.setAttribute('preload', 'auto');
-            $ambientPlayer.setAttribute('preload', 'auto');
-        };
+        // Pre-initialize audio elements
+        $audioPlayer.load();
+        $ambientPlayer.load();
 
-        setupAudio();
+        // Set up audio elements
+        $audioPlayer.setAttribute('playsinline', '');
+        $audioPlayer.setAttribute('webkit-playsinline', '');
+        $ambientPlayer.setAttribute('playsinline', '');
+        $ambientPlayer.setAttribute('webkit-playsinline', '');
+
+        // Listen for initialization request from play button
+        document.addEventListener('initAudio', async () => {
+            await initAudioContext();
+        });
 
         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
             await setupIOSAudio();
