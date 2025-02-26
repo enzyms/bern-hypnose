@@ -13,7 +13,7 @@
     let currentTime = 0;
     let paused = true;
     let volume = 0.5;
-    let ambientVolume = 0.1;
+    let ambientVolume = 0.5;
 
     let slider;
     let rAF = null;
