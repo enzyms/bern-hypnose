@@ -43,8 +43,4 @@
 
         @apply border border-red-600 text-red-600;
     }
-
-    .playing {
-        border: 1px solid #000;
-    }
 </style>

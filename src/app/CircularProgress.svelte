@@ -18,10 +18,4 @@
         mask: radial-gradient(transparent 66%, black 66% 70%, transparent 70%);
         -webkit-mask: radial-gradient(transparent 66%, black 66% 70%, transparent 70%);
     }
-    .inner {
-        width: 100%;
-        height: 100%;
-        background: white;
-        border-radius: 50%;
-    }
 </style>

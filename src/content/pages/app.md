@@ -1,6 +1,6 @@
 ---
-title: App für Selbsthypnose
-description: Intro about app and selfhypnose
+title: Webapp für Selbsthypnose
+description: Nimm dir einen ruhigen Moment Zeit, mach es dir bequem und lass dich von meiner App in einen Zustand tiefer Entspannung führen.
 
 # image:
 #   src: '@assets/images/praxis.png'
@@ -11,11 +11,7 @@ backlink:
   url: /
 ---
 
-Introduction, why
-
-warnings, no go etc
-
-legal
+Nimm dir einen ruhigen Moment Zeit, mach es dir bequem und lass dich von meiner App in einen Zustand tiefer Entspannung führen.
 
 <a
   href="/app/start/"

@@ -242,6 +242,12 @@
     on:mousedown={sliderInteractStart}
     on:touchend|preventDefault={sliderInteractEnd}
     on:mouseup={sliderInteractEnd}
+    role="slider"
+    tabindex="0"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow={value}
+    aria-label="Audio progress"
 >
     <span
         bind:this={handle}

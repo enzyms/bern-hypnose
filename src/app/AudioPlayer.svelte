@@ -20,6 +20,10 @@
 
     let isDrawerOpen = false;
 
+    let audioContext;
+    let mainGainNode;
+    let ambientGainNode;
+
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
 
@@ -45,7 +49,60 @@
         }
     }
 
+    async function initAudioContext() {
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            mainGainNode = audioContext.createGain();
+            ambientGainNode = audioContext.createGain();
+
+            const mainSource = audioContext.createMediaElementSource($audioPlayer);
+            const ambientSource = audioContext.createMediaElementSource($ambientPlayer);
+
+            mainSource.connect(mainGainNode);
+            mainGainNode.connect(audioContext.destination);
+
+            ambientSource.connect(ambientGainNode);
+            ambientGainNode.connect(audioContext.destination);
+
+            mainGainNode.gain.value = volume;
+            ambientGainNode.gain.value = ambientVolume;
+        }
+
+        // Resume audio context if it's suspended
+        if (audioContext.state === 'suspended') {
+            await audioContext.resume();
+        }
+    }
+
+    // Call this function in your play button handler
+    async function handlePlay() {
+        await initAudioContext();
+        // ... rest of your play logic
+    }
+
     onMount(() => {
+        // Initialize Web Audio API
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Create gain nodes
+        mainGainNode = audioContext.createGain();
+        ambientGainNode = audioContext.createGain();
+
+        // Connect audio elements to the audio context
+        const mainSource = audioContext.createMediaElementSource($audioPlayer);
+        const ambientSource = audioContext.createMediaElementSource($ambientPlayer);
+
+        // Connect the audio graph
+        mainSource.connect(mainGainNode);
+        mainGainNode.connect(audioContext.destination);
+
+        ambientSource.connect(ambientGainNode);
+        ambientGainNode.connect(audioContext.destination);
+
+        // Set initial volumes
+        mainGainNode.gain.value = volume;
+        ambientGainNode.gain.value = ambientVolume;
+
         $audioPlayer.load();
         $ambientPlayer.load();
     });
@@ -62,7 +119,15 @@
         }
         $isPlaying = false;
         $status = 'idle'; // Add this status to your store
+
+        if (audioContext) {
+            audioContext.close();
+        }
     });
+
+    // Update gain nodes when volume changes
+    $: if (mainGainNode) mainGainNode.gain.value = volume;
+    $: if (ambientGainNode) ambientGainNode.gain.value = ambientVolume;
 
     $: progressValue = duration ? (currentTime / duration) * 100 : 0;
 </script>
