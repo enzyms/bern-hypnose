@@ -28,7 +28,7 @@ const hero = siteConfig.hero;
                     </a>
                 </p>
 
-                <a
+                {/* <a
                     href="/app/"
                     class="
                         absolute top-[-104px] -right-2 sm:static
@@ -41,7 +41,7 @@ const hero = siteConfig.hero;
                         <br />
                         ausprobieren
                     </span>
-                </a>
+                </a> */}
             </div>
             {hero.text && <div class="max-w-none prose prose-dante sm:prose-lg text-pretty " set:html={marked.parse(hero.text)} />}
             {hero.actions && hero.actions.length > 0 && (
