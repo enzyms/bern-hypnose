@@ -24,6 +24,8 @@
     let mainGainNode;
     let ambientGainNode;
 
+    let wakeLock = null;
+
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
 
@@ -74,13 +76,41 @@
         }
     }
 
-    // Call this function in your play button handler
+    async function requestWakeLock() {
+        try {
+            if ('wakeLock' in navigator) {
+                wakeLock = await navigator.wakeLock.request('screen');
+            }
+        } catch (err) {
+            console.log(`Wake Lock error: ${err.name}, ${err.message}`);
+        }
+    }
+
     async function handlePlay() {
         await initAudioContext();
+        await requestWakeLock();
         // ... rest of your play logic
     }
 
     onMount(() => {
+        // Add audio session configuration for iOS
+        if (typeof AudioContext !== 'undefined') {
+            document.addEventListener('visibilitychange', async () => {
+                if (wakeLock !== null && document.visibilityState === 'visible') {
+                    await requestWakeLock();
+                }
+            });
+        }
+
+        // Configure audio session for iOS
+        if (typeof AudioContext !== 'undefined') {
+            // Enable background audio playback on iOS
+            $audioPlayer.setAttribute('playsinline', '');
+            $audioPlayer.setAttribute('webkit-playsinline', '');
+            $ambientPlayer.setAttribute('playsinline', '');
+            $ambientPlayer.setAttribute('webkit-playsinline', '');
+        }
+
         // Initialize Web Audio API
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -108,6 +138,10 @@
     });
 
     onDestroy(() => {
+        if (wakeLock) {
+            wakeLock.release();
+            wakeLock = null;
+        }
         // Reset audio states
         if ($audioPlayer) {
             $audioPlayer.pause();
@@ -139,6 +173,9 @@
     bind:currentTime
     bind:paused
     bind:volume
+    preload="auto"
+    playsinline
+    webkit-playsinline
     on:canplay={() => ($status = 'can play some')}
     on:canplaythrough={() => ($status = 'can play all')}
     on:waiting={() => ($status = 'waiting')}
@@ -156,6 +193,9 @@
     bind:this={$ambientPlayer}
     bind:paused
     bind:volume={ambientVolume}
+    preload="auto"
+    playsinline
+    webkit-playsinline
     on:ended={() => {
         $isPlaying = false;
         currentTime = 0;
