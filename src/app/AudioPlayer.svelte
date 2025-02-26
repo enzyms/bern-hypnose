@@ -54,18 +54,35 @@
     async function initAudioContext() {
         if (!audioContext) {
             // Force new audio context creation with specific options for iOS
-            audioContext = new (window.AudioContext || window.webkitAudioContext)({
-                sampleRate: 44100,
-                latencyHint: 'playback'
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioContext = new AudioContext({
+                latencyHint: 'playback',
+                sampleRate: 44100
             });
 
-            // iOS specific setup
-            if (audioContext.state === 'suspended' && /iPhone|iPad|iPod/.test(navigator.userAgent)) {
+            // iOS specific unlock
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                 const unlockAudio = async () => {
-                    await audioContext.resume();
-                    document.body.removeEventListener('touchstart', unlockAudio);
-                    document.body.removeEventListener('touchend', unlockAudio);
-                    document.body.removeEventListener('click', unlockAudio);
+                    if (audioContext.state === 'suspended') {
+                        await audioContext.resume();
+                    }
+
+                    // Also try to unlock the audio elements directly
+                    const playAttempt = async () => {
+                        try {
+                            await $audioPlayer.play();
+                            await $audioPlayer.pause();
+                            await $ambientPlayer.play();
+                            await $ambientPlayer.pause();
+
+                            document.body.removeEventListener('touchstart', unlockAudio);
+                            document.body.removeEventListener('touchend', unlockAudio);
+                            document.body.removeEventListener('click', unlockAudio);
+                        } catch (error) {
+                            console.log('Audio unlock failed:', error);
+                        }
+                    };
+                    await playAttempt();
                 };
 
                 document.body.addEventListener('touchstart', unlockAudio, false);

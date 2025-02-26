@@ -12,7 +12,7 @@
         nextStep();
     }
 
-    pageTitle.set('Wähle ein Hintergrundgeräusch');
+    pageTitle.set('Hintergrundgeräusch');
 </script>
 
 <ul class="flex flex-col gap-4">

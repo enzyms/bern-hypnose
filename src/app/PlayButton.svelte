@@ -1,16 +1,30 @@
 <script>
-    import { status, isPlaying, audioPlayer } from './store.js';
+    import { status, isPlaying, audioPlayer, ambientPlayer } from './store.js';
     import PlayIcon from './play-icon.svelte';
     import PauseIcon from './pause-icon.svelte';
     import LoadingIcon from './loading-icon.svelte';
 
     function playTrack() {
-        $audioPlayer.play();
-        $isPlaying = true;
+        // Create a promise for each audio play attempt
+        const playPromises = [
+            $audioPlayer.play().catch((err) => console.log('Audio play failed:', err)),
+            $ambientPlayer.play().catch((err) => console.log('Ambient play failed:', err))
+        ];
+
+        // Wait for both to complete
+        Promise.all(playPromises)
+            .then(() => {
+                $isPlaying = true;
+            })
+            .catch((error) => {
+                console.error('Error playing audio:', error);
+                $isPlaying = false;
+            });
     }
 
     function pauseTrack() {
         $audioPlayer.pause();
+        $ambientPlayer.pause();
         $isPlaying = false;
     }
 </script>
