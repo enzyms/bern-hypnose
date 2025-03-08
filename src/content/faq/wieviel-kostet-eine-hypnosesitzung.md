@@ -4,4 +4,4 @@ promoted: true
 order: 80
 ---
 
-Die Kosten für eine Kinderhypnose-Sitzung belaufen sich auf 120 CHF und 150 CHF für Erwachsene.
+Die Kosten für eine Sitzung belaufen sich auf 150&nbsp;CHF für Erwachsene. Kinder, Studenten und Studentinnen,Arbeitssuchende und Pensionierte zahlen 120&nbsp;CHF.
