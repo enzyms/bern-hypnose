@@ -9,7 +9,7 @@ publishDate: 2025-04-04T07:00:00.000Z
 tags:
   - Selbstreflexion
 image:
-  src: src/assets/uploads/feather-3.png
+  src: src/assets/uploads/city2.png
 ---
 ## Kein Mahnfinger, liebevolle Inspiration
 
