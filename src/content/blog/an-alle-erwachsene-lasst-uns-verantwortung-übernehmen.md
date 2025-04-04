@@ -1,5 +1,5 @@
 ---
-title: "An alle Erwachsene: lasst uns Verantwortung übernehmen"
+title: "An alle Erwachsene: Lasst uns Verantwortung übernehmen"
 excerpt: 'Gerade habe ich ein Kurzinterview mit einem der Macher von der Serie
   "Adolescence" angeschaut. Die Quintessenz ist eine, die mir schon lange
   vorschwebt: Lasst uns alle zusammen da sein für die Kinder. Ganz im Sinne von
