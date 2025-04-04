@@ -5,7 +5,7 @@ excerpt: 'Gerade habe ich ein Kurzinterview mit einem der Macher von der Serie
   vorschwebt: Lasst uns alle zusammen da sein für die Kinder. Ganz im Sinne von
   "Es braucht ein ganzes Dorf, um ein Kind beim Wachsen zu begleiten". Was
   brauchen die Kinder?'
-publishDate: 2025-04-04T07:00:00.000Z
+publishDate: 2025-04-04T07:06:00.000Z
 tags:
   - Selbstreflexion
 image:
