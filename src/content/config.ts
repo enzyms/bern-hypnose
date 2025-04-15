@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 
 const seoSchema = z.object({
   image: z.object({
-    src: z.string(),  // This expects `image` to be an object with a `src` string field
+    src: z.string(), 
   }).optional(),
   alt: z.string().optional(),
 });
@@ -20,9 +20,7 @@ const faq = defineCollection({
     updatedDate: z.coerce.date().optional(),
     promoted: z.boolean().default(false),
     image: z.object({
-      src: image().refine((img) => img.width >= 600, {
-        message: 'Cover image must be at least 600 pixels wide!',
-      }),
+      src: image().optional(),
       alt: z.string().optional(),
     }).optional(),
   })
@@ -37,9 +35,7 @@ const blog = defineCollection({
     isFeatured: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
     image: z.object({
-      src: image().refine((img) => img.width >= 600, {
-        message: 'Cover image must be at least 600 pixels wide!',
-      }),
+      src: image().optional(),
       alt: z.string().optional(),
     }).optional(),
     canonical: z.string().optional(),
@@ -52,9 +48,7 @@ const pages = defineCollection({
     description: z.string().optional(),
     backlink: backlinkSchema.optional(),
     image: z.object({
-      src: image().refine((img) => img.width >= 600, {
-        message: 'Cover image must be at least 600 pixels wide!',
-      }),
+      src: image().optional(),
       alt: z.string().optional(),
     }).optional(),
     id: z.string().optional(),

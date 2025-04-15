@@ -17,6 +17,7 @@
         "@astrojs/tailwind": "5.1.1",
         "@astropub/worker": "^0.2.0",
         "@splinetool/runtime": "^1.0.51",
+        "@zakj/no-sleep": "^0.13.5",
         "astro": "^5.0.0-beta.2",
         "astro-embed": "^0.9.0",
         "decap-cms-app": "^3.3.2",
