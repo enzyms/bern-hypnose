@@ -31,12 +31,12 @@
 </script>
 
 <div class="fixed left-0 top-0 right-0 z-20 py-6 md:py-8 lg:py-10 bg-primary/5 backdrop-blur-lg text-center">
-    <h1 class="text-2xl font-black text-gray-950">
+    <h1 class="text-2xl font-black text-gray-950 pt-[env(safe-area-inset-top)]">
         {$pageTitle}
     </h1>
 </div>
 
-<div class="py-24 flex flex-col items-center text-center">
+<div class="py-24 md:py-28 lg:py-32 flex flex-col items-center text-center">
     <div class="max-w-[340px] w-full">
         <!-- {#if step === 1}
             <ProfileSelection /> -->
@@ -53,11 +53,13 @@
 </div>
 
 <div class="fixed left-0 bottom-0 right-0 z-50 py-4 md:py-6 lg:py-8 bg-primary/5 backdrop-blur-lg text-center">
-    <SButton variant="solid" on:click={toggleMenu} class="relative !p-1" aria-label="Toggle Menu" aria-expanded={isMenuOpen}>
-        <span class={`burger-icon ${isMenuOpen ? 'is-active' : ''}`}>
-            <span class="bar" />
-        </span>
-    </SButton>
+    <div class="pb-[env(safe-area-inset-bottom)]">
+        <SButton variant="solid" on:click={toggleMenu} class="relative" aria-label="Toggle Menu" aria-expanded={isMenuOpen}>
+            <span class={`burger-icon ${isMenuOpen ? 'is-active' : ''}`}>
+                <span class="bar" />
+            </span>
+        </SButton>
+    </div>
 </div>
 <div class={`menu flex items-center ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
     <div class="py-12 max-w-[340px] mx-auto flex flex-col gap-4">

@@ -5,6 +5,11 @@ export const pageTitle = writable(null);
 export const selectedProfile = writable({ id: 'adult', name: 'Erwachsene', description: 'Short description here' }); // set to null when we have children profile
 export const selectedTopic = writable(null);
 export const selectedDuration = writable(null);
+export const ambientSounds = writable([
+    { id: 'forest', name: 'Vogelstimmen' },
+    { id: 'sea', name: 'Meeresgeräusche' },
+    { id: 'none', name: 'Ohne Geräusche' }
+]);
 export const selectedAmbientSound = writable(null);
 export const currentStep = writable(2); // set to 1 when we have children profile
 
@@ -29,9 +34,6 @@ export function clearStore() {
 export function selectAmbientSound() {
     currentStep.set(3);
 }
-
-
-
 
 // export const trackList = writable([
 // 	{
