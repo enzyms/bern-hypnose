@@ -1,13 +1,14 @@
 <script>
-    import { selectedProfile, selectedTopic, selectedAmbientSound } from './store.js'; // Import stores
+    import { onMount, onDestroy } from 'svelte';
+    import { selectedProfile, selectedTopic, selectedAmbientSound } from './store.js';
     import Slider from './Slider.svelte';
     import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle } from './store.js';
     import { format } from './utilities.js';
     import PlayButton from './PlayButton.svelte';
     import CircularProgress from './CircularProgress.svelte';
-    import { onMount, onDestroy } from 'svelte';
     import SButton from './SButton.svelte';
     import Audio from './audio-icon.svelte';
+    import NoSleep from '@zakj/no-sleep';
 
     let duration = 0;
     let currentTime = 0;
@@ -29,7 +30,7 @@
     let mainSource;
     let ambientSource;
 
-    let noSleepVideo;
+    let noSleep;
 
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
@@ -63,69 +64,21 @@
         }
     }
 
-    function createNoSleepVideo() {
-        if (!noSleepVideo) {
-            noSleepVideo = document.createElement('video');
-            noSleepVideo.setAttribute('playsinline', '');
-            noSleepVideo.setAttribute('webkit-playsinline', '');
-            noSleepVideo.setAttribute('loop', '');
-            noSleepVideo.setAttribute('muted', '');
-            noSleepVideo.setAttribute('title', 'no-sleep');
-            noSleepVideo.style.display = 'none';
-
-            const source = document.createElement('source');
-            source.src =
-                'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAu1tZGF0AAACrQYF//+p3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE1NSByMjkyMSA3ZDBlYjRiIC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxOCAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTEgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTEwIHNjZW5lY3V0PTQwIGludHJhX3JlZnJlc2g9MCByY19sb29rYWhlYWQ9NDAgcmM9Y3JmIG1idHJlZT0xIGNyZj0yMy4wIHFjb21wPTAuNjAgcXBtaW49MCBxcG1heD02OSBxcHN0ZXA9NCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAAD2WIhAA3//728P4FNjuZQQAAAu5tb292AAAAbG12aGQAAAAAAAAAAAAAAAAAAAPoAAAAZAABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACGHRyYWsAAABcdGtoZAAAAAMAAAAAAAAAAAAAAAEAAAAAAAAAZAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAIAAAAAACRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAAGQAAAAAAAEAAAAAAZBtZGlhAAAAIG1kaGQAAAAAAAAAAAAAAAAAACgAAAAEAFXEAAAAAAAtaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAFZpZGVvSGFuZGxlcgAAAAE7bWluZgAAABR2bWhkAAAAAQAAAAAAAAAAAAAAJGRpbmYAAAAcZHJlZgAAAAAAAAABAAAADHVybCAAAAABAAAA+3N0YmwAAACXc3RzZAAAAAAAAAABAAAAh2F2YzEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAgACAEgAAABIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY//8AAAAxYXZjQwFkAAr/4QAYZ2QACqzZX4iIhAAAAwAEAAADAFA8SJZYAQAGaOvjyyLAAAAAGHN0dHMAAAAAAAAAAQAAAAEAAAQAAAAAHHN0c2MAAAAAAAAAAQAAAAEAAAABAAAAAQAAABRzdHN6AAAAAAAAAsUAAAABAAAAFHN0Y28AAAAAAAAAAQAAADAAAABidWR0YQAAAFptZXRhAAAAAAAAACFoZGxyAAAAAAAAAABtZGlyYXBwbAAAAAAAAAAAAAAAAC1pbHN0AAAAJal0b28AAAAdZGF0YQAAAAEAAAAATGF2ZjU4LjI5LjEwMA==';
-            noSleepVideo.appendChild(source);
-            document.body.appendChild(noSleepVideo);
-        }
-    }
-
     async function enableNoSleep() {
-        createNoSleepVideo();
-
         try {
-            // Try multiple wake lock strategies
-            if ('wakeLock' in navigator) {
-                wakeLock = await navigator.wakeLock.request('screen');
-            }
-
-            if (noSleepVideo) {
-                await noSleepVideo.play();
-            }
-
-            // iOS specific audio session configuration
-            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                await audioContext.resume();
-                $audioPlayer.setAttribute('webkit-playsinline', '');
-                $ambientPlayer.setAttribute('webkit-playsinline', '');
-
-                // Request audio focus (iOS 13+)
-                if ('audioSession' in navigator) {
-                    try {
-                        // @ts-ignore - iOS specific API
-                        await navigator.audioSession.requestPermission();
-                    } catch (e) {
-                        console.log('Audio session permission error:', e);
-                    }
-                }
-            }
+            await noSleep.enable();
+            console.log('NoSleep enabled');
         } catch (err) {
-            console.log('No sleep enable error:', err);
+            console.log('NoSleep enable error:', err);
         }
     }
 
     async function disableNoSleep() {
         try {
-            if (wakeLock) {
-                await wakeLock.release();
-                wakeLock = null;
-            }
-            if (noSleepVideo) {
-                noSleepVideo.pause();
-            }
+            noSleep.disable();
+            console.log('NoSleep disabled');
         } catch (err) {
-            console.log('No sleep disable error:', err);
+            console.log('NoSleep disable error:', err);
         }
     }
 
@@ -196,6 +149,9 @@
     }
 
     onMount(async () => {
+        noSleep = new NoSleep();
+        console.log('NoSleep initialized');
+
         // Pre-initialize audio elements
         $audioPlayer.load();
         $ambientPlayer.load();
@@ -206,11 +162,6 @@
         $ambientPlayer.setAttribute('playsinline', '');
         $ambientPlayer.setAttribute('webkit-playsinline', '');
 
-        // Listen for initialization request from play button
-        document.addEventListener('initAudio', async () => {
-            await initAudioContext();
-        });
-
         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
             await setupIOSAudio();
         }
@@ -218,6 +169,7 @@
         // Initialize audio on first user interaction
         const initOnInteraction = async () => {
             await initAudioContext();
+            await enableNoSleep();
             document.removeEventListener('touchstart', initOnInteraction);
             document.removeEventListener('click', initOnInteraction);
         };
@@ -260,9 +212,6 @@
 
     onDestroy(() => {
         disableNoSleep();
-        if (noSleepVideo && document.body.contains(noSleepVideo)) {
-            document.body.removeChild(noSleepVideo);
-        }
         if ($audioPlayer) {
             $audioPlayer.pause();
             $audioPlayer.currentTime = 0;
@@ -400,7 +349,7 @@
         top: 120%;
         left: 0%;
         right: 0%;
-        padding: 1rem 0;
+        padding: 1rem;
         z-index: 10;
 
         display: flex;
