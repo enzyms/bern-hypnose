@@ -22,7 +22,7 @@
     }
     function handleClose() {
         clearStore();
-        window.location.href = '/app/';
+        window.location.href = '/';
     }
     function restartApp() {
         toggleMenu();
@@ -64,7 +64,7 @@
 <div class={`menu flex items-center ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
     <div class="py-12 max-w-[340px] mx-auto flex flex-col gap-4">
         <SButton variant="solid" className="w-full" on:click={restartApp}>Erneut starten</SButton>
-        <SButton variant="solid" className="w-full" on:click={handleClose}>zurück zur Webseite</SButton>
+        <SButton variant="solid" className="w-full" on:click={handleClose}>Webseite besuchen</SButton>
     </div>
 </div>
 

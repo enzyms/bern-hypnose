@@ -1,14 +1,7 @@
 <script>
-    import { selectedTopic, selectedProfile, nextStep, pageTitle, selectedDuration } from './store.js';
-    import imgRelaxation from '@assets/app/introspection.png';
-    import imgPositiveAffirmations from '@assets/app/child.png';
+    import { selectedTopic, topicsAdult, selectedProfile, nextStep, pageTitle, selectedDuration } from './store.js';
 
     let topics;
-
-    const topicsAdult = [
-        { id: 'relaxation', name: 'Entspannung', duration: 12, image: imgRelaxation },
-        { id: 'positive-affirmations', name: 'Positive Affirmationen', duration: 7, image: imgPositiveAffirmations }
-    ];
 
     $: selectedProfile.subscribe((value) => {
         topics = topicsAdult;

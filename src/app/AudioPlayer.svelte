@@ -1,6 +1,6 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
-    import { selectedProfile, selectedTopic, selectedAmbientSound, ambientSounds } from './store.js';
+    import { selectedProfile, selectedTopic, selectedAmbientSound, ambientSounds, topicsAdult } from './store.js';
     import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle } from './store.js';
     import PlayButton from './PlayButton.svelte';
     import CircularProgress from './CircularProgress.svelte';
@@ -14,8 +14,8 @@
     let currentTime = 0;
     let volume = 0.5;
     let ambientVolume = 0.5;
-    let isDrawerOpen = false;
     let noSleep;
+    let isDrawerOpen = false;
 
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
@@ -44,12 +44,34 @@
         }
     }
 
+    function handleAudioTrackChange(event) {
+        const selectedId = event.target.value;
+        const selectedTrack = topicsAdult.find((topic) => topic.id === selectedId);
+        if (selectedTrack) {
+            selectedTopic.set(selectedTrack);
+            if ($audioPlayer) {
+                $audioPlayer.src = `/audio/${$selectedProfile.id}-${selectedTrack.id}.mp3`;
+                $audioPlayer.load();
+                $audioPlayer.play();
+            }
+        }
+    }
+
     function handleAmbientSoundChange(event) {
         const selectedId = event.target.value;
         const selectedSound = $ambientSounds.find((sound) => sound.id === selectedId);
         if (selectedSound) {
             selectedAmbientSound.set(selectedSound);
             $ambientPlayer.play();
+        }
+    }
+
+    function handleAudioEnded() {
+        $isPlaying = false;
+        $status = 'idle';
+        if ($ambientPlayer) {
+            $ambientPlayer.pause();
+            $ambientPlayer.currentTime = 0;
         }
     }
 
@@ -103,10 +125,7 @@
     on:waiting={() => ($status = 'waiting')}
     on:timeupdate={() => ($status = 'playing')}
     on:seeking={() => ($status = 'seeking')}
-    on:ended={() => {
-        $isPlaying = false;
-        currentTime = 0;
-    }}
+    on:ended={handleAudioEnded}
     src={currentAudioSource}
 />
 
@@ -130,56 +149,53 @@
         <PlayButton on:click={handlePlay} />
     </div>
 
-    <div class="relative w-full">
-        <!-- <SButton on:click={() => (isDrawerOpen = !isDrawerOpen)}>
-            <Audio class="w-4 h-4" />
-        </SButton> -->
+    <SButton on:click={() => (isDrawerOpen = !isDrawerOpen)}>
+        <Audio class="w-4 h-4" />
+    </SButton>
 
-        <label
-            for="ambientSoundSelect"
-            class="inline-flex gap-4 items-center justify-center px-6 py-3 text-base leading-tight font-bold rounded-full transition text-red-600 bg-transparent border border-red-600 hover:bg-red-500 hover:text-red-50"
-        >
-            <span class="sr-only">Hintergrundgeräusch</span>
-            <select
-                id="ambientSoundSelect"
-                bind:value={$selectedAmbientSound.id}
-                on:change={handleAmbientSoundChange}
-                class="appearance-none w-full bg-transparent border-none focus:outline-none"
-            >
-                {#each $ambientSounds as ambientSound}
-                    <option value={ambientSound.id}>{ambientSound.name}</option>
-                {/each}
-            </select>
-            <CaretIcon />
-        </label>
-
-        <!-- {#if isDrawerOpen}
-            <div class="drawer">
-                <div class="w-full py-1">
-                    <div class="text-sm font-medium pb-4">Lautstärke Stimme</div>
-                    <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={volume} />
-                </div>
-
-                <div class="w-full py-1">
-                    <div class="text-sm font-medium pb-4">Lautstärke Hintergrundgeräusch</div>
-                    <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={ambientVolume} />
-                </div>
+    {#if isDrawerOpen}
+        <div class="drawer">
+            <div class="relative w-full">
+                <label
+                    for="audioTrackSelect"
+                    class="flex gap-4 items-center justify-center px-6 py-3 text-base leading-tight font-bold rounded-full transition text-red-600 bg-transparent border border-red-600 hover:bg-red-500 hover:text-red-50"
+                >
+                    <span class="sr-only">Übung auswählen</span>
+                    <select
+                        id="audioTrackSelect"
+                        bind:value={$selectedTopic.id}
+                        on:change={handleAudioTrackChange}
+                        class="appearance-none w-full bg-transparent border-none focus:outline-none"
+                    >
+                        {#each topicsAdult as topic}
+                            <option value={topic.id}>{topic.name}</option>
+                        {/each}
+                    </select>
+                    <CaretIcon />
+                </label>
             </div>
-        {/if} -->
-    </div>
 
-    <!-- div class="debugger">
-        <p><strong>Volume</strong></p>
-        <p>{volume}</p>
-        <p><strong>Loading</strong></p>
-        <p>{$status}</p>
-        <p><strong>Playing</strong></p>
-        <p>{$isPlaying}</p>
-        <p><strong>Time</strong></p>
-        <p>{currentTime}</p>
-        <p><strong>Duration</strong></p>
-        <p>{duration}</p>
-    </div-->
+            <div class="relative w-full">
+                <label
+                    for="ambientSoundSelect"
+                    class="flex gap-4 items-center justify-center px-6 py-3 text-base leading-tight font-bold rounded-full transition text-red-600 bg-transparent border border-red-600 hover:bg-red-500 hover:text-red-50"
+                >
+                    <span class="sr-only">Hintergrundgeräusch</span>
+                    <select
+                        id="ambientSoundSelect"
+                        bind:value={$selectedAmbientSound.id}
+                        on:change={handleAmbientSoundChange}
+                        class="appearance-none w-full bg-transparent border-none focus:outline-none"
+                    >
+                        {#each $ambientSounds as ambientSound}
+                            <option value={ambientSound.id}>{ambientSound.name}</option>
+                        {/each}
+                    </select>
+                    <CaretIcon />
+                </label>
+            </div>
+        </div>
+    {/if}
 </div>
 
 <style>
