@@ -4,7 +4,6 @@
     import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle } from './store.js';
     import PlayButton from './PlayButton.svelte';
     import CircularProgress from './CircularProgress.svelte';
-    import Slider from './Slider.svelte';
     import SButton from './SButton.svelte';
     import Audio from './audio-icon.svelte';
     import CaretIcon from './caret-icon.svelte';
@@ -125,7 +124,10 @@
     on:waiting={() => ($status = 'waiting')}
     on:timeupdate={() => ($status = 'playing')}
     on:seeking={() => ($status = 'seeking')}
-    on:ended={handleAudioEnded}
+    on:ended={() => {
+        $isPlaying = false;
+        currentTime = 0;
+    }}
     src={currentAudioSource}
 />
 

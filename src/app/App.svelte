@@ -6,7 +6,9 @@
     import AudioPlayer from './AudioPlayer.svelte';
     import SButton from './SButton.svelte';
 
-    import { currentStep, clearStore, pageTitle } from './store.js';
+    import { currentStep, clearStore, pageTitle, showIntroCover, showContent } from './store.js';
+    import { onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
 
     let step;
     let isMenuOpen = false;
@@ -14,6 +16,15 @@
     $: currentStep.subscribe((value) => {
         step = value;
     });
+
+    $: if ($showIntroCover) {
+        setTimeout(() => {
+            showIntroCover.set(false);
+            setTimeout(() => {
+                showContent.set(true);
+            }, 300);
+        }, 1000);
+    }
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
@@ -27,46 +38,58 @@
     function restartApp() {
         toggleMenu();
         clearStore();
+        showIntroCover.set(true);
+        showContent.set(false);
     }
 </script>
 
-<div class="fixed left-0 top-0 right-0 z-20 py-6 md:py-8 lg:py-10 bg-primary/5 backdrop-blur-lg text-center">
-    <h1 class="text-2xl font-black text-gray-950 pt-[env(safe-area-inset-top)]">
-        {$pageTitle}
-    </h1>
-</div>
+{#if $showIntroCover}
+    <div class="fixed inset-0 flex justify-center z-50 pt-[env(safe-area-inset-top)]" transition:fade={{ duration: 300 }}>
+        <h1 class="text-4xl font-black text-red-600 pt-24 md:pt-32 lg:pt-40">Selbsthypnose</h1>
+    </div>
+{/if}
 
-<div class="py-24 md:py-28 lg:py-32 flex flex-col items-center text-center">
-    <div class="max-w-[340px] w-full">
-        <!-- {#if step === 1}
-            <ProfileSelection /> -->
-        {#if step === 2}
-            <TopicSelection />
-        {:else if step === 3}
-            <AmbientSelection />
-        {:else if step === 4}
-            <GetReady />
-        {:else if step === 5}
-            <AudioPlayer />
-        {/if}
-    </div>
-</div>
+{#if $showContent}
+    <div transition:fade={{ duration: 300 }}>
+        <div class="fixed left-0 top-0 right-0 z-20 py-6 md:py-8 lg:py-10 bg-primary/5 backdrop-blur-lg text-center">
+            <h1 class="text-2xl font-black text-gray-950 pt-[env(safe-area-inset-top)]">
+                {$pageTitle}
+            </h1>
+        </div>
 
-<div class="fixed left-0 bottom-0 right-0 z-50 py-4 md:py-6 lg:py-8 bg-primary/5 backdrop-blur-lg text-center">
-    <div class="pb-[env(safe-area-inset-bottom)]">
-        <SButton variant="solid" on:click={toggleMenu} class="relative" aria-label="Toggle Menu" aria-expanded={isMenuOpen}>
-            <span class={`burger-icon ${isMenuOpen ? 'is-active' : ''}`}>
-                <span class="bar" />
-            </span>
-        </SButton>
+        <div class="py-24 md:py-28 lg:py-32 flex flex-col items-center text-center">
+            <div class="max-w-[340px] w-full">
+                <!-- {#if step === 1}
+                    <ProfileSelection /> -->
+                {#if step === 2}
+                    <TopicSelection />
+                {:else if step === 3}
+                    <AmbientSelection />
+                {:else if step === 4}
+                    <GetReady />
+                {:else if step === 5}
+                    <AudioPlayer />
+                {/if}
+            </div>
+        </div>
+
+        <div class="fixed left-0 bottom-0 right-0 z-50 py-4 md:py-6 lg:py-8 bg-primary/5 backdrop-blur-lg text-center">
+            <div class="pb-[env(safe-area-inset-bottom)]">
+                <SButton variant="solid" on:click={toggleMenu} class="relative" aria-label="Toggle Menu" aria-expanded={isMenuOpen}>
+                    <span class={`burger-icon ${isMenuOpen ? 'is-active' : ''}`}>
+                        <span class="bar" />
+                    </span>
+                </SButton>
+            </div>
+        </div>
+        <div class={`menu flex items-center ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
+            <div class="py-12 max-w-[340px] mx-auto flex flex-col gap-4">
+                <SButton variant="solid" className="w-full" on:click={restartApp}>Erneut starten</SButton>
+                <SButton variant="solid" className="w-full" on:click={handleClose}>Webseite besuchen</SButton>
+            </div>
+        </div>
     </div>
-</div>
-<div class={`menu flex items-center ${!isMenuOpen ? 'translate-y-[120px] opacity-0 pointer-events-none' : ''}`}>
-    <div class="py-12 max-w-[340px] mx-auto flex flex-col gap-4">
-        <SButton variant="solid" className="w-full" on:click={restartApp}>Erneut starten</SButton>
-        <SButton variant="solid" className="w-full" on:click={handleClose}>Webseite besuchen</SButton>
-    </div>
-</div>
+{/if}
 
 <style>
     .menu {
