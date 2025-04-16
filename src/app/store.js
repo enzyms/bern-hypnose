@@ -14,6 +14,7 @@ export const topicsAdult = [
 ];
 export const selectedDuration = writable(null);
 export const ambientSounds = writable([
+    { id: 'etherium', name: 'Entspannung Musik' },
     { id: 'forest', name: 'Vogelstimmen' },
     { id: 'sea', name: 'Meeresgeräusche' },
     { id: 'none', name: 'Ohne Geräusche' }
