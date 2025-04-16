@@ -8,7 +8,7 @@
         nextStep();
     }
 
-    pageTitle.set('Hintergrundgeräusch');
+    pageTitle.set('Umgebungsmusik');
 
     $: sounds = $ambientSounds || [];
 
