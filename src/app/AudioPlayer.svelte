@@ -1,12 +1,13 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
-    import { selectedProfile, selectedTopic, selectedAmbientSound } from './store.js';
+    import { selectedProfile, selectedTopic, selectedAmbientSound, ambientSounds } from './store.js';
     import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle } from './store.js';
     import PlayButton from './PlayButton.svelte';
     import CircularProgress from './CircularProgress.svelte';
     import Slider from './Slider.svelte';
     import SButton from './SButton.svelte';
     import Audio from './audio-icon.svelte';
+    import CaretIcon from './caret-icon.svelte';
     import NoSleep from '@zakj/no-sleep';
 
     let duration = 0;
@@ -45,9 +46,10 @@
 
     function handleAmbientSoundChange(event) {
         const selectedId = event.target.value;
-        const selectedSound = $selectedAmbientSound.find((sound) => sound.id === selectedId);
+        const selectedSound = $ambientSounds.find((sound) => sound.id === selectedId);
         if (selectedSound) {
-            selectedAmbientSound = selectedSound;
+            selectedAmbientSound.set(selectedSound);
+            $ambientPlayer.play();
         }
     }
 
@@ -67,6 +69,8 @@
                 }
             }
         });
+
+        console.log('AudioPlayer mounted');
     });
 
     onDestroy(() => {
@@ -127,18 +131,30 @@
     </div>
 
     <div class="relative w-full">
-        <SButton on:click={() => (isDrawerOpen = !isDrawerOpen)}>
+        <!-- <SButton on:click={() => (isDrawerOpen = !isDrawerOpen)}>
             <Audio class="w-4 h-4" />
-        </SButton>
+        </SButton> -->
 
-        {#if isDrawerOpen}
+        <label
+            for="ambientSoundSelect"
+            class="inline-flex gap-4 items-center justify-center px-6 py-3 text-base leading-tight font-bold rounded-full transition text-red-600 bg-transparent border border-red-600 hover:bg-red-500 hover:text-red-50"
+        >
+            <span class="sr-only">Hintergrundgeräusch</span>
+            <select
+                id="ambientSoundSelect"
+                bind:value={$selectedAmbientSound.id}
+                on:change={handleAmbientSoundChange}
+                class="appearance-none w-full bg-transparent border-none focus:outline-none"
+            >
+                {#each $ambientSounds as ambientSound}
+                    <option value={ambientSound.id}>{ambientSound.name}</option>
+                {/each}
+            </select>
+            <CaretIcon />
+        </label>
+
+        <!-- {#if isDrawerOpen}
             <div class="drawer">
-                <!-- <select bind:value={selectedAmbientSound}>
-                    {#each $selectedAmbientSound as ambientSound}
-                        <option value={ambientSound.id}>{ambientSound.name}</option>
-                    {/each}
-                </select> -->
-
                 <div class="w-full py-1">
                     <div class="text-sm font-medium pb-4">Lautstärke Stimme</div>
                     <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={volume} />
@@ -149,7 +165,7 @@
                     <Slider min={0} max={1} step={0.01} precision={2} formatter={(v) => Math.round(v * 100)} bind:value={ambientVolume} />
                 </div>
             </div>
-        {/if}
+        {/if} -->
     </div>
 
     <!-- div class="debugger">

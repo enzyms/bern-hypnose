@@ -3,7 +3,7 @@
     import SButton from './SButton.svelte';
     import { onMount } from 'svelte';
 
-    function selectDuration(sound) {
+    function selectAmbientSound(sound) {
         selectedAmbientSound.set(sound);
         nextStep();
     }
@@ -20,7 +20,7 @@
 <ul class="flex flex-col gap-4">
     {#each sounds as sound}
         <li>
-            <SButton className="w-full" on:click={() => selectDuration(sound)}>{sound.name}</SButton>
+            <SButton className="w-full" on:click={() => selectAmbientSound(sound)}>{sound.name}</SButton>
         </li>
     {/each}
 </ul>
