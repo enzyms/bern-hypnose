@@ -1,56 +1,35 @@
 <script>
-    import { onMount, onDestroy } from 'svelte';
-    import { currentTime, duration } from './store.js';
+    // import { onMount } from 'svelte';
+    import { currentTime, duration, status } from './store.js';
 
     export let audioPlayer;
-    export let isPlaying;
+    // export let isPlaying;
 
     let circle;
     let dot;
     let path;
-    let totalLength = 0;
+    // let totalLength = 0;
     let isDragging = false;
-    let timeUpdateHandler;
-    let isInitialized = false;
+    // let timeUpdateHandler;
+    // let isInitialized = false;
 
-    onMount(() => {
-        // Set up event listeners
-        if ($audioPlayer) {
-            timeUpdateHandler = handleTimeUpdate;
-            $audioPlayer.addEventListener('timeupdate', timeUpdateHandler);
-            $audioPlayer.addEventListener('ended', () => {
-                path.style.strokeDashoffset = totalLength;
-            });
-        }
-        isInitialized = true;
-
-        // console.log('onMount');
-        // path = circle.querySelector('#seekbar');
-        // totalLength = path.getTotalLength();
-        // path.style.strokeDasharray = totalLength;
-        // path.style.strokeDashoffset = totalLength;
-
-        // // Set up event listeners when the component mounts
-        // if ($audioPlayer) {
-        //     timeUpdateHandler = handleTimeUpdate;
-        //     $audioPlayer.addEventListener('timeupdate', timeUpdateHandler);
-        //     $audioPlayer.addEventListener('ended', () => {
-        //         path.style.strokeDashoffset = totalLength;
-        //     });
-        // }
-    });
-
-    onDestroy(() => {
-        // Clean up event listeners when the component is destroyed
-        if ($audioPlayer && timeUpdateHandler) {
-            $audioPlayer.removeEventListener('timeupdate', timeUpdateHandler);
-        }
-    });
+    // onMount(() => {
+    //     // Set up event listeners
+    //     if ($audioPlayer) {
+    //         timeUpdateHandler = handleTimeUpdate;
+    //         $audioPlayer.addEventListener('timeupdate', timeUpdateHandler);
+    //         $audioPlayer.addEventListener('ended', () => {
+    //             path.style.strokeDashoffset = totalLength;
+    //         });
+    //     }
+    //     isInitialized = true;
+    // });
 
     function handleDrag(event) {
+        status.set('seeking');
         const totalLength = path.getTotalLength();
-        path.style.strokeDasharray = totalLength;
-        path.style.strokeDashoffset = totalLength;
+        // path.style.strokeDasharray = totalLength;
+        // path.style.strokeDashoffset = totalLength;
 
         const bounds = circle.getBoundingClientRect();
         const radius = bounds.width / 2;
@@ -66,8 +45,10 @@
         const percentage = (angle / (2 * Math.PI)) * 100;
 
         // Update store instead of directly setting audio time
-        currentTime.set((duration * percentage) / 100);
-        console.log('currentTime', currentTime);
+        currentTime.set(($duration * percentage) / 100);
+        // console.log('duration', $duration);
+        // console.log('percentage', percentage);
+        // console.log('currentTime', ($duration * percentage) / 100);
 
         const point = path.getPointAtLength((percentage / 100) * totalLength);
         dot.setAttribute('cx', point.x);
@@ -83,20 +64,21 @@
     function handleMouseUp() {
         console.log('handleMouseUp');
         isDragging = false;
+        status.set('playing');
     }
 
-    function handleTimeUpdate() {
-        if (!$audioPlayer || isDragging) return;
+    // function handleTimeUpdate() {
+    //     if (!$audioPlayer || isDragging) return;
 
-        const { currentTime, duration } = $audioPlayer;
-        const calc = totalLength - (currentTime / duration) * totalLength;
-        path.style.strokeDashoffset = calc;
+    //     const { currentTime, duration } = $audioPlayer;
+    //     const calc = totalLength - (currentTime / duration) * totalLength;
+    //     path.style.strokeDashoffset = calc;
 
-        const percentage = (currentTime / duration) * 100;
-        const point = path.getPointAtLength((percentage / 100) * totalLength);
-        dot.setAttribute('cx', point.x);
-        dot.setAttribute('cy', point.y);
-    }
+    //     const percentage = (currentTime / duration) * 100;
+    //     const point = path.getPointAtLength((percentage / 100) * totalLength);
+    //     dot.setAttribute('cx', point.x);
+    //     dot.setAttribute('cy', point.y);
+    // }
 
     // // Update the seeker position when currentTime changes
     // $: if (path && $currentTime) {
@@ -116,9 +98,7 @@
         <path
             bind:this={path}
             fill="none"
-            stroke="blue"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="none"
             d="M50,2.9L50,2.9C76,2.9,97.1,24,97.1,50v0C97.1,76,76,97.1,50,97.1h0C24,97.1,2.9,76,2.9,50v0C2.9,24,24,2.9,50,2.9z"
         />
         <circle

@@ -28,6 +28,9 @@ export const status = writable('default');
 export const isPlaying = writable(false);
 export const index = writable(0);
 
+export const currentTime = writable(0);
+export const duration = writable(0);
+
 export function nextStep() {
     currentStep.update((n) => (n < 5 ? n + 1 : n));
 }

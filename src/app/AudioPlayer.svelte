@@ -1,25 +1,33 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import { selectedProfile, selectedTopic, selectedAmbientSound, ambientSounds, topicsAdult } from './store.js';
-    import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle } from './store.js';
+    import { status, isPlaying, audioPlayer, ambientPlayer, pageTitle, currentTime, duration } from './store.js';
     import PlayButton from './PlayButton.svelte';
     import CircularProgress from './CircularProgress.svelte';
     import SButton from './SButton.svelte';
     import Audio from './audio-icon.svelte';
     import CaretIcon from './caret-icon.svelte';
     import NoSleep from '@zakj/no-sleep';
+    import CircularAudioSeeker from './CircularAudioSeeker.svelte';
 
-    let duration = 0;
-    let currentTime = 0;
-    let volume = 1;
-    let ambientVolume = 1;
     let noSleep;
     let isDrawerOpen = false;
+
+    let localCurrentTime;
+    let localDuration;
+
+    $: localCurrentTime = currentTime;
+    $: localDuration = duration;
 
     $: currentAudioSource = $selectedProfile && $selectedTopic ? `/audio/${$selectedProfile.id}-${$selectedTopic.id}.mp3` : '';
     $: currentAmbientSource = $selectedAmbientSound ? `/audio/ambient-${$selectedAmbientSound.id}.mp3` : '';
 
     pageTitle.set(' ');
+
+    // Update audio position when store changes
+    $: if ($audioPlayer && $currentTime !== localCurrentTime && $status === 'seeking') {
+        $audioPlayer.currentTime = $currentTime;
+    }
 
     async function handlePlay() {
         await enableNoSleep();
@@ -74,6 +82,13 @@
         }
     }
 
+    // Update store when audio time changes
+    function handleTimeUpdate(event) {
+        console.log('handleTimeUpdate', event.target.currentTime, event.target.duration);
+        // currentTime.set(event.target.currentTime);
+        // duration.set(event.target.duration);
+    }
+
     onMount(() => {
         noSleep = new NoSleep();
         console.log('NoSleep initialized');
@@ -108,33 +123,57 @@
         $status = 'idle';
     });
 
-    $: progressValue = duration ? (currentTime / duration) * 100 : 0;
+    $: progressValue = $duration ? ($currentTime / $duration) * 100 : 0;
 </script>
+
+<!-- on:timeupdate={() => {
+    currentTime.set(localCurrentTime);
+    duration.set(localDuration);
+}} -->
 
 <audio
     id="audioPlayer"
     bind:this={$audioPlayer}
-    bind:duration
-    bind:currentTime
-    bind:volume
+    bind:currentTime={localCurrentTime}
+    bind:duration={localDuration}
+    on:loadedmetadata={() => {
+        console.log('Metadata loaded, duration:', localDuration);
+        duration.set(localDuration);
+    }}
+    on:timeupdate={() => {
+        if ($status !== 'seeking') {
+            currentTime.set(localCurrentTime);
+            duration.set(localDuration);
+        }
+    }}
+    on:canplay={() => {
+        console.log('canplay event');
+        status.set('can play some');
+    }}
+    on:canplaythrough={() => {
+        console.log('canplaythrough event');
+        status.set('can play all');
+    }}
+    on:waiting={() => {
+        console.log('waiting event');
+        status.set('waiting');
+    }}
+    on:seeking={() => {
+        console.log('seeking event');
+        status.set('seeking');
+    }}
     preload="auto"
     playsinline
-    on:canplay={() => ($status = 'can play some')}
-    on:canplaythrough={() => ($status = 'can play all')}
-    on:waiting={() => ($status = 'waiting')}
-    on:timeupdate={() => ($status = 'playing')}
-    on:seeking={() => ($status = 'seeking')}
     on:ended={() => {
         $isPlaying = false;
-        currentTime = 0;
+        currentTime.set(0);
     }}
     src={currentAudioSource}
 />
-
+progr: {progressValue}
 <audio
     id="ambientPlayer"
     bind:this={$ambientPlayer}
-    bind:volume={ambientVolume}
     preload="auto"
     playsinline
     on:ended={() => {
@@ -144,11 +183,14 @@
 />
 
 <div class="h- relative flex flex-col gap-6 items-center">
-    <div>
-        <div class="absolute w-[10rem] h-[10rem] pointer-events-none">
+    <div class="relative w-[10rem] h-[10rem]">
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
             <CircularProgress bind:value={progressValue}></CircularProgress>
         </div>
-        <PlayButton on:click={handlePlay} />
+        <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+            <CircularAudioSeeker />
+        </div>
+        <PlayButton on:click={handlePlay} class="relative z-10" />
     </div>
 
     <SButton on:click={() => (isDrawerOpen = !isDrawerOpen)}>

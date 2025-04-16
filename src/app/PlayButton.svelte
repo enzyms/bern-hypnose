@@ -55,7 +55,7 @@
     <button class="play-button" on:click={playTrack}>
         <PlayIcon size="5" />
     </button>
-{:else if $isPlaying === true && ($status === 'waiting' || $status === 'loading' || $status === 'can play some' || $status === 'can play all')}
+{:else if $isPlaying === true && (status === 'waiting' || status === 'loading' || status === 'can play some' || status === 'can play all')}
     <button class="play-button" on:click={pauseTrack}>
         <LoadingIcon size="5" />
     </button>
