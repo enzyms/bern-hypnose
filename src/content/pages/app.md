@@ -16,3 +16,5 @@ Nimm dir einen Moment Zeit, mach es dir bequem und entspanne dich in einer gefü
 <a
   href="/app/start/"
   class="inline-flex no-prose items-center justify-center px-6 py-3 text-base leading-tight font-bold text-white bg-red-600 border border-red-600 rounded-full transition hover:bg-red-500 hover:text-red-50 no-underline">Beginnen</a>
+
+Musik: Nathan Czuczor
