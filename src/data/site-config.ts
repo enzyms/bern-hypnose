@@ -314,6 +314,11 @@ const siteConfig: SiteConfig = {
             diamondPosition: 1,
         },
         {
+            text: 'App',
+            href: '/app/',
+            diamondPosition: 2,
+        },
+        {
             text: 'Über mich',
             href: '/janine-aerni/',
             diamondPosition: 2,
@@ -328,11 +333,6 @@ const siteConfig: SiteConfig = {
             href: '/termin/',
             diamondPosition: 2,
         },
-        // {
-        //     text: 'App',
-        //     href: '/app/',
-        //     diamondPosition: 2,
-        // },
     ],
     footerNavLinks: [
         {

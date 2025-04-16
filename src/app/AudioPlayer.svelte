@@ -11,8 +11,8 @@
 
     let duration = 0;
     let currentTime = 0;
-    let volume = 0.5;
-    let ambientVolume = 0.5;
+    let volume = 1;
+    let ambientVolume = 1;
     let noSleep;
     let isDrawerOpen = false;
 
