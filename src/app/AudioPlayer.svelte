@@ -9,6 +9,9 @@
     import CaretIcon from './caret-icon.svelte';
     import NoSleep from '@zakj/no-sleep';
     import CircularAudioSeeker from './CircularAudioSeeker.svelte';
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
 
     let noSleep;
     let isDrawerOpen = false;
@@ -28,6 +31,8 @@
     $: if ($audioPlayer && $currentTime !== localCurrentTime && $status === 'seeking') {
         $audioPlayer.currentTime = $currentTime;
     }
+
+    let timeupdate = false;
 
     async function handlePlay() {
         await enableNoSleep();
@@ -76,17 +81,20 @@
     function handleAudioEnded() {
         $isPlaying = false;
         $status = 'idle';
+        currentTime.set(0);
         if ($ambientPlayer) {
             $ambientPlayer.pause();
             $ambientPlayer.currentTime = 0;
         }
     }
 
-    // Update store when audio time changes
-    function handleTimeUpdate(event) {
-        console.log('handleTimeUpdate', event.target.currentTime, event.target.duration);
-        // currentTime.set(event.target.currentTime);
-        // duration.set(event.target.duration);
+    function handleTimeUpdate() {
+        if ($status !== 'seeking') {
+            currentTime.set(localCurrentTime);
+            timeupdate = true;
+            // Reset the flag after a tick to trigger the next update
+            setTimeout(() => (timeupdate = false), 0);
+        }
     }
 
     onMount(() => {
@@ -140,12 +148,7 @@
         console.log('Metadata loaded, duration:', localDuration);
         duration.set(localDuration);
     }}
-    on:timeupdate={() => {
-        if ($status !== 'seeking') {
-            currentTime.set(localCurrentTime);
-            duration.set(localDuration);
-        }
-    }}
+    on:timeupdate={handleTimeUpdate}
     on:canplay={() => {
         console.log('canplay event');
         status.set('can play some');
@@ -165,12 +168,10 @@
     preload="auto"
     playsinline
     on:ended={() => {
-        $isPlaying = false;
-        currentTime.set(0);
+        handleAudioEnded();
     }}
     src={currentAudioSource}
 />
-progr: {progressValue}
 <audio
     id="ambientPlayer"
     bind:this={$ambientPlayer}
@@ -188,7 +189,7 @@ progr: {progressValue}
             <CircularProgress bind:value={progressValue}></CircularProgress>
         </div>
         <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
-            <CircularAudioSeeker />
+            <CircularAudioSeeker {audioPlayer} {timeupdate} />
         </div>
         <PlayButton on:click={handlePlay} class="relative z-10" />
     </div>

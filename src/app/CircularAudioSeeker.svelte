@@ -1,35 +1,17 @@
 <script>
-    // import { onMount } from 'svelte';
     import { currentTime, duration, status } from './store.js';
 
     export let audioPlayer;
-    // export let isPlaying;
+    export let timeupdate;
 
     let circle;
     let dot;
     let path;
-    // let totalLength = 0;
     let isDragging = false;
-    // let timeUpdateHandler;
-    // let isInitialized = false;
-
-    // onMount(() => {
-    //     // Set up event listeners
-    //     if ($audioPlayer) {
-    //         timeUpdateHandler = handleTimeUpdate;
-    //         $audioPlayer.addEventListener('timeupdate', timeUpdateHandler);
-    //         $audioPlayer.addEventListener('ended', () => {
-    //             path.style.strokeDashoffset = totalLength;
-    //         });
-    //     }
-    //     isInitialized = true;
-    // });
 
     function handleDrag(event) {
         status.set('seeking');
         const totalLength = path.getTotalLength();
-        // path.style.strokeDasharray = totalLength;
-        // path.style.strokeDashoffset = totalLength;
 
         const bounds = circle.getBoundingClientRect();
         const radius = bounds.width / 2;
@@ -44,11 +26,7 @@
         angle = (angle + Math.PI / 2) % (2 * Math.PI);
         const percentage = (angle / (2 * Math.PI)) * 100;
 
-        // Update store instead of directly setting audio time
         currentTime.set(($duration * percentage) / 100);
-        // console.log('duration', $duration);
-        // console.log('percentage', percentage);
-        // console.log('currentTime', ($duration * percentage) / 100);
 
         const point = path.getPointAtLength((percentage / 100) * totalLength);
         dot.setAttribute('cx', point.x);
@@ -67,28 +45,24 @@
         status.set('playing');
     }
 
-    // function handleTimeUpdate() {
-    //     if (!$audioPlayer || isDragging) return;
+    function timeUpdate() {
+        if (!$audioPlayer || isDragging) return;
 
-    //     const { currentTime, duration } = $audioPlayer;
-    //     const calc = totalLength - (currentTime / duration) * totalLength;
-    //     path.style.strokeDashoffset = calc;
+        const totalLength = path.getTotalLength();
+        const calc = totalLength - ($currentTime / $duration) * totalLength;
+        path.style.strokeDashoffset = calc;
 
-    //     const percentage = (currentTime / duration) * 100;
-    //     const point = path.getPointAtLength((percentage / 100) * totalLength);
-    //     dot.setAttribute('cx', point.x);
-    //     dot.setAttribute('cy', point.y);
-    // }
+        const percentage = ($currentTime / $duration) * 100;
+        const point = path.getPointAtLength((percentage / 100) * totalLength);
+        const dotPosition = { x: point.x, y: point.y };
 
-    // // Update the seeker position when currentTime changes
-    // $: if (path && $currentTime) {
-    //     const percentage = ($currentTime / $duration) * 100;
-    //     const point = path.getPointAtLength((percentage / 100) * totalLength);
-    //     if (dot) {
-    //         dot.setAttribute('cx', point.x);
-    //         dot.setAttribute('cy', point.y);
-    //     }
-    // }
+        dot.setAttribute('cx', point.x);
+        dot.setAttribute('cy', point.y);
+    }
+
+    $: if (timeupdate) {
+        timeUpdate();
+    }
 </script>
 
 <svelte:window on:mousemove={(e) => isDragging && handleDrag(e)} on:mouseup|preventDefault|stopPropagation={handleMouseUp} />
@@ -108,7 +82,9 @@
             r="4"
             cx="50"
             cy="2"
-            fill="green"
+            fill="#dc2626"
+            stroke="#fff"
+            stroke-width="1"
             role="button"
             tabindex="0"
             aria-label="Drag to seek audio"
@@ -121,10 +97,21 @@
 <style>
     .progress-handle {
         cursor: pointer;
-        transition: r 0.2s ease;
+        transition:
+            r 0.3s ease,
+            cx 0s ease,
+            cy 0s ease;
     }
 
     .progress-handle:hover {
+        r: 8;
+    }
+    .progress-handle:active {
         r: 6;
+    }
+
+    .progress-handle:focus {
+        outline: none;
+        box-shadow: 0 0 0 5px #dc2626;
     }
 </style>

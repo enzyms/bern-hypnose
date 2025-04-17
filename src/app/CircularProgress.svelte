@@ -1,9 +1,8 @@
 <script>
     export let value = 0;
-    export let color = '#dc143c';
-    export let decimals = true;
+    export let color = '#dc2626';
 
-    $: progressValue = decimals ? Math.round((Math.min(Math.max(value, 0), 100) + Number.EPSILON) * 100) / 100 : Math.round(Math.min(Math.max(value, 0), 100));
+    $: progressValue = value;
 </script>
 
 <div class="circle" style="--progress: {progressValue}%; --color: {color}"></div>
