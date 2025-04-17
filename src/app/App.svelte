@@ -23,7 +23,7 @@
             setTimeout(() => {
                 showContent.set(true);
             }, 300);
-        }, 1000);
+        }, 1500);
     }
 
     function toggleMenu() {
@@ -44,8 +44,10 @@
 </script>
 
 {#if $showIntroCover}
-    <div class="fixed inset-0 flex justify-center z-50 pt-[env(safe-area-inset-top)]" transition:fade={{ duration: 300 }}>
-        <h1 class="text-4xl font-black text-red-600 pt-24 md:pt-32 lg:pt-40">Selbsthypnose</h1>
+    <div class="fixed inset-0 pb-12 flex flex-col justify-center items-center z-50 pt-[env(safe-area-inset-top)]" transition:fade={{ duration: 300 }}>
+        <h1 class="text-4xl text-center font-black text-red-600 pt-24 md:pt-32 lg:pt-40">Geführte Kurzhypnose</h1>
+        <p class="pt-8">Stimme: Janine Aerni</p>
+        <p>Musik: Nathan Czuczor</p>
     </div>
 {/if}
 
@@ -57,7 +59,7 @@
             </h1>
         </div>
 
-        <div class="py-24 md:py-28 lg:py-32 flex flex-col items-center text-center">
+        <div class="py-24 md:py-28 lg:py-32 px-8 flex flex-col items-center text-center">
             <div class="max-w-[340px] w-full">
                 <!-- {#if step === 1}
                     <ProfileSelection /> -->
