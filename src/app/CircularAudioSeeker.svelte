@@ -9,14 +9,29 @@
     let path;
     let isDragging = false;
 
+    function getEventCoords(event) {
+        if (event.touches && event.touches.length > 0) {
+            return {
+                clientX: event.touches[0].clientX,
+                clientY: event.touches[0].clientY
+            };
+        }
+        return {
+            clientX: event.clientX,
+            clientY: event.clientY
+        };
+    }
+
     function handleDrag(event) {
         status.set('seeking');
         const totalLength = path.getTotalLength();
 
+        const { clientX, clientY } = getEventCoords(event);
+
         const bounds = circle.getBoundingClientRect();
         const radius = bounds.width / 2;
-        const dx = event.clientX - (bounds.left + radius);
-        const dy = event.clientY - (bounds.top + radius);
+        const dx = clientX - (bounds.left + radius);
+        const dy = clientY - (bounds.top + radius);
         let angle = Math.atan2(dy, dx);
 
         if (angle < 0) {
@@ -33,14 +48,12 @@
         dot.setAttribute('cy', point.y);
     }
 
-    function handleMouseDown(event) {
-        console.log('handleMouseDown');
+    function handleDown(event) {
         isDragging = true;
         handleDrag(event);
     }
 
-    function handleMouseUp() {
-        console.log('handleMouseUp');
+    function handleUp() {
         isDragging = false;
         status.set('playing');
     }
@@ -54,8 +67,6 @@
 
         const percentage = ($currentTime / $duration) * 100;
         const point = path.getPointAtLength((percentage / 100) * totalLength);
-        const dotPosition = { x: point.x, y: point.y };
-
         dot.setAttribute('cx', point.x);
         dot.setAttribute('cy', point.y);
     }
@@ -65,10 +76,14 @@
     }
 </script>
 
-<svelte:window on:mousemove={(e) => isDragging && handleDrag(e)} on:mouseup|preventDefault|stopPropagation={handleMouseUp} />
-
+<svelte:window
+    on:mousemove={(e) => isDragging && handleDrag(e)}
+    on:mouseup|preventDefault|stopPropagation={handleUp}
+    on:touchmove={(e) => isDragging && handleDrag(e)}
+    on:touchend={handleUp}
+/>
 <figure class="audio__controls">
-    <svg version="1.1" id="circle" viewBox="0 0 100 100" bind:this={circle} alt="Audio Seekbar" class="w-full h-full overflow-visible">
+    <svg version="1.1" id="circle" viewBox="0 0 100 100" bind:this={circle} alt="Audio Seekbar" class="w-full h-full overflow-visible pointer-events-none">
         <path
             bind:this={path}
             fill="none"
@@ -79,7 +94,7 @@
             id="seekdot"
             bind:this={dot}
             class="progress-handle pointer-events-auto"
-            r="4"
+            r="14"
             cx="50"
             cy="2"
             fill="#dc2626"
@@ -88,8 +103,8 @@
             role="button"
             tabindex="0"
             aria-label="Drag to seek audio"
-            on:mousedown={handleMouseDown}
-            on:mouseup={handleMouseUp}
+            on:mousedown={handleDown}
+            on:touchstart={handleDown}
         />
     </svg>
 </figure>

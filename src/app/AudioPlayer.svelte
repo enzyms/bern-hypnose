@@ -9,9 +9,6 @@
     import CaretIcon from './caret-icon.svelte';
     import NoSleep from '@zakj/no-sleep';
     import CircularAudioSeeker from './CircularAudioSeeker.svelte';
-    import { createEventDispatcher } from 'svelte';
-
-    const dispatch = createEventDispatcher();
 
     let noSleep;
     let isDrawerOpen = false;
@@ -134,11 +131,6 @@
     $: progressValue = $duration ? ($currentTime / $duration) * 100 : 0;
 </script>
 
-<!-- on:timeupdate={() => {
-    currentTime.set(localCurrentTime);
-    duration.set(localDuration);
-}} -->
-
 <audio
     id="audioPlayer"
     bind:this={$audioPlayer}
@@ -182,8 +174,7 @@
     }}
     src={currentAmbientSource}
 />
-
-<div class="h- relative flex flex-col gap-6 items-center">
+<div class="relative flex flex-col gap-6 items-center">
     <div class="relative w-[10rem] h-[10rem]">
         <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
             <CircularProgress bind:value={progressValue}></CircularProgress>
