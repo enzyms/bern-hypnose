@@ -1,48 +1,44 @@
 <script>
-    import { onMount } from 'svelte';
-
     let isIframeLoaded = false;
 
-    onMount(() => {
-        const scriptSrc = 'https://assets.calendly.com/assets/external/widget.js';
-        const scriptId = 'calendly-widget-script';
+    const scriptSrc = 'https://assets.calendly.com/assets/external/widget.js';
+    const scriptId = 'calendly-widget-script';
 
-        // Check if the Calendly script is already loaded
-        if (!document.getElementById(scriptId)) {
-            const script = document.createElement('script');
-            script.src = scriptSrc;
-            script.id = scriptId;
-            script.async = true;
-            document.body.appendChild(script);
+    // Check if the Calendly script is already loaded
+    if (!document.getElementById(scriptId)) {
+        const script = document.createElement('script');
+        script.src = scriptSrc;
+        script.id = scriptId;
+        script.async = true;
+        document.body.appendChild(script);
 
-            script.onload = () => {
-                initializeCalendlyWidget();
-            };
-        } else if (window.Calendly) {
+        script.onload = () => {
             initializeCalendlyWidget();
+        };
+    } else if (window.Calendly) {
+        initializeCalendlyWidget();
+    }
+
+    function initializeCalendlyWidget() {
+        const container = document.getElementById('calendly-inline-widget');
+
+        // Avoid reinitialization if the iframe already exists
+        if (container && !container.querySelector('iframe')) {
+            window.Calendly.initInlineWidget({
+                parentElement: container,
+                prefill: {},
+                utm: {}
+            });
         }
 
-        function initializeCalendlyWidget() {
-            const container = document.getElementById('calendly-inline-widget');
-
-            // Avoid reinitialization if the iframe already exists
-            if (container && !container.querySelector('iframe')) {
-                window.Calendly.initInlineWidget({
-                    parentElement: container,
-                    prefill: {},
-                    utm: {}
-                });
-            }
-
-            // Add listener to detect when the iframe loads
-            const iframe = container.querySelector('iframe');
-            if (iframe) {
-                iframe.addEventListener('load', () => {
-                    isIframeLoaded = true;
-                });
-            }
+        // Add listener to detect when the iframe loads
+        const iframe = container.querySelector('iframe');
+        if (iframe) {
+            iframe.addEventListener('load', () => {
+                isIframeLoaded = true;
+            });
         }
-    });
+    }
 </script>
 
 <div class="calendly-wrapper">
