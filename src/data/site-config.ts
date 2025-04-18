@@ -132,6 +132,55 @@ const siteConfig: SiteConfig = {
         },
         {
             "tid": 10,
+            "quote": "Ich habe mich bei Janine von Anfang an verstanden, sicher und gut aufgehoben gefühlt. Während der Hypnosesitzung hatte ich den Eindruck, dass sie genau spürt, was ich gerade brauche, als würde sie zwischen den Zeilen lesen können. Ihre einfühlsame Art und die ruhige Atmosphäre haben es mir leicht gemacht, loszulassen und mich auf den Prozess einzulassen. Eine wirklich wertvolle Erfahrung, für die ich sehr dankbar bin.",
+            "author": "Claes Lennman",
+            "url": "https://g.co/kgs/ddjY2rf"
+        },
+        {
+            "tid": 11,
+            "quote": "Habe mich sehr wohl gefühlt! Herzlichen Dank für deine einfühlsame, ruhige und unterstützende Art und Weise, mit der du mich mittels Hypnose wieder ein Stück näher zu mir selbst gebracht hast!",
+            "author": "Christine Eva Roelli",
+            "url": "https://g.co/kgs/BTQth3X"
+        },
+        {
+            "tid": 12,
+            "quote": "War sehr eindrücklich und war sehr gut",
+            "author": "Walter Stoll",
+            "url": "https://g.co/kgs/fukhcDw"
+        },
+        {
+            "tid": 13,
+            "quote": "Vielen Dank Janine für Deine professionelle Arbeit und für die Art, wie Du unsere Sitzung gestaltet hast!",
+            "author": "Hannes Mueller",
+            "url": "https://g.co/kgs/5vKcJRE"
+        },
+        {
+            "tid": 14,
+            "quote": "Ich war zum 1. Mal bei Janine und bereits von Beginn an, habe ichmich sehr wohl gefühlt. Janine hört super zu und gibt einem das Gefühl verstanden zu werden was sehr schön ist. Die ganze Sitzung war sehr spannend, angenehm und hilfreich. Mein Gefühl gegenüber meinem Problem, weshalb ich dort war, ist ganz anders und ich weiss nun wie ich es besser angehen kann.",
+            "author": "Jasmin Stöckli",
+            "url": "https://g.co/kgs/XwM3bgY"
+        },
+        {
+            "tid": 15,
+            "quote": "Es war meine erste Hypnose und ich bin sehr dankbar habe ich dies bei Janine gemacht. Ich habe mich direkt durch ihre offenherzliche, authentische und kompetente Art wohlgefühlt. Die Hypnose unterstützt mich sehr mit meinen Angelegenheiten. Ich kann Janine Aerni nur weiterempfehlen.☺️🙏🏼",
+            "author": "Nina Cotting",
+            "url": "https://g.co/kgs/z1vSrXV"
+        },
+        {
+            "tid": 16,
+            "quote": "Habe mich bei Janine Aerni sehr wohl gefühlt. Mit ihrer empathischen, authentischen Art und ihrem proffessionellen Vorgehen kann Heilung unterstützt und gefördert werden. Ich kann Janine jederzeit weiterempfehlen.",
+            "author": "Poly Acrylli",
+            "url": "https://g.co/kgs/oAtRgkm"
+        },
+        {
+            "tid": 17,
+            "quote": "Ich war mit meinem Kind bei Janine, weil es panische Angst vor der regelmässigen Blutentnahme hatte. Diese war nur unter Lachgas möglich. Janine hat es gemeinsam mit meinem Kind geschafft, dass wir heute eine angstgeminderte, ruhige Blutentnahme ohne Lachgas hatten. Ich bin ihr unendlich dankbar für ihre tolle und einfühlsame Arbeit.",
+            "author": "Michelle Fankhauser",
+            "url": "https://g.co/kgs/F9THu2T"
+        },
+
+        {
+            "tid": 100000,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
             "author": "Name or initials",
             "url": "https://google.link"
