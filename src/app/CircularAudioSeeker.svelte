@@ -94,11 +94,12 @@
             role="button"
             tabindex="0"
             aria-label="Drag to seek audio"
+            transform="translate(0, 3)"
             on:mousedown={handleDown}
             on:touchstart={handleDown}
         >
             <circle class="touch-area" r="16" cx="50" cy="2" fill="transparent" />
-            <circle class="draggable" r="6" cx="50" cy="2" fill="#dc2626" stroke="#FEE7E3" stroke-width="1" />
+            <circle class="draggable" r="8" cx="50" cy="2" fill="#dc2626" stroke="#FEE7E3" stroke-width="1" />
         </g>
     </svg>
 </figure>

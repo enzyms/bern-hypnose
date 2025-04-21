@@ -1,6 +1,8 @@
 import { writable } from 'svelte/store';
 import imgRelaxation from '@assets/app/introspection.png';
 import imgPositiveAffirmations from '@assets/app/child.png';
+import imgRichtigWieIchBin from '@assets/app/thinking.png';
+import imgInnererOrt from '@assets/app/landscape5.png';
 
 // Create writable stores for the selected profile and topic
 export const pageTitle = writable(null);
@@ -9,7 +11,9 @@ export const showContent = writable(false);
 export const selectedProfile = writable({ id: 'adult', name: 'Erwachsene', description: 'Short description here' }); // set to null when we have children profile
 export const selectedTopic = writable(null);
 export const topicsAdult = [
+    { id: 'innerer-ort', name: 'Innerer Wohlfühlort', duration: 15, image: imgInnererOrt },
     { id: 'relaxation', name: 'Entspannung', duration: 12, image: imgRelaxation },
+    { id: 'ich-bin-richtig', name: 'Ich bin richtig wie ich bin', duration: 8, image: imgRichtigWieIchBin },
     { id: 'positive-affirmations', name: 'Positive Affirmationen', duration: 7, image: imgPositiveAffirmations }
 ];
 export const selectedDuration = writable(null);

@@ -45,7 +45,7 @@
 
 {#if $showIntroCover}
     <div class="fixed inset-0 pb-12 flex flex-col justify-center items-center z-50 pt-[env(safe-area-inset-top)]" transition:fade={{ duration: 300 }}>
-        <h1 class="text-4xl text-center font-black text-red-600 pt-24 md:pt-32 lg:pt-40">Geführte Kurzhypnose</h1>
+        <h1 class="text-4xl text-center font-black text-red-600 pt-20 md:pt-24">Geführte Kurzhypnose</h1>
         <p class="pt-8">Stimme: Janine Aerni</p>
         <p>Musik: Nathan Czuczor</p>
     </div>
