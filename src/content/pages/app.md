@@ -11,6 +11,27 @@ backlink:
   url: /
 ---
 
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Geführte Kurzhypnose App",
+        "url": "https://bern-hypnose.ch/app/",
+        "description": "Nimm dir einen ruhigen Moment Zeit, mach es dir bequem und lass dich von meiner App in einen Zustand tiefer Entspannung führen.",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "CHF"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Janine Aerni"
+        },
+    }
+</script>
+
 Nimm dir einen Moment Zeit, mach es dir bequem und entspanne dich in einer geführten Hypnose.
 
 <a
