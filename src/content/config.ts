@@ -45,6 +45,7 @@ const blog = defineCollection({
 const pages = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
+    seoTitle: z.string().optional(),
     description: z.string().optional(),
     backlink: backlinkSchema.optional(),
     image: z.object({

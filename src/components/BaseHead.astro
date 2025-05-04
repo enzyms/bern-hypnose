@@ -7,6 +7,7 @@ import SchemaHypnotherapy from '../schemas/SchemaHypnotherapy.astro';
 
 export type Props = {
     title?: string;
+    seoTitle?: string;
     description?: string;
     image?: { src: string; alt?: string };
     pageType?: 'website' | 'article';
@@ -16,7 +17,11 @@ export type Props = {
 };
 
 const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props;
-const title = Astro.props.title && Astro.props.title.length > 30 ? Astro.props.title : [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ');
+const title = Astro.props.seoTitle
+    ? Astro.props.seoTitle
+    : Astro.props.title && Astro.props.title.length > 30
+      ? Astro.props.title
+      : [Astro.props.title, siteConfig.titleSuffix].filter(Boolean).join(' | ');
 const resolvedImage = image?.src
     ? {
           src: new URL(image.src, Astro.site).toString(),

@@ -17,11 +17,11 @@ export async function getStaticPaths() {
 type Props = { page: CollectionEntry<'pages'> };
 
 const { page } = Astro.props;
-const { title, image, description, backlink, canonical } = page.data;
+const { title, seoTitle, image, description, backlink, canonical } = page.data;
 const { Content } = await page.render();
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical}>
+<BaseLayout title={title} seoTitle={seoTitle} description={description} canonical={canonical}>
     <article class="mb-16">
         <header class="mb-8 relative">
             {

@@ -15,7 +15,7 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
 const lastPosts = posts.slice(0, 2);
 ---
 
-<BaseLayout description={siteConfig.description} image={siteConfig.imageHomepage} schema="home">
+<BaseLayout seoTitle={siteConfig.title} description={siteConfig.description} image={siteConfig.imageHomepage} schema="home">
     <Hero />
     <div class="prose sm:prose-lg text-main">
         <h2>Was ist Hypnose, für wen?</h2>
