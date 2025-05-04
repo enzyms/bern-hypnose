@@ -178,7 +178,11 @@ const siteConfig: SiteConfig = {
             "author": "Michelle Fankhauser",
             "url": "https://g.co/kgs/F9THu2T"
         },
-
+        {
+            "tid": 18,
+            "quote": "Die Hypnosesitzungen mit Janine sind super! Sie aktivieren und bewegen auf beste Art und Weise. Janine führt die Sitzungen äusserst professionell, mit vollster Aufmerksamkeit, mit viel Lebenserfahrung und ebensolchem Feingefühl. Man fühlt sich rundum gut aufgehoben. Top! Herzlichen Dank für diese tiefgreifende und wertvolle Erfahrung.",
+            "author": "D.S.",
+        },
         {
             "tid": 100000,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
