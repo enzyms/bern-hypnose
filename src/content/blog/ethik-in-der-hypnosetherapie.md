@@ -5,6 +5,8 @@ excerpt: >-
 
   Wir Hypnosetherapeut:innen haben allerdings einen Ethikkodex, der dafür sorgt, dass wir achtsam und sauber arbeiten.
 publishDate: 2025-05-05T15:04:00.000Z
+tags:
+  - Hypnose
 image:
   src: src/assets/uploads/firecamp2.png
 ---
