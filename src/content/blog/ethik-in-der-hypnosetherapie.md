@@ -4,7 +4,7 @@ excerpt: >-
   Hypnose ist noch nicht ganz frei von Vorurteilen oder falschen Vorstellungen.
 
   Wir Hypnosetherapeut:innen haben allerdings einen Ethikkodex, der dafür sorgt, dass wir achtsam und sauber arbeiten.
-publishDate: 2025-05-05T15:04:00.000Z
+publishDate: 2025-05-05T15:17:00.000Z
 tags:
   - Hypnose
 image:
