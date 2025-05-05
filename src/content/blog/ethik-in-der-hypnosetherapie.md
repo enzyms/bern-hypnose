@@ -2,6 +2,7 @@
 title: Ethik in der Hypnosetherapie
 excerpt: Hypnose ist noch nicht ganz frei von Vorurteilen oder falschen Vorstellungen. Wir Hypnosetherapeut:innen haben allerdings einen Ethikkodex, der dafür sorgt, dass wir achtsam und sauber arbeiten.
 publishDate: 2025-05-05T15:17:00.000Z
+canonical: https://www.bern-hypnose.ch/blog/ethik-in-der-hypnosetherapie/
 tags:
   - Hypnose
 image:
@@ -48,6 +49,8 @@ Einige Beispiele aus dem Ethikkodex sind:
 \-Du musst nicht alle schlimmen Erlebnisse der Vergangenheit nochmal "durchleiden". Die Hypnosetherapie ist lösungsorientiert. Es geht vor allem darum, wie du dich in Zukunft immer öfter fühlen möchtest. Wie du neue Glaubenssätze entstehen lassen und verinnerlichen kannst. Wenn du in die Vergangenheit gehen möchtest, können wir das gemeinsam machen. Du darfst jederzeit sagen, wenn es zu viel wird. Wir gehen dann zurück ins Hier und Jetzt. Du bleibst auch nicht in einer Situation "stecken".
 
 Dies sind einige Beispiele. Der Ethikkodex ist ein Ordner voller Anweisungen um sicherzustellen, dass du eben nicht manipuliert wirst oder ich dir schaden könnte.
+
+<a href="/diplomierte-hypnosetherapeutin/" class="text-red-700 underline">Erfahre mehr über meine ethischen Grundsätze und wie sie deine Therapie unterstützen können</a>
 
 ## Hast du unbeantwortete Fragen oder Zweifel? Melde dich.
 
