@@ -8,7 +8,7 @@ publishDate: 2025-05-05T15:17:00.000Z
 tags:
   - Hypnose
 image:
-  src: src/assets/uploads/firecamp2.png
+  src: ""
 ---
 ## Showhypnose: gackernde Hypnotisierte und totaler Kontrollverlust
 
