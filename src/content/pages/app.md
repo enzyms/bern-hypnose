@@ -29,6 +29,7 @@ backlink:
             "@type": "Person",
             "name": "Janine Aerni"
         },
+        "inLanguage": "de"
     }
 </script>
 
