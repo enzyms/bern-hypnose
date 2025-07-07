@@ -35,6 +35,9 @@ if (exclude.length > 0) {
     subPagesTopics = subPagesTopics.filter((subPage: { href: string }) => !exclude.includes(subPage.href));
 }
 
+// always exclude /abhaengigkeit/:
+subPagesTopics = subPagesTopics.filter((subPage: { href: string }) => subPage.href !== '/hypnosetherapie/abhaengigkeit/');
+
 const gridColumnsClass = columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3';
 const gridClasses = `grid ${gridColumnsClass} gap-4 not-prose`;
 

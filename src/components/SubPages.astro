@@ -51,7 +51,7 @@ const imgSizes = columns === 2 ? imgSizes2cols : imgSizes3cols;
 
 {
     subPages.length > 0 && (
-        <nav class="py-4 md:py-6">
+        <nav class="py-4 md:py-6" aria-label="Unterseiten">
             <ul class={gridClasses}>
                 {subPages.map((subPage: { href: any; image: any; text: any }) => (
                     <li>

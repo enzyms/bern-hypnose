@@ -275,13 +275,6 @@ const siteConfig: SiteConfig = {
                     image: glowingBlocksImage,
                 },
                 {
-                    text: 'Ernährung und Abnehmen',
-                    longText: 'Hypnose für eine gesunde Ernährung',
-                    href: '/hypnosetherapie/ernaehrung-und-abnehmen/',
-                    diamondPosition: 2,
-                    image: foodImage,
-                },
-                {
                     text: 'Stress, Burnout und Depression',
                     longText: 'Hypnose gegen Stress, Burnout und Depression',
                     href: '/hypnosetherapie/stress-burnout-und-depression/',
@@ -294,6 +287,20 @@ const siteConfig: SiteConfig = {
                     href: '/hypnosetherapie/aengste-und-phobien/',
                     diamondPosition: 2,
                     image: fearsImage,
+                },
+                {
+                    text: 'Rauchstopp mit Hypnose',
+                            longText: 'Rauchen durch Hypnose aufgeben',
+                            href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/',
+                            image: cigaretteImage,
+                    diamondPosition: 2,
+                },
+                {
+                    text: 'Hypnose gegen Alkoholsucht',
+                            longText: 'Alkoholsucht mit Hypnose behandeln',
+                            href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/',
+                            image: glassImage,
+                    diamondPosition: 2,
                 },
                 {
                     text: 'Abhängigkeiten',
@@ -316,6 +323,13 @@ const siteConfig: SiteConfig = {
                             image: glassImage,
                         },
                     ],
+                },
+                {
+                    text: 'Ernährung und Abnehmen',
+                    longText: 'Hypnose für eine gesunde Ernährung',
+                    href: '/hypnosetherapie/ernaehrung-und-abnehmen/',
+                    diamondPosition: 2,
+                    image: foodImage,
                 },
                 {
                     text: 'Schlafstörungen',

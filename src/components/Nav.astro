@@ -4,12 +4,13 @@ import siteConfig from '../data/site-config';
 
 const navLinks = siteConfig.headerNavLinks || [];
 const hidePickaboo = Astro.props.hidePickaboo;
+
 ---
 
-<nav class="p-4 md:p-6 relative z-20 w-1/2 sm:w-full">
+<nav aria-label="Hauptnavigation" class="p-4 md:p-6 relative z-20 min-h-[5rem] w-1/2 w-full">
     {
         navLinks.length > 0 && (
-            <div>
+            <div class="fixed md:relative">
                 <button
                     class="
                         menu-toggle w-12 h-12 -ml-1 flex items-center justify-center relative z-30 md:hidden
@@ -22,22 +23,36 @@ const hidePickaboo = Astro.props.hidePickaboo;
                     <span class="menu-toggle__menu">Menü</span>
                     <span class="menu-toggle__close">Schliessen</span>
                 </button>
-                <ul id="menu-items" class="menu flex gap-6 md:pl-1" transition:persist>
-                    {navLinks.map((link) => (
-                        <li class="py-0 relative" key={link.href}>
-                            <NavLink
-                                data-diamond-position={link.diamondPosition}
-                                class="block whitespace-nowrap py-1 md:py-2 text-3xl font-bold text-red-600 hover:text-red-700 md:font-normal md:text-gray-900 md:text-base transition-colors"
-                                href={link.href}
-                            >
-                                {link.text}
-                            </NavLink>
+                <ul id="menu-items" role="menubar" class="menu flex gap-6 md:pl-1" transition:persist>
+                    {navLinks.map((link, id) => (
+                        <li role="none" class="px-4 md:px-0 md:py-0 relative" key={link.href}>
+                            {link.subPages && link.subPages.length > 0 ? (
+                                <button
+                                    type="button"
+                                    role="menuitem"
+                                    class="block whitespace-nowrap py-1 md:py-2 text-3xl font-bold text-red-600 hover:text-red-700 md:font-normal md:text-gray-900 md:text-base transition-colors"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    {link.text}
+                                </button>
+                            ) : (
+                                <NavLink
+                                    role="menuitem"
+                                    data-diamond-position={link.diamondPosition}
+                                    class="block whitespace-nowrap py-1 md:py-2 text-3xl font-bold text-red-600 hover:text-red-700 md:font-normal md:text-gray-900 md:text-base transition-colors"
+                                    href={link.href}
+                                >
+                                    {link.text}
+                                </NavLink>
+                            )}
                             {link.subPages && link.subPages.length > 0 && (
                                 <div class="sub-menu ">
+                                    {id === 1 ? <div class="hidden md:block py-2 md:px-4 font-bold text-sm text-gray-500">Bereiche</div> : null}
                                     <ul>
                                         {link.subPages.map((subPage) => (
                                             <li key={subPage.href}>
-                                                <NavLink class="block py-2 px-4" href={subPage.href}>
+                                                <NavLink class="block py-2 md:px-4 hover:text-red-700" href={subPage.href}>
                                                     {subPage.text}
                                                 </NavLink>
                                             </li>
@@ -45,17 +60,18 @@ const hidePickaboo = Astro.props.hidePickaboo;
                                     </ul>
                                     {link.subPagesTopics && link.subPagesTopics.length > 0 && (
                                         <hr class="my-4 border-t border-t-red-500 opacity-30" />
-                                        <div class="py-2 px-4 font-bold text-sm text-gray-500">Themen</div>
+                                        <div class="hidden md:block py-2 md:px-4 font-bold text-sm text-gray-500">Themen</div>
                                         <ul>
                                             {link.subPagesTopics.map((subPage) => (
                                                 <li key={subPage.href}>
-                                                    <NavLink class="block py-2 px-4" href={subPage.href}>
+                                                    <NavLink class="block py-2 md:px-4 hover:text-red-700" href={subPage.href}>
                                                         {subPage.text}
                                                     </NavLink>
                                                 </li>
                                             ))}
                                         </ul>
                                     )}
+                                    <hr class="md:hidden my-4 border-t border-t-red-500 opacity-30" />
                                 </div>
                             )}
                         </li>
@@ -143,26 +159,39 @@ const hidePickaboo = Astro.props.hidePickaboo;
         }
     }
 
-    .menu li:has(.sub-menu) > a::after {
+    .menu li:has(.sub-menu) > button::after {
         content: '▼';
         font-size: 0.75em;
-        @apply hidden md:inline text-red-500 hover:text-red-600 transition-colors ease-in-out duration-500;
+        @apply inline-block ml-1 text-red-500 hover:text-red-600 transition-transform ease-in-out duration-300;
     }
 
-    /* Styling for sub-menu on desktop */
+    /* rotate arrow when open */
+    .menu li.is-open > button::after {
+        transform: rotate(180deg);
+    }
+
+    /* Base (mobile) sub-menu hidden by default, shown when li has .is-open */
     .sub-menu {
-        @apply absolute md:block bg-[#eeddda]  py-4 shadow-lg rounded-xl w-[200%];
-        @apply opacity-0 invisible delay-200 transition-all duration-300 ease-in-out transform-gpu scale-y-95 origin-top;
+        @apply hidden flex-col gap-1 pl-4 mt-2;
     }
 
-    .sub-menu a {
-        @apply block font-normal text-inherit text-main hover:text-red-500 transition-colors;
+    .sub-menu.is-open {
+        @apply block;
     }
 
-    li:hover > .sub-menu,
-    li:focus > .sub-menu,
-    li:focus-within > .sub-menu {
-        @apply md:opacity-100 md:visible md:scale-100;
+    /* Desktop (≥768px) keeps previous dropdown styles */
+    @media (min-width: 768px) {
+        .sub-menu {
+            @apply absolute bg-[#eeddda] py-4 shadow-lg rounded-xl w-[200%] opacity-0 invisible delay-200 transition-all duration-300 ease-in-out transform-gpu scale-y-95 origin-top;
+        }
+        li:focus-within > .sub-menu {
+            @apply opacity-100 visible scale-100;
+        }
+    }
+
+    /* Disable animation helper */
+    .menu.no-anim {
+        transition: none !important;
     }
 </style>
 
@@ -206,24 +235,60 @@ const hidePickaboo = Astro.props.hidePickaboo;
 
     function menuToggle() {
         const menu = document.querySelector('.menu');
-        const menuToggleBtn = document.querySelector('.menu-toggle');
-        menuToggleBtn?.addEventListener('click', () => {
-            const isMenuExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
-            menuToggleBtn.classList.toggle('is-active');
-            menuToggleBtn.setAttribute('aria-expanded', isMenuExpanded ? 'false' : 'true');
-            menuToggleBtn.setAttribute('aria-label', isMenuExpanded ? 'Open Menu' : 'Close Menu');
-            menu?.classList.toggle('is-visible');
-        });
+        if (!menu) return;
 
-        // Add event listeners to NavLink elements to close the menu on click
-        document.querySelectorAll('.menu a').forEach((link) => {
-            link.addEventListener('click', () => {
-                menu?.classList.remove('is-visible');
-                menuToggleBtn?.classList.remove('is-active');
-                menuToggleBtn?.setAttribute('aria-expanded', 'false');
-                menuToggleBtn?.setAttribute('aria-label', 'Open Menu');
-            });
-        });
+        // Delegated click handler ensures new links/buttons after navigation still work
+        if (!window.__navDelegate) {
+            document.addEventListener('click', (e) => {
+                const navMenu = document.querySelector('.menu');
+                const burger = e.target.closest('.menu-toggle');
+                if (burger) {
+                    const btn = burger; // current clicked
+                    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.classList.toggle('is-active');
+                    btn.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+                    btn.setAttribute('aria-label', isExpanded ? 'Open Menu' : 'Close Menu');
+                    navMenu?.classList.toggle('is-visible');
+                    return;
+                }
+
+                // Sub-menu toggle buttons
+                const subBtn = e.target.closest('.menu > li > button');
+                if (subBtn) {
+                    const li = subBtn.parentElement;
+                    const sub = li?.querySelector('.sub-menu');
+                    const isOpen = li?.classList.toggle('is-open');
+                    subBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                    sub?.classList.toggle('is-open');
+                    return;
+                }
+
+                // Link clicks inside menu
+                const link = e.target.closest('.menu a');
+                if (link) {
+                    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+                    if (isMobile) navMenu?.classList.add('no-anim');
+
+                    // close any open sub-menus
+                    navMenu?.querySelectorAll('li.is-open').forEach((li) => {
+                        li.classList.remove('is-open');
+                        li.querySelector('.sub-menu')?.classList.remove('is-open');
+                        li.querySelector('button')?.setAttribute('aria-expanded', 'false');
+                    });
+
+                    navMenu?.classList.remove('is-visible');
+                    const toggleBtn = document.querySelector('.menu-toggle');
+                    toggleBtn?.classList.remove('is-active');
+                    toggleBtn?.setAttribute('aria-expanded', 'false');
+                    toggleBtn?.setAttribute('aria-label', 'Open Menu');
+
+                    if (isMobile) {
+                        setTimeout(() => navMenu?.classList.remove('no-anim'), 50);
+                    }
+                }
+            }, { passive: true });
+            window.__navDelegate = true;
+        }
     }
     menuToggle();
     document.addEventListener('astro:after-swap', menuToggle, { passive: true });
