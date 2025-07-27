@@ -13,6 +13,8 @@ backlink:
 
 import VoucherImage from '@assets/images/voucher.png';
 import { YouTube } from 'astro-embed';
+import SubPages from '../../components/SubPagesTopics.astro';
+
 
 ## Preise für Hypnosetherapie in Bern
 
@@ -44,6 +46,7 @@ Den Gutschein kannst du ganz einfach über das <a href="/gutschein/" class="text
 
 <hr class="border-gray-400" />
 
+
 <section class="prose sm:prose-lg mt-12">
     <h3>Einblick in meine Praxis</h3>
     <script type="application/ld+json">
@@ -62,6 +65,11 @@ Den Gutschein kannst du ganz einfach über das <a href="/gutschein/" class="text
     </script> 
     <YouTube id="l6ELoEgEtJQ" />
 </section>
+
+<hr class="border-gray-400" />
+
+## Themen für Hypnosetherapie
+<SubPages id="hypnotherapy"  columns={3} />
 
 <hr class="border-gray-400" />
 
