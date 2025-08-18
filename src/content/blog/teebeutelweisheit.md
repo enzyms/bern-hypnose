@@ -2,7 +2,7 @@
 title: Teebeutelweisheit
 excerpt: Man kann über Kalender- und Teesprüche spotten, aber manchmal liegt
   doch eine tiefe Weisheit in den Worten.
-publishDate: 2025-08-18T13:49:00.000+02:00
+publishDate: 2025-08-18T13:53:00.000+02:00
 tags:
   - Selbstreflexion
 image:
