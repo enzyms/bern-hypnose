@@ -2,7 +2,10 @@ import { writable } from 'svelte/store';
 import imgRelaxation from '@assets/app/introspection.png';
 import imgPositiveAffirmations from '@assets/app/child.png';
 import imgRichtigWieIchBin from '@assets/app/thinking.png';
-import imgInnererOrt from '@assets/app/landscape5.png';
+import imgInnererOrt from '@assets/app/flowers-field.png';
+import imgGemuetlicherHerbsttag from '@assets/app/trail-two-persons.png';
+import imgWanderungInDenBergen from '@assets/app/landscape5.png';
+import imgAmFluss from '@assets/app/forest.png';
 
 // Create writable stores for the selected profile and topic
 export const pageTitle = writable(null);
@@ -11,6 +14,9 @@ export const showContent = writable(false);
 export const selectedProfile = writable({ id: 'adult', name: 'Erwachsene', description: 'Short description here' }); // set to null when we have children profile
 export const selectedTopic = writable(null);
 export const topicsAdult = [
+    { id: 'gemuetlicher-herbsttag', name: 'Gemütlicher Herbsttag', duration: 7, image: imgGemuetlicherHerbsttag },
+    { id: 'wanderung-in-den-bergen', name: 'Wanderung in den Bergen', duration: 7, image: imgWanderungInDenBergen },
+    { id: 'am-fluss', name: 'Am Fluss', duration: 7, image: imgAmFluss },
     { id: 'innerer-ort', name: 'Innerer Wohlfühlort', duration: 15, image: imgInnererOrt },
     { id: 'relaxation', name: 'Entspannung', duration: 12, image: imgRelaxation },
     { id: 'ich-bin-richtig', name: 'Ich bin richtig wie ich bin', duration: 8, image: imgRichtigWieIchBin },
@@ -21,6 +27,8 @@ export const ambientSounds = writable([
     { id: 'etherium', name: 'Entspannungsmusik' },
     { id: 'forest', name: 'Vogelstimmen' },
     { id: 'sea', name: 'Meeresgeräusche' },
+    { id: 'rain', name: 'Regen im Wald' },
+    { id: 'fire', name: 'Feuerstellen' },
     { id: 'none', name: 'Ohne Geräusche' }
 ]);
 export const selectedAmbientSound = writable(null);
