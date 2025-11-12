@@ -191,6 +191,12 @@ const siteConfig: SiteConfig = {
             "url": "https://maps.app.goo.gl/ragLMPJzG8MMC7Lv9"
         },
         {
+            "tid": 20,
+            "quote": "Dank Janine durfte ich eine berührende, tiefe und aufschlussreise Reise in mich selbst erleben, die mich geprägt hat. Janine schafft eine vertrauensvolle Atmosphäre und hilft dabei in sich selbst hineinzublicken um die nötige Urkraft zu finden. Danke, dass du es ermöglicht hast.",
+            "author": "Joanna Wieruszewska",
+            "url": "https://maps.app.goo.gl/odUztZYBiiHmJUuL8"
+        },
+        {
             "tid": 100000,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
             "author": "Name or initials",
