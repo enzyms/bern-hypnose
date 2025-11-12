@@ -185,6 +185,12 @@ const siteConfig: SiteConfig = {
             "author": "D.S.D.",
         },
         {
+            "tid": 19,
+            "quote": "Die Therapie bei Janine Aerni hat unserer Tochter sehr gut getan. Durch eine individuell angepasste Traumreise hat sie heute Möglichkeiten, die ihr Sicherheit und Selbstvertrauen geben. Janine Aerni hat eine sehr warme und einfühlsame Art und hat sich sehr viel Zeit genommen. Viele der Hilfen wendet unsere Tochter von sich aus im Alltag an. Die Wirkung ist nachhaltig. Ich kann die Therapie empfehlen.",
+            "author": "Lea Tschirren",
+            "url": "https://maps.app.goo.gl/ragLMPJzG8MMC7Lv9"
+        },
+        {
             "tid": 100000,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
             "author": "Name or initials",
