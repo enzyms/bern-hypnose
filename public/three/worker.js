@@ -31,7 +31,6 @@ addEventListener('message', function (event) {
             isRendering = false;
             break;
         case 'animate':
-            console.log('animate to: ', event.data.diamondPosition);
             animateDiamondsTo(event.data.diamondPosition);
 
             break;
@@ -202,7 +201,6 @@ function animateDiamondsTo(diamondPosition) {
         const targetPosition = diamondsData[index].positions[diamondPosition];
 
         if (targetPosition) {
-            console.log('Animating diamond:', index, 'to position:', targetPosition);
             gsap.to(diamond.position, {
                 x: targetPosition[0],
                 y: targetPosition[1],
