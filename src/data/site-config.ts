@@ -197,6 +197,12 @@ const siteConfig: SiteConfig = {
             "url": "https://maps.app.goo.gl/odUztZYBiiHmJUuL8"
         },
         {
+            "tid": 21,
+            "quote": "Sehr beeindruckend und absolut empfehlenswert! Janine hat sich viel Zeit genommen, die Hypnose individuell auf mich abzustimmen, und ich habe mich von Anfang an wohlgefühlt.",
+            "author": "Nicole Engler",
+            "url": "https://maps.app.goo.gl/7WBcEaDnA5W16v5p8"
+        },
+        {
             "tid": 100000,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
             "author": "Name or initials",
