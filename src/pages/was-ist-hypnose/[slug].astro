@@ -1,0 +1,119 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArrowLeft from '../../icons/ArrowLeft.astro';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+    const faqs = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+    const faqCount = faqs.length;
+
+    return faqs.map((faq, index) => ({
+        params: { slug: faq.slug },
+        props: {
+            faq,
+            prevFaq: index > 0 ? faqs[index - 1] : null,
+            nextFaq: index < faqCount - 1 ? faqs[index + 1] : null
+        }
+    }));
+}
+
+type Props = {
+    faq: CollectionEntry<'faq'>;
+    prevFaq: CollectionEntry<'faq'> | null;
+    nextFaq: CollectionEntry<'faq'> | null;
+};
+
+const { faq, prevFaq, nextFaq } = Astro.props;
+const { title, description, teaser, image } = faq.data;
+const { Content } = await faq.render();
+
+// Simple function to convert Markdown to plain text for schema
+function markdownToPlainText(markdown: string) {
+    if (!markdown) return '';
+    return markdown
+        .replace(/!\[.*?\]\(.*?\)/g, '')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/[#_*`~>+\-=|{}.!]/g, '')
+        .replace(/[\r\n]+/g, ' ')
+        .trim();
+}
+
+const plainTextAnswer = description || teaser || markdownToPlainText(faq.body).substring(0, 200);
+
+// Build the FAQ schema data for individual FAQ page
+const faqSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    name: title,
+    mainEntity: [
+        {
+            '@type': 'Question',
+            name: title,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: plainTextAnswer
+            }
+        }
+    ]
+};
+---
+
+<BaseLayout title={title} description={description || teaser}>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
+    <article class="mb-16">
+        <header class="mb-8 relative">
+            <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/was-ist-hypnose/">
+                <ArrowLeft class="w-4 h-4 fill-current" />
+                <span>Zurück zu allen Fragen</span>
+            </a>
+            <h1 class="text-balance text-3xl leading-tight font-black sm:text-5xl sm:leading-tight mb-6">{title}</h1>
+            {
+                image && image.src && (
+                    <div class="my-8 rounded-xl overflow-hidden shadow-lg">
+                        <Image
+                            width={704}
+                            src={image.src}
+                            class="w-full object-cover object-center"
+                            alt={image.alt ?? title}
+                            widths={[360, 520, 704]}
+                            sizes="(max-width: 768px) calc(100vw - 40px), 704px"
+                        />
+                    </div>
+                )
+            }
+        </header>
+        <div class="max-w-none prose prose-dante sm:prose-lg">
+            <Content />
+        </div>
+
+        {/* Navigation to next/previous FAQ */}
+        {
+            (prevFaq || nextFaq) && (
+                <nav class="mt-12 pt-8 border-t border-gray-400">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Weitere Fragen</h2>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        {prevFaq && (
+                            <a
+                                href={`/was-ist-hypnose/${prevFaq.slug}/`}
+                                class="block p-4 rounded-lg border border-gray-400 hover:border-red-500 hover:shadow-lg transition-all no-underline"
+                            >
+                                <div class="text-sm text-gray-900 mb-1">← Vorherige Frage</div>
+                                <div class="font-semibold text-red-700">{prevFaq.data.title}</div>
+                            </a>
+                        )}
+                        {nextFaq && (
+                            <a
+                                href={`/was-ist-hypnose/${nextFaq.slug}/`}
+                                class="block p-4 rounded-lg border border-gray-400 hover:border-red-500 hover:shadow-lg transition-all no-underline sm:text-right"
+                            >
+                                <div class="text-sm text-gray-900 mb-1">Nächste Frage →</div>
+                                <div class="font-semibold text-red-700">{nextFaq.data.title}</div>
+                            </a>
+                        )}
+                    </div>
+                </nav>
+            )
+        }
+    </article>
+</BaseLayout>

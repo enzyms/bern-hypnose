@@ -16,9 +16,12 @@ const faq = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string().optional(),
-    publishDate: z.coerce.date(),
+    publishDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
     promoted: z.boolean().default(false),
+    order: z.number(),
+    teaser: z.string().optional(),
+    linkText: z.string().optional(),
     image: z.object({
       src: image().optional(),
       alt: z.string().optional(),
@@ -58,4 +61,4 @@ const pages = defineCollection({
 });
 
 
-export const collections = { blog, pages };
+export const collections = { blog, pages, faq };

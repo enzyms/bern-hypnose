@@ -83,12 +83,19 @@ const faqSchemaData = {
             {
                 renderedFaqs.map((faq) => {
                     return (
-                        <div class="grow mb-4" key={faq.id} data-order={faq.data.order}>
-                            <h2 class="text-2xl leading-tight font-black sm:text-3xl">{faq.data.title}</h2>
-                            <div class="mb-1">
-                                <faq.Content /> {/* Render HTML content */}
+                        <a
+                            href={`/was-ist-hypnose/${faq.slug}/`}
+                            class="not-prose group block relative w-full rounded-xl relative z-10 hover:shadow-lg block grow mb-1 rounded-xl border border-gray-200 hover:border-red-300 hover:shadow-lg transition-all duration-200 no-underline"
+                            data-order={faq.data.order}
+                            aria-label={faq.data.linkText || `${faq.data.title} - Vollständige Antwort lesen`}
+                        >
+                            <div class="absolute z-0 top-0 right-0 bottom-0 left-0 rounded-xl transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-25 group-hover:scale-[1.4] bg-yellow-300 blur-3xl pointer-events-none" />
+                            <div class="py-12 px-6 rounded-xl relative z-10 hover:bg-[rgb(var(--color-bg-main)/0.5)]">
+                                <h2 class="text-xl mt-0 leading-tight font-black sm:text-3xl text-gray-900 mb-3">{faq.data.title}</h2>
+                                <p class="mb-0">{faq.data.teaser || faq.plainText.substring(0, 200) + '...'}</p>
+                                <span class="text-red-700 font-semibold mt-2 inline-block">{faq.data.linkText || 'Vollständige Antwort lesen'} →</span>
                             </div>
-                        </div>
+                        </a>
                     );
                 })
             }
