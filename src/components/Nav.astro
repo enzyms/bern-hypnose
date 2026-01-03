@@ -98,7 +98,8 @@ const hidePickaboo = Astro.props.hidePickaboo;
         @apply translate-y-0 opacity-100;
     }
 
-    .main-navigation:has(#pickaboo.is-visible) {
+    .main-navigation:has(#pickaboo.is-visible),
+    .main-navigation:has(.sub-menu.is-open) {
         @apply z-20;
     }
     
