@@ -7,7 +7,7 @@ const hidePickaboo = Astro.props.hidePickaboo;
 
 ---
 
-<nav aria-label="Hauptnavigation" class="p-4 md:p-6 relative z-20 min-h-[5rem] w-1/2 w-full">
+<nav aria-label="Hauptnavigation" class="main-navigation p-4 md:p-6 relative min-h-[5rem] w-1/2 w-full">
     {
         navLinks.length > 0 && (
             <div class="">
@@ -96,6 +96,10 @@ const hidePickaboo = Astro.props.hidePickaboo;
     }
     .display-after-scroll.is-visible {
         @apply translate-y-0 opacity-100;
+    }
+
+    .main-navigation:has(#pickaboo.is-visible) {
+        @apply z-20;
     }
     
     @media (max-width: 767px) {
