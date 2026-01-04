@@ -4,12 +4,21 @@ import LinkedIn from '../icons/LinkedIn.astro';
 import Instagram from '../icons/Instagram.astro';
 import Youtube from '../icons/Youtube.astro';
 import VSH from '../icons/VSH.astro';
+import SBVH from '../icons/SBVH.astro';
 ---
 
-<footer class="flex flex-wrap flex-col sm:flex-row items-center justify-between gap-4 pt-16 pb-5">
+<footer class="flex flex-wrap flex-col md:flex-row items-center justify-between gap-4 pt-16 pb-5 border-t border-gray-400 md:border-none">
     <a href="/diplomierte-hypnosetherapeutin/" class="text-gray-800 hover:text-red-500">
         <VSH class="h-10 sm:h-12 md:h-14" color="currentColor" />
         <span class="sr-only">Diplomierte Hypnosetherapeutin VSH (Verband Schweizer Hypnosetherapeuten)</span>
+    </a>
+    <div class="border-t border-gray-400 grow"></div>
+    <a href="/diplomierte-hypnosetherapeutin/" class="text-gray-800 hover:text-red-500 flex items-center gap-2">
+        <SBVH class="h-14 text-gray-600" color="currentColor" />
+        <div>
+            <div class="text-base font-medium">SBVH&nbsp;/&nbsp;APSH</div>
+            <div class="text-xs">Certified&nbsp;Member&nbsp;2025</div>
+        </div>
     </a>
     <div class="border-t border-gray-400 grow"></div>
     <div class="flex gap-4 mt-4 sm:mt-0">
