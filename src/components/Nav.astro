@@ -189,7 +189,10 @@ const hidePickaboo = Astro.props.hidePickaboo;
         .sub-menu {
             @apply absolute bg-[#eeddda] py-4 shadow-lg rounded-xl w-[200%] opacity-0 invisible delay-200 transition-all duration-300 ease-in-out transform-gpu scale-y-95 origin-top;
         }
-        li:focus-within > .sub-menu {
+        /* Support both hover/focus (desktop) and touch/click (iPad) */
+        li:focus-within > .sub-menu,
+        li.is-open > .sub-menu,
+        .sub-menu.is-open {
             @apply opacity-100 visible scale-100;
         }
     }
@@ -290,6 +293,17 @@ const hidePickaboo = Astro.props.hidePickaboo;
                     if (isMobile) {
                         setTimeout(() => navMenu?.classList.remove('no-anim'), 50);
                     }
+                    return;
+                }
+
+                // Click outside menu closes open sub-menus (for iPad/touch)
+                const isInsideMenu = e.target.closest('.menu');
+                if (!isInsideMenu) {
+                    navMenu?.querySelectorAll('li.is-open').forEach((li) => {
+                        li.classList.remove('is-open');
+                        li.querySelector('.sub-menu')?.classList.remove('is-open');
+                        li.querySelector('button')?.setAttribute('aria-expanded', 'false');
+                    });
                 }
             }, { passive: true });
             window.__navDelegate = true;

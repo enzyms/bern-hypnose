@@ -1,5 +1,5 @@
 ---
-title: Was ist Hypnose? wie funktioniert Hypnosetherapie?
+title: Was ist Hypnose? Wie funktioniert Hypnosetherapie?
 promoted: true
 order: 1
 linkText: 'Alles über Hypnose und Hypnosetherapie erfahren'
