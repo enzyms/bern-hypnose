@@ -1,8 +1,12 @@
 ---
-title: Ist Hypnose für alle Menschen geeignet?
+title: Für wen ist Hypnosetherapie geeignet?
 promoted: false
 order: 51
-linkText: 'Erfahre, für wen Hypnose geeignet ist'
+category: practical
+showOnHomepage: true
+shortAnswer: "Hypnosetherapie ist für die meisten Menschen geeignet, die bereit sind, sich auf den Prozess einzulassen. Ob bei Ängsten, Stress, Abhängigkeiten oder Schlafstörungen – Hypnose bietet vielfältige Unterstützung. Bei schweren psychischen Erkrankungen ist Vorsicht geboten."
+linkTo: /hypnosetherapie/
+linkText: 'Alle Anwendungsbereiche ansehen'
 description: 'Erfahre, wer von Hypnose profitieren kann und in welchen Fällen Vorsicht geboten ist. Informationen zu Kontraindikationen und Voraussetzungen für erfolgreiche Hypnosetherapie.'
 ---
 
