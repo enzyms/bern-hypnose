@@ -203,6 +203,18 @@ const siteConfig: SiteConfig = {
             "url": "https://maps.app.goo.gl/7WBcEaDnA5W16v5p8"
         },
         {
+            "tid": 22,
+            "quote": "Janine ist eine wundervolle, sehr empathische Frau. Meine Tochter nimmt regelmäßig an den Traumreisen teil und ist jedes Mal begeistert – am liebsten würde sie diese jeden Abend machen. Nach den Traumreisen ist sie stets ausgeglichen, entspannt und wirkt innerlich gestärkt.Ich bin überzeugt, dass Janine für jede Person eine große Unterstützung sein kann. Sie ist unglaublich liebevoll, fröhlich und herzlich. Man fühlt sich bei ihr sofort gut aufgehoben.Ich kann Janine von Herzen weiterempfehlen.",
+            "author": "Katrin Suter",
+            "url": "https://maps.app.goo.gl/CCx9FUavofQfjRgV8"
+        },
+        {
+            "tid": 23,
+            "quote": "Unsere Kinder gehen regelmässig in die Traumreise zu Janine und fühlen sich dort sehr wohl. Sie sind danach entspannt, ausgeglichen und freuen sich jedes Mal darauf. Auch für mich war die Gruppenhypnose eine sehr wohltuende Erfahrung. Janine schafft eine ruhige, vertrauensvolle Atmosphäre und begleitet mit viel Herz. Klare Weiterempfehlung für Kinder und Erwachsene! ✨",
+            "author": "Charrua Däppen",
+            "url": "https://maps.app.goo.gl/5iqQyUfD7WrEijio6"
+        },
+        {
             "tid": 100000,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
             "author": "Name or initials",
