@@ -8,6 +8,8 @@ import SubPagesTopics from '../components/SubPagesTopics.astro';
 import Testimonials from '../components/Testimonials.astro';
 import WhatIsHypnose from '../components/WhatIsHypnose.astro';
 import VideoIntroduction from '../components/VideoIntroduction.astro';
+import TrustSignals from '../components/TrustSignals.astro';
+import HomepageFAQ from '../components/HomepageFAQ.astro';
 import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
@@ -17,8 +19,9 @@ const lastPosts = posts.slice(0, 2);
 
 <BaseLayout seoTitle={siteConfig.title} description={siteConfig.description} image={siteConfig.imageHomepage} schema="home">
     <Hero />
+
     <div class="prose sm:prose-lg text-main">
-        <h2>Was ist Hypnose, für wen?</h2>
+        <h2>Für wen ist Hypnosetherapie geeignet?</h2>
         <p>
             Ob du Entspannung suchst, deine sportlichen Ziele erreichen oder deinem Kind Unterstützung bieten möchtest – Hypnose kann für viele Menschen der
             Schlüssel sein.
@@ -27,7 +30,7 @@ const lastPosts = posts.slice(0, 2);
     <SubPages id="hypnotherapy" columns={2} />
 
     <div class="prose sm:prose-lg text-main mt-12">
-        <h2>Was kann Hypnosetherapie für dich tun?</h2>
+        <h2>Wobei kann Hypnosetherapie in Bern helfen?</h2>
         <p>
             Mit Hypnosetherapie kannst du auf sanfte Weise verschiedene Herausforderungen im Leben bewältigen. Von der Behandlung von Stress und Ängsten bis hin
             zu Abhängigkeiten und Schlafstörungen – Hypnose bietet vielfältige Unterstützung für Körper und Geist.
@@ -38,6 +41,8 @@ const lastPosts = posts.slice(0, 2);
     <WhatIsHypnose />
     <hr class="border-t border-gray-400 mt-12" />
     <VideoIntroduction />
+    <TrustSignals />
     <Testimonials ids={[10, 21, 20, 14, 15, 5, 2, 3, 0, 6, 7, 9, 19]} />
+    <HomepageFAQ />
     <LastPosts posts={lastPosts} />
 </BaseLayout>
