@@ -1,3 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+
+// Fetch FAQs for homepage schema (both general and homepage-specific)
+const allFaqs = await getCollection('faq');
+
+// Get FAQs to include in homepage schema
+// Include: showOnHomepage FAQs + first 5 general FAQs
+const homepageFaqs = allFaqs
+    .filter(faq => faq.data.showOnHomepage === true)
+    .sort((a, b) => a.data.order - b.data.order);
+
+const generalFaqs = allFaqs
+    .filter(faq => faq.data.category === 'general' && !faq.data.showOnHomepage)
+    .sort((a, b) => a.data.order - b.data.order)
+    .slice(0, 5);
+
+// Combine for schema
+const schemaFaqs = [...generalFaqs, ...homepageFaqs];
+
+// Generate FAQ schema data
+const faqSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': schemaFaqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.data.title,
+        'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': faq.data.shortAnswer || faq.data.teaser || faq.data.description || ''
+        }
+    }))
+};
+---
+
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -68,184 +103,37 @@
         "review": [
             {
                 "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Claes Lennman"
-                },
-                "reviewBody": "Ich habe mich bei Janine von Anfang an verstanden, sicher und gut aufgehoben gefühlt. Während der Hypnosesitzung hatte ich den Eindruck, dass sie genau spürt, was ich gerade brauche, als würde sie zwischen den Zeilen lesen können. Ihre einfühlsame Art und die ruhige Atmosphäre haben es mir leicht gemacht, loszulassen und mich auf den Prozess einzulassen. Eine wirklich wertvolle Erfahrung, für die ich sehr dankbar bin.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
+                "author": { "@type": "Person", "name": "Claes Lennman" },
+                "reviewBody": "Ich habe mich bei Janine von Anfang an verstanden, sicher und gut aufgehoben gefühlt. Während der Hypnosesitzung hatte ich den Eindruck, dass sie genau spürt, was ich gerade brauche, als würde sie zwischen den Zeilen lesen können.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
                 "url": "https://g.co/kgs/ddjY2rf"
             },
             {
                 "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Nicole Engler"
-                },
+                "author": { "@type": "Person", "name": "Nicole Engler" },
                 "reviewBody": "Sehr beeindruckend und absolut empfehlenswert! Janine hat sich viel Zeit genommen, die Hypnose individuell auf mich abzustimmen, und ich habe mich von Anfang an wohlgefühlt.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
                 "url": "https://maps.app.goo.gl/7WBcEaDnA5W16v5p8"
             },
             {
                 "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Joanna Wieruszewska"
-                },
-                "reviewBody": "Dank Janine durfte ich eine berührende, tiefe und aufschlussreise Reise in mich selbst erleben, die mich geprägt hat. Janine schafft eine vertrauensvolle Atmosphäre und hilft dabei in sich selbst hineinzublicken um die nötige Urkraft zu finden. Danke, dass du es ermöglicht hast.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
+                "author": { "@type": "Person", "name": "Joanna Wieruszewska" },
+                "reviewBody": "Dank Janine durfte ich eine berührende, tiefe und aufschlussreise Reise in mich selbst erleben, die mich geprägt hat.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
                 "url": "https://maps.app.goo.gl/odUztZYBiiHmJUuL8"
             },
             {
                 "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Jasmin Stöckli"
-                },
-                "reviewBody": "Ich war zum 1. Mal bei Janine und bereits von Beginn an, habe ich mich sehr wohl gefühlt. Janine hört super zu und gibt einem das Gefühl verstanden zu werden was sehr schön ist. Die ganze Sitzung war sehr spannend, angenehm und hilfreich. Mein Gefühl gegenüber meinem Problem, weshalb ich dort war, ist ganz anders und ich weiss nun wie ich es besser angehen kann.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/XwM3bgY"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Nina Cotting"
-                },
-                "reviewBody": "Es war meine erste Hypnose und ich bin sehr dankbar habe ich dies bei Janine gemacht. Ich habe mich direkt durch ihre offenherzliche, authentische und kompetente Art wohlgefühlt. Die Hypnose unterstützt mich sehr mit meinen Angelegenheiten. Ich kann Janine Aerni nur weiterempfehlen.☺️🙏🏼",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/z1vSrXV"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Katrin Breuer"
-                },
-                "reviewBody": "In einer angenehmen Umgebung wurde ich von Janine gut über den Ablauf aufgeklärt. Ich habe mich jederzeit sehr wohl gefühlt und bin voller neuer Energie nach Hause gegangen. Mit der Hypnosetherapie und den mitgegebenen Übungen konnte ich mein Thema ideal behandeln und überwinden. Die Anwendung kann ich auch auf andere Themen übertragen. Es hat mir eine neue Lebensqualität gebracht. Ich empfehle die Hypnosetherapie von Janine sehr.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/g9JUYgs"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Paula Bozic"
-                },
-                "reviewBody": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser. Ich habe mich während der Sitzung stehts geborgen und sicher gefühlt. Alles in allem eine sehr tolle Erfahrung, die ich nur weiterempfehlen kann.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
+                "author": { "@type": "Person", "name": "Paula Bozic" },
+                "reviewBody": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
                 "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
             },
             {
                 "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Michelle Fankhauser"
-                },
-                "reviewBody": "Wähernd eines stressigen Tages hatte ich eine Hypnosesitzung bei Janine. Ich war unsicher, ob ich zur Ruhe komme. Dank der einfühlsamen und professionellen Art von Janine konnte ich mich total entspannen und Energie tanken. Eine sehr empfehlenswerte Auszeit, welche nachgeklungen hat.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/LDT8sut"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Vroni Gschwend"
-                },
-                "reviewBody": "Ich habe die Hypnosetherapie besucht, weil ich grosse Angst vor einem medizischen Eingriff hatte. Janine Aerni hat es verstanden, mich in einen Zustand von Entspannung, innerer Ruhe und Vertrauen zu führen. Ihre kompetente und einfühlsame Art haben mich sehr überzeugt. Die mit ihr festgelegten «Anker» konnte ich vor dem Eingriff wieder herholen, so dass ich recht gelassen sein konnte.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/yJrAfVx"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Jasmin Miescher"
-                },
-                "reviewBody": "Es war meine erste Hypnose und bei Janine und ich fühlte mich bei Ihr direkt Wohl . Sie hat sich Zeit genommen und mich mit Ihrer Freundlichen Art und mit viel Geduld und Positiven Aspekten geleitet und für das bin ich sehr dankbar. Vielen Dank! Ich kann Janine nur weiterempfehlen",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/MUQ2kpX"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Yves"
-                },
-                "reviewBody": "die hypnose war sehr intensiv und tiefgründig. vielen dank janine!",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/sUhiE6p"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Anemone Brunner"
-                },
-                "reviewBody": "Sehr kompetente, rücksichtsvolle und feinfühlige Hypnosetherapeutin. In einem sehr angenehmen und entspannenden Setting. Nachhaltiges und wirkungsvolles Erlebnis. Sehr zu empfehlen",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "url": "https://g.co/kgs/Rpj2hhC"
-            },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Lea Tschirren"
-                },
-                "reviewBody": "Die Therapie bei Janine Aerni hat unserer Tochter sehr gut getan. Durch eine individuell angepasste Traumreise hat sie heute Möglichkeiten, die ihr Sicherheit und Selbstvertrauen geben. Janine Aerni hat eine sehr warme und einfühlsame Art und hat sich sehr viel Zeit genommen. Viele der Hilfen wendet unsere Tochter von sich aus im Alltag an. Die Wirkung ist nachhaltig. Ich kann die Therapie empfehlen.",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
+                "author": { "@type": "Person", "name": "Lea Tschirren" },
+                "reviewBody": "Die Therapie bei Janine Aerni hat unserer Tochter sehr gut getan. Janine Aerni hat eine sehr warme und einfühlsame Art.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
                 "url": "https://maps.app.goo.gl/ragLMPJzG8MMC7Lv9"
             }
         ],
@@ -260,11 +148,7 @@
                     "itemOffered": {
                         "@type": "Service",
                         "name": "Hypnosetherapie gegen Ängste und Phobien",
-                        "description": "Professionelle Hypnosetherapie zur Überwindung von Ängsten, Phobien und Angststörungen in Bern",
-                        "provider": {
-                            "@type": "Person",
-                            "name": "Janine Aerni"
-                        }
+                        "description": "Professionelle Hypnosetherapie zur Überwindung von Ängsten, Phobien und Angststörungen in Bern"
                     }
                 },
                 {
@@ -272,11 +156,7 @@
                     "itemOffered": {
                         "@type": "Service",
                         "name": "Rauchstopp mit Hypnose",
-                        "description": "Rauchentwöhnung durch Hypnosetherapie in Bern",
-                        "provider": {
-                            "@type": "Person",
-                            "name": "Janine Aerni"
-                        }
+                        "description": "Rauchentwöhnung durch Hypnosetherapie in Bern"
                     }
                 },
                 {
@@ -284,11 +164,7 @@
                     "itemOffered": {
                         "@type": "Service",
                         "name": "Hypnose gegen Stress und Burnout",
-                        "description": "Stressbewältigung und Burnout-Prävention durch Hypnosetherapie",
-                        "provider": {
-                            "@type": "Person",
-                            "name": "Janine Aerni"
-                        }
+                        "description": "Stressbewältigung und Burnout-Prävention durch Hypnosetherapie"
                     }
                 },
                 {
@@ -296,11 +172,7 @@
                     "itemOffered": {
                         "@type": "Service",
                         "name": "Kinderhypnose",
-                        "description": "Sanfte Hypnosetherapie für Kinder bei Ängsten und Blockaden",
-                        "provider": {
-                            "@type": "Person",
-                            "name": "Janine Aerni"
-                        }
+                        "description": "Sanfte Hypnosetherapie für Kinder bei Ängsten und Blockaden"
                     }
                 },
                 {
@@ -308,11 +180,7 @@
                     "itemOffered": {
                         "@type": "Service",
                         "name": "Sporthypnose",
-                        "description": "Mentales Training und Leistungssteigerung für Sportler durch Hypnose",
-                        "provider": {
-                            "@type": "Person",
-                            "name": "Janine Aerni"
-                        }
+                        "description": "Mentales Training und Leistungssteigerung für Sportler durch Hypnose"
                     }
                 }
             ]
@@ -320,86 +188,8 @@
     }
 </script>
 
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Was ist Hypnose?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Hypnose erlaubt es dir, dich mit deinem Unterbewusstsein und deinen Emotionen auseinanderzusetzen. In hypnotischer Trance behältst du die Kontrolle und kannst bewusst entscheiden, wie viel du preisgeben möchtest. Hypnose ist ein natürlicher Zustand geistiger Entspannung."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Für welche Probleme ist Hypnose hilfreich?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Hypnose kann bei einer Vielzahl von Problemen helfen, wie zum Beispiel bei der Überwindung von Ängsten und Phobien, der Bewältigung von Stress, Burnout, Schlafstörungen oder bei der Unterstützung gesunder Ernährungsgewohnheiten."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Kann Hypnose bei Abhängigkeiten helfen?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Ja, Hypnose ist eine effektive Methode, um Abhängigkeiten wie Rauchen oder Alkoholkonsum zu überwinden. Sie unterstützt dabei, alte Verhaltensmuster im Unterbewusstsein zu ändern."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Wie fühlt sich Hypnose an?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "In der Hypnose befindest du dich in einem Zustand tiefer Entspannung, in dem die Kreativität und Erinnerungsfähigkeit gesteigert sind. Es ist vergleichbar mit dem Moment vor dem Einschlafen oder während einer längeren Autofahrt, wenn du unbewusst von A nach B gelangst."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Ersetzt Hypnose medizinische Behandlungen?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Nein, Hypnose ist eine komplementäre Heilmethode und kein Ersatz für medizinische oder psychologische Behandlungen. Sie kann jedoch unterstützend bei der Bewältigung verschiedener Herausforderungen wirken."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Was kostet Hypnosetherapie in Bern?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Eine Hypnosetherapie-Sitzung in meiner Berner Praxis kostet CHF 150 für 90 Minuten. Die erste Sitzung dauert in der Regel etwas länger (ca. 120 Minuten), da wir uns ausführlich kennenlernen und dein Anliegen besprechen."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Wo befindet sich die Hypnosetherapie-Praxis in Bern?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Die Praxis befindet sich an der Eigerstrasse 56, 3007 Bern, in zentral gelegener und gut erreichbarer Lage. Mit dem ÖV: Tram 9 oder Bus 19/31, Haltestelle Sulgenau."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Für wen ist Hypnosetherapie geeignet?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Hypnosetherapie ist für die meisten Menschen geeignet, die bereit sind, sich auf den Prozess einzulassen. Ob bei Ängsten, Stress, Abhängigkeiten, Schlafstörungen oder zur Stärkung des Selbstvertrauens – Hypnose bietet vielfältige Unterstützung."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Wie viele Sitzungen brauche ich?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Die Anzahl der Sitzungen ist individuell verschieden und hängt von deinem Anliegen ab. Viele Klient:innen berichten bereits nach 1-3 Sitzungen von positiven Veränderungen. Du entscheidest selbst, wie viele Sitzungen du buchen möchtest – ich verkaufe keine Pakete."
-                }
-            }
-        ]
-    }
-</script>
+<!-- FAQ Schema - Dynamically generated from content collection -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
 
 <script type="application/ld+json">
     {

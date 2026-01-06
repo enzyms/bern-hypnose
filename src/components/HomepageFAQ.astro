@@ -1,56 +1,31 @@
 ---
+import { getCollection } from 'astro:content';
 
+// Fetch FAQs marked for homepage, sorted by order
+const faqs = (await getCollection('faq')).filter((faq) => faq.data.showOnHomepage === true).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="prose sm:prose-lg mt-12">
-    <h2>Häufige Fragen zur Hypnosetherapie in Bern</h2>
-    
-    <div class="not-prose space-y-4">
-        <details class="group border border-gray-300 rounded-lg p-4 hover:border-red-400 transition-colors">
-            <summary class="font-bold text-lg cursor-pointer text-main list-none flex items-center justify-between">
-                <span>Was kostet Hypnosetherapie in Bern?</span>
-                <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
-            </summary>
-            <div class="mt-3 text-gray-700 prose prose-sm">
-                <p>Eine Sitzung kostet <strong>CHF 150 für 90 Minuten</strong>. Die erste Sitzung dauert in der Regel etwas länger (ca. 120 Minuten), da wir uns ausführlich kennenlernen und dein Anliegen besprechen.</p>
-                <a href="/angebote/" class="text-red-600 hover:text-red-500 font-medium">→ Mehr zu den Preisen und Angeboten</a>
-            </div>
-        </details>
-        
-        <details class="group border border-gray-300 rounded-lg p-4 hover:border-red-400 transition-colors">
-            <summary class="font-bold text-lg cursor-pointer text-main list-none flex items-center justify-between">
-                <span>Wo befindet sich die Praxis in Bern?</span>
-                <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
-            </summary>
-            <div class="mt-3 text-gray-700 prose prose-sm">
-                <p><strong>Eigerstrasse 56, 3007 Bern</strong><br />
-                Zentral gelegen und gut erreichbar mit dem ÖV:<br />
-                Tram 9 oder Bus 19/31, Haltestelle Sulgenau</p>
-                <a href="/kontakt/" class="text-red-600 hover:text-red-500 font-medium">→ Anfahrt und Kontakt</a>
-            </div>
-        </details>
-        
-        <details class="group border border-gray-300 rounded-lg p-4 hover:border-red-400 transition-colors">
-            <summary class="font-bold text-lg cursor-pointer text-main list-none flex items-center justify-between">
-                <span>Für wen ist Hypnosetherapie geeignet?</span>
-                <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
-            </summary>
-            <div class="mt-3 text-gray-700 prose prose-sm">
-                <p>Hypnosetherapie ist für die meisten Menschen geeignet, die bereit sind, sich auf den Prozess einzulassen. Ob bei Ängsten, Stress, Abhängigkeiten, Schlafstörungen oder zur Stärkung des Selbstvertrauens – Hypnose bietet vielfältige Unterstützung.</p>
-                <a href="/hypnosetherapie/" class="text-red-600 hover:text-red-500 font-medium">→ Alle Anwendungsbereiche ansehen</a>
-            </div>
-        </details>
-        
-        <details class="group border border-gray-300 rounded-lg p-4 hover:border-red-400 transition-colors">
-            <summary class="font-bold text-lg cursor-pointer text-main list-none flex items-center justify-between">
-                <span>Wie viele Sitzungen brauche ich?</span>
-                <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
-            </summary>
-            <div class="mt-3 text-gray-700 prose prose-sm">
-                <p>Die Anzahl der Sitzungen ist individuell verschieden und hängt von deinem Anliegen ab. Viele Klient:innen berichten bereits nach <strong>1-3 Sitzungen</strong> von positiven Veränderungen. Du entscheidest selbst, wie viele Sitzungen du buchen möchtest – ich verkaufe keine Pakete.</p>
-                <a href="/diplomierte-hypnosetherapeutin/" class="text-red-600 hover:text-red-500 font-medium">→ Mehr über meine Arbeitsweise</a>
-            </div>
-        </details>
+    <h2>Häufige Fragen zur Hypnosetherapie Bern</h2>
+
+    <div class="not-prose border-gray-400 border-b">
+        {
+            faqs.map((faq) => (
+                <details class="group border-t border-gray-400">
+                    <summary class="font-bold text-lg cursor-pointer text-main hover:text-red-700 px-1 py-5 list-none flex items-center justify-between">
+                        <span>{faq.data.title}</span>
+                        <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-3 mb-6 text-gray-900 prose px-1">
+                        <p set:html={faq.data.shortAnswer} />
+                        {faq.data.linkTo && (
+                            <a href={faq.data.linkTo} class="text-red-700 hover:text-red-800 font-medium">
+                                → {faq.data.linkText || 'Mehr erfahren'}
+                            </a>
+                        )}
+                    </div>
+                </details>
+            ))
+        }
     </div>
 </section>
-

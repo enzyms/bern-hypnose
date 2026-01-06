@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+
+export interface Props {
+    /** Filter by category: 'general', 'practical', 'homepage' */
+    category?: 'general' | 'practical' | 'homepage';
+    /** Only show FAQs marked for homepage */
+    homepageOnly?: boolean;
+    /** Show as expandable accordions */
+    accordion?: boolean;
+    /** Show as linked cards */
+    cards?: boolean;
+    /** Include FAQ schema markup */
+    includeSchema?: boolean;
+    /** Custom title for the section */
+    title?: string;
+    /** Maximum number of FAQs to show */
+    limit?: number;
+}
+
+const { 
+    category, 
+    homepageOnly = false, 
+    accordion = true,
+    cards = false,
+    includeSchema = false,
+    title = 'Häufige Fragen',
+    limit
+} = Astro.props;
+
+// Fetch all FAQs
+let faqs = await getCollection('faq');
+
+// Filter by category if specified
+if (category) {
+    faqs = faqs.filter(faq => faq.data.category === category);
+}
+
+// Filter for homepage only
+if (homepageOnly) {
+    faqs = faqs.filter(faq => faq.data.showOnHomepage === true);
+}
+
+// Sort by order
+faqs = faqs.sort((a, b) => a.data.order - b.data.order);
+
+// Limit if specified
+if (limit) {
+    faqs = faqs.slice(0, limit);
+}
+
+// Generate schema data if needed
+const schemaData = includeSchema ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.data.title,
+        'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': faq.data.shortAnswer || faq.data.teaser || faq.data.description || ''
+        }
+    }))
+} : null;
+---
+
+<section class="prose sm:prose-lg mt-12">
+    {title && <h2>{title}</h2>}
+    
+    {includeSchema && schemaData && (
+        <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+    )}
+    
+    {accordion && (
+        <div class="not-prose border-gray-400 border-b">
+            {faqs.map((faq) => (
+                <details class="group border-t border-gray-400">
+                    <summary class="font-bold text-lg cursor-pointer text-main hover:text-red-700 px-1 py-5 list-none flex items-center justify-between">
+                        <span>{faq.data.title}</span>
+                        <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-3 mb-6 text-gray-900 prose px-1">
+                        <p>{faq.data.shortAnswer || faq.data.teaser}</p>
+                        {faq.data.linkTo && (
+                            <a href={faq.data.linkTo} class="text-red-700 hover:text-red-800 font-medium">
+                                → {faq.data.linkText || 'Mehr erfahren'}
+                            </a>
+                        )}
+                    </div>
+                </details>
+            ))}
+        </div>
+    )}
+    
+    {cards && (
+        <div class="not-prose grid gap-4">
+            {faqs.map((faq) => (
+                <a 
+                    href={faq.data.linkTo || `/was-ist-hypnose/${faq.slug}/`}
+                    class="group block rounded-xl border border-gray-200 hover:border-red-300 hover:shadow-lg transition-all p-6"
+                >
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-700">
+                        {faq.data.title}
+                    </h3>
+                    <p class="text-gray-700 mb-2">
+                        {faq.data.shortAnswer || faq.data.teaser}
+                    </p>
+                    <span class="text-red-700 font-semibold">
+                        {faq.data.linkText || 'Mehr erfahren'} →
+                    </span>
+                </a>
+            ))}
+        </div>
+    )}
+</section>
+
