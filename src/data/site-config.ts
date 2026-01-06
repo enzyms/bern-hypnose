@@ -215,6 +215,13 @@ const siteConfig: SiteConfig = {
             "url": "https://maps.app.goo.gl/5iqQyUfD7WrEijio6"
         },
         {
+            "tid": 24,
+            "quote": "Die Kinder kommen gerne in die Traumreise bei Frau Aerni. Sie sind immer zufrieden danach. Danke Janine für deine Arbeit!",
+            "author": "Jelena Sollberger",
+            "url": "https://maps.app.goo.gl/1Z3Lb31m73YiJd2o9"
+        },
+        
+        {
             "tid": 100000,
             "quote": "Demo. Pass props like this: <Testimonials ids={[0, 1, 2]} />",
             "author": "Name or initials",
