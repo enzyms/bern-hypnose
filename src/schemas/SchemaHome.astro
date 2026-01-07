@@ -6,12 +6,10 @@ const allFaqs = await getCollection('faq');
 
 // Get FAQs to include in homepage schema
 // Include: showOnHomepage FAQs + first 5 general FAQs
-const homepageFaqs = allFaqs
-    .filter(faq => faq.data.showOnHomepage === true)
-    .sort((a, b) => a.data.order - b.data.order);
+const homepageFaqs = allFaqs.filter((faq) => faq.data.showOnHomepage === true).sort((a, b) => a.data.order - b.data.order);
 
 const generalFaqs = allFaqs
-    .filter(faq => faq.data.category === 'general' && !faq.data.showOnHomepage)
+    .filter((faq) => faq.data.category === 'general' && !faq.data.showOnHomepage)
     .sort((a, b) => a.data.order - b.data.order)
     .slice(0, 5);
 
@@ -22,12 +20,12 @@ const schemaFaqs = [...generalFaqs, ...homepageFaqs];
 const faqSchemaData = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    'mainEntity': schemaFaqs.map(faq => ({
+    mainEntity: schemaFaqs.map((faq) => ({
         '@type': 'Question',
-        'name': faq.data.title,
-        'acceptedAnswer': {
+        name: faq.data.title,
+        acceptedAnswer: {
             '@type': 'Answer',
-            'text': faq.data.shortAnswer || faq.data.teaser || faq.data.description || ''
+            text: faq.data.shortAnswer || faq.data.teaser || faq.data.description || ''
         }
     }))
 };
@@ -135,6 +133,111 @@ const faqSchemaData = {
                 "reviewBody": "Die Therapie bei Janine Aerni hat unserer Tochter sehr gut getan. Janine Aerni hat eine sehr warme und einfühlsame Art.",
                 "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
                 "url": "https://maps.app.goo.gl/ragLMPJzG8MMC7Lv9"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Vroni Gschwend" },
+                "reviewBody": "Ich habe die Hypnosetherapie besucht, weil ich grosse Angst vor einem medizischen Eingriff hatte. Janine Aerni hat es verstanden, mich in einen Zustand von Entspannung, innerer Ruhe und Vertrauen zu führen.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/yJrAfVx"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Franziska Fiedler" },
+                "reviewBody": "Die Hypnosesitzung bei Janine Aerni möchte ich deshalb weiter empfehlen weil das Eingehen auf die Klienten mit besonderem Einfühlungsvermögen und Empathie geschieht.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/2j43d2y"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Michelle Fankhauser" },
+                "reviewBody": "Dank der einfühlsamen und professionellen Art von Janine konnte ich mich total entspannen und Energie tanken. Eine sehr empfehlenswerte Auszeit.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/LDT8sut"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Katrin Breuer" },
+                "reviewBody": "Mit der Hypnosetherapie und den mitgegebenen Übungen konnte ich mein Thema ideal behandeln und überwinden. Es hat mir eine neue Lebensqualität gebracht.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/g9JUYgs"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Jasmin Miescher" },
+                "reviewBody": "Es war meine erste Hypnose und bei Janine und ich fühlte mich bei Ihr direkt Wohl. Sie hat sich Zeit genommen und mich mit Ihrer Freundlichen Art geleitet.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/MUQ2kpX"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Alexandra Sidler" },
+                "reviewBody": "Janine Aerni ist eine sehr authentische, kompetente Hypnosetherapeutin, mit einem grossen Herz. Ich bin Janine Aerni für diese einfühlsame und effektive Hypnosetherapie sehr dankbar.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/p1syPib"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Anemone Brunner" },
+                "reviewBody": "Sehr kompetente, rücksichtsvolle und feinfühlige Hypnosetherapeutin. In einem sehr angenehmen und entspannenden Setting. Nachhaltiges und wirkungsvolles Erlebnis.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/Rpj2hhC"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Christine Eva Roelli" },
+                "reviewBody": "Habe mich sehr wohl gefühlt! Herzlichen Dank für deine einfühlsame, ruhige und unterstützende Art und Weise, mit der du mich mittels Hypnose wieder ein Stück näher zu mir selbst gebracht hast!",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/BTQth3X"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Jasmin Stöckli" },
+                "reviewBody": "Ich war zum 1. Mal bei Janine und bereits von Beginn an, habe ich mich sehr wohl gefühlt. Janine hört super zu und gibt einem das Gefühl verstanden zu werden.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/XwM3bgY"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Nina Cotting" },
+                "reviewBody": "Es war meine erste Hypnose und ich bin sehr dankbar habe ich dies bei Janine gemacht. Die Hypnose unterstützt mich sehr mit meinen Angelegenheiten.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://g.co/kgs/z1vSrXV"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Katrin Suter" },
+                "reviewBody": "Janine ist eine wundervolle, sehr empathische Frau. Meine Tochter nimmt regelmässig an den Traumreisen teil und ist jedes Mal begeistert.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://maps.app.goo.gl/CCx9FUavofQfjRgV8"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Charrua Däppen" },
+                "reviewBody": "Unsere Kinder gehen regelmässig in die Traumreise zu Janine und fühlen sich dort sehr wohl. Janine schafft eine ruhige, vertrauensvolle Atmosphäre.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://maps.app.goo.gl/5iqQyUfD7WrEijio6"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Jelena Sollberger" },
+                "reviewBody": "Die Kinder kommen gerne in die Traumreise bei Frau Aerni. Sie sind immer zufrieden danach. Danke Janine für deine Arbeit!",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://maps.app.goo.gl/1Z3Lb31m73YiJd2o9"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Anna Yoga" },
+                "reviewBody": "Mein Kind besucht einmal im Monat regelmässig die Traumreise-Meditationen bei Janine. Diese einzigartige Verbindung ihrer persönlichen Qualitäten – ihre grosse Liebe zu Kindern, ihre tiefe Aufmerksamkeit – sind extrem selten.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://maps.app.goo.gl/oxQMwKYWnXrvoixu9"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Flower" },
+                "reviewBody": "Janine zeigt eine bemerkenswerte Fähigkeit, empathisch und authentisch auf die Bedürfnisse ihrer Klienten einzugehen. Ihr Engagement und ihre Fachkompetenz sind in jeder Hinsicht wertvoll.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "url": "https://maps.app.goo.gl/GXFN9kou2wvCWy7PA"
             }
         ],
         "hasMap": "https://maps.app.goo.gl/6ztgohYSpsWiT9CB8",
@@ -216,11 +319,13 @@ const faqSchemaData = {
     {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Hypnosetherapie Bern",
-            "item": "https://bern-hypnose.ch/"
-        }]
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Hypnosetherapie Bern",
+                "item": "https://bern-hypnose.ch/"
+            }
+        ]
     }
 </script>

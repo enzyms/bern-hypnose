@@ -220,6 +220,18 @@ const siteConfig: SiteConfig = {
             "author": "Jelena Sollberger",
             "url": "https://maps.app.goo.gl/1Z3Lb31m73YiJd2o9"
         },
+        {
+            "tid": 25,
+            "quote": "Mein Kind besucht einmal im Monat regelmaessig die Traumreise-Meditationen bei Janine. Und ich moechte den Wert dieser Angebote besonders hervorheben. Ich selbst bin Yoga- und Meditationstrainerin, arbeite jedoch mit Erwachsenen. Deshalb verstehe ich sehr gut, dass die Arbeit mit Kindern ein ganz besonderes Talent erfordert. Solche Angebote, wie Janine sie durchfuehrt, und insbesondere diese einzigartige Verbindung ihrer persoenlichen Qualitaeten – ihre grosse Liebe zu Kindern, ihre tiefe Aufmerksamkeit, ihre Sorgfalt und ihr Professionalismus – sind extrem selten. Die Art und Weise, wie Janine ihr Wissen mit einem grossen Herzen und mit mehr als 20 Jahren Erfahrung in der Arbeit mit Kindern verbindet, ist meiner Meinung nach kaum in einer einzigen Person zu finden. Genau deshalb wuensche ich mir aufrichtig, dass die Traumreise-Meditationen haeufiger stattfinden wuerden – denn etwas Vergleichbares gibt es in unserer Region einfach nicht. Aus Sicht der Gehirnforschung spielt Regelmaessigkeit eine zentrale Rolle: Sie ist notwendig, um positive neuronale Verbindungen aufzubauen und aufrechtzuerhalten. Da die Meditation nur einmal im Monat stattfindet, beobachten wir einen interessanten Effekt. Nach der Meditation ist mein Kind immer unglaublich gluecklich, teilt noch zwei Tage lang seine Erfolge und Eindruecke und befindet sich in einem sehr positiven Zustand. [...] Vielen Dank, liebe Janine, fuer dein gutes Herz, deinen hohen Professionalismus und den grossen Wert, den du fuer Kinder und ihre Familien schaffst.",
+            "author": "Anna Yoga",
+            "url": "https://maps.app.goo.gl/oxQMwKYWnXrvoixu9"
+        },
+        {
+            "tid": 26,
+            "quote": "Janine zeigt eine bemerkenswerte Fähigkeit, empathisch und authentisch auf die Bedürfnisse ihrer Klienten einzugehen. Durch ihre gezielte Ansprache der individuellen Wünsche schafft sie einen vertrauensvollen Raum, der für eine erfolgreiche Therapie unerlässlich ist. Während der gesamten Sitzungen hat sie professionell auf die Anliegen unseres Sohnes reagiert, was zu einer spürbaren Verbesserung unseres Alltags geführt hat. Ihr Engagement und ihre Fachkompetenz sind in jeder Hinsicht wertvoll.",
+            "author": "Flower",
+            "url": "https://maps.app.goo.gl/GXFN9kou2wvCWy7PA"
+        },
         
         {
             "tid": 100000,
