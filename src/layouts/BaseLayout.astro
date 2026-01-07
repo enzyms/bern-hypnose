@@ -28,10 +28,12 @@ const { ...head } = Astro.props;
         <link rel="sitemap" href="/sitemap-index.xml" />
     </head>
     <body class="bg-main text-main overflow-x-hidden">
-        <Notification />
         <Blur />
         <Three />
-        <Nav hidePickaboo={Astro.props.hidePickaboo} />
+        <header>
+            <Notification />
+            <Nav hidePickaboo={Astro.props.hidePickaboo} />
+        </header>
         <main class="min-h-[85vh] max-w-3xl relative z-10
             px-5 md:px-6 lg:px-8 py-10 lg:py-14">
             <slot />

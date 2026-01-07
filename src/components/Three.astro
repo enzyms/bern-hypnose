@@ -56,5 +56,11 @@
     }
 </script>
 
-<div transition:persist id="threeContainer" class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 opacity-0 transition-opacity duration-[5000ms]"></div>
-<div transition:persist id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>
+<div
+    transition:persist
+    aria-hidden="true"
+    id="threeContainer"
+    class="max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 opacity-0 transition-opacity duration-[5000ms]"
+>
+</div>
+<div transition:persist aria-hidden="true" id="fallbackBg" class="has-no-animation max-w-[100vw] fixed top-0 right-0 bottom-0 left-0 z-0 hidden"></div>
