@@ -51,7 +51,7 @@
         id="calendly-inline-widget"
         class="calendly-inline-widget"
         data-resize="true"
-        data-url="https://calendly.com/bern-hypnose/erstsitzung?hide_event_type_details=1&background_color=f9f2f1&text_color=000000&primary_color=b91c1c&hide_gdpr_banner=1"
+        data-url="https://calendly.com/bern-hypnose/erstsitzung?hide_event_type_details=1&background_color=f9f2f1&text_color=000000&primary_color=0B69BC&hide_gdpr_banner=1"
         style="display: {isIframeLoaded ? 'block' : 'none'};"
     ></div>
 </div>
