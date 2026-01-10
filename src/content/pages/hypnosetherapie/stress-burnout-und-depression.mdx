@@ -14,6 +14,7 @@ backlink:
 
 import SubPagesTopics from '@components/SubPagesTopics.astro';
 import Testimonials from '@components/Testimonials.astro';
+import TopicCard from '@components/TopicCard.astro';
 
 ## Stress, Burnout und Depression mit Hypnose überwinden
 
@@ -27,21 +28,22 @@ Die Hypnosetherapie dient als ergänzende Methode und ersetzt keine medizinische
 
 Je nach deiner Situation findest du hier die passende Unterstützung:
 
-<div class="grid md:grid-cols-3 gap-6 my-8">
-  <a href="/hypnosetherapie/stress/" class="block p-6 bg-stone-50 rounded-xl border border-stone-200 hover:border-red-400 transition no-underline">
-    <h3 class="text-xl font-bold text-stone-900 mb-2">Stress mit Hypnose</h3>
-    <p class="text-stone-600 text-sm">Gelassener werden und innere Ruhe finden</p>
-  </a>
-  
-  <a href="/hypnosetherapie/burnout/" class="block p-6 bg-stone-50 rounded-xl border border-stone-200 hover:border-red-400 transition no-underline">
-    <h3 class="text-xl font-bold text-stone-900 mb-2">Burnout mit Hypnose</h3>
-    <p class="text-stone-600 text-sm">Aus der Erschöpfung herausfinden</p>
-  </a>
-  
-  <a href="/hypnosetherapie/depression/" class="block p-6 bg-stone-50 rounded-xl border border-stone-200 hover:border-red-400 transition no-underline">
-    <h3 class="text-xl font-bold text-stone-900 mb-2">Depression mit Hypnose</h3>
-    <p class="text-stone-600 text-sm">Wieder Lebensfreude entwickeln</p>
-  </a>
+<div class="grid md:grid-cols-3 gap-4 my-8 not-prose">
+  <TopicCard 
+    href="/hypnosetherapie/stress/" 
+    title="Stress mit Hypnose" 
+    description="Gelassener werden und innere Ruhe finden"
+  />
+  <TopicCard 
+    href="/hypnosetherapie/burnout/" 
+    title="Burnout mit Hypnose" 
+    description="Aus der Erschöpfung herausfinden"
+  />
+  <TopicCard 
+    href="/hypnosetherapie/depression/" 
+    title="Depression mit Hypnose" 
+    description="Wieder Lebensfreude entwickeln"
+  />
 </div>
 
 ---
@@ -78,7 +80,7 @@ Wenn du bereit bist, wieder mehr Freude und Leichtigkeit in dein Leben zu bringe
   </a>
 </div>
 
-<hr class="border-gray-400" />
+---
 
 ## Klient:innenstimmen
 <div className="not-prose">

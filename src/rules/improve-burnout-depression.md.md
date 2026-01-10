@@ -32,7 +32,7 @@ Use **service-based slugs**, not keyword-loaded phrases.
 /hypnosetherapie/depression/
 ✅ Keep the existing combined page as a pillar
 text
-Copy code
+
 /hypnosetherapie/stress-burnout-und-depression/
 Purpose:
 
@@ -48,7 +48,7 @@ Informational + exploratory intent
 Avoid:
 
 text
-Copy code
+
 /stress-mit-hypnose-bern
 /hypnose-gegen-stress-bern
 /bern-hypnose-stress-therapie
@@ -67,11 +67,11 @@ Use high-impact SEO areas instead of URLs:
 
 Page Title
 text
-Copy code
+
 Hypnose bei Stress in Bern | Bern Hypnose
 H1
 text
-Copy code
+
 Hypnose bei Stress – Hilfe in Bern
 Intro Paragraph (first 100 words)
 Mention:
@@ -86,7 +86,7 @@ Internal Links
 Example:
 
 text
-Copy code
+
 Mehr zur Hypnose bei Stress in Bern erfahren
 Local SEO
 Google Business Profile
@@ -99,7 +99,7 @@ Embedded map + address
 
 5. Site Architecture (UX + SEO)
 text
-Copy code
+
 /hypnosetherapie/                    ← overview
 
 ├─ /hypnosetherapie/stress/
@@ -122,11 +122,11 @@ Use descriptive anchors (not generic “mehr erfahren”)
 Example:
 
 text
-Copy code
+
 Hypnose bei Burnout in Bern
 7. Breadcrumbs (Optional but Recommended)
 text
-Copy code
+
 Hypnosetherapie → Stress
 Hypnosetherapie → Stress, Burnout & Depression
 8. Final Recommendation (TL;DR)
@@ -141,7 +141,7 @@ Hypnosetherapie → Stress, Burnout & Depression
 ✅ Use a pillar + cluster model for scalability
 
 markdown
-Copy code
+
 
 If you want, I can also generate:
 - Page-by-page **keyword maps**
