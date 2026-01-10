@@ -40,7 +40,9 @@ In unserer schnelllebigen Zeit leiden viele Menschen unter chronischem Stress un
 
 Hypnose unterstützt bei Stress und Überforderung, Burnout-Prävention und -Behandlung, depressiven Verstimmungen sowie bei der behutsamen Traumabearbeitung.
 
-[Mehr über Hypnose bei Stress und Burnout erfahren](/hypnosetherapie/stress-burnout-und-depression/)
+[Mehr über Hypnose bei Stress erfahren](/hypnosetherapie/stress/)  
+[Mehr über Hypnose bei Burnout erfahren](/hypnosetherapie/burnout/)  
+[Mehr über Hypnose bei Depression erfahren](/hypnosetherapie/depression/)
 
 ---
 
