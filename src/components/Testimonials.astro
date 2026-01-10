@@ -5,20 +5,26 @@ import Quote from '../icons/Quote.astro';
 
 const { testimonials } = siteConfig;
 
-// Accept the `ids` and `noTitle` props
-const { ids, noTitle } = Astro.props;
+// Accept props: ids, noTitle, visibleCount (default 4 for drawer behavior)
+const { ids, noTitle, visibleCount = 0 } = Astro.props;
 
 const selectedTestimonials = ids
         ? ids
               .map((id: number) => testimonials?.find(testimonial => testimonial.tid === id))
-              .filter(Boolean) // Remove undefined if an id doesn't match
+              .filter(Boolean)
         : testimonials;
+
+// Split into visible and hidden testimonials
+const showDrawer = visibleCount > 0 && selectedTestimonials.length > visibleCount;
+const visibleTestimonials = showDrawer ? selectedTestimonials.slice(0, visibleCount) : selectedTestimonials;
+const hiddenTestimonials = showDrawer ? selectedTestimonials.slice(visibleCount) : [];
 ---
 
 <section class="mt-12 testimonials">
-  {!noTitle &&  <div class="prose sm:prose-lg"><h2 class="pb-5">Klient:innenstimmen</h2></div>}
-  {selectedTestimonials && selectedTestimonials.length > 0 ? (
-    selectedTestimonials.map((testimonial: { quote: unknown; author: unknown; url: string | URL | null | undefined; }) => (
+  {!noTitle && <div class="prose sm:prose-lg"><h2 class="pb-5">Klient:innenstimmen</h2></div>}
+  
+  {visibleTestimonials && visibleTestimonials.length > 0 ? (
+    visibleTestimonials.map((testimonial: { quote: unknown; author: unknown; url: string | URL | null | undefined; }) => (
       <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group">
         <blockquote class="relative pl-6">
           <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform -translate-x-2" />
@@ -41,6 +47,46 @@ const selectedTestimonials = ids
   ) : (
     <p>No testimonials available.</p>
   )}
+
+  {showDrawer && (
+    <details class="group/drawer">
+      <summary class="cursor-pointer list-none flex items-center gap-2 py-4 text-red-700 hover:text-red-500 font-medium transition-colors">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="h-5 w-5 transition-transform group-open/drawer:rotate-180" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+        <span class="group-open/drawer:hidden">Weitere {hiddenTestimonials.length} Stimmen anzeigen</span>
+        <span class="hidden group-open/drawer:inline">Weniger anzeigen</span>
+      </summary>
+      <div class="pt-4">
+        {hiddenTestimonials.map((testimonial: { quote: unknown; author: unknown; url: string | URL | null | undefined; }) => (
+          <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group">
+            <blockquote class="relative pl-6">
+              <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform -translate-x-2" />
+              <p class="inline-block text-pretty">{testimonial.quote}</p>
+            </blockquote>
+            <footer class="text-sm py-2 pl-6">
+              <span>{testimonial.author}</span>
+              {testimonial.url && (
+                <span class="ml-2 text-yellow-500">★ ★ ★ ★ ★ </span>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span class="">|</span>
+                  <a href={testimonial.url} target="_blank" rel="noopener noreferrer" class="link underline">
+                    Bewertung auf Google lesen
+                  </a>
+                </span>
+              )}
+            </footer>
+          </article>
+        ))}
+      </div>
+    </details>
+  )}
+
   <div class="flex items-center gap-4">
     <div class="border-t border-gray-400 grow"></div>
     <a href="https://www.google.com/search?q=aerni+hypnose&oq=aerni+hypnose&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDwyBggDEEUYPTIGCAQQRRhB0gEINzYxNWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#lrd=0x478e3919098aba6d:0xc134d9016ead528c,1,,,," class="block link" target="_blank">

@@ -4,9 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import LastPosts from '../components/LastPosts.astro';
 import SubPages from '../components/SubPages.astro';
-import SubPagesTopics from '../components/SubPagesTopics.astro';
 import Testimonials from '../components/Testimonials.astro';
-import WhatIsHypnose from '../components/WhatIsHypnose.astro';
 import VideoIntroduction from '../components/VideoIntroduction.astro';
 import TrustSignals from '../components/TrustSignals.astro';
 import HomepageFAQ from '../components/HomepageFAQ.astro';
@@ -20,29 +18,92 @@ const lastPosts = posts.slice(0, 2);
 <BaseLayout seoTitle={siteConfig.title} description={siteConfig.description} image={siteConfig.imageHomepage} schema="home">
     <Hero />
 
-    <div class="prose sm:prose-lg text-main">
-        <h2>Für wen ist Hypnosetherapie geeignet?</h2>
+    <!-- GBP Category: Ganzheitliche Hypnosetherapie + Was ist Hypnose (merged) -->
+    <div class="prose sm:prose-lg text-main mb-12">
+        <h2>Was ist Hypnosetherapie?</h2>
         <p>
-            Ob du Entspannung suchst, deine sportlichen Ziele erreichen oder deinem Kind Unterstützung bieten möchtest – Hypnose kann für viele Menschen der
-            Schlüssel sein.
+            Hypnosetherapie ist eine ganzheitliche, komplementäre Methode, die Körper und Geist als Einheit betrachtet. In einem Zustand tiefer Entspannung
+            findest du Zugang zu deinem Unterbewusstsein und deinen Emotionen – ohne die Kontrolle zu verlieren. Du bestimmst jederzeit selbst, wie weit du
+            gehen möchtest.
         </p>
+        <p>
+            Als alternative Heilmethode unterstützt Hypnose dich dabei, <a href="/hypnosetherapie/abhaengigkeit/">Abhängigkeiten zu überwinden</a>
+            (wie beim <a href="/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/">Rauchstopp</a>),
+            <a href="/hypnosetherapie/aengste-und-phobien/">Ängste zu lösen</a>,
+            <a href="/hypnosetherapie/schmerzen/">Schmerzen zu lindern</a> und nachhaltige Veränderungen zu schaffen. Ob du Entspannung suchst, sportliche Ziele
+            erreichen oder deinem Kind Unterstützung bieten möchtest – in meiner Praxis in Bern begleite ich dich einfühlsam und individuell.
+        </p>
+        <a href="/hypnosetherapie/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+            <span>Alle Themen der Hypnosetherapie entdecken</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                    fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </a>
     </div>
     <SubPages id="hypnotherapy" columns={2} />
 
+    <!-- GBP Category H2 Sections for Entity Relevance -->
     <div class="prose sm:prose-lg text-main mt-12">
-        <h2>Wobei kann Hypnosetherapie in Bern helfen?</h2>
+        <h2>Sporthypnose in Bern</h2>
         <p>
-            Mit Hypnosetherapie kannst du auf sanfte Weise verschiedene Herausforderungen im Leben bewältigen. Von der Behandlung von Stress und Ängsten bis hin
-            zu Abhängigkeiten und Schlafstörungen – Hypnose bietet vielfältige Unterstützung für Körper und Geist.
+            Sporthypnose kann eine effektive Methode sein, um deine mentale Stärke zu steigern und sportliche Ziele zu erreichen. Ob Trainingsmotivation,
+            Wettkampfangst oder Blockaden nach einer Verletzung – mit Hypnose aktivierst du deine inneren Ressourcen und schöpfst dein volles Potenzial aus.
+            Viele Spitzensportler nutzen Hypnose für bessere Konzentration und schnellere Regeneration.
         </p>
+        <a href="/hypnosetherapie/sporthypnose/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+            <span>Mehr über Sporthypnose erfahren</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                    fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </a>
     </div>
-    <SubPagesTopics id="hypnotherapy" columns={3} />
 
-    <WhatIsHypnose />
+    <div class="prose sm:prose-lg text-main mt-12">
+        <h2>Kinderhypnose in Bern</h2>
+        <p>
+            Kinderhypnose ist eine einfühlsame Methode, um Kindern zu helfen, ihre inneren Ressourcen zu entdecken. Durch spielerische Elemente und kindgerechte
+            Traumreisen begleite ich dein Kind in eine entspannte Welt, in der es Ängste überwinden, Selbstvertrauen stärken und Herausforderungen wie
+            Schulstress oder Bettnässen meistern kann. Die Kinderklinik des Inselspitals Bern setzt Hypnose erfolgreich ein.
+        </p>
+        <a href="/hypnosetherapie/kinderhypnose/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+            <span>Mehr über Kinderhypnose erfahren</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                    fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </a>
+    </div>
+
+    <div class="prose sm:prose-lg text-main mt-12">
+        <h2>Hypnose für Frauen in Bern</h2>
+        <p>
+            Frauen erleben im Laufe ihres Lebens vielfältige körperliche und emotionale Veränderungen. Hypnose bietet sanfte Unterstützung bei
+            Menstruationsbeschwerden, in der Schwangerschaft oder während der Wechseljahre. In einem sicheren Raum kannst du deine Empfindungen neu betrachten,
+            Schmerzen lindern und tieferes Vertrauen in dich selbst finden – individuell und mit Respekt für deinen persönlichen Weg.
+        </p>
+        <a href="/hypnosetherapie/hypnose-fuer-frauen/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+            <span>Mehr über Hypnose für Frauen erfahren</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                    fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </a>
+    </div>
+
     <hr class="border-t border-gray-400 mt-12" />
     <VideoIntroduction />
     <TrustSignals />
-    <Testimonials ids={[10, 21, 20, 14, 15, 5, 2, 3, 0, 6, 7, 9, 19]} />
+    <Testimonials ids={[17, 10, 2, 5, 21, 0, 19, 14, 20]} visibleCount={4} />
     <HomepageFAQ />
     <LastPosts posts={lastPosts} />
 </BaseLayout>
