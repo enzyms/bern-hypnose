@@ -15,15 +15,11 @@ Ich meine das nicht aus einer beleidigten Stimmung heraus, sondern aus einer ung
 
 Nun aber zur Podcast-Folge:
 
-
-
 ## Mel Robbins im Gespräch mit dem Neurowissenschaftler und Neurochirurgen Dr. Jim Doty
 
 Ich mag den Podcast von Mel Robbins. Er baut auf und inspiriert. 
 
-Das Buch "Mind Magic" von Dr. Jim Doty hat mich begeistert. Ihn nun in dieser Podcast-Folge über Neurowissenschaft und Manifestation zu hören, war eine Wohltat. Sein enormes Wissen über das menschliche Gehirn und dessen Funktionsweise, seine Vision, mit geöffnetem Herzen durchs Leben zu gehen, Empathie zu fühlen und zu leben und ein Miteinander anzustreben, hat mich tief im Herzen berührt. Und so vieles, was er sagt und beschreibt, ist identisch mit dem, was Hypnose bewirken kann. Die Folge ist kein Gespräch über Hypnose, und doch erkenne ich unzählige Parallelen. Einmal mehr bestätigt es mir: Hypnose ist kein Voodoo-Zauber, es ist angewandte Neurowissenschaft mit dem Ziel, alte, limitierende Glaubenssätze und Denkmuster abzulegen und befreit, mit Freude und offenem Herzen in die gewünschte Richtung zu gehen.
-
-
+Das Buch "Mind Magic" von Dr. Jim Doty hat mich begeistert. Ihn nun in dieser [Podcast-Folge über Neurowissenschaft und Manifestation](https://www.melrobbins.com/episode/episode-227/) zu hören, war eine Wohltat. Sein enormes Wissen über das menschliche Gehirn und dessen Funktionsweise, seine Vision, mit geöffnetem Herzen durchs Leben zu gehen, Empathie zu fühlen und zu leben und ein Miteinander anzustreben, hat mich tief im Herzen berührt. Und so vieles, was er sagt und beschreibt, ist identisch mit dem, was Hypnose bewirken kann. Die Folge ist kein Gespräch über Hypnose, und doch erkenne ich unzählige Parallelen. Einmal mehr bestätigt es mir: Hypnose ist kein Voodoo-Zauber, es ist angewandte Neurowissenschaft mit dem Ziel, alte, limitierende Glaubenssätze und Denkmuster abzulegen und befreit, mit Freude und offenem Herzen in die gewünschte Richtung zu gehen.
 
 ## Wie sich Neurowissenschaft konkret in der Hypnose zeigt
 
@@ -37,8 +33,6 @@ Dr. Doty meint auch, dass man sich die Visionen, die Wünsche aufschreiben und s
 
 Kommt ein Gedanke öfters, wird er ernst genommen. Dies nennt man "Salienz". Unser Gehirn sucht nun nach Bestätigung, um diese Annahme richtig dastehen zu lassen. 
 
-
-
 ## Was bedeutet dies konkret für deine Gedanken über dich?
 
 Es ist enorm wichtig, dass du dir bewusst machst, wie du über dich denkst. Sind es eher negative Sätze wie "Ich kann das niemals", oder " Ich genüge nicht"? Sind dies die Schallplatten in deinem Keller? Gut, dass es nun vom Unterbewusstsein ins Bewusstsein gelangt ist, denn nun hast du die Möglichkeit, eine neue Schallplatte aufzulegen. Dein Gehirn wird nun eben ein neues Netzwerk aufbauen, insbesondere, wenn dein Satz, deine Vision mit Emotionen verbunden ist (indem du visualisierst, was du dir wünschst und das Gefühl bereits wahrnimmst).
@@ -46,8 +40,6 @@ Es ist enorm wichtig, dass du dir bewusst machst, wie du über dich denkst. Sind
 Kommen nun die negativen Gedanken nicht mehr? Doch, wahrscheinlich schon. Dr. Jim Doty erklärt, dass es ist die Bürde von uns Menschen ist, dass wir die Neigung zu einer negativen Denkweise haben. Dies hat der Menschheit vor langer Zeit geholfen, Veränderung und Optimierung hervorzubringen, auf Gefahren zu achten und so das Überleben der Nachfahren sicherzustellen. 
 
 Unsere Lebensweise hat sich aber verändert, sehr rapide sogar in der letzten Zeit. Es besteht bei den meisten von uns nicht regelmässig akute Lebensgefahr. Wir benötigen die "Warngedanken" selten in diesem Ausmass, in welchem sie auftreten. Hier hilft Abstand nehmen von unseren Gedanken und sie als das sehen, was sie sind: Gedanken und selten die Wahrheit. Und dann: dem Gehirn einen neuen Vorschlag machen. Zum Beispiel: "Ich bin sicher". Oder "Ich kann alles schaffen".
-
-
 
 ## Was kann ich nebst Visualisieren tun?
 
@@ -68,8 +60,6 @@ Wähle positive, kraftvolle Worte. Vergrössere dein "Möglichkeitsspektrum" von
 **Empathie und gelebtes Miteinander**
 
 Dr. Doty sagt, dass der "Bauplan von uns Menschen" es vorsieht, dass wir zusammen agieren, füreinander da sind und uns unterstützen. Es entsteht ein tieferer Sinn unseres Daseins, eine Sinnhaftigkeit und zudem werden wünschenswerte Hormone wie Oxytocin ausgeschüttet, welche uns in den "Glücksmodus" versetzen. Also Herz öffnen, anderen zuhören, sie vielleicht inspirieren und mit positiven Schwingungen beschenken. Dies setzt voraus, dass du dein eigenes "Gefäss" auch füllst. Selbstakzeptanz und Selbstliebe lebst, nicht nur gibst, dich aber selbst vergisst.
-
-
 
 ## Mein Fazit
 
