@@ -6,6 +6,8 @@ excerpt: Der Neurowissenschaftler und Neurochirurg Dr. Jim Doty erklärt in
   bewusst geworden, wie viel von dem, was er sagt, mit Hypnose in Zusammenhang
   gebracht werden kann.
 publishDate: 2026-01-11T08:07:00.000+01:00
+image:
+  src: src/assets/uploads/2026-molecules-pink.png
 ---
 ## Hypnose verdient Anerkennung
 
