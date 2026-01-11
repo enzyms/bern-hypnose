@@ -241,9 +241,9 @@ const siteConfig: SiteConfig = {
         }
 
     ],
-    title: 'Hypnosetherapie Bern – Hypnose | Janine Aerni',
-    titleSuffix: 'Hypnosetherapie Bern | Janine Aerni',
-    description: 'Hypnosetherapie Bern bei Janine Aerni ✓ Diplomierte VSH Hypnosetherapeutin ✓ Ängste, Stress & Abhängigkeiten überwinden ✓ Zentral in Bern ✓ Jetzt Termin buchen!',
+    title: 'Hypnosetherapie in Bern – Hypnose mit Janine Aerni',
+    titleSuffix: 'Hypnosetherapie in Bern | Janine Aerni',
+    description: 'Hypnosetherapie bei Janine Aerni – Diplomierte VSH Hypnosetherapeutin. Ich helfe dir durch Hypnosetherapie, Stress, Angst, Phobien und mehr zu überwinden.',
     image: {
         src: 'src/assets/uploads/glowing-blocks.png',
         alt: 'Hypnose und Hypnosetherapie in Bern'
