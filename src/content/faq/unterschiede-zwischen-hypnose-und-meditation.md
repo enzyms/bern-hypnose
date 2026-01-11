@@ -3,6 +3,7 @@ title: Was sind die Unterschiede zwischen therapeutischer Hypnose und Meditation
 promoted: false
 order: 30
 linkText: 'Unterschiede zwischen Hypnose und Meditation verstehen'
+shortAnswer: 'Hypnose wird von einem Therapeuten geleitet und arbeitet gezielt mit dem Unterbewusstsein an spezifischen Problemen. Meditation ist meist selbständig und fördert allgemeine Entspannung und Achtsamkeit.'
 ---
 
 Therapeutische Hypnose, Meditation und Entspannungstechniken haben das gemeinsame Ziel, Stress zu reduzieren und das Wohlbefinden zu fördern, unterscheiden sich jedoch in ihrer Herangehensweise und ihren Zielen:

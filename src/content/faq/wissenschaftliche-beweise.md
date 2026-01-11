@@ -3,6 +3,7 @@ title: Gibt es wissenschaftliche Beweise für Hypnose?
 promoted: true
 order: 30
 linkText: 'Wissenschaftliche Studien zu Hypnose ansehen'
+shortAnswer: 'Ja, Hypnose ist wissenschaftlich anerkannt. Studien belegen ihre Wirksamkeit bei Schmerztherapie, Ängsten und Verhaltensänderungen. Renommierte Institutionen wie die Genfer Universitätskliniken setzen Hypnose erfolgreich ein.'
 ---
 
 Ja, es gibt klare wissenschaftliche Belege für die Wirksamkeit der Hypnose. Eine Studie zeigt beispielsweise, dass Teilnehmende, denen in Hypnosesitzungen suggeriert wurde, sich stärker zu fühlen, nicht nur subjektiv von gesteigerter Kraft berichteten, sondern tatsächlich messbare Zunahmen ihrer körperlichen Leistungsfähigkeit zeigten. Diese anhaltenden Effekte verdeutlichen das Potenzial der Hypnose, nicht nur mentale Barrieren abzubauen, sondern auch physische Ressourcen zu aktivieren.  
