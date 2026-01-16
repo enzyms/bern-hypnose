@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Testimonials from '../components/Testimonials.astro';
+import SchemaTestimonials from '../schemas/SchemaTestimonials.astro';
 import ArrowLeft from '../icons/ArrowLeft.astro';
 import googleReviewsData from '../data/google-reviews.json';
 
@@ -8,6 +9,7 @@ const seoTitle = 'Klient:innenstimmen – Google Rezensionen | Bern Hypnose';
 const seoDescription = `Lesen Sie ${googleReviewsData.totalReviewCount} authentische Erfahrungsberichte von Klient:innen. Alle Google-Bewertungen zur Hypnosetherapie bei Janine Aerni in Bern.`;
 ---
 
+<SchemaTestimonials />
 <BaseLayout seoTitle={seoTitle} description={seoDescription}>
     <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/">
         <ArrowLeft class="w-4 h-4 fill-current" />

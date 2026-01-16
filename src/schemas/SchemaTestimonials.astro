@@ -1,0 +1,71 @@
+---
+/**
+ * SchemaTestimonials.astro
+ * Schema markup for the testimonials/reviews page (/klientinnenstimmen/)
+ * Includes ALL reviews with text for maximum rich snippet potential
+ */
+import googleReviewsData from '../data/google-reviews.json';
+
+// Get all reviews with actual text content
+const allReviewsWithText = googleReviewsData.reviews
+    .filter((review) => review.quote && review.quote.trim().length > 0)
+    .map((review) => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: review.author },
+        reviewBody: review.quote,
+        reviewRating: { '@type': 'Rating', ratingValue: String(review.starRating), bestRating: '5' },
+        datePublished: review.createTime ? review.createTime.split('T')[0] : undefined
+    }));
+
+// LocalBusiness schema with all reviews for testimonials page
+const testimonialsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': 'https://bern-hypnose.ch/#organization',
+    name: 'Hypnosetherapie Bern – Janine Aerni',
+    url: 'https://bern-hypnose.ch',
+    image: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg',
+    telephone: '+41 79 833 03 85',
+    address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Eigerstrasse 56',
+        addressLocality: 'Bern',
+        postalCode: '3007',
+        addressCountry: 'CH'
+    },
+    aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: String(googleReviewsData.overallRating),
+        bestRating: '5',
+        ratingCount: String(googleReviewsData.totalReviewCount),
+        reviewCount: String(allReviewsWithText.length)
+    },
+    review: allReviewsWithText
+};
+
+// Breadcrumb for testimonials page
+const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+        {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Hypnosetherapie Bern',
+            item: 'https://bern-hypnose.ch/'
+        },
+        {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Klient:innenstimmen',
+            item: 'https://bern-hypnose.ch/klientinnenstimmen/'
+        }
+    ]
+};
+---
+
+<!-- LocalBusiness Schema with all reviews -->
+<script type="application/ld+json" set:html={JSON.stringify(testimonialsSchema)} />
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

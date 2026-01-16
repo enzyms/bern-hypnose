@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import googleReviewsData from '../data/google-reviews.json';
 
 // Fetch FAQs for homepage schema (both general and homepage-specific)
 const allFaqs = await getCollection('faq');
@@ -14,9 +15,7 @@ const generalFaqs = allFaqs
     .slice(0, 5);
 
 // Combine for schema - only include FAQs that have a proper answer text
-const schemaFaqs = [...generalFaqs, ...homepageFaqs].filter(
-    (faq) => faq.data.shortAnswer || faq.data.teaser || faq.data.description
-);
+const schemaFaqs = [...generalFaqs, ...homepageFaqs].filter((faq) => faq.data.shortAnswer || faq.data.teaser || faq.data.description);
 
 // Generate FAQ schema data
 const faqSchemaData = {
@@ -31,286 +30,169 @@ const faqSchemaData = {
         }
     }))
 };
+
+// Generate reviews for schema - 5 latest reviews with text (matches homepage display)
+const schemaReviews = googleReviewsData.reviews
+    .filter((review) => review.quote && review.quote.trim().length > 0)
+    .slice(0, 5)
+    .map((review) => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: review.author },
+        reviewBody: review.quote.length > 300 ? review.quote.substring(0, 300) + '...' : review.quote,
+        reviewRating: { '@type': 'Rating', ratingValue: String(review.starRating), bestRating: '5' },
+        datePublished: review.createTime ? review.createTime.split('T')[0] : undefined
+    }));
+
+// Generate MedicalBusiness schema
+const medicalBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    name: 'Hypnosetherapie Bern – Janine Aerni',
+    image: {
+        '@type': 'ImageObject',
+        url: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg',
+        width: 600,
+        height: 600,
+        caption: 'Janine Aerni – Diplomierte Hypnosetherapeutin in Bern'
+    },
+    logo: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg',
+    description:
+        'Hypnosetherapie Bern – Janine Aerni. Professionelle Hypnosetherapie in Bern, um Stress, Ängste, Phobien und mehr zu überwinden. Erfahre, wie Hypnose dir helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen.',
+    address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Eigerstrasse 56',
+        addressLocality: 'Bern',
+        postalCode: '3007',
+        addressCountry: 'CH'
+    },
+    geo: {
+        '@type': 'GeoCoordinates',
+        latitude: '46.9400119148607',
+        longitude: '7.436508173013693'
+    },
+    telephone: '+41 79 833 03 85',
+    contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'Customer Service',
+        telephone: '+41 79 833 03 85',
+        email: 'janine@bern-hypnose.ch'
+    },
+    url: 'https://bern-hypnose.ch',
+    priceRange: '120 CHF - 150 CHF',
+    openingHours: 'Mo,Tu,We,Th,Fr 07:00-19:00',
+    sameAs: [
+        'https://www.facebook.com/profile.php?id=61564940341284',
+        'https://www.linkedin.com/in/janine-aerni-b7452a321/',
+        'https://www.instagram.com/janineaerni/'
+    ],
+    founder: {
+        '@type': 'Person',
+        name: 'Janine Aerni',
+        jobTitle: 'Diplomierte Hypnosetherapeutin',
+        telephone: '+41 79 833 03 85',
+        email: 'janine@bern-hypnose.ch',
+        knowsAbout: [
+            'Hypnose',
+            'Hypnosetherapie',
+            'Rauchstopp mit Hypnose',
+            'Hypnose für Ängste',
+            'Hypnose für Selbstvertrauen',
+            'Hypnose bei Stress',
+            'Hypnose bei Burnout',
+            'Hypnose bei Depression'
+        ]
+    },
+    areaServed: [
+        { '@type': 'Place', name: 'Bern' },
+        { '@type': 'Place', name: 'Köniz' },
+        { '@type': 'Place', name: 'Wabern' },
+        { '@type': 'Place', name: 'Liebefeld' },
+        { '@type': 'Place', name: 'Muri bei Bern' },
+        { '@type': 'Place', name: 'Ostermundigen' },
+        { '@type': 'Place', name: 'Ittigen' },
+        { '@type': 'Place', name: 'Bremgarten bei Bern' },
+        { '@type': 'Place', name: 'Kirchlindach' },
+        { '@type': 'Place', name: 'Wohlen bei Bern' }
+    ],
+    aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: String(googleReviewsData.overallRating),
+        bestRating: '5',
+        ratingCount: String(googleReviewsData.totalReviewCount)
+    },
+    review: schemaReviews,
+    hasMap: 'https://maps.app.goo.gl/6ztgohYSpsWiT9CB8',
+    paymentAccepted: 'Bargeld, TWINT, auf Rechnung',
+    hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Hypnosetherapie Dienstleistungen in Bern',
+        itemListElement: [
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Hypnosetherapie gegen Ängste und Phobien',
+                    description: 'Professionelle Hypnosetherapie zur Überwindung von Ängsten, Phobien und Angststörungen in Bern'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Rauchstopp mit Hypnose',
+                    description: 'Rauchentwöhnung durch Hypnosetherapie in Bern'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Hypnose bei Stress',
+                    description: 'Stress abbauen und gelassener werden mit Hypnose in Bern',
+                    url: 'https://bern-hypnose.ch/hypnosetherapie/stress/'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Hypnose bei Burnout',
+                    description: 'Aus der Erschöpfung herausfinden mit Hypnose in Bern',
+                    url: 'https://bern-hypnose.ch/hypnosetherapie/burnout/'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Hypnose bei Depression',
+                    description: 'Wieder Lebensfreude finden mit Hypnose in Bern',
+                    url: 'https://bern-hypnose.ch/hypnosetherapie/depression/'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Kinderhypnose',
+                    description: 'Sanfte Hypnosetherapie für Kinder bei Ängsten und Blockaden'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Sporthypnose',
+                    description: 'Mentales Training und Leistungssteigerung für Sportler durch Hypnose'
+                }
+            }
+        ]
+    }
+};
 ---
 
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
-        "name": "Hypnosetherapie Bern – Janine Aerni",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg",
-            "width": 600,
-            "height": 600,
-            "caption": "Janine Aerni – Diplomierte Hypnosetherapeutin in Bern"
-        },
-        "logo": "https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg",
-        "description": "Hypnosetherapie Bern – Janine Aerni. Professionelle Hypnosetherapie in Bern, um Stress, Ängste, Phobien und mehr zu überwinden. Erfahre, wie Hypnose dir helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen.",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Eigerstrasse 56",
-            "addressLocality": "Bern",
-            "postalCode": "3007",
-            "addressCountry": "CH"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "46.9400119148607",
-            "longitude": "7.436508173013693"
-        },
-        "telephone": "+41 79 833 03 85",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "Customer Service",
-            "telephone": "+41 79 833 03 85",
-            "email": "janine@bern-hypnose.ch"
-        },
-        "url": "https://bern-hypnose.ch",
-        "priceRange": "120 CHF - 150 CHF",
-        "openingHours": "Mo,Tu,We,Th,Fr 07:00-19:00",
-        "sameAs": [
-            "https://www.facebook.com/profile.php?id=61564940341284",
-            "https://www.linkedin.com/in/janine-aerni-b7452a321/",
-            "https://www.instagram.com/janineaerni/"
-        ],
-        "founder": {
-            "@type": "Person",
-            "name": "Janine Aerni",
-            "jobTitle": "Diplomierte Hypnosetherapeutin",
-            "telephone": "+41 79 833 03 85",
-            "email": "janine@bern-hypnose.ch",
-            "knowsAbout": ["Hypnose", "Hypnosetherapie", "Rauchstopp mit Hypnose", "Hypnose für Ängste", "Hypnose für Selbstvertrauen", "Hypnose bei Stress", "Hypnose bei Burnout", "Hypnose bei Depression"]
-        },
-        "areaServed": [
-            { "@type": "Place", "name": "Bern" },
-            { "@type": "Place", "name": "Köniz" },
-            { "@type": "Place", "name": "Wabern" },
-            { "@type": "Place", "name": "Liebefeld" },
-            { "@type": "Place", "name": "Muri bei Bern" },
-            { "@type": "Place", "name": "Ostermundigen" },
-            { "@type": "Place", "name": "Ittigen" },
-            { "@type": "Place", "name": "Bremgarten bei Bern" },
-            { "@type": "Place", "name": "Kirchlindach" },
-            { "@type": "Place", "name": "Wohlen bei Bern" }
-        ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "bestRating": "5",
-            "ratingCount": "44"
-        },
-        "review": [
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Claes Lennman" },
-                "reviewBody": "Ich habe mich bei Janine von Anfang an verstanden, sicher und gut aufgehoben gefühlt. Während der Hypnosesitzung hatte ich den Eindruck, dass sie genau spürt, was ich gerade brauche, als würde sie zwischen den Zeilen lesen können.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/ddjY2rf"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Nicole Engler" },
-                "reviewBody": "Sehr beeindruckend und absolut empfehlenswert! Janine hat sich viel Zeit genommen, die Hypnose individuell auf mich abzustimmen, und ich habe mich von Anfang an wohlgefühlt.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/7WBcEaDnA5W16v5p8"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Joanna Wieruszewska" },
-                "reviewBody": "Dank Janine durfte ich eine berührende, tiefe und aufschlussreise Reise in mich selbst erleben, die mich geprägt hat.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/odUztZYBiiHmJUuL8"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Paula Bozic" },
-                "reviewBody": "Ich war wegen Durchschlafproblemen bei Janine. Seit der Hypnosetherapie bei Janine schlafe ich viel besser.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/dVE5uGwXezAQ2TyV8"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Lea Tschirren" },
-                "reviewBody": "Die Therapie bei Janine Aerni hat unserer Tochter sehr gut getan. Janine Aerni hat eine sehr warme und einfühlsame Art.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/ragLMPJzG8MMC7Lv9"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Vroni Gschwend" },
-                "reviewBody": "Ich habe die Hypnosetherapie besucht, weil ich grosse Angst vor einem medizischen Eingriff hatte. Janine Aerni hat es verstanden, mich in einen Zustand von Entspannung, innerer Ruhe und Vertrauen zu führen.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/yJrAfVx"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Franziska Fiedler" },
-                "reviewBody": "Die Hypnosesitzung bei Janine Aerni möchte ich deshalb weiter empfehlen weil das Eingehen auf die Klienten mit besonderem Einfühlungsvermögen und Empathie geschieht.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/2j43d2y"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Michelle Fankhauser" },
-                "reviewBody": "Dank der einfühlsamen und professionellen Art von Janine konnte ich mich total entspannen und Energie tanken. Eine sehr empfehlenswerte Auszeit.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/LDT8sut"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Katrin Breuer" },
-                "reviewBody": "Mit der Hypnosetherapie und den mitgegebenen Übungen konnte ich mein Thema ideal behandeln und überwinden. Es hat mir eine neue Lebensqualität gebracht.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/g9JUYgs"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Jasmin Miescher" },
-                "reviewBody": "Es war meine erste Hypnose und bei Janine und ich fühlte mich bei Ihr direkt Wohl. Sie hat sich Zeit genommen und mich mit Ihrer Freundlichen Art geleitet.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/MUQ2kpX"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Alexandra Sidler" },
-                "reviewBody": "Janine Aerni ist eine sehr authentische, kompetente Hypnosetherapeutin, mit einem grossen Herz. Ich bin Janine Aerni für diese einfühlsame und effektive Hypnosetherapie sehr dankbar.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/p1syPib"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Anemone Brunner" },
-                "reviewBody": "Sehr kompetente, rücksichtsvolle und feinfühlige Hypnosetherapeutin. In einem sehr angenehmen und entspannenden Setting. Nachhaltiges und wirkungsvolles Erlebnis.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/Rpj2hhC"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Christine Eva Roelli" },
-                "reviewBody": "Habe mich sehr wohl gefühlt! Herzlichen Dank für deine einfühlsame, ruhige und unterstützende Art und Weise, mit der du mich mittels Hypnose wieder ein Stück näher zu mir selbst gebracht hast!",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/BTQth3X"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Jasmin Stöckli" },
-                "reviewBody": "Ich war zum 1. Mal bei Janine und bereits von Beginn an, habe ich mich sehr wohl gefühlt. Janine hört super zu und gibt einem das Gefühl verstanden zu werden.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/XwM3bgY"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Nina Cotting" },
-                "reviewBody": "Es war meine erste Hypnose und ich bin sehr dankbar habe ich dies bei Janine gemacht. Die Hypnose unterstützt mich sehr mit meinen Angelegenheiten.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://g.co/kgs/z1vSrXV"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Katrin Suter" },
-                "reviewBody": "Janine ist eine wundervolle, sehr empathische Frau. Meine Tochter nimmt regelmässig an den Traumreisen teil und ist jedes Mal begeistert.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/CCx9FUavofQfjRgV8"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Charrua Däppen" },
-                "reviewBody": "Unsere Kinder gehen regelmässig in die Traumreise zu Janine und fühlen sich dort sehr wohl. Janine schafft eine ruhige, vertrauensvolle Atmosphäre.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/5iqQyUfD7WrEijio6"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Jelena Sollberger" },
-                "reviewBody": "Die Kinder kommen gerne in die Traumreise bei Frau Aerni. Sie sind immer zufrieden danach. Danke Janine für deine Arbeit!",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/1Z3Lb31m73YiJd2o9"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Anna Yoga" },
-                "reviewBody": "Mein Kind besucht einmal im Monat regelmässig die Traumreise-Meditationen bei Janine. Diese einzigartige Verbindung ihrer persönlichen Qualitäten – ihre grosse Liebe zu Kindern, ihre tiefe Aufmerksamkeit – sind extrem selten.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/oxQMwKYWnXrvoixu9"
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Flower" },
-                "reviewBody": "Janine zeigt eine bemerkenswerte Fähigkeit, empathisch und authentisch auf die Bedürfnisse ihrer Klienten einzugehen. Ihr Engagement und ihre Fachkompetenz sind in jeder Hinsicht wertvoll.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "url": "https://maps.app.goo.gl/GXFN9kou2wvCWy7PA"
-            }
-        ],
-        "hasMap": "https://maps.app.goo.gl/6ztgohYSpsWiT9CB8",
-        "paymentAccepted": "Bargeld, TWINT, auf Rechnung",
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Hypnosetherapie Dienstleistungen in Bern",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Hypnosetherapie gegen Ängste und Phobien",
-                        "description": "Professionelle Hypnosetherapie zur Überwindung von Ängsten, Phobien und Angststörungen in Bern"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Rauchstopp mit Hypnose",
-                        "description": "Rauchentwöhnung durch Hypnosetherapie in Bern"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Hypnose bei Stress",
-                        "description": "Stress abbauen und gelassener werden mit Hypnose in Bern",
-                        "url": "https://bern-hypnose.ch/hypnosetherapie/stress/"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Hypnose bei Burnout",
-                        "description": "Aus der Erschöpfung herausfinden mit Hypnose in Bern",
-                        "url": "https://bern-hypnose.ch/hypnosetherapie/burnout/"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Hypnose bei Depression",
-                        "description": "Wieder Lebensfreude finden mit Hypnose in Bern",
-                        "url": "https://bern-hypnose.ch/hypnosetherapie/depression/"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Kinderhypnose",
-                        "description": "Sanfte Hypnosetherapie für Kinder bei Ängsten und Blockaden"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Sporthypnose",
-                        "description": "Mentales Training und Leistungssteigerung für Sportler durch Hypnose"
-                    }
-                }
-            ]
-        }
-    }
-</script>
+<!-- MedicalBusiness Schema - Dynamically generated with latest reviews -->
+<script type="application/ld+json" set:html={JSON.stringify(medicalBusinessSchema)} />
 
 <!-- FAQ Schema - Dynamically generated from content collection -->
 <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />

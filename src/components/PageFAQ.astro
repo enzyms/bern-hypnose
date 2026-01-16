@@ -15,18 +15,23 @@ const { pagePath, title = 'Häufige Fragen', includeSchema = true } = Astro.prop
 // Fetch FAQs for this specific page
 const faqs = (await getCollection('faq')).filter((faq) => faq.data.showOnPages?.includes(pagePath)).sort((a, b) => a.data.order - b.data.order);
 
-// Generate schema data if needed
+// Generate schema data if needed - only include FAQs with valid answer text
+const faqsWithAnswers = faqs.filter((faq) => {
+    const answerText = faq.data.shortAnswer || faq.data.teaser || faq.data.description || '';
+    return answerText.trim().length > 0;
+});
+
 const schemaData =
-    includeSchema && faqs.length > 0
+    includeSchema && faqsWithAnswers.length > 0
         ? {
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
-              mainEntity: faqs.map((faq) => ({
+              mainEntity: faqsWithAnswers.map((faq) => ({
                   '@type': 'Question',
                   name: faq.data.title,
                   acceptedAnswer: {
                       '@type': 'Answer',
-                      text: faq.data.shortAnswer || faq.data.teaser || faq.data.description || ''
+                      text: faq.data.shortAnswer || faq.data.teaser || faq.data.description || faq.data.title // Fallback to title if all else fails
                   }
               }))
           }

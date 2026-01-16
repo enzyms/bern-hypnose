@@ -36,16 +36,22 @@ const renderedFaqs = await Promise.all(
 );
 
 // Build the FAQPage schema data with plain text answers
+// Only include FAQs that have actual answer text
+const faqsWithAnswers = renderedFaqs.filter((faq) => {
+    const answerText = faq.plainText || faq.data.description || faq.data.teaser || '';
+    return answerText.trim().length > 0;
+});
+
 const faqSchemaData = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     name: 'Was ist Hypnose? Häufige Fragen',
-    mainEntity: renderedFaqs.map((faq) => ({
+    mainEntity: faqsWithAnswers.map((faq) => ({
         '@type': 'Question',
         name: faq.data.title,
         acceptedAnswer: {
             '@type': 'Answer',
-            text: faq.plainText // Use plain text for JSON-LD schema
+            text: faq.plainText || faq.data.description || faq.data.teaser || faq.data.title // Fallback chain to ensure text is never empty
         }
     }))
 };

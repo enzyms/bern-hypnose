@@ -39,10 +39,13 @@ function markdownToPlainText(markdown: string) {
         .trim();
 }
 
-const plainTextAnswer = description || teaser || markdownToPlainText(faq.body).substring(0, 200);
+const plainTextAnswer = description || teaser || markdownToPlainText(faq.body).substring(0, 200) || title;
+
+// Only include schema if we have a valid answer text
+const hasValidAnswer = plainTextAnswer && plainTextAnswer.trim().length > 0;
 
 // Build the FAQ schema data for individual FAQ page
-const faqSchemaData = {
+const faqSchemaData = hasValidAnswer ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     name: title,
@@ -56,11 +59,11 @@ const faqSchemaData = {
             }
         }
     ]
-};
+} : null;
 ---
 
 <BaseLayout title={title} description={description || teaser}>
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
+    {faqSchemaData && <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />}
     <article class="mb-16">
         <header class="mb-8 relative">
             <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/was-ist-hypnose/">
