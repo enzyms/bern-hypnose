@@ -19,9 +19,13 @@ const lastPosts = posts.slice(0, 2);
     <Hero />
 
     <!-- GBP Category: Ganzheitliche Hypnosetherapie + Was ist Hypnose (merged) -->
-    <div class="prose sm:prose-lg text-main mb-12">
-        <h2>Was ist Hypnosetherapie?</h2>
-        <p>
+    <section class="prose sm:prose-lg text-main mb-12" itemscope itemtype="https://schema.org/Service">
+        <h2 itemprop="name">
+            Hypnosetherapie in Bern
+            <span class="sr-only">–</span>
+            <div class="text-gray-600 text-sm mt-1 text-bold">Ganzheitliche Methode</div>
+        </h2>
+        <p itemprop="description">
             Hypnosetherapie ist eine ganzheitliche, komplementäre Methode, die Körper und Geist als Einheit betrachtet. In einem Zustand tiefer Entspannung
             findest du Zugang zu deinem Unterbewusstsein und deinen Emotionen – ohne die Kontrolle zu verlieren. Du bestimmst jederzeit selbst, wie weit du
             gehen möchtest.
@@ -31,9 +35,11 @@ const lastPosts = posts.slice(0, 2);
             (wie beim <a href="/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/">Rauchstopp</a>),
             <a href="/hypnosetherapie/aengste-und-phobien/">Ängste zu lösen</a>,
             <a href="/hypnosetherapie/schmerzen/">Schmerzen zu lindern</a> und nachhaltige Veränderungen zu schaffen. Ob du Entspannung suchst, sportliche Ziele
-            erreichen oder deinem Kind Unterstützung bieten möchtest – in meiner Praxis in Bern begleite ich dich einfühlsam und individuell.
+            erreichen oder deinem Kind Unterstützung bieten möchtest – in meiner <span itemprop="areaServed" itemscope itemtype="https://schema.org/City"
+                ><span itemprop="name">Praxis in Bern</span></span
+            > begleite ich dich einfühlsam und individuell.
         </p>
-        <a href="/hypnosetherapie/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+        <a href="/hypnosetherapie/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group" itemprop="url">
             <span>Alle Themen der Hypnosetherapie entdecken</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -42,18 +48,26 @@ const lastPosts = posts.slice(0, 2);
                     clip-rule="evenodd"></path>
             </svg>
         </a>
-    </div>
+    </section>
     <SubPages id="hypnotherapy" columns={2} />
 
     <!-- GBP Category H2 Sections for Entity Relevance -->
-    <div class="prose sm:prose-lg text-main mt-12">
-        <h2>Sporthypnose in Bern</h2>
-        <p>
+    <section class="prose sm:prose-lg text-main mt-12" itemscope itemtype="https://schema.org/Service">
+        <h2 itemprop="name">
+            Sporthypnose in Bern
+            <span class="sr-only">–</span>
+            <div class="text-gray-600 text-sm mt-1 text-bold">Mentale Stärke für Sportler</div>
+        </h2>
+        <p itemprop="description">
             Sporthypnose kann eine effektive Methode sein, um deine mentale Stärke zu steigern und sportliche Ziele zu erreichen. Ob Trainingsmotivation,
             Wettkampfangst oder Blockaden nach einer Verletzung – mit Hypnose aktivierst du deine inneren Ressourcen und schöpfst dein volles Potenzial aus.
             Viele Spitzensportler nutzen Hypnose für bessere Konzentration und schnellere Regeneration.
         </p>
-        <a href="/hypnosetherapie/sporthypnose/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+        <a
+            href="/hypnosetherapie/sporthypnose/"
+            class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group"
+            itemprop="url"
+        >
             <span>Mehr über Sporthypnose erfahren</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -62,16 +76,24 @@ const lastPosts = posts.slice(0, 2);
                     clip-rule="evenodd"></path>
             </svg>
         </a>
-    </div>
+    </section>
 
-    <div class="prose sm:prose-lg text-main mt-12">
-        <h2>Kinderhypnose in Bern</h2>
-        <p>
+    <section class="prose sm:prose-lg text-main mt-12" itemscope itemtype="https://schema.org/Service">
+        <h2 itemprop="name">
+            Kinderhypnose in Bern
+            <span class="sr-only">–</span>
+            <div class="text-gray-600 text-sm mt-1 text-bold">Sanfte Begleitung für Kinder</div>
+        </h2>
+        <p itemprop="description">
             Kinderhypnose ist eine einfühlsame Methode, um Kindern zu helfen, ihre inneren Ressourcen zu entdecken. Durch spielerische Elemente und kindgerechte
             Traumreisen begleite ich dein Kind in eine entspannte Welt, in der es Ängste überwinden, Selbstvertrauen stärken und Herausforderungen wie
             Schulstress oder Bettnässen meistern kann. Die Kinderklinik des Inselspitals Bern setzt Hypnose erfolgreich ein.
         </p>
-        <a href="/hypnosetherapie/kinderhypnose/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+        <a
+            href="/hypnosetherapie/kinderhypnose/"
+            class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group"
+            itemprop="url"
+        >
             <span>Mehr über Kinderhypnose erfahren</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -80,16 +102,24 @@ const lastPosts = posts.slice(0, 2);
                     clip-rule="evenodd"></path>
             </svg>
         </a>
-    </div>
+    </section>
 
-    <div class="prose sm:prose-lg text-main mt-12">
-        <h2>Hypnose für Frauen in Bern</h2>
-        <p>
+    <section class="prose sm:prose-lg text-main mt-12" itemscope itemtype="https://schema.org/Service">
+        <h2 itemprop="name">
+            Hypnose für Frauen in Bern
+            <span class="sr-only">–</span>
+            <div class="text-gray-600 text-sm mt-1 text-bold">Unterstützung in allen Lebensphasen</div>
+        </h2>
+        <p itemprop="description">
             Frauen erleben im Laufe ihres Lebens vielfältige körperliche und emotionale Veränderungen. Hypnose bietet sanfte Unterstützung bei
             Menstruationsbeschwerden, in der Schwangerschaft oder während der Wechseljahre. In einem sicheren Raum kannst du deine Empfindungen neu betrachten,
             Schmerzen lindern und tieferes Vertrauen in dich selbst finden – individuell und mit Respekt für deinen persönlichen Weg.
         </p>
-        <a href="/hypnosetherapie/hypnose-fuer-frauen/" class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group">
+        <a
+            href="/hypnosetherapie/hypnose-fuer-frauen/"
+            class="inline-flex items-center gap-2 text-red-700 hover:text-red-500 font-bold no-underline group"
+            itemprop="url"
+        >
             <span>Mehr über Hypnose für Frauen erfahren</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -98,13 +128,25 @@ const lastPosts = posts.slice(0, 2);
                     clip-rule="evenodd"></path>
             </svg>
         </a>
-    </div>
+    </section>
 
     <hr class="border-t border-gray-400 mt-12" />
     <VideoIntroduction />
     <TrustSignals />
-    {/* Show 5 latest reviews on homepage (already sorted by date in JSON) */}
-    <Testimonials ids={[0, 1, 2, 3, 4]} showFooterLinks={true} />
-    <HomepageFAQ />
-    <LastPosts posts={lastPosts} />
+
+    <section class="mt-12" itemscope itemtype="https://schema.org/Review">
+        <h2 class="sr-only">Klientinnenstimmen und Rezensionen</h2>
+        {/* Show 5 latest reviews on homepage (already sorted by date in JSON) */}
+        <Testimonials ids={[0, 1, 2, 3, 4]} showFooterLinks={true} />
+    </section>
+
+    <section class="mt-12" itemscope itemtype="https://schema.org/FAQPage">
+        <h2 class="sr-only">Häufig gestellte Fragen zur Hypnosetherapie</h2>
+        <HomepageFAQ />
+    </section>
+
+    <section class="mt-12" itemscope itemtype="https://schema.org/Blog">
+        <h2 class="sr-only">Aktuelle Blogbeiträge</h2>
+        <LastPosts posts={lastPosts} />
+    </section>
 </BaseLayout>
