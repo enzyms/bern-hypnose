@@ -5,5 +5,19 @@ import siteConfig from '../../data/site-config';
 ---
 
 <AppLayout description="Selbsthypnose app" image={siteConfig.imageHomepage}>
-    <SvelteApp client:load />
+    <div itemscope itemtype="https://schema.org/WebApplication">
+        <meta itemprop="name" content="Geführte Kurzhypnose App" />
+        <meta itemprop="description" content="Nimm dir einen ruhigen Moment Zeit, mach es dir bequem und lass dich von meiner App in einen Zustand tiefer Entspannung führen." />
+        <meta itemprop="applicationCategory" content="LifestyleApplication" />
+        <meta itemprop="operatingSystem" content="Web" />
+        <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="name" content="Janine Aerni" />
+            <link itemprop="url" href="https://bern-hypnose.ch/janine-aerni/" />
+        </div>
+        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <meta itemprop="price" content="0.00" />
+            <meta itemprop="priceCurrency" content="CHF" />
+        </div>
+        <SvelteApp client:load />
+    </div>
 </AppLayout>

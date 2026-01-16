@@ -22,7 +22,16 @@ const { Content } = await page.render();
 ---
 
 <BaseLayout title={title} seoTitle={seoTitle} description={description} canonical={canonical}>
-    <article class="mb-16">
+    <article class="mb-16" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="description" content={description} />
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="sr-only">
+            <span itemprop="name">Hypnosetherapie Bern – Janine Aerni</span>
+            <link itemprop="url" href="https://bern-hypnose.ch" />
+        </div>
+        <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="sr-only">
+            <span itemprop="name">Janine Aerni</span>
+            <link itemprop="url" href="https://bern-hypnose.ch/janine-aerni/" />
+        </div>
         <header class="mb-8 relative">
             {
                 backlink && (
@@ -32,7 +41,7 @@ const { Content } = await page.render();
                     </a>
                 )
             }
-            <h1 class="text-balance mb-8">{title}</h1>
+            <h1 class="text-balance mb-8" itemprop="headline">{title}</h1>
             {
                 image && (
                     <Image
@@ -42,11 +51,12 @@ const { Content } = await page.render();
                         alt={image.alt ?? ''}
                         widths={[360, 520, 1024]}
                         sizes="(max-width: 768px) calc(100vw - 40px), 1024px"
+                        itemprop="image"
                     />
                 )
             }
         </header>
-        <div class="max-w-none prose prose-dante sm:prose-lg">
+        <div class="max-w-none prose prose-dante sm:prose-lg" itemprop="articleBody">
             <Content />
         </div>
     </article>

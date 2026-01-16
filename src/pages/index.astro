@@ -134,13 +134,13 @@ const lastPosts = posts.slice(0, 2);
     <VideoIntroduction />
     <TrustSignals />
 
-    <section class="mt-12" itemscope itemtype="https://schema.org/Review">
+    <section class="mt-12">
         <h2 class="sr-only">Klientinnenstimmen und Rezensionen</h2>
         {/* Show 5 latest reviews on homepage (already sorted by date in JSON) */}
         <Testimonials ids={[0, 1, 2, 3, 4]} showFooterLinks={true} />
     </section>
 
-    <section class="mt-12" itemscope itemtype="https://schema.org/FAQPage">
+    <section class="mt-12">
         <h2 class="sr-only">Häufig gestellte Fragen zur Hypnosetherapie</h2>
         <HomepageFAQ />
     </section>

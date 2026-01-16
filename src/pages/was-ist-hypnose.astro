@@ -52,6 +52,9 @@ const faqSchemaData = {
 ---
 
 <BaseLayout title="Was ist Hypnose und wie funktioniert Hypnosetherapie?" description="Alle häufig gestellten Fragen über Hypnose und Hypnosetherapie">
+    <!-- Embedding FAQ Schema with JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
+    
     <article class="mb-16">
         <header class="mb-8 relative">
             {
@@ -76,8 +79,6 @@ const faqSchemaData = {
                 Frage entdeckst, zögere bitte nicht, mich direkt zu kontaktieren.
             </p>
         </header>
-        <!-- Embedding FAQ Schema with JSON-LD -->
-        <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
 
         <div class="max-w-none prose prose-dante sm:prose-lg">
             {
