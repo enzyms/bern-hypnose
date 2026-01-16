@@ -103,7 +103,8 @@ const lastPosts = posts.slice(0, 2);
     <hr class="border-t border-gray-400 mt-12" />
     <VideoIntroduction />
     <TrustSignals />
-    <Testimonials ids={[17, 10, 2, 5, 21, 0, 19, 14, 20]} visibleCount={4} />
+    {/* Show 5 latest reviews on homepage (already sorted by date in JSON) */}
+    <Testimonials ids={[0, 1, 2, 3, 4]} showFooterLinks={true} />
     <HomepageFAQ />
     <LastPosts posts={lastPosts} />
 </BaseLayout>

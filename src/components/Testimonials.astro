@@ -1,96 +1,245 @@
 ---
-// Testimonials.astro
-import siteConfig from '../data/site-config';
+// Testimonials.astro - Uses google-reviews.json as data source
 import Quote from '../icons/Quote.astro';
+import googleReviewsData from '../data/google-reviews.json';
 
-const { testimonials } = siteConfig;
+// Type for testimonial
+interface Testimonial {
+    tid: number;
+    quote: string;
+    author: string;
+    authorPhoto?: string | null;
+    dateFormatted?: string;
+    url?: string | null;
+    starRating?: number;
+}
 
-// Accept props: ids, noTitle, visibleCount (default 4 for drawer behavior)
-const { ids, noTitle, visibleCount = 0 } = Astro.props;
+// Get testimonials from JSON file
+const testimonials: Testimonial[] = googleReviewsData.reviews;
 
-const selectedTestimonials = ids
-        ? ids
-              .map((id: number) => testimonials?.find(testimonial => testimonial.tid === id))
-              .filter(Boolean)
-        : testimonials;
+// Accept props:
+// - ids: array of tid numbers
+// - authors: array of author names (more stable than ids)
+// - noTitle: hide the section title
+// - visibleCount: number of visible testimonials (rest in drawer)
+// - showFooterLinks: show the "all reviews" and "Google" links (homepage only)
+const { ids, authors, noTitle, visibleCount = 0, showFooterLinks = false } = Astro.props;
+
+// Select testimonials by ID or author name
+let selectedTestimonials: Testimonial[];
+
+if (authors && authors.length > 0) {
+    // Select by author name (case-insensitive partial match)
+    selectedTestimonials = authors
+        .map((name: string) => testimonials.find((t) => t.author.toLowerCase().includes(name.toLowerCase())))
+        .filter(Boolean) as Testimonial[];
+} else if (ids && ids.length > 0) {
+    // Select by tid
+    selectedTestimonials = ids.map((id: number) => testimonials.find((t) => t.tid === id)).filter(Boolean) as Testimonial[];
+} else {
+    // Show all
+    selectedTestimonials = testimonials;
+}
 
 // Split into visible and hidden testimonials
 const showDrawer = visibleCount > 0 && selectedTestimonials.length > visibleCount;
 const visibleTestimonials = showDrawer ? selectedTestimonials.slice(0, visibleCount) : selectedTestimonials;
 const hiddenTestimonials = showDrawer ? selectedTestimonials.slice(visibleCount) : [];
+
+// Helper function to truncate text
+const truncateText = (text: string, maxLength: number = 400) => {
+    if (text.length <= maxLength) return { truncated: text, isTruncated: false };
+    const truncated = text.substring(0, maxLength);
+    const lastSpace = truncated.lastIndexOf(' ');
+    return {
+        truncated: lastSpace > 0 ? truncated.substring(0, lastSpace) + '...' : truncated + '...',
+        isTruncated: true
+    };
+};
+
+// Helper function to generate star rating display
+const getStarRating = (rating: number = 5) => {
+    const fullStars = '★'.repeat(rating);
+    const emptyStars = '☆'.repeat(5 - rating);
+    return fullStars + emptyStars;
+};
 ---
 
 <section class="mt-12 testimonials">
-  {!noTitle && <div class="prose sm:prose-lg"><h2 class="pb-5">Klient:innenstimmen</h2></div>}
-  
-  {visibleTestimonials && visibleTestimonials.length > 0 ? (
-    visibleTestimonials.map((testimonial: { quote: unknown; author: unknown; url: string | URL | null | undefined; }) => (
-      <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group">
-        <blockquote class="relative pl-6">
-          <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform -translate-x-2" />
-          <p class="inline-block text-pretty">{testimonial.quote}</p>
-        </blockquote>
-        <footer class="text-sm py-2 pl-6">
-          <span>{testimonial.author}</span>
-          {testimonial.url && (
-            <span class="ml-2 text-yellow-500">★ ★ ★ ★ ★ </span>
-            <span class="opacity-0 group-hover:opacity-100 transition-opacity">
-              <span class="">|</span>
-              <a href={testimonial.url} target="_blank" rel="noopener noreferrer" class="link underline">
-                Bewertung auf Google lesen
-              </a>
-            </span>
-          )}
-        </footer>
-      </article>
-    ))
-  ) : (
-    <p>No testimonials available.</p>
-  )}
+    {
+        !noTitle && (
+            <div class="prose sm:prose-lg">
+                <h2 class="pb-5">Klient:innenstimmen</h2>
+            </div>
+        )
+    }
 
-  {showDrawer && (
-    <details class="group/drawer">
-      <summary class="cursor-pointer list-none flex items-center gap-2 py-4 text-red-700 hover:text-red-500 font-medium transition-colors">
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          class="h-5 w-5 transition-transform group-open/drawer:rotate-180" 
-          viewBox="0 0 20 20" 
-          fill="currentColor"
-        >
-          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-        <span class="group-open/drawer:hidden">Weitere {hiddenTestimonials.length} Stimmen anzeigen</span>
-        <span class="hidden group-open/drawer:inline">Weniger anzeigen</span>
-      </summary>
-      <div class="pt-4">
-        {hiddenTestimonials.map((testimonial: { quote: unknown; author: unknown; url: string | URL | null | undefined; }) => (
-          <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group">
-            <blockquote class="relative pl-6">
-              <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform -translate-x-2" />
-              <p class="inline-block text-pretty">{testimonial.quote}</p>
-            </blockquote>
-            <footer class="text-sm py-2 pl-6">
-              <span>{testimonial.author}</span>
-              {testimonial.url && (
-                <span class="ml-2 text-yellow-500">★ ★ ★ ★ ★ </span>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span class="">|</span>
-                  <a href={testimonial.url} target="_blank" rel="noopener noreferrer" class="link underline">
-                    Bewertung auf Google lesen
-                  </a>
-                </span>
-              )}
-            </footer>
-          </article>
-        ))}
-      </div>
-    </details>
-  )}
+    {
+        visibleTestimonials && visibleTestimonials.length > 0 ? (
+            visibleTestimonials.map((testimonial) => {
+                const { truncated, isTruncated } = truncateText(testimonial.quote);
+                return (
+                    <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group" data-testimonial>
+                        <blockquote class="relative pl-14">
+                            {testimonial.authorPhoto ? (
+                                <img
+                                    src={testimonial.authorPhoto}
+                                    alt={testimonial.author}
+                                    class="absolute left-0 top-0 w-10 h-10 rounded-full object-cover bg-gray-200"
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer"
+                                    crossorigin="anonymous"
+                                    onerror="this.style.display='none'; this.nextElementSibling?.classList?.remove('hidden')"
+                                />
+                            ) : (
+                                <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform translate-x-1 hidden" />
+                            )}
+                            <div class="inline-block text-pretty">
+                                <span data-truncated>{truncated}</span>
+                                {isTruncated && (
+                                    <>
+                                        <span class="hidden" data-full>
+                                            {testimonial.quote}
+                                        </span>
+                                        <button class="text-xs text-red-700 hover:text-red-900 font-medium ml-1" data-toggle-text aria-label="Text erweitern">
+                                            mehr lesen
+                                        </button>
+                                    </>
+                                )}
+                            </div>
+                        </blockquote>
+                        <footer class="text-sm py-2 pl-14 flex flex-wrap items-center gap-x-2">
+                            <span class="font-medium">{testimonial.author}</span>
+                            {testimonial.dateFormatted && <span class="text-gray-700">– {testimonial.dateFormatted}</span>}
+                            <span class="text-yellow-500">{getStarRating(testimonial.starRating || 5)}</span>
+                        </footer>
+                    </article>
+                );
+            })
+        ) : (
+            <p>No testimonials available.</p>
+        )
+    }
 
-  <div class="flex items-center gap-4">
-    <div class="border-t border-gray-400 grow"></div>
-    <a href="https://www.google.com/search?q=aerni+hypnose&oq=aerni+hypnose&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDwyBggDEEUYPTIGCAQQRRhB0gEINzYxNWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#lrd=0x478e3919098aba6d:0xc134d9016ead528c,1,,,," class="block link" target="_blank">
-      alle Rezensionen auf Google lesen
-    </a>
-  </div>
+    {
+        showDrawer && (
+            <details class="group/drawer">
+                <summary class="cursor-pointer list-none flex items-center gap-2 py-4 text-red-700 hover:text-red-500 font-medium transition-colors">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 transition-transform group-open/drawer:rotate-180"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                    <span class="group-open/drawer:hidden">Weitere {hiddenTestimonials.length} Stimmen anzeigen</span>
+                    <span class="hidden group-open/drawer:inline">Weniger anzeigen</span>
+                </summary>
+                <div class="pt-4">
+                    {hiddenTestimonials.map((testimonial) => {
+                        const { truncated, isTruncated } = truncateText(testimonial.quote);
+                        return (
+                            <article class="sm:text-lg leading-relaxed pb-4 md:pb-6 group" data-testimonial>
+                                <blockquote class="relative pl-14">
+                                    {testimonial.authorPhoto ? (
+                                        <img
+                                            src={testimonial.authorPhoto}
+                                            alt={testimonial.author}
+                                            class="absolute left-0 top-0 w-10 h-10 rounded-full object-cover bg-gray-200"
+                                            loading="lazy"
+                                            referrerpolicy="no-referrer"
+                                            crossorigin="anonymous"
+                                            onerror="this.style.display='none'; this.nextElementSibling?.classList?.remove('hidden')"
+                                        />
+                                    ) : (
+                                        <Quote class="absolute fill-red-500 h-6 w-6 left-0 top-0 transform translate-x-1 hidden" />
+                                    )}
+                                    <div class="inline-block text-pretty">
+                                        <span data-truncated>{truncated}</span>
+                                        {isTruncated && (
+                                            <>
+                                                <span class="hidden" data-full>
+                                                    {testimonial.quote}
+                                                </span>
+                                                <button class="text-red-600 hover:text-red-500 font-medium ml-1" data-toggle-text aria-label="Text erweitern">
+                                                    mehr lesen
+                                                </button>
+                                            </>
+                                        )}
+                                    </div>
+                                </blockquote>
+                                <footer class="text-sm py-2 pl-14 flex flex-wrap items-center gap-x-2">
+                                    <span class="font-medium">{testimonial.author}</span>
+                                    {testimonial.dateFormatted && <span class="text-gray-700">– {testimonial.dateFormatted}</span>}
+                                    <span class="text-yellow-500">{getStarRating(testimonial.starRating || 5)}</span>
+                                </footer>
+                            </article>
+                        );
+                    })}
+                </div>
+            </details>
+        )
+    }
+
+    {
+        showFooterLinks && (
+            <div class="flex flex-col md:flex-row items-center gap-4 mt-6 pb-12">
+                <a
+                    href="/klientinnenstimmen/"
+                    class="not-prose inline-flex items-center justify-center px-6 py-3 text-base leading-tight font-bold text-red-700 bg-transparent border border-red-700 rounded-full transition hover:bg-red-500 hover:text-red-50"
+                >
+                    <span>Alle {googleReviewsData.totalReviewCount} Rezensionen lesen</span>
+                </a>
+                <div class="border-t border-gray-400 grow" />
+                <a href={googleReviewsData.placeUrl || 'https://maps.google.com/?cid=13921990948284093068'} class="block link" target="_blank">
+                    Rezensionen auf Google lesen
+                </a>
+            </div>
+        )
+    }
 </section>
+
+<script>
+    function initTestimonialToggles() {
+        const testimonials = document.querySelectorAll('[data-testimonial]');
+
+        testimonials.forEach((testimonial) => {
+            const toggleBtn = testimonial.querySelector('[data-toggle-text]');
+            if (!toggleBtn) return;
+
+            const truncatedText = testimonial.querySelector('[data-truncated]');
+            const fullText = testimonial.querySelector('[data-full]');
+
+            let isExpanded = false;
+
+            toggleBtn.addEventListener('click', () => {
+                isExpanded = !isExpanded;
+
+                if (isExpanded) {
+                    truncatedText?.classList.add('hidden');
+                    fullText?.classList.remove('hidden');
+                    toggleBtn.textContent = 'weniger';
+                } else {
+                    truncatedText?.classList.remove('hidden');
+                    fullText?.classList.add('hidden');
+                    toggleBtn.textContent = 'mehr lesen';
+                }
+            });
+        });
+    }
+
+    // Initialize on page load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTestimonialToggles);
+    } else {
+        initTestimonialToggles();
+    }
+
+    // Reinitialize after Astro view transitions
+    document.addEventListener('astro:page-load', initTestimonialToggles);
+</script>

@@ -6,7 +6,12 @@ These are suggestions made by https://app.gmbeverywhere.com/
 
 ## Hand picked categories
 
-Hypnotherapy service, Mental health service, Alternative medicine practitioner, Life coach, Personal trainer, Health consultant
+Hypnotherapy service,
+Mental health service,
+Alternative medicine practitioner,
+Life coach,
+Personal trainer,
+Health consultant
 
 ## Related Services
 

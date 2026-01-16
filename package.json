@@ -7,7 +7,11 @@
         "start": "astro dev",
         "build": "astro build && cp _redirects dist/_redirects",
         "preview": "astro preview",
-        "astro": "astro"
+        "astro": "astro",
+        "reviews:list-locations": "node scripts/fetch-google-reviews.js --list-locations",
+        "reviews:fetch": "node scripts/fetch-google-reviews.js",
+        "reviews:places": "node scripts/fetch-reviews-places-api.js",
+        "reviews:parse": "node scripts/parse-raw-reviews.js"
     },
     "dependencies": {
         "@astrojs/mdx": "4.0.0-beta.1",

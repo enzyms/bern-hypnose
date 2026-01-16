@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ArrowLeft from '../icons/ArrowLeft.astro';
+import googleReviewsData from '../data/google-reviews.json';
+
+const seoTitle = 'Klient:innenstimmen – Google Rezensionen | Bern Hypnose';
+const seoDescription = `Lesen Sie ${googleReviewsData.totalReviewCount} authentische Erfahrungsberichte von Klient:innen. Alle Google-Bewertungen zur Hypnosetherapie bei Janine Aerni in Bern.`;
+---
+
+<BaseLayout seoTitle={seoTitle} description={seoDescription}>
+    <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/">
+        <ArrowLeft class="w-4 h-4 fill-current" />
+        <span>Home</span>
+    </a>
+
+    <h1 class="text-balance text-5xl xs:text-6xl md:text-6xl sm:leading-tight hyphens-auto text-red-500 mb-4 md:mb-12">Klient:innenstimmen</h1>
+
+    <div class="md:flex items-center gap-8 my-6">
+        <p class="my-6">
+            Es berührt mich sehr, so viele wunderbare Menschen auf ihrem Weg begleiten zu dürfen. Hier findest du Rezensionen, die Klient:innen auf Google
+            geteilt haben. Herzlichen Dank für euer Vertrauen und eure offenen Worte!
+        </p>
+        <a
+            href={googleReviewsData.placeUrl || 'https://maps.google.com/?cid=13921990948284093068'}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 border-b border-gray-400/80 pb-4 bg-gray-100/40 rounded-lg p-4 hover:bg-gray-100/80 transition-colors"
+        >
+            <span class="text-5xl font-bold">{googleReviewsData.overallRating}</span>
+            <div class="flex flex-col">
+                <div class="text-yellow-500 text-lg leading-none">★★★★★</div>
+                <div class="text-xs text-gray-700">
+                    {googleReviewsData.totalReviewCount}&nbsp;Bewertungen<br />
+                    auf&nbsp;Google&nbsp;lesen
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <Testimonials noTitle={true} />
+
+    <p class="my-12 pt-12 border-t border-gray-400">
+        Du warst bei mir in der Hypnosesitzung? Ich würde mich sehr freuen, wenn auch du
+        <a
+            href={'https://g.page/r/CYxSrW4B2TTBEBM/review'}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 text-red-700 hover:text-red-500 font-semibold underline decoration-1 underline-offset-2 group"
+        >
+            <span>deine Erfahrung teilen</span>
+        </a>
+        . Danke! 🙏
+    </p>
+</BaseLayout>
