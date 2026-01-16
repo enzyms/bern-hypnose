@@ -2,6 +2,9 @@
   command = "yarn build"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "22"
+
 # Ensure Googlebot can access the site
 [[headers]]
   for = "/*"
