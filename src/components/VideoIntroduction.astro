@@ -8,12 +8,26 @@ import { YouTube } from 'astro-embed';
         {
             "@context": "https://schema.org",
             "@type": "VideoObject",
+            "@id": "https://bern-hypnose.ch/#intro-video",
             "name": "Bern Hypnose | Einführung in Hypnosetherapie",
             "description": "Janine Aerni, Hypnosetherapeutin aus Bern, spricht über die Überwindung von Ängsten und die Rolle der Hypnosetherapie.",
-            "uploadDate": "2024-12-30T08:00:00+08:00",
-            "embedUrl": "https://www.youtube.com/embed/Lcf0gWXu-C8?si=W3ahyzOJd_7ze5lq",
+            "uploadDate": "2024-12-30",
+            "contentUrl": "https://www.youtube.com/watch?v=Lcf0gWXu-C8",
+            "embedUrl": "https://www.youtube.com/embed/Lcf0gWXu-C8",
             "thumbnailUrl": "https://bern-hypnose.ch/posters/intro-video.webp",
-            "duration": "PT1M28S"
+            "duration": "PT1M28S",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Bern Hypnose – Janine Aerni",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg"
+                }
+            },
+            "potentialAction": {
+                "@type": "WatchAction",
+                "target": "https://www.youtube.com/watch?v=Lcf0gWXu-C8"
+            }
         }
     </script>
     <YouTube id="Lcf0gWXu-C8" poster="/posters/intro-video.webp" />
