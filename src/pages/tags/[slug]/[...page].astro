@@ -54,6 +54,7 @@ const tagName = currentTagEntry?.data.title;
     description={`Alle meine Blogartikel über ${tagName}`}
     image={{ src: '/janine-aerni-hypnose-bern-600w.jpg', alt: 'Janine Aerni – Hypnosetherapie in Bern' }}
     canonical={canonicalUrl}
+    noindex={page.currentPage > 1}
 >
     <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
         <ArrowLeft class="w-4 h-4 fill-current" />

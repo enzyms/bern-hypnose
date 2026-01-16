@@ -62,6 +62,7 @@ const pages = defineCollection({
     }).optional(),
     id: z.string().optional(),
     canonical: z.string().optional(),
+    schema: z.string().optional(),
   })
 });
 

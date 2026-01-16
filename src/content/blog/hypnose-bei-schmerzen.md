@@ -3,7 +3,6 @@ title: 'Hypnose bei Schmerzen '
 excerpt: Warum ich seit heute noch überzeugter bin, dass Hypnose bei Schmerzen
   und im Heilungsprozess von Nutzen sein kann.
 publishDate: 2024-10-16T16:40:00.000Z
-canonical: https://bern-hypnose.ch/hypnosetherapie/schmerzen/
 tags:
   - Hypnose
   - Sport

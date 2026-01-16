@@ -1,0 +1,91 @@
+---
+/**
+ * BreadcrumbSchema Component
+ * Generates breadcrumb JSON-LD schema based on current URL path
+ * 
+ * Usage:
+ *   <BreadcrumbSchema />
+ *   // Automatically generates from current URL
+ * 
+ *   <BreadcrumbSchema customPath="/hypnosetherapie/sporthypnose/" />
+ *   // Uses custom path
+ */
+
+interface Props {
+    customPath?: string;
+}
+
+const { customPath } = Astro.props;
+const currentPath = customPath || Astro.url.pathname;
+
+// Remove trailing slash and split path
+const segments = currentPath.replace(/\/$/, '').split('/').filter(Boolean);
+
+// Define human-readable names for common paths
+const pathNames: Record<string, string> = {
+    'hypnosetherapie': 'Hypnosetherapie',
+    'was-ist-hypnose': 'Was ist Hypnose',
+    'blog': 'Blog',
+    'angebote': 'Angebote',
+    'kontakt': 'Kontakt',
+    'tags': 'Themen',
+    'janine-aerni': 'Über mich',
+    'app': 'App',
+    'sporthypnose': 'Sporthypnose',
+    'kinderhypnose': 'Kinderhypnose',
+    'hypnose-fuer-frauen': 'Hypnose für Frauen',
+    'selbstvertrauen': 'Selbstvertrauen',
+    'stress-burnout-und-depression': 'Stress, Burnout und Depression',
+    'stress': 'Stress',
+    'aengste-und-phobien': 'Ängste und Phobien',
+    'abhaengigkeit': 'Abhängigkeiten',
+    'rauchstopp-mit-hypnose': 'Rauchstopp mit Hypnose',
+    'hypnose-gegen-alkoholsucht': 'Hypnose gegen Alkoholsucht',
+    'ernaehrung-und-abnehmen': 'Ernährung und Abnehmen',
+    'schlafstoerungen': 'Schlafstörungen',
+    'schmerzen': 'Schmerzen',
+    'zwangsstoerungen': 'Zwangsstörungen',
+    'flugangst-mit-hypnose': 'Flugangst mit Hypnose',
+    'pruefungsangst-mit-hypnose': 'Prüfungsangst mit Hypnose',
+    'diplomierte-hypnosetherapeutin': 'Diplomierte Hypnosetherapeutin',
+    'klientinnenstimmen': 'Klient:innenstimmen',
+};
+
+// Function to convert slug to title
+function slugToTitle(slug: string): string {
+    return pathNames[slug] || slug
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
+
+// Build breadcrumb items
+const breadcrumbItems = [
+    {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bern-hypnose.ch/"
+    }
+];
+
+// Add each segment
+let currentUrl = "https://bern-hypnose.ch";
+segments.forEach((segment, index) => {
+    currentUrl += `/${segment}`;
+    breadcrumbItems.push({
+        "@type": "ListItem",
+        "position": index + 2,
+        "name": slugToTitle(segment),
+        "item": `${currentUrl}/`
+    });
+});
+
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

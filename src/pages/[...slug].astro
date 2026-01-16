@@ -17,11 +17,11 @@ export async function getStaticPaths() {
 type Props = { page: CollectionEntry<'pages'> };
 
 const { page } = Astro.props;
-const { title, seoTitle, image, description, backlink, canonical } = page.data;
+const { title, seoTitle, image, description, backlink, canonical, schema } = page.data;
 const { Content } = await page.render();
 ---
 
-<BaseLayout title={title} seoTitle={seoTitle} description={description} canonical={canonical}>
+<BaseLayout title={title} seoTitle={seoTitle} description={description} canonical={canonical} schema={schema}>
     <article class="mb-16" itemscope itemtype="https://schema.org/Article">
         <meta itemprop="description" content={description} />
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="sr-only">

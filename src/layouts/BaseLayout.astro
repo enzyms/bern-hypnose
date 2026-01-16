@@ -6,10 +6,12 @@ import Three from '../components/Three.astro';
 import Blur from '../components/Blur.astro';
 import SocialFooter from '../components/SocialFooter.astro';
 import Notification from '../components/Notification.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 
 export type Props = HeadProps;
 
 const { ...head } = Astro.props;
+const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
 ---
 
 <!doctype html>
@@ -18,6 +20,7 @@ const { ...head } = Astro.props;
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <BaseHead {...head} />
+        {!isHomepage && <BreadcrumbSchema />}
         <script>
             if (localStorage.theme === 'dark') {
                 document.documentElement.classList.add('dark');

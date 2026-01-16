@@ -3,7 +3,7 @@ title: Sporthypnose
 excerpt: Welchen Platz nimmt Sport in deinem Leben ein? Was bedeutet er dir? Wo
   hast du Optimierungsbedarf?
 publishDate: 2025-01-15T11:34:00.000Z
-canonical: https://www.bern-hypnose.ch/hypnosetherapie/sporthypnose/
+canonical: https://bern-hypnose.ch/hypnosetherapie/sporthypnose/
 tags:
   - Sport
   - Hypnose

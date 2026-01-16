@@ -4,6 +4,8 @@ import '../styles/global.css';
 import SchemaDefault from '../schemas/SchemaDefault.astro';
 import SchemaHome from '../schemas/SchemaHome.astro';
 import SchemaHypnotherapy from '../schemas/SchemaHypnotherapy.astro';
+import SchemaPerson from '../schemas/SchemaPerson.astro';
+import SchemaContact from '../schemas/SchemaContact.astro';
 
 export type Props = {
     title?: string;
@@ -14,6 +16,7 @@ export type Props = {
     canonical?: string;
     schema?: string;
     hidePickaboo?: boolean;
+    noindex?: boolean;
 };
 
 const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props;
@@ -58,6 +61,10 @@ function formatCanonicalURL(url: string | URL) {
         <SchemaHypnotherapy />
     ) : Astro.props.schema === 'home' ? (
         <SchemaHome />
+    ) : Astro.props.schema === 'person' ? (
+        <SchemaPerson />
+    ) : Astro.props.schema === 'contact' ? (
+        <SchemaContact />
     ) : (
         <SchemaDefault />
     )
@@ -71,6 +78,7 @@ function formatCanonicalURL(url: string | URL) {
 <!-- Page Metadata -->
 <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
 <meta name="description" content={description} />
+{Astro.props.noindex && <meta name="robots" content="noindex, nofollow" />}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />

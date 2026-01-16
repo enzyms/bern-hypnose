@@ -4,7 +4,6 @@ excerpt: |-
   Es hat einen Einfluss, wie du über dich denkst und sprichst.
   Leider sind viele Alltagsgedanken negativ. Lass uns das ändern!
 publishDate: 2025-01-26T18:24:00.000Z
-canonical: https://bern-hypnose.ch/hypnosetherapie/selbstvertrauen/
 tags:
   - Selbstreflexion
   - Hypnose

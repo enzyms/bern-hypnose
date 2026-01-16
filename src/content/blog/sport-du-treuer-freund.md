@@ -2,8 +2,6 @@
 title: Sport, du treuer Freund
 excerpt: Eine Ode an die Bewegung und den Sport
 publishDate: 2024-09-04T16:00:00.000Z
-canonical: https://bern-hypnose.ch/hypnosetherapie/sporthypnose/
-
 image:
   src: src/assets/uploads/trail-alone.png
 tags:

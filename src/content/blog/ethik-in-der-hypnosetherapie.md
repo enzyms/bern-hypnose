@@ -2,7 +2,7 @@
 title: Ethik in der Hypnosetherapie
 excerpt: Hypnose ist noch nicht ganz frei von Vorurteilen oder falschen Vorstellungen. Wir Hypnosetherapeut:innen haben allerdings einen Ethikkodex, der dafür sorgt, dass wir achtsam und sauber arbeiten.
 publishDate: 2025-05-05T15:17:00.000Z
-canonical: https://www.bern-hypnose.ch/blog/ethik-in-der-hypnosetherapie/
+canonical: https://bern-hypnose.ch/blog/ethik-in-der-hypnosetherapie/
 tags:
   - Hypnose
 image:
