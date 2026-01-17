@@ -1,0 +1,46 @@
+name: Auto-Publish GBP Posts
+
+# Runs every day at 9am CET (8am UTC in winter, 7am UTC in summer)
+# Using 8am UTC which is 9am CET (Swiss time)
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Daily at 8:00 UTC = 9:00 CET
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  publish-gbp-post:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Copy images to public folder
+        run: node scripts/copy-gbp-images.js
+
+      - name: Check and publish due posts
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_ACCOUNT_ID: ${{ secrets.GOOGLE_ACCOUNT_ID }}
+          GOOGLE_LOCATION_ID: ${{ secrets.GOOGLE_LOCATION_ID }}
+        run: node scripts/schedule-gbp-posts.js --auto
+
+      - name: Commit updated queue and history
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/gbp-post-queue.json src/data/gbp-post-history.json || true
+          git diff --staged --quiet || git commit -m "🤖 Auto-update GBP post queue [skip ci]"
+          git push || echo "Nothing to push"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

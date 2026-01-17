@@ -1,0 +1,104 @@
+{
+  "posts": [
+    {
+      "slug": "mit-drei-schritten-zu-mehr-gelassenheit",
+      "title": "Mit drei Schritten zu mehr Gelassenheit",
+      "scheduledFor": "2026-01-19T08:00:00.000Z",
+      "createdAt": "2026-01-17T20:48:21.124Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/75991879653439624",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": false
+    },
+    {
+      "slug": "die-wirkung-von-hypnose",
+      "title": "Die Wirkung von Hypnose",
+      "createdAt": "2026-01-17T20:54:14.980Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "liebe-r-zukünftige-r-nichtraucher-in",
+      "title": "Rauchstopp mit Hypnose",
+      "createdAt": "2026-01-17T20:54:14.983Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "was-hypnose-mit-neurowissenschaft-zu-tun-hat",
+      "title": "Was Hypnose mit Neurowissenschaft zu tun hat",
+      "createdAt": "2026-01-17T20:54:14.983Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "einmal-neue-glaubenssätze-bitte",
+      "title": "Einmal neue Glaubenssätze, bitte!",
+      "createdAt": "2026-01-17T20:54:14.984Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "an-alle-erwachsene-lasst-uns-verantwortung-übernehmen",
+      "title": "An alle Erwachsene – Lasst uns Verantwortung übernehmen",
+      "createdAt": "2026-01-17T20:54:14.984Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "ein-jahr-selbständigkeit",
+      "title": "Ein Jahr Selbständigkeit",
+      "createdAt": "2026-01-17T20:54:14.984Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "grenzen-von-hypnosetherapie",
+      "title": "Grenzen von Hypnosetherapie",
+      "createdAt": "2026-01-17T20:54:14.984Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "sporthypnose",
+      "title": "Sporthypnose",
+      "createdAt": "2026-01-17T20:54:14.984Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "ethik-in-der-hypnosetherapie",
+      "title": "Ethik in der Hypnosetherapie",
+      "createdAt": "2026-01-17T20:54:14.984Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "neuanfang-immer-wieder",
+      "title": "Neuanfang – Immer Wieder",
+      "createdAt": "2026-01-17T20:54:14.984Z",
+      "gbpPostId": "synced-from-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    }
+  ]
+}

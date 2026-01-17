@@ -16,6 +16,7 @@
         "gbp:post": "node scripts/publish-to-gbp.js",
         "gbp:post-blog": "node scripts/publish-to-gbp.js --blog",
         "gbp:schedule": "node scripts/schedule-gbp-posts.js",
+        "gbp:auto": "node scripts/schedule-gbp-posts.js --auto",
         "gbp:next": "node scripts/schedule-gbp-posts.js --next",
         "gbp:images": "node scripts/copy-gbp-images.js"
     },
