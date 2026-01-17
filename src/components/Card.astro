@@ -12,7 +12,7 @@ const { href, image, imageWidth, imageWidths, imageSizes, title, hiddenHypnoText
     <div class="card__image">
         <Image
             src={image}
-            alt=""
+            alt={title ? `${title} – Hypnosetherapie Bern` : 'Hypnosetherapie Bern'}
             width={imageWidth ?? null}
             sizes={imageSizes ?? null}
             widths={imageWidths ?? null}
