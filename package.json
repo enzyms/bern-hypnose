@@ -11,7 +11,13 @@
         "reviews:list-locations": "node scripts/fetch-google-reviews.js --list-locations",
         "reviews:fetch": "node scripts/fetch-google-reviews.js",
         "reviews:places": "node scripts/fetch-reviews-places-api.js",
-        "reviews:parse": "node scripts/parse-raw-reviews.js"
+        "reviews:parse": "node scripts/parse-raw-reviews.js",
+        "gbp:list": "node scripts/publish-to-gbp.js --list",
+        "gbp:post": "node scripts/publish-to-gbp.js",
+        "gbp:post-blog": "node scripts/publish-to-gbp.js --blog",
+        "gbp:schedule": "node scripts/schedule-gbp-posts.js",
+        "gbp:next": "node scripts/schedule-gbp-posts.js --next",
+        "gbp:images": "node scripts/copy-gbp-images.js"
     },
     "dependencies": {
         "@astrojs/mdx": "4.0.0-beta.1",
