@@ -16,17 +16,14 @@ export default defineConfig({
             filter: (page) => {
                 // Exclude admin pages
                 if (page.includes('/admin/')) return false;
-                
+
                 // Exclude thank-you pages (noindex)
                 if (page.includes('/gutschein-danke/')) return false;
                 if (page.includes('/newsletter-danke/')) return false;
-                
-                // Exclude pagination pages (page 2+)
-                // Matches /blog/2/, /tags/hypnose/2/, /tags/wohlbefinden/3/, etc.
-                if (/\/\d+\/$/.test(page) && !page.includes('/was-ist-hypnose/')) {
-                    return false;
-                }
-                
+
+                // Now including pagination pages with self-referencing canonicals (SEO best practice)
+                // Previously excluded, but canonicals handle duplicate content better than noindex
+
                 return true;
             }
         }),

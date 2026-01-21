@@ -43,9 +43,15 @@ const descriptions = [
 
 // Use the page number to select a description
 const description = `${descriptions[(page.currentPage - 1) % descriptions.length]} Seite ${page.currentPage} von Blogbeiträgen.`;
+
+// Self-referencing canonical for pagination (SEO best practice instead of noindex)
+const isPaginated = page.currentPage > 1;
+const canonicalUrl = isPaginated
+    ? `https://bern-hypnose.ch/blog/${page.currentPage}/`
+    : 'https://bern-hypnose.ch/blog/';
 ---
 
-<BaseLayout title={`Blog - Seite ${page.currentPage}`} description={description} image={{ src: '@assets/uploads/glowing-blocks.png', alt: 'Blog' }} noindex={page.currentPage > 1}>
+<BaseLayout title={`Blog - Seite ${page.currentPage}`} description={description} image={{ src: '@assets/uploads/glowing-blocks.png', alt: 'Blog' }} canonical={canonicalUrl}>
     <div>
         <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/">
             <ArrowLeft class="w-4 h-4 fill-current" />

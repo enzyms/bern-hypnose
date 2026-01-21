@@ -1,5 +1,8 @@
 // Import images statically
 import fearsImage from '@assets/uploads/fears.png';
+
+// Import Google reviews data for dynamic title
+import googleReviews from './google-reviews.json';
 import thinkingImage from '@assets/uploads/thinking.png';
 import cigaretteImage from '@assets/uploads/cigarette.png';
 import glassImage from '@assets/uploads/glass2.png';
@@ -65,9 +68,9 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Hypnosetherapie in Bern – Hypnose mit Janine Aerni',
-    titleSuffix: 'Hypnosetherapie in Bern | Janine Aerni',
-    description: 'Hypnosetherapie bei Janine Aerni – Diplomierte VSH Hypnosetherapeutin. Ich helfe dir durch Hypnosetherapie, Stress, Angst, Phobien und mehr zu überwinden.',
+    title: `Hypnosetherapie Bern ★ ${googleReviews.overallRating}.0 (${googleReviews.totalReviewCount} Bewertungen) | Janine Aerni`,
+    titleSuffix: 'Hypnosetherapie Bern | Janine Aerni',
+    description: 'Hypnosetherapie Bern – Als diplomierte Hypnosetherapeutin begleite ich dich einfühlsam auf deinem Weg zu mehr Wohlbefinden. In meiner Praxis an der Eigerstrasse findest du Raum für Veränderung.',
     image: {
         src: 'src/assets/uploads/glowing-blocks.png',
         alt: 'Hypnose und Hypnosetherapie in Bern'

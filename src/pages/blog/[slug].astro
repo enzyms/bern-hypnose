@@ -51,17 +51,45 @@ const schemaImage = image ? `${baseUrl}${(await getImage({ src: image.src, width
 const blogSchemaData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': `${baseUrl}/blog/${post.slug}/#article`,
     headline: title,
+    description: excerpt,
     image: [schemaImage],
     datePublished: schemaPubDate,
-    dateModified: schemaUpdateDate,
-    author: [
-        {
-            '@type': 'Person',
-            name: 'Janine Aerni',
-            url: 'https://bern-hypnose.ch/janine-aerni/'
+    dateModified: schemaUpdateDate || schemaPubDate,
+    author: {
+        '@type': 'Person',
+        '@id': 'https://bern-hypnose.ch/janine-aerni/#person',
+        name: 'Janine Aerni',
+        url: 'https://bern-hypnose.ch/janine-aerni/',
+        jobTitle: 'Diplomierte Hypnosetherapeutin VSH',
+        image: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg'
+    },
+    publisher: {
+        '@type': 'Organization',
+        '@id': 'https://bern-hypnose.ch/#organization',
+        name: 'Bern Hypnose – Janine Aerni',
+        logo: {
+            '@type': 'ImageObject',
+            url: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg',
+            width: 600,
+            height: 600
         }
-    ]
+    },
+    mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${baseUrl}/blog/${post.slug}/`
+    },
+    inLanguage: 'de-CH',
+    isPartOf: {
+        '@type': 'Blog',
+        '@id': 'https://bern-hypnose.ch/blog/#blog',
+        name: 'Bern Hypnose Blog',
+        publisher: {
+            '@id': 'https://bern-hypnose.ch/#organization'
+        }
+    },
+    keywords: tags.join(', ')
 };
 ---
 

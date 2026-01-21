@@ -45,16 +45,20 @@ if (currentTagEntry) {
 }
 
 // Use 'currentTagEntry' for properties like 'canonical' and 'title' as it holds the metadata from the tag .md files
-const canonicalUrl = currentTagEntry?.data.canonical;
+// For pagination pages 2+, use self-referencing canonical instead of noindex
+const isPaginated = page.currentPage > 1;
+const currentPageUrl = isPaginated
+    ? `https://bern-hypnose.ch/tags/${params.slug}/${page.currentPage}/`
+    : `https://bern-hypnose.ch/tags/${params.slug}/`;
+const canonicalUrl = currentTagEntry?.data.canonical || (isPaginated ? currentPageUrl : undefined);
 const tagName = currentTagEntry?.data.title;
 ---
 
 <BaseLayout
-    title={`BlogArtikel über ${tagName}`}
-    description={`Alle meine Blogartikel über ${tagName}`}
+    title={`BlogArtikel über ${tagName}${isPaginated ? ` – Seite ${page.currentPage}` : ''}`}
+    description={`Alle meine Blogartikel über ${tagName}${isPaginated ? ` (Seite ${page.currentPage})` : ''}`}
     image={{ src: '/janine-aerni-hypnose-bern-600w.jpg', alt: 'Janine Aerni – Hypnosetherapie in Bern' }}
     canonical={canonicalUrl}
-    noindex={page.currentPage > 1}
 >
     <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/blog/">
         <ArrowLeft class="w-4 h-4 fill-current" />

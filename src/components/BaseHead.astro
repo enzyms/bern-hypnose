@@ -78,6 +78,9 @@ function formatCanonicalURL(url: string | URL) {
 <!-- Page Metadata -->
 <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
 <meta name="description" content={description} />
+<link rel="alternate" hreflang="de-CH" href={formatCanonicalURL(canonicalURL)} />
+<link rel="alternate" hreflang="de" href={formatCanonicalURL(canonicalURL)} />
+<link rel="alternate" hreflang="x-default" href={formatCanonicalURL(canonicalURL)} />
 {Astro.props.noindex && <meta name="robots" content="noindex, nofollow" />}
 
 <!-- Open Graph / Facebook -->
