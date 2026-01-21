@@ -534,6 +534,39 @@ function getDuePosts() {
 }
 
 /**
+ * Fetch existing GBP posts to check for duplicates
+ */
+async function fetchExistingGbpPosts(accessToken) {
+    const url = `https://mybusiness.googleapis.com/v4/accounts/${ACCOUNT_ID}/locations/${LOCATION_ID}/localPosts`;
+    
+    try {
+        const response = await fetch(url, {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+        
+        if (!response.ok) return [];
+        
+        const data = await response.json();
+        return data.localPosts || [];
+    } catch {
+        return [];
+    }
+}
+
+/**
+ * Check if a blog post is already published on GBP (by URL)
+ */
+function isAlreadyOnGbp(slug, existingPosts) {
+    const blogUrl = `https://bern-hypnose.ch/blog/${slug}/`;
+    const encodedUrl = `https://bern-hypnose.ch/blog/${encodeURIComponent(slug)}/`;
+    
+    return existingPosts.some(post => {
+        const ctaUrl = post.callToAction?.url || '';
+        return ctaUrl === blogUrl || ctaUrl === encodedUrl || ctaUrl.includes(slug);
+    });
+}
+
+/**
  * Auto-publish due posts (for cron)
  */
 async function autoPublish(includeImage = true) {
@@ -555,6 +588,11 @@ async function autoPublish(includeImage = true) {
     const queue = loadQueue();
     const allPosts = getAllBlogPosts();
     const accessToken = await getAccessToken();
+    
+    // Fetch existing GBP posts to prevent duplicates
+    console.log('🔍 Checking for duplicates on GBP...');
+    const existingGbpPosts = await fetchExistingGbpPosts(accessToken);
+    console.log(`   Found ${existingGbpPosts.length} existing posts\n`);
 
     for (const queuedPost of duePosts) {
         const blogPost = allPosts.find((p) => p.slug === queuedPost.slug);
@@ -562,6 +600,19 @@ async function autoPublish(includeImage = true) {
         if (!blogPost) {
             console.log(`❌ Not found: ${queuedPost.slug}`);
             queue.posts = queue.posts.filter((p) => p.slug !== queuedPost.slug);
+            saveQueue(queue); // Save immediately after removing
+            continue;
+        }
+
+        // Check for duplicates BEFORE publishing
+        if (isAlreadyOnGbp(queuedPost.slug, existingGbpPosts)) {
+            console.log(`⏭️ SKIP: "${queuedPost.title}" already exists on GBP`);
+            
+            // Add to history and remove from queue
+            addToHistory(queuedPost, { name: 'already-on-gbp', state: 'LIVE' }, false);
+            queue.posts = queue.posts.filter((p) => p.slug !== queuedPost.slug);
+            saveQueue(queue); // Save immediately
+            console.log('');
             continue;
         }
 
@@ -581,6 +632,7 @@ async function autoPublish(includeImage = true) {
 
             addToHistory(queuedPost, result, false);
             queue.posts = queue.posts.filter((p) => p.slug !== queuedPost.slug);
+            saveQueue(queue); // Save immediately after each successful publish
 
         } catch (error) {
             console.log(`   ❌ Error: ${error.message}`);
@@ -589,7 +641,6 @@ async function autoPublish(includeImage = true) {
         console.log('');
     }
 
-    saveQueue(queue);
     console.log(`📋 ${queue.posts.length} posts remaining in queue`);
 }
 

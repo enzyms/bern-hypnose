@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "sich-frei-träumen",
+      "title": "Sich frei träumen",
+      "scheduledFor": "2026-01-20T08:00:00.000Z",
+      "createdAt": "2026-01-21T08:24:02.048Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/7899339368414737584",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
       "slug": "mit-drei-schritten-zu-mehr-gelassenheit",
       "title": "Mit drei Schritten zu mehr Gelassenheit",
       "scheduledFor": "2026-01-19T08:00:00.000Z",
