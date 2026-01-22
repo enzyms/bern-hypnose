@@ -1,11 +1,11 @@
 {
-  "fetchedAt": "2026-01-22T04:59:42.009Z",
+  "fetchedAt": "2026-01-22T16:59:23.379Z",
   "source": "Google My Business API",
   "placeName": "Bern Hypnose - Janine Aerni",
   "placeUrl": "https://maps.google.com/?cid=15393771859516682512",
   "overallRating": 5,
-  "totalReviewCount": 49,
-  "reviewsInFile": 49,
+  "totalReviewCount": 50,
+  "reviewsInFile": 50,
   "accountId": "107067054292838933166",
   "locationName": "locations/15393771859516682512",
   "reviews": [
@@ -15,17 +15,32 @@
       "quote": "Ich habe die Therapie als sehr angenehm befunden. Janine ist eine sehr aufmerksame, ruhige und herzliche Person. Man fühlt sich zu nichts gezwungen und sie ist sehr einfühlsam. Der Raum ist auch sehr einladend und gemütlich gestaltet.\nAlso kann ich sie mit gutem Gewissen weiterempfehlen! Vielen Dank für deine Tipps und für die Erfahrung sie ich bei dir machen durfte! 😃",
       "author": "Ramona Bieri",
       "authorPhoto": "https://lh3.googleusercontent.com/a/ACg8ocKNoNZxOcqL5R69KRqhUSDQbIueAZb8nhP51nWj9QvgNzszQw=s120-c-rp-mo-br100",
-      "starRating": 4,
+      "starRating": 5,
       "dateFormatted": "21. Januar 2026",
       "createTime": "2026-01-21T18:54:31.779949Z",
-      "updateTime": "2026-01-21T18:54:31.779949Z",
+      "updateTime": "2026-01-22T12:08:45.642583Z",
       "reply": {
-        "comment": "Liebe Ramona\n\nVielen lieben Dank für dein Feedback, ich freue mich sehr, dass es für dich gut war. Es hat mich sehr gefreut, dass du bei mir warst.\nAlles Gute\nJanine",
-        "updateTime": "2026-01-22T04:08:41.837107Z"
+        "comment": "Liebe Ramona\nVielen lieben Dank für dein Feedback, ich freue mich sehr, dass es für dich gut war. Es hat mich sehr gefreut, dass du bei mir warst.\nAlles Gute\nJanine",
+        "updateTime": "2026-01-22T12:20:47.194481Z"
       }
     },
     {
       "tid": 1,
+      "googleReviewId": "AbFvOqmwB0KBdy491DZV_ohNpoBaiZk2vXEzv_kVn8nTG-wD510oA7-WhdbF1rI2Hwz8H4BVw1xY9w",
+      "quote": "Janine ist einem sofort sympathisch und man fühlt sich auf Anhieb sehr gut aufgehoben. Sie gibt unglaublich gute Inputs und ist auf ihrem Fachgebiet sehr kompetent und einfühlsam.\n\nDanke liebe Janine, du hast mir sehr geholfen! 💝",
+      "author": "J.",
+      "authorPhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUIRruc2Jx91Qlhg0KNZN8O6Uy4JKoh1KI8gkoI5rs0G6YZyisO=s120-c-rp-mo-ba3-br100",
+      "starRating": 5,
+      "dateFormatted": "22. Januar 2026",
+      "createTime": "2026-01-22T09:37:45.742025Z",
+      "updateTime": "2026-01-22T09:37:45.742025Z",
+      "reply": {
+        "comment": "Liebe J.\nWenn du wüsstest, wie mich das grad freut! Schön, dass es dir geholfen hat und hoffentlich auch in Zukunft helfen wird- ich drück dir sowas von die Daumen! Alles Liebe\nJanine\n",
+        "updateTime": "2026-01-22T10:45:49.379655Z"
+      }
+    },
+    {
+      "tid": 2,
       "googleReviewId": "AbFvOqmFDHNNkTlYDl4Zb5tRn04Qq2nYl4wm1l_QQVFH-Sc_X068S7QUfwjgGYoRt3k4g2RGeJT8LA",
       "quote": "Sympatisch, authentisch, hilfreich.\nDanke Janine für dieses tiefgründige Hypnoseerlebnis! Für mich als Ersterfahrung ideal und weckt das Bedürfnis nach Wiederholung.",
       "author": "Sara Dähler",
@@ -40,7 +55,7 @@
       }
     },
     {
-      "tid": 2,
+      "tid": 3,
       "googleReviewId": "AbFvOqmf2EKVOtXVDggsvW2ePIVxxBHLAYkMS_HEXCoE8UAI3bxnDpadBijiXvsJPOIObnFY0CRs_g",
       "quote": "Janine hat mich sehr einfühlsam,\nbei meiner ersten Hypnose Therapie begleitet und mir die Angst davor, nehmen können.\nIch habe mich gesehen und verstanden gefühlt!\nNach der Sitzung ging ich strahlend nach Hause.\nIch kann Janine ❤️ lichst weiterempfehlen.\n🙌🙏Danke",
       "author": "Adriana Schwab",
@@ -55,7 +70,7 @@
       }
     },
     {
-      "tid": 3,
+      "tid": 4,
       "googleReviewId": "AbFvOqmJQ6Jxa7xK0I8_xUMnv_5wvCTbdB9j-udoDR8UGQ_kxizm-XTPfC8uMWlS7O0_VFAs1EZS",
       "quote": "Eine sehr herzliche, kompetente und einfühlsame Hypnosetherapeutin. Ich habe mich bei Janine von Anfang an wohl und gut aufgehoben gefühlt und konnte dank ihrer ruhigen Art schnell Vertrauen fassen. Die Sitzungen waren für mich sehr hilfreich und nachhaltig – ich kann Janine Aerni nur wärmstens weiterempfehlen.",
       "author": "Elena Rio",
@@ -70,7 +85,7 @@
       }
     },
     {
-      "tid": 4,
+      "tid": 5,
       "googleReviewId": "AbFvOqmZTprJjxu_OJy-9OHNL7_bTn584nJtR5Y3AxeKzA4TAi8oIThLgbphQ6aB9AeePuixKjCnpA",
       "quote": "Janine zeigt eine bemerkenswerte Fähigkeit, empathisch und authentisch auf die Bedürfnisse ihrer Klienten einzugehen. Durch ihre gezielte Ansprache der individuellen Wünsche schafft sie einen vertrauensvollen Raum, der für eine erfolgreiche Therapie unerlässlich ist. Während der gesamten Sitzungen hat sie professionell auf die Anliegen unseres Sohnes reagiert, was zu einer spürbaren Verbesserung unseres Alltags geführt hat. Ihr Engagement und ihre Fachkompetenz sind in jeder Hinsicht wertvoll.",
       "author": "Flower",
@@ -85,7 +100,7 @@
       }
     },
     {
-      "tid": 5,
+      "tid": 6,
       "googleReviewId": "AbFvOqkr3NquW-jFdSPfl_ejykwR_QTz_8uc4CCdJImfLP1tVJLo8JuGY6XNG0vggq_MlC059PyDOQ",
       "quote": "Mein Kind besucht einmal im Monat regelmaessig die Traumreise-Meditationen bei Janine. Und ich moechte den Wert dieser Angebote besonders hervorheben.\n\nIch selbst bin Yoga- und Meditationstrainerin, arbeite jedoch mit Erwachsenen. Deshalb verstehe ich sehr gut, dass die Arbeit mit Kindern ein ganz besonderes Talent erfordert. Solche Angebote, wie Janine sie durchfuehrt, und insbesondere diese einzigartige Verbindung ihrer persoenlichen Qualitaeten – ihre grosse Liebe zu Kindern, ihre tiefe Aufmerksamkeit, ihre Sorgfalt und ihr Professionalismus – sind extrem selten.\n\nDie Art und Weise, wie Janine ihr Wissen mit einem grossen Herzen und mit mehr als 20 Jahren Erfahrung in der Arbeit mit Kindern verbindet, ist meiner Meinung nach kaum in einer einzigen Person zu finden. Genau deshalb wuensche ich mir aufrichtig, dass die Traumreise-Meditationen haeufiger stattfinden wuerden – denn etwas Vergleichbares gibt es in unserer Region einfach nicht.\n\nAus Sicht der Gehirnforschung spielt Regelmaessigkeit eine zentrale Rolle: Sie ist notwendig, um positive neuronale Verbindungen aufzubauen und aufrechtzuerhalten. Da die Meditation nur einmal im Monat stattfindet, beobachten wir einen interessanten Effekt. Nach der Meditation ist mein Kind immer unglaublich gluecklich, teilt noch zwei Tage lang seine Erfolge und Eindruecke und befindet sich in einem sehr positiven Zustand.\n\nNach zwei bis drei Wochen jedoch, wenn der naechste Termin naeherrueckt, moechte es nicht mehr so gerne gehen: Es sagt, dass es am Abend lieber ausruhen moechte, zumal der Weg fuer uns wirklich weit ist und es nach der Schule nicht mehr viele Kraefte hat. Jedes Mal muss ich mich anstrengen, um es zu motivieren, weil ich genau weiss, dass es ihm nach der Meditation immer sehr gut geht.\n\nGenau deshalb wuerde ich mich sehr freuen, wenn es weitere Eltern gaebe, die daran interessiert waeren, dass solche Meditationen haeufiger stattfinden. Ich hoffe sehr, dass Janine bei einer konstanteren Gruppe die Moeglichkeit haette, die Meditationen einmal pro Woche anzubieten – das waere einfach grossartig.\n\nVielen Dank, liebe Janine, fuer dein gutes Herz, deinen hohen Professionalismus und den grossen Wert, den du fuer Kinder und ihre Familien schaffst.\n\nMit freundlichen Gruessen\nAnna",
       "author": "Anna Yoga",
@@ -100,7 +115,7 @@
       }
     },
     {
-      "tid": 6,
+      "tid": 7,
       "googleReviewId": "AbFvOqno1fLJGJnwhiSpQpwPL7kFEhbeT_s0sk-rA6ls9_xhiPwBteJVo_QaoI0MT4j4l34_SbrJjg",
       "quote": "Janine ist sehr einfühlsam und kompetent. Ich kann sie sehr empfehlen.",
       "author": "F Zu",
@@ -115,7 +130,7 @@
       }
     },
     {
-      "tid": 7,
+      "tid": 8,
       "googleReviewId": "AbFvOqncHgD6n47LF_IbJTEYMhQMdTj08E2v85kmEa3GpdbqbCCYxW7TRG3i4WWwdTZJURxOWDRR",
       "quote": "Janine ist eine wundervolle, sehr empathische Frau. Meine Tochter nimmt regelmäßig an den Traumreisen teil und ist jedes Mal begeistert – am liebsten würde sie diese jeden Abend machen. Nach den Traumreisen ist sie stets ausgeglichen, entspannt und wirkt innerlich gestärkt.\n\nIch bin überzeugt, dass Janine für jede Person eine große Unterstützung sein kann. Sie ist unglaublich liebevoll, fröhlich und herzlich. Man fühlt sich bei ihr sofort gut aufgehoben.\nIch kann Janine von Herzen weiterempfehlen.",
       "author": "Katrin Suter",
@@ -130,7 +145,7 @@
       }
     },
     {
-      "tid": 8,
+      "tid": 9,
       "googleReviewId": "AbFvOqnVZoSP3bUWkMSwaRVMA0vy3byj5uoyv5Lnc7EIvSztuGEMf1ZvJ85Z8kmSUVGD0vdqWHWBIA",
       "quote": "Unsere Kinder gehen regelmässig in die Traumreise zu Janine und fühlen sich dort sehr wohl. Sie sind danach entspannt, ausgeglichen und freuen sich jedes Mal darauf.\nAuch für mich war die Gruppenhypnose eine sehr wohltuende Erfahrung. Janine schafft eine ruhige, vertrauensvolle Atmosphäre und begleitet mit viel Herz. Klare Weiterempfehlung für Kinder und Erwachsene! ✨",
       "author": "Charrua Däppen",
@@ -145,7 +160,7 @@
       }
     },
     {
-      "tid": 9,
+      "tid": 10,
       "googleReviewId": "AbFvOqkqJP0qANP7Iu0wiWfXeDoLcmAvjwQ-7StowNAW28U43v-x5VjNnM2Y8cy8X9-Rr5t25TyCXw",
       "quote": "Die Kinder kommen gerne in die Traumreise bei Frau Aerni. Sie sind immer zufrieden danach. Danke Janine für deine Arbeit!",
       "author": "Jelena Sollberger",
@@ -160,7 +175,7 @@
       }
     },
     {
-      "tid": 10,
+      "tid": 11,
       "googleReviewId": "AbFvOqnZ-yDJij1rbY33CW7skV9XQ4Zztu6P0eGiE64ECvaqAOk3gocraooBw309owGjy58LFXij",
       "quote": "Sehr schöner Ort und tolle Therapeutin. Sehr zu empfehlen (auch für Jugendliche).",
       "author": "Fabienne Bobbia",
@@ -175,7 +190,7 @@
       }
     },
     {
-      "tid": 11,
+      "tid": 12,
       "googleReviewId": "AbFvOqkDRHVR1h0wAJQ7awHZLTRePUFJ-EVqEZ58wyuVhw50Snx5gT6Feq5jcAe0IqnhOg-OsqHnRg",
       "quote": "Janine ist eine so tolle Person mit ganz viel Feingefühl. Ich konnte von der Sitzung mit ihr extrem viel mitnehmen und kann die von Janine geführte Hypnose uneingeschränkt weiterempfehlen.",
       "author": "Simona Triet",
@@ -190,7 +205,7 @@
       }
     },
     {
-      "tid": 12,
+      "tid": 13,
       "googleReviewId": "AbFvOqkpq3U5_fcjPh6RcYtgXvOiQWlN90G8HwG92ARXLPftY7QnKrEcQCGVZJkCs_YC5VajWFa4iQ",
       "quote": "Die Hypnose bei Janine hat mich weitergebracht und war sehr spannend. Ich habe mich die ganze Zeit sehr wohl gefühlt. Janine ist sehr emphatisch und liebevoll.\n\nVielen lieben Dank, dass ich diese neue Erfahrung bei dir machen konnte!",
       "author": "Lia Schwab",
@@ -205,7 +220,7 @@
       }
     },
     {
-      "tid": 13,
+      "tid": 14,
       "googleReviewId": "AbFvOql80m8AgtYk-mFIla3o0cghrdkXuGzSAofdLukCYVkd25CjuZiiNaJ5z-NpEOtRbbrlWApvtQ",
       "quote": "Janine ist wach, feinfühlig, professionell und geht sehr individuell auf ihre Kundschaft ein. Ich durfte mit ihr eine wunderbare (Hypnose-) Reise erleben und bin gespannt, wo sie hinführt… Ich kann die Hypnosessitzung bei ihr wärmstes empfehlen!!",
       "author": "Stefanie K.",
@@ -220,7 +235,7 @@
       }
     },
     {
-      "tid": 14,
+      "tid": 15,
       "googleReviewId": "AbFvOqm99ZvGVEgtLM6F8yXYBaDRtfeTo-0I10X_poq_8eSmZ4JwSMSTkPHCEglJecWX4SfibENuvg",
       "quote": "Die Therapie bei Janine Aerni hat unserer Tochter sehr gut getan. Durch eine individuell angepasste Traumreise hat sie heute Möglichkeiten, die ihr Sicherheit und Selbstvertrauen geben. Janine Aerni hat eine sehr warme und einfühlsame Art und hat sich sehr viel Zeit genommen. Viele der Hilfen wendet unsere Tochter von sich aus im Alltag an. Die Wirkung ist nachhaltig. Ich kann die Therapie empfehlen.",
       "author": "Lea Tschirren",
@@ -235,7 +250,7 @@
       }
     },
     {
-      "tid": 15,
+      "tid": 16,
       "googleReviewId": "AbFvOqlcfDGAp4JIv36fD8hDoXLj6DuQkxoDElQ7Z0vlqinGExFXN2kGlG0_vEfaO1k_3cOM_WFdyw",
       "quote": "Sehr beeindruckend und absolut empfehlenswert! Janine hat sich viel Zeit genommen, die Hypnose individuell auf mich abzustimmen, und ich habe mich von Anfang an wohlgefühlt.",
       "author": "Nicole Engler",
@@ -250,7 +265,7 @@
       }
     },
     {
-      "tid": 16,
+      "tid": 17,
       "googleReviewId": "AbFvOqln1Evyk8wdXCjY4e3pQdYQsfgicdsvhjU1Earxb1wlcYs7gbRgWznv0-rf_GG4Q-DZyJnf3A",
       "quote": "Dank Janine durfte ich eine berührende, tiefe und aufschlussreise Reise in mich selbst erleben, die mich geprägt hat. Janine schafft eine vertrauensvolle Atmosphäre und hilft dabei in sich selbst hineinzublicken um die nötige Urkraft zu finden. Danke, dass du es ermöglicht hast.",
       "author": "Joanna Wieruszewska",
@@ -265,7 +280,7 @@
       }
     },
     {
-      "tid": 17,
+      "tid": 18,
       "googleReviewId": "AbFvOqmuuDrDXSm-j6Ro_RwB-vM2D7ZdNOfqgF4fst_vOVg5q0ChTh8a5Qf8UA4DYBd7J3oHFEWOlg",
       "quote": "Je suis très heureuse et reconnaissante d'avoir fait la rencontre de Janine Aerni. Les séances se déroulent dans un cadre chaleureux, bienveillant et professionnel. Les séances d'hypnose sont très bien faites et conçues avec soin. On se sent très bien: écouté, respecté et compris. Elle pose un regard neuf et inspirant sur les thèmes abordés. Merci beaucoup!",
       "author": "Marie B",
@@ -280,7 +295,7 @@
       }
     },
     {
-      "tid": 18,
+      "tid": 19,
       "googleReviewId": "AbFvOqkrHGKbHoLHJSXbGR6GpSnZuK7pqDM_nUmZAoBKnloyVUd3Mmlnc5FcIrqeT8uJiilrwCUaQA",
       "quote": "Ich kann ein termin bei janine jederzeit empfehlen! eine tolle sympathische und professionelle frau! sie konnte mir mit meiner flugangst sehr helfen! danke für die tolle zeit!",
       "author": "Nina Dubs",
@@ -295,7 +310,7 @@
       }
     },
     {
-      "tid": 19,
+      "tid": 20,
       "googleReviewId": "AbFvOqkrP-vU2BjkyxDpQYpLr_lWXJSkkJ9b-4D-c_kHpAK8HyMV04xWRB4NPiOFnpaJtUy9Lq39",
       "quote": "",
       "author": "Bianca Reichenbach",
@@ -310,7 +325,7 @@
       }
     },
     {
-      "tid": 20,
+      "tid": 21,
       "googleReviewId": "AbFvOqnLsgebSH7huS3gz6EtujvMjTrkkNSAnb_Jw-g-Bfv0C5SY2vCJduPwBi4hs6OZNJ8isKaCBA",
       "quote": "",
       "author": "Kveta Ulrich-Kalna",
@@ -325,7 +340,7 @@
       }
     },
     {
-      "tid": 21,
+      "tid": 22,
       "googleReviewId": "AbFvOqmT8b1yDzxE4BNKFsLQkFOXDb4a3uX9Ig1sDYD7zjLtr9iWSYXiVzApIWIUF1l2r-sGP8tVxA",
       "quote": "Ich kann Sie wärmstens empfehlen! Ihre Praxis ist eine Wohlfühloase! Die Sitzungen bei Ihr waren und sind weiterhin sehr hilfreich für mich. Mit ihrer emphatischen, respektvollen angagierten und proffesionellen Art ermöglicht sie mir mich vollkommen auf die Sitzungen einzulassen. Zudem nimmt sie sich viel Zeit, was ich sehr angenehm finde, so entsteht kaum Zeitdruck. Ich danke dir von Herzen Janine!! ♡",
       "author": "Katharina Moser",
@@ -340,7 +355,7 @@
       }
     },
     {
-      "tid": 22,
+      "tid": 23,
       "googleReviewId": "AbFvOqlH8PY_RBuSM8Td9DsSEva5d7uufarouO4fLB55Hd4ZFbTBj9Sy3D1DE5G5zRhYcIAChqUc",
       "quote": "Wunderschöne Praxis, gute Atmosphäre und sehr angenehme Erfahrung mit Janine. Komme gerne wieder",
       "author": "Anna Lang",
@@ -355,7 +370,7 @@
       }
     },
     {
-      "tid": 23,
+      "tid": 24,
       "googleReviewId": "AbFvOqljHKDkFS8BnukWXu5tmkhZijEpn2ELIdekE-HnXV46CyLsMOMYhZMOmhAXlIlLfuHmRTIs",
       "quote": "Einfühlsam, zielorientiert und praxisnah, tausend Dank",
       "author": "Ww W",
@@ -370,7 +385,7 @@
       }
     },
     {
-      "tid": 24,
+      "tid": 25,
       "googleReviewId": "AbFvOqm9dXe1FN7IfoOc-OB-bY28fM7Ym7cGJOKWU9dmqcfdbDV0bP7QUW4zPHiWW2ra7uJ6uDHfcQ",
       "quote": "Ging hier gestärkt und mit klaren Gedanken aus der Hypnose. ich fühlte mich von Anfang an geborgen und in kompetenten Händen. Kann ich jedem:r empfehlen und würde ich jederzeit wieder machen.",
       "author": "Josh Guelmino",
@@ -385,7 +400,7 @@
       }
     },
     {
-      "tid": 25,
+      "tid": 26,
       "googleReviewId": "AbFvOqk028iVzGCpOxuf9vNOPHb361gHl-6SSQC1Xle_rWB0x08ChQPyniTYD7oaz0TvYv4o4rQbLA",
       "quote": "Die Zeit die ich bei Janine verbrachte hat mir sehr gut getan. Janine ist eine wunderbare Therapeutin mit grossem Einfühlungsvermögen. Ihre ruhige und emphatische Art gab mir sofort das nötige Vertrauen mit ihr zu arbeiten! Würde wieder zu Ihr gehen!",
       "author": "Ueli Enderli",
@@ -400,7 +415,7 @@
       }
     },
     {
-      "tid": 26,
+      "tid": 27,
       "googleReviewId": "AbFvOqmlDz6NEbyOk3qw3KoovDANpQeblD6UWPM4iHS0_YYPrfqYbJDmWrWXcQPksVtaoW2JGvm22A",
       "quote": "",
       "author": "Sven Graf",
@@ -415,7 +430,7 @@
       }
     },
     {
-      "tid": 27,
+      "tid": 28,
       "googleReviewId": "AbFvOqlnDr04NDs8KQ_O9MZ91q64JvAL_fbibgrso0nlo3jzUfvKXH-A-nwHY2l6K_fvFZRIjdhBTg",
       "quote": "Janine ist sehr sympathisch, einfühlsam und man fühlt sich einfach wohl bei ihr! War jetzt schon 2x bei ihr in der Hypnose und merke den Unterschied - kann ich nur empfehlen.",
       "author": "Lara Häring",
@@ -430,7 +445,7 @@
       }
     },
     {
-      "tid": 28,
+      "tid": 29,
       "googleReviewId": "AbFvOqmeDyVx1NxmdgsfaVD9fu-m57wsKUnqRsHDiyyY7M9tn5a6NF3AQPFgHMgu6WH3xPxOJkIyrA",
       "quote": "",
       "author": "Nicole Ehrler",
@@ -445,7 +460,7 @@
       }
     },
     {
-      "tid": 29,
+      "tid": 30,
       "googleReviewId": "AbFvOqlqlixHjtVdzF74WkblbIe_zpTZMNHqLOIPv0KuxJSrA1SAqbDJ6Pb5rR4mPPe2bSgJ8Cg3lw",
       "quote": "Ich war wirklich sehr zufrieden mit der Hypnosetherapie von Janine. Schon ab dem ersten Moment habe ich mich wohl und gut aufgehoben gefühlt. Die Atmosphäre war entspannt. Wer vielleicht noch unsicher ist, ich kann es wirklich nur empfehlen, es mal auszuprobieren.",
       "author": "TheMonneydollar",
@@ -460,7 +475,7 @@
       }
     },
     {
-      "tid": 30,
+      "tid": 31,
       "googleReviewId": "AbFvOqkLd2TaeblVtwO8ASYAumelixYnNYQSo9vSbz8b4L4Nwg7sKVHlxLLKsaSYnCNmZ2CVomfx",
       "quote": "Wahr sehr eindrücklich und wahr sehrgut",
       "author": "Walter Stoll",
@@ -475,7 +490,7 @@
       }
     },
     {
-      "tid": 31,
+      "tid": 32,
       "googleReviewId": "AbFvOqmh1pf_38eEqjLSKHyxVnMYMGyg-QZoOOrMtXRqfL2fWleYRxC1vpawHWFnTc5OeMtnEUgCbA",
       "quote": "Ich hatte gestern meine erste Hypnose überhaupt. Dank Janines emphatischer und professioneller Anleitung, fühlte ich mich zu jeder Zeit sicher und konnte mich vollumfänglich auf das Geschehen einlassen. Ich durfte einen für mich grossen AHA-Moment erleben, wofür ich unglaublich dankbar bin! Es war eine rundum stimmige Sitzung für mich und ich kann Janine als Hypnosetherapeutin sehr weiterempfehlen.",
       "author": "Sabine Rentsch",
@@ -490,7 +505,7 @@
       }
     },
     {
-      "tid": 32,
+      "tid": 33,
       "googleReviewId": "AbFvOqmNnwO6IXIdnHM-yE7qU_dbAwej599x_TKjBpjHjFYYV-5Bs3y30vNaJbNB29TzRfr_v_e9NA",
       "quote": "Habe mich sehr wohl gefühlt! Herzlichen Dank für deine einfühlsame, ruhige und unterstützende Art und Weise, mit der du mich mittels Hypnose wieder ein Stück näher zu mir selbst gebracht hast!",
       "author": "christine eva roelli",
@@ -505,7 +520,7 @@
       }
     },
     {
-      "tid": 33,
+      "tid": 34,
       "googleReviewId": "AbFvOqmyqzHcDghcBS1467F7rrqqI-qJdtYmEuHrDcSIjyBMQzV_-XjPKi7GlxNb5mD28TeeCO3U4Q",
       "quote": "Ich habe mich bei Janine von Anfang an verstanden, sicher und gut aufgehoben gefühlt. Während der Hypnosesitzung hatte ich den Eindruck, dass sie genau spürt, was ich gerade brauche, als würde sie zwischen den Zeilen lesen können. Ihre einfühlsame Art und die ruhige Atmosphäre haben es mir leicht gemacht, loszulassen und mich auf den Prozess einzulassen. Eine wirklich wertvolle Erfahrung, für die ich sehr dankbar bin.",
       "author": "Claes Lennman",
@@ -520,7 +535,7 @@
       }
     },
     {
-      "tid": 34,
+      "tid": 35,
       "googleReviewId": "AbFvOqnmiIhuPVucLnHMUdnfNkjueyJXV0phl14POEgn4NY2-JIs4BLQ_SKIGSzFefADTylbe8TSLw",
       "quote": "",
       "author": "Lino del Rione",
@@ -535,7 +550,7 @@
       }
     },
     {
-      "tid": 35,
+      "tid": 36,
       "googleReviewId": "AbFvOqm5GtCkyWLyyef9vlgeIzvCTQQ5UX7hsyocjvzbjjBVV3kC1cuA4Caoh54RA7TtWcHpehvd",
       "quote": "Vielen Dank Janine für Deine professionelle Arbeit und für die Art, wie Du unsere Sitzung gestaltet hast!",
       "author": "hannes mueller",
@@ -550,7 +565,7 @@
       }
     },
     {
-      "tid": 36,
+      "tid": 37,
       "googleReviewId": "AbFvOqnDz9jra4TrLRQvvqo1C84ZGDSkXJ3Jy-zsU8P4qhFCI0ffpogHOd_c8uhCJnraXDophKg4Kw",
       "quote": "Ich war zum 1. Mal bei Janine und bereits von Beginn an, habe ichmich sehr wohl gefühlt. Janine hört super zu und gibt einem das Gefühl verstanden zu werden was sehr schön ist. Die ganze Sitzung war sehr spannend, angenehm und hilfreich. Mein Gefühl gegenüber meinem Problem, weshalb ich dort war, ist ganz anders und ich weiss nun wie ich es besser angehen kann.\n\nDanke dafür, liebe Janine. 🥰",
       "author": "Jasmin Stöckli",
@@ -565,7 +580,7 @@
       }
     },
     {
-      "tid": 37,
+      "tid": 38,
       "googleReviewId": "AbFvOqkW5CAspFsZHZEwMDOSEaRrcven4nI4I_3_A6whSjKs0w-mXVZAYWWCLNoKVsNou03rcvUkGg",
       "quote": "Es war meine erste Hypnose und ich bin sehr dankbar habe ich dies bei Janine gemacht. Ich habe mich direkt durch ihre offenherzliche, authentische und kompetente Art wohlgefühlt.\nDie Hypnose unterstützt mich sehr mit meinen Angelegenheiten.\nIch kann Janine Aerni nur weiterempfehlen.☺️🙏🏼",
       "author": "Nina Cotting",
@@ -580,7 +595,7 @@
       }
     },
     {
-      "tid": 38,
+      "tid": 39,
       "googleReviewId": "AbFvOqn2eS7hFUtFlaBMbj0YZQ-1LKeBIcW9QmAAaUePr1sHkMTOsvgJZCWgavPleLxqmnlGzGfNjw",
       "quote": "Ich war mit meinem Kind bei Janine, weil es panische Angst vor der regelmässigen Blutentnahme hatte. Diese war nur unter Lachgas möglich. Janine hat es gemeinsam mit meinem Kind geschafft, dass wir heute eine angstgeminderte, ruhige Blutentnahme ohne Lachgas hatten. Ich bin ihr unendlich dankbar für ihre tolle und einfühlsame Arbeit.",
       "author": "Michelle Fankhauser",
@@ -595,7 +610,7 @@
       }
     },
     {
-      "tid": 39,
+      "tid": 40,
       "googleReviewId": "AbFvOqk9_D_dCLMr1hoM_SOBUcN4Lp4BFC4ups0X5l1N1WCb6_yIPK8ScS7_MXMeO8o6DQyrK41zLw",
       "quote": "Habe mich bei Janine Aerni sehr wohl gefühlt. Mit ihrer empathischen, authentischen Art und ihrem proffessionellen Vorgehen kann Heilung unterstützt und gefördert werden.\nIch kann Janine jederzeit weiterempfehlen.",
       "author": "Poly Acrylli",
@@ -610,7 +625,7 @@
       }
     },
     {
-      "tid": 40,
+      "tid": 41,
       "googleReviewId": "AbFvOql22av0Yeb_JbnaBCKqtbE7v-MkN3vTK_nHtjXHZvym-KW72CyYmvw0vfnIMDSCb7xHsQ4n",
       "quote": "In einer angenehmen Umgebung wurde ich von Janine gut über den Ablauf aufgeklärt. Ich habe mich jederzeit sehr wohl gefühlt und bin voller neuer Energie nach Hause gegangen.\nMit der Hypnosetherapie und den mitgegebenen Übungen konnte ich mein Thema ideal behandeln und überwinden. Die Anwendung kann ich auch auf andere Themen übertragen. Es hat mir eine neue Lebensqualität gebracht.\nIch empfehle die Hypnosetherapie von Janine sehr.",
       "author": "Katrin Breuer",
@@ -625,7 +640,7 @@
       }
     },
     {
-      "tid": 41,
+      "tid": 42,
       "googleReviewId": "AbFvOqk-33qoM9Jr1ipZgAMhsoFKOhseU2NZ1h3I5Af2G3IOAOlNCzFMcOBLnswI4bMk6JHQSVGl",
       "quote": "Es war meine erste Hypnose und bei Janine und ich fühlte mich bei Ihr direkt Wohl . Sie hat sich Zeit genommen und mich mit Ihrer Freundlichen Art und mit viel Geduld und Positiven Aspekten geleitet und für das bin ich sehr dankbar.\nVielen Dank! Ich kann Janine nur weiterempfehlen",
       "author": "Jasmin Miescher",
@@ -640,7 +655,7 @@
       }
     },
     {
-      "tid": 42,
+      "tid": 43,
       "googleReviewId": "AbFvOqkK_6qZ67UEz6jsavtfDEKZ5TOI7IoG9hsxUljyCcL437xwZk2omaE_JuXjruZl_ZOnPGhGTA",
       "quote": "Janine Aerni ist eine sehr authentische, kompetente Hypnosetherapeutin, mit einem grossen Herz.\nMan fühlt sich schon bei der Begrüssung in der schönen Praxis sehr wohl  und gut aufgehoben.\nIch wurde sehr achtsam und doch auch kraftvoll durch die Hypnose begleitet , bzw. angeleitet, genau so, wie ich es mir wünschte.\nDie Selbsthypnose Anleitung konnte ich gut in meinem Alltag integrieren und sie unterstützt mich in meinem Anliegen.\nIch bin Janine Aerni für diese einfühlsame und effektive Hypnosetherapie sehr dankbar und kann sie wärmstens weiterempfehlen.",
       "author": "Alexandra Sidler",
@@ -655,7 +670,7 @@
       }
     },
     {
-      "tid": 43,
+      "tid": 44,
       "googleReviewId": "AbFvOqkbrtNEjA0gKM3AkLYuIb7Vn2IHbPLQTTVU8kX1dlha5Xw2hsucAaW6Qni9uiOxDcxOrRkUIQ",
       "quote": "Sehr kompetente, rücksichtsvolle und feinfühlige Hypnosetherapeutin. In einem sehr angenehmen und entspannenden Setting. Nachhaltiges und wirkungsvolles Erlebnis. Sehr zu empfehlen",
       "author": "Anemone Brunner",
@@ -670,7 +685,7 @@
       }
     },
     {
-      "tid": 44,
+      "tid": 45,
       "googleReviewId": "AbFvOql466Gv34Srw4TcBdstIKn7V8JN0p0EVFci5ahFdftn3SrwsNnSYzGkpq1RBtXS02m7yvfgZQ",
       "quote": "Ich habe die Hypnosetherapie besucht, weil ich grosse Angst vor einem medizinischen Eingriff hatte. Janine hat es verstanden, mich in einen Zustand von Entspannung, innerer Ruhe und Vertrauen zu führen. Ihre kompetente und einfühlsame Art haben mich sehr überzeugt. Die mit ihr festgelegten \"Anker\" konnte ich vor dem Eingriff wieder herholen, so dass ich recht gelassen sein konnte. Danke!",
       "author": "Vroni Gschwend",
@@ -685,7 +700,7 @@
       }
     },
     {
-      "tid": 45,
+      "tid": 46,
       "googleReviewId": "AbFvOqnXzuYOJLIm5nCS0EzV5wXTh7Hagthdz9fKySFxIlD2tB5nm1fOSdtmFqtVj1296MLcQZ9I5Q",
       "quote": "Die Hypnosesitzung bei Janine Aerni möchte ich deshalb weiter empfehlen weil das Eingehen auf die Klienten mit besonderem Einfühlungsvermögen und Empathie geschieht.\nAls neurosensitiver Mensch ist mir   Authentizität und individuelle Arbeitsweise besonders wichtig, um mich vertrauensvoll zu öffnen. Das Interesse am Klienten und die  Begeisterung, für die Arbeit sind erfrischend. Das liebevolle Eingehen auf die Menschen unterstützt den Prozess nachhaltig.\nIch kann Frau Aerni wärmstens weiterempfehlen.",
       "author": "Franziska Fiedler",
@@ -700,7 +715,7 @@
       }
     },
     {
-      "tid": 46,
+      "tid": 47,
       "googleReviewId": "AbFvOqkyMTI7A-TE89rhT9qQLvwGNyXvqi-XanJGqqlZrMGNfDOXPOwSD-IyqjEzPEGM5xD_svYpSg",
       "quote": "Wähernd eines stressigen Tages hatte ich eine Hypnosesitzung bei Janine. Ich war unsicher, ob ich zur Ruhe komme. Dank der einfühlsamen und professionellen Art von Janine konnte ich mich total entspannen und Energie tanken. Eine sehr empfehlenswerte Auszeit, welche nachgeklungen hat.",
       "author": "michelle fankhauser",
@@ -715,7 +730,7 @@
       }
     },
     {
-      "tid": 47,
+      "tid": 48,
       "googleReviewId": "AbFvOqmhgRlDbpn3ez-NN3kq2iBUbs22QeG39UWune5TTfM_AVog7DXmeJ1oh_t7yCCr3h4SwVBJFA",
       "quote": "",
       "author": "Gaby Gschwend",
@@ -730,7 +745,7 @@
       }
     },
     {
-      "tid": 48,
+      "tid": 49,
       "googleReviewId": "AbFvOqnM3ckF_coZUTRpALPyDzred9rSZTkurxuhfEGFeNAkM5xsNa_y-VRZxs7CW_M6BqMy0CFNPw",
       "quote": "Ich war wegen Durchschlafproblemen bei Janine\nSeit der Hypnosetherapie bei Janine schlafe ich viel besser. Ich habe mich während der Sitzung stezt geborgen und sicher gefühlt. Alles in allem eine sehr tolle Erfahrung, die ich nur weiterempfehlen kann.",
       "author": "Paula Bozic",
