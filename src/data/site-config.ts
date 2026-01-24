@@ -70,7 +70,7 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
     title: 'Hypnosetherapie Bern | Janine Aerni',
     titleSuffix: 'Hypnosetherapie Bern | Janine Aerni',
-    description: `★ ${googleReviews.overallRating}.0 (${googleReviews.totalReviewCount} Bewertungen) – Als diplomierte Hypnosetherapeutin begleite ich dich einfühlsam auf deinem Weg zu mehr Wohlbefinden. Praxis an der Eigerstrasse in Bern.`,
+    description: `★ ${googleReviews.overallRating}.0 (${googleReviews.totalReviewCount} Bewertungen) – Als diplomierte Hypnosetherapeutin begleite ich dich einfühlsam auf deinem Weg zu mehr Wohlbefinden.`,
     image: {
         src: 'src/assets/uploads/glowing-blocks.png',
         alt: 'Hypnose und Hypnosetherapie in Bern'
@@ -166,16 +166,16 @@ const siteConfig: SiteConfig = {
                 },
                 {
                     text: 'Rauchstopp mit Hypnose',
-                            longText: 'Rauchen durch Hypnose aufgeben',
-                            href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/',
-                            image: cigaretteImage,
+                    longText: 'Rauchen durch Hypnose aufgeben',
+                    href: '/hypnosetherapie/abhaengigkeit/rauchstopp-mit-hypnose/',
+                    image: cigaretteImage,
                     diamondPosition: 2,
                 },
                 {
                     text: 'Hypnose gegen Alkoholsucht',
-                            longText: 'Alkoholsucht mit Hypnose behandeln',
-                            href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/',
-                            image: glassImage,
+                    longText: 'Alkoholsucht mit Hypnose behandeln',
+                    href: '/hypnosetherapie/abhaengigkeit/hypnose-gegen-alkoholsucht/',
+                    image: glassImage,
                     diamondPosition: 2,
                 },
                 {

@@ -25,7 +25,7 @@ Schlafstörungen
 Besser schlafen mit Hypnose
 À partir de 120 CHF
 
-Spielsucht überwinden mit Hypnose
+Spielsucht mit Hypnose überwinden 
 Glücksspielabhängigkeit lösen
 À partir de 120 CHF
 
