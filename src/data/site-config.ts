@@ -68,9 +68,9 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: `Hypnosetherapie Bern ★ ${googleReviews.overallRating}.0 (${googleReviews.totalReviewCount} Bewertungen) | Janine Aerni`,
+    title: 'Hypnosetherapie Bern | Janine Aerni',
     titleSuffix: 'Hypnosetherapie Bern | Janine Aerni',
-    description: 'Hypnosetherapie Bern – Als diplomierte Hypnosetherapeutin begleite ich dich einfühlsam auf deinem Weg zu mehr Wohlbefinden. In meiner Praxis an der Eigerstrasse findest du Raum für Veränderung.',
+    description: `★ ${googleReviews.overallRating}.0 (${googleReviews.totalReviewCount} Bewertungen) – Als diplomierte Hypnosetherapeutin begleite ich dich einfühlsam auf deinem Weg zu mehr Wohlbefinden. Praxis an der Eigerstrasse in Bern.`,
     image: {
         src: 'src/assets/uploads/glowing-blocks.png',
         alt: 'Hypnose und Hypnosetherapie in Bern'
