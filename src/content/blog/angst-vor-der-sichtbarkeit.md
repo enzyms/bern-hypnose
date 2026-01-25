@@ -104,4 +104,4 @@ PS: Gerne teile ich hier die Stimmen meiner inneren Kritikerin, die während des
 
 
 
-Ganz schön fies, oder? Ich akzeptiere es, distanziere mich etwas davon und lass mich dann von meinem Herzen leiten. Und das möchte ganz klar mit deinem Herzen Kontakt aufnehmen und freut sich, wenn du dich verstanden fühlst und ein wenig Mut fassen kannst
+Ganz schön fies, oder? Ich akzeptiere es, distanziere mich etwas davon und lass mich dann von meinem Herzen leiten. Und das möchte ganz klar mit deinem Herzen Kontakt aufnehmen und freut sich, wenn du dich verstanden fühlst und ein wenig Mut fassen kannst ❤️
