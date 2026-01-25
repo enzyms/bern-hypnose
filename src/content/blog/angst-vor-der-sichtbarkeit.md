@@ -3,7 +3,7 @@ title: Angst vor der Sichtbarkeit
 excerpt: Kennst du das, du zeigst dich und hast umgehend das Gefühl, zu viel
   Platz eingenommen zu haben? Und du fürchtest dich vor der Meinung anderer? Du
   hältst dich klein? Damit bist du nicht allein UND das muss nicht so bleiben.
-publishDate: 2026-01-25T08:20:00.000+01:00
+publishDate: 2026-01-25T08:59:00.000+01:00
 tags:
   - Selbstreflexion
   - Wohlbefinden
