@@ -5,7 +5,7 @@ import Nav from '../components/Nav.astro';
 import Three from '../components/Three.astro';
 import Blur from '../components/Blur.astro';
 import SocialFooter from '../components/SocialFooter.astro';
-import Notification from '../components/Notification.astro';
+// import Notification from '../components/Notification.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 
 export type Props = HeadProps;
@@ -34,7 +34,7 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
         <Blur />
         <Three />
         <header>
-            <Notification />
+            <!--Notification / -->
             <Nav hidePickaboo={Astro.props.hidePickaboo} />
         </header>
         <main class="min-h-[85vh] max-w-3xl relative z-10

@@ -7,13 +7,13 @@ const hidePickaboo = Astro.props.hidePickaboo;
 
 ---
 
-<nav aria-label="Hauptnavigation" class="main-navigation p-4 md:p-6 relative min-h-[5rem] w-1/2 w-full">
+<nav aria-label="Hauptnavigation" class="main-navigation p-4 md:p-6 relative min-h-[5rem] w-full">
     {
         navLinks.length > 0 && (
             <div class="">
                 <button
                     class="
-                        menu-toggle w-12 h-12 -ml-1 flex items-center justify-center relative z-30 md:hidden
+                        menu-toggle w-12 h-12 -ml-1 flex items-center justify-center z-30 md:hidden
                         text-red-500 hover:text-red-800 relative"
                     aria-label="Open Menu"
                     aria-expanded="false"
@@ -23,7 +23,7 @@ const hidePickaboo = Astro.props.hidePickaboo;
                     <span class="menu-toggle__menu">Menü</span>
                     <span class="menu-toggle__close">Schliessen</span>
                 </button>
-                <ul id="menu-items" role="menubar" class="menu flex gap-6 md:pl-1" transition:persist>
+                <ul id="menu-items" role="menubar" class="menu flex gap-[1.2rem] lg:gap-6 md:pl-1" transition:persist>
                     {navLinks.map((link, id) => (
                         <li role="none" class="px-4 md:px-0 md:py-0 relative" key={link.href}>
                             {link.subPages && link.subPages.length > 0 ? (
