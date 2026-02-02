@@ -1,5 +1,5 @@
 ---
-title: Wo befindet sich die Hypnosetherapie-Praxis in Bern?
+title: Wo befindet sich die Praxis?
 order: 101
 category: practical
 showOnHomepage: true
@@ -8,7 +8,7 @@ linkTo: /kontakt/
 linkText: Anfahrt und Kontakt
 ---
 
-Meine Praxis für **Hypnosetherapie in Bern** befindet sich an zentraler Lage:
+Meine Praxis befindet sich an zentraler Lage:
 
 **Eigerstrasse 56, 3007 Bern**
 
