@@ -109,6 +109,16 @@
       "state": "LIVE",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "dein-richtiger-platz",
+      "title": "Dein richtiger Platz",
+      "scheduledFor": "2026-02-03T08:00:00.000Z",
+      "createdAt": "2026-02-02T17:59:37.802Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/6834291796588042159",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

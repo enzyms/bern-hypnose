@@ -1,18 +1,11 @@
 {
   "posts": [
     {
-      "slug": "dein-richtiger-platz",
-      "title": "Dein richtiger Platz",
-      "url": "https://bern-hypnose.ch/blog/dein-richtiger-platz/",
-      "hasImage": true,
-      "scheduledFor": "2026-01-27T08:00:00.000Z"
-    },
-    {
       "slug": "gönnst-du-dir-das-glück",
       "title": "Gönnst du dir das Glück?",
       "url": "https://bern-hypnose.ch/blog/gönnst-du-dir-das-glück/",
       "hasImage": true,
-      "scheduledFor": "2026-02-03T08:00:00.000Z"
+      "scheduledFor": "2026-02-05T08:00:00.000Z"
     },
     {
       "slug": "was-kann-hypnose",
@@ -26,303 +19,303 @@
       "title": "Kinderhypnose",
       "url": "https://bern-hypnose.ch/blog/kinderhypnose/",
       "hasImage": true,
-      "scheduledFor": "2026-02-17T08:00:00.000Z"
+      "scheduledFor": "2026-02-12T08:00:00.000Z"
     },
     {
       "slug": "selbstzweifel",
       "title": "Selbstzweifel",
       "url": "https://bern-hypnose.ch/blog/selbstzweifel/",
       "hasImage": true,
-      "scheduledFor": "2026-02-24T08:00:00.000Z"
+      "scheduledFor": "2026-02-17T08:00:00.000Z"
     },
     {
       "slug": "sich-aufgehoben-fühlen",
       "title": "Sich aufgehoben fühlen ",
       "url": "https://bern-hypnose.ch/blog/sich-aufgehoben-fühlen/",
       "hasImage": true,
-      "scheduledFor": "2026-03-03T08:00:00.000Z"
+      "scheduledFor": "2026-02-19T08:00:00.000Z"
     },
     {
       "slug": "dankbarkeit",
       "title": "Dankbarkeit",
       "url": "https://bern-hypnose.ch/blog/dankbarkeit/",
       "hasImage": true,
-      "scheduledFor": "2026-03-10T08:00:00.000Z"
+      "scheduledFor": "2026-02-24T08:00:00.000Z"
     },
     {
       "slug": "für-dich-du-starke-frau",
       "title": "Für dich, du starke Frau",
       "url": "https://bern-hypnose.ch/blog/für-dich-du-starke-frau/",
       "hasImage": true,
-      "scheduledFor": "2026-03-17T08:00:00.000Z"
+      "scheduledFor": "2026-02-26T08:00:00.000Z"
     },
     {
       "slug": "neuausrichtung",
       "title": "Neuausrichtung",
       "url": "https://bern-hypnose.ch/blog/neuausrichtung/",
       "hasImage": true,
-      "scheduledFor": "2026-03-24T08:00:00.000Z"
+      "scheduledFor": "2026-03-03T08:00:00.000Z"
     },
     {
       "slug": "auswirkungen-von-kleinen-veränderungen",
       "title": "Auswirkungen von kleinen Veränderungen",
       "url": "https://bern-hypnose.ch/blog/auswirkungen-von-kleinen-veränderungen/",
       "hasImage": true,
-      "scheduledFor": "2026-03-31T07:00:00.000Z"
+      "scheduledFor": "2026-03-05T08:00:00.000Z"
     },
     {
       "slug": "trauer",
       "title": "Trauer",
       "url": "https://bern-hypnose.ch/blog/trauer/",
       "hasImage": true,
-      "scheduledFor": "2026-04-07T07:00:00.000Z"
+      "scheduledFor": "2026-03-10T08:00:00.000Z"
     },
     {
       "slug": "heute-schon-getanzt",
       "title": "Heute schon getanzt?",
       "url": "https://bern-hypnose.ch/blog/heute-schon-getanzt/",
       "hasImage": true,
-      "scheduledFor": "2026-04-14T07:00:00.000Z"
+      "scheduledFor": "2026-03-12T08:00:00.000Z"
     },
     {
       "slug": "kontrolle-abgeben",
       "title": "Kontrolle abgeben",
       "url": "https://bern-hypnose.ch/blog/kontrolle-abgeben/",
       "hasImage": true,
-      "scheduledFor": "2026-04-21T07:00:00.000Z"
+      "scheduledFor": "2026-03-17T08:00:00.000Z"
     },
     {
       "slug": "wofür-ich-hypnose-dankbar-bin",
       "title": "Wofür ich Hypnose dankbar bin",
       "url": "https://bern-hypnose.ch/blog/wofür-ich-hypnose-dankbar-bin/",
       "hasImage": true,
-      "scheduledFor": "2026-04-28T07:00:00.000Z"
+      "scheduledFor": "2026-03-19T08:00:00.000Z"
     },
     {
       "slug": "herbstputz-aufräumen-mit-den-mythen-über-hypnose",
       "title": "Herbstputz - aufräumen mit den Mythen über Hypnose",
       "url": "https://bern-hypnose.ch/blog/herbstputz-aufräumen-mit-den-mythen-über-hypnose/",
       "hasImage": true,
-      "scheduledFor": "2026-05-05T07:00:00.000Z"
+      "scheduledFor": "2026-03-24T08:00:00.000Z"
     },
     {
       "slug": "die-kraft-der-sippe",
       "title": "Die Kraft der Sippe",
       "url": "https://bern-hypnose.ch/blog/die-kraft-der-sippe/",
       "hasImage": true,
-      "scheduledFor": "2026-05-12T07:00:00.000Z"
+      "scheduledFor": "2026-03-26T08:00:00.000Z"
     },
     {
       "slug": "das-ungute-gefühl-zu-viel-zu-sein",
       "title": "Das ungute Gefühl, zu viel zu sein",
       "url": "https://bern-hypnose.ch/blog/das-ungute-gefühl-zu-viel-zu-sein/",
       "hasImage": true,
-      "scheduledFor": "2026-05-19T07:00:00.000Z"
+      "scheduledFor": "2026-03-31T08:00:00.000Z"
     },
     {
       "slug": "liebevolle-selbstdisziplin",
       "title": "Liebevolle Selbstdisziplin",
       "url": "https://bern-hypnose.ch/blog/liebevolle-selbstdisziplin/",
       "hasImage": true,
-      "scheduledFor": "2026-05-26T07:00:00.000Z"
+      "scheduledFor": "2026-04-02T08:00:00.000Z"
     },
     {
       "slug": "den-überblick-behalten",
       "title": "Den Überblick behalten",
       "url": "https://bern-hypnose.ch/blog/den-überblick-behalten/",
       "hasImage": true,
-      "scheduledFor": "2026-06-02T07:00:00.000Z"
+      "scheduledFor": "2026-04-07T08:00:00.000Z"
     },
     {
       "slug": "gedanken-zum-herbst",
       "title": "Gedanken zum Herbst",
       "url": "https://bern-hypnose.ch/blog/gedanken-zum-herbst/",
       "hasImage": true,
-      "scheduledFor": "2026-06-09T07:00:00.000Z"
+      "scheduledFor": "2026-04-09T08:00:00.000Z"
     },
     {
       "slug": "der-freie-fall",
       "title": "Der freie Fall",
       "url": "https://bern-hypnose.ch/blog/der-freie-fall/",
       "hasImage": true,
-      "scheduledFor": "2026-06-16T07:00:00.000Z"
+      "scheduledFor": "2026-04-14T08:00:00.000Z"
     },
     {
       "slug": "sich-klein-machen-lassen",
       "title": "Sich klein machen (lassen)",
       "url": "https://bern-hypnose.ch/blog/sich-klein-machen-lassen/",
       "hasImage": true,
-      "scheduledFor": "2026-06-23T07:00:00.000Z"
+      "scheduledFor": "2026-04-16T08:00:00.000Z"
     },
     {
       "slug": "dein-komfort-ort-in-dir",
       "title": "Dein Komfort-Ort in dir",
       "url": "https://bern-hypnose.ch/blog/dein-komfort-ort-in-dir/",
       "hasImage": true,
-      "scheduledFor": "2026-06-30T07:00:00.000Z"
+      "scheduledFor": "2026-04-21T08:00:00.000Z"
     },
     {
       "slug": "wetterwünsche",
       "title": "Wetterwünsche",
       "url": "https://bern-hypnose.ch/blog/wetterwünsche/",
       "hasImage": true,
-      "scheduledFor": "2026-07-07T07:00:00.000Z"
+      "scheduledFor": "2026-04-23T08:00:00.000Z"
     },
     {
       "slug": "zweifelst-du-noch-an-hypnose",
       "title": "Zweifelst du noch an Hypnose?",
       "url": "https://bern-hypnose.ch/blog/zweifelst-du-noch-an-hypnose/",
       "hasImage": true,
-      "scheduledFor": "2026-07-14T07:00:00.000Z"
+      "scheduledFor": "2026-04-28T08:00:00.000Z"
     },
     {
       "slug": "mein-neues-hobby-und-ich-was-ist-dein-traum",
       "title": "Mein neues Hobby und ich- was ist DEIN Traum?",
       "url": "https://bern-hypnose.ch/blog/mein-neues-hobby-und-ich-was-ist-dein-traum/",
       "hasImage": true,
-      "scheduledFor": "2026-07-21T07:00:00.000Z"
+      "scheduledFor": "2026-04-30T08:00:00.000Z"
     },
     {
       "slug": "frauengesundheit",
       "title": "Frauengesundheit",
       "url": "https://bern-hypnose.ch/blog/frauengesundheit/",
       "hasImage": true,
-      "scheduledFor": "2026-07-28T07:00:00.000Z"
+      "scheduledFor": "2026-05-05T08:00:00.000Z"
     },
     {
       "slug": "hypnose-bei-schmerzen",
       "title": "Hypnose bei Schmerzen ",
       "url": "https://bern-hypnose.ch/blog/hypnose-bei-schmerzen/",
       "hasImage": true,
-      "scheduledFor": "2026-08-04T07:00:00.000Z"
+      "scheduledFor": "2026-05-07T08:00:00.000Z"
     },
     {
       "slug": "was-ich-dir-bieten-kann",
       "title": "Was ich dir bieten kann",
       "url": "https://bern-hypnose.ch/blog/was-ich-dir-bieten-kann/",
       "hasImage": true,
-      "scheduledFor": "2026-08-11T07:00:00.000Z"
+      "scheduledFor": "2026-05-12T08:00:00.000Z"
     },
     {
       "slug": "sport-du-treuer-freund",
       "title": "Sport, du treuer Freund",
       "url": "https://bern-hypnose.ch/blog/sport-du-treuer-freund/",
       "hasImage": true,
-      "scheduledFor": "2026-08-18T07:00:00.000Z"
+      "scheduledFor": "2026-05-14T08:00:00.000Z"
     },
     {
       "slug": "dein-umgang-mit-enttäuschungen",
       "title": "Dein Umgang mit Enttäuschungen",
       "url": "https://bern-hypnose.ch/blog/dein-umgang-mit-enttäuschungen/",
       "hasImage": true,
-      "scheduledFor": "2026-08-25T07:00:00.000Z"
+      "scheduledFor": "2026-05-19T08:00:00.000Z"
     },
     {
       "slug": "von-der-verbundenheit-dank-verletzlichkeit",
       "title": "Von der Verbundenheit dank Verletzlichkeit",
       "url": "https://bern-hypnose.ch/blog/von-der-verbundenheit-dank-verletzlichkeit/",
       "hasImage": true,
-      "scheduledFor": "2026-09-01T07:00:00.000Z"
+      "scheduledFor": "2026-05-21T08:00:00.000Z"
     },
     {
       "slug": "leichtigkeit",
       "title": "Leichtigkeit",
       "url": "https://bern-hypnose.ch/blog/leichtigkeit/",
       "hasImage": true,
-      "scheduledFor": "2026-09-08T07:00:00.000Z"
+      "scheduledFor": "2026-05-26T08:00:00.000Z"
     },
     {
       "slug": "innehalten",
       "title": "Innehalten",
       "url": "https://bern-hypnose.ch/blog/innehalten/",
       "hasImage": true,
-      "scheduledFor": "2026-09-15T07:00:00.000Z"
+      "scheduledFor": "2026-05-28T08:00:00.000Z"
     },
     {
       "slug": "vom-ausbrennen-und-der-wertschätzung",
       "title": "Vom Ausbrennen und der Wertschätzung",
       "url": "https://bern-hypnose.ch/blog/vom-ausbrennen-und-der-wertschätzung/",
       "hasImage": true,
-      "scheduledFor": "2026-09-22T07:00:00.000Z"
+      "scheduledFor": "2026-06-02T08:00:00.000Z"
     },
     {
       "slug": "teebeutelweisheit",
       "title": "Teebeutelweisheit",
       "url": "https://bern-hypnose.ch/blog/teebeutelweisheit/",
       "hasImage": true,
-      "scheduledFor": "2026-09-29T07:00:00.000Z"
+      "scheduledFor": "2026-06-04T08:00:00.000Z"
     },
     {
       "slug": "sich-annehmen",
       "title": "Sich annehmen",
       "url": "https://bern-hypnose.ch/blog/sich-annehmen/",
       "hasImage": true,
-      "scheduledFor": "2026-10-06T07:00:00.000Z"
+      "scheduledFor": "2026-06-09T08:00:00.000Z"
     },
     {
       "slug": "denke-gut-über-dich",
       "title": "Denke gut über dich",
       "url": "https://bern-hypnose.ch/blog/denke-gut-über-dich/",
       "hasImage": true,
-      "scheduledFor": "2026-10-13T07:00:00.000Z"
+      "scheduledFor": "2026-06-11T08:00:00.000Z"
     },
     {
       "slug": "lasst-uns-schamlos-frei-von-scham-sein",
       "title": "Lasst uns unnötige Scham ablegen!",
       "url": "https://bern-hypnose.ch/blog/lasst-uns-schamlos-frei-von-scham-sein/",
       "hasImage": true,
-      "scheduledFor": "2026-10-20T07:00:00.000Z"
+      "scheduledFor": "2026-06-16T08:00:00.000Z"
     },
     {
       "slug": "komm-sei-stolz-auf-dich",
       "title": "Komm, sei stolz auf dich.",
       "url": "https://bern-hypnose.ch/blog/komm-sei-stolz-auf-dich/",
       "hasImage": true,
-      "scheduledFor": "2026-10-27T08:00:00.000Z"
+      "scheduledFor": "2026-06-18T08:00:00.000Z"
     },
     {
       "slug": "wann-ist-eine-lehrperson-eine-gute-lehrperson",
       "title": "Wann ist eine Lehrperson eine gute Lehrperson?",
       "url": "https://bern-hypnose.ch/blog/wann-ist-eine-lehrperson-eine-gute-lehrperson/",
       "hasImage": true,
-      "scheduledFor": "2026-11-03T08:00:00.000Z"
+      "scheduledFor": "2026-06-23T08:00:00.000Z"
     },
     {
       "slug": "ich-hätte-da-ein-paar-fragen",
       "title": "Ich hätte da ein paar Fragen...",
       "url": "https://bern-hypnose.ch/blog/ich-hätte-da-ein-paar-fragen/",
       "hasImage": true,
-      "scheduledFor": "2026-11-10T08:00:00.000Z"
+      "scheduledFor": "2026-06-25T08:00:00.000Z"
     },
     {
       "slug": "ablauf-einer-kinderhypnose",
       "title": "Ablauf einer Kinderhypnose",
       "url": "https://bern-hypnose.ch/blog/ablauf-einer-kinderhypnose/",
       "hasImage": true,
-      "scheduledFor": "2026-11-17T08:00:00.000Z"
+      "scheduledFor": "2026-06-30T08:00:00.000Z"
     },
     {
       "slug": "loslassen-pause-durchstarten",
       "title": "Loslassen-Pause-Durchstarten!",
       "url": "https://bern-hypnose.ch/blog/loslassen-pause-durchstarten/",
       "hasImage": true,
-      "scheduledFor": "2026-11-24T08:00:00.000Z"
+      "scheduledFor": "2026-07-02T08:00:00.000Z"
     },
     {
       "slug": "das-wünsche-ich-mir-für-meine-klient-innen",
       "title": "Das wünsche ich mir für meine Klient:innen",
       "url": "https://bern-hypnose.ch/blog/das-wünsche-ich-mir-für-meine-klient-innen/",
       "hasImage": true,
-      "scheduledFor": "2026-12-01T08:00:00.000Z"
+      "scheduledFor": "2026-07-07T08:00:00.000Z"
     },
     {
       "slug": "die-beziehung-zu-dir",
       "title": "Die Beziehung zu dir",
       "url": "https://bern-hypnose.ch/blog/die-beziehung-zu-dir/",
       "hasImage": true,
-      "scheduledFor": "2026-12-08T08:00:00.000Z"
+      "scheduledFor": "2026-07-09T08:00:00.000Z"
     }
   ],
-  "frequencyDays": 7,
-  "lastUpdated": "2026-01-17T21:00:27.459Z"
+  "frequencyDays": 3.5,
+  "lastUpdated": "2026-02-02T17:59:37.804Z"
 }
