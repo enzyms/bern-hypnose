@@ -1,16 +1,28 @@
 {
-  "fetchedAt": "2026-01-30T21:18:02.177Z",
+  "fetchedAt": "2026-02-06T17:01:04.653Z",
   "source": "Google My Business API (merged)",
   "placeName": "Bern Hypnose - Janine Aerni",
   "placeUrl": "https://maps.google.com/?cid=15393771859516682512",
   "overallRating": 5,
-  "totalReviewCount": 52,
-  "reviewsInFile": 52,
+  "totalReviewCount": 53,
+  "reviewsInFile": 53,
   "accountId": "107067054292838933166",
   "locationName": "locations/15393771859516682512",
   "reviews": [
     {
       "tid": 0,
+      "googleReviewId": "AbFvOqmMarilenaSchmid06Feb2026",
+      "quote": "Bei Janine habe ich mich gleich wohlgefühlt, sie hat eine sehr herzliche und empathische Art, die einem gleich ankommen lässt und das Gefühl vermittelt, hier richtig und sicher zu sein. Die Hypnose hat mir sehr geholfen in vielerlei Hinsicht - ich konnte neue Erkenntnisse über die Herkunft meiner Emotionen sammeln und gleichzeitig auch einen sicheren Ort in mir schaffen, an den ich jederzeit zurückkehren kann. Vielen Dank, liebe Janine😊",
+      "author": "Marilena Schmid",
+      "authorPhoto": "https://lh3.googleusercontent.com/a/ACg8ocLuXtdJhdn5JlE3q0tkilhUnVGmENtzdNuTeQCZLg5yi1dTzA=s128-c0x00000000-cc-rp-mo",
+      "starRating": 5,
+      "dateFormatted": "6. Februar 2026",
+      "createTime": "2026-02-06T13:35:12.000Z",
+      "updateTime": "2026-02-06T13:35:12.000Z",
+      "reply": null
+    },
+    {
+      "tid": 1,
       "googleReviewId": "AbFvOqmStrnRbKNJ4D2ZWh-uUEvpWqa3PV9WrDmGRJkrF4uITd6a7-xp2DierYaK6UDxmbhtIaa9",
       "quote": "Meine Tochter und ich waren erstmals bei Janine Aerni für eine Hypnosesitzung, und wir sind begeistert! Schon beim Betreten ihrer Praxis spürt man die angenehme und einladende Atmosphäre, die sofort Vertrauen schafft. Janine hat eine unglaublich sympathische und einfühlsame Art, die es einem leicht macht, sich wohlzufühlen. Ihre professionelle und zugleich herzliche Herangehensweise hat uns überzeugt, und wir können sie uneingeschränkt weiterempfehlen.",
       "author": "Diana Faeh",
