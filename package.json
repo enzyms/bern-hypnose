@@ -21,7 +21,7 @@
         "gbp:images": "node scripts/copy-gbp-images.js"
     },
     "dependencies": {
-        "@astrojs/mdx": "4.0.0-beta.1",
+        "@astrojs/mdx": "^4.3.13",
         "@astrojs/rss": "4.0.7",
         "@astrojs/sitemap": "3.1.6",
         "@astrojs/svelte": "^5.7.1",
