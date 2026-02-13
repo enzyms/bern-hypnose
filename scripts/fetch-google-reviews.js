@@ -313,10 +313,19 @@ function transformReview(review, index) {
     };
 
     // Clean review text by removing Google translation notices
+    // Google API returns two formats:
+    //   1. "(Translated by Google) English...\n\n(Original)\nGerman..."  (translation first)
+    //   2. "German...\n\n(Translated by Google) English..."             (original first)
     const cleanReviewText = (text) => {
         if (!text) return '';
-        // Remove "(Translated by Google)" and the translated text after it
-        // Keep only the original text before the translation
+
+        // Format 1: Translation comes first, original after "(Original)"
+        const originalMatch = text.match(/\(Original\)\n([\s\S]+)$/);
+        if (originalMatch) {
+            return originalMatch[1].trim();
+        }
+
+        // Format 2: Original text comes first, translation appended
         return text
             .split(/\n\n\(Translated by Google\)/)[0]
             .split(/\(Translated by Google\)/)[0]
