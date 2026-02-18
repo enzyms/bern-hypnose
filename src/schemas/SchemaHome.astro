@@ -47,7 +47,7 @@ const schemaReviews = googleReviewsData.reviews
 const medicalBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
-    name: 'Hypnosetherapie Bern – Janine Aerni',
+    name: 'Hypnose Bern – Janine Aerni',
     image: {
         '@type': 'ImageObject',
         url: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg',
@@ -56,8 +56,7 @@ const medicalBusinessSchema = {
         caption: 'Janine Aerni – Diplomierte Hypnosetherapeutin in Bern'
     },
     logo: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg',
-    description:
-        'Hypnosetherapie Bern – Janine Aerni. Professionelle Hypnosetherapie in Bern, um Stress, Ängste, Phobien und mehr zu überwinden. Erfahre, wie Hypnose dir helfen kann, ein gesünderes und ausgeglicheneres Leben zu führen.',
+    description: `Hypnose Bern – ★ ${googleReviewsData.overallRating}.0 (${googleReviewsData.totalReviewCount} Bewertungen). Diplomierte Hypnosetherapeutin VSH. Hypnosetherapie gegen Stress, Ängste und Abhängigkeiten. Praxis zentral in Bern.`,
     address: {
         '@type': 'PostalAddress',
         streetAddress: 'Eigerstrasse 56',
@@ -226,7 +225,7 @@ const medicalBusinessSchema = {
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Hypnosetherapie Bern",
+                "name": "Hypnose Bern",
                 "item": "https://bern-hypnose.ch/"
             }
         ]

@@ -68,9 +68,9 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Hypnosetherapie Bern | Janine Aerni',
-    titleSuffix: 'Hypnosetherapie Bern | Janine Aerni',
-    description: `Hypnosetherapie Bern – ★ ${googleReviews.overallRating}.0 (${googleReviews.totalReviewCount} Bewertungen). Diplomierte Hypnosetherapeutin VSH. Stress, Ängste & Abhängigkeiten überwinden. Praxis zentral in Bern.`,
+    title: 'Hypnose Bern – Hypnosetherapie | Janine Aerni',
+    titleSuffix: 'Hypnose Bern | Janine Aerni',
+    description: `Hypnose Bern – ★ ${googleReviews.overallRating}.0 (${googleReviews.totalReviewCount} Bewertungen). Diplomierte Hypnosetherapeutin VSH. Hypnosetherapie gegen Stress, Ängste und Abhängigkeiten. Praxis zentral in Bern.`,
     image: {
         src: 'src/assets/uploads/glowing-blocks.png',
         alt: 'Hypnose und Hypnosetherapie in Bern'
@@ -80,8 +80,8 @@ const siteConfig: SiteConfig = {
         alt: 'Janine Aerni – Hypnosetherapie in Bern'
     },
     hero: {
-        title: 'Bern Hypnose',
-        subtitle: 'Hypnosetherapie Bern – Praxis für Hypnose',
+        title: 'Hypnose Bern',
+        subtitle: 'Praxis für Hypnosetherapie',
         name: 'Janine Aerni',
         text: "Ich bin [Janine Aerni](/janine-aerni/), diplomierte Hypnosetherapeutin in Bern. Mit einer warmen und unterstützenden Herangehensweise helfe ich dir durch Hypnosetherapie, Stress, Angst, Phobien und mehr zu überwinden. Entdecke die transformative Kraft der Hypnose in meiner Berner Praxis.",
         actions: [

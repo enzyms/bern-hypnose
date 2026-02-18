@@ -11,10 +11,8 @@ const hero = siteConfig.hero;
     (hero?.title || hero?.subtitle || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
         <header class="w-full justify-self-center justify-center flex flex-col gap-8 md:mb-8">
             <h1 class="text-balance text-5xl xs:text-6xl md:text-7xl sm:leading-tight hyphens-auto text-red-500 mb-4 md:mb-12">
-                <div>{hero.title}</div>
-                <div class="text-sm font-medium text-red-600">
-                    <span class="sr-only">– </span>Hypnosetherapie in Bern
-                </div>
+                {hero.title}
+                <span class="block text-base mt-3 font-medium text-red-600">{hero.subtitle}</span>
             </h1>
             <a
                 href="/app/"
