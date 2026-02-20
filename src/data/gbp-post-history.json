@@ -119,6 +119,56 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "gönnst-du-dir-das-glück",
+      "title": "Gönnst du dir das Glück?",
+      "scheduledFor": "2026-02-05T08:00:00.000Z",
+      "createdAt": "2026-02-20T09:32:48.914Z",
+      "gbpPostId": "already-on-gbp",
+      "state": "LIVE",
+      "isScheduled": false,
+      "hasImage": false
+    },
+    {
+      "slug": "was-kann-hypnose",
+      "title": "Was kann Hypnose?",
+      "scheduledFor": "2026-02-10T08:00:00.000Z",
+      "createdAt": "2026-02-20T09:32:51.001Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/7702229017689846971",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "kinderhypnose",
+      "title": "Kinderhypnose",
+      "scheduledFor": "2026-02-12T08:00:00.000Z",
+      "createdAt": "2026-02-20T09:32:52.866Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/4655640702116922086",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "selbstzweifel",
+      "title": "Selbstzweifel",
+      "scheduledFor": "2026-02-17T08:00:00.000Z",
+      "createdAt": "2026-02-20T09:32:54.371Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/7134265641159155536",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "sich-aufgehoben-fühlen",
+      "title": "Sich aufgehoben fühlen ",
+      "scheduledFor": "2026-02-19T08:00:00.000Z",
+      "createdAt": "2026-02-20T09:32:55.878Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/2324158502913221778",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }
