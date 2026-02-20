@@ -3,7 +3,20 @@
  * Google Reviews Fetcher for Bern Hypnose
  *
  * This script fetches reviews from Google Business Profile API
- * and saves them to src/data/google-reviews.json
+ * and MERGES them with existing reviews in src/data/google-reviews.json
+ *
+ * ⚠️  IMPORTANT - MERGING BEHAVIOR:
+ * ==================================
+ * The Google My Business API does NOT always return all reviews. Some reviews
+ * may be filtered by Google (spam, policy violations, or API inconsistencies).
+ * 
+ * This script MERGES new reviews with existing ones to prevent data loss:
+ * - Existing reviews are preserved
+ * - New reviews are added
+ * - Updated reviews (e.g., new replies) are refreshed
+ * - Reviews are sorted by date (newest first)
+ *
+ * NEVER manually run a script that overwrites reviews without merging!
  *
  * SETUP:
  * ======
@@ -16,21 +29,28 @@
  * 5. Go to OAuth Playground: https://developers.google.com/oauthplayground
  *    - Click gear icon → Check "Use your own OAuth credentials"
  *    - Enter your Client ID and Client Secret
- *    - In Step 1, enter scope: https://www.googleapis.com/auth/plus.business.manage
- *       (Alternative scope: https://www.googleapis.com/auth/business.manage)
+ *    - In Step 1, enter scope: https://www.googleapis.com/auth/business.manage
  *    - Click "Authorize APIs" and sign in
  *    - In Step 2, click "Exchange authorization code for tokens"
  *    - Copy the Refresh Token
+ * 6. IMPORTANT: Set app to "Production" mode in Google Cloud Console
+ *    (APIs & Services → OAuth consent screen → Audience → Publish app)
+ *    This prevents refresh tokens from expiring after 7 days.
  *
  * USAGE:
  * ======
  * # First, list locations to find your location ID:
- * GOOGLE_CLIENT_ID=xxx GOOGLE_CLIENT_SECRET=xxx GOOGLE_REFRESH_TOKEN=xxx node scripts/fetch-google-reviews.js --list-locations
+ * node scripts/fetch-google-reviews.js --list-locations
  *
- * # Then fetch reviews:
- * GOOGLE_CLIENT_ID=xxx GOOGLE_CLIENT_SECRET=xxx GOOGLE_REFRESH_TOKEN=xxx GOOGLE_LOCATION_NAME=accounts/xxx/locations/xxx node scripts/fetch-google-reviews.js
+ * # Then fetch and merge reviews:
+ * node scripts/fetch-google-reviews.js
  *
- * Or create a .env file (gitignored) with these values.
+ * Environment variables (set in .env file):
+ * - GOOGLE_CLIENT_ID
+ * - GOOGLE_CLIENT_SECRET
+ * - GOOGLE_REFRESH_TOKEN
+ * - GOOGLE_ACCOUNT_ID
+ * - GOOGLE_LOCATION_NAME
  */
 
 import fs from 'fs';
@@ -354,31 +374,94 @@ function transformReview(review, index) {
 }
 
 /**
- * Save reviews to JSON file
+ * Load existing reviews from file
  */
-function saveReviews(reviews) {
+function loadExistingReviews() {
+    try {
+        if (fs.existsSync(OUTPUT_PATH)) {
+            const data = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf-8'));
+            return data.reviews || [];
+        }
+    } catch (error) {
+        console.log('⚠️  Could not load existing reviews:', error.message);
+    }
+    return [];
+}
+
+/**
+ * Merge new reviews with existing reviews
+ * - Preserves reviews that API no longer returns (Google filtering)
+ * - Updates reviews that have changed (new replies, etc.)
+ * - Adds new reviews
+ */
+function mergeReviews(existingReviews, newReviews) {
+    const reviewMap = new Map();
+
+    // Add existing reviews first (to preserve them)
+    for (const review of existingReviews) {
+        reviewMap.set(review.googleReviewId, review);
+    }
+
+    // Add/update with new reviews (newer data takes precedence for replies)
+    let newCount = 0;
+    let updatedCount = 0;
+    for (const review of newReviews) {
+        if (!reviewMap.has(review.googleReviewId)) {
+            newCount++;
+        } else {
+            updatedCount++;
+        }
+        reviewMap.set(review.googleReviewId, review);
+    }
+
+    // Convert back to array and sort by date (newest first)
+    const merged = Array.from(reviewMap.values());
+    merged.sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
+
+    // Re-index
+    merged.forEach((r, i) => r.tid = i);
+
+    console.log(`\n📊 Merge stats:`);
+    console.log(`  Existing reviews: ${existingReviews.length}`);
+    console.log(`  New from API: ${newReviews.length}`);
+    console.log(`  New reviews added: ${newCount}`);
+    console.log(`  Reviews updated: ${updatedCount}`);
+    console.log(`  Reviews preserved (not in API): ${merged.length - newReviews.length}`);
+    console.log(`  Total after merge: ${merged.length}`);
+
+    return merged;
+}
+
+/**
+ * Save reviews to JSON file (with merge)
+ */
+function saveReviews(newReviews) {
+    // Load existing reviews and merge
+    const existingReviews = loadExistingReviews();
+    const mergedReviews = mergeReviews(existingReviews, newReviews);
+
     // Calculate overall rating
-    const totalRating = reviews.reduce((sum, review) => sum + review.starRating, 0);
-    const overallRating = reviews.length > 0 ? Math.round((totalRating / reviews.length) * 10) / 10 : 0;
+    const totalRating = mergedReviews.reduce((sum, review) => sum + review.starRating, 0);
+    const overallRating = mergedReviews.length > 0 ? Math.round((totalRating / mergedReviews.length) * 10) / 10 : 0;
 
     // Extract location ID for Google Maps URL
     const locationId = LOCATION_NAME.includes('/') ? LOCATION_NAME.split('/').pop() : LOCATION_NAME;
 
     const output = {
         fetchedAt: new Date().toISOString(),
-        source: 'Google My Business API',
+        source: 'Google My Business API (merged)',
         placeName: 'Bern Hypnose - Janine Aerni',
         placeUrl: `https://maps.google.com/?cid=${locationId}`,
         overallRating: overallRating,
-        totalReviewCount: reviews.length,
-        reviewsInFile: reviews.length,
+        totalReviewCount: mergedReviews.length,
+        reviewsInFile: mergedReviews.length,
         accountId: ACCOUNT_ID,
         locationName: LOCATION_NAME,
-        reviews: reviews
+        reviews: mergedReviews
     };
 
     fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2), 'utf-8');
-    console.log(`\n✅ Saved ${reviews.length} reviews to: ${OUTPUT_PATH}`);
+    console.log(`\n✅ Saved ${mergedReviews.length} reviews to: ${OUTPUT_PATH}`);
 }
 
 /**
