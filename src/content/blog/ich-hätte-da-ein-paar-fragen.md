@@ -1,7 +1,7 @@
 ---
 title: Ich hätte da ein paar Fragen...
 excerpt: Hast du dir diese Fragen schon gestellt?
-publishDate: 2025-06-04T09:21:00.000Z
+publishDate: 2025-06-04T09:29:00.000Z
 tags:
   - Selbstreflexion
 image:
