@@ -17,7 +17,6 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
 <!doctype html>
 <html lang="de" class="antialiased break-words">
     <head>
-        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <BaseHead {...head} />
         {!isHomepage && <BreadcrumbSchema />}
@@ -28,7 +27,6 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
         </script>
         <ViewTransitions />
         <script defer src="https://umami-eta-inky.vercel.app/script.js" data-website-id="b71481a2-1aaa-4300-a2cc-907a8ed24d37"></script>
-        <link rel="sitemap" href="/sitemap-index.xml" />
     </head>
     <body class="bg-main text-main overflow-x-hidden">
         <Blur />
