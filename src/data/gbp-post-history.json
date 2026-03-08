@@ -169,6 +169,46 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "dankbarkeit",
+      "title": "Dankbarkeit",
+      "scheduledFor": "2026-02-24T08:00:00.000Z",
+      "createdAt": "2026-02-28T09:28:25.548Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/7070675455077177629",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "für-dich-du-starke-frau",
+      "title": "Für dich, du starke Frau",
+      "scheduledFor": "2026-02-26T08:00:00.000Z",
+      "createdAt": "2026-02-28T09:28:27.124Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/3693752462648755609",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "neuausrichtung",
+      "title": "Neuausrichtung",
+      "scheduledFor": "2026-03-03T08:00:00.000Z",
+      "createdAt": "2026-02-28T09:28:59.139Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/3867544004562305536",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "auswirkungen-von-kleinen-veränderungen",
+      "title": "Auswirkungen von kleinen Veränderungen",
+      "scheduledFor": "2026-03-05T08:00:00.000Z",
+      "createdAt": "2026-03-08T14:48:57.645Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/6906319788311052205",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

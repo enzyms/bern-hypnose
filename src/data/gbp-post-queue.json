@@ -1,34 +1,6 @@
 {
   "posts": [
     {
-      "slug": "dankbarkeit",
-      "title": "Dankbarkeit",
-      "url": "https://bern-hypnose.ch/blog/dankbarkeit/",
-      "hasImage": true,
-      "scheduledFor": "2026-02-24T08:00:00.000Z"
-    },
-    {
-      "slug": "für-dich-du-starke-frau",
-      "title": "Für dich, du starke Frau",
-      "url": "https://bern-hypnose.ch/blog/für-dich-du-starke-frau/",
-      "hasImage": true,
-      "scheduledFor": "2026-02-26T08:00:00.000Z"
-    },
-    {
-      "slug": "neuausrichtung",
-      "title": "Neuausrichtung",
-      "url": "https://bern-hypnose.ch/blog/neuausrichtung/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-03T08:00:00.000Z"
-    },
-    {
-      "slug": "auswirkungen-von-kleinen-veränderungen",
-      "title": "Auswirkungen von kleinen Veränderungen",
-      "url": "https://bern-hypnose.ch/blog/auswirkungen-von-kleinen-veränderungen/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-05T08:00:00.000Z"
-    },
-    {
       "slug": "trauer",
       "title": "Trauer",
       "url": "https://bern-hypnose.ch/blog/trauer/",
@@ -282,5 +254,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-02-20T09:32:55.879Z"
+  "lastUpdated": "2026-03-08T14:48:57.648Z"
 }
