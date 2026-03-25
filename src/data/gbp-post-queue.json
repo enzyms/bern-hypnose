@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "heute-schon-getanzt",
-      "title": "Heute schon getanzt?",
-      "url": "https://bern-hypnose.ch/blog/heute-schon-getanzt/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-12T08:00:00.000Z"
-    },
-    {
       "slug": "kontrolle-abgeben",
       "title": "Kontrolle abgeben",
       "url": "https://bern-hypnose.ch/blog/kontrolle-abgeben/",
@@ -247,5 +240,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-03-19T16:58:01.098Z"
+  "lastUpdated": "2026-03-25T18:00:07.105Z"
 }
