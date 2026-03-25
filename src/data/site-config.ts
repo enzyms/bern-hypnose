@@ -308,12 +308,12 @@ const siteConfig: SiteConfig = {
     socialLinks: [
         {
             text: 'LinkedIn',
-            href: 'https://www.linkedin.com/'
+            href: 'https://www.linkedin.com/in/janine-aerni-b7452a321/'
         }
     ],
     subscribe: {
-        title: 'Subscribe to Dante Newsletter',
-        text: 'One update per week. All the latest posts directly in your inbox.',
+        title: 'Newsletter Hypnose Bern',
+        text: 'Regelmässige Impulse rund um Hypnose, direkt in dein Postfach.',
         formUrl: '#'
     },
     postsPerPage: 8

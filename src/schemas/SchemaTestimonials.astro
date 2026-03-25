@@ -17,10 +17,9 @@ const allReviewsWithText = googleReviewsData.reviews
         datePublished: review.createTime ? review.createTime.split('T')[0] : undefined
     }));
 
-// LocalBusiness schema with all reviews for testimonials page
 const testimonialsSchema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'MedicalBusiness',
     '@id': 'https://bern-hypnose.ch/#organization',
     name: 'Hypnose Bern – Janine Aerni',
     url: 'https://bern-hypnose.ch',
@@ -64,7 +63,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<!-- LocalBusiness Schema with all reviews -->
+<!-- MedicalBusiness Schema with all reviews -->
 <script type="application/ld+json" set:html={JSON.stringify(testimonialsSchema)} />
 
 <!-- Breadcrumb Schema -->

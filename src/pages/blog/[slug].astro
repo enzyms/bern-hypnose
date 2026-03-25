@@ -54,7 +54,7 @@ const blogSchemaData = {
     '@id': `${baseUrl}/blog/${post.slug}/#article`,
     headline: title,
     description: excerpt,
-    image: [schemaImage],
+    ...(schemaImage ? { image: [schemaImage] } : {}),
     datePublished: schemaPubDate,
     dateModified: schemaUpdateDate || schemaPubDate,
     author: {
