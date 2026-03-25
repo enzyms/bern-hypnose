@@ -229,6 +229,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "kontrolle-abgeben",
+      "title": "Kontrolle abgeben",
+      "scheduledFor": "2026-03-17T08:00:00.000Z",
+      "createdAt": "2026-03-25T18:56:28.257Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/5914679756824717697",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

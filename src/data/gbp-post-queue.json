@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "kontrolle-abgeben",
-      "title": "Kontrolle abgeben",
-      "url": "https://bern-hypnose.ch/blog/kontrolle-abgeben/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-17T08:00:00.000Z"
-    },
-    {
       "slug": "wofür-ich-hypnose-dankbar-bin",
       "title": "Wofür ich Hypnose dankbar bin",
       "url": "https://bern-hypnose.ch/blog/wofür-ich-hypnose-dankbar-bin/",
@@ -240,5 +233,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-03-25T18:00:07.105Z"
+  "lastUpdated": "2026-03-25T18:56:28.259Z"
 }
