@@ -29,10 +29,12 @@ const { Content } = await page.render();
             <span itemprop="name">Hypnosetherapie Bern – Janine Aerni</span>
             <link itemprop="url" href="https://bern-hypnose.ch" />
         </div>
-        <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="sr-only">
-            <span itemprop="name">Janine Aerni</span>
-            <link itemprop="url" href="https://bern-hypnose.ch/janine-aerni/" />
-        </div>
+        {!reviewDate && (
+            <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="sr-only">
+                <span itemprop="name">Janine Aerni</span>
+                <link itemprop="url" href="https://bern-hypnose.ch/janine-aerni/" />
+            </div>
+        )}
         <header class="mb-8 relative">
             {
                 backlink && (

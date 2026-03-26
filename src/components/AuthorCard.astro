@@ -40,13 +40,13 @@ const formatDate = (date: Date) => date.toLocaleDateString('de-CH', { day: 'nume
         {
             publishDate && (
                 <p class="text-sm text-gray-700">
-                    <time datetime={publishDate.toISOString()} itemprop="datePublished">
+                    <time datetime={publishDate.toISOString()}>
                         {formatDate(publishDate)}
                     </time>
                     {updatedDate && (
                         <span>
                             {' · aktualisiert '}
-                            <time datetime={updatedDate.toISOString()} itemprop="dateModified">
+                            <time datetime={updatedDate.toISOString()}>
                                 {formatDate(updatedDate)}
                             </time>
                         </span>
