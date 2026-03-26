@@ -11,19 +11,23 @@ interface Props {
 
 const { publishDate, updatedDate, compact = false, reviewDate } = Astro.props;
 
-const formatDate = (date: Date) =>
-    date.toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+const formatDate = (date: Date) => date.toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
-<aside class={`flex gap-4 items-start not-prose ${compact ? '' : 'border border-gray-200 rounded-xl p-5 bg-gray-50/50'}`} itemscope itemtype="https://schema.org/Person" itemprop="author">
+<aside
+    class={`flex gap-4 items-start not-prose ${compact ? '' : 'border border-gray-200 rounded-xl p-5 bg-gray-50/50'}`}
+    itemscope
+    itemtype="https://schema.org/Person"
+    itemprop="author"
+>
     <a href="/janine-aerni/" class="shrink-0">
         <Image
-            width={compact ? 48 : 64}
+            width={compact ? 64 : 80}
             src={JanineFace}
-            class={`${compact ? 'w-12 h-12' : 'w-16 h-16'} object-cover object-center rounded-full shadow-lg`}
+            class={`${compact ? 'w-16 h-16' : 'w-20 h-20'} object-cover object-center rounded-full shadow-lg`}
             alt="Janine Aerni – Hypnosetherapeutin"
-            widths={compact ? [48, 96] : [64, 128]}
-            sizes={compact ? '48px' : '64px'}
+            widths={compact ? [64, 128] : [80, 160]}
+            sizes={compact ? '64px' : '80px'}
             itemprop="image"
         />
     </a>
@@ -31,31 +35,25 @@ const formatDate = (date: Date) =>
         <p class="font-bold text-base">
             <a href="/janine-aerni/" class="text-red-600 hover:text-red-500 no-underline" itemprop="name">Janine Aerni</a>
         </p>
-        <p class="text-sm text-gray-600" itemprop="jobTitle">Diplomierte Hypnosetherapeutin VSH</p>
-        {!compact && (
-            <p class="text-sm text-gray-500 mt-1">
-                Mitglied Verband Schweizer Hypnosetherapeuten (VSH) · Praxis in Bern
-            </p>
-        )}
-        {publishDate && (
-            <p class="text-sm text-gray-500 mt-1">
-                <time datetime={publishDate.toISOString()} itemprop="datePublished">
-                    {formatDate(publishDate)}
-                </time>
-                {updatedDate && (
-                    <span>
-                        {' · aktualisiert '}
-                        <time datetime={updatedDate.toISOString()} itemprop="dateModified">
-                            {formatDate(updatedDate)}
-                        </time>
-                    </span>
-                )}
-            </p>
-        )}
-        {reviewDate && (
-            <p class="text-sm text-gray-500 mt-1">
-                Letzte Überprüfung: {reviewDate}
-            </p>
-        )}
+        <p class="text-sm text-gray-700" itemprop="jobTitle">Diplomierte Hypnosetherapeutin VSH</p>
+        {!compact && <p class="text-sm text-gray-500 mt-1">Mitglied Verband Schweizer Hypnosetherapeuten (VSH) · Praxis in Bern</p>}
+        {
+            publishDate && (
+                <p class="text-sm text-gray-700">
+                    <time datetime={publishDate.toISOString()} itemprop="datePublished">
+                        {formatDate(publishDate)}
+                    </time>
+                    {updatedDate && (
+                        <span>
+                            {' · aktualisiert '}
+                            <time datetime={updatedDate.toISOString()} itemprop="dateModified">
+                                {formatDate(updatedDate)}
+                            </time>
+                        </span>
+                    )}
+                </p>
+            )
+        }
+        {reviewDate && <p class="text-sm text-gray-700">Letzte Überprüfung: {reviewDate}</p>}
     </div>
 </aside>
