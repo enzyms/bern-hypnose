@@ -63,6 +63,7 @@ const pages = defineCollection({
     id: z.string().optional(),
     canonical: z.string().optional(),
     schema: z.string().optional(),
+    reviewDate: z.string().optional(),
   })
 });
 

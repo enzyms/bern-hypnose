@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 type Props = { page: CollectionEntry<'pages'> };
 
 const { page } = Astro.props;
-const { title, seoTitle, image, description, backlink, canonical, schema } = page.data;
+const { title, seoTitle, image, description, backlink, canonical, schema, reviewDate } = page.data;
 const { Content } = await page.render();
 ---
 
@@ -57,9 +57,9 @@ const { Content } = await page.render();
                 )
             }
         </header>
-        {page.slug.startsWith('hypnosetherapie/') && (
+        {reviewDate && (
             <div class="mb-8">
-                <AuthorCard compact reviewDate="März 2026" />
+                <AuthorCard compact reviewDate={reviewDate} />
             </div>
         )}
         <div class="max-w-none prose prose-dante sm:prose-lg" itemprop="articleBody">
