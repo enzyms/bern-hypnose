@@ -1,0 +1,40 @@
+---
+description: Quality criteria for research citations on therapy content pages
+globs: src/content/pages/**/*.mdx
+---
+
+# Citation Quality Standards
+
+Every research claim or source link on therapy pages must pass these three checks:
+
+## 1. Link works
+- URL returns 200, not 404 or redirect to paywall-only page
+- Verify by fetching the URL before adding
+
+## 2. Mentions hypnosis
+- The linked source must discuss hypnosis or hypnotherapy
+- Visitor clicking through should NOT land on a page that only recommends CBT, medication, or other treatments without mentioning hypnosis
+- Exception: neuroscience/background studies that explain WHY something works (not treatment recommendations)
+
+## 3. Readable content
+- Open access full text, PubMed abstract, or patient-facing article
+- Acceptable: PubMed (has abstract), Frontiers (open access), PMC (full text), Psychology Today, major medical institutions (Cleveland Clinic, Mayo), university news pages
+- Not acceptable: paywalled journals with no abstract, DOI links that redirect to login pages
+
+## Citation format
+
+Use markdown links for new phobia/therapy pages:
+```
+[Author et al., Year](https://pubmed.ncbi.nlm.nih.gov/PMID/)
+```
+
+Use HTML `<a>` tags for pages that already use that pattern (consistency within a page):
+```html
+<a href="https://pubmed.ncbi.nlm.nih.gov/PMID/" class="text-red-700 underline" target="_blank">Author et al., Year – Journal Name</a>
+```
+
+## When NOT to add a citation
+
+- Don't force a generic source onto a page where no specific study exists
+- Don't cite a study that contradicts the page's message
+- A page with honest practitioner observations and no research claims is better than one with a shoehorned citation

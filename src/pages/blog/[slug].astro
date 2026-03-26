@@ -9,7 +9,7 @@ import ArrowLeft from '../../icons/ArrowLeft.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
 import { Image, getImage } from 'astro:assets';
-import JanineFace from '@assets/images/janine-aerni-2025-circle-4.jpg';
+import AuthorCard from '../../components/AuthorCard.astro';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
@@ -46,7 +46,7 @@ function toISO8601WithOffset(dateString: string | number | Date, offsetHours = 1
 const schemaPubDate = toISO8601WithOffset(publishDate);
 const schemaUpdateDate = updatedDate ? toISO8601WithOffset(updatedDate) : '';
 const baseUrl = Astro.site?.origin;
-const schemaImage = image ? `${baseUrl}${(await getImage({ src: image.src, width: 704 })).src}` : '';
+const schemaImage = image ? `${baseUrl}${(await getImage({ src: image.src, width: 1200 })).src}` : '';
 
 const blogSchemaData = {
     '@context': 'https://schema.org',
@@ -106,42 +106,17 @@ const blogSchemaData = {
                 {
                     image && (
                         <Image
-                            width={704}
+                            width={1200}
                             src={image.src}
                             class="w-full object-cover object-center sm:h-96"
                             alt={image.alt ?? `${title} - Blog von Hypnose Bern – Janine Aerni`}
-                            widths={[360, 520, 704]}
+                            widths={[360, 520, 704, 1200]}
                             sizes="(max-width: 768px) calc(100vw - 40px), 704px"
                         />
                     )
                 }
             </div>
-            <div class="flex gap-4 items-center">
-                <Image
-                    width={48}
-                    src={JanineFace}
-                    class="w-12 h-12 object-cover object-center rounded-full shadow-lg"
-                    alt="Hypnose Bern – Janine Aerni"
-                    widths={[48, 96]}
-                    sizes="48px"
-                />
-
-                <p>
-                    <a href="/janine-aerni/" class="font-bold text-red-600 hover:text-red-500">Janine Aerni</a>
-                    <br />
-                    am <FormattedDate date={publishDate} />
-                    {
-                        updatedDate && (
-                            <>
-                                {' '}
-                                <span>
-                                    (Updated on <FormattedDate date={updatedDate} />)
-                                </span>
-                            </>
-                        )
-                    }
-                </p>
-            </div>
+            <AuthorCard publishDate={publishDate} updatedDate={updatedDate} compact />
         </header>
         <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />

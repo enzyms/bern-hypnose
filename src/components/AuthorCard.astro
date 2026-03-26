@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import JanineFace from '@assets/images/janine-aerni-2025-circle-4.jpg';
+
+interface Props {
+    publishDate?: Date;
+    updatedDate?: Date;
+    compact?: boolean;
+    reviewDate?: string;
+}
+
+const { publishDate, updatedDate, compact = false, reviewDate } = Astro.props;
+
+const formatDate = (date: Date) =>
+    date.toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<aside class={`flex gap-4 items-start not-prose ${compact ? '' : 'border border-gray-200 rounded-xl p-5 bg-gray-50/50'}`} itemscope itemtype="https://schema.org/Person" itemprop="author">
+    <a href="/janine-aerni/" class="shrink-0">
+        <Image
+            width={compact ? 48 : 64}
+            src={JanineFace}
+            class={`${compact ? 'w-12 h-12' : 'w-16 h-16'} object-cover object-center rounded-full shadow-lg`}
+            alt="Janine Aerni – Hypnosetherapeutin"
+            widths={compact ? [48, 96] : [64, 128]}
+            sizes={compact ? '48px' : '64px'}
+            itemprop="image"
+        />
+    </a>
+    <div>
+        <p class="font-bold text-base">
+            <a href="/janine-aerni/" class="text-red-600 hover:text-red-500 no-underline" itemprop="name">Janine Aerni</a>
+        </p>
+        <p class="text-sm text-gray-600" itemprop="jobTitle">Diplomierte Hypnosetherapeutin VSH</p>
+        {!compact && (
+            <p class="text-sm text-gray-500 mt-1">
+                Mitglied Verband Schweizer Hypnosetherapeuten (VSH) · Praxis in Bern
+            </p>
+        )}
+        {publishDate && (
+            <p class="text-sm text-gray-500 mt-1">
+                <time datetime={publishDate.toISOString()} itemprop="datePublished">
+                    {formatDate(publishDate)}
+                </time>
+                {updatedDate && (
+                    <span>
+                        {' · aktualisiert '}
+                        <time datetime={updatedDate.toISOString()} itemprop="dateModified">
+                            {formatDate(updatedDate)}
+                        </time>
+                    </span>
+                )}
+            </p>
+        )}
+        {reviewDate && (
+            <p class="text-sm text-gray-500 mt-1">
+                Letzte Überprüfung: {reviewDate}
+            </p>
+        )}
+    </div>
+</aside>
