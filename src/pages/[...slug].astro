@@ -20,21 +20,54 @@ type Props = { page: CollectionEntry<'pages'> };
 const { page } = Astro.props;
 const { title, seoTitle, image, description, backlink, canonical, schema, reviewDate } = page.data;
 const { Content } = await page.render();
+
+const monthMap: Record<string, string> = {
+    'Januar': '01', 'Februar': '02', 'März': '03', 'April': '04',
+    'Mai': '05', 'Juni': '06', 'Juli': '07', 'August': '08',
+    'September': '09', 'Oktober': '10', 'November': '11', 'Dezember': '12',
+};
+
+function reviewDateToISO(rd: string): string {
+    const parts = rd.split(' ');
+    if (parts.length === 2) {
+        const m = monthMap[parts[0]];
+        if (m) return `${parts[1]}-${m}-01`;
+    }
+    return '';
+}
+
+const isoReviewDate = reviewDate ? reviewDateToISO(reviewDate) : '';
+
+const articleSchema = reviewDate ? {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: description,
+    author: {
+        '@type': 'Person',
+        '@id': 'https://bern-hypnose.ch/janine-aerni/#person',
+        name: 'Janine Aerni',
+        url: 'https://bern-hypnose.ch/janine-aerni/',
+        jobTitle: 'Diplomierte Hypnosetherapeutin VSH',
+        image: 'https://bern-hypnose.ch/janine-aerni-hypnose-bern-600w.jpg',
+    },
+    publisher: {
+        '@type': 'Organization',
+        '@id': 'https://bern-hypnose.ch/#organization',
+        name: 'Hypnose Bern – Janine Aerni',
+    },
+    ...(isoReviewDate ? { dateModified: isoReviewDate } : {}),
+    mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `https://bern-hypnose.ch/${page.slug}/`,
+    },
+    inLanguage: 'de-CH',
+} : null;
 ---
 
 <BaseLayout title={title} seoTitle={seoTitle} description={description} canonical={canonical} schema={schema}>
-    <article class="mb-16" itemscope itemtype="https://schema.org/Article">
-        <meta itemprop="description" content={description} />
-        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="sr-only">
-            <span itemprop="name">Hypnosetherapie Bern – Janine Aerni</span>
-            <link itemprop="url" href="https://bern-hypnose.ch" />
-        </div>
-        {!reviewDate && (
-            <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="sr-only">
-                <span itemprop="name">Janine Aerni</span>
-                <link itemprop="url" href="https://bern-hypnose.ch/janine-aerni/" />
-            </div>
-        )}
+    {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
+    <article class="mb-16">
         <header class="mb-8 relative">
             {
                 backlink && (
@@ -44,7 +77,7 @@ const { Content } = await page.render();
                     </a>
                 )
             }
-            <h1 class="text-balance mb-8" itemprop="headline">{title}</h1>
+            <h1 class="text-balance mb-8">{title}</h1>
             {
                 image && (
                     <Image
@@ -54,7 +87,6 @@ const { Content } = await page.render();
                         alt={image.alt ?? ''}
                         widths={[360, 520, 1024]}
                         sizes="(max-width: 768px) calc(100vw - 40px), 1024px"
-                        itemprop="image"
                     />
                 )
             }
@@ -64,7 +96,7 @@ const { Content } = await page.render();
                 <AuthorCard compact reviewDate={reviewDate} />
             </div>
         )}
-        <div class="max-w-none prose prose-dante sm:prose-lg" itemprop="articleBody">
+        <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />
         </div>
     </article>
