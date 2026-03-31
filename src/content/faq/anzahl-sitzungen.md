@@ -4,6 +4,9 @@ order: 103
 category: practical
 showOnHomepage: true
 shortAnswer: "Die Anzahl der Sitzungen ist individuell verschieden und hängt von deinem Anliegen ab. Viele Klient:innen berichten bereits nach 1-3 Sitzungen von positiven Veränderungen. Du entscheidest selbst, wie viele Sitzungen du buchen möchtest – ich verkaufe keine Pakete."
+showOnPages:
+  - /hypnosetherapie/
+  - /angebote/
 linkTo: /diplomierte-hypnosetherapeutin/
 linkText: Mehr über meine Arbeitsweise
 ---

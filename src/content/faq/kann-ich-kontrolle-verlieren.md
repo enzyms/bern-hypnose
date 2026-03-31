@@ -4,6 +4,9 @@ promoted: true
 order: 200
 showOnHomepage: true
 shortAnswer: 'Nein, du behältst während der gesamten Hypnosesitzung die volle Kontrolle. Du kannst jederzeit die Augen öffnen, sprechen oder die Sitzung beenden. Niemand kann dich zu etwas bringen, das du nicht willst.'
+showOnPages:
+  - /hypnosetherapie/
+  - /hypnosetherapie/aengste-und-phobien/
 linkTo: /was-ist-hypnose/
 linkText: 'Mehr über Hypnose erfahren'
 description: 'Kann man unter Hypnose die Kontrolle verlieren oder manipuliert werden? Erfahre die Wahrheit über Hypnose und warum du immer die volle Kontrolle behältst.'

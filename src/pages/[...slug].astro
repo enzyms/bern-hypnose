@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ArrowLeft from '../icons/ArrowLeft.astro';
 import { Image } from 'astro:assets';
 import AuthorCard from '../components/AuthorCard.astro';
+import PageFAQ from '../components/PageFAQ.astro';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -99,5 +100,6 @@ const articleSchema = reviewDate ? {
         <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />
         </div>
+        <PageFAQ pagePath={`/${page.slug}/`} />
     </article>
 </BaseLayout>

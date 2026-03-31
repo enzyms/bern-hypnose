@@ -3,6 +3,8 @@ title: Ist Hypnose für Kinder und Jugendliche geeignet?
 order: 50
 linkText: 'Hypnose für Kinder und Jugendliche entdecken'
 shortAnswer: 'Ja, Kinder ab 4 Jahren können von Hypnose profitieren. Die Methoden werden altersgerecht angepasst. Ab 13 Jahren ähneln die Techniken denen für Erwachsene.'
+showOnPages:
+  - /hypnosetherapie/kinderhypnose/
 ---
 
 Kinder ab 4 Jahren können von Hypnose profitieren. Die Methoden werden altersgerecht angepasst. Ab 13 Jahren ähneln die Techniken denen für Erwachsene, und Sitzungen können auf Wunsch ohne Eltern stattfinden.

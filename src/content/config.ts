@@ -25,6 +25,7 @@ const faq = defineCollection({
     // New fields for homepage FAQs
     category: z.enum(['general', 'practical', 'homepage']).default('general'),
     showOnHomepage: z.boolean().default(false),
+    showOnPages: z.array(z.string()).optional(),
     shortAnswer: z.string().optional(), // Brief answer for homepage display
     linkTo: z.string().optional(), // Custom link destination
     image: z.object({

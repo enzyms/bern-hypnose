@@ -4,6 +4,8 @@ promoted: false
 order: 90
 linkText: 'Tipps für deine erste Hypnosesitzung'
 description: 'Wie bereitest du dich optimal auf deine erste Hypnosesitzung vor? Praktische Tipps zu Kleidung, Zeitplanung und mentaler Vorbereitung.'
+showOnPages:
+  - /hypnosetherapie/
 ---
 
 Für deine erste Hypnosesitzung brauchst du **keine besondere Vorbereitung**. Du musst nichts mitbringen und keine Übungen vorher machen. Das Wichtigste ist, dass du offen und entspannt zur Sitzung kommst.

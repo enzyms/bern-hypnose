@@ -4,6 +4,8 @@ promoted: true
 order: 80
 linkText: 'Preise für Hypnosetherapie-Sitzungen ansehen'
 description: 'Transparente Preise für Hypnosetherapie in Bern. Erfahre, was eine Sitzung kostet, wie lange sie dauert und welche Ermäßigungen verfügbar sind.'
+showOnPages:
+  - /angebote/
 ---
 
 ## Preise für Einzelsitzungen

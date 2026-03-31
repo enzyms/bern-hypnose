@@ -5,6 +5,8 @@ order: 60
 teaser: 'In der Regel übernimmt die Krankenkasse Hypnosetherapie nicht. Aber es gibt Ausnahmen.'
 description: 'Erfahren Sie, ob und wann Schweizer Krankenkassen Hypnosetherapie übernehmen. Informationen zu Grundversicherung, Zusatzversicherungen und Kostenübernahme.'
 linkText: 'Mehr über Krankenkasse und Hypnosetherapie erfahren'
+showOnPages:
+  - /angebote/
 ---
 
 **Nein, in der Schweiz wird Hypnosetherapie von der obligatorischen Grundversicherung nicht übernommen.** Die Sitzungen müssen privat bezahlt werden.
