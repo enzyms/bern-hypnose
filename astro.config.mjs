@@ -36,9 +36,9 @@ export default defineConfig({
             mode: 'development',
             registerType: 'autoUpdate',
             manifest: {
-                name: 'Hypnose Bern Web App',
-                short_name: 'Hypnose Bern',
-                description: 'Selbsthypnose App von Hypnose Bern',
+                name: 'Bern Hypnose Web App',
+                short_name: 'Bern Hypnose',
+                description: 'Selbsthypnose App von Bern Hypnose',
                 lang: 'de',
                 theme_color: '#fee2e2',
                 background_color: '#fee2e2',
