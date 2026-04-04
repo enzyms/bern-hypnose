@@ -239,6 +239,26 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "das-ungute-gefühl-zu-viel-zu-sein",
+      "title": "Das ungute Gefühl, zu viel zu sein",
+      "scheduledFor": "2026-03-31T08:00:00.000Z",
+      "createdAt": "2026-03-31T20:38:00.000Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/6268245019612734038",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "wofür-ich-hypnose-dankbar-bin",
+      "title": "Wofür ich Hypnose dankbar bin",
+      "scheduledFor": "2026-03-19T08:00:00.000Z",
+      "createdAt": "2026-04-04T15:59:45.723Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/4371591703012788299",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

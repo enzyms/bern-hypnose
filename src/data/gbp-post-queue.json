@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "wofür-ich-hypnose-dankbar-bin",
-      "title": "Wofür ich Hypnose dankbar bin",
-      "url": "https://bern-hypnose.ch/blog/wofür-ich-hypnose-dankbar-bin/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-19T08:00:00.000Z"
-    },
-    {
       "slug": "herbstputz-aufräumen-mit-den-mythen-über-hypnose",
       "title": "Herbstputz - aufräumen mit den Mythen über Hypnose",
       "url": "https://bern-hypnose.ch/blog/herbstputz-aufräumen-mit-den-mythen-über-hypnose/",
@@ -20,13 +13,6 @@
       "url": "https://bern-hypnose.ch/blog/die-kraft-der-sippe/",
       "hasImage": true,
       "scheduledFor": "2026-03-26T08:00:00.000Z"
-    },
-    {
-      "slug": "das-ungute-gefühl-zu-viel-zu-sein",
-      "title": "Das ungute Gefühl, zu viel zu sein",
-      "url": "https://bern-hypnose.ch/blog/das-ungute-gefühl-zu-viel-zu-sein/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-31T08:00:00.000Z"
     },
     {
       "slug": "liebevolle-selbstdisziplin",
@@ -233,5 +219,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-03-25T18:56:28.259Z"
+  "lastUpdated": "2026-04-04T15:59:45.727Z"
 }
