@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "herbstputz-aufräumen-mit-den-mythen-über-hypnose",
-      "title": "Herbstputz - aufräumen mit den Mythen über Hypnose",
-      "url": "https://bern-hypnose.ch/blog/herbstputz-aufräumen-mit-den-mythen-über-hypnose/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-24T08:00:00.000Z"
-    },
-    {
       "slug": "die-kraft-der-sippe",
       "title": "Die Kraft der Sippe",
       "url": "https://bern-hypnose.ch/blog/die-kraft-der-sippe/",
@@ -219,5 +212,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-04-04T15:59:45.727Z"
+  "lastUpdated": "2026-04-12T12:52:11.022Z"
 }
