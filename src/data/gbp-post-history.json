@@ -259,6 +259,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "herbstputz-aufräumen-mit-den-mythen-über-hypnose",
+      "title": "Herbstputz - aufräumen mit den Mythen über Hypnose",
+      "scheduledFor": "2026-03-24T08:00:00.000Z",
+      "createdAt": "2026-04-12T12:52:11.020Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/4081172158971944532",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }
