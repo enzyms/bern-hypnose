@@ -269,6 +269,36 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "die-kraft-der-sippe",
+      "title": "Die Kraft der Sippe",
+      "scheduledFor": "2026-03-26T08:00:00.000Z",
+      "createdAt": "2026-04-17T17:53:21.703Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/4336825637749998733",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "liebevolle-selbstdisziplin",
+      "title": "Liebevolle Selbstdisziplin",
+      "scheduledFor": "2026-04-02T08:00:00.000Z",
+      "createdAt": "2026-04-23T05:42:48.849Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/2056459845583857441",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "den-überblick-behalten",
+      "title": "Den Überblick behalten",
+      "scheduledFor": "2026-04-07T08:00:00.000Z",
+      "createdAt": "2026-04-30T14:50:45.002Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/8280585856055444921",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

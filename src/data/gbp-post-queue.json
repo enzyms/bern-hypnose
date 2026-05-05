@@ -1,27 +1,6 @@
 {
   "posts": [
     {
-      "slug": "die-kraft-der-sippe",
-      "title": "Die Kraft der Sippe",
-      "url": "https://bern-hypnose.ch/blog/die-kraft-der-sippe/",
-      "hasImage": true,
-      "scheduledFor": "2026-03-26T08:00:00.000Z"
-    },
-    {
-      "slug": "liebevolle-selbstdisziplin",
-      "title": "Liebevolle Selbstdisziplin",
-      "url": "https://bern-hypnose.ch/blog/liebevolle-selbstdisziplin/",
-      "hasImage": true,
-      "scheduledFor": "2026-04-02T08:00:00.000Z"
-    },
-    {
-      "slug": "den-überblick-behalten",
-      "title": "Den Überblick behalten",
-      "url": "https://bern-hypnose.ch/blog/den-überblick-behalten/",
-      "hasImage": true,
-      "scheduledFor": "2026-04-07T08:00:00.000Z"
-    },
-    {
       "slug": "gedanken-zum-herbst",
       "title": "Gedanken zum Herbst",
       "url": "https://bern-hypnose.ch/blog/gedanken-zum-herbst/",
@@ -212,5 +191,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-04-12T12:52:11.022Z"
+  "lastUpdated": "2026-04-30T14:50:45.004Z"
 }
