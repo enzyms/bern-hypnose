@@ -32,46 +32,57 @@
         if (!stored) localStorage.setItem(SESSION_KEY, sessionId);
     });
 
-    let shouldAutoScroll = $state(true);
+    let lastUserMsgEl = $state<HTMLSpanElement | undefined>(undefined);
 
-    function isNearBottom() {
-        if (!messagesEl) return true;
-        const { scrollTop, scrollHeight, clientHeight } = messagesEl;
-        return scrollHeight - scrollTop - clientHeight < 80;
+    /**
+     * Give the last assistant message enough min-height so the user's
+     * question can be scrolled to the top of the container, then scroll.
+     */
+    function scrollQuestionIntoView() {
+        requestAnimationFrame(() => {
+            if (!lastUserMsgEl || !messagesEl) return;
+
+            // Find the last assistant message element
+            const lastAssistantEl = messagesEl.querySelector('.bh-chat__msg--assistant:last-child') as HTMLElement | null;
+            if (lastAssistantEl) {
+                const containerH = messagesEl.clientHeight;
+                const paddingTop = parseFloat(getComputedStyle(messagesEl).paddingTop);
+                const gap = parseFloat(getComputedStyle(messagesEl).gap) || 0;
+                const questionH = lastUserMsgEl.closest('.bh-chat__msg')?.getBoundingClientRect().height ?? 0;
+                const minH = containerH - paddingTop - questionH - gap;
+                lastAssistantEl.style.minHeight = `${Math.max(minH, 0)}px`;
+            }
+
+            // Now scroll the question to the top
+            const containerTop = messagesEl.getBoundingClientRect().top;
+            const elTop = lastUserMsgEl.getBoundingClientRect().top;
+            const paddingTop = parseFloat(getComputedStyle(messagesEl).paddingTop);
+            messagesEl.scrollTo({
+                top: messagesEl.scrollTop + (elTop - containerTop) - paddingTop,
+                behavior: 'smooth'
+            });
+        });
     }
-
-    function scrollToBottom() {
-        if (!messagesEl) return;
-        messagesEl.scrollTo({ top: messagesEl.scrollHeight, behavior: 'smooth' });
-    }
-
-    function handleScroll() {
-        if (!isStreaming) return;
-        shouldAutoScroll = isNearBottom();
-    }
-
-    // Auto-scroll reactively when assistant content changes during streaming
-    $effect(() => {
-        if (!isStreaming || !messages.length) return;
-        // Access the last message content to track it reactively
-        const last = messages[messages.length - 1];
-        if (last?.role === 'assistant') last.content;
-        if (shouldAutoScroll) {
-            requestAnimationFrame(() => scrollToBottom());
-        }
-    });
 
     async function sendMessage(text: string) {
         const trimmed = text.trim();
         if (!trimmed || isStreaming) return;
 
         inputValue = '';
+
+        // Reset min-height on previous assistant messages
+        if (messagesEl) {
+            messagesEl.querySelectorAll<HTMLElement>('.bh-chat__msg--assistant').forEach((el) => {
+                el.style.minHeight = '';
+            });
+        }
+
         messages.push({ role: 'user', content: trimmed });
         messages.push({ role: 'assistant', content: '' });
         const lastIdx = messages.length - 1;
         isStreaming = true;
-        shouldAutoScroll = true;
-        scrollToBottom();
+        // Wait for DOM update, then anchor the question at the top
+        setTimeout(() => scrollQuestionIntoView(), 30);
 
         try {
             const res = await fetch(`${API_BASE}/${EMBED_ID}/stream-chat`, {
@@ -106,7 +117,6 @@
                         }
                         if (data.textResponse) {
                             messages[lastIdx].content += data.textResponse;
-                            scrollToBottom();
                         }
                     } catch {
                         /* ignore partial JSON lines */
@@ -166,8 +176,11 @@
                         </div>
                     </div>
                 {:else}
-                    {#each messages as msg}
+                    {#each messages as msg, i}
                         <div class="bh-chat__msg bh-chat__msg--{msg.role}">
+                            {#if msg.role === 'user'}
+                                <span class="bh-chat__anchor" bind:this={lastUserMsgEl}></span>
+                            {/if}
                             {#if msg.role === 'assistant' && msg.content === '' && isStreaming}
                                 <span class="bh-chat__typing"><span></span><span></span><span></span></span>
                             {:else if msg.role === 'assistant'}
@@ -229,7 +242,6 @@
             -apple-system,
             sans-serif;
         line-height: 1.75;
-        background: #f7f0f850;
     }
 
     /* Panel */
@@ -300,7 +312,7 @@
     }
     .bh-chat__icon-btn:hover {
         opacity: 1;
-        background: #ef4444;
+        background: #9b4dca;
     }
 
     /* Messages */
@@ -312,7 +324,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
 
     .bh-chat__greeting {
@@ -360,19 +372,23 @@
 
     .bh-chat__msg--user {
         white-space: pre-wrap;
-    }
-
-    .bh-chat__msg--user {
         align-self: flex-end;
         background: #e9d7eb;
         color: #0b0b0b;
         border-bottom-right-radius: 4px;
     }
 
+    .bh-chat__anchor {
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+
     .bh-chat__msg--assistant {
         align-self: flex-start;
         color: #0b0b0b;
         border-bottom-left-radius: 4px;
+        padding-bottom: 70px;
     }
 
     /* Markdown content in assistant messages */
@@ -471,14 +487,14 @@
         font-family: inherit;
     }
     .bh-chat__input:focus {
-        border-color: #ef4444;
+        border-color: #9b4dca;
     }
     .bh-chat__input:disabled {
         opacity: 0.6;
     }
 
     .bh-chat__send {
-        background: #ef4444;
+        background: #9b4dca;
         border: none;
         border-radius: 10px;
         padding: 10px 18px;
@@ -508,7 +524,7 @@
         width: 54px;
         height: 54px;
         border-radius: 50%;
-        background: #ef4444;
+        background: #9b4dca;
         border: none;
         color: #fff;
         cursor: pointer;
