@@ -152,29 +152,58 @@
         sessionId = crypto.randomUUID();
         localStorage.setItem(SESSION_KEY, sessionId);
     }
+
+    let bubbleEl = $state<HTMLButtonElement | undefined>(undefined);
+    let panelEl = $state<HTMLDivElement | undefined>(undefined);
+    let inputEl = $state<HTMLInputElement | undefined>(undefined);
+
+    // Focus management: move focus into panel on open, back to bubble on close
+    $effect(() => {
+        if (isOpen) {
+            requestAnimationFrame(() => inputEl?.focus());
+        }
+    });
+
+    function closeChat() {
+        isOpen = false;
+        requestAnimationFrame(() => bubbleEl?.focus());
+    }
+
+    function handlePanelKeydown(e: KeyboardEvent) {
+        if (e.key === 'Escape') {
+            e.stopPropagation();
+            closeChat();
+        }
+    }
 </script>
 
 {#if isOpen}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="bh-chat__veil" transition:fly={{ duration: 250 }} onclick={() => (isOpen = false)}></div>
+    <button class="bh-chat__veil" transition:fly={{ duration: 250 }} onclick={closeChat} aria-label="Chat schließen"></button>
 {/if}
 
 <div class="bh-chat">
     {#if isOpen}
-        <div class="bh-chat__panel" transition:fly={{ y: 16, duration: 250 }}>
+        <div
+            class="bh-chat__panel"
+            bind:this={panelEl}
+            transition:fly={{ y: 16, duration: 250 }}
+            role="dialog"
+            aria-label="Chatbot"
+            onkeydown={handlePanelKeydown}
+        >
             <!-- Header -->
             <div class="bh-chat__header">
                 <div class="bh-chat__header-actions">
                     {#if messages.length > 0}
-                        <button class="bh-chat__icon-btn" onclick={resetChat} title="Gespräch zurücksetzen">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <button class="bh-chat__icon-btn" onclick={resetChat} aria-label="Gespräch zurücksetzen">
+                            <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                                 <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
                                 <path d="M3 3v5h5" />
                             </svg>
                         </button>
                     {/if}
-                    <button class="bh-chat__icon-btn" onclick={() => (isOpen = false)} title="Schließen">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <button class="bh-chat__icon-btn" onclick={closeChat} aria-label="Chat schließen">
+                        <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <path d="M18 6 6 18M6 6l12 12" />
                         </svg>
                     </button>
@@ -182,11 +211,11 @@
             </div>
 
             <!-- Messages -->
-            <div class="bh-chat__messages" bind:this={messagesEl}>
+            <div class="bh-chat__messages" bind:this={messagesEl} role="log" aria-live="polite" aria-label="Chatverlauf">
                 {#if messages.length === 0}
                     <div class="bh-chat__greeting">
                         <p class="text-balance">Hallo! Ich bin Janines virtuelle Assistentin. Ich beantworte gerne deine Fragen zur Hypnosetherapie.</p>
-                        <div class="bh-chat__suggestions">
+                        <div class="bh-chat__suggestions" role="group" aria-label="Vorgeschlagene Fragen">
                             {#each SUGGESTED as q}
                                 <button class="bh-chat__suggestion" onclick={() => sendMessage(q)}>{q}</button>
                             {/each}
@@ -205,7 +234,7 @@
                                 <span class="bh-chat__anchor" bind:this={lastUserMsgEl}></span>
                             {/if}
                             {#if msg.role === 'assistant' && msg.content === '' && isStreaming}
-                                <span class="bh-chat__typing"><span></span><span></span><span></span></span>
+                                <span class="bh-chat__typing" role="status" aria-label="Antwort wird geschrieben"><span></span><span></span><span></span></span>
                             {:else if msg.role === 'assistant'}
                                 {@html marked.parse(msg.content)}
                             {:else}
@@ -218,16 +247,19 @@
 
             <!-- Input -->
             <div class="bh-chat__input-bar">
+                <label for="bh-chat-input" class="sr-only">Deine Frage</label>
                 <input
+                    id="bh-chat-input"
                     class="bh-chat__input"
                     type="text"
                     placeholder="Deine Frage..."
+                    bind:this={inputEl}
                     bind:value={inputValue}
                     onkeydown={handleKeydown}
                     disabled={isStreaming}
                 />
-                <button class="bh-chat__send" onclick={() => sendMessage(inputValue)} disabled={isStreaming || !inputValue.trim()} aria-label="Senden">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button class="bh-chat__send" onclick={() => sendMessage(inputValue)} disabled={isStreaming || !inputValue.trim()} aria-label="Nachricht senden">
+                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="m22 2-7 20-4-9-9-4 20-7z" />
                         <path d="M22 2 11 13" />
                     </svg>
@@ -237,13 +269,13 @@
     {/if}
 
     <!-- Bubble -->
-    <button class="bh-chat__bubble" onclick={() => (isOpen = !isOpen)} aria-label={isOpen ? 'Chat schließen' : 'Chat öffnen'}>
+    <button class="bh-chat__bubble" bind:this={bubbleEl} onclick={() => (isOpen = !isOpen)} aria-label={isOpen ? 'Chat schließen' : 'Chat öffnen'}>
         {#if isOpen}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M18 6 6 18M6 6l12 12" />
             </svg>
         {:else}
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
         {/if}
@@ -256,6 +288,9 @@
         inset: 0;
         z-index: 9998;
         background: rgba(107, 74, 117, 0.35);
+        border: none;
+        padding: 0;
+        cursor: default;
     }
 
     .bh-chat {
@@ -297,26 +332,16 @@
         position: absolute;
     }
 
-    .bh-chat__avatar {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        flex-shrink: 0;
-    }
-
-    .bh-chat__name {
-        font-weight: 600;
-        margin: 0;
-    }
-
-    .bh-chat__online {
-        opacity: 0.85;
-        margin: 0;
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
 
     .bh-chat__header-actions {
