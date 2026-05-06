@@ -144,6 +144,11 @@
     }
 </script>
 
+{#if isOpen}
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="bh-chat__veil" transition:fly={{ duration: 250 }} onclick={() => (isOpen = false)}></div>
+{/if}
+
 <div class="bh-chat">
     {#if isOpen}
         <div class="bh-chat__panel" transition:fly={{ y: 16, duration: 250 }}>
@@ -228,6 +233,13 @@
 </div>
 
 <style>
+    .bh-chat__veil {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        background: rgba(107, 74, 117, 0.35);
+    }
+
     .bh-chat {
         position: fixed;
         bottom: 20px;
@@ -296,7 +308,7 @@
     }
 
     .bh-chat__icon-btn {
-        background: #dc2626;
+        background: #9b50b0;
         border: none;
         color: #fff;
         cursor: pointer;
@@ -312,7 +324,7 @@
     }
     .bh-chat__icon-btn:hover {
         opacity: 1;
-        background: #9b4dca;
+        background: #b06ec7;
     }
 
     /* Messages */
@@ -402,12 +414,12 @@
         font-weight: 600;
     }
     .bh-chat__msg--assistant :global(a) {
-        color: #9b4dca;
+        color: #b06ec7;
         text-decoration: underline;
         text-underline-offset: 2px;
     }
     .bh-chat__msg--assistant :global(a:hover) {
-        color: #7b2fa8;
+        color: #9b50b0;
     }
     .bh-chat__msg--assistant :global(ul),
     .bh-chat__msg--assistant :global(ol) {
@@ -487,14 +499,14 @@
         font-family: inherit;
     }
     .bh-chat__input:focus {
-        border-color: #9b4dca;
+        border-color: #b06ec7;
     }
     .bh-chat__input:disabled {
         opacity: 0.6;
     }
 
     .bh-chat__send {
-        background: #9b4dca;
+        background: #b06ec7;
         border: none;
         border-radius: 10px;
         padding: 10px 18px;
@@ -507,7 +519,7 @@
         flex-shrink: 0;
     }
     .bh-chat__send:hover:not(:disabled) {
-        background: #dc2626;
+        background: #9b50b0;
     }
     .bh-chat__send:disabled {
         opacity: 0.45;
@@ -524,14 +536,14 @@
         width: 54px;
         height: 54px;
         border-radius: 50%;
-        background: #9b4dca;
+        background: #b06ec7;
         border: none;
         color: #fff;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 18px rgba(239, 68, 68, 0.45);
+        box-shadow: 0 4px 18px rgba(176, 110, 199, 0.45);
         transition:
             transform 0.2s,
             box-shadow 0.2s;
@@ -539,6 +551,6 @@
     }
     .bh-chat__bubble:hover {
         transform: scale(1.06);
-        box-shadow: 0 6px 24px rgba(239, 68, 68, 0.55);
+        box-shadow: 0 6px 24px rgba(176, 110, 199, 0.55);
     }
 </style>
