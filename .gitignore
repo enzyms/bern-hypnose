@@ -16,7 +16,44 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.local
+.env.*.local
 
 # macOS-specific files
 .DS_Store
-.env
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Secrets & tokens (never commit)
+*.pem
+*.key
+*-private-key*
+secrets/
+
+# Svelte compiled output
+*.svelte.d.ts
+
+# Internal docs & SEO working files (not for chatbot)
+CANONICAL_SEO_AUDIT.md
+CLAUDE.md
+FAQ_REVIEW_AND_GBP_POSTS.md
+GBP_POST_HYPNOSE_MEDITATION.md
+GOOGLE_INDEXING_FIX.md
+HOMEPAGE_SEO_ANALYSIS.md
+HOMEPAGE_SEO_QUICK_FIX.md
+IMPLEMENTATION_COMPLETE.md
+NETLIFY_DIAGNOSTIC_CHECKLIST.md
+README_SEO_UPDATES.md
+SEO_ANALYSIS_HYPNOSETHERAPIE_BERN.md
+SEO_IMPROVEMENTS_COMPLETED.md
+SEO_KEYWORD_ANALYSIS.md
+SEO_KEYWORDS_LIST.md
+SEO_PUBLISHING_PHASES.md
+SEO_QUICK_SUMMARY.md
+raw-reviews.md
+
+# Content taxonomy (not useful for chatbot)
+src/content/tags/

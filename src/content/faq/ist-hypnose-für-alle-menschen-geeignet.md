@@ -10,7 +10,7 @@ linkText: 'Alle Anwendungsbereiche ansehen'
 description: 'Erfahre, wer von Hypnose profitieren kann und in welchen Fällen Vorsicht geboten ist. Informationen zu Kontraindikationen und Voraussetzungen für erfolgreiche Hypnosetherapie.'
 ---
 
-**Nein, Hypnose ist nicht für alle Menschen geeignet.** Bei schweren psychischen Erkrankungen wie Psychosen, Schizophrenie oder bipolaren Störungen ist Hypnose nicht empfohlen. Auch bei Epilepsie und akuten Suchterkrankungen ist Vorsicht geboten.
+**Hypnose ist nicht für alle Menschen geeignet.** Bei schweren psychischen Erkrankungen wie Psychosen, Schizophrenie oder bipolaren Störungen ist Hypnose nicht empfohlen. Auch bei Epilepsie und akuten Suchterkrankungen ist Vorsicht geboten.
 
 Für die **meisten Menschen** ist Hypnose jedoch eine sichere und wirksame Methode. Grundsätzlich kann jeder Mensch hypnotisiert werden, der sich darauf einlassen möchte. Es braucht keine besondere "Begabung" oder Fähigkeit – nur die Bereitschaft, sich auf den Prozess einzulassen.
 

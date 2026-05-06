@@ -7,6 +7,7 @@ import Blur from '../components/Blur.astro';
 import SocialFooter from '../components/SocialFooter.astro';
 // import Notification from '../components/Notification.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import Chat from '../components/Chat.svelte';
 
 export type Props = HeadProps;
 
@@ -40,5 +41,6 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
             <slot />
             <SocialFooter />
         </main>
+        <Chat client:load />
     </body>
 </html>
