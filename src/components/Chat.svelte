@@ -258,7 +258,12 @@
                     onkeydown={handleKeydown}
                     disabled={isStreaming}
                 />
-                <button class="bh-chat__send" onclick={() => sendMessage(inputValue)} disabled={isStreaming || !inputValue.trim()} aria-label="Nachricht senden">
+                <button
+                    class="bh-chat__send"
+                    onclick={() => sendMessage(inputValue)}
+                    disabled={isStreaming || !inputValue.trim()}
+                    aria-label="Nachricht senden"
+                >
                     <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="m22 2-7 20-4-9-9-4 20-7z" />
                         <path d="M22 2 11 13" />
@@ -428,14 +433,15 @@
     }
 
     .bh-chat__msg {
-        max-width: 90%;
-        padding: 12px 14px;
+        max-width: 100%;
         border-radius: 14px;
         line-height: 1.5;
         word-break: break-word;
     }
 
     .bh-chat__msg--user {
+        max-width: 85%;
+        padding: 12px 14px;
         white-space: pre-wrap;
         align-self: flex-end;
         background: #e9d7eb;
@@ -477,16 +483,35 @@
     .bh-chat__msg--assistant :global(ul),
     .bh-chat__msg--assistant :global(ol) {
         margin: 0.4em 0;
-        padding-left: 1.4em;
+        padding-left: 1em;
+        list-style: disc;
     }
     .bh-chat__msg--assistant :global(li) {
-        margin-bottom: 0.2em;
+        margin-bottom: 0.25em;
     }
     .bh-chat__msg--assistant :global(code) {
         background: rgba(0, 0, 0, 0.06);
         padding: 0.15em 0.35em;
         border-radius: 4px;
         font-size: 0.9em;
+    }
+    .bh-chat__msg--assistant :global(table) {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        font-size: 0.85em;
+        border-collapse: collapse;
+        max-width: 100%;
+    }
+    .bh-chat__msg--assistant :global(th),
+    .bh-chat__msg--assistant :global(td) {
+        padding: 0.4em 0.6em;
+        border: 1px solid #d4a8e0;
+        white-space: nowrap;
+    }
+    .bh-chat__msg--assistant :global(th) {
+        background: #f3e8f4;
+        font-weight: 600;
     }
     .bh-chat__msg--assistant :global(blockquote) {
         border-left: 3px solid #d4a8e0;
