@@ -97,6 +97,10 @@
                 body: JSON.stringify({ message: trimmed, sessionId })
             });
 
+            if (res.status === 429) {
+                messages[lastIdx].content = 'Die maximale Anzahl an Anfragen wurde erreicht. Bitte versuche es später erneut.';
+                return;
+            }
             if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
 
             const reader = res.body.getReader();
@@ -161,12 +165,14 @@
             <!-- Header -->
             <div class="bh-chat__header">
                 <div class="bh-chat__header-actions">
-                    <button class="bh-chat__icon-btn" onclick={resetChat} title="Gespräch zurücksetzen">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                            <path d="M3 3v5h5" />
-                        </svg>
-                    </button>
+                    {#if messages.length > 0}
+                        <button class="bh-chat__icon-btn" onclick={resetChat} title="Gespräch zurücksetzen">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                                <path d="M3 3v5h5" />
+                            </svg>
+                        </button>
+                    {/if}
                     <button class="bh-chat__icon-btn" onclick={() => (isOpen = false)} title="Schließen">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <path d="M18 6 6 18M6 6l12 12" />
@@ -179,13 +185,13 @@
             <div class="bh-chat__messages" bind:this={messagesEl}>
                 {#if messages.length === 0}
                     <div class="bh-chat__greeting">
-                        <p>Hallo! Ich bin Janines virtuelle Assistentin. Ich beantworte gerne deine Fragen zur Hypnosetherapie.</p>
+                        <p class="text-balance">Hallo! Ich bin Janines virtuelle Assistentin. Ich beantworte gerne deine Fragen zur Hypnosetherapie.</p>
                         <div class="bh-chat__suggestions">
                             {#each SUGGESTED as q}
                                 <button class="bh-chat__suggestion" onclick={() => sendMessage(q)}>{q}</button>
                             {/each}
                         </div>
-                        <p class="bh-chat__disclaimer">
+                        <p class="bh-chat__disclaimer text-balance">
                             Dieser Chatbot bietet allgemeine Informationen und ersetzt keine professionelle Beratung. Sie können die <a
                                 href="/nutzungsbedingungen/">Nutzungsbedingungen</a
                             >
@@ -271,7 +277,7 @@
     /* Panel */
     .bh-chat__panel {
         width: min(580px, calc(100vw - 40px));
-        height: min(760px, 90svh);
+        height: max(540px, calc(100svh - 110px));
         background: #f7f0f8;
         border-radius: 16px;
         box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
@@ -354,7 +360,7 @@
     .bh-chat__greeting {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 40px;
         color: #333;
     }
 
@@ -364,7 +370,7 @@
 
     .bh-chat__disclaimer {
         font-size: 0.85rem;
-        line-height: 1.4;
+        line-height: 1.5;
         opacity: 0.8;
     }
     .bh-chat__disclaimer a {
@@ -386,7 +392,7 @@
         text-align: left;
         cursor: pointer;
         color: #333;
-        line-height: 1.4;
+        line-height: 1.5;
         transition:
             background 0.15s,
             border-color 0.15s;

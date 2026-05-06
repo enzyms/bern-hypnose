@@ -60,7 +60,7 @@ const faqSchemaData = {
 <BaseLayout title="Was ist Hypnose und wie funktioniert Hypnosetherapie?" description="Alle häufig gestellten Fragen über Hypnose und Hypnosetherapie">
     <!-- Embedding FAQ Schema with JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
-    
+
     <article class="mb-16">
         <header class="mb-8 relative">
             {
@@ -81,8 +81,12 @@ const faqSchemaData = {
                 sizes="(max-width: 768px) calc(100vw - 40px), 704px"
             />
             <p class="my-8 text-lg">
-                Auf dieser Seite findest du Antworten auf häufig gestellte Fragen rund um Hypnose und Hypnosetherapie. Wenn du hier keine Antwort auf deine
-                Frage entdeckst, zögere bitte nicht, mich direkt zu kontaktieren.
+                Auf dieser Seite findest du Antworten auf häufig gestellte Fragen rund um Hypnose und Hypnosetherapie. Du kannst auch unseren
+                <button
+                    class="inline font-semibold underline underline-offset-2 cursor-pointer"
+                    style="color: #a54dc5;"
+                    onclick="window.dispatchEvent(new CustomEvent('open-chat'))">Chatbot ausprobieren</button
+                > — sie beantwortet deine Fragen rund um die Uhr.
             </p>
         </header>
 
