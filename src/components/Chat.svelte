@@ -30,6 +30,10 @@
         const stored = localStorage.getItem(SESSION_KEY);
         sessionId = stored ?? crypto.randomUUID();
         if (!stored) localStorage.setItem(SESSION_KEY, sessionId);
+
+        const openChat = () => { isOpen = true; };
+        window.addEventListener('open-chat', openChat);
+        return () => window.removeEventListener('open-chat', openChat);
     });
 
     let lastUserMsgEl = $state<HTMLSpanElement | undefined>(undefined);
