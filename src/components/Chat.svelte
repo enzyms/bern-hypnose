@@ -3,7 +3,35 @@
     import { fly } from 'svelte/transition';
     import { marked } from 'marked';
 
+    const SITE_HOST = 'bern-hypnose.ch';
+
+    const renderer = new marked.Renderer();
+    renderer.link = (href: string, title: string | null, text: string) => {
+        let url = href ?? '';
+
+        // Convert absolute prod URLs to relative
+        try {
+            const parsed = new URL(url, 'https://' + SITE_HOST);
+            if (parsed.hostname === SITE_HOST || parsed.hostname === 'www.' + SITE_HOST) {
+                url = parsed.pathname + parsed.search + parsed.hash;
+            }
+        } catch { /* keep as-is */ }
+
+        const isInternal = url.startsWith('/');
+
+        // Ensure trailing slash on internal paths (excluding anchors, queries, files with extensions)
+        if (isInternal && !url.match(/\.\w+/) && !url.endsWith('/')) {
+            const [path, rest] = url.split(/([?#].*)/);
+            url = path + '/' + (rest ?? '');
+        }
+
+        const titleAttr = title ? ` title="${title}"` : '';
+        const external = !isInternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+        return `<a href="${url}"${titleAttr}${external}>${text}</a>`;
+    };
+
     marked.setOptions({ breaks: true, gfm: true });
+    marked.use({ renderer });
 
     const EMBED_ID = '090e1c03-3e1e-4e42-a9a5-9a193c659591';
     const API_BASE = 'https://chat.bern-hypnose.ch/api/embed';
@@ -169,6 +197,13 @@
         requestAnimationFrame(() => bubbleEl?.focus());
     }
 
+    function handleMessageClick(e: MouseEvent) {
+        const link = (e.target as HTMLElement).closest('a');
+        if (link && link.hostname === location.hostname) {
+            isOpen = false;
+        }
+    }
+
     function handlePanelKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') {
             e.stopPropagation();
@@ -177,20 +212,19 @@
     }
 </script>
 
-{#if isOpen}
-    <button class="bh-chat__veil" transition:fly={{ duration: 250 }} onclick={closeChat} aria-label="Chat schließen"></button>
-{/if}
-
 <div class="bh-chat">
     {#if isOpen}
-        <div
-            class="bh-chat__panel"
-            bind:this={panelEl}
-            transition:fly={{ y: 16, duration: 250 }}
-            role="dialog"
-            aria-label="Chatbot"
-            onkeydown={handlePanelKeydown}
-        >
+        <button class="bh-chat__veil" transition:fly={{ duration: 250 }} onclick={closeChat} aria-label="Chat schließen"></button>
+    {/if}
+    <div
+        class="bh-chat__panel"
+        class:bh-chat__panel--hidden={!isOpen}
+        bind:this={panelEl}
+        role="dialog"
+        aria-label="Chatbot"
+        aria-hidden={!isOpen}
+        onkeydown={handlePanelKeydown}
+    >
             <!-- Header -->
             <div class="bh-chat__header">
                 <div class="bh-chat__header-actions">
@@ -211,7 +245,8 @@
             </div>
 
             <!-- Messages -->
-            <div class="bh-chat__messages" bind:this={messagesEl} role="log" aria-live="polite" aria-label="Chatverlauf">
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <div class="bh-chat__messages" bind:this={messagesEl} role="log" aria-live="polite" aria-label="Chatverlauf" onclick={handleMessageClick}>
                 {#if messages.length === 0}
                     <div class="bh-chat__greeting">
                         <p class="text-balance">Hallo! Ich bin Janines virtuelle Assistentin. Ich beantworte gerne deine Fragen zur Hypnosetherapie.</p>
@@ -271,7 +306,6 @@
                 </button>
             </div>
         </div>
-    {/if}
 
     <!-- Bubble -->
     <button class="bh-chat__bubble" bind:this={bubbleEl} onclick={() => (isOpen = !isOpen)} aria-label={isOpen ? 'Chat schließen' : 'Chat öffnen'}>
@@ -291,7 +325,7 @@
     .bh-chat__veil {
         position: fixed;
         inset: 0;
-        z-index: 9998;
+        z-index: -1;
         background: rgba(107, 74, 117, 0.35);
         border: none;
         padding: 0;
@@ -324,6 +358,9 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
+    }
+    .bh-chat__panel--hidden {
+        display: none;
     }
 
     /* Header */

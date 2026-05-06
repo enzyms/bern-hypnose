@@ -41,6 +41,6 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
             <slot />
             <SocialFooter />
         </main>
-        <Chat client:load />
+        <Chat client:load transition:persist="chat-widget" />
     </body>
 </html>
