@@ -31,7 +31,9 @@
         sessionId = stored ?? crypto.randomUUID();
         if (!stored) localStorage.setItem(SESSION_KEY, sessionId);
 
-        const openChat = () => { isOpen = true; };
+        const openChat = () => {
+            isOpen = true;
+        };
         window.addEventListener('open-chat', openChat);
         return () => window.removeEventListener('open-chat', openChat);
     });
@@ -183,6 +185,12 @@
                                 <button class="bh-chat__suggestion" onclick={() => sendMessage(q)}>{q}</button>
                             {/each}
                         </div>
+                        <p class="bh-chat__disclaimer">
+                            Dieser Chatbot bietet allgemeine Informationen und ersetzt keine professionelle Beratung. Sie können die <a
+                                href="/nutzungsbedingungen/">Nutzungsbedingungen</a
+                            >
+                            lesen.
+                        </p>
                     </div>
                 {:else}
                     {#each messages as msg, i}
@@ -352,6 +360,16 @@
 
     .bh-chat__greeting p {
         margin: 0;
+    }
+
+    .bh-chat__disclaimer {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        opacity: 0.8;
+    }
+    .bh-chat__disclaimer a {
+        color: inherit;
+        text-decoration: underline;
     }
 
     .bh-chat__suggestions {
