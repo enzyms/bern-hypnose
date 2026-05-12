@@ -299,6 +299,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "gedanken-zum-herbst",
+      "title": "Gedanken zum Herbst",
+      "scheduledFor": "2026-04-09T08:00:00.000Z",
+      "createdAt": "2026-05-12T05:24:59.188Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/2304353571451808729",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

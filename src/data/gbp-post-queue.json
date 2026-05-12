@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "gedanken-zum-herbst",
-      "title": "Gedanken zum Herbst",
-      "url": "https://bern-hypnose.ch/blog/gedanken-zum-herbst/",
-      "hasImage": true,
-      "scheduledFor": "2026-04-09T08:00:00.000Z"
-    },
-    {
       "slug": "der-freie-fall",
       "title": "Der freie Fall",
       "url": "https://bern-hypnose.ch/blog/der-freie-fall/",
@@ -191,5 +184,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-04-30T14:50:45.004Z"
+  "lastUpdated": "2026-05-12T05:24:59.189Z"
 }
