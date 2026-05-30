@@ -309,6 +309,146 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "der-freie-fall",
+      "title": "Der freie Fall",
+      "scheduledFor": "2026-04-14T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:42.930Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/2376344807637355009",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "sich-klein-machen-lassen",
+      "title": "Sich klein machen (lassen)",
+      "scheduledFor": "2026-04-16T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:45.192Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/1536046852117277830",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "dein-komfort-ort-in-dir",
+      "title": "Dein Komfort-Ort in dir",
+      "scheduledFor": "2026-04-21T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:46.846Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/4972292640741758653",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "wetterwünsche",
+      "title": "Wetterwünsche",
+      "scheduledFor": "2026-04-23T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:48.574Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/2444425246463384787",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "zweifelst-du-noch-an-hypnose",
+      "title": "Zweifelst du noch an Hypnose?",
+      "scheduledFor": "2026-04-28T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:50.097Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/9079107195051181256",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "mein-neues-hobby-und-ich-was-ist-dein-traum",
+      "title": "Mein neues Hobby und ich- was ist DEIN Traum?",
+      "scheduledFor": "2026-04-30T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:51.765Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/1762341472734492928",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "frauengesundheit",
+      "title": "Frauengesundheit",
+      "scheduledFor": "2026-05-05T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:53.265Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/4739006884660311732",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "hypnose-bei-schmerzen",
+      "title": "Hypnose bei Schmerzen ",
+      "scheduledFor": "2026-05-07T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:54.792Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/2211730819374474018",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "was-ich-dir-bieten-kann",
+      "title": "Was ich dir bieten kann",
+      "scheduledFor": "2026-05-12T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:56.350Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/3183069584785532337",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "sport-du-treuer-freund",
+      "title": "Sport, du treuer Freund",
+      "scheduledFor": "2026-05-14T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:57.959Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/4869340847813513197",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "dein-umgang-mit-enttäuschungen",
+      "title": "Dein Umgang mit Enttäuschungen",
+      "scheduledFor": "2026-05-19T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:00:59.601Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/3441080359219967502",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "von-der-verbundenheit-dank-verletzlichkeit",
+      "title": "Von der Verbundenheit dank Verletzlichkeit",
+      "scheduledFor": "2026-05-21T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:01:01.309Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/5855365149915073696",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "leichtigkeit",
+      "title": "Leichtigkeit",
+      "scheduledFor": "2026-05-26T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:01:02.751Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/1013482228811439007",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
+    },
+    {
+      "slug": "innehalten",
+      "title": "Innehalten",
+      "scheduledFor": "2026-05-28T08:00:00.000Z",
+      "createdAt": "2026-05-30T07:01:04.295Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/5539805035473820945",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }
