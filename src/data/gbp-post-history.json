@@ -449,6 +449,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "vom-ausbrennen-und-der-wertschätzung",
+      "title": "Vom Ausbrennen und der Wertschätzung",
+      "scheduledFor": "2026-06-02T08:00:00.000Z",
+      "createdAt": "2026-05-31T16:01:29.902Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/8536227352486877845",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

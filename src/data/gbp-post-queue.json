@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "vom-ausbrennen-und-der-wertschätzung",
-      "title": "Vom Ausbrennen und der Wertschätzung",
-      "url": "https://bern-hypnose.ch/blog/vom-ausbrennen-und-der-wertschätzung/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-02T08:00:00.000Z"
-    },
-    {
       "slug": "teebeutelweisheit",
       "title": "Teebeutelweisheit",
       "url": "https://bern-hypnose.ch/blog/teebeutelweisheit/",
@@ -86,5 +79,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-05-30T07:01:04.296Z"
+  "lastUpdated": "2026-05-31T16:01:29.903Z"
 }
