@@ -459,6 +459,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "teebeutelweisheit",
+      "title": "Teebeutelweisheit",
+      "scheduledFor": "2026-06-04T08:00:00.000Z",
+      "createdAt": "2026-07-16T05:31:09.974Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/7289977550458683642",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

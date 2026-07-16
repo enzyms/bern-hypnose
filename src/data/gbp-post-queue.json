@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "teebeutelweisheit",
-      "title": "Teebeutelweisheit",
-      "url": "https://bern-hypnose.ch/blog/teebeutelweisheit/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-04T08:00:00.000Z"
-    },
-    {
       "slug": "sich-annehmen",
       "title": "Sich annehmen",
       "url": "https://bern-hypnose.ch/blog/sich-annehmen/",
@@ -79,5 +72,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-05-31T16:01:29.903Z"
+  "lastUpdated": "2026-07-16T05:31:09.976Z"
 }
