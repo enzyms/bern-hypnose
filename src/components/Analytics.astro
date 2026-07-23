@@ -1,0 +1,10 @@
+---
+/**
+ * Umami analytics, loaded through the first-party proxy (/stats/ → umami host,
+ * see netlify.toml) so adblockers don't drop the events. Website-ID can be
+ * overridden per environment via PUBLIC_UMAMI_WEBSITE_ID.
+ */
+const websiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ?? 'b71481a2-1aaa-4300-a2cc-907a8ed24d37';
+---
+
+<script defer src="/stats/script.js" data-website-id={websiteId} data-host-url="/stats"></script>

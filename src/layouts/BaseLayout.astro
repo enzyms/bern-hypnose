@@ -7,6 +7,7 @@ import Blur from '../components/Blur.astro';
 import SocialFooter from '../components/SocialFooter.astro';
 // import Notification from '../components/Notification.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import Analytics from '../components/Analytics.astro';
 import Chat from '../components/Chat.svelte';
 
 export type Props = HeadProps;
@@ -27,7 +28,7 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
             }
         </script>
         <ViewTransitions />
-        <script defer src="https://umami-eta-inky.vercel.app/script.js" data-website-id="b71481a2-1aaa-4300-a2cc-907a8ed24d37"></script>
+        <Analytics />
     </head>
     <body class="bg-main text-main overflow-x-hidden">
         <Blur />

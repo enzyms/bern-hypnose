@@ -1,5 +1,6 @@
 ---
 import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro';
+import Analytics from '../components/Analytics.astro';
 
 export type Props = HeadProps;
 
@@ -11,7 +12,7 @@ const { ...head } = Astro.props;
     <head>
         <meta charset="utf-8" />
         <BaseHead {...head} />
-        <script defer src="https://umami-eta-inky.vercel.app/script.js" data-website-id="b71481a2-1aaa-4300-a2cc-907a8ed24d37"></script>
+        <Analytics />
         <link rel="sitemap" href="/sitemap-index.xml" />
 
         <!-- PWA and iOS specific meta tags -->
