@@ -69,10 +69,17 @@ Antworte kompakt (2–5 Sätze), ausser die Frage verlangt mehr Tiefe.
 
 ## 2b. Qualität sichern (Stand Juli 2026)
 
-**Regressions-Suite:** `node scripts/test-chatbot.js` stellt 14 Kern-Fragen (frische
-Session, live-Backend) und prüft jede Antwort gegen die echte URL-Whitelist:
-✅ korrekt · ⚠️ falscher Prefix, Frontend repariert · ❌ Thema-Link fehlt oder
-nicht reparierbar erfunden. Nach jeder Prompt-/Corpus-/Embedder-Änderung ausführen.
+**Regressions-Suite:** `node scripts/test-chatbot.js` stellt 14 Kern-Fragen plus
+5 Folgefrage-Szenarien (vage Nachfrage in laufender Session) und prüft jede
+Antwort gegen die echte URL-Whitelist: ✅ korrekt · ⚠️ falscher Prefix, Frontend
+repariert · ❌ Thema-Link fehlt oder nicht reparierbar erfunden. Nach jeder
+Prompt-/Corpus-/Embedder-Änderung ausführen.
+
+**Messwerte:**
+- 2026-07-23 vor Backend-Tuning: 16 ✅ / 0 ⚠️ / 3 ❌ (alle Folgefragen erfanden Links)
+- 2026-07-23 nach BGE-Multilingual-Embedder + Link-Regeln + Temperatur 0.3:
+  **17 ✅ / 1 ⚠️ / 1 ❌** — keine nicht-reparierbaren erfundenen Links mehr;
+  einziger Rest-Fail: Preisfrage ohne /angebote/-Link (Inhalt korrekt).
 
 **Bekannte Schwachstellen & Gegenmassnahmen:**
 
