@@ -30,10 +30,8 @@
   to = "https://cloud.umami.is/script.js"
   status = 200
 
-[[redirects]]
-  from = "/stats/api/*"
-  to = "https://cloud.umami.is/api/:splat"
-  status = 200
+# /stats/api/send is handled by netlify/functions/umami-send.mjs
+# (a plain redirect would geolocate all visitors to the Netlify edge node)
 
 # Markdown mirrors + llms.txt: cache 1h, keep HTML canonical out of duplicate-content risk
 [[headers]]
