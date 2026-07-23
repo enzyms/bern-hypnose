@@ -60,3 +60,4 @@ src/content/tags/
 
 # Chat question exports (visitor privacy — never commit; repo is public)
 reports/chat-questions/
+reports/umami-archive/
