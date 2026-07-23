@@ -1,3 +1,65 @@
 {
-    "snapshots": []
+  "snapshots": [
+    {
+      "date": "2026-07-23",
+      "week": "2026-W30",
+      "serpwatcher": {
+        "trackingId": "69159128598016b4d9930e1a",
+        "performanceIndex": null,
+        "keywords": [
+          {
+            "keyword": "hypnose bern",
+            "rank": null,
+            "rankAvg": null,
+            "change": null,
+            "searchVolume": null
+          },
+          {
+            "keyword": "hypnosetherapie bern",
+            "rank": null,
+            "rankAvg": null,
+            "change": null,
+            "searchVolume": null
+          },
+          {
+            "keyword": "bern hypnose",
+            "rank": null,
+            "rankAvg": null,
+            "change": null,
+            "searchVolume": null
+          },
+          {
+            "keyword": "hypnosetherapeut bern",
+            "rank": null,
+            "rankAvg": null,
+            "change": null,
+            "searchVolume": null
+          },
+          {
+            "keyword": "hypnosetherapeutin bern",
+            "rank": null,
+            "rankAvg": null,
+            "change": null,
+            "searchVolume": null
+          },
+          {
+            "keyword": "hypnose therapie bern",
+            "rank": null,
+            "rankAvg": null,
+            "change": null,
+            "searchVolume": null
+          }
+        ]
+      },
+      "aiSearch": [
+        {
+          "id": "691a4c5cb8157e5fb746ccb3",
+          "name": "bern-hypnose.ch",
+          "visibility": null,
+          "mentions": null,
+          "promptCount": null
+        }
+      ]
+    }
+  ]
 }
