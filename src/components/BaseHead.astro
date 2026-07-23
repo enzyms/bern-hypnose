@@ -1,5 +1,6 @@
 ---
 import siteConfig from '../data/site-config';
+import { getSiteDocuments } from '../utils/site-content';
 import '../styles/global.css';
 import SchemaDefault from '../schemas/SchemaDefault.astro';
 import SchemaHome from '../schemas/SchemaHome.astro';
@@ -33,6 +34,11 @@ const resolvedImage = image?.src
     : undefined;
 
 const canonicalURL = Astro.props.canonical ?? new URL(Astro.request.url, Astro.site);
+
+// Markdown mirror of this page (LLM-friendly alternate), if one is generated
+const siteDocuments = await getSiteDocuments();
+const currentDoc = siteDocuments.find((doc) => doc.path === Astro.url.pathname && doc.body.trim().length > 0);
+const markdownURL = currentDoc ? Astro.url.pathname.replace(/\/$/, '') + '.md' : null;
 
 /**
  * Enforce some standard canonical URL formatting across the site.
@@ -72,6 +78,7 @@ function formatCanonicalURL(url: string | URL) {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
+{markdownURL && <link rel="alternate" type="text/markdown" href={markdownURL} />}
 
 <!-- Page Metadata -->
 <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />

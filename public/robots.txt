@@ -1,4 +1,27 @@
 User-agent: *
 Disallow: /admin/
 
+# AI/LLM crawlers are welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# LLM guidance: curated content index and full-text corpus
+# https://bern-hypnose.ch/llms.txt
+# https://bern-hypnose.ch/llms-full.txt
+
 Sitemap: https://bern-hypnose.ch/sitemap-index.xml
