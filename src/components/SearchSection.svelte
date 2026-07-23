@@ -44,11 +44,8 @@
     let placeholder = $state('Frag etwas über Hypnose…');
 
     onMount(() => {
-        // Test helper: /?reset-ai-consent clears the stored consent decision
-        if (new URLSearchParams(location.search).has('reset-ai-consent')) {
-            localStorage.removeItem(CONSENT_KEY);
-            localStorage.removeItem(DECLINE_KEY);
-        }
+        // (/?reset-ai-consent is handled by an inline script in index.astro —
+        // it must run before hydration, which can be lazy or skipped.)
         consented = localStorage.getItem(CONSENT_KEY) === '1';
         declinedUntil = Number(localStorage.getItem(DECLINE_KEY) ?? 0);
 
@@ -384,6 +381,10 @@
         .bh-search__submit {
             flex: 1 1 100%;
             padding: 11px 16px;
+        }
+        /* Suggested questions are noise on small screens */
+        .bh-search__chips {
+            display: none;
         }
     }
 

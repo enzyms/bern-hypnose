@@ -19,6 +19,15 @@ const lastPosts = posts.slice(0, 2);
 <BaseLayout seoTitle={siteConfig.title} description={siteConfig.description} image={siteConfig.imageHomepage} schema="home">
     <Hero />
 
+    <!-- Test helper: /?reset-ai-consent clears the AI consent decision.
+         Runs inline (not in the island) so it works before/without hydration. -->
+    <script is:inline>
+        if (location.search.includes('reset-ai-consent')) {
+            localStorage.removeItem('bh-ai-consent');
+            localStorage.removeItem('bh-ai-consent-declined-until');
+        }
+    </script>
+
     <SearchSection client:visible />
 
     <!-- GBP Category: Ganzheitliche Hypnosetherapie + Was ist Hypnose (merged) -->
