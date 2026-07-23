@@ -72,17 +72,53 @@ async function fetchSerpwatcher(raw) {
     const detail = await api(`/serpwatcher/trackings/${trackingId}/detail`);
     raw.trackingDetail = detail;
 
-    const keywords = (detail?.tracked_keywords ?? detail?.keywords ?? []).map((kw) => ({
+    // Rank data lives in the stats endpoint; its exact contract is undocumented,
+    // so try the plausible variants and keep the raw dump for diagnosis.
+    const today = new Date();
+    const from = new Date(today.getTime() - 30 * 86400000);
+    const iso = (d) => d.toISOString().slice(0, 10);
+    const compact = (d) => iso(d).replaceAll('-', '');
+    const attempts = [
+        { label: 'GET compact', path: `/serpwatcher/trackings/${trackingId}/stats?from=${compact(from)}&to=${compact(today)}` },
+        { label: 'GET iso', path: `/serpwatcher/trackings/${trackingId}/stats?from=${iso(from)}&to=${iso(today)}` },
+        { label: 'POST iso', path: `/serpwatcher/trackings/${trackingId}/stats`, options: { method: 'POST', body: JSON.stringify({ from: iso(from), to: iso(today) }) } }
+    ];
+    let stats = null;
+    for (const attempt of attempts) {
+        try {
+            stats = await api(attempt.path, attempt.options ?? {});
+            raw.stats = stats;
+            raw.statsVariant = attempt.label;
+            break;
+        } catch (err) {
+            raw[`statsError (${attempt.label})`] = err.message;
+        }
+    }
+
+    const rankOf = (kw) => {
+        const direct = kw.rank?.value ?? (typeof kw.rank === 'number' ? kw.rank : null) ?? kw.position ?? null;
+        if (direct != null) return direct;
+        const history = kw.rank_history ?? kw.history ?? kw.ranks;
+        if (Array.isArray(history) && history.length) {
+            const last = history.at(-1);
+            return last?.rank ?? last?.value ?? (typeof last === 'number' ? last : null);
+        }
+        return null;
+    };
+
+    const source = stats?.tracked_keywords ?? stats?.keywords ?? stats?.stats?.keywords ?? detail?.keywords ?? [];
+    const keywords = source.map((kw) => ({
         keyword: kw.kw ?? kw.keyword ?? '',
-        rank: kw.rank?.value ?? kw.rank ?? null,
-        rankAvg: kw.rank_avg ?? null,
-        change: kw.rank_change ?? kw.change ?? null,
-        searchVolume: kw.search_volume ?? kw.sv ?? null
+        rank: rankOf(kw),
+        rankAvg: kw.rank_avg ?? kw.rankAvg ?? null,
+        change: kw.rank_change ?? kw.rankChange ?? kw.change ?? null,
+        searchVolume: kw.search_volume ?? kw.searchVolume ?? kw.sv ?? null
     }));
 
     return {
         trackingId,
-        performanceIndex: detail?.performance_index ?? detail?.pi ?? null,
+        performanceIndex:
+            stats?.performance_index ?? stats?.performanceIndex ?? stats?.stats?.performance_index ?? stats?.stats?.performanceIndex ?? null,
         keywords
     };
 }
@@ -94,19 +130,29 @@ async function fetchAiWatcher(raw) {
     const results = [];
     for (const monitor of list) {
         const id = monitor._id ?? monitor.id;
-        let detail = monitor;
+        let detail = null;
         try {
             detail = await api(`/aiwatcher/monitor/${id}`);
             raw[`aiMonitor_${id}`] = detail;
         } catch (err) {
             console.warn(`AI monitor ${id} detail failed: ${err.message}`);
         }
+
+        // metrics.*.value is null while the current period is still collecting;
+        // fall back to the newest completed timeSeries point.
+        const metrics = detail?.metrics ?? {};
+        const series = Array.isArray(detail?.timeSeries) ? detail.timeSeries : [];
+        const lastPoint = series.at(-1) ?? {};
+        const ownBrand = detail?.rankings?.brands?.find((b) => b.isMatch);
+
         results.push({
             id,
-            name: monitor.name ?? monitor.domain ?? String(id),
-            visibility: detail?.visibility ?? detail?.share_of_voice ?? detail?.stats?.visibility ?? null,
-            mentions: detail?.mentions ?? detail?.stats?.mentions ?? null,
-            promptCount: detail?.prompts_count ?? detail?.prompts?.length ?? null
+            name: monitor.brand ?? monitor.domain ?? String(id),
+            score: metrics.score?.value ?? lastPoint.score ?? null,
+            visibility: metrics.visibility?.value ?? lastPoint.visibility ?? null,
+            position: metrics.position?.value ?? lastPoint.position ?? null,
+            frequency: ownBrand?.frequency ?? null,
+            timeSeries: series.map((p) => ({ date: p.date, score: p.score ?? null, visibility: p.visibility ?? null, position: p.position ?? null }))
         });
     }
     return results;
@@ -135,9 +181,9 @@ function formatReport(snapshot) {
 
     if (snapshot.aiSearch?.length) {
         lines.push('## AI Search Watcher – Sichtbarkeit in KI-Antworten', '');
-        lines.push('| Monitor | Sichtbarkeit | Erwähnungen | Prompts |', '|---|---|---|---|');
+        lines.push('| Monitor | Sichtbarkeit % | Ø Position | Score | Zitierungen |', '|---|---|---|---|---|');
         for (const monitor of snapshot.aiSearch) {
-            lines.push(`| ${monitor.name} | ${monitor.visibility ?? '–'} | ${monitor.mentions ?? '–'} | ${monitor.promptCount ?? '–'} |`);
+            lines.push(`| ${monitor.name} | ${monitor.visibility ?? '–'} | ${monitor.position ?? '–'} | ${monitor.score ?? '–'} | ${monitor.frequency ?? '–'} |`);
         }
         lines.push('');
     }

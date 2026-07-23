@@ -5,9 +5,10 @@ import reviews from '../data/google-reviews.json';
 
 // Private dashboard: noindex + excluded from sitemap (astro.config.mjs filter)
 
+type AiPoint = { date: string; score: number | null; visibility: number | null; position: number | null };
 type Snapshot = (typeof metrics.snapshots)[number] & {
     serpwatcher?: { performanceIndex: number | null; keywords: { keyword: string; rank: number | null; change: number | null; searchVolume: number | null }[] } | null;
-    aiSearch?: { name: string; visibility: number | null; mentions: number | null; promptCount: number | null }[] | null;
+    aiSearch?: { name: string; score: number | null; visibility: number | null; position: number | null; frequency: number | null; timeSeries?: AiPoint[] }[] | null;
 };
 
 const snapshots = metrics.snapshots as Snapshot[];
@@ -29,6 +30,15 @@ for (const snap of snapshots) {
 
 /** Inline SVG sparkline: lower rank = better = drawn higher. */
 function sparkline(series: (number | null)[], width = 120, height = 28): string {
+    return sparklineRaw(series, width, height, true);
+}
+
+/** Sparkline where higher value = better = drawn higher (visibility, score). */
+function sparklineUp(series: (number | null)[], width = 120, height = 28): string {
+    return sparklineRaw(series, width, height, false);
+}
+
+function sparklineRaw(series: (number | null)[], width: number, height: number, invert: boolean): string {
     const values = series.filter((v): v is number => v != null);
     if (values.length < 2) return '';
     const min = Math.min(...values);
@@ -36,7 +46,12 @@ function sparkline(series: (number | null)[], width = 120, height = 28): string 
     const range = max - min || 1;
     const step = width / (series.length - 1);
     const points = series
-        .map((v, i) => (v == null ? null : `${(i * step).toFixed(1)},${(2 + ((v - min) / range) * (height - 4)).toFixed(1)}`))
+        .map((v, i) => {
+            if (v == null) return null;
+            const norm = (v - min) / range;
+            const y = invert ? 2 + norm * (height - 4) : 2 + (1 - norm) * (height - 4);
+            return `${(i * step).toFixed(1)},${y.toFixed(1)}`;
+        })
         .filter(Boolean)
         .join(' ');
     return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" aria-hidden="true"><polyline fill="none" stroke="#dc2626" stroke-width="2" points="${points}" /></svg>`;
@@ -73,8 +88,9 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
         {latest?.aiSearch?.[0] && (
             <div class="rounded-xl border border-gray-300 p-5">
                 <div class="text-sm opacity-70">KI-Sichtbarkeit ({latest.aiSearch[0].name})</div>
-                <div class="text-3xl font-black">{latest.aiSearch[0].visibility ?? '–'}</div>
-                <div class="text-sm opacity-70">{latest.aiSearch[0].mentions ?? '–'} Erwähnungen</div>
+                <div class="text-3xl font-black">{latest.aiSearch[0].visibility != null ? `${Math.round(latest.aiSearch[0].visibility)}%` : '–'}</div>
+                <div class="text-sm opacity-70">Ø Position {latest.aiSearch[0].position ?? '–'} in KI-Antworten</div>
+                <div set:html={sparklineUp((latest.aiSearch[0].timeSeries ?? []).map((p) => p.visibility))} />
             </div>
         )}
     </div>
@@ -120,17 +136,19 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
                         <tr class="text-left border-b border-gray-400">
                             <th class="py-2 pr-4">Monitor</th>
                             <th class="py-2 pr-4">Sichtbarkeit</th>
-                            <th class="py-2 pr-4">Erwähnungen</th>
-                            <th class="py-2">Prompts</th>
+                            <th class="py-2 pr-4">Ø Position</th>
+                            <th class="py-2 pr-4">Score</th>
+                            <th class="py-2">Verlauf (Sichtbarkeit)</th>
                         </tr>
                     </thead>
                     <tbody>
                         {latest.aiSearch.map((monitor) => (
                             <tr class="border-b border-gray-200">
                                 <td class="py-2 pr-4 font-bold">{monitor.name}</td>
-                                <td class="py-2 pr-4">{monitor.visibility ?? '–'}</td>
-                                <td class="py-2 pr-4">{monitor.mentions ?? '–'}</td>
-                                <td class="py-2">{monitor.promptCount ?? '–'}</td>
+                                <td class="py-2 pr-4">{monitor.visibility != null ? `${Math.round(monitor.visibility)}%` : '–'}</td>
+                                <td class="py-2 pr-4">{monitor.position ?? '–'}</td>
+                                <td class="py-2 pr-4">{monitor.score != null ? Math.round(monitor.score) : '–'}</td>
+                                <td class="py-2" set:html={sparklineUp((monitor.timeSeries ?? []).map((p) => p.visibility))} />
                             </tr>
                         ))}
                     </tbody>
