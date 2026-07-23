@@ -79,9 +79,9 @@ async function fetchSerpwatcher(raw) {
     const iso = (d) => d.toISOString().slice(0, 10);
     const compact = (d) => iso(d).replaceAll('-', '');
     const attempts = [
+        { label: 'POST iso', path: `/serpwatcher/trackings/${trackingId}/stats`, options: { method: 'POST', body: JSON.stringify({ from: iso(from), to: iso(today) }) } },
         { label: 'GET compact', path: `/serpwatcher/trackings/${trackingId}/stats?from=${compact(from)}&to=${compact(today)}` },
-        { label: 'GET iso', path: `/serpwatcher/trackings/${trackingId}/stats?from=${iso(from)}&to=${iso(today)}` },
-        { label: 'POST iso', path: `/serpwatcher/trackings/${trackingId}/stats`, options: { method: 'POST', body: JSON.stringify({ from: iso(from), to: iso(today) }) } }
+        { label: 'GET iso', path: `/serpwatcher/trackings/${trackingId}/stats?from=${iso(from)}&to=${iso(today)}` }
     ];
     let stats = null;
     for (const attempt of attempts) {
@@ -95,30 +95,31 @@ async function fetchSerpwatcher(raw) {
         }
     }
 
-    const rankOf = (kw) => {
-        const direct = kw.rank?.value ?? (typeof kw.rank === 'number' ? kw.rank : null) ?? kw.position ?? null;
-        if (direct != null) return direct;
-        const history = kw.rank_history ?? kw.history ?? kw.ranks;
-        if (Array.isArray(history) && history.length) {
-            const last = history.at(-1);
-            return last?.rank ?? last?.value ?? (typeof last === 'number' ? last : null);
-        }
-        return null;
-    };
+    // Stats keywords carry ranks but no names — join with /detail via _id.
+    const nameById = new Map((detail?.keywords ?? []).map((kw) => [kw._id, kw.kw]));
 
-    const source = stats?.tracked_keywords ?? stats?.keywords ?? stats?.stats?.keywords ?? detail?.keywords ?? [];
+    const source = stats?.keywords ?? [];
     const keywords = source.map((kw) => ({
-        keyword: kw.kw ?? kw.keyword ?? '',
-        rank: rankOf(kw),
-        rankAvg: kw.rank_avg ?? kw.rankAvg ?? null,
-        change: kw.rank_change ?? kw.rankChange ?? kw.change ?? null,
-        searchVolume: kw.search_volume ?? kw.searchVolume ?? kw.sv ?? null
+        keyword: nameById.get(kw._id) ?? kw.kw ?? '',
+        rank: kw.rank?.last ?? null,
+        rankAvg: kw.rank?.avg ?? null,
+        rankBest: kw.rank?.best ?? null,
+        change: kw.rank_change ?? null,
+        searchVolume: kw.search_volume ?? null,
+        estimatedVisits: kw.estimated_visits ?? null,
+        mapPackRank: kw.map_pack?.rank != null && kw.map_pack.rank > 0 ? kw.map_pack.rank : null
     }));
+
+    // timeframes is keyed by date — take the most recent entry
+    const timeframes = stats?.stats?.timeframes ?? {};
+    const lastDate = Object.keys(timeframes).sort().at(-1);
+    const lastFrame = lastDate ? timeframes[lastDate] : null;
 
     return {
         trackingId,
-        performanceIndex:
-            stats?.performance_index ?? stats?.performanceIndex ?? stats?.stats?.performance_index ?? stats?.stats?.performanceIndex ?? null,
+        performanceIndex: lastFrame?.performance_index != null ? Math.round(lastFrame.performance_index * 10) / 10 : null,
+        visibilityIndex: lastFrame?.visibility_index != null ? Math.round(lastFrame.visibility_index * 100) / 100 : null,
+        estimatedVisits: lastFrame?.estimated_visits ?? null,
         keywords
     };
 }
@@ -169,12 +170,15 @@ function formatReport(snapshot) {
     if (snapshot.serpwatcher) {
         lines.push('## SERPWatcher – Rankings', '');
         if (snapshot.serpwatcher.performanceIndex != null) {
-            lines.push(`Performance-Index: **${snapshot.serpwatcher.performanceIndex}**`, '');
+            lines.push(
+                `Performance-Index: **${snapshot.serpwatcher.performanceIndex}** · geschätzte Besuche/Monat: **${snapshot.serpwatcher.estimatedVisits ?? '–'}**`,
+                ''
+            );
         }
-        lines.push('| Keyword | Position | Δ | Suchvolumen |', '|---|---|---|---|');
+        lines.push('| Keyword | Position | Δ | Ø | Suchvolumen | Besuche (geschätzt) |', '|---|---|---|---|---|---|');
         for (const kw of snapshot.serpwatcher.keywords) {
             const delta = kw.change == null ? '–' : kw.change > 0 ? `▲ ${kw.change}` : kw.change < 0 ? `▼ ${Math.abs(kw.change)}` : '=';
-            lines.push(`| ${kw.keyword} | ${kw.rank ?? '–'} | ${delta} | ${kw.searchVolume ?? '–'} |`);
+            lines.push(`| ${kw.keyword} | ${kw.rank ?? '–'} | ${delta} | ${kw.rankAvg ?? '–'} | ${kw.searchVolume ?? '–'} | ${kw.estimatedVisits ?? '–'} |`);
         }
         lines.push('');
     }
