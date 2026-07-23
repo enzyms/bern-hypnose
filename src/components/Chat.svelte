@@ -2,42 +2,99 @@
     import { onMount } from 'svelte';
     import { fly } from 'svelte/transition';
     import { marked } from 'marked';
+    import DOMPurify from 'dompurify';
 
     const SITE_HOST = 'bern-hypnose.ch';
 
-    const renderer = new marked.Renderer();
-    renderer.link = (href: string, title: string | null, text: string) => {
-        let url = href ?? '';
-
-        // Convert absolute prod URLs to relative
-        try {
-            const parsed = new URL(url, 'https://' + SITE_HOST);
-            if (parsed.hostname === SITE_HOST || parsed.hostname === 'www.' + SITE_HOST) {
-                url = parsed.pathname + parsed.search + parsed.hash;
-            }
-        } catch { /* keep as-is */ }
-
-        const isInternal = url.startsWith('/');
-
-        // Ensure trailing slash on internal paths (excluding anchors, queries, files with extensions)
-        if (isInternal && !url.match(/\.\w+/) && !url.endsWith('/')) {
-            const [path, rest] = url.split(/([?#].*)/);
-            url = path + '/' + (rest ?? '');
-        }
-
-        const titleAttr = title ? ` title="${title}"` : '';
-        const external = !isInternal ? ' target="_blank" rel="noopener noreferrer"' : '';
-        return `<a href="${url}"${titleAttr}${external}>${text}</a>`;
-    };
-
     marked.setOptions({ breaks: true, gfm: true });
-    marked.use({ renderer });
 
     const EMBED_ID = '090e1c03-3e1e-4e42-a9a5-9a193c659591';
     const API_BASE = 'https://chat.bern-hypnose.ch/api/embed';
     const SESSION_KEY = 'bh-chat-session';
 
-    type Message = { role: 'user' | 'assistant'; content: string };
+    type Source = { title: string; path: string };
+    type Message = { role: 'user' | 'assistant'; content: string; sources?: Source[] };
+
+    // Fail-closed link whitelist: until /site-urls.json is loaded, only these
+    // core pages may be linked; everything else is rendered as plain text.
+    const CORE_PATHS = ['/', '/kontakt/', '/termin/', '/was-ist-hypnose/', '/hypnosetherapie/', '/nutzungsbedingungen/'];
+    let allowedPaths = new Set(CORE_PATHS);
+    let whitelistRequested = false;
+
+    async function loadWhitelist() {
+        if (whitelistRequested) return;
+        whitelistRequested = true;
+        try {
+            const res = await fetch('/site-urls.json');
+            if (!res.ok) return;
+            const paths = await res.json();
+            if (Array.isArray(paths) && paths.length > 0) {
+                allowedPaths = new Set([...CORE_PATHS, ...paths]);
+            }
+        } catch {
+            /* keep fail-closed core list */
+        }
+    }
+
+    /** Resolve any href to a canonical internal pathname, or null if external/invalid. */
+    function toInternalPath(href: string): string | null {
+        try {
+            const cleaned = href.replace(/^link:\/\//, '');
+            const parsed = new URL(cleaned, 'https://' + SITE_HOST);
+            const ownHosts = [SITE_HOST, 'www.' + SITE_HOST, typeof location !== 'undefined' ? location.hostname : ''];
+            if (!ownHosts.includes(parsed.hostname)) return null;
+            let path = parsed.pathname;
+            if (!path.endsWith('/')) path += '/';
+            return path;
+        } catch {
+            return null;
+        }
+    }
+
+    /**
+     * Markdown → sanitized HTML with the link guardrail applied:
+     * internal links must be on the whitelist, all others are unwrapped to
+     * plain text so hallucinated URLs never reach the user as links.
+     */
+    function renderAssistantHtml(content: string): string {
+        const rawHtml = marked.parse(content) as string;
+        const clean = DOMPurify.sanitize(rawHtml, { USE_PROFILES: { html: true } });
+        const doc = new DOMParser().parseFromString(clean, 'text/html');
+        for (const a of Array.from(doc.querySelectorAll('a'))) {
+            const href = a.getAttribute('href') ?? '';
+            const path = toInternalPath(href);
+            if (path && allowedPaths.has(path)) {
+                const parsed = new URL(href, 'https://' + SITE_HOST);
+                a.setAttribute('href', path + parsed.search + parsed.hash);
+                a.removeAttribute('target');
+            } else {
+                a.replaceWith(...Array.from(a.childNodes));
+            }
+        }
+        return doc.body.innerHTML;
+    }
+
+    /** Map AnythingLLM source objects onto whitelisted site pages. */
+    function resolveSources(raw: unknown[]): Source[] {
+        const out: Source[] = [];
+        for (const source of raw) {
+            if (typeof source !== 'object' || source === null) continue;
+            const s = source as Record<string, unknown>;
+            const candidate = [s.url, s.link, s.chunkSource, s.title].find(
+                (v): v is string => typeof v === 'string' && (v.startsWith('http') || v.startsWith('/') || v.startsWith('link://'))
+            );
+            const path = candidate ? toInternalPath(candidate) : null;
+            if (path && allowedPaths.has(path) && !out.some((existing) => existing.path === path)) {
+                const title = typeof s.title === 'string' && !s.title.startsWith('http') ? s.title : path;
+                out.push({ title, path });
+            }
+        }
+        return out;
+    }
+
+    function track(event: string) {
+        (window as unknown as { umami?: { track?: (name: string) => void } }).umami?.track?.(event);
+    }
 
     let isOpen = $state(false);
     let messages = $state<Message[]>([]);
@@ -115,6 +172,7 @@
         messages.push({ role: 'assistant', content: '' });
         const lastIdx = messages.length - 1;
         isStreaming = true;
+        track('Chat Frage gesendet');
         // Wait for DOM update, then anchor the question at the top
         setTimeout(() => scrollQuestionIntoView(), 30);
 
@@ -134,6 +192,7 @@
             const reader = res.body.getReader();
             const decoder = new TextDecoder();
             let buffer = '';
+            let rawSources: unknown[] = [];
 
             while (true) {
                 const { done, value } = await reader.read();
@@ -153,6 +212,9 @@
                             messages[lastIdx].content = `Fehler: ${data.error}`;
                             return;
                         }
+                        if (Array.isArray(data.sources) && data.sources.length > 0) {
+                            rawSources = data.sources;
+                        }
                         if (data.textResponse) {
                             messages[lastIdx].content += data.textResponse;
                         }
@@ -161,6 +223,9 @@
                     }
                 }
             }
+
+            messages[lastIdx].sources = resolveSources(rawSources);
+            track('Chat Antwort erhalten');
         } catch {
             messages[lastIdx].content = 'Ein Fehler ist aufgetreten. Bitte versuche es erneut.';
         } finally {
@@ -188,6 +253,8 @@
     // Focus management: move focus into panel on open, back to bubble on close
     $effect(() => {
         if (isOpen) {
+            loadWhitelist();
+            track('Chat geöffnet');
             requestAnimationFrame(() => inputEl?.focus());
         }
     });
@@ -271,7 +338,15 @@
                             {#if msg.role === 'assistant' && msg.content === '' && isStreaming}
                                 <span class="bh-chat__typing" role="status" aria-label="Antwort wird geschrieben"><span></span><span></span><span></span></span>
                             {:else if msg.role === 'assistant'}
-                                {@html marked.parse(msg.content)}
+                                {@html renderAssistantHtml(msg.content)}
+                                {#if msg.sources && msg.sources.length > 0}
+                                    <div class="bh-chat__sources" aria-label="Quellen">
+                                        <span class="bh-chat__sources-label">Quellen:</span>
+                                        {#each msg.sources as source}
+                                            <a class="bh-chat__source-chip" href={source.path}>{source.title}</a>
+                                        {/each}
+                                    </div>
+                                {/if}
                             {:else}
                                 {msg.content}
                             {/if}
@@ -555,6 +630,30 @@
         margin: 0.4em 0;
         padding: 0.2em 0.8em;
         color: #555;
+    }
+
+    /* Sources */
+    .bh-chat__sources {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin-top: 10px;
+        font-size: 0.82rem;
+    }
+    .bh-chat__sources-label {
+        color: #555;
+    }
+    .bh-chat__source-chip {
+        background: #f3e8f4;
+        border-radius: 999px;
+        padding: 3px 12px;
+        color: #7a3d8f;
+        text-decoration: none;
+        transition: background 0.15s;
+    }
+    .bh-chat__source-chip:hover {
+        background: #ead7eb;
     }
 
     /* Typing indicator */
