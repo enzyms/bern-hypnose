@@ -313,6 +313,10 @@
         flex-shrink: 0;
     }
 
+    .bh-search__input-row input::placeholder {
+        color: #595959;
+        opacity: 1;
+    }
     .bh-search__input-row input {
         flex: 1;
         border: none;
@@ -326,7 +330,7 @@
     }
 
     .bh-search__submit {
-        background: #b06ec7;
+        background: #9b50b0;
         border: none;
         border-radius: 9px;
         padding: 10px 16px;
@@ -338,10 +342,13 @@
         font-family: inherit;
     }
     .bh-search__submit:hover:not(:disabled) {
-        background: #9b50b0;
+        background: #7a3d8f;
     }
     .bh-search__submit:disabled {
-        opacity: 0.45;
+        /* explicit disabled colors instead of opacity — stays ≥ 4.5:1 (AA) */
+        background: #f0eaf2;
+        color: #595959;
+        border: 1px solid #c9bccd;
         cursor: not-allowed;
     }
 
@@ -384,7 +391,7 @@
         line-height: 1.5;
     }
     .bh-search__consent a {
-        color: #9b50b0;
+        color: #7a3d8f;
         text-decoration: underline;
         text-underline-offset: 2px;
     }
@@ -394,7 +401,7 @@
         gap: 8px;
     }
     .bh-search__consent-yes {
-        background: #b06ec7;
+        background: #9b50b0;
         border: none;
         border-radius: 999px;
         padding: 8px 16px;
@@ -404,7 +411,7 @@
         font-family: inherit;
     }
     .bh-search__consent-yes:hover {
-        background: #9b50b0;
+        background: #7a3d8f;
     }
     .bh-search__consent-no {
         background: transparent;
@@ -461,9 +468,12 @@
         margin-bottom: 0;
     }
     .bh-search__answer-text :global(a) {
-        color: #b06ec7;
+        color: #7a3d8f;
         text-decoration: underline;
         text-underline-offset: 2px;
+    }
+    .bh-search__answer-text :global(a:hover) {
+        color: #9b50b0;
     }
     .bh-search__answer-text :global(ul),
     .bh-search__answer-text :global(ol) {
@@ -586,13 +596,13 @@
         margin-right: 6px;
     }
     .bh-search__results a:hover .bh-search__result-title {
-        color: #ef4444;
+        color: #991b1b;
     }
 
     .bh-search__badge {
         font-size: 0.7rem;
         font-weight: 700;
-        color: #9b50b0;
+        color: #7a3d8f;
         background: #f3e8f4;
         border-radius: 999px;
         padding: 1px 8px;
