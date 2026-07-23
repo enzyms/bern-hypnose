@@ -159,40 +159,108 @@ async function fetchAiWatcher(raw) {
     return results;
 }
 
-function formatReport(snapshot) {
-    const lines = [
-        `# SEO-Report ${snapshot.week} (${snapshot.date})`,
-        '',
-        `Domain: ${DOMAIN}`,
-        ''
-    ];
+// Thematic clusters (taxonomy from reports/seo/strategy.md)
+const KEYWORD_CLUSTERS = [
+    ['Marke & Head-Terms', ['hypnose bern', 'bern hypnose', 'hypnosetherapie bern', 'hypnosetherapeut bern', 'hypnosetherapeutin bern', 'hypnose therapie bern']],
+    ['Rauchstopp & Sucht', ['hypnose rauchstopp bern', 'rauchen aufhören hypnose', 'hypnose spielsucht', 'hypnose alkohol']],
+    ['Gewicht & Ernährung', ['hypnose abnehmen bern', 'abnehmen mit hypnose', 'hypnose zuckersucht']],
+    ['Ängste & Phobien', ['hypnose gegen angst', 'hypnose angststörung', 'flugangst hypnose', 'hypnose höhenangst', 'hypnose klaustrophobie', 'hypnose prüfungsangst', 'hypnose redeangst', 'zahnarztangst hypnose', 'hypnose emetophobie']],
+    ['Stress & Psyche', ['hypnose burnout', 'hypnose stress abbauen', 'hypnose depression', 'hypnose schlafstörungen', 'hypnose selbstvertrauen', 'hypnose zwangsstörungen', 'hypnose gegen schmerzen']],
+    ['Zielgruppen', ['kinderhypnose bern', 'hypnose für kinder', 'sporthypnose']],
+    ['Kommerziell & Info', ['hypnose kosten', 'was kostet hypnose', 'selbsthypnose lernen', 'hypnose bern erfahrungen']]
+];
 
-    if (snapshot.serpwatcher) {
-        lines.push('## SERPWatcher – Rankings', '');
-        if (snapshot.serpwatcher.performanceIndex != null) {
+const fmtDelta = (delta) => (delta == null ? '–' : delta > 0 ? `▲ ${delta}` : delta < 0 ? `▼ ${Math.abs(delta)}` : '=');
+const fmtNum = (value, digits = 1) => (value == null ? null : Math.round(value * 10 ** digits) / 10 ** digits);
+
+function formatReport(snapshot, previous) {
+    const sw = snapshot.serpwatcher;
+    const prevSw = previous?.serpwatcher;
+    const prevRanks = new Map((prevSw?.keywords ?? []).map((kw) => [kw.keyword, kw.rank]));
+
+    // Week-over-week movement per keyword (positive = improved; lower rank is better).
+    // Falls back to the API's 30-day change when there is no previous snapshot.
+    const movement = (kw) => {
+        const prevRank = prevRanks.get(kw.keyword);
+        if (prevRank != null && kw.rank != null) return prevRank - kw.rank;
+        return kw.change ?? null;
+    };
+
+    const lines = [`# SEO-Report ${snapshot.week} (${snapshot.date})`, ''];
+
+    // ── Kurzfassung ─────────────────────────────────────────────
+    if (sw) {
+        const piDelta = prevSw?.performanceIndex != null && sw.performanceIndex != null ? fmtNum(sw.performanceIndex - prevSw.performanceIndex) : null;
+        const visitsDelta = prevSw?.estimatedVisits != null && sw.estimatedVisits != null ? sw.estimatedVisits - prevSw.estimatedVisits : null;
+        const ai = snapshot.aiSearch?.[0];
+        const prevAi = previous?.aiSearch?.[0];
+        const aiDelta = prevAi?.visibility != null && ai?.visibility != null ? fmtNum(ai.visibility - prevAi.visibility) : null;
+
+        const movers = (sw.keywords ?? [])
+            .map((kw) => ({ kw, delta: movement(kw) }))
+            .filter((m) => m.delta != null && m.delta !== 0)
+            .sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+        const top = movers[0];
+
+        const bits = [];
+        bits.push(`Performance-Index **${sw.performanceIndex ?? '–'}**${piDelta != null ? ` (${fmtDelta(piDelta)} zur Vorwoche)` : previous ? '' : ' (neue Basis)'}`);
+        if (sw.estimatedVisits != null) bits.push(`~**${sw.estimatedVisits}** Besuche/Monat${visitsDelta != null && visitsDelta !== 0 ? ` (${fmtDelta(visitsDelta)})` : ''}`);
+        if (ai?.visibility != null) bits.push(`KI-Sichtbarkeit **${fmtNum(ai.visibility)} %**${aiDelta != null && aiDelta !== 0 ? ` (${fmtDelta(aiDelta)})` : ''}`);
+        lines.push(`**Kurzfassung:** ${bits.join(' · ')}.`);
+        if (top) {
+            const from = prevRanks.get(top.kw.keyword);
             lines.push(
-                `Performance-Index: **${snapshot.serpwatcher.performanceIndex}** · geschätzte Besuche/Monat: **${snapshot.serpwatcher.estimatedVisits ?? '–'}**`,
-                ''
+                `Stärkste Bewegung: «${top.kw.keyword}» ${fmtDelta(top.delta)}${from != null ? ` (${from} → ${top.kw.rank})` : ` auf Position ${top.kw.rank}`}.`
             );
         }
-        lines.push('| Keyword | Position | Δ | Ø | Suchvolumen | Besuche (geschätzt) |', '|---|---|---|---|---|---|');
-        for (const kw of snapshot.serpwatcher.keywords) {
-            const delta = kw.change == null ? '–' : kw.change > 0 ? `▲ ${kw.change}` : kw.change < 0 ? `▼ ${Math.abs(kw.change)}` : '=';
-            lines.push(`| ${kw.keyword} | ${kw.rank ?? '–'} | ${delta} | ${kw.rankAvg ?? '–'} | ${kw.searchVolume ?? '–'} | ${kw.estimatedVisits ?? '–'} |`);
-        }
         lines.push('');
+
+        // ── Bewegungen der Woche ────────────────────────────────
+        lines.push('## Bewegungen der Woche', '');
+        if (!movers.length) {
+            lines.push(previous ? 'Keine Bewegungen — eine stabile Woche.' : 'Erste Messung — ab nächster Woche erscheinen hier die Veränderungen.', '');
+        } else {
+            for (const { kw, delta } of movers) {
+                const from = prevRanks.get(kw.keyword);
+                lines.push(`- ${delta > 0 ? '📈' : '📉'} **${kw.keyword}** ${fmtDelta(delta)}${from != null ? ` — Position ${from} → ${kw.rank}` : ` — Position ${kw.rank}`}`);
+            }
+            lines.push('');
+        }
+
+        // ── Rankings nach Themen ────────────────────────────────
+        lines.push('## Rankings nach Themen', '');
+        const clustered = new Set();
+        for (const [cluster, keywords] of KEYWORD_CLUSTERS) {
+            const rows = (sw.keywords ?? []).filter((kw) => keywords.includes(kw.keyword));
+            if (!rows.length) continue;
+            rows.forEach((kw) => clustered.add(kw.keyword));
+            lines.push(`### ${cluster}`, '', '| Keyword | Position | Δ Woche | Volumen | Besuche |', '|---|---|---|---|---|');
+            for (const kw of rows) {
+                lines.push(`| ${kw.keyword} | ${kw.rank ?? '–'}${kw.mapPackRank != null ? ' 📍' : ''} | ${fmtDelta(movement(kw))} | ${kw.searchVolume ?? '–'} | ${kw.estimatedVisits ?? '–'} |`);
+            }
+            lines.push('');
+        }
+        const rest = (sw.keywords ?? []).filter((kw) => !clustered.has(kw.keyword));
+        if (rest.length) {
+            lines.push('### Weitere', '', '| Keyword | Position | Δ Woche | Volumen | Besuche |', '|---|---|---|---|---|');
+            for (const kw of rest) {
+                lines.push(`| ${kw.keyword} | ${kw.rank ?? '–'} | ${fmtDelta(movement(kw))} | ${kw.searchVolume ?? '–'} | ${kw.estimatedVisits ?? '–'} |`);
+            }
+            lines.push('');
+        }
     }
 
+    // ── KI-Sichtbarkeit ─────────────────────────────────────────
     if (snapshot.aiSearch?.length) {
-        lines.push('## AI Search Watcher – Sichtbarkeit in KI-Antworten', '');
-        lines.push('| Monitor | Sichtbarkeit % | Ø Position | Score | Zitierungen |', '|---|---|---|---|---|');
+        lines.push('## KI-Sichtbarkeit (AI Search Watcher)', '');
+        lines.push('| Monitor | Sichtbarkeit % | Ø Position | Score |', '|---|---|---|---|');
         for (const monitor of snapshot.aiSearch) {
-            lines.push(`| ${monitor.name} | ${monitor.visibility ?? '–'} | ${monitor.position ?? '–'} | ${monitor.score ?? '–'} | ${monitor.frequency ?? '–'} |`);
+            lines.push(`| ${monitor.name} | ${fmtNum(monitor.visibility) ?? '–'} | ${monitor.position ?? '–'} | ${monitor.score != null ? Math.round(monitor.score) : '–'} |`);
         }
         lines.push('');
     }
 
-    lines.push('---', '_Automatisch generiert von scripts/seo-report.js_', '');
+    lines.push('---', '_Automatisch generiert — vollständige Trends: [/dashboard/](https://bern-hypnose.ch/dashboard/)_', '');
     return lines.join('\n');
 }
 
@@ -235,12 +303,13 @@ async function main() {
 
     const metrics = fs.existsSync(METRICS_FILE) ? JSON.parse(fs.readFileSync(METRICS_FILE, 'utf8')) : { snapshots: [] };
     metrics.snapshots = metrics.snapshots.filter((s) => s.week !== snapshot.week);
+    const previous = metrics.snapshots.filter((s) => s.week < snapshot.week).at(-1) ?? null;
     metrics.snapshots.push(snapshot);
     metrics.snapshots.sort((a, b) => a.date.localeCompare(b.date));
     fs.writeFileSync(METRICS_FILE, JSON.stringify(metrics, null, 2) + '\n');
 
     const reportPath = path.join(REPORTS_DIR, `${snapshot.week}.md`);
-    fs.writeFileSync(reportPath, formatReport(snapshot));
+    fs.writeFileSync(reportPath, formatReport(snapshot, previous));
     console.log(`Wrote ${reportPath} and updated ${path.relative(ROOT, METRICS_FILE)}`);
 }
 

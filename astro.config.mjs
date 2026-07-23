@@ -21,8 +21,8 @@ export default defineConfig({
                 if (page.includes('/gutschein-danke/')) return false;
                 if (page.includes('/newsletter-danke/')) return false;
 
-                // Exclude internal SEO dashboard (noindex)
-                if (page.includes('/seo-dashboard/')) return false;
+                // Exclude internal dashboard (noindex)
+                if (page.includes('/dashboard/')) return false;
 
                 // Now including pagination pages with self-referencing canonicals (SEO best practice)
                 // Previously excluded, but canonicals handle duplicate content better than noindex

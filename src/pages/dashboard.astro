@@ -1,13 +1,26 @@
 ---
+import { marked } from 'marked';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import metrics from '../data/seo-metrics.json';
 import reviews from '../data/google-reviews.json';
+import contentIdeasRaw from '../../reports/seo/content-ideas.md?raw';
+import strategyRaw from '../../reports/seo/strategy.md?raw';
 
-// Private dashboard: noindex + excluded from sitemap (astro.config.mjs filter)
+// Private hub: noindex + excluded from sitemap (astro.config.mjs filter).
+// /seo-dashboard/ 301s here (_redirects).
 
 type AiPoint = { date: string; score: number | null; visibility: number | null; position: number | null };
+type Keyword = {
+    keyword: string;
+    rank: number | null;
+    rankAvg?: number | null;
+    change: number | null;
+    searchVolume: number | null;
+    estimatedVisits?: number | null;
+    mapPackRank?: number | null;
+};
 type Snapshot = (typeof metrics.snapshots)[number] & {
-    serpwatcher?: { performanceIndex: number | null; keywords: { keyword: string; rank: number | null; change: number | null; searchVolume: number | null }[] } | null;
+    serpwatcher?: { performanceIndex: number | null; visibilityIndex?: number | null; estimatedVisits?: number | null; keywords: Keyword[] } | null;
     aiSearch?: { name: string; score: number | null; visibility: number | null; position: number | null; frequency: number | null; timeSeries?: AiPoint[] }[] | null;
 };
 
@@ -58,22 +71,59 @@ function sparklineRaw(series: (number | null)[], width: number, height: number, 
 }
 
 const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ?? null);
+
+// Weekly reports, newest first
+const reportModules = import.meta.glob('../../reports/seo/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const weeklyReports = Object.entries(reportModules)
+    .filter(([path]) => /\d{4}-W\d{2}\.md$/.test(path))
+    .map(([path, raw]) => ({ week: path.match(/(\d{4}-W\d{2})\.md$/)![1], html: marked.parse(raw) as string }))
+    .sort((a, b) => b.week.localeCompare(a.week));
+
+const contentIdeasHtml = marked.parse(contentIdeasRaw) as string;
+const strategyHtml = marked.parse(strategyRaw) as string;
+
+const sections = [
+    { id: 'ueberblick', label: 'Überblick' },
+    { id: 'rankings', label: 'Rankings' },
+    { id: 'ki-suche', label: 'KI-Suche' },
+    { id: 'berichte', label: 'Wochenberichte' },
+    { id: 'empfehlungen', label: 'Empfehlungen' },
+    { id: 'tools', label: 'Tools' }
+];
+
+const tools = [
+    { href: 'https://cloud.umami.is', label: 'Umami Analytics' },
+    { href: '/chat-questions', label: 'Chatbot-Fragen' },
+    { href: 'https://app.mangools.com/serpwatcher', label: 'SERPWatcher' },
+    { href: 'https://app.mangools.com/ai-search-watcher', label: 'AI Search Watcher' },
+    { href: 'https://business.google.com', label: 'Google Business Profile' },
+    { href: 'https://search.google.com/search-console', label: 'Search Console' }
+];
 ---
 
-<BaseLayout title="SEO Dashboard" description="Internes SEO-Dashboard" noindex={true}>
-    <h1 class="mb-4">SEO Dashboard</h1>
-    <p class="text-sm opacity-70 mb-10">
-        Intern – Daten aus Mangools (SERPWatcher, AI Search Watcher) via wöchentlicher GitHub Action. {snapshots.length}
+<BaseLayout title="Dashboard" description="Internes Dashboard – SEO, KI-Sichtbarkeit, Berichte" noindex={true}>
+    <h1 class="mb-2">Dashboard</h1>
+    <p class="text-sm opacity-70 mb-6">
+        SEO · KI-Sichtbarkeit · Berichte — automatisch aktualisiert (Mangools, montags). {snapshots.length}
         {snapshots.length === 1 ? 'Snapshot' : 'Snapshots'}{latest ? `, zuletzt ${latest.date}` : ''}.
     </p>
 
+    <nav class="flex flex-wrap gap-2 mb-12 not-prose" aria-label="Dashboard-Abschnitte">
+        {sections.map((s) => (
+            <a href={`#${s.id}`} class="rounded-full bg-red-50 border border-red-200 px-4 py-1.5 text-sm font-bold text-red-700 hover:bg-red-100 no-underline">
+                {s.label}
+            </a>
+        ))}
+    </nav>
+
     {!latest && (
         <p class="rounded-xl border border-gray-300 p-6">
-            Noch keine Daten. Ersten Report erzeugen: <code>MANGOOLS_API_KEY=... node scripts/seo-report.js</code> oder die GitHub Action «Weekly SEO report» manuell starten.
+            Noch keine Daten. Ersten Report erzeugen: <code>node --env-file=.env scripts/seo-report.js</code> oder die GitHub Action «Weekly SEO report» starten.
         </p>
     )}
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+    <h2 id="ueberblick" class="text-xl font-bold mb-4 scroll-mt-24">Überblick</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         <div class="rounded-xl border border-gray-300 p-5">
             <div class="text-sm opacity-70">Google-Bewertungen</div>
             <div class="text-3xl font-black">{reviews.totalReviewCount} × {reviews.overallRating}★</div>
@@ -85,9 +135,16 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
                 <div set:html={sparkline(perfSeries)} />
             </div>
         )}
+        {latest?.serpwatcher?.estimatedVisits != null && (
+            <div class="rounded-xl border border-gray-300 p-5">
+                <div class="text-sm opacity-70">Besuche/Monat (geschätzt)</div>
+                <div class="text-3xl font-black">{latest.serpwatcher.estimatedVisits}</div>
+                <div class="text-sm opacity-70">aus getrackten Keywords</div>
+            </div>
+        )}
         {latest?.aiSearch?.[0] && (
             <div class="rounded-xl border border-gray-300 p-5">
-                <div class="text-sm opacity-70">KI-Sichtbarkeit ({latest.aiSearch[0].name})</div>
+                <div class="text-sm opacity-70">KI-Sichtbarkeit</div>
                 <div class="text-3xl font-black">{latest.aiSearch[0].visibility != null ? `${Math.round(latest.aiSearch[0].visibility)}%` : '–'}</div>
                 <div class="text-sm opacity-70">Ø Position {latest.aiSearch[0].position ?? '–'} in KI-Antworten</div>
                 <div set:html={sparklineUp((latest.aiSearch[0].timeSeries ?? []).map((p) => p.visibility))} />
@@ -97,7 +154,7 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
 
     {latest?.serpwatcher && (
         <>
-            <h2 class="text-xl font-bold mb-4">Keyword-Rankings</h2>
+            <h2 id="rankings" class="text-xl font-bold mb-4 scroll-mt-24">Keyword-Rankings</h2>
             <div class="overflow-x-auto mb-12">
                 <table class="w-full text-sm">
                     <thead>
@@ -105,7 +162,10 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
                             <th class="py-2 pr-4">Keyword</th>
                             <th class="py-2 pr-4">Position</th>
                             <th class="py-2 pr-4">Δ Woche</th>
-                            <th class="py-2 pr-4">Suchvolumen</th>
+                            <th class="py-2 pr-4">Ø</th>
+                            <th class="py-2 pr-4">Volumen</th>
+                            <th class="py-2 pr-4">Besuche</th>
+                            <th class="py-2 pr-4">Map</th>
                             <th class="py-2">Verlauf</th>
                         </tr>
                     </thead>
@@ -117,7 +177,10 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
                                 <td class="py-2 pr-4">
                                     {kw.change == null ? '–' : kw.change > 0 ? <span class="text-green-700">▲ {kw.change}</span> : kw.change < 0 ? <span class="text-red-700">▼ {Math.abs(kw.change)}</span> : '='}
                                 </td>
+                                <td class="py-2 pr-4 opacity-70">{kw.rankAvg ?? '–'}</td>
                                 <td class="py-2 pr-4">{kw.searchVolume ?? '–'}</td>
+                                <td class="py-2 pr-4">{kw.estimatedVisits ?? '–'}</td>
+                                <td class="py-2 pr-4">{kw.mapPackRank != null ? `📍${kw.mapPackRank}` : ''}</td>
                                 <td class="py-2" set:html={sparkline(rankHistory.get(kw.keyword) ?? [])} />
                             </tr>
                         ))}
@@ -129,7 +192,7 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
 
     {latest?.aiSearch && latest.aiSearch.length > 0 && (
         <>
-            <h2 class="text-xl font-bold mb-4">AI Search Watcher</h2>
+            <h2 id="ki-suche" class="text-xl font-bold mb-4 scroll-mt-24">KI-Suche (AI Search Watcher)</h2>
             <div class="overflow-x-auto mb-12">
                 <table class="w-full text-sm">
                     <thead>
@@ -156,4 +219,50 @@ const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ??
             </div>
         </>
     )}
+
+    <h2 id="berichte" class="text-xl font-bold mb-4 scroll-mt-24">Wochenberichte</h2>
+    <div class="mb-12">
+        {weeklyReports.length === 0 && <p class="opacity-70">Noch keine Berichte.</p>}
+        {weeklyReports.map((report, i) =>
+            i === 0 ? (
+                <div class="rounded-xl border border-gray-300 p-6 mb-4">
+                    <div class="prose prose-dante max-w-none prose-h1:text-xl prose-h2:text-lg" set:html={report.html} />
+                </div>
+            ) : (
+                <details class="group border-t border-gray-400">
+                    <summary class="font-bold cursor-pointer text-main hover:text-red-700 px-1 py-4 list-none flex items-center justify-between">
+                        <span>Bericht {report.week}</span>
+                        <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="prose prose-dante max-w-none prose-h1:text-xl prose-h2:text-lg mb-6 px-1" set:html={report.html} />
+                </details>
+            )
+        )}
+    </div>
+
+    <h2 id="empfehlungen" class="text-xl font-bold mb-4 scroll-mt-24">Empfehlungen & Content-Ideen</h2>
+    <div class="rounded-xl border border-gray-300 p-6 mb-4">
+        <div class="prose prose-dante max-w-none prose-h1:text-xl prose-h2:text-lg" set:html={contentIdeasHtml} />
+    </div>
+    <details class="group border-t border-b border-gray-400 mb-12">
+        <summary class="font-bold cursor-pointer text-main hover:text-red-700 px-1 py-4 list-none flex items-center justify-between">
+            <span>SEO-Strategie (Referenz)</span>
+            <span class="text-red-600 transform transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <div class="prose prose-dante max-w-none prose-h1:text-xl prose-h2:text-lg mb-6 px-1" set:html={strategyHtml} />
+    </details>
+
+    <h2 id="tools" class="text-xl font-bold mb-4 scroll-mt-24">Tools</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12 not-prose">
+        {tools.map((tool) => (
+            <a
+                href={tool.href}
+                target={tool.href.startsWith('http') ? '_blank' : undefined}
+                rel={tool.href.startsWith('http') ? 'noopener' : undefined}
+                class="rounded-xl border border-gray-300 p-4 font-bold text-red-700 hover:border-red-300 hover:shadow-md transition no-underline"
+            >
+                {tool.label} ↗
+            </a>
+        ))}
+    </div>
 </BaseLayout>
