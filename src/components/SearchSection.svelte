@@ -262,8 +262,8 @@
         {/if}
 
         <p class="bh-search__privacy">
-            Die Seitensuche läuft komplett in deinem Browser. KI-Antworten (opt-in) beantwortet unser Chatbot —
-            <a href="/datenschutzrichtlinie/">Datenschutz</a> · <a href="/nutzungsbedingungen/">Nutzungsbedingungen</a>
+            Die Seitensuche läuft komplett in deinem Browser. Die KI-Antwort (opt-in) beantwortet ein
+            <a href="/datenschutzrichtlinie/#7-ki-chatbot-und-ki-antworten-in-der-suche">ethischer Chatbot</a>.
         </p>
     </div>
 </section>
