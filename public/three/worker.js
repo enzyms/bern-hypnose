@@ -3,7 +3,7 @@
 // rotation flourishes, pointer-proximity reactions and a subtle sparkle layer.
 // Served verbatim (no bundler) — keep it plain ES modules.
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.min.js';
+import * as THREE from '/three/three.module.js';
 import { gsap } from '/three/gsap/gsap-core-compressed.js';
 import createReflectiveMaterial from '/three/reflectiveMaterial.js';
 import createBackgroundShaderMaterial from '/three/backgroundShader.js';
