@@ -24,15 +24,15 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 # First-party umami proxy: adblock-resistant analytics under /stats/
-# After the VPS migration, point these at https://stats.bern-hypnose.ch (see docs/umami-vps-setup.md)
+# Target: Umami Cloud (decision July 2026 — no VPS shell access; see docs/umami-vps-setup.md history)
 [[redirects]]
   from = "/stats/script.js"
-  to = "https://umami-eta-inky.vercel.app/script.js"
+  to = "https://cloud.umami.is/script.js"
   status = 200
 
 [[redirects]]
   from = "/stats/api/*"
-  to = "https://umami-eta-inky.vercel.app/api/:splat"
+  to = "https://cloud.umami.is/api/:splat"
   status = 200
 
 # Markdown mirrors + llms.txt: cache 1h, keep HTML canonical out of duplicate-content risk
