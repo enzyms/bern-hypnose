@@ -1,5 +1,5 @@
 [build]
-  command = "yarn build"
+  command = "npm ci && npm run build"
   publish = "dist"
 
 [build.environment]
@@ -12,13 +12,6 @@
     X-Robots-Tag = "all"
     Access-Control-Allow-Origin = "*"
 
-# Better error pages (instead of 5xx)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
-  
 # Ensure static assets are served properly
 [[headers]]
   for = "/*.js"
@@ -29,6 +22,36 @@
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# First-party umami proxy: adblock-resistant analytics under /stats/
+# After the VPS migration, point these at https://stats.bern-hypnose.ch (see docs/umami-vps-setup.md)
+[[redirects]]
+  from = "/stats/script.js"
+  to = "https://umami-eta-inky.vercel.app/script.js"
+  status = 200
+
+[[redirects]]
+  from = "/stats/api/*"
+  to = "https://umami-eta-inky.vercel.app/api/:splat"
+  status = 200
+
+# Markdown mirrors + llms.txt: cache 1h, keep HTML canonical out of duplicate-content risk
+[[headers]]
+  for = "/*.md"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "text/markdown; charset=utf-8"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/llms-full.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
 
 # Security headers + allow sitemap-presenter iframe
 [[headers]]
