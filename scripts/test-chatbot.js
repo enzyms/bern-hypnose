@@ -29,11 +29,21 @@ const CASES = [
     { q: 'Was ist Hypnose überhaupt?', expect: /was-ist-hypnose/i }
 ];
 
-async function ask(question) {
+// Multi-turn: topic question, then a vague follow-up in the SAME session.
+// This is the known weak spot — retrieval only sees the last message.
+const FOLLOWUP_CASES = [
+    { q1: 'infos über schmerzen und hypnose', q2: 'hast du einen link dazu?', expect: /schmerzen/i },
+    { q1: 'Kann Hypnose beim Abnehmen helfen?', q2: 'link zur infos?', expect: /abnehmen|ernaehrung/i },
+    { q1: 'Ich habe Flugangst.', q2: 'wo kann ich mehr darüber lesen?', expect: /flugangst/i },
+    { q1: 'Was kostet das bei dir?', q2: 'gibt es dazu eine seite?', expect: /angebote|kosten/i },
+    { q1: 'Ich schlafe schlecht.', q2: 'hast du dazu was auf der website?', expect: /schlafst/i }
+];
+
+async function ask(question, sessionId = crypto.randomUUID()) {
     const res = await fetch(API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: question, sessionId: crypto.randomUUID() })
+        body: JSON.stringify({ message: question, sessionId })
     });
     if (res.status === 429) throw new Error('RATE_LIMIT');
     if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
@@ -129,6 +139,41 @@ for (const testCase of cases) {
         console.log(`💥 ${testCase.q} — ${err.message}`);
     }
     await new Promise((resolve) => setTimeout(resolve, 1500));
+}
+
+if (!only) {
+    console.log('\n— Folgefragen (gleiche Session, vage Nachfrage) —');
+    for (const testCase of FOLLOWUP_CASES) {
+        try {
+            const sessionId = crypto.randomUUID();
+            await ask(testCase.q1, sessionId);
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            const { text, sources } = await ask(testCase.q2, sessionId);
+            const topical = testCase.expect.test(text) || testCase.expect.test(JSON.stringify(sources));
+            const { rescued, invented } = classifyPaths(text);
+            if (topical && !invented.length && !rescued.length) {
+                pass++;
+                console.log(`✅ ${testCase.q1} → «${testCase.q2}»`);
+            } else if (topical && !invented.length) {
+                warn++;
+                console.log(`⚠️  ${testCase.q1} → «${testCase.q2}»  (repariert: ${rescued.join(', ')})`);
+            } else {
+                fail++;
+                console.log(`❌ ${testCase.q1} → «${testCase.q2}»`);
+                if (!topical) console.log(`   Thema-Link fehlt (erwartet: ${testCase.expect})`);
+                if (invented.length) console.log(`   erfundene Links: ${invented.join(', ')}`);
+                console.log(`   Antwort: ${text.replace(/\n+/g, ' ').slice(0, 200)}…`);
+            }
+        } catch (err) {
+            if (err.message === 'RATE_LIMIT') {
+                console.error('⛔ Rate limit erreicht — später erneut ausführen.');
+                process.exit(2);
+            }
+            fail++;
+            console.log(`💥 ${testCase.q1} → ${testCase.q2} — ${err.message}`);
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+    }
 }
 
 console.log(`\n✅ ${pass} · ⚠️ ${warn} (Frontend repariert) · ❌ ${fail}`);
