@@ -353,18 +353,21 @@
     }
 
     .bh-search__chip {
-        background: #f3e8f4;
-        border: 1px solid transparent;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid #d9c3dd;
         border-radius: 999px;
         padding: 7px 14px;
         font-size: 0.875rem;
-        color: #333;
+        color: #222;
         cursor: pointer;
-        transition: background 0.15s;
+        transition:
+            background 0.15s,
+            border-color 0.15s;
         font-family: inherit;
     }
     .bh-search__chip:hover {
-        background: #ead7eb;
+        background: #fff;
+        border-color: #b06ec7;
     }
 
     .bh-search__consent {
@@ -418,8 +421,8 @@
 
     .bh-search__privacy {
         margin: 12px 2px 0;
-        font-size: 0.75rem;
-        color: #777;
+        font-size: 0.78rem;
+        color: #494949; /* ≥ 4.5:1 (AA) on the pale lilac box */
         line-height: 1.4;
     }
     .bh-search__privacy a {
@@ -428,7 +431,7 @@
         text-underline-offset: 2px;
     }
     .bh-search__privacy a:hover {
-        color: #9b50b0;
+        color: #7a3d8f;
     }
 
     .bh-search__answer {
