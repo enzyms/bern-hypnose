@@ -12,6 +12,8 @@
     } from '../utils/assistant-chat';
 
     const CONSENT_KEY = 'bh-ai-consent';
+    const DECLINE_KEY = 'bh-ai-consent-declined-until';
+    const DECLINE_DAYS = 3;
 
     type IndexEntry = { path: string; title: string; description: string; collection: string };
 
@@ -32,12 +34,15 @@
     let isStreaming = $state(false);
     let aiError = $state('');
 
-    // AI answers are opt-in: first submit shows a consent notice (stored once)
+    // AI answers are opt-in: first submit shows a consent notice (stored once);
+    // a refusal is remembered for a few days before asking again.
     let consented = $state(false);
+    let declinedUntil = $state(0);
     let pendingQuestion = $state('');
 
     onMount(() => {
         consented = localStorage.getItem(CONSENT_KEY) === '1';
+        declinedUntil = Number(localStorage.getItem(DECLINE_KEY) ?? 0);
     });
 
     let index: IndexEntry[] | null = null;
@@ -98,6 +103,7 @@
         await loadIndex();
 
         if (!consented) {
+            if (Date.now() < declinedUntil) return; // recently declined — page search only
             pendingQuestion = trimmed;
             return;
         }
@@ -115,6 +121,9 @@
 
     function declineConsent() {
         pendingQuestion = '';
+        declinedUntil = Date.now() + DECLINE_DAYS * 86400000;
+        localStorage.setItem(DECLINE_KEY, String(declinedUntil));
+        track('Suche – KI-Consent abgelehnt');
     }
 
     async function runAi(question: string) {
@@ -197,9 +206,8 @@
         {#if pendingQuestion && !consented}
             <div class="bh-search__consent" role="alertdialog" aria-label="Einwilligung KI-Antwort">
                 <p>
-                    <strong>✨ KI-Antwort aktivieren?</strong> Deine Frage wird zur Beantwortung an unseren Chatbot übermittelt und dort gespeichert. Bitte keine
-                    persönlichen oder gesundheitsbezogenen Details angeben. Details: <a href="/datenschutzrichtlinie/">Datenschutz</a> ·
-                    <a href="/nutzungsbedingungen/">Nutzungsbedingungen</a>
+                    <strong>✨ KI-Antwort aktivieren?</strong> Deine Frage wird anonym an unseren Chatbot übermittelt und gespeichert.
+                    <a href="/datenschutzrichtlinie/">Datenschutz</a> · <a href="/nutzungsbedingungen/">Nutzungsbedingungen</a>
                 </p>
                 <div class="bh-search__consent-actions">
                     <button class="bh-search__consent-yes" onclick={acceptConsent}>Einverstanden – Antwort anzeigen</button>
