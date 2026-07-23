@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import SearchSection from '../components/SearchSection.svelte';
 import LastPosts from '../components/LastPosts.astro';
 import SubPages from '../components/SubPages.astro';
 import Testimonials from '../components/Testimonials.astro';
@@ -17,6 +18,8 @@ const lastPosts = posts.slice(0, 2);
 
 <BaseLayout seoTitle={siteConfig.title} description={siteConfig.description} image={siteConfig.imageHomepage} schema="home">
     <Hero />
+
+    <SearchSection client:visible />
 
     <!-- GBP Category: Ganzheitliche Hypnosetherapie + Was ist Hypnose (merged) -->
     <section class="prose sm:prose-lg text-main mb-12" itemscope itemtype="https://schema.org/Service">

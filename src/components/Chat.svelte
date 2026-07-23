@@ -1,162 +1,19 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { fly } from 'svelte/transition';
-    import { marked } from 'marked';
-    import DOMPurify from 'dompurify';
+    import {
+        type Source,
+        getChatSessionId,
+        resetChatSessionId,
+        loadWhitelist,
+        renderAssistantHtml,
+        streamAssistant,
+        track,
+        RATE_LIMIT_MESSAGE,
+        GENERIC_ERROR_MESSAGE
+    } from '../utils/assistant-chat';
 
-    const SITE_HOST = 'bern-hypnose.ch';
-
-    marked.setOptions({ breaks: true, gfm: true });
-
-    const EMBED_ID = '090e1c03-3e1e-4e42-a9a5-9a193c659591';
-    const API_BASE = 'https://chat.bern-hypnose.ch/api/embed';
-    const SESSION_KEY = 'bh-chat-session';
-
-    type Source = { title: string; path: string };
     type Message = { role: 'user' | 'assistant'; content: string; sources?: Source[] };
-
-    // Fail-closed link whitelist: until /site-urls.json is loaded, only these
-    // core pages may be linked; everything else is rendered as plain text.
-    const CORE_PATHS = ['/', '/kontakt/', '/termin/', '/was-ist-hypnose/', '/hypnosetherapie/', '/nutzungsbedingungen/'];
-    let allowedPaths = new Set(CORE_PATHS);
-    let whitelistRequested = false;
-
-    async function loadWhitelist() {
-        if (whitelistRequested) return;
-        whitelistRequested = true;
-        try {
-            const res = await fetch('/site-urls.json');
-            if (!res.ok) return;
-            const paths = await res.json();
-            if (Array.isArray(paths) && paths.length > 0) {
-                allowedPaths = new Set([...CORE_PATHS, ...paths]);
-            }
-        } catch {
-            /* keep fail-closed core list */
-        }
-    }
-
-    /** Resolve any href to a canonical internal pathname, or null if external/invalid. */
-    function toInternalPath(href: string): string | null {
-        try {
-            const cleaned = href.replace(/^link:\/\//, '');
-            const parsed = new URL(cleaned, 'https://' + SITE_HOST);
-            const ownHosts = [SITE_HOST, 'www.' + SITE_HOST, typeof location !== 'undefined' ? location.hostname : ''];
-            if (!ownHosts.includes(parsed.hostname)) return null;
-            // Markdown mirrors map back to their canonical page
-            let path = parsed.pathname.replace(/\.md$/, '/').replace(/\/index\/$/, '/');
-            if (!path.endsWith('/')) path += '/';
-            return path;
-        } catch {
-            return null;
-        }
-    }
-
-    /**
-     * Slug rescue: the bot often invents the prefix but gets the slug right
-     * (e.g. /faq/kann-ich-kontrolle-verlieren/ instead of
-     * /was-ist-hypnose/kann-ich-kontrolle-verlieren/). If the last segment
-     * matches exactly one real page, repair the path instead of de-linking.
-     */
-    function rescuePath(path: string): string | null {
-        const slug = path.split('/').filter(Boolean).at(-1);
-        if (!slug || slug.length < 4) return null;
-        const matches = [...allowedPaths].filter((p) => p.endsWith(`/${slug}/`));
-        return matches.length === 1 ? matches[0] : null;
-    }
-
-    function resolvePath(href: string): string | null {
-        const path = toInternalPath(href);
-        if (!path) return null;
-        if (allowedPaths.has(path)) return path;
-        return rescuePath(path);
-    }
-
-    /** Turn bare site paths in plain text into (repaired) links. */
-    function linkifyTextPaths(doc: Document) {
-        const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
-        const nodes: Text[] = [];
-        let current: Node | null;
-        while ((current = walker.nextNode())) {
-            if (!(current.parentElement?.closest('a, code, pre'))) nodes.push(current as Text);
-        }
-        const PATH_RE = /\/[a-z0-9äöüß-]+(?:\/[a-z0-9äöüß-]+)*\/?/gi;
-        for (const node of nodes) {
-            const text = node.textContent ?? '';
-            if (!text.includes('/')) continue;
-            const frag = doc.createDocumentFragment();
-            let lastIndex = 0;
-            let changed = false;
-            for (const match of text.matchAll(PATH_RE)) {
-                const prev = match.index === 0 ? '' : text[match.index - 1];
-                if (prev && !/[\s(>«"':,;!]/.test(prev)) continue;
-                const candidate = match[0].endsWith('/') ? match[0] : match[0] + '/';
-                const resolved = allowedPaths.has(candidate) ? candidate : rescuePath(candidate);
-                if (!resolved) continue;
-                frag.appendChild(doc.createTextNode(text.slice(lastIndex, match.index)));
-                const a = doc.createElement('a');
-                a.setAttribute('href', resolved);
-                a.textContent = resolved;
-                frag.appendChild(a);
-                lastIndex = match.index + match[0].length;
-                changed = true;
-            }
-            if (changed) {
-                frag.appendChild(doc.createTextNode(text.slice(lastIndex)));
-                node.replaceWith(frag);
-            }
-        }
-    }
-
-    /**
-     * Markdown → sanitized HTML with the link guardrail applied:
-     * internal links must be on the whitelist (or slug-rescuable), all
-     * others are unwrapped to plain text so hallucinated URLs never reach
-     * the user as links.
-     */
-    function renderAssistantHtml(content: string): string {
-        const rawHtml = marked.parse(content) as string;
-        const clean = DOMPurify.sanitize(rawHtml, { USE_PROFILES: { html: true } });
-        const doc = new DOMParser().parseFromString(clean, 'text/html');
-        for (const a of Array.from(doc.querySelectorAll('a'))) {
-            const href = a.getAttribute('href') ?? '';
-            const resolved = resolvePath(href);
-            if (resolved) {
-                const parsed = new URL(href, 'https://' + SITE_HOST);
-                a.setAttribute('href', resolved + parsed.search + parsed.hash);
-                a.removeAttribute('target');
-                // If the link text is the (possibly repaired) path itself, show the real one
-                const label = a.textContent?.trim() ?? '';
-                if (label.startsWith('/') && label !== resolved) a.textContent = resolved;
-            } else {
-                a.replaceWith(...Array.from(a.childNodes));
-            }
-        }
-        linkifyTextPaths(doc);
-        return doc.body.innerHTML;
-    }
-
-    /** Map AnythingLLM source objects onto whitelisted site pages. */
-    function resolveSources(raw: unknown[]): Source[] {
-        const out: Source[] = [];
-        for (const source of raw) {
-            if (typeof source !== 'object' || source === null) continue;
-            const s = source as Record<string, unknown>;
-            const candidate = [s.url, s.link, s.chunkSource, s.title].find(
-                (v): v is string => typeof v === 'string' && (v.startsWith('http') || v.startsWith('/') || v.startsWith('link://'))
-            );
-            const path = candidate ? resolvePath(candidate) : null;
-            if (path && !out.some((existing) => existing.path === path)) {
-                const title = typeof s.title === 'string' && !s.title.startsWith('http') ? s.title : path;
-                out.push({ title, path });
-            }
-        }
-        return out;
-    }
-
-    function track(event: string) {
-        (window as unknown as { umami?: { track?: (name: string) => void } }).umami?.track?.(event);
-    }
 
     let isOpen = $state(false);
     let messages = $state<Message[]>([]);
@@ -174,11 +31,16 @@
     ];
 
     onMount(() => {
-        const stored = localStorage.getItem(SESSION_KEY);
-        sessionId = stored ?? crypto.randomUUID();
-        if (!stored) localStorage.setItem(SESSION_KEY, sessionId);
+        sessionId = getChatSessionId();
 
-        const openChat = () => {
+        const openChat = (e: Event) => {
+            // Continuation from the homepage search: seed the transcript with the
+            // search Q&A (same backend session, so the bot remembers the context).
+            const seed = (e as CustomEvent).detail?.seed as { question?: string; answer?: string; sources?: Source[] } | undefined;
+            if (seed?.question && seed?.answer) {
+                messages.push({ role: 'user', content: seed.question });
+                messages.push({ role: 'assistant', content: seed.answer, sources: seed.sources ?? [] });
+            }
             isOpen = true;
         };
         window.addEventListener('open-chat', openChat);
@@ -239,57 +101,13 @@
         setTimeout(() => scrollQuestionIntoView(), 30);
 
         try {
-            const res = await fetch(`${API_BASE}/${EMBED_ID}/stream-chat`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: trimmed, sessionId })
+            messages[lastIdx].sources = await streamAssistant(trimmed, sessionId, (delta) => {
+                messages[lastIdx].content += delta;
             });
-
-            if (res.status === 429) {
-                messages[lastIdx].content = 'Die maximale Anzahl an Anfragen wurde erreicht. Bitte versuche es später erneut.';
-                return;
-            }
-            if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
-
-            const reader = res.body.getReader();
-            const decoder = new TextDecoder();
-            let buffer = '';
-            let rawSources: unknown[] = [];
-
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-
-                buffer += decoder.decode(value, { stream: true });
-                const lines = buffer.split('\n');
-                buffer = lines.pop() ?? '';
-
-                for (const line of lines) {
-                    if (!line.startsWith('data: ')) continue;
-                    const raw = line.slice(6).trim();
-                    if (!raw || raw === '[DONE]') continue;
-                    try {
-                        const data = JSON.parse(raw);
-                        if (data.error) {
-                            messages[lastIdx].content = `Fehler: ${data.error}`;
-                            return;
-                        }
-                        if (Array.isArray(data.sources) && data.sources.length > 0) {
-                            rawSources = data.sources;
-                        }
-                        if (data.textResponse) {
-                            messages[lastIdx].content += data.textResponse;
-                        }
-                    } catch {
-                        /* ignore partial JSON lines */
-                    }
-                }
-            }
-
-            messages[lastIdx].sources = resolveSources(rawSources);
             track('Chat Antwort erhalten');
-        } catch {
-            messages[lastIdx].content = 'Ein Fehler ist aufgetreten. Bitte versuche es erneut.';
+        } catch (err) {
+            messages[lastIdx].content =
+                err instanceof Error && (err.message === RATE_LIMIT_MESSAGE || err.message.startsWith('Fehler:')) ? err.message : GENERIC_ERROR_MESSAGE;
         } finally {
             isStreaming = false;
         }
@@ -304,8 +122,7 @@
 
     function resetChat() {
         messages = [];
-        sessionId = crypto.randomUUID();
-        localStorage.setItem(SESSION_KEY, sessionId);
+        sessionId = resetChatSessionId();
     }
 
     let bubbleEl = $state<HTMLButtonElement | undefined>(undefined);
