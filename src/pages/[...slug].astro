@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArrowLeft from '../icons/ArrowLeft.astro';
 import { Image } from 'astro:assets';
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
     const pages = await getCollection('pages');
     return pages.map((page) => {
         return {
-            params: { slug: page.slug },
+            params: { slug: page.id },
             props: { page }
         };
     });
@@ -20,7 +20,7 @@ type Props = { page: CollectionEntry<'pages'> };
 
 const { page } = Astro.props;
 const { title, seoTitle, image, description, backlink, canonical, schema, reviewDate } = page.data;
-const { Content } = await page.render();
+const { Content } = await render(page);
 
 const monthMap: Record<string, string> = {
     'Januar': '01', 'Februar': '02', 'März': '03', 'April': '04',
@@ -60,7 +60,7 @@ const articleSchema = reviewDate ? {
     ...(isoReviewDate ? { dateModified: isoReviewDate } : {}),
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': `https://bern-hypnose.ch/${page.slug}/`,
+        '@id': `https://bern-hypnose.ch/${page.id}/`,
     },
     inLanguage: 'de-CH',
 } : null;
@@ -100,6 +100,6 @@ const articleSchema = reviewDate ? {
         <div class="max-w-none prose prose-dante sm:prose-lg">
             <Content />
         </div>
-        <PageFAQ pagePath={`/${page.slug}/`} />
+        <PageFAQ pagePath={`/${page.id}/`} />
     </article>
 </BaseLayout>

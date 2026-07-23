@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import Tag from '../../components/Tag.astro';
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
     const postCount = posts.length;
     return posts.map((post, index) => ({
-        params: { slug: post.slug },
+        params: { slug: post.id },
         props: {
             post,
             prevPost: index + 1 !== postCount ? posts[index + 1] : null,
@@ -29,7 +29,7 @@ type Props = { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>;
 const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props;
 const { title, publishDate, updatedDate, excerpt, tags = [], image, canonical } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 function toISO8601WithOffset(dateString: string | number | Date, offsetHours = 1) {
     const date = new Date(dateString);
@@ -51,7 +51,7 @@ const schemaImage = image ? `${baseUrl}${(await getImage({ src: image.src, width
 const blogSchemaData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    '@id': `${baseUrl}/blog/${post.slug}/#article`,
+    '@id': `${baseUrl}/blog/${post.id}/#article`,
     headline: title,
     description: excerpt,
     ...(schemaImage ? { image: [schemaImage] } : {}),
@@ -78,7 +78,7 @@ const blogSchemaData = {
     },
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': `${baseUrl}/blog/${post.slug}/`
+        '@id': `${baseUrl}/blog/${post.id}/`
     },
     inLanguage: 'de-CH',
     isPartOf: {

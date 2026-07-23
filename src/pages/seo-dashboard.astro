@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import metrics from '../data/seo-metrics.json';
+import reviews from '../data/google-reviews.json';
+
+// Private dashboard: noindex + excluded from sitemap (astro.config.mjs filter)
+
+type Snapshot = (typeof metrics.snapshots)[number] & {
+    serpwatcher?: { performanceIndex: number | null; keywords: { keyword: string; rank: number | null; change: number | null; searchVolume: number | null }[] } | null;
+    aiSearch?: { name: string; visibility: number | null; mentions: number | null; promptCount: number | null }[] | null;
+};
+
+const snapshots = metrics.snapshots as Snapshot[];
+const latest = snapshots.at(-1);
+
+// Rank history per keyword across all snapshots (for sparklines)
+const rankHistory = new Map<string, (number | null)[]>();
+for (const snap of snapshots) {
+    for (const kw of snap.serpwatcher?.keywords ?? []) {
+        if (!rankHistory.has(kw.keyword)) rankHistory.set(kw.keyword, []);
+    }
+}
+for (const snap of snapshots) {
+    const inSnap = new Map((snap.serpwatcher?.keywords ?? []).map((kw) => [kw.keyword, kw.rank]));
+    for (const [keyword, series] of rankHistory) {
+        series.push(inSnap.get(keyword) ?? null);
+    }
+}
+
+/** Inline SVG sparkline: lower rank = better = drawn higher. */
+function sparkline(series: (number | null)[], width = 120, height = 28): string {
+    const values = series.filter((v): v is number => v != null);
+    if (values.length < 2) return '';
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const range = max - min || 1;
+    const step = width / (series.length - 1);
+    const points = series
+        .map((v, i) => (v == null ? null : `${(i * step).toFixed(1)},${(2 + ((v - min) / range) * (height - 4)).toFixed(1)}`))
+        .filter(Boolean)
+        .join(' ');
+    return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" aria-hidden="true"><polyline fill="none" stroke="#dc2626" stroke-width="2" points="${points}" /></svg>`;
+}
+
+const perfSeries = snapshots.map((snap) => snap.serpwatcher?.performanceIndex ?? null);
+---
+
+<BaseLayout title="SEO Dashboard" description="Internes SEO-Dashboard" noindex={true}>
+    <h1 class="mb-4">SEO Dashboard</h1>
+    <p class="text-sm opacity-70 mb-10">
+        Intern – Daten aus Mangools (SERPWatcher, AI Search Watcher) via wöchentlicher GitHub Action. {snapshots.length}
+        {snapshots.length === 1 ? 'Snapshot' : 'Snapshots'}{latest ? `, zuletzt ${latest.date}` : ''}.
+    </p>
+
+    {!latest && (
+        <p class="rounded-xl border border-gray-300 p-6">
+            Noch keine Daten. Ersten Report erzeugen: <code>MANGOOLS_API_KEY=... node scripts/seo-report.js</code> oder die GitHub Action «Weekly SEO report» manuell starten.
+        </p>
+    )}
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+        <div class="rounded-xl border border-gray-300 p-5">
+            <div class="text-sm opacity-70">Google-Bewertungen</div>
+            <div class="text-3xl font-black">{reviews.totalReviewCount} × {reviews.overallRating}★</div>
+        </div>
+        {latest?.serpwatcher?.performanceIndex != null && (
+            <div class="rounded-xl border border-gray-300 p-5">
+                <div class="text-sm opacity-70">Performance-Index</div>
+                <div class="text-3xl font-black">{latest.serpwatcher.performanceIndex}</div>
+                <div set:html={sparkline(perfSeries)} />
+            </div>
+        )}
+        {latest?.aiSearch?.[0] && (
+            <div class="rounded-xl border border-gray-300 p-5">
+                <div class="text-sm opacity-70">KI-Sichtbarkeit ({latest.aiSearch[0].name})</div>
+                <div class="text-3xl font-black">{latest.aiSearch[0].visibility ?? '–'}</div>
+                <div class="text-sm opacity-70">{latest.aiSearch[0].mentions ?? '–'} Erwähnungen</div>
+            </div>
+        )}
+    </div>
+
+    {latest?.serpwatcher && (
+        <>
+            <h2 class="text-xl font-bold mb-4">Keyword-Rankings</h2>
+            <div class="overflow-x-auto mb-12">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-left border-b border-gray-400">
+                            <th class="py-2 pr-4">Keyword</th>
+                            <th class="py-2 pr-4">Position</th>
+                            <th class="py-2 pr-4">Δ Woche</th>
+                            <th class="py-2 pr-4">Suchvolumen</th>
+                            <th class="py-2">Verlauf</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {latest.serpwatcher.keywords.map((kw) => (
+                            <tr class="border-b border-gray-200">
+                                <td class="py-2 pr-4 font-bold">{kw.keyword}</td>
+                                <td class="py-2 pr-4">{kw.rank ?? '–'}</td>
+                                <td class="py-2 pr-4">
+                                    {kw.change == null ? '–' : kw.change > 0 ? <span class="text-green-700">▲ {kw.change}</span> : kw.change < 0 ? <span class="text-red-700">▼ {Math.abs(kw.change)}</span> : '='}
+                                </td>
+                                <td class="py-2 pr-4">{kw.searchVolume ?? '–'}</td>
+                                <td class="py-2" set:html={sparkline(rankHistory.get(kw.keyword) ?? [])} />
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </>
+    )}
+
+    {latest?.aiSearch && latest.aiSearch.length > 0 && (
+        <>
+            <h2 class="text-xl font-bold mb-4">AI Search Watcher</h2>
+            <div class="overflow-x-auto mb-12">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-left border-b border-gray-400">
+                            <th class="py-2 pr-4">Monitor</th>
+                            <th class="py-2 pr-4">Sichtbarkeit</th>
+                            <th class="py-2 pr-4">Erwähnungen</th>
+                            <th class="py-2">Prompts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {latest.aiSearch.map((monitor) => (
+                            <tr class="border-b border-gray-200">
+                                <td class="py-2 pr-4 font-bold">{monitor.name}</td>
+                                <td class="py-2 pr-4">{monitor.visibility ?? '–'}</td>
+                                <td class="py-2 pr-4">{monitor.mentions ?? '–'}</td>
+                                <td class="py-2">{monitor.promptCount ?? '–'}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </>
+    )}
+</BaseLayout>

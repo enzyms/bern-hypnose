@@ -1,11 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-
-const seoSchema = z.object({
-  image: z.object({
-    src: z.string(), 
-  }).optional(),
-  alt: z.string().optional(),
-});
+import { glob } from 'astro/loaders';
 
 const backlinkSchema = z.object({
   title: z.string().optional(),
@@ -13,6 +7,7 @@ const backlinkSchema = z.object({
 });
 
 const faq = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/faq' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -36,6 +31,7 @@ const faq = defineCollection({
 });
 
 const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     excerpt: z.string().optional(),
@@ -52,6 +48,7 @@ const blog = defineCollection({
 });
 
 const pages = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     seoTitle: z.string().optional(),
@@ -61,12 +58,18 @@ const pages = defineCollection({
       src: image().optional(),
       alt: z.string().optional(),
     }).optional(),
-    id: z.string().optional(),
     canonical: z.string().optional(),
     schema: z.string().optional(),
     reviewDate: z.string().optional(),
   })
 });
 
+const tags = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/tags' }),
+  schema: z.object({
+    title: z.string(),
+    canonical: z.string().optional(),
+  })
+});
 
-export const collections = { blog, pages, faq };
+export const collections = { blog, pages, faq, tags };
