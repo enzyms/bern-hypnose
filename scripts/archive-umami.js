@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 /**
- * Archives aggregate analytics from a umami v2 instance to
- * reports/umami-archive/ (gitignored — traffic data stays local).
+ * Archives aggregate analytics from umami to a JSON file
+ * (traffic data — keep out of the public repo).
  *
- * Written for the July 2026 migration off the old self-hosted (Vercel)
- * instance to Umami Cloud; also reusable yearly against Cloud before its
- * 1-year retention deletes history (set env vars accordingly).
+ * Two auth modes:
+ *   Umami Cloud:  UMAMI_API_KEY            (api.umami.is, x-umami-api-key)
+ *   Self-hosted:  UMAMI_OLD_URL + UMAMI_OLD_USERNAME + UMAMI_OLD_PASSWORD
  *
- * Env: UMAMI_OLD_URL, UMAMI_OLD_USERNAME, UMAMI_OLD_PASSWORD
+ * Optional: UMAMI_ARCHIVE_DIR (default reports/umami-archive, gitignored)
+ *
+ * Runs quarterly via .github/workflows/umami-archive.yml against Cloud
+ * (free tier deletes data older than 1 year); the self-hosted mode was
+ * used for the July 2026 Vercel-instance export.
+ *
  * Usage: node --env-file=.env scripts/archive-umami.js
  */
 import fs from 'node:fs';
@@ -15,18 +20,26 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT_DIR = path.join(ROOT, 'reports/umami-archive');
+const OUT_DIR = process.env.UMAMI_ARCHIVE_DIR ?? path.join(ROOT, 'reports/umami-archive');
 
+const CLOUD_KEY = process.env.UMAMI_API_KEY;
 const BASE = (process.env.UMAMI_OLD_URL ?? '').replace(/\/$/, '');
 const USER = process.env.UMAMI_OLD_USERNAME;
 const PASS = process.env.UMAMI_OLD_PASSWORD;
 
-if (!BASE || !USER || !PASS) {
-    console.error('Set UMAMI_OLD_URL, UMAMI_OLD_USERNAME, UMAMI_OLD_PASSWORD in .env');
+if (!CLOUD_KEY && !(BASE && USER && PASS)) {
+    console.error('Set UMAMI_API_KEY (Cloud) or UMAMI_OLD_URL/UMAMI_OLD_USERNAME/UMAMI_OLD_PASSWORD (self-hosted).');
     process.exit(1);
 }
 
-async function main() {
+async function makeApi() {
+    if (CLOUD_KEY) {
+        return async (pathname) => {
+            const res = await fetch(`https://api.umami.is/v1${pathname}`, { headers: { 'x-umami-api-key': CLOUD_KEY } });
+            if (!res.ok) throw new Error(`umami Cloud API ${res.status} on ${pathname}`);
+            return res.json();
+        };
+    }
     const loginRes = await fetch(`${BASE}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -34,12 +47,15 @@ async function main() {
     });
     if (!loginRes.ok) throw new Error(`Login failed: ${loginRes.status}`);
     const { token } = await loginRes.json();
-
-    const api = async (pathname) => {
+    return async (pathname) => {
         const res = await fetch(`${BASE}/api${pathname}`, { headers: { Authorization: `Bearer ${token}` } });
         if (!res.ok) throw new Error(`umami API ${res.status} on ${pathname}`);
         return res.json();
     };
+}
+
+async function main() {
+    const api = await makeApi();
 
     const websitesRes = await api('/websites');
     const websites = websitesRes?.data ?? websitesRes ?? [];
@@ -57,7 +73,7 @@ async function main() {
 
         const archive = {
             exportedAt: new Date(endAt).toISOString(),
-            source: BASE,
+            source: CLOUD_KEY ? 'umami-cloud' : BASE,
             website: { id, name: site.name, domain: site.domain, createdAt: site.createdAt },
             stats: await api(`/websites/${id}/stats?${range}`),
             pageviewsDaily: await api(`/websites/${id}/pageviews?${range}&unit=day&timezone=Europe/Zurich`),

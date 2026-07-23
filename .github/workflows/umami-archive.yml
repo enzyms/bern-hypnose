@@ -1,0 +1,51 @@
+name: Quarterly umami archive
+
+# Umami Cloud (free tier) deletes data older than 1 year — this rolls the
+# aggregates into a PRIVATE archive repo each quarter. Quarterly rather than
+# yearly so a single failed run never costs months of history.
+#
+# Required secrets:
+#   UMAMI_API_KEY        — Umami Cloud API key (cloud.umami.is → API keys)
+#   ARCHIVE_PUSH_TOKEN   — fine-grained PAT with contents:write on the
+#                          private archive repo (see env.ARCHIVE_REPO)
+
+on:
+  schedule:
+    # 1 Jan / Apr / Jul / Oct, 05:20 UTC
+    - cron: '20 5 1 1,4,7,10 *'
+  workflow_dispatch:
+
+env:
+  ARCHIVE_REPO: enzyms/bern-hypnose-archive
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.ARCHIVE_REPO }}
+          token: ${{ secrets.ARCHIVE_PUSH_TOKEN }}
+          path: archive-repo
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Export umami aggregates
+        env:
+          UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
+          UMAMI_ARCHIVE_DIR: ${{ github.workspace }}/archive-repo/umami
+        run: node scripts/archive-umami.js
+
+      - name: Commit to archive repo
+        working-directory: archive-repo
+        run: |
+          git config user.name "umami-archive-bot"
+          git config user.email "actions@github.com"
+          git add umami
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Umami archive $(date -u +%Y-%m-%d)"
+          git push
