@@ -41,15 +41,26 @@ let shareWebsite = null;
 
 async function makeApi() {
     if (SHARE_ID) {
-        const cloud = 'https://cloud.umami.is';
-        const shareRes = await fetch(`${cloud}/api/share/${SHARE_ID}`);
+        // Umami Cloud regional gateway (EU account). The share page exchanges the
+        // public share ID for a JWT, then sends it via x-umami-share-token.
+        const gateway = process.env.UMAMI_GATEWAY ?? 'https://gateway-eu.umami.is';
+        const shareRes = await fetch(`${gateway}/api/share/${SHARE_ID}`);
         if (!shareRes.ok) throw new Error(`Share lookup failed (${shareRes.status}) — is the Share URL still enabled?`);
         const share = await shareRes.json();
-        shareWebsite = { id: share.id ?? share.websiteId, name: 'bern-hypnose', domain: 'bern-hypnose.ch' };
+        shareWebsite = {
+            id: share.websiteId ?? share.id,
+            name: 'bern-hypnose-cloud',
+            domain: 'bern-hypnose.ch',
+            // Cloud free tier retains 1 year — 400 days covers everything available
+            createdAt: new Date(Date.now() - 400 * 86400000).toISOString()
+        };
+        const headers = { 'x-umami-share-token': share.token, 'x-umami-share-context': '1' };
         return async (pathname) => {
             if (pathname === '/websites') return [shareWebsite];
-            const res = await fetch(`${cloud}/api${pathname}`, { headers: { 'x-umami-share-token': share.token } });
-            if (!res.ok) throw new Error(`umami share API ${res.status} on ${pathname}`);
+            // Cloud gateway renamed the pages metric: type=url -> type=path
+            const mapped = pathname.replace('type=url', 'type=path');
+            const res = await fetch(`${gateway}/api${mapped}`, { headers });
+            if (!res.ok) throw new Error(`umami share API ${res.status} on ${mapped}`);
             return res.json();
         };
     }
