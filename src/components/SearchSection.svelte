@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import {
         type Source,
         getChatSessionId,
@@ -9,6 +10,8 @@
         RATE_LIMIT_MESSAGE,
         GENERIC_ERROR_MESSAGE
     } from '../utils/assistant-chat';
+
+    const CONSENT_KEY = 'bh-ai-consent';
 
     type IndexEntry = { path: string; title: string; description: string; collection: string };
 
@@ -28,6 +31,14 @@
     let aiSources = $state<Source[]>([]);
     let isStreaming = $state(false);
     let aiError = $state('');
+
+    // AI answers are opt-in: first submit shows a consent notice (stored once)
+    let consented = $state(false);
+    let pendingQuestion = $state('');
+
+    onMount(() => {
+        consented = localStorage.getItem(CONSENT_KEY) === '1';
+    });
 
     let index: IndexEntry[] | null = null;
     let indexRequested = false;
@@ -86,7 +97,28 @@
         }
         await loadIndex();
 
-        aiQuestion = trimmed;
+        if (!consented) {
+            pendingQuestion = trimmed;
+            return;
+        }
+        runAi(trimmed);
+    }
+
+    function acceptConsent() {
+        consented = true;
+        localStorage.setItem(CONSENT_KEY, '1');
+        track('Suche – KI-Consent akzeptiert');
+        const question = pendingQuestion;
+        pendingQuestion = '';
+        if (question) runAi(question);
+    }
+
+    function declineConsent() {
+        pendingQuestion = '';
+    }
+
+    async function runAi(question: string) {
+        aiQuestion = question;
         aiAnswer = '';
         aiSources = [];
         aiError = '';
@@ -95,7 +127,7 @@
 
         try {
             // Same backend session as the chat widget — the conversation continues there.
-            aiSources = await streamAssistant(trimmed, getChatSessionId(), (delta) => {
+            aiSources = await streamAssistant(question, getChatSessionId(), (delta) => {
                 aiAnswer += delta;
             });
         } catch (err) {
@@ -154,11 +186,25 @@
             </button>
         </div>
 
-        {#if !aiQuestion && !results.length}
+        {#if !aiQuestion && !results.length && !pendingQuestion}
             <div class="bh-search__chips" role="group" aria-label="Vorgeschlagene Fragen">
                 {#each SUGGESTED as suggestion}
                     <button class="bh-search__chip" onclick={() => submit(suggestion)}>{suggestion}</button>
                 {/each}
+            </div>
+        {/if}
+
+        {#if pendingQuestion && !consented}
+            <div class="bh-search__consent" role="alertdialog" aria-label="Einwilligung KI-Antwort">
+                <p>
+                    <strong>✨ KI-Antwort aktivieren?</strong> Deine Frage wird zur Beantwortung an unseren Chatbot übermittelt und dort gespeichert. Bitte keine
+                    persönlichen oder gesundheitsbezogenen Details angeben. Details: <a href="/datenschutzrichtlinie/">Datenschutz</a> ·
+                    <a href="/nutzungsbedingungen/">Nutzungsbedingungen</a>
+                </p>
+                <div class="bh-search__consent-actions">
+                    <button class="bh-search__consent-yes" onclick={acceptConsent}>Einverstanden – Antwort anzeigen</button>
+                    <button class="bh-search__consent-no" onclick={declineConsent}>Nur Seiten durchsuchen</button>
+                </div>
             </div>
         {/if}
 
@@ -206,6 +252,11 @@
                 </ul>
             </div>
         {/if}
+
+        <p class="bh-search__privacy">
+            Die Seitensuche läuft komplett in deinem Browser. KI-Antworten (opt-in) beantwortet unser Chatbot —
+            <a href="/datenschutzrichtlinie/">Datenschutz</a> · <a href="/nutzungsbedingungen/">Nutzungsbedingungen</a>
+        </p>
     </div>
 </section>
 
@@ -306,6 +357,70 @@
     }
     .bh-search__chip:hover {
         background: #ead7eb;
+    }
+
+    .bh-search__consent {
+        margin-top: 14px;
+        background: #fff;
+        border: 1px solid #ead7eb;
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 0.9rem;
+        color: #333;
+    }
+    .bh-search__consent p {
+        margin: 0 0 10px;
+        line-height: 1.5;
+    }
+    .bh-search__consent a {
+        color: #9b50b0;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .bh-search__consent-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .bh-search__consent-yes {
+        background: #b06ec7;
+        border: none;
+        border-radius: 999px;
+        padding: 8px 16px;
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+    }
+    .bh-search__consent-yes:hover {
+        background: #9b50b0;
+    }
+    .bh-search__consent-no {
+        background: transparent;
+        border: 1px solid #d4a8e0;
+        border-radius: 999px;
+        padding: 8px 16px;
+        color: #7a3d8f;
+        cursor: pointer;
+        font-family: inherit;
+    }
+    .bh-search__consent-no:hover {
+        background: #f3e8f4;
+    }
+
+    .bh-search__privacy {
+        margin: 12px 2px 0;
+        font-size: 0.75rem;
+        color: #777;
+        line-height: 1.4;
+    }
+    .bh-search__privacy a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .bh-search__privacy a:hover {
+        color: #9b50b0;
     }
 
     .bh-search__answer {

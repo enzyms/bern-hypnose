@@ -67,6 +67,47 @@ Inhaltliche Grenzen:
 Antworte kompakt (2–5 Sätze), ausser die Frage verlangt mehr Tiefe.
 ```
 
+## 2b. Qualität sichern (Stand Juli 2026)
+
+**Regressions-Suite:** `node scripts/test-chatbot.js` stellt 14 Kern-Fragen (frische
+Session, live-Backend) und prüft jede Antwort gegen die echte URL-Whitelist:
+✅ korrekt · ⚠️ falscher Prefix, Frontend repariert · ❌ Thema-Link fehlt oder
+nicht reparierbar erfunden. Nach jeder Prompt-/Corpus-/Embedder-Änderung ausführen.
+
+**Bekannte Schwachstellen & Gegenmassnahmen:**
+
+1. **Vage Nachfragen** («link zur infos?») — AnythingLLM nutzt nur die letzte
+   Nachricht als Retrieval-Query; bei vagen Fragen findet das Retrieval nichts
+   und das Modell erfindet Pfade oder behauptet, es gebe keine Seite.
+   → System-Prompt-Zusätze (unten) + niedrige Temperatur (Workspace →
+   Chat-Einstellungen → Temperature ≈ 0.3).
+2. **URL-Konstruktion** — das Modell baut gelegentlich Pfade aus Wörtern
+   zusammen statt sie aus llms.txt zu übernehmen (nicht deterministisch).
+   Frontend-Slug-Rescue fängt viele Fälle; der Prompt muss den Rest erledigen.
+3. **Embedder** — falls der Workspace den AnythingLLM-Default-Embedder
+   (all-MiniLM, englisch-lastig) nutzt, ist deutsches Retrieval schwach.
+   → Beim Infomaniak-Umbau: Embedder auf **BGE Multilingual Gemma2** stellen,
+   danach alle Dokumente NEU embedden und die Suite laufen lassen.
+
+**System-Prompt-Zusätze (an den bestehenden Prompt anhängen):**
+
+```
+Zusätzliche Link-Regeln:
+- Übernimm URLs IMMER wörtlich aus dem Dokument llms.txt. Baue niemals selbst
+  eine URL aus Wörtern zusammen.
+- Bei vagen Nachfragen wie «hast du einen Link dazu?» bezieht sich die Frage
+  auf das vorherige Thema: suche dieses Thema in der llms.txt-Liste und gib
+  genau die dort stehende URL an.
+- Zu allen Kernthemen (Ängste, Schmerzen, Schlaf, Rauchstopp, Gewicht, Stress,
+  Kinder, Sport, Selbstvertrauen) existieren Seiten unter /hypnosetherapie/ —
+  behaupte nie, es gebe zu einem dieser Themen keine Seite.
+- Nenne bei thematischen Fragen immer den Link zur passenden Themenseite.
+```
+
+**Antworten einsehen:** https://bern-hypnose.ch/chat-questions (Basic-Auth) zeigt
+alle Konversationen inkl. Antworten; verlinkte Pfade sind markiert, «keine Quellen»
+kennzeichnet Antworten ohne Retrieval-Treffer (fehleranfällig).
+
 ## 3. Frage-Mining für Keyword-Discovery
 
 AnythingLLM speichert alle Embed-Konversationen serverseitig
