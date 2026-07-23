@@ -8,56 +8,89 @@
         "performanceIndex": null,
         "keywords": [
           {
-            "keyword": "hypnose bern",
-            "rank": null,
+            "keyword": "",
+            "rank": 1,
             "rankAvg": null,
-            "change": null,
+            "change": 0,
+            "searchVolume": 660
+          },
+          {
+            "keyword": "",
+            "rank": 4,
+            "rankAvg": null,
+            "change": -1,
+            "searchVolume": 170
+          },
+          {
+            "keyword": "",
+            "rank": 1,
+            "rankAvg": null,
+            "change": 0,
+            "searchVolume": 660
+          },
+          {
+            "keyword": "",
+            "rank": 4,
+            "rankAvg": null,
+            "change": 0,
+            "searchVolume": 170
+          },
+          {
+            "keyword": "",
+            "rank": 4,
+            "rankAvg": null,
+            "change": -1,
             "searchVolume": null
           },
           {
-            "keyword": "hypnosetherapie bern",
-            "rank": null,
+            "keyword": "",
+            "rank": 2,
             "rankAvg": null,
-            "change": null,
-            "searchVolume": null
-          },
-          {
-            "keyword": "bern hypnose",
-            "rank": null,
-            "rankAvg": null,
-            "change": null,
-            "searchVolume": null
-          },
-          {
-            "keyword": "hypnosetherapeut bern",
-            "rank": null,
-            "rankAvg": null,
-            "change": null,
-            "searchVolume": null
-          },
-          {
-            "keyword": "hypnosetherapeutin bern",
-            "rank": null,
-            "rankAvg": null,
-            "change": null,
-            "searchVolume": null
-          },
-          {
-            "keyword": "hypnose therapie bern",
-            "rank": null,
-            "rankAvg": null,
-            "change": null,
-            "searchVolume": null
+            "change": 0,
+            "searchVolume": 170
           }
         ]
       },
       "aiSearch": [
         {
           "id": "691a4c5cb8157e5fb746ccb3",
-          "name": "bern-hypnose.ch",
-          "visibility": null,
-          "mentions": null,
-          "promptCount": null
+          "name": "Bern Hypnose",
+          "score": 57.05,
+          "visibility": 55.56,
+          "position": 4,
+          "frequency": 0,
+          "timeSeries": [
+            {
+              "date": "2026-06-23",
+              "score": 23.64,
+              "visibility": 19.63,
+              "position": 2.43
+            },
+            {
+              "date": "2026-06-30",
+              "score": 12.44,
+              "visibility": 10.37,
+              "position": 2.64
+            },
+            {
+              "date": "2026-07-07",
+              "score": 60.7,
+              "visibility": 62.22,
+              "position": 5.9
+            },
+            {
+              "date": "2026-07-14",
+              "score": 67.14,
+              "visibility": 65.56,
+              "position": 3.64
+            },
+            {
+              "date": "2026-07-21",
+              "score": 57.05,
+              "visibility": 55.56,
+              "position": 4
+            }
+          ]
         }
       ]
     }
