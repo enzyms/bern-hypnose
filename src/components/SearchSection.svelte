@@ -40,9 +40,25 @@
     let declinedUntil = $state(0);
     let pendingQuestion = $state('');
 
+    // Short placeholder by default (mobile-safe); expanded on wider screens after mount
+    let placeholder = $state('Frag etwas über Hypnose…');
+
     onMount(() => {
+        // Test helper: /?reset-ai-consent clears the stored consent decision
+        if (new URLSearchParams(location.search).has('reset-ai-consent')) {
+            localStorage.removeItem(CONSENT_KEY);
+            localStorage.removeItem(DECLINE_KEY);
+        }
         consented = localStorage.getItem(CONSENT_KEY) === '1';
         declinedUntil = Number(localStorage.getItem(DECLINE_KEY) ?? 0);
+
+        const wide = window.matchMedia('(min-width: 640px)');
+        const applyPlaceholder = () => {
+            placeholder = wide.matches ? 'Wobei kann Hypnose dir helfen? Frag oder such…' : 'Frag etwas über Hypnose…';
+        };
+        applyPlaceholder();
+        wide.addEventListener('change', applyPlaceholder);
+        return () => wide.removeEventListener('change', applyPlaceholder);
     });
 
     let index: IndexEntry[] | null = null;
@@ -183,7 +199,7 @@
             <input
                 id="bh-search-input"
                 type="text"
-                placeholder="Wobei kann Hypnose dir helfen? Frag oder such…"
+                {placeholder}
                 bind:value={query}
                 oninput={handleInput}
                 onfocus={handleFocus}
@@ -350,6 +366,25 @@
         color: #595959;
         border: 1px solid #c9bccd;
         cursor: not-allowed;
+    }
+
+    /* Narrow screens: stack the button under the input, full width */
+    @media (max-width: 480px) {
+        .bh-search__box {
+            padding: 12px;
+        }
+        .bh-search__input-row {
+            flex-wrap: wrap;
+            padding: 6px 8px;
+        }
+        .bh-search__input-row input {
+            padding: 10px 0;
+            font-size: 16px; /* prevents iOS zoom-on-focus */
+        }
+        .bh-search__submit {
+            flex: 1 1 100%;
+            padding: 11px 16px;
+        }
     }
 
     .bh-search__chips {
