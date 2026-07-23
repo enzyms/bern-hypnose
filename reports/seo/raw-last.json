@@ -995,8 +995,6 @@
       }
     ]
   },
-  "statsError (GET compact)": "Mangools API 404 on /serpwatcher/trackings/69159128598016b4d9930e1a/stats?from=20260623&to=20260723: {\"error\":{\"type\":\"Error\",\"message\":\"Not Found\"}}",
-  "statsError (GET iso)": "Mangools API 404 on /serpwatcher/trackings/69159128598016b4d9930e1a/stats?from=2026-06-23&to=2026-07-23: {\"error\":{\"type\":\"Error\",\"message\":\"Not Found\"}}",
   "stats": {
     "history_dates": [
       "2026-07-13",

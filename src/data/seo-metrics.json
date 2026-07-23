@@ -5,49 +5,69 @@
       "week": "2026-W30",
       "serpwatcher": {
         "trackingId": "69159128598016b4d9930e1a",
-        "performanceIndex": null,
+        "performanceIndex": 86.6,
+        "visibilityIndex": 13.42,
+        "estimatedVisits": 437,
         "keywords": [
           {
-            "keyword": "",
+            "keyword": "hypnose bern",
             "rank": 1,
-            "rankAvg": null,
+            "rankAvg": 1.2,
+            "rankBest": 1,
             "change": 0,
-            "searchVolume": 660
+            "searchVolume": 660,
+            "estimatedVisits": 196,
+            "mapPackRank": null
           },
           {
-            "keyword": "",
-            "rank": 4,
-            "rankAvg": null,
+            "keyword": "hypnosetherapie bern",
+            "rank": 3,
+            "rankAvg": 3.8,
+            "rankBest": 3,
             "change": -1,
-            "searchVolume": 170
+            "searchVolume": 170,
+            "estimatedVisits": 11,
+            "mapPackRank": null
           },
           {
-            "keyword": "",
+            "keyword": "bern hypnose",
             "rank": 1,
-            "rankAvg": null,
+            "rankAvg": 1,
+            "rankBest": 1,
             "change": 0,
-            "searchVolume": 660
+            "searchVolume": 660,
+            "estimatedVisits": 196,
+            "mapPackRank": null
           },
           {
-            "keyword": "",
+            "keyword": "hypnosetherapeut bern",
             "rank": 4,
-            "rankAvg": null,
+            "rankAvg": 5.4,
+            "rankBest": 4,
             "change": 0,
-            "searchVolume": 170
+            "searchVolume": 170,
+            "estimatedVisits": 7,
+            "mapPackRank": null
           },
           {
-            "keyword": "",
-            "rank": 4,
-            "rankAvg": null,
+            "keyword": "hypnosetherapeutin bern",
+            "rank": 3,
+            "rankAvg": 3.4,
+            "rankBest": 3,
             "change": -1,
-            "searchVolume": null
+            "searchVolume": null,
+            "estimatedVisits": null,
+            "mapPackRank": null
           },
           {
-            "keyword": "",
+            "keyword": "hypnose therapie bern",
             "rank": 2,
-            "rankAvg": null,
+            "rankAvg": 2,
+            "rankBest": 2,
             "change": 0,
-            "searchVolume": 170
+            "searchVolume": 170,
+            "estimatedVisits": 27,
+            "mapPackRank": null
           }
         ]
       },
