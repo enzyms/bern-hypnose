@@ -31,14 +31,27 @@ export default async (req, context) => {
     if (req.method !== 'POST') return new Response('Method not allowed', { status: 405 });
 
     const ip = clientIp(req, context);
-    const body = await req.text();
+    let body = await req.text();
+
+    // Cloud ignores forwarded-IP headers from untrusted proxies; since v2.17
+    // the sanctioned way is payload.ip — umami then geo-locates that address.
+    if (ip) {
+        try {
+            const data = JSON.parse(body);
+            if (data?.payload && typeof data.payload === 'object') {
+                data.payload.ip = ip;
+                body = JSON.stringify(data);
+            }
+        } catch {
+            /* not JSON — forward untouched */
+        }
+    }
+
     const res = await fetch('https://cloud.umami.is/api/send', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'User-Agent': req.headers.get('user-agent') ?? '',
-            // umami's request-ip checks x-client-ip before x-forwarded-for
-            ...(ip ? { 'X-Client-IP': ip, 'X-Forwarded-For': ip } : {})
+            'User-Agent': req.headers.get('user-agent') ?? ''
         },
         body
     });
