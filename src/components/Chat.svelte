@@ -52,9 +52,66 @@
     }
 
     /**
+     * Slug rescue: the bot often invents the prefix but gets the slug right
+     * (e.g. /faq/kann-ich-kontrolle-verlieren/ instead of
+     * /was-ist-hypnose/kann-ich-kontrolle-verlieren/). If the last segment
+     * matches exactly one real page, repair the path instead of de-linking.
+     */
+    function rescuePath(path: string): string | null {
+        const slug = path.split('/').filter(Boolean).at(-1);
+        if (!slug || slug.length < 4) return null;
+        const matches = [...allowedPaths].filter((p) => p.endsWith(`/${slug}/`));
+        return matches.length === 1 ? matches[0] : null;
+    }
+
+    function resolvePath(href: string): string | null {
+        const path = toInternalPath(href);
+        if (!path) return null;
+        if (allowedPaths.has(path)) return path;
+        return rescuePath(path);
+    }
+
+    /** Turn bare site paths in plain text into (repaired) links. */
+    function linkifyTextPaths(doc: Document) {
+        const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+        const nodes: Text[] = [];
+        let current: Node | null;
+        while ((current = walker.nextNode())) {
+            if (!(current.parentElement?.closest('a, code, pre'))) nodes.push(current as Text);
+        }
+        const PATH_RE = /\/[a-z0-9äöüß-]+(?:\/[a-z0-9äöüß-]+)*\/?/gi;
+        for (const node of nodes) {
+            const text = node.textContent ?? '';
+            if (!text.includes('/')) continue;
+            const frag = doc.createDocumentFragment();
+            let lastIndex = 0;
+            let changed = false;
+            for (const match of text.matchAll(PATH_RE)) {
+                const prev = match.index === 0 ? '' : text[match.index - 1];
+                if (prev && !/[\s(>«"':,;!]/.test(prev)) continue;
+                const candidate = match[0].endsWith('/') ? match[0] : match[0] + '/';
+                const resolved = allowedPaths.has(candidate) ? candidate : rescuePath(candidate);
+                if (!resolved) continue;
+                frag.appendChild(doc.createTextNode(text.slice(lastIndex, match.index)));
+                const a = doc.createElement('a');
+                a.setAttribute('href', resolved);
+                a.textContent = resolved;
+                frag.appendChild(a);
+                lastIndex = match.index + match[0].length;
+                changed = true;
+            }
+            if (changed) {
+                frag.appendChild(doc.createTextNode(text.slice(lastIndex)));
+                node.replaceWith(frag);
+            }
+        }
+    }
+
+    /**
      * Markdown → sanitized HTML with the link guardrail applied:
-     * internal links must be on the whitelist, all others are unwrapped to
-     * plain text so hallucinated URLs never reach the user as links.
+     * internal links must be on the whitelist (or slug-rescuable), all
+     * others are unwrapped to plain text so hallucinated URLs never reach
+     * the user as links.
      */
     function renderAssistantHtml(content: string): string {
         const rawHtml = marked.parse(content) as string;
@@ -62,15 +119,19 @@
         const doc = new DOMParser().parseFromString(clean, 'text/html');
         for (const a of Array.from(doc.querySelectorAll('a'))) {
             const href = a.getAttribute('href') ?? '';
-            const path = toInternalPath(href);
-            if (path && allowedPaths.has(path)) {
+            const resolved = resolvePath(href);
+            if (resolved) {
                 const parsed = new URL(href, 'https://' + SITE_HOST);
-                a.setAttribute('href', path + parsed.search + parsed.hash);
+                a.setAttribute('href', resolved + parsed.search + parsed.hash);
                 a.removeAttribute('target');
+                // If the link text is the (possibly repaired) path itself, show the real one
+                const label = a.textContent?.trim() ?? '';
+                if (label.startsWith('/') && label !== resolved) a.textContent = resolved;
             } else {
                 a.replaceWith(...Array.from(a.childNodes));
             }
         }
+        linkifyTextPaths(doc);
         return doc.body.innerHTML;
     }
 
@@ -83,8 +144,8 @@
             const candidate = [s.url, s.link, s.chunkSource, s.title].find(
                 (v): v is string => typeof v === 'string' && (v.startsWith('http') || v.startsWith('/') || v.startsWith('link://'))
             );
-            const path = candidate ? toInternalPath(candidate) : null;
-            if (path && allowedPaths.has(path) && !out.some((existing) => existing.path === path)) {
+            const path = candidate ? resolvePath(candidate) : null;
+            if (path && !out.some((existing) => existing.path === path)) {
                 const title = typeof s.title === 'string' && !s.title.startsWith('http') ? s.title : path;
                 out.push({ title, path });
             }
