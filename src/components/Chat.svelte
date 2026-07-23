@@ -43,7 +43,8 @@
             const parsed = new URL(cleaned, 'https://' + SITE_HOST);
             const ownHosts = [SITE_HOST, 'www.' + SITE_HOST, typeof location !== 'undefined' ? location.hostname : ''];
             if (!ownHosts.includes(parsed.hostname)) return null;
-            let path = parsed.pathname;
+            // Markdown mirrors map back to their canonical page
+            let path = parsed.pathname.replace(/\.md$/, '/').replace(/\/index\/$/, '/');
             if (!path.endsWith('/')) path += '/';
             return path;
         } catch {

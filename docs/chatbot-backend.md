@@ -27,8 +27,18 @@ Die Website generiert bei jedem Deploy automatisch:
 3. Als Link-Dokument hinzufügen: `https://bern-hypnose.ch/llms-full.txt` (eine Datei, ganze Website).
    Alternativ granularer: die einzelnen `.md`-URLs aus `llms.txt` hinzufügen (bessere Quellen-Chips,
    da jede Quelle einer Seite entspricht).
-4. **Nach jedem größeren Content-Deploy**: Dokument re-syncen (AnythingLLM: Dokument → «Re-fetch»).
+4. **Wichtig — llms.txt anpinnen:** Zusätzlich `https://bern-hypnose.ch/llms.txt` als Dokument
+   hinzufügen und im Workspace **anpinnen** (Thumbtack-Icon). Grund: llms-full.txt wird beim
+   Embedden in ~1000-Zeichen-Chunks zerlegt — die `URL:`-Kopfzeile fehlt in den meisten Chunks,
+   der Bot rät dann Präfixe. Das angepinnte llms.txt (klein, alle 127 URLs) liegt in *jedem*
+   Prompt vollständig bei. llms-full.txt selbst NICHT anpinnen (~400 KB sprengt den Kontext).
+   System-Prompt-Zusatz: «Die vollständige Liste gültiger URLs steht im Dokument llms.txt —
+   verlinke ausschliesslich URLs, die dort wörtlich vorkommen.»
+5. **Nach jedem größeren Content-Deploy**: Dokumente re-syncen (AnythingLLM: Dokument → «Re-fetch»).
    AnythingLLM «Watched documents» kann das automatisieren.
+6. Nach Dokument-Wechseln immer in **frischer Session** testen (Reset-Button im Widget) —
+   die Konversations-Historie ankert sonst alte Antworten. Bei hartnäckigen Artefakten:
+   Workspace → Vector Database → Reset, dann neu embedden.
 
 ## 2. System-Prompt (Workspace → Chat-Einstellungen)
 
