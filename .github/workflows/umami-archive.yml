@@ -5,7 +5,9 @@ name: Quarterly umami archive
 # yearly so a single failed run never costs months of history.
 #
 # Required secrets:
-#   UMAMI_API_KEY        — Umami Cloud API key (cloud.umami.is → API keys)
+#   UMAMI_SHARE_ID       — website Share-URL ID (cloud.umami.is → website
+#                          settings → Share URL; free-plan friendly).
+#                          Alternative on paid plans: UMAMI_API_KEY.
 #   ARCHIVE_PUSH_TOKEN   — fine-grained PAT with contents:write on the
 #                          private archive repo (see env.ARCHIVE_REPO)
 
@@ -36,6 +38,7 @@ jobs:
 
       - name: Export umami aggregates
         env:
+          UMAMI_SHARE_ID: ${{ secrets.UMAMI_SHARE_ID }}
           UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
           UMAMI_ARCHIVE_DIR: ${{ github.workspace }}/archive-repo/umami
         run: node scripts/archive-umami.js

@@ -3,9 +3,12 @@
  * Archives aggregate analytics from umami to a JSON file
  * (traffic data — keep out of the public repo).
  *
- * Two auth modes:
- *   Umami Cloud:  UMAMI_API_KEY            (api.umami.is, x-umami-api-key)
- *   Self-hosted:  UMAMI_OLD_URL + UMAMI_OLD_USERNAME + UMAMI_OLD_PASSWORD
+ * Three auth modes:
+ *   Umami Cloud (free): UMAMI_SHARE_ID     — from the website's Share URL
+ *                                            (cloud.umami.is → website settings
+ *                                            → Share URL; ID = path segment)
+ *   Umami Cloud (paid): UMAMI_API_KEY      (api.umami.is, x-umami-api-key)
+ *   Self-hosted:        UMAMI_OLD_URL + UMAMI_OLD_USERNAME + UMAMI_OLD_PASSWORD
  *
  * Optional: UMAMI_ARCHIVE_DIR (default reports/umami-archive, gitignored)
  *
@@ -22,17 +25,34 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = process.env.UMAMI_ARCHIVE_DIR ?? path.join(ROOT, 'reports/umami-archive');
 
+const SHARE_ID = process.env.UMAMI_SHARE_ID;
 const CLOUD_KEY = process.env.UMAMI_API_KEY;
 const BASE = (process.env.UMAMI_OLD_URL ?? '').replace(/\/$/, '');
 const USER = process.env.UMAMI_OLD_USERNAME;
 const PASS = process.env.UMAMI_OLD_PASSWORD;
 
-if (!CLOUD_KEY && !(BASE && USER && PASS)) {
-    console.error('Set UMAMI_API_KEY (Cloud) or UMAMI_OLD_URL/UMAMI_OLD_USERNAME/UMAMI_OLD_PASSWORD (self-hosted).');
+if (!SHARE_ID && !CLOUD_KEY && !(BASE && USER && PASS)) {
+    console.error('Set UMAMI_SHARE_ID (Cloud free) or UMAMI_API_KEY (Cloud paid) or UMAMI_OLD_URL/USERNAME/PASSWORD (self-hosted).');
     process.exit(1);
 }
 
+/** Share mode has no /websites listing — resolve the single site from the share token. */
+let shareWebsite = null;
+
 async function makeApi() {
+    if (SHARE_ID) {
+        const cloud = 'https://cloud.umami.is';
+        const shareRes = await fetch(`${cloud}/api/share/${SHARE_ID}`);
+        if (!shareRes.ok) throw new Error(`Share lookup failed (${shareRes.status}) — is the Share URL still enabled?`);
+        const share = await shareRes.json();
+        shareWebsite = { id: share.id ?? share.websiteId, name: 'bern-hypnose', domain: 'bern-hypnose.ch' };
+        return async (pathname) => {
+            if (pathname === '/websites') return [shareWebsite];
+            const res = await fetch(`${cloud}/api${pathname}`, { headers: { 'x-umami-share-token': share.token } });
+            if (!res.ok) throw new Error(`umami share API ${res.status} on ${pathname}`);
+            return res.json();
+        };
+    }
     if (CLOUD_KEY) {
         return async (pathname) => {
             const res = await fetch(`https://api.umami.is/v1${pathname}`, { headers: { 'x-umami-api-key': CLOUD_KEY } });
