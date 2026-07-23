@@ -18,19 +18,22 @@
         container?.appendChild(canvas);
         const offscreenCanvas = canvas.transferControlToOffscreen();
 
-        // worker.addEventListener('message', (event) => {
-        //     console.log('worker said:', event.data);
-        // });
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
         worker.postMessage(
             {
                 action: 'init',
                 width: window.innerWidth,
                 height: window.innerHeight,
+                reducedMotion: motionQuery.matches,
                 canvas: offscreenCanvas
             },
             [offscreenCanvas] // Transfer the canvas
         );
+
+        motionQuery.addEventListener('change', (e) => {
+            worker.postMessage({ action: 'motionPref', reduced: e.matches });
+        });
 
         window.addEventListener('resize', () => {
             worker.postMessage({
@@ -40,6 +43,28 @@
             });
         });
 
+        // Pointer proximity for gem hover reactions — rAF-throttled NDC coords
+        let pointerPending = false;
+        let pointerX = 0;
+        let pointerY = 0;
+        window.addEventListener(
+            'pointermove',
+            (e) => {
+                pointerX = (e.clientX / window.innerWidth) * 2 - 1;
+                pointerY = -(e.clientY / window.innerHeight) * 2 + 1;
+                if (pointerPending) return;
+                pointerPending = true;
+                requestAnimationFrame(() => {
+                    pointerPending = false;
+                    worker.postMessage({ action: 'pointer', x: pointerX, y: pointerY });
+                });
+            },
+            { passive: true }
+        );
+        const clearPointer = () => worker.postMessage({ action: 'pointer', x: null });
+        window.addEventListener('blur', clearPointer);
+        document.addEventListener('pointerleave', clearPointer);
+
         document.querySelectorAll('#menu-items [data-diamond-position]').forEach((item) => {
             item?.addEventListener('click', () => {
                 worker.postMessage({
@@ -48,6 +73,12 @@
                 });
             });
         });
+
+        // Revive the legacy `document.app.emitEvent` CTA hooks (Hero + content
+        // pages): clicking those buttons now triggers a gem flourish.
+        (document as any).app = {
+            emitEvent: () => worker.postMessage({ action: 'flourish' })
+        };
 
         // to do: get postMessage when worker is ready
         setTimeout(() => {
