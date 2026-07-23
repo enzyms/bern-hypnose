@@ -57,3 +57,6 @@ raw-reviews.md
 
 # Content taxonomy (not useful for chatbot)
 src/content/tags/
+
+# Chat question exports (visitor privacy — never commit; repo is public)
+reports/chat-questions/
