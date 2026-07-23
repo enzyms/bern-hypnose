@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "sich-annehmen",
-      "title": "Sich annehmen",
-      "url": "https://bern-hypnose.ch/blog/sich-annehmen/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-09T08:00:00.000Z"
-    },
-    {
       "slug": "denke-gut-über-dich",
       "title": "Denke gut über dich",
       "url": "https://bern-hypnose.ch/blog/denke-gut-über-dich/",
@@ -72,5 +65,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-07-16T05:31:09.976Z"
+  "lastUpdated": "2026-07-23T05:58:01.422Z"
 }

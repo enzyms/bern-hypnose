@@ -469,6 +469,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "sich-annehmen",
+      "title": "Sich annehmen",
+      "scheduledFor": "2026-06-09T08:00:00.000Z",
+      "createdAt": "2026-07-23T05:58:01.421Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/481063829576059595",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }
