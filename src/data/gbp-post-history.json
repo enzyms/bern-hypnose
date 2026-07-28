@@ -479,6 +479,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "denke-gut-über-dich",
+      "title": "Denke gut über dich",
+      "scheduledFor": "2026-06-11T08:00:00.000Z",
+      "createdAt": "2026-07-28T19:36:41.122Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/5642120112670313806",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

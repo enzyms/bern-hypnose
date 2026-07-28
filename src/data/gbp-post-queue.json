@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "denke-gut-über-dich",
-      "title": "Denke gut über dich",
-      "url": "https://bern-hypnose.ch/blog/denke-gut-über-dich/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-11T08:00:00.000Z"
-    },
-    {
       "slug": "lasst-uns-schamlos-frei-von-scham-sein",
       "title": "Lasst uns unnötige Scham ablegen!",
       "url": "https://bern-hypnose.ch/blog/lasst-uns-schamlos-frei-von-scham-sein/",
@@ -65,5 +58,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-07-23T05:58:01.422Z"
+  "lastUpdated": "2026-07-28T19:36:41.122Z"
 }
