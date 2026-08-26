@@ -489,6 +489,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "lasst-uns-schamlos-frei-von-scham-sein",
+      "title": "Lasst uns unnötige Scham ablegen!",
+      "scheduledFor": "2026-06-16T08:00:00.000Z",
+      "createdAt": "2026-08-26T15:26:29.079Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/7056843212985441121",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }

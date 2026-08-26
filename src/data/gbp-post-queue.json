@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "lasst-uns-schamlos-frei-von-scham-sein",
-      "title": "Lasst uns unnötige Scham ablegen!",
-      "url": "https://bern-hypnose.ch/blog/lasst-uns-schamlos-frei-von-scham-sein/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-16T08:00:00.000Z"
-    },
-    {
       "slug": "komm-sei-stolz-auf-dich",
       "title": "Komm, sei stolz auf dich.",
       "url": "https://bern-hypnose.ch/blog/komm-sei-stolz-auf-dich/",
@@ -58,5 +51,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-07-28T19:36:41.122Z"
+  "lastUpdated": "2026-08-26T15:26:29.082Z"
 }
