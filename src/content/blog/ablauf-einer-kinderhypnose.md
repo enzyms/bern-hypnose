@@ -42,7 +42,7 @@ Nach der Taumreise besprechen wir das gerade Erlebte und verarbeiten es mit Hilf
 
 ## Alter des Kindes
 
-Die Vorgehensweise ändert sich leicht je nach Alter und Entwicklungsstand des Kindes. Kinder ab 4 Jahren können bereits von einer Hypnose profitieren. Für Jugendliche ab ca. 13 oder 14 Jahren wenden wir ähnliche Techniken wie bei Erwachsenen an und dort muss auch kein Elternteil mehr anwesend sein.
+Die Vorgehensweise ändert sich leicht je nach Alter und Entwicklungsstand des Kindes. Kinder ab 6 Jahren können bereits von einer Hypnose profitieren. Für Jugendliche ab ca. 13 oder 14 Jahren wenden wir ähnliche Techniken wie bei Erwachsenen an und dort muss auch kein Elternteil mehr anwesend sein.
 
 ## Wohl des Kindes
 

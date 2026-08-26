@@ -45,7 +45,7 @@ Jugendliche sprechen oft besonders gut auf Hypnose an, da sie häufig noch sehr 
 
 [Mehr über Hypnose für Jugendliche erfahren](/was-ist-hypnose/ist-hypnose-für-jugendliche-geeignet/)
 
-### Kinder (ab 4 Jahren)
+### Kinder (ab 6 Jahren)
 
 Kinder haben eine besonders lebendige Vorstellungskraft und können sehr gut hypnotisiert werden. Die Arbeit mit Kindern unterscheidet sich deutlich von der mit Erwachsenen – sie ist spielerischer, kreativer und kürzer.
 

@@ -105,7 +105,7 @@ Hypnose ist keine esoterische Methode, sondern eine **wissenschaftlich anerkannt
 
 ## Für wen ist Hypnose geeignet?
 
-Grundsätzlich kann jeder Mensch hypnotisiert werden, der sich darauf einlassen möchte. Die Bereitschaft und Motivation sind entscheidend – nicht eine besondere "Begabung". Hypnose ist für Erwachsene, Jugendliche und [Kinder ab 4 Jahren](/hypnosetherapie/kinderhypnose/) geeignet.
+Grundsätzlich kann jeder Mensch hypnotisiert werden, der sich darauf einlassen möchte. Die Bereitschaft und Motivation sind entscheidend – nicht eine besondere "Begabung". Hypnose ist für Erwachsene, Jugendliche und [Kinder ab 6 Jahren](/hypnosetherapie/kinderhypnose/) geeignet.
 
 Bei bestimmten psychischen Erkrankungen wie Psychosen, schweren Depressionen oder Epilepsie ist Vorsicht geboten oder ärztliche Begleitung erforderlich.
 

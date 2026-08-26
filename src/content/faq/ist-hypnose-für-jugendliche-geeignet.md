@@ -7,7 +7,7 @@ showOnPages:
   - /hypnosetherapie/kinderhypnose/
 ---
 
-Kinder ab 4 Jahren können von Hypnose profitieren. Die Methoden werden altersgerecht angepasst. Ab 13 Jahren ähneln die Techniken denen für Erwachsene, und Sitzungen können auf Wunsch ohne Eltern stattfinden.
+Kinder ab 6 Jahren können von Hypnose profitieren. Die Methoden werden altersgerecht angepasst. Ab 13 Jahren ähneln die Techniken denen für Erwachsene, und Sitzungen können auf Wunsch ohne Eltern stattfinden.
 
 Mehr infos auf der Seite <a href="/hypnosetherapie/kinderhypnose/" class="text-red-700 underline">Kinderhypnose</a>
 
