@@ -27,122 +27,10 @@
       ],
       "stats": {
         "timeframes": {
-          "2026-08-29": {
-            "performance_index": 71.94103376113488,
-            "visibility_index": 8.306264025862907,
-            "performance_total": 53997,
-            "estimated_visits": 480,
-            "rank_distribution": {
-              "1": 6,
-              "3": 5,
-              "10": 6,
-              "20": 7,
-              "100": 1,
-              "rest": 11
-            },
-            "keywords_with_history": 36,
-            "keywords_eligible": 36
-          },
-          "2026-08-30": {
-            "performance_index": 71.34285238068782,
-            "visibility_index": 10.200676044200645,
-            "performance_total": 53997,
-            "estimated_visits": 469,
-            "rank_distribution": {
-              "1": 8,
-              "3": 2,
-              "10": 8,
-              "20": 8,
-              "100": 1,
-              "rest": 9
-            },
-            "keywords_with_history": 36,
-            "keywords_eligible": 36
-          },
-          "2026-08-31": {
-            "performance_index": 71.34285238068782,
-            "visibility_index": 10.200676044200645,
-            "performance_total": 53997,
-            "estimated_visits": 469,
-            "rank_distribution": {
-              "1": 8,
-              "3": 2,
-              "10": 8,
-              "20": 8,
-              "100": 1,
-              "rest": 9
-            },
-            "keywords_with_history": 36,
-            "keywords_eligible": 36
-          },
-          "2026-09-01": {
-            "performance_index": 71.34285238068782,
-            "visibility_index": 10.200676044200645,
-            "performance_total": 53997,
-            "estimated_visits": 469,
-            "rank_distribution": {
-              "1": 8,
-              "3": 2,
-              "10": 8,
-              "20": 8,
-              "100": 1,
-              "rest": 9
-            },
-            "keywords_with_history": 36,
-            "keywords_eligible": 36
-          },
-          "2026-09-02": {
-            "performance_index": 71.34285238068782,
-            "visibility_index": 10.200676044200645,
-            "performance_total": 53997,
-            "estimated_visits": 469,
-            "rank_distribution": {
-              "1": 8,
-              "3": 2,
-              "10": 8,
-              "20": 8,
-              "100": 1,
-              "rest": 9
-            },
-            "keywords_with_history": 36,
-            "keywords_eligible": 36
-          },
-          "2026-09-03": {
-            "performance_index": 71.34285238068782,
-            "visibility_index": 10.200676044200645,
-            "performance_total": 53997,
-            "estimated_visits": 469,
-            "rank_distribution": {
-              "1": 8,
-              "3": 2,
-              "10": 8,
-              "20": 8,
-              "100": 1,
-              "rest": 9
-            },
-            "keywords_with_history": 36,
-            "keywords_eligible": 36
-          },
-          "2026-09-04": {
-            "performance_index": 71.34285238068782,
-            "visibility_index": 10.200676044200645,
-            "performance_total": 53997,
-            "estimated_visits": 469,
-            "rank_distribution": {
-              "1": 8,
-              "3": 2,
-              "10": 8,
-              "20": 8,
-              "100": 1,
-              "rest": 9
-            },
-            "keywords_with_history": 36,
-            "keywords_eligible": 36
-          },
           "2026-09-05": {
-            "performance_index": 71.34285238068782,
+            "performance_index": 70.24232810021334,
             "visibility_index": 10.200676044200645,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 469,
             "rank_distribution": {
               "1": 8,
@@ -156,9 +44,9 @@
             "keywords_eligible": 36
           },
           "2026-09-06": {
-            "performance_index": 71.91881030427616,
+            "performance_index": 70.80940138212716,
             "visibility_index": 8.007948913485263,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 472,
             "rank_distribution": {
               "1": 6,
@@ -172,9 +60,9 @@
             "keywords_eligible": 36
           },
           "2026-09-07": {
-            "performance_index": 71.91881030427616,
+            "performance_index": 70.80940138212716,
             "visibility_index": 8.007948913485263,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 472,
             "rank_distribution": {
               "1": 6,
@@ -188,9 +76,9 @@
             "keywords_eligible": 36
           },
           "2026-09-08": {
-            "performance_index": 71.91881030427616,
+            "performance_index": 70.80940138212716,
             "visibility_index": 8.007948913485263,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 472,
             "rank_distribution": {
               "1": 6,
@@ -204,9 +92,9 @@
             "keywords_eligible": 36
           },
           "2026-09-09": {
-            "performance_index": 71.91881030427616,
+            "performance_index": 70.80940138212716,
             "visibility_index": 8.007948913485263,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 472,
             "rank_distribution": {
               "1": 6,
@@ -220,9 +108,9 @@
             "keywords_eligible": 36
           },
           "2026-09-10": {
-            "performance_index": 71.91881030427616,
+            "performance_index": 70.80940138212716,
             "visibility_index": 8.007948913485263,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 472,
             "rank_distribution": {
               "1": 6,
@@ -236,9 +124,9 @@
             "keywords_eligible": 36
           },
           "2026-09-11": {
-            "performance_index": 71.91881030427616,
+            "performance_index": 70.80940138212716,
             "visibility_index": 8.007948913485263,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 472,
             "rank_distribution": {
               "1": 6,
@@ -252,9 +140,9 @@
             "keywords_eligible": 36
           },
           "2026-09-12": {
-            "performance_index": 71.91881030427616,
+            "performance_index": 70.80940138212716,
             "visibility_index": 8.007948913485263,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 472,
             "rank_distribution": {
               "1": 6,
@@ -268,9 +156,9 @@
             "keywords_eligible": 36
           },
           "2026-09-13": {
-            "performance_index": 74.39672574402282,
+            "performance_index": 73.24909286508762,
             "visibility_index": 10.340115126873583,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 483,
             "rank_distribution": {
               "1": 7,
@@ -284,9 +172,9 @@
             "keywords_eligible": 36
           },
           "2026-09-14": {
-            "performance_index": 74.39672574402282,
+            "performance_index": 73.24909286508762,
             "visibility_index": 10.340115126873583,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 483,
             "rank_distribution": {
               "1": 7,
@@ -300,9 +188,9 @@
             "keywords_eligible": 36
           },
           "2026-09-15": {
-            "performance_index": 74.39672574402282,
+            "performance_index": 73.24909286508762,
             "visibility_index": 10.340115126873583,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 483,
             "rank_distribution": {
               "1": 7,
@@ -316,9 +204,9 @@
             "keywords_eligible": 36
           },
           "2026-09-16": {
-            "performance_index": 74.39672574402282,
+            "performance_index": 73.24909286508762,
             "visibility_index": 10.340115126873583,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 483,
             "rank_distribution": {
               "1": 7,
@@ -332,9 +220,9 @@
             "keywords_eligible": 36
           },
           "2026-09-17": {
-            "performance_index": 74.39672574402282,
+            "performance_index": 73.24909286508762,
             "visibility_index": 10.340115126873583,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 483,
             "rank_distribution": {
               "1": 7,
@@ -348,9 +236,9 @@
             "keywords_eligible": 36
           },
           "2026-09-18": {
-            "performance_index": 74.39672574402282,
+            "performance_index": 73.24909286508762,
             "visibility_index": 10.340115126873583,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 483,
             "rank_distribution": {
               "1": 7,
@@ -364,9 +252,9 @@
             "keywords_eligible": 36
           },
           "2026-09-19": {
-            "performance_index": 74.39672574402282,
+            "performance_index": 73.24909286508762,
             "visibility_index": 10.340115126873583,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 483,
             "rank_distribution": {
               "1": 7,
@@ -380,9 +268,9 @@
             "keywords_eligible": 36
           },
           "2026-09-20": {
-            "performance_index": 49.469414967498196,
+            "performance_index": 48.70630709479788,
             "visibility_index": 6.5146364149791856,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 281,
             "rank_distribution": {
               "1": 3,
@@ -396,9 +284,9 @@
             "keywords_eligible": 36
           },
           "2026-09-21": {
-            "performance_index": 74.16337944700632,
+            "performance_index": 73.01934613350838,
             "visibility_index": 8.641293606138829,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 480,
             "rank_distribution": {
               "1": 6,
@@ -412,9 +300,9 @@
             "keywords_eligible": 36
           },
           "2026-09-22": {
-            "performance_index": 74.16337944700632,
+            "performance_index": 73.01934613350838,
             "visibility_index": 8.641293606138829,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 480,
             "rank_distribution": {
               "1": 6,
@@ -428,9 +316,9 @@
             "keywords_eligible": 36
           },
           "2026-09-23": {
-            "performance_index": 74.16337944700632,
+            "performance_index": 73.01934613350838,
             "visibility_index": 8.641293606138829,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 480,
             "rank_distribution": {
               "1": 6,
@@ -444,9 +332,9 @@
             "keywords_eligible": 36
           },
           "2026-09-24": {
-            "performance_index": 74.16337944700632,
+            "performance_index": 73.01934613350838,
             "visibility_index": 8.641293606138829,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 480,
             "rank_distribution": {
               "1": 6,
@@ -460,9 +348,9 @@
             "keywords_eligible": 36
           },
           "2026-09-25": {
-            "performance_index": 74.16337944700632,
+            "performance_index": 73.01934613350838,
             "visibility_index": 8.641293606138829,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 480,
             "rank_distribution": {
               "1": 6,
@@ -476,9 +364,9 @@
             "keywords_eligible": 36
           },
           "2026-09-26": {
-            "performance_index": 74.16337944700632,
+            "performance_index": 73.01934613350838,
             "visibility_index": 8.641293606138829,
-            "performance_total": 53997,
+            "performance_total": 54843,
             "estimated_visits": 480,
             "rank_distribution": {
               "1": 6,
@@ -489,6 +377,150 @@
               "rest": 8
             },
             "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-09-27": {
+            "performance_index": 6.863227759240012,
+            "visibility_index": 4.765293251060118,
+            "performance_total": 54843,
+            "estimated_visits": 7,
+            "rank_distribution": {
+              "1": 3,
+              "3": 1,
+              "10": 2,
+              "20": 2,
+              "100": 10,
+              "rest": 18
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-09-28": {
+            "performance_index": 35.13301606403734,
+            "visibility_index": 8.83927790500071,
+            "performance_total": 54843,
+            "estimated_visits": 210,
+            "rank_distribution": {
+              "1": 5,
+              "3": 1,
+              "10": 4,
+              "20": 4,
+              "100": 8,
+              "rest": 14
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-09-29": {
+            "performance_index": 35.13301606403734,
+            "visibility_index": 8.83927790500071,
+            "performance_total": 54843,
+            "estimated_visits": 210,
+            "rank_distribution": {
+              "1": 5,
+              "3": 1,
+              "10": 4,
+              "20": 4,
+              "100": 8,
+              "rest": 14
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-09-30": {
+            "performance_index": 35.13301606403734,
+            "visibility_index": 8.83927790500071,
+            "performance_total": 54843,
+            "estimated_visits": 210,
+            "rank_distribution": {
+              "1": 5,
+              "3": 1,
+              "10": 4,
+              "20": 4,
+              "100": 8,
+              "rest": 14
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-10-01": {
+            "performance_index": 35.13301606403734,
+            "visibility_index": 8.83927790500071,
+            "performance_total": 54843,
+            "estimated_visits": 210,
+            "rank_distribution": {
+              "1": 5,
+              "3": 1,
+              "10": 4,
+              "20": 4,
+              "100": 8,
+              "rest": 14
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-10-02": {
+            "performance_index": 35.13301606403734,
+            "visibility_index": 8.83927790500071,
+            "performance_total": 54843,
+            "estimated_visits": 210,
+            "rank_distribution": {
+              "1": 5,
+              "3": 1,
+              "10": 4,
+              "20": 4,
+              "100": 8,
+              "rest": 14
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-10-03": {
+            "performance_index": 35.13301606403734,
+            "visibility_index": 8.83927790500071,
+            "performance_total": 54843,
+            "estimated_visits": 210,
+            "rank_distribution": {
+              "1": 5,
+              "3": 1,
+              "10": 4,
+              "20": 4,
+              "100": 8,
+              "rest": 14
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-10-04": {
+            "performance_index": 58.88262859435115,
+            "visibility_index": 11.258821630496147,
+            "performance_total": 54843,
+            "estimated_visits": 449,
+            "rank_distribution": {
+              "1": 4,
+              "3": 3,
+              "10": 0,
+              "20": 1,
+              "100": 6,
+              "rest": 22
+            },
+            "keywords_with_history": 36,
+            "keywords_eligible": 36
+          },
+          "2026-10-05": {
+            "performance_index": 59.38287269450727,
+            "visibility_index": 11.258821630496147,
+            "performance_total": 54381,
+            "estimated_visits": 449,
+            "rank_distribution": {
+              "1": 4,
+              "3": 3,
+              "10": 0,
+              "20": 1,
+              "100": 6,
+              "rest": 8
+            },
+            "keywords_with_history": 22,
             "keywords_eligible": 36
           }
         }
@@ -521,118 +553,6 @@
       ],
       "stats": {
         "timeframes": {
-          "2026-08-29": {
-            "performance_index": 85.7738715924326,
-            "visibility_index": 11.193764107945384,
-            "performance_total": 46991,
-            "estimated_visits": 381,
-            "rank_distribution": {
-              "1": 12,
-              "3": 6,
-              "10": 5,
-              "20": 2,
-              "100": 0,
-              "rest": 1
-            },
-            "keywords_with_history": 26,
-            "keywords_eligible": 26
-          },
-          "2026-08-30": {
-            "performance_index": 86.169692068694,
-            "visibility_index": 12.527136030602172,
-            "performance_total": 46991,
-            "estimated_visits": 379,
-            "rank_distribution": {
-              "1": 14,
-              "3": 6,
-              "10": 5,
-              "20": 1,
-              "100": 0,
-              "rest": 0
-            },
-            "keywords_with_history": 26,
-            "keywords_eligible": 26
-          },
-          "2026-08-31": {
-            "performance_index": 86.169692068694,
-            "visibility_index": 12.527136030602172,
-            "performance_total": 46991,
-            "estimated_visits": 379,
-            "rank_distribution": {
-              "1": 14,
-              "3": 6,
-              "10": 5,
-              "20": 1,
-              "100": 0,
-              "rest": 0
-            },
-            "keywords_with_history": 26,
-            "keywords_eligible": 26
-          },
-          "2026-09-01": {
-            "performance_index": 86.169692068694,
-            "visibility_index": 12.527136030602172,
-            "performance_total": 46991,
-            "estimated_visits": 379,
-            "rank_distribution": {
-              "1": 14,
-              "3": 6,
-              "10": 5,
-              "20": 1,
-              "100": 0,
-              "rest": 0
-            },
-            "keywords_with_history": 26,
-            "keywords_eligible": 26
-          },
-          "2026-09-02": {
-            "performance_index": 86.169692068694,
-            "visibility_index": 12.527136030602172,
-            "performance_total": 46991,
-            "estimated_visits": 379,
-            "rank_distribution": {
-              "1": 14,
-              "3": 6,
-              "10": 5,
-              "20": 1,
-              "100": 0,
-              "rest": 0
-            },
-            "keywords_with_history": 26,
-            "keywords_eligible": 26
-          },
-          "2026-09-03": {
-            "performance_index": 86.169692068694,
-            "visibility_index": 12.527136030602172,
-            "performance_total": 46991,
-            "estimated_visits": 379,
-            "rank_distribution": {
-              "1": 14,
-              "3": 6,
-              "10": 5,
-              "20": 1,
-              "100": 0,
-              "rest": 0
-            },
-            "keywords_with_history": 26,
-            "keywords_eligible": 26
-          },
-          "2026-09-04": {
-            "performance_index": 86.169692068694,
-            "visibility_index": 12.527136030602172,
-            "performance_total": 46991,
-            "estimated_visits": 379,
-            "rank_distribution": {
-              "1": 14,
-              "3": 6,
-              "10": 5,
-              "20": 1,
-              "100": 0,
-              "rest": 0
-            },
-            "keywords_with_history": 26,
-            "keywords_eligible": 26
-          },
           "2026-09-05": {
             "performance_index": 86.169692068694,
             "visibility_index": 12.527136030602172,
@@ -996,25 +916,137 @@
               "10": 3,
               "20": 2,
               "100": 6,
-              "rest": 0
+              "rest": 1
             },
-            "keywords_with_history": 25,
+            "keywords_with_history": 26,
             "keywords_eligible": 26
           },
           "2026-09-28": {
-            "performance_index": 70.97742120831649,
-            "visibility_index": 8.717878106561567,
+            "performance_index": 73.04803047392053,
+            "visibility_index": 7.331402304756833,
             "performance_total": 46991,
-            "estimated_visits": 331,
+            "estimated_visits": 332,
             "rank_distribution": {
               "1": 7,
-              "3": 7,
+              "3": 8,
               "10": 3,
               "20": 2,
-              "100": 2,
+              "100": 6,
               "rest": 0
             },
-            "keywords_with_history": 21,
+            "keywords_with_history": 26,
+            "keywords_eligible": 26
+          },
+          "2026-09-29": {
+            "performance_index": 73.04803047392053,
+            "visibility_index": 7.331402304756833,
+            "performance_total": 46991,
+            "estimated_visits": 332,
+            "rank_distribution": {
+              "1": 7,
+              "3": 8,
+              "10": 3,
+              "20": 2,
+              "100": 6,
+              "rest": 0
+            },
+            "keywords_with_history": 26,
+            "keywords_eligible": 26
+          },
+          "2026-09-30": {
+            "performance_index": 73.04803047392053,
+            "visibility_index": 7.331402304756833,
+            "performance_total": 46991,
+            "estimated_visits": 332,
+            "rank_distribution": {
+              "1": 7,
+              "3": 8,
+              "10": 3,
+              "20": 2,
+              "100": 6,
+              "rest": 0
+            },
+            "keywords_with_history": 26,
+            "keywords_eligible": 26
+          },
+          "2026-10-01": {
+            "performance_index": 73.04803047392053,
+            "visibility_index": 7.331402304756833,
+            "performance_total": 46991,
+            "estimated_visits": 332,
+            "rank_distribution": {
+              "1": 7,
+              "3": 8,
+              "10": 3,
+              "20": 2,
+              "100": 6,
+              "rest": 0
+            },
+            "keywords_with_history": 26,
+            "keywords_eligible": 26
+          },
+          "2026-10-02": {
+            "performance_index": 73.04803047392053,
+            "visibility_index": 7.331402304756833,
+            "performance_total": 46991,
+            "estimated_visits": 332,
+            "rank_distribution": {
+              "1": 7,
+              "3": 8,
+              "10": 3,
+              "20": 2,
+              "100": 6,
+              "rest": 0
+            },
+            "keywords_with_history": 26,
+            "keywords_eligible": 26
+          },
+          "2026-10-03": {
+            "performance_index": 73.04803047392053,
+            "visibility_index": 7.331402304756833,
+            "performance_total": 46991,
+            "estimated_visits": 332,
+            "rank_distribution": {
+              "1": 7,
+              "3": 8,
+              "10": 3,
+              "20": 2,
+              "100": 6,
+              "rest": 0
+            },
+            "keywords_with_history": 26,
+            "keywords_eligible": 26
+          },
+          "2026-10-04": {
+            "performance_index": 37.758294141431335,
+            "visibility_index": 5.0663890951561275,
+            "performance_total": 46991,
+            "estimated_visits": 164,
+            "rank_distribution": {
+              "1": 4,
+              "3": 3,
+              "10": 3,
+              "20": 2,
+              "100": 9,
+              "rest": 5
+            },
+            "keywords_with_history": 26,
+            "keywords_eligible": 26
+          },
+          "2026-10-05": {
+            "performance_index": 37.758294141431335,
+            "visibility_index": 5.0663890951561275,
+            "performance_total": 46991,
+            "estimated_visits": 164,
+            "rank_distribution": {
+              "1": 4,
+              "3": 3,
+              "10": 3,
+              "20": 2,
+              "100": 9,
+              "rest": 2
+            },
+            "keywords_with_history": 23,
             "keywords_eligible": 26
           }
         }
@@ -1091,17 +1123,17 @@
         "tags": [],
         "created_at": 1763021096,
         "is_deleted": false,
-        "last_checked_at": 1790587695
+        "last_checked_at": 1791158406
       },
       {
         "_id": "69159132598016b4d9930e1e",
         "kwId": "a29e786f94a28cc0689638a030a08058",
         "kw": "hypnosetherapie bern",
-        "url": "https://bern-hypnose.ch",
+        "url": null,
         "tags": [],
         "created_at": 1763021096,
         "is_deleted": false,
-        "last_checked_at": 1790587695
+        "last_checked_at": 1791171976
       },
       {
         "_id": "69159132598016b4d9930e1f",
@@ -1111,7 +1143,7 @@
         "tags": [],
         "created_at": 1763021096,
         "is_deleted": false,
-        "last_checked_at": 1790600576
+        "last_checked_at": 1791158406
       },
       {
         "_id": "69159132598016b4d9930e20",
@@ -1121,7 +1153,7 @@
         "tags": [],
         "created_at": 1763021096,
         "is_deleted": false,
-        "last_checked_at": 1790593837
+        "last_checked_at": 1791171976
       },
       {
         "_id": "69159132598016b4d9930e21",
@@ -1131,7 +1163,7 @@
         "tags": [],
         "created_at": 1763021096,
         "is_deleted": false,
-        "last_checked_at": 1790553604
+        "last_checked_at": 1791171976
       },
       {
         "_id": "69159132598016b4d9930e22",
@@ -1141,7 +1173,7 @@
         "tags": [],
         "created_at": 1763021096,
         "is_deleted": false,
-        "last_checked_at": 1790575399
+        "last_checked_at": 1791158406
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6de",
@@ -1151,17 +1183,17 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790553611
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6df",
         "kwId": "0e6a06d3e4ca126682757f1b5d765cb7",
         "kw": "sporthypnose",
-        "url": "https://bern-hypnose.ch",
+        "url": null,
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790553611
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e0",
@@ -1171,7 +1203,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790575940
+        "last_checked_at": 1791190098
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e1",
@@ -1181,17 +1213,17 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790575402
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e2",
         "kwId": "0c5d42bd81ce1e1ec15b6301167105bd",
         "kw": "rauchen aufhören hypnose",
-        "url": "https://bern-hypnose.ch",
+        "url": null,
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790560882
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e3",
@@ -1201,7 +1233,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790553611
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e4",
@@ -1211,7 +1243,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790594390
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e5",
@@ -1221,7 +1253,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790398586
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e6",
@@ -1231,7 +1263,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790601505
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e7",
@@ -1241,7 +1273,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790383034
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e8",
@@ -1251,7 +1283,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790408902
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e9",
@@ -1261,7 +1293,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790580896
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ea",
@@ -1271,7 +1303,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790409280
+        "last_checked_at": 1791190098
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6eb",
@@ -1281,7 +1313,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790553611
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ec",
@@ -1291,7 +1323,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790594390
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ed",
@@ -1301,17 +1333,17 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790601505
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ee",
         "kwId": "0e509a2fdb0b7f3db42f478e30b068ab",
         "kw": "flugangst hypnose",
-        "url": "https://bern-hypnose.ch",
+        "url": null,
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790575402
+        "last_checked_at": 1791171746
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ef",
@@ -1321,7 +1353,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790560882
+        "last_checked_at": 1791171746
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f0",
@@ -1331,7 +1363,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790579987
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f1",
@@ -1341,37 +1373,37 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790575610
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f2",
         "kwId": "f97dd7578379bb268090d78e75520f90",
         "kw": "hypnose emetophobie",
-        "url": null,
+        "url": "https://bern-hypnose.ch",
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790594390
+        "last_checked_at": 1791171746
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f3",
         "kwId": "65607b11676826cd47216762d52b6fbc",
         "kw": "hypnose burnout",
-        "url": "https://bern-hypnose.ch",
+        "url": null,
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790587757
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f4",
         "kwId": "1ef3bf92614d371553b34f12c185262f",
         "kw": "hypnose stress abbauen",
-        "url": "https://bern-hypnose.ch",
+        "url": null,
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790601505
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f5",
@@ -1381,7 +1413,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790580107
+        "last_checked_at": 1791171746
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f6",
@@ -1391,7 +1423,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790577942
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f7",
@@ -1401,7 +1433,7 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790383034
+        "last_checked_at": 1791171746
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f8",
@@ -1411,17 +1443,17 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790587757
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6f9",
         "kwId": "c87183e5a23ac442febb245c8ad364fd",
         "kw": "hypnose für kinder",
-        "url": "https://bern-hypnose.ch",
+        "url": null,
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790553611
+        "last_checked_at": 1791200279
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6fa",
@@ -1431,140 +1463,28 @@
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790587757
+        "last_checked_at": 1791158404
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6fb",
         "kwId": "8d6051c8fa9d9dc4a39a97379506eb69",
         "kw": "was kostet hypnose",
-        "url": null,
+        "url": "https://bern-hypnose.ch",
         "tags": [],
         "created_at": 1784802200,
         "is_deleted": false,
-        "last_checked_at": 1790594390
+        "last_checked_at": 1791158404
       }
     ]
   },
   "stats": {
     "history_dates": [
-      "2026-09-18",
-      "2026-09-08",
-      "2026-08-29"
+      "2026-09-25",
+      "2026-09-15",
+      "2026-09-05"
     ],
     "stats": {
       "timeframes": {
-        "2026-08-29": {
-          "performance_index": 70.83128202322995,
-          "visibility_index": 8.306264025862907,
-          "performance_total": 54843,
-          "estimated_visits": 480,
-          "rank_distribution": {
-            "1": 6,
-            "3": 5,
-            "10": 6,
-            "20": 7,
-            "100": 1,
-            "rest": 11
-          },
-          "keywords_with_history": 36,
-          "keywords_eligible": 36
-        },
-        "2026-08-30": {
-          "performance_index": 70.24232810021334,
-          "visibility_index": 10.200676044200645,
-          "performance_total": 54843,
-          "estimated_visits": 469,
-          "rank_distribution": {
-            "1": 8,
-            "3": 2,
-            "10": 8,
-            "20": 8,
-            "100": 1,
-            "rest": 9
-          },
-          "keywords_with_history": 36,
-          "keywords_eligible": 36
-        },
-        "2026-08-31": {
-          "performance_index": 70.24232810021334,
-          "visibility_index": 10.200676044200645,
-          "performance_total": 54843,
-          "estimated_visits": 469,
-          "rank_distribution": {
-            "1": 8,
-            "3": 2,
-            "10": 8,
-            "20": 8,
-            "100": 1,
-            "rest": 9
-          },
-          "keywords_with_history": 36,
-          "keywords_eligible": 36
-        },
-        "2026-09-01": {
-          "performance_index": 70.24232810021334,
-          "visibility_index": 10.200676044200645,
-          "performance_total": 54843,
-          "estimated_visits": 469,
-          "rank_distribution": {
-            "1": 8,
-            "3": 2,
-            "10": 8,
-            "20": 8,
-            "100": 1,
-            "rest": 9
-          },
-          "keywords_with_history": 36,
-          "keywords_eligible": 36
-        },
-        "2026-09-02": {
-          "performance_index": 70.24232810021334,
-          "visibility_index": 10.200676044200645,
-          "performance_total": 54843,
-          "estimated_visits": 469,
-          "rank_distribution": {
-            "1": 8,
-            "3": 2,
-            "10": 8,
-            "20": 8,
-            "100": 1,
-            "rest": 9
-          },
-          "keywords_with_history": 36,
-          "keywords_eligible": 36
-        },
-        "2026-09-03": {
-          "performance_index": 70.24232810021334,
-          "visibility_index": 10.200676044200645,
-          "performance_total": 54843,
-          "estimated_visits": 469,
-          "rank_distribution": {
-            "1": 8,
-            "3": 2,
-            "10": 8,
-            "20": 8,
-            "100": 1,
-            "rest": 9
-          },
-          "keywords_with_history": 36,
-          "keywords_eligible": 36
-        },
-        "2026-09-04": {
-          "performance_index": 70.24232810021334,
-          "visibility_index": 10.200676044200645,
-          "performance_total": 54843,
-          "estimated_visits": 469,
-          "rank_distribution": {
-            "1": 8,
-            "3": 2,
-            "10": 8,
-            "20": 8,
-            "100": 1,
-            "rest": 9
-          },
-          "keywords_with_history": 36,
-          "keywords_eligible": 36
-        },
         "2026-09-05": {
           "performance_index": 70.24232810021334,
           "visibility_index": 10.200676044200645,
@@ -1918,8 +1838,8 @@
           "keywords_eligible": 36
         },
         "2026-09-27": {
-          "performance_index": 6.6170705468336894,
-          "visibility_index": 5.360844612197743,
+          "performance_index": 6.863227759240012,
+          "visibility_index": 4.765293251060118,
           "performance_total": 54843,
           "estimated_visits": 7,
           "rank_distribution": {
@@ -1927,26 +1847,138 @@
             "3": 1,
             "10": 2,
             "20": 2,
-            "100": 8,
-            "rest": 10
+            "100": 10,
+            "rest": 18
           },
-          "keywords_with_history": 26,
+          "keywords_with_history": 36,
           "keywords_eligible": 36
         },
         "2026-09-28": {
-          "performance_index": 34.854037889976844,
-          "visibility_index": 8.964426463077391,
+          "performance_index": 35.13301606403734,
+          "visibility_index": 8.83927790500071,
           "performance_total": 54843,
           "estimated_visits": 210,
           "rank_distribution": {
-            "1": 4,
+            "1": 5,
             "3": 1,
             "10": 4,
-            "20": 3,
-            "100": 7,
-            "rest": 6
+            "20": 4,
+            "100": 8,
+            "rest": 14
           },
-          "keywords_with_history": 25,
+          "keywords_with_history": 36,
+          "keywords_eligible": 36
+        },
+        "2026-09-29": {
+          "performance_index": 35.13301606403734,
+          "visibility_index": 8.83927790500071,
+          "performance_total": 54843,
+          "estimated_visits": 210,
+          "rank_distribution": {
+            "1": 5,
+            "3": 1,
+            "10": 4,
+            "20": 4,
+            "100": 8,
+            "rest": 14
+          },
+          "keywords_with_history": 36,
+          "keywords_eligible": 36
+        },
+        "2026-09-30": {
+          "performance_index": 35.13301606403734,
+          "visibility_index": 8.83927790500071,
+          "performance_total": 54843,
+          "estimated_visits": 210,
+          "rank_distribution": {
+            "1": 5,
+            "3": 1,
+            "10": 4,
+            "20": 4,
+            "100": 8,
+            "rest": 14
+          },
+          "keywords_with_history": 36,
+          "keywords_eligible": 36
+        },
+        "2026-10-01": {
+          "performance_index": 35.13301606403734,
+          "visibility_index": 8.83927790500071,
+          "performance_total": 54843,
+          "estimated_visits": 210,
+          "rank_distribution": {
+            "1": 5,
+            "3": 1,
+            "10": 4,
+            "20": 4,
+            "100": 8,
+            "rest": 14
+          },
+          "keywords_with_history": 36,
+          "keywords_eligible": 36
+        },
+        "2026-10-02": {
+          "performance_index": 35.13301606403734,
+          "visibility_index": 8.83927790500071,
+          "performance_total": 54843,
+          "estimated_visits": 210,
+          "rank_distribution": {
+            "1": 5,
+            "3": 1,
+            "10": 4,
+            "20": 4,
+            "100": 8,
+            "rest": 14
+          },
+          "keywords_with_history": 36,
+          "keywords_eligible": 36
+        },
+        "2026-10-03": {
+          "performance_index": 35.13301606403734,
+          "visibility_index": 8.83927790500071,
+          "performance_total": 54843,
+          "estimated_visits": 210,
+          "rank_distribution": {
+            "1": 5,
+            "3": 1,
+            "10": 4,
+            "20": 4,
+            "100": 8,
+            "rest": 14
+          },
+          "keywords_with_history": 36,
+          "keywords_eligible": 36
+        },
+        "2026-10-04": {
+          "performance_index": 58.88262859435115,
+          "visibility_index": 11.258821630496147,
+          "performance_total": 54843,
+          "estimated_visits": 449,
+          "rank_distribution": {
+            "1": 4,
+            "3": 3,
+            "10": 0,
+            "20": 1,
+            "100": 6,
+            "rest": 22
+          },
+          "keywords_with_history": 36,
+          "keywords_eligible": 36
+        },
+        "2026-10-05": {
+          "performance_index": 58.88262859435115,
+          "visibility_index": 11.258821630496147,
+          "performance_total": 54843,
+          "estimated_visits": 449,
+          "rank_distribution": {
+            "1": 4,
+            "3": 3,
+            "10": 0,
+            "20": 1,
+            "100": 6,
+            "rest": 22
+          },
+          "keywords_with_history": 36,
           "keywords_eligible": 36
         }
       },
@@ -1956,109 +1988,17 @@
     "keywords": [
       {
         "_id": "69159132598016b4d9930e1d",
-        "rank_change": 30,
-        "search_volume": 660,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "above",
-          "serp_coverage": 11.906378600823045,
-          "serp_coverage_change": -3.76,
-          "above_the_fold": -600,
-          "above_the_fold_change": 639,
-          "from_top_edge": 168,
-          "from_top_edge_change": 639
-        },
-        "serp_features": [
-          "MAP_PACK"
-        ],
-        "map_pack": {
-          "rank": -1,
-          "url": null,
-          "hasUrl": false
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": 0,
-        "rank": {
-          "last": 31,
-          "avg": 3.8,
-          "best": 1
-        },
-        "last_checked_at": 1790587695,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": 0,
-        "estimated_visits_total_change": -196,
-        "performanceIndexChange": -22.10491767408785,
-        "rank_history": [
-          1,
-          1,
-          1
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "69159132598016b4d9930e1e",
-        "rank_change": 31,
-        "search_volume": 170,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "above",
-          "serp_coverage": 10.294369514022693,
-          "serp_coverage_change": -1.87,
-          "above_the_fold": -304,
-          "above_the_fold_change": 434,
-          "from_top_edge": 464,
-          "from_top_edge_change": 434
-        },
-        "serp_features": [
-          "MAP_PACK"
-        ],
-        "map_pack": {
-          "rank": -1,
-          "url": null,
-          "hasUrl": false
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": 0,
-        "rank": {
-          "last": 33,
-          "avg": 4.7,
-          "best": 2
-        },
-        "last_checked_at": 1790587695,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": 0,
-        "estimated_visits_total_change": -21,
-        "performanceIndexChange": -6.121109348503912,
-        "rank_history": [
-          2,
-          3,
-          2
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "69159132598016b4d9930e1f",
         "rank_change": 0,
         "search_volume": 660,
         "is_more_url": false,
         "visual_metrics": {
           "status": "below",
-          "serp_coverage": 31.69065867707172,
-          "serp_coverage_change": -14.98,
-          "above_the_fold": 39,
-          "above_the_fold_change": -575,
-          "from_top_edge": 807,
-          "from_top_edge_change": -575
+          "serp_coverage": 7.73195047435279,
+          "serp_coverage_change": -0.25,
+          "above_the_fold": 33,
+          "above_the_fold_change": -51,
+          "from_top_edge": 801,
+          "from_top_edge_change": -51
         },
         "serp_features": [
           "MAP_PACK"
@@ -2076,11 +2016,11 @@
         "estimated_visits": 196,
         "rank": {
           "last": 1,
-          "avg": 1,
+          "avg": 8.6,
           "best": 1
         },
-        "last_checked_at": 1790600576,
-        "last_crawled_at": "2026-09-20",
+        "last_checked_at": 1791158406,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 196,
         "estimated_visits_total_change": 0,
         "performanceIndexChange": 0,
@@ -2090,21 +2030,21 @@
           1
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
-        "_id": "69159132598016b4d9930e20",
-        "rank_change": -2,
+        "_id": "69159132598016b4d9930e1e",
+        "rank_change": 97,
         "search_volume": 170,
         "is_more_url": false,
         "visual_metrics": {
-          "status": "below",
-          "serp_coverage": 6.849715099715099,
-          "serp_coverage_change": 0.31,
-          "above_the_fold": 748,
-          "above_the_fold_change": 268,
-          "from_top_edge": 1516,
-          "from_top_edge_change": 268
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 8.89,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
         },
         "serp_features": [
           "MAP_PACK"
@@ -2119,37 +2059,129 @@
           "url": null,
           "isRanking": false
         },
-        "estimated_visits": 7,
+        "estimated_visits": 0,
         "rank": {
-          "last": 4,
-          "avg": 4.1,
+          "last": 101,
+          "avg": 15.7,
+          "best": 2
+        },
+        "last_checked_at": 1791171976,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": -7,
+        "performanceIndexChange": -4.03515489670514,
+        "rank_history": [
+          2,
+          2,
+          4
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "69159132598016b4d9930e1f",
+        "rank_change": 0,
+        "search_volume": 660,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": "below",
+          "serp_coverage": 32.84404486809166,
+          "serp_coverage_change": -1.35,
+          "above_the_fold": 39,
+          "above_the_fold_change": -593,
+          "from_top_edge": 807,
+          "from_top_edge_change": -593
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 196,
+        "rank": {
+          "last": 1,
+          "avg": 4.2,
+          "best": 1
+        },
+        "last_checked_at": 1791158406,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 196,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": 0,
+        "rank_history": [
+          1,
+          1,
+          1
+        ],
+        "is_empty_main_array": false,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "69159132598016b4d9930e20",
+        "rank_change": 42,
+        "search_volume": 170,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": "below",
+          "serp_coverage": 10.294369514022693,
+          "serp_coverage_change": -3.07,
+          "above_the_fold": 140,
+          "above_the_fold_change": 580,
+          "from_top_edge": 908,
+          "from_top_edge_change": 580
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 46,
+          "avg": 8.9,
           "best": 4
         },
-        "last_checked_at": 1790593837,
-        "last_crawled_at": "2026-09-20",
-        "estimated_visits_change": 7,
-        "estimated_visits_total_change": 3,
-        "performanceIndexChange": 1.5462319712634247,
+        "last_checked_at": 1791171976,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": -7,
+        "performanceIndexChange": -3.5720146600295393,
         "rank_history": [
           4,
           4,
-          6
+          4
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "69159132598016b4d9930e21",
-        "rank_change": -15,
+        "rank_change": 49,
         "is_more_url": false,
         "visual_metrics": {
-          "status": "above",
-          "serp_coverage": 6.974905715114592,
-          "serp_coverage_change": 5.27,
-          "above_the_fold": -554,
-          "above_the_fold_change": 722,
-          "from_top_edge": 214,
-          "from_top_edge_change": 722
+          "status": "below",
+          "serp_coverage": 10.289413149307228,
+          "serp_coverage_change": -2.05,
+          "above_the_fold": 733,
+          "above_the_fold_change": -751,
+          "from_top_edge": 1501,
+          "from_top_edge_change": -751
         },
         "serp_features": [
           "MAP_PACK"
@@ -2166,66 +2198,68 @@
         },
         "estimated_visits": null,
         "rank": {
-          "last": 1,
-          "avg": 3.7,
+          "last": 50,
+          "avg": 6.4,
           "best": 1
         },
-        "last_checked_at": 1790553604,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791171976,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": null,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": 0.16775158178801305,
+        "performanceIndexChange": -0.17322174206370913,
         "rank_history": [
           3,
           3,
-          16
+          1
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "69159132598016b4d9930e22",
-        "rank_change": 28,
+        "rank_change": 0,
         "search_volume": 170,
         "is_more_url": false,
         "visual_metrics": {
           "status": "below",
-          "serp_coverage": 11.669118368147496,
-          "serp_coverage_change": -1.98,
-          "above_the_fold": 718,
-          "above_the_fold_change": -679,
-          "from_top_edge": 1486,
-          "from_top_edge_change": -679
+          "serp_coverage": 7.477645595210326,
+          "serp_coverage_change": 1.03,
+          "above_the_fold": 39,
+          "above_the_fold_change": 0,
+          "from_top_edge": 807,
+          "from_top_edge_change": 0
         },
-        "serp_features": [],
+        "serp_features": [
+          "MAP_PACK"
+        ],
         "map_pack": {
-          "rank": null,
+          "rank": -1,
           "url": null,
-          "hasUrl": null
+          "hasUrl": false
         },
         "feat_snippet": {
           "serpRank": null,
           "url": null,
           "isRanking": false
         },
-        "estimated_visits": 0,
+        "estimated_visits": 53,
         "rank": {
-          "last": 29,
-          "avg": 2.8,
+          "last": 1,
+          "avg": 7.3,
           "best": 1
         },
-        "last_checked_at": 1790575399,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": 0,
-        "estimated_visits_total_change": -53,
-        "performanceIndexChange": -7.975493681964882,
+        "last_checked_at": 1791158406,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 53,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": 0,
         "rank_history": [
           1,
           1,
           1
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6de",
@@ -2234,12 +2268,12 @@
         "is_more_url": false,
         "visual_metrics": {
           "status": "above",
-          "serp_coverage": 6.6618176780271545,
-          "serp_coverage_change": 0.65,
-          "above_the_fold": -424,
-          "above_the_fold_change": -158,
-          "from_top_edge": 344,
-          "from_top_edge_change": -158
+          "serp_coverage": 7.586478917682325,
+          "serp_coverage_change": -0.18,
+          "above_the_fold": -452,
+          "above_the_fold_change": -148,
+          "from_top_edge": 316,
+          "from_top_edge_change": -148
         },
         "serp_features": [
           "MAP_PACK"
@@ -2257,75 +2291,31 @@
         "estimated_visits": 1,
         "rank": {
           "last": 2,
-          "avg": 1.3,
+          "avg": 1.5,
           "best": 1
         },
-        "last_checked_at": 1790553611,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 1,
         "estimated_visits_total_change": -2,
         "performanceIndexChange": -0.22427657130353917,
         "rank_history": [
-          1,
+          2,
           1,
           1
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6df",
-        "rank_change": -1,
+        "rank_change": 95,
         "search_volume": 10,
         "is_more_url": false,
         "visual_metrics": {
-          "status": "below",
-          "serp_coverage": 9.252002177124641,
-          "serp_coverage_change": -1.03,
-          "above_the_fold": 1282,
-          "above_the_fold_change": -374,
-          "from_top_edge": 2050,
-          "from_top_edge_change": -374
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": 0,
-        "rank": {
-          "last": 5,
-          "avg": 6.1,
-          "best": 5
-        },
-        "last_checked_at": 1790553611,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": 0,
-        "estimated_visits_total_change": 0,
-        "performanceIndexChange": 0.08205240413544117,
-        "rank_history": [
-          5,
-          6,
-          6
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6e0",
-        "rank_change": null,
-        "search_volume": 20,
-        "is_more_url": false,
-        "visual_metrics": {
           "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 9.79,
           "above_the_fold": null,
           "above_the_fold_change": null,
           "from_top_edge": null,
@@ -2342,81 +2332,38 @@
           "url": null,
           "isRanking": false
         },
-        "estimated_visits": null,
+        "estimated_visits": 0,
         "rank": {
-          "last": null,
-          "avg": 101,
-          "best": -1
+          "last": 101,
+          "avg": 12,
+          "best": 5
         },
-        "last_checked_at": 1790575940,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          -1,
-          -1,
-          -1
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6e1",
-        "rank_change": 19,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "above",
-          "serp_coverage": 12.156490961951713,
-          "serp_coverage_change": -4.28,
-          "above_the_fold": -600,
-          "above_the_fold_change": 616,
-          "from_top_edge": 168,
-          "from_top_edge_change": 616
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": 21,
-          "avg": 4.3,
-          "best": 2
-        },
-        "last_checked_at": 1790575402,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": null,
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.12763707309957514,
+        "performanceIndexChange": -0.29721204164615356,
         "rank_history": [
-          3,
-          3,
-          2
+          5,
+          5,
+          6
         ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
       },
       {
-        "_id": "6a61eb9af74ae1de82cfe6e2",
-        "rank_change": 4,
-        "search_volume": 10,
+        "_id": "6a61eb9af74ae1de82cfe6e0",
+        "rank_change": 0,
+        "search_volume": 20,
         "is_more_url": false,
         "visual_metrics": {
-          "status": "below",
-          "serp_coverage": 11.669118368147496,
-          "serp_coverage_change": -1.46,
-          "above_the_fold": 48,
-          "above_the_fold_change": -630,
-          "from_top_edge": 816,
-          "from_top_edge_change": -630
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 0,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
         },
         "serp_features": [],
         "map_pack": {
@@ -2431,22 +2378,111 @@
         },
         "estimated_visits": 0,
         "rank": {
-          "last": 15,
-          "avg": 10.1,
-          "best": 6
+          "last": 101,
+          "avg": 101,
+          "best": -1
         },
-        "last_checked_at": 1790560882,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791190098,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.0036467735171307187,
+        "performanceIndexChange": 0,
         "rank_history": [
-          11,
+          -1,
+          -1,
+          -1
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6e1",
+        "rank_change": 1,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": "below",
+          "serp_coverage": 8.092052673650553,
+          "serp_coverage_change": -0.17,
+          "above_the_fold": 409,
+          "above_the_fold_change": -411,
+          "from_top_edge": 1177,
+          "from_top_edge_change": -411
+        },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": null,
+        "rank": {
+          "last": 3,
+          "avg": 7.4,
+          "best": 2
+        },
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": null,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.03099757489561111,
+        "rank_history": [
+          3,
+          3,
+          2
+        ],
+        "is_empty_main_array": false,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6e2",
+        "rank_change": 90,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 9.89,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 16.6,
+          "best": 6
+        },
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.09116933792826797,
+        "rank_history": [
+          6,
           11,
           11
         ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e3",
@@ -2455,12 +2491,12 @@
         "is_more_url": false,
         "visual_metrics": {
           "status": "below",
-          "serp_coverage": 7.333943414931747,
-          "serp_coverage_change": 0.1,
+          "serp_coverage": 8.719241937948953,
+          "serp_coverage_change": -1.39,
           "above_the_fold": 39,
-          "above_the_fold_change": 18,
+          "above_the_fold_change": 0,
           "from_top_edge": 807,
-          "from_top_edge_change": 18
+          "from_top_edge_change": 0
         },
         "serp_features": [
           "MAP_PACK"
@@ -2481,8 +2517,8 @@
           "avg": 1,
           "best": 1
         },
-        "last_checked_at": 1790553611,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 3,
         "estimated_visits_total_change": 0,
         "performanceIndexChange": 0,
@@ -2492,7 +2528,7 @@
           1
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e4",
@@ -2527,28 +2563,28 @@
           "avg": 72.5,
           "best": 37
         },
-        "last_checked_at": 1790594390,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
         "performanceIndexChange": 0,
         "rank_history": [
+          -1,
           39,
-          37,
           -1
         ],
         "is_empty_main_array": true,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e5",
-        "rank_change": null,
+        "rank_change": 0,
         "search_volume": 10,
         "is_more_url": false,
         "visual_metrics": {
           "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 0,
           "above_the_fold": null,
           "above_the_fold_change": null,
           "from_top_edge": null,
@@ -2565,24 +2601,24 @@
           "url": null,
           "isRanking": false
         },
-        "estimated_visits": null,
+        "estimated_visits": 0,
         "rank": {
-          "last": null,
+          "last": 101,
           "avg": 101,
           "best": -1
         },
-        "last_checked_at": 1790398586,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": 0,
         "rank_history": [
           -1,
           -1,
           -1
         ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e6",
@@ -2597,6 +2633,96 @@
           "from_top_edge": null,
           "from_top_edge_change": null
         },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 101,
+          "best": -1
+        },
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": 0,
+        "rank_history": [
+          -1,
+          -1,
+          -1
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6e7",
+        "rank_change": 0,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 0,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 98.3,
+          "best": 17
+        },
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": 0,
+        "rank_history": [
+          -1,
+          -1,
+          -1
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6e8",
+        "rank_change": 0,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 0,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
         "serp_features": [
           "MAP_PACK"
         ],
@@ -2616,8 +2742,8 @@
           "avg": 101,
           "best": -1
         },
-        "last_checked_at": 1790601505,
-        "last_crawled_at": "2026-08-30",
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
         "performanceIndexChange": 0,
@@ -2627,105 +2753,17 @@
           -1
         ],
         "is_empty_main_array": true,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6e7",
-        "rank_change": null,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
-          "above_the_fold": null,
-          "above_the_fold_change": null,
-          "from_top_edge": null,
-          "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 98.1,
-          "best": 17
-        },
-        "last_checked_at": 1790383034,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          -1,
-          -1,
-          -1
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6e8",
-        "rank_change": null,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
-          "above_the_fold": null,
-          "above_the_fold_change": null,
-          "from_top_edge": null,
-          "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 101,
-          "best": -1
-        },
-        "last_checked_at": 1790408902,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          -1,
-          -1,
-          -1
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6e9",
-        "rank_change": null,
+        "rank_change": 82,
         "search_volume": 10,
         "is_more_url": false,
         "visual_metrics": {
           "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 12.66,
           "above_the_fold": null,
           "above_the_fold_change": null,
           "from_top_edge": null,
@@ -2742,81 +2780,37 @@
           "url": null,
           "isRanking": false
         },
-        "estimated_visits": null,
+        "estimated_visits": 0,
         "rank": {
-          "last": null,
-          "avg": 16.6,
+          "last": 101,
+          "avg": 35.2,
           "best": 4
         },
-        "last_checked_at": 1790580896,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.08387579089400653,
         "rank_history": [
           4,
-          14,
-          -1
+          4,
+          19
         ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ea",
-        "rank_change": null,
+        "rank_change": 100,
         "is_more_url": false,
         "visual_metrics": {
           "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 6.2,
           "above_the_fold": null,
           "above_the_fold_change": null,
           "from_top_edge": null,
           "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 4.7,
-          "best": 1
-        },
-        "last_checked_at": 1790409280,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          1,
-          2,
-          2
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6eb",
-        "rank_change": 0,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "above",
-          "serp_coverage": 7.853347853347853,
-          "serp_coverage_change": -1.3,
-          "above_the_fold": -554,
-          "above_the_fold_change": 18,
-          "from_top_edge": 214,
-          "from_top_edge_change": 18
         },
         "serp_features": [
           "MAP_PACK"
@@ -2831,34 +2825,80 @@
           "url": null,
           "isRanking": false
         },
-        "estimated_visits": 3,
+        "estimated_visits": 0,
         "rank": {
-          "last": 1,
-          "avg": 1.5,
+          "last": 101,
+          "avg": 14.1,
           "best": 1
         },
-        "last_checked_at": 1790553611,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": 3,
+        "last_checked_at": 1791190098,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": 0,
+        "performanceIndexChange": -0.18233867585653593,
+        "rank_history": [
+          1,
+          1,
+          1
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6eb",
+        "rank_change": 32,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": "above",
+          "serp_coverage": 10.294369514022693,
+          "serp_coverage_change": -3.33,
+          "above_the_fold": -304,
+          "above_the_fold_change": -250,
+          "from_top_edge": 464,
+          "from_top_edge_change": -250
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 33,
+          "avg": 3.5,
+          "best": 1
+        },
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": -3,
+        "performanceIndexChange": -0.9554546614882482,
         "rank_history": [
           1,
           1,
           1
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ec",
-        "rank_change": 88,
+        "rank_change": 86,
         "search_volume": 10,
         "is_more_url": false,
         "visual_metrics": {
           "status": null,
           "serp_coverage": 0,
-          "serp_coverage_change": 10.21,
+          "serp_coverage_change": 10.05,
           "above_the_fold": null,
           "above_the_fold_change": null,
           "from_top_edge": null,
@@ -2880,125 +2920,35 @@
         "estimated_visits": 0,
         "rank": {
           "last": 101,
-          "avg": 43.5,
-          "best": 13
+          "avg": 63,
+          "best": 15
         },
-        "last_checked_at": 1790594390,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.0893459511697026,
+        "performanceIndexChange": -0.08752256441113725,
         "rank_history": [
-          -1,
           17,
-          13
+          -1,
+          15
         ],
         "is_empty_main_array": true,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
         "_id": "6a61eb9af74ae1de82cfe6ed",
-        "rank_change": 0,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "above",
-          "serp_coverage": 11.587301587301587,
-          "serp_coverage_change": -4.19,
-          "above_the_fold": -276,
-          "above_the_fold_change": -10,
-          "from_top_edge": 492,
-          "from_top_edge_change": -10
-        },
-        "serp_features": [
-          "MAP_PACK"
-        ],
-        "map_pack": {
-          "rank": -1,
-          "url": null,
-          "hasUrl": false
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": 0,
-        "rank": {
-          "last": 13,
-          "avg": 33.5,
-          "best": 13
-        },
-        "last_checked_at": 1790601505,
-        "last_crawled_at": "2026-09-13",
-        "estimated_visits_change": 0,
-        "estimated_visits_total_change": 0,
-        "performanceIndexChange": 0,
-        "rank_history": [
-          13,
-          -1,
-          13
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6ee",
-        "rank_change": 9,
+        "rank_change": 2,
         "search_volume": 10,
         "is_more_url": false,
         "visual_metrics": {
           "status": "in",
-          "serp_coverage": 9.940051679586563,
-          "serp_coverage_change": 0.77,
-          "above_the_fold": -100,
-          "above_the_fold_change": 132,
-          "from_top_edge": 668,
-          "from_top_edge_change": 132
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": 0,
-        "rank": {
-          "last": 24,
-          "avg": 17.4,
-          "best": 12
-        },
-        "last_checked_at": 1790575402,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": 0,
-        "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.009116933792826796,
-        "rank_history": [
-          21,
-          17,
-          15
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6ef",
-        "rank_change": 3,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "above",
-          "serp_coverage": 12.811154177433249,
-          "serp_coverage_change": -6.01,
-          "above_the_fold": -304,
-          "above_the_fold_change": 2221,
-          "from_top_edge": 464,
-          "from_top_edge_change": 2221
+          "serp_coverage": 10.066467786675041,
+          "serp_coverage_change": -0.26,
+          "above_the_fold": -8,
+          "above_the_fold_change": -268,
+          "from_top_edge": 760,
+          "from_top_edge_change": -268
         },
         "serp_features": [
           "MAP_PACK"
@@ -3015,119 +2965,32 @@
         },
         "estimated_visits": 0,
         "rank": {
-          "last": 13,
-          "avg": 34.2,
-          "best": 10
+          "last": 15,
+          "avg": 35.8,
+          "best": 13
         },
-        "last_checked_at": 1790560882,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.012763707309957514,
+        "performanceIndexChange": -0.0018233867585653594,
         "rank_history": [
-          17,
-          12,
-          10
+          13,
+          13,
+          13
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
-        "_id": "6a61eb9af74ae1de82cfe6f0",
-        "rank_change": null,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
-          "above_the_fold": null,
-          "above_the_fold_change": null,
-          "from_top_edge": null,
-          "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 101,
-          "best": -1
-        },
-        "last_checked_at": 1790579987,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          -1,
-          -1,
-          -1
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6f1",
-        "rank_change": null,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
-          "above_the_fold": null,
-          "above_the_fold_change": null,
-          "from_top_edge": null,
-          "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 84.6,
-          "best": 45
-        },
-        "last_checked_at": 1790575610,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          -1,
-          45,
-          -1
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6f2",
-        "rank_change": 66,
+        "_id": "6a61eb9af74ae1de82cfe6ee",
+        "rank_change": 89,
         "search_volume": 10,
         "is_more_url": false,
         "visual_metrics": {
           "status": null,
           "serp_coverage": 0,
-          "serp_coverage_change": 15.08,
+          "serp_coverage_change": 8.28,
           "above_the_fold": null,
           "above_the_fold_change": null,
           "from_top_edge": null,
@@ -3147,35 +3010,35 @@
         "estimated_visits": 0,
         "rank": {
           "last": 101,
-          "avg": 52.6,
-          "best": 35
+          "avg": 25,
+          "best": 12
         },
-        "last_checked_at": 1790594390,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791171746,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.06746531006691829,
+        "performanceIndexChange": -0.0893459511697026,
         "rank_history": [
-          64,
-          41,
-          35
+          17,
+          21,
+          12
         ],
         "is_empty_main_array": true,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
-        "_id": "6a61eb9af74ae1de82cfe6f3",
-        "rank_change": 26,
+        "_id": "6a61eb9af74ae1de82cfe6ef",
+        "rank_change": -48,
         "search_volume": 10,
         "is_more_url": false,
         "visual_metrics": {
           "status": "above",
           "serp_coverage": 11.271683075480544,
-          "serp_coverage_change": -3.57,
-          "above_the_fold": -452,
-          "above_the_fold_change": 1618,
-          "from_top_edge": 316,
-          "from_top_edge_change": 1618
+          "serp_coverage_change": -11.27,
+          "above_the_fold": -304,
+          "above_the_fold_change": null,
+          "from_top_edge": 464,
+          "from_top_edge_change": null
         },
         "serp_features": [
           "MAP_PACK"
@@ -3192,305 +3055,44 @@
         },
         "estimated_visits": 0,
         "rank": {
-          "last": 32,
-          "avg": 7.5,
-          "best": 5
+          "last": 53,
+          "avg": 19.9,
+          "best": 12
         },
-        "last_checked_at": 1790587757,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791171746,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.2279233448206699,
+        "performanceIndexChange": 0.04740805572269934,
         "rank_history": [
-          6,
-          6,
-          6
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6f4",
-        "rank_change": 2,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "below",
-          "serp_coverage": 8.864305136514322,
-          "serp_coverage_change": -1.06,
-          "above_the_fold": 1309,
-          "above_the_fold_change": -854,
-          "from_top_edge": 2077,
-          "from_top_edge_change": -854
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": 0,
-        "rank": {
-          "last": 5,
-          "avg": 26.6,
-          "best": 3
-        },
-        "last_checked_at": 1790601505,
-        "last_crawled_at": "2026-09-20",
-        "estimated_visits_change": 0,
-        "estimated_visits_total_change": -1,
-        "performanceIndexChange": -0.2461572124063235,
-        "rank_history": [
-          3,
-          -1,
-          3
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6f5",
-        "rank_change": null,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
-          "above_the_fold": null,
-          "above_the_fold_change": null,
-          "from_top_edge": null,
-          "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 8.1,
-          "best": 4
-        },
-        "last_checked_at": 1790580107,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          5,
-          5,
-          8
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6f6",
-        "rank_change": null,
-        "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
-          "above_the_fold": null,
-          "above_the_fold_change": null,
-          "from_top_edge": null,
-          "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 42.3,
-          "best": 13
-        },
-        "last_checked_at": 1790577942,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          -1,
-          13,
+          17,
+          17,
           -1
         ],
         "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
-        "_id": "6a61eb9af74ae1de82cfe6f7",
-        "rank_change": null,
+        "_id": "6a61eb9af74ae1de82cfe6f0",
+        "rank_change": 0,
         "search_volume": 10,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": null,
-          "serp_coverage": null,
-          "serp_coverage_change": null,
-          "above_the_fold": null,
-          "above_the_fold_change": null,
-          "from_top_edge": null,
-          "from_top_edge_change": null
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": null,
-          "avg": 14.9,
-          "best": 13
-        },
-        "last_checked_at": 1790383034,
-        "last_crawled_at": null,
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": null,
-        "performanceIndexChange": null,
-        "rank_history": [
-          14,
-          17,
-          14
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6f8",
-        "rank_change": 34,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "below",
-          "serp_coverage": 11.846873755475906,
-          "serp_coverage_change": -3.14,
-          "above_the_fold": 338,
-          "above_the_fold_change": -137,
-          "from_top_edge": 1106,
-          "from_top_edge_change": -137
-        },
-        "serp_features": [],
-        "map_pack": {
-          "rank": null,
-          "url": null,
-          "hasUrl": null
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": 37,
-          "avg": 8.6,
-          "best": 3
-        },
-        "last_checked_at": 1790587757,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.10028627172109475,
-        "rank_history": [
-          3,
-          4,
-          3
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6f9",
-        "rank_change": -4,
-        "is_more_url": false,
-        "visual_metrics": {
-          "status": "below",
-          "serp_coverage": 7.169108054716911,
-          "serp_coverage_change": 3.04,
-          "above_the_fold": 1807,
-          "above_the_fold_change": -2093,
-          "from_top_edge": 2575,
-          "from_top_edge_change": -2093
-        },
-        "serp_features": [
-          "MAP_PACK"
-        ],
-        "map_pack": {
-          "rank": -1,
-          "url": null,
-          "hasUrl": false
-        },
-        "feat_snippet": {
-          "serpRank": null,
-          "url": null,
-          "isRanking": false
-        },
-        "estimated_visits": null,
-        "rank": {
-          "last": 9,
-          "avg": 30.1,
-          "best": 9
-        },
-        "last_checked_at": 1790553611,
-        "last_crawled_at": "2026-09-27",
-        "estimated_visits_change": null,
-        "estimated_visits_total_change": 0,
-        "performanceIndexChange": 0.009116933792826796,
-        "rank_history": [
-          10,
-          -1,
-          13
-        ],
-        "is_empty_main_array": false,
-        "nearest_before_day": "2026-08-29"
-      },
-      {
-        "_id": "6a61eb9af74ae1de82cfe6fa",
-        "rank_change": 96,
         "is_more_url": false,
         "visual_metrics": {
           "status": null,
           "serp_coverage": 0,
-          "serp_coverage_change": 7.87,
+          "serp_coverage_change": 0,
           "above_the_fold": null,
           "above_the_fold_change": null,
           "from_top_edge": null,
           "from_top_edge_change": null
         },
-        "serp_features": [],
+        "serp_features": [
+          "MAP_PACK"
+        ],
         "map_pack": {
-          "rank": null,
+          "rank": -1,
           "url": null,
-          "hasUrl": null
+          "hasUrl": false
         },
         "feat_snippet": {
           "serpRank": null,
@@ -3500,24 +3102,24 @@
         "estimated_visits": 0,
         "rank": {
           "last": 101,
-          "avg": 14.8,
-          "best": 4
+          "avg": 101,
+          "best": -1
         },
-        "last_checked_at": 1790587757,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
         "estimated_visits_total_change": 0,
-        "performanceIndexChange": -0.06746531006691829,
+        "performanceIndexChange": 0,
         "rank_history": [
-          12,
-          4,
-          5
+          -1,
+          -1,
+          -1
         ],
         "is_empty_main_array": true,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
       },
       {
-        "_id": "6a61eb9af74ae1de82cfe6fb",
+        "_id": "6a61eb9af74ae1de82cfe6f1",
         "rank_change": 0,
         "is_more_url": false,
         "visual_metrics": {
@@ -3529,6 +3131,142 @@
           "from_top_edge": null,
           "from_top_edge_change": null
         },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 75.5,
+          "best": 45
+        },
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": 0,
+        "rank_history": [
+          -1,
+          -1,
+          -1
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f2",
+        "rank_change": 12,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": "in",
+          "serp_coverage": 10.294369514022693,
+          "serp_coverage_change": -0.37,
+          "above_the_fold": -8,
+          "above_the_fold_change": -268,
+          "from_top_edge": 760,
+          "from_top_edge_change": -268
+        },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 55,
+          "avg": 63,
+          "best": 41
+        },
+        "last_checked_at": 1791171746,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.012763707309957514,
+        "rank_history": [
+          43,
+          64,
+          43
+        ],
+        "is_empty_main_array": false,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f3",
+        "rank_change": 96,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 6.74,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 18,
+          "best": 5
+        },
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.37926444578159474,
+        "rank_history": [
+          6,
+          6,
+          5
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f4",
+        "rank_change": 97,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 9.09,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
         "serp_features": [],
         "map_pack": {
           "rank": null,
@@ -3543,21 +3281,329 @@
         "estimated_visits": 0,
         "rank": {
           "last": 101,
-          "avg": 26.6,
-          "best": 12
+          "avg": 35.5,
+          "best": 3
         },
-        "last_checked_at": 1790594390,
-        "last_crawled_at": "2026-09-27",
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
         "estimated_visits_change": 0,
-        "estimated_visits_total_change": 0,
-        "performanceIndexChange": 0,
+        "estimated_visits_total_change": -1,
+        "performanceIndexChange": -0.4813741042612549,
         "rank_history": [
-          24,
-          12,
-          -1
+          5,
+          3,
+          4
         ],
         "is_empty_main_array": true,
-        "nearest_before_day": "2026-08-29"
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f5",
+        "rank_change": 97,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 6.15,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 32.8,
+          "best": 4
+        },
+        "last_checked_at": 1791171746,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.4813741042612549,
+        "rank_history": [
+          5,
+          5,
+          4
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f6",
+        "rank_change": 88,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 10.29,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 61.3,
+          "best": 13
+        },
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.0893459511697026,
+        "rank_history": [
+          13,
+          -1,
+          13
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f7",
+        "rank_change": 86,
+        "search_volume": 10,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 10.62,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 22.6,
+          "best": 13
+        },
+        "last_checked_at": 1791171746,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.08752256441113725,
+        "rank_history": [
+          14,
+          14,
+          15
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f8",
+        "rank_change": 32,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": "below",
+          "serp_coverage": 10.080712788259959,
+          "serp_coverage_change": -2.14,
+          "above_the_fold": 14,
+          "above_the_fold_change": 395,
+          "from_top_edge": 782,
+          "from_top_edge_change": 395
+        },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": null,
+        "rank": {
+          "last": 35,
+          "avg": 16.1,
+          "best": 3
+        },
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": null,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.09846288496252939,
+        "rank_history": [
+          3,
+          3,
+          3
+        ],
+        "is_empty_main_array": false,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6f9",
+        "rank_change": 92,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 7.78,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [
+          "MAP_PACK"
+        ],
+        "map_pack": {
+          "rank": -1,
+          "url": null,
+          "hasUrl": false
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 35.9,
+          "best": 9
+        },
+        "last_checked_at": 1791200279,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.025527414619915027,
+        "rank_history": [
+          9,
+          10,
+          9
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6fa",
+        "rank_change": 95,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": null,
+          "serp_coverage": 0,
+          "serp_coverage_change": 7.92,
+          "above_the_fold": null,
+          "above_the_fold_change": null,
+          "from_top_edge": null,
+          "from_top_edge_change": null
+        },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": 0,
+        "rank": {
+          "last": 101,
+          "avg": 36.3,
+          "best": 4
+        },
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": 0,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": -0.05287821599839543,
+        "rank_history": [
+          12,
+          12,
+          6
+        ],
+        "is_empty_main_array": true,
+        "nearest_before_day": "2026-09-05"
+      },
+      {
+        "_id": "6a61eb9af74ae1de82cfe6fb",
+        "rank_change": -12,
+        "is_more_url": false,
+        "visual_metrics": {
+          "status": "below",
+          "serp_coverage": 8.60004471272077,
+          "serp_coverage_change": 1.48,
+          "above_the_fold": 423,
+          "above_the_fold_change": -535,
+          "from_top_edge": 1191,
+          "from_top_edge_change": -535
+        },
+        "serp_features": [],
+        "map_pack": {
+          "rank": null,
+          "url": null,
+          "hasUrl": null
+        },
+        "feat_snippet": {
+          "serpRank": null,
+          "url": null,
+          "isRanking": false
+        },
+        "estimated_visits": null,
+        "rank": {
+          "last": 2,
+          "avg": 37.1,
+          "best": 2
+        },
+        "last_checked_at": 1791158404,
+        "last_crawled_at": "2026-10-04",
+        "estimated_visits_change": null,
+        "estimated_visits_total_change": 0,
+        "performanceIndexChange": 0.12581368634100978,
+        "rank_history": [
+          12,
+          24,
+          14
+        ],
+        "is_empty_main_array": false,
+        "nearest_before_day": "2026-09-05"
       }
     ],
     "annotations": []
@@ -3619,7 +3665,8 @@
           "2026-09-01",
           "2026-09-08",
           "2026-09-15",
-          "2026-09-22"
+          "2026-09-22",
+          "2026-09-29"
         ]
       }
     ]
@@ -3653,8 +3700,8 @@
     "isCompleted": false,
     "hasPendingChanges": false,
     "dateRange": {
-      "from": "2026-08-29",
-      "to": "2026-09-28"
+      "from": "2026-09-05",
+      "to": "2026-10-05"
     },
     "filters": {
       "models": null
@@ -3690,12 +3737,6 @@
     },
     "timeSeries": [
       {
-        "date": "2026-09-01",
-        "score": 38.41,
-        "visibility": 37.04,
-        "position": 4.39
-      },
-      {
         "date": "2026-09-08",
         "score": 45.43,
         "visibility": 42.96,
@@ -3712,6 +3753,12 @@
         "score": 36.56,
         "visibility": 33.7,
         "position": 3.09
+      },
+      {
+        "date": "2026-09-29",
+        "score": 45.99,
+        "visibility": 45.19,
+        "position": 3.37
       }
     ],
     "rankings": {
@@ -3765,7 +3812,8 @@
       "2026-09-01",
       "2026-09-08",
       "2026-09-15",
-      "2026-09-22"
+      "2026-09-22",
+      "2026-09-29"
     ],
     "brand_perception_display": true,
     "score_label_display": true,
