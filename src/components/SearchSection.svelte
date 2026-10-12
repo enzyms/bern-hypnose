@@ -17,8 +17,6 @@
 
     type IndexEntry = { path: string; title: string; description: string; collection: string };
 
-    const SUGGESTED = ['Wobei kann Hypnose helfen?', 'Was kostet eine Sitzung?', 'Verliere ich die Kontrolle?', 'Hilft Hypnose beim Rauchstopp?'];
-
     const COLLECTION_LABEL: Record<string, string> = {
         blog: 'Blog',
         faq: 'FAQ',
@@ -183,6 +181,22 @@
             track('Suche verwendet');
         }
     }
+
+    let growInner: HTMLDivElement | undefined = $state();
+    let growH = $state(0);
+    const hasExtra = $derived((pendingQuestion && !consented) || !!aiQuestion || results.length > 0);
+
+    $effect(() => {
+        const el = growInner;
+        if (!el) return;
+        const sync = () => {
+            growH = el.scrollHeight;
+        };
+        const ro = new ResizeObserver(sync);
+        ro.observe(el);
+        sync();
+        return () => ro.disconnect();
+    });
 </script>
 
 <section class="bh-search not-prose" aria-label="Suche und KI-Antwort">
@@ -204,80 +218,72 @@
                 autocomplete="off"
             />
             <button class="bh-search__submit" onclick={() => submit()} disabled={isStreaming || !query.trim()} aria-label="Suchen und KI fragen">
-                {isStreaming ? '…' : '✨ Fragen'}
+                {isStreaming ? '…' : 'Fragen'}
             </button>
         </div>
 
-        {#if !aiQuestion && !results.length && !pendingQuestion}
-            <div class="bh-search__chips" role="group" aria-label="Vorgeschlagene Fragen">
-                {#each SUGGESTED as suggestion}
-                    <button class="bh-search__chip" onclick={() => submit(suggestion)}>{suggestion}</button>
-                {/each}
-            </div>
-        {/if}
-
-        {#if pendingQuestion && !consented}
-            <div class="bh-search__consent" role="alertdialog" aria-label="Einwilligung KI-Antwort">
-                <p>
-                    <strong>✨ KI-Antwort aktivieren?</strong> Deine Frage wird anonym an unseren Chatbot übermittelt und gespeichert.
-                    <a href="/datenschutzrichtlinie/">Datenschutz</a> · <a href="/nutzungsbedingungen/">Nutzungsbedingungen</a>
-                </p>
-                <div class="bh-search__consent-actions">
-                    <button class="bh-search__consent-yes" onclick={acceptConsent}>Einverstanden – Antwort anzeigen</button>
-                    <button class="bh-search__consent-no" onclick={declineConsent}>Nur Seiten durchsuchen</button>
-                </div>
-            </div>
-        {/if}
-
-        {#if aiQuestion}
-            <div class="bh-search__answer" aria-live="polite">
-                <div class="bh-search__answer-label">✨ KI-Antwort</div>
-                {#if aiError}
-                    <p class="bh-search__error">{aiError}</p>
-                {:else if !aiAnswer && isStreaming}
-                    <span class="bh-search__typing" role="status" aria-label="Antwort wird geschrieben"><span></span><span></span><span></span></span>
-                {:else}
-                    <div class="bh-search__answer-text">{@html renderAssistantHtml(aiAnswer)}</div>
-                {/if}
-                {#if aiSources.length > 0}
-                    <div class="bh-search__sources">
-                        <span>Quellen:</span>
-                        {#each aiSources as source}
-                            <a href={source.path}>{source.title}</a>
-                        {/each}
+        <div class="bh-search__grow" style="height: {growH}px">
+            <div class="bh-search__grow-inner" class:open={hasExtra} bind:this={growInner}>
+                {#if pendingQuestion && !consented}
+                    <div class="bh-search__consent" role="alertdialog" aria-label="Einwilligung KI-Antwort">
+                        <p>
+                            <strong>KI-Antwort aktivieren?</strong> Deine Frage wird anonym an unseren
+                            <a href="/datenschutzrichtlinie/#7-ki-chatbot-und-ki-antworten-in-der-suche">ethischen Chatbot</a>
+                            gesendet.
+                        </p>
+                        <div class="bh-search__consent-actions">
+                            <button class="bh-search__consent-yes" onclick={acceptConsent}>Einverstanden – Antwort anzeigen</button>
+                            <button class="bh-search__consent-no" onclick={declineConsent}>Nur Seiten durchsuchen</button>
+                        </div>
                     </div>
                 {/if}
-                {#if aiAnswer && !isStreaming && !aiError}
-                    <button class="bh-search__continue" onclick={continueInChat}>Im Chat weiterfragen →</button>
+
+                {#if aiQuestion}
+                    <div class="bh-search__answer" aria-live="polite">
+                        <div class="bh-search__answer-label">✨ KI-Antwort</div>
+                        {#if aiError}
+                            <p class="bh-search__error">{aiError}</p>
+                        {:else if !aiAnswer && isStreaming}
+                            <span class="bh-search__typing" role="status" aria-label="Antwort wird geschrieben"><span></span><span></span><span></span></span>
+                        {:else}
+                            <div class="bh-search__answer-text">{@html renderAssistantHtml(aiAnswer)}</div>
+                        {/if}
+                        {#if aiSources.length > 0}
+                            <div class="bh-search__sources">
+                                <span>Quellen:</span>
+                                {#each aiSources as source}
+                                    <a href={source.path}>{source.title}</a>
+                                {/each}
+                            </div>
+                        {/if}
+                        {#if aiAnswer && !isStreaming && !aiError}
+                            <button class="bh-search__continue" onclick={continueInChat}>Im Chat weiterfragen →</button>
+                        {/if}
+                    </div>
+                {/if}
+
+                {#if results.length > 0}
+                    <div class="bh-search__results">
+                        <div class="bh-search__results-label">Passende Seiten</div>
+                        <ul>
+                            {#each results as result}
+                                <li>
+                                    <a href={result.path}>
+                                        <span class="bh-search__result-title">{result.title}</span>
+                                        {#if COLLECTION_LABEL[result.collection]}
+                                            <span class="bh-search__badge">{COLLECTION_LABEL[result.collection]}</span>
+                                        {/if}
+                                        {#if result.description}
+                                            <span class="bh-search__result-desc">{result.description}</span>
+                                        {/if}
+                                    </a>
+                                </li>
+                            {/each}
+                        </ul>
+                    </div>
                 {/if}
             </div>
-        {/if}
-
-        {#if results.length > 0}
-            <div class="bh-search__results">
-                <div class="bh-search__results-label">Passende Seiten</div>
-                <ul>
-                    {#each results as result}
-                        <li>
-                            <a href={result.path}>
-                                <span class="bh-search__result-title">{result.title}</span>
-                                {#if COLLECTION_LABEL[result.collection]}
-                                    <span class="bh-search__badge">{COLLECTION_LABEL[result.collection]}</span>
-                                {/if}
-                                {#if result.description}
-                                    <span class="bh-search__result-desc">{result.description}</span>
-                                {/if}
-                            </a>
-                        </li>
-                    {/each}
-                </ul>
-            </div>
-        {/if}
-
-        <p class="bh-search__privacy">
-            Die Seitensuche läuft komplett in deinem Browser. Die KI-Antwort (opt-in) beantwortet ein
-            <a href="/datenschutzrichtlinie/#7-ki-chatbot-und-ki-antworten-in-der-suche">ethischer Chatbot</a>.
-        </p>
+        </div>
     </div>
 </section>
 
@@ -382,39 +388,28 @@
             flex: 1 1 100%;
             padding: 11px 16px;
         }
-        /* Suggested questions are noise on small screens */
-        .bh-search__chips {
-            display: none;
+    }
+
+    .bh-search__grow {
+        overflow: hidden;
+        height: 0;
+        transition: height 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .bh-search__grow-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .bh-search__grow-inner.open {
+        padding-top: 14px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .bh-search__grow {
+            transition: none;
         }
     }
 
-    .bh-search__chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 12px;
-    }
-
-    .bh-search__chip {
-        background: rgba(255, 255, 255, 0.85);
-        border: 1px solid #d9c3dd;
-        border-radius: 999px;
-        padding: 7px 14px;
-        font-size: 0.875rem;
-        color: #222;
-        cursor: pointer;
-        transition:
-            background 0.15s,
-            border-color 0.15s;
-        font-family: inherit;
-    }
-    .bh-search__chip:hover {
-        background: #fff;
-        border-color: #b06ec7;
-    }
-
     .bh-search__consent {
-        margin-top: 14px;
         background: #fff;
         border: 1px solid #ead7eb;
         border-radius: 12px;
@@ -462,23 +457,7 @@
         background: #f3e8f4;
     }
 
-    .bh-search__privacy {
-        margin: 12px 2px 0;
-        font-size: 0.78rem;
-        color: #494949; /* ≥ 4.5:1 (AA) on the pale lilac box */
-        line-height: 1.4;
-    }
-    .bh-search__privacy a {
-        color: inherit;
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-    .bh-search__privacy a:hover {
-        color: #7a3d8f;
-    }
-
     .bh-search__answer {
-        margin-top: 14px;
         background: #fff;
         border: 1px solid #ead7eb;
         border-radius: 12px;
@@ -595,7 +574,7 @@
     }
 
     .bh-search__results {
-        margin-top: 14px;
+        margin-top: 0;
     }
 
     .bh-search__results-label {
