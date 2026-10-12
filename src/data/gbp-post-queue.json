@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "komm-sei-stolz-auf-dich",
-      "title": "Komm, sei stolz auf dich.",
-      "url": "https://bern-hypnose.ch/blog/komm-sei-stolz-auf-dich/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-18T08:00:00.000Z"
-    },
-    {
       "slug": "wann-ist-eine-lehrperson-eine-gute-lehrperson",
       "title": "Wann ist eine Lehrperson eine gute Lehrperson?",
       "url": "https://bern-hypnose.ch/blog/wann-ist-eine-lehrperson-eine-gute-lehrperson/",
@@ -51,5 +44,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-08-26T15:26:29.082Z"
+  "lastUpdated": "2026-10-12T18:09:27.859Z"
 }
