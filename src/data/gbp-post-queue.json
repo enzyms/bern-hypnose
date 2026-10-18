@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "wann-ist-eine-lehrperson-eine-gute-lehrperson",
-      "title": "Wann ist eine Lehrperson eine gute Lehrperson?",
-      "url": "https://bern-hypnose.ch/blog/wann-ist-eine-lehrperson-eine-gute-lehrperson/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-23T08:00:00.000Z"
-    },
-    {
       "slug": "ich-hätte-da-ein-paar-fragen",
       "title": "Ich hätte da ein paar Fragen...",
       "url": "https://bern-hypnose.ch/blog/ich-hätte-da-ein-paar-fragen/",
@@ -44,5 +37,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-10-12T18:09:27.859Z"
+  "lastUpdated": "2026-10-18T22:59:17.559Z"
 }

@@ -509,6 +509,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "wann-ist-eine-lehrperson-eine-gute-lehrperson",
+      "title": "Wann ist eine Lehrperson eine gute Lehrperson?",
+      "scheduledFor": "2026-06-23T08:00:00.000Z",
+      "createdAt": "2026-10-18T22:59:17.558Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/2330480527176728484",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }
