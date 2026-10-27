@@ -1,0 +1,43 @@
+name: Auto-Fetch Google Reviews
+
+# Runs every Monday at 07:00 UTC (08:00 CET winter / 09:00 CEST summer).
+# Fetches new Google reviews (merge-only), commits the updated data file,
+# and pushes — Netlify redeploys on the push to main.
+on:
+  schedule:
+    - cron: '0 7 * * 1'  # Monday 07:00 UTC
+  workflow_dispatch:  # Allow manual trigger (incl. from the GitHub mobile app)
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-reviews:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # The script uses only Node built-ins + global fetch, so no install needed.
+      - name: Fetch and merge Google reviews
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_ACCOUNT_ID: ${{ secrets.GOOGLE_ACCOUNT_ID }}
+          GOOGLE_LOCATION_NAME: ${{ secrets.GOOGLE_LOCATION_NAME }}
+        run: node scripts/fetch-google-reviews.js
+
+      - name: Commit and push updated reviews
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/google-reviews.json || true
+          git diff --staged --quiet || git commit -m "🤖 Add new Google reviews [skip ci]"
+          git push || echo "Nothing to push"
