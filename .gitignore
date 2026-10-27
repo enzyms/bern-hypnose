@@ -61,3 +61,8 @@ src/content/tags/
 # Chat question exports (visitor privacy — never commit; repo is public)
 reports/chat-questions/
 reports/umami-archive/
+
+# MCP tool working files & clones (never commit — repo is public)
+.playwright-mcp/
+claude-talk-to-figma-mcp/
+dashboard-full.jpeg

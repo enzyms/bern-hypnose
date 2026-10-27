@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "slug": "ich-hätte-da-ein-paar-fragen",
-      "title": "Ich hätte da ein paar Fragen...",
-      "url": "https://bern-hypnose.ch/blog/ich-hätte-da-ein-paar-fragen/",
-      "hasImage": true,
-      "scheduledFor": "2026-06-25T08:00:00.000Z"
-    },
-    {
       "slug": "ablauf-einer-kinderhypnose",
       "title": "Ablauf einer Kinderhypnose",
       "url": "https://bern-hypnose.ch/blog/ablauf-einer-kinderhypnose/",
@@ -37,5 +30,5 @@
     }
   ],
   "frequencyDays": 3.5,
-  "lastUpdated": "2026-10-18T22:59:17.559Z"
+  "lastUpdated": "2026-10-27T07:04:24.304Z"
 }

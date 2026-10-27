@@ -519,6 +519,16 @@
       "state": "PROCESSING",
       "isScheduled": false,
       "hasImage": true
+    },
+    {
+      "slug": "ich-hätte-da-ein-paar-fragen",
+      "title": "Ich hätte da ein paar Fragen...",
+      "scheduledFor": "2026-06-25T08:00:00.000Z",
+      "createdAt": "2026-10-27T07:04:24.303Z",
+      "gbpPostId": "accounts/107067054292838933166/locations/15393771859516682512/localPosts/1256816198338775085",
+      "state": "PROCESSING",
+      "isScheduled": false,
+      "hasImage": true
     }
   ]
 }
