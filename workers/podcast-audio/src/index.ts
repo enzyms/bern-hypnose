@@ -140,8 +140,16 @@ async function handleUpload(request: Request, env: Env, name: string): Promise<R
         return new Response(body ? JSON.stringify(body) : null, { status, headers });
     };
 
-    // inbox/ is write-only: reading it looks exactly like a missing file.
-    if (request.method === 'GET' || request.method === 'HEAD') return new Response('Not Found', { status: 404 });
+    // inbox/ is write-only for the public: reading it looks exactly like a missing file.
+    // Only an authenticated GET of the folder itself lists it (for the publish-podcast skill);
+    // downloads go through wrangler, never through this Worker.
+    if (request.method === 'GET' || request.method === 'HEAD') {
+        if (request.method === 'GET' && name === '' && env.UPLOAD_TOKEN &&
+            (await isAuthorized(request.headers.get('Authorization'), env.UPLOAD_TOKEN))) {
+            return listInbox(env);
+        }
+        return new Response('Not Found', { status: 404 });
+    }
     if (request.method === 'OPTIONS') return reply(204);
     if (request.method !== 'PUT') return reply(405, { error: 'method_not_allowed' }, { Allow: 'PUT, OPTIONS' });
 
@@ -214,4 +222,30 @@ function safeDecode(value: string): string {
     } catch {
         return value;
     }
+}
+
+async function listInbox(env: Env): Promise<Response> {
+    const items: { key: string; size: number; uploaded: string; contentType?: string; meta: Record<string, string> }[] = [];
+    let cursor: string | undefined;
+    do {
+        const page = await env.AUDIO.list({
+            prefix: INBOX_PREFIX,
+            cursor,
+            include: ['httpMetadata', 'customMetadata'],
+        });
+        for (const object of page.objects) {
+            items.push({
+                key: object.key,
+                size: object.size,
+                uploaded: object.uploaded.toISOString(),
+                contentType: object.httpMetadata?.contentType,
+                meta: object.customMetadata ?? {},
+            });
+        }
+        cursor = page.truncated ? page.cursor : undefined;
+    } while (cursor);
+    items.sort((a, b) => a.key.localeCompare(b.key));
+    return new Response(JSON.stringify({ items }), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+    });
 }

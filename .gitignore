@@ -69,3 +69,6 @@ dashboard-full.jpeg
 
 # Local Netlify folder
 .netlify
+
+# Podcast publishing scratch (raw takes, transcripts)
+.podcast-work/
