@@ -61,7 +61,8 @@ async function cmdList() {
     for (const it of items) {
         const junk = it.size < MIN_REAL_TAKE_BYTES ? '  (tiny: test/junk)' : '';
         const dur = it.meta.durationSeconds ? mmss(Number(it.meta.durationSeconds)) : '?';
-        console.log(`${it.key}  ${(it.size / 1024 / 1024).toFixed(1)} MB  ${dur}  ${it.meta.note ? `"${it.meta.note}"` : ''}${junk}`);
+        const title = it.meta.title || it.meta.note || '';
+        console.log(`${it.key}  ${(it.size / 1024 / 1024).toFixed(1)} MB  ${dur}  ${title ? `"${title}"` : '(no title)'}${junk}`);
     }
 }
 
@@ -98,8 +99,10 @@ async function cmdPrepare(keyArg, { transcribe }) {
 
     const meta = {
         inboxKey: item.key,
-        note: item.meta.note ?? '',
+        title: item.meta.title || item.meta.note || '', // written by Janine on /record/ (older takes: note)
+        description: item.meta.description ?? '',
         recordedAt: stamp,
+        recordedAtIso: stamp.replace(/T(\d{2})-(\d{2})-(\d{2})Z$/, 'T$1:$2:$3Z'), // use as publishDate
         workDir,
         mp3Path,
         transcriptPath,

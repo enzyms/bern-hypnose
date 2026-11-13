@@ -16,7 +16,7 @@ node scripts/podcast.mjs list
 ```
 
 - Empty → tell Sylvain there is nothing to publish and stop.
-- Several real takes → name them (time, duration, note) and ask which one, unless he already said "the latest".
+- Several real takes → name them (time, duration, title) and ask which one, unless he already said "the latest".
 - Tiny objects (`tiny: test/junk`) are leftovers from tests: offer to delete them (`node scripts/podcast.mjs delete inbox/<key> --yes`), never delete a real take without asking.
 
 ## 2. Prepare
@@ -26,16 +26,18 @@ node scripts/podcast.mjs prepare            # latest real take
 node scripts/podcast.mjs prepare inbox/<key> # a specific one
 ```
 
-It downloads the take, converts it to a loudness-normalised mono MP3 (−16 LUFS, 96 kbps) and transcribes it locally with Whisper (`turbo`, German; the first run downloads the model; a few minutes on CPU — run it in the background if it takes long). It prints `meta.json`: `workDir`, `transcriptPath`, `durationSeconds`, `fileSize`, `note`.
+It downloads the take, converts it to a loudness-normalised mono MP3 (−16 LUFS, 96 kbps) and transcribes it locally with Whisper (`turbo`, German; the first run downloads the model; a few minutes on CPU — run it in the background if it takes long). It prints `meta.json`: `workDir`, `transcriptPath`, `durationSeconds`, `fileSize`, `title`, `description` (both written by Janine on `/record/`; the title is mandatory there, the description optional).
 
 ## 3. Draft the episode
 
 Read the transcript. Whisper turns Mundart into approximate Standard German: it captures the ideas, not the exact words. **Never quote it as if it were verbatim.**
 
-Draft:
-- **title** — short, warm, in Hochdeutsch (max ~60 characters). Use Janine's note as a hint if there is one.
-- **summary** — one or two sentences (≤ 160 characters), used as meta description and list teaser.
-- **body** — 150–300 words in Hochdeutsch, written as "Darum geht es in dieser Folge": the message, its key thoughts, an encouraging closing line. Plain Markdown, no headings needed. No `/termin/` link. A link to a related blog post (`/blog/<slug>/`) is welcome when it truly fits; check it exists in `src/content/blog/`.
+**Janine's own words come first.** She types the title (mandatory) and a description (optional) on her phone when she sends the take.
+
+- **title** — Janine's title, as she wrote it. Only fix an obvious typo, and say so to Sylvain. If it is empty (older takes), draft one: short, warm, Hochdeutsch, max ~60 characters.
+- **summary** — ≤ 160 characters, used as meta description and list teaser. If her description fits, use it as is; if it is longer, condense it faithfully (her wording, shortened); if there is none, write one or two sentences from the transcript.
+- **body** — if she wrote a description, use it **verbatim** as the body (paragraph breaks kept). Do not rewrite or embellish her text. If there is none, draft 150–300 words in Hochdeutsch, "Darum geht es in dieser Folge": the message, its key thoughts, an encouraging closing line. Plain Markdown, no headings. No `/termin/` link. A link to a related blog post (`/blog/<slug>/`) is welcome when it truly fits and Sylvain agrees; check it exists in `src/content/blog/`.
+- Whatever she wrote, still read the transcript and tell Sylvain if her title or description does not match what she says in the recording.
 - **slug** — `YYYY-MM-DD-<short-kebab-title>`, date = recording date (`recordedAt`), ASCII only (ä→ae, ö→oe, ü→ue).
 - **episode number** — highest `episode:` in `src/content/podcast/*.md` + 1, ignoring the technical test episode (`2026-11-13-test-folge.md`). For the first real episode, ask Sylvain whether to delete the test episode (and its `episodes/test-folge.mp3`) in the same commit.
 
@@ -56,7 +58,7 @@ Write `src/content/podcast/<slug>.md`:
 ```markdown
 ---
 title: '<title>'
-publishDate: <YYYY-MM-DD, today>
+publishDate: <recordedAtIso from meta.json, e.g. 2026-11-20T07:15:00Z>
 summary: '<summary>'
 audioUrl: '<audioUrl>'
 duration: <duration>
