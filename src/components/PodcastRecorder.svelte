@@ -54,6 +54,8 @@
             /* private mode: ask for the code each time */
         }
 
+        const linkCode = takeLinkCode();
+
         loadPending()
             .then((saved) => {
                 if (saved) {
@@ -62,10 +64,18 @@
                 }
             })
             .catch(() => {})
-            .finally(() => {
+            .finally(async () => {
+                if (linkCode) return applyLinkCode(linkCode);
                 if (!token) phase = 'locked';
                 else if (!pending) phase = 'idle';
             });
+
+        // The link may also be opened while /record/ is already open: only the hash changes.
+        const onHashChange = () => {
+            const code = takeLinkCode();
+            if (code && phase !== 'recording' && phase !== 'uploading') applyLinkCode(code);
+        };
+        window.addEventListener('hashchange', onHashChange);
 
         const onVisibility = () => {
             if (document.visibilityState === 'hidden' && phase === 'recording') {
@@ -81,6 +91,7 @@
             navigator.mediaDevices.addEventListener('devicechange', refreshMics);
         }
         return () => {
+            window.removeEventListener('hashchange', onHashChange);
             document.removeEventListener('visibilitychange', onVisibility);
             if (!unsupported) navigator.mediaDevices.removeEventListener('devicechange', refreshMics);
             teardown();
@@ -97,9 +108,33 @@
 
     // --- Access code -------------------------------------------------------
 
+    /**
+     * Setup link: /record/#code=<access code>. Reads the code once, then strips it from the
+     * address bar and history so it does not linger in bookmarks or screenshots.
+     */
+    function takeLinkCode(): string {
+        const code = new URLSearchParams(location.hash.slice(1)).get('code')?.trim() ?? '';
+        if (code) history.replaceState(null, '', location.pathname + location.search);
+        return code;
+    }
+
+    async function applyLinkCode(code: string) {
+        if (code === token) {
+            phase = pending ? 'review' : 'idle';
+            notice = 'Zugangscode ist bereits gespeichert.';
+            return;
+        }
+        phase = 'locked';
+        await checkAndStoreCode(code);
+        if (token === code) notice = 'Zugangscode gespeichert. Du kannst jetzt aufnehmen.';
+    }
+
     async function saveCode(event: SubmitEvent) {
         event.preventDefault();
-        const code = codeInput.trim();
+        await checkAndStoreCode(codeInput.trim());
+    }
+
+    async function checkAndStoreCode(code: string) {
         if (!code) return;
         checkingCode = true;
         codeError = '';
