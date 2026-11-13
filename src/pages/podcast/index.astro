@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import PodcastPlayer from '../../components/PodcastPlayer.svelte';
+import ArrowLeft from '../../icons/ArrowLeft.astro';
+import { podcastSeries, getPublishedEpisodes, formatDuration } from '../../data/podcast';
+
+const episodes = await getPublishedEpisodes();
+
+const seriesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'PodcastSeries',
+    '@id': podcastSeries.id,
+    name: podcastSeries.name,
+    description: podcastSeries.description,
+    url: podcastSeries.url,
+    inLanguage: 'de-CH',
+    author: { '@id': 'https://bern-hypnose.ch/janine-aerni/#person' },
+    publisher: { '@id': 'https://bern-hypnose.ch/#organization' }
+};
+---
+
+<BaseLayout
+    title={podcastSeries.name}
+    description={podcastSeries.description}
+    canonical={podcastSeries.url}
+    noindex={!podcastSeries.indexable}
+    schema="none"
+>
+    <script type="application/ld+json" set:html={JSON.stringify(seriesSchema)} />
+    <div>
+        <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/">
+            <ArrowLeft class="w-4 h-4 fill-current" />
+            <span>Home</span>
+        </a>
+        <h1 class="mb-8">{podcastSeries.name}</h1>
+        <div class="prose prose-lg mb-12">
+            <p>{podcastSeries.description}</p>
+        </div>
+
+        {episodes.length === 0 && <p>Die erste Folge erscheint bald.</p>}
+
+        <ol class="flex flex-col gap-12 sm:gap-16">
+            {
+                episodes.map((episode) => (
+                    <li>
+                        <article>
+                            <h2 class="mb-2 text-xl leading-tight font-black sm:text-2xl">
+                                <a class="hover:text-red-500" href={`/podcast/${episode.id}/`}>
+                                    {episode.data.title}
+                                </a>
+                            </h2>
+                            <p class="mb-4 text-sm opacity-70">
+                                <FormattedDate date={episode.data.publishDate} /> · {formatDuration(episode.data.duration)} Min.
+                            </p>
+                            <p class="mb-4">{episode.data.summary}</p>
+                            <PodcastPlayer
+                                client:visible
+                                src={episode.data.audioUrl}
+                                title={episode.data.title}
+                                duration={episode.data.duration}
+                            />
+                        </article>
+                    </li>
+                ))
+            }
+        </ol>
+    </div>
+</BaseLayout>

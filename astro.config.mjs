@@ -24,6 +24,9 @@ export default defineConfig({
                 // Exclude internal dashboard (noindex)
                 if (page.includes('/dashboard/')) return false;
 
+                // Podcast is noindex during the test weeks (podcastSeries.indexable in src/data/podcast.ts)
+                if (page.includes('/podcast/')) return false;
+
                 // Now including pagination pages with self-referencing canonicals (SEO best practice)
                 // Previously excluded, but canonicals handle duplicate content better than noindex
 
