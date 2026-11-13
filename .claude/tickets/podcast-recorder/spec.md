@@ -1,6 +1,6 @@
 # Spec: podcast-recorder — Recording page for Janine (Fairphone) + upload to R2 inbox + notification
 
-**Status:** APPROVED (defaults accepted 2026-11-13: ntfy, home-screen bookmark, `/aufnahme/`)
+**Status:** APPROVED (defaults accepted 2026-11-13: ntfy, home-screen bookmark, `/record/`)
 **Author:** Sylvain Aerni (with Claude)
 **Created:** 2026-11-13
 **Last Updated:** 2026-11-13
@@ -26,8 +26,8 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 | 1 | The Worker only accepts GET/HEAD | HIGH | `workers/podcast-audio/src/index.ts:20-21` | Uploads need a new authenticated write path. Extending this Worker avoids S3 keys and presigned URLs. |
 | 2 | The Worker serves only `episodes/<name>.mp3`; `inbox/` is unreachable | HIGH | `index.ts` `KEY_PREFIX`, `FILENAME`; verified live on the preview (404) | The write path must stay write-only: uploads go to `inbox/`, and the read path must not change. |
 | 3 | No Worker secrets exist yet | MEDIUM | `wrangler.jsonc` has only the R2 binding | Add `UPLOAD_TOKEN` and `NTFY_TOPIC` via `wrangler secret put`. They are never committed. |
-| 4 | The existing PWA manifest is scoped to `/app/start/` (self-hypnosis app) | MEDIUM | `astro.config.mjs` AstroPWA `scope: '/app/start/'`, `start_url: '/app/start/'` | The recorder cannot reuse that manifest. It needs its own static manifest scoped to `/aufnahme/`, or none (see Q4). |
-| 5 | `BaseHead` supports `noindex`; the sitemap filter already excludes admin-like pages | LOW | `src/components/BaseHead.astro:20,89`; `astro.config.mjs` sitemap `filter` | `/aufnahme/` gets `noindex` and is excluded from the sitemap like `/dashboard/`. |
+| 4 | The existing PWA manifest is scoped to `/app/start/` (self-hypnosis app) | MEDIUM | `astro.config.mjs` AstroPWA `scope: '/app/start/'`, `start_url: '/app/start/'` | The recorder cannot reuse that manifest. It needs its own static manifest scoped to `/record/`, or none (see Q4). |
+| 5 | `BaseHead` supports `noindex`; the sitemap filter already excludes admin-like pages | LOW | `src/components/BaseHead.astro:20,89`; `astro.config.mjs` sitemap `filter` | `/record/` gets `noindex` and is excluded from the sitemap like `/dashboard/`. |
 | 6 | `BaseLayout` mounts the chat widget and decorative 3D background on every page | MEDIUM | `src/layouts/BaseLayout.astro` (`<Three />`, `<Chat client:load>`) | The recorder should use a minimal layout: no 3D background (CPU/battery while recording on a phone), no chat bubble. |
 | 7 | `localStorage` is already used client-side | LOW | `src/components/SearchSection.svelte`, `src/utils/assistant-chat.ts` | Storing the upload token on the device is consistent with the existing patterns. |
 | 8 | Netlify Functions exist but are not needed | LOW | `netlify/functions/` (2 files) | Upload goes straight to the Worker; no new Netlify Function. |
@@ -36,14 +36,14 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 ### Affected Files
 
 **New**
-- `src/pages/aufnahme.astro` — page shell (minimal layout, `noindex`)
+- `src/pages/record.astro` — page shell (minimal layout, `noindex`)
 - `src/components/PodcastRecorder.svelte` — recorder UI and state machine
 - `src/utils/recording-store.ts` — IndexedDB persistence of the pending recording
 
 **Modified**
 - `workers/podcast-audio/src/index.ts` — authenticated `PUT /inbox/<id>.<ext>`, CORS, ntfy notification
 - `workers/podcast-audio/wrangler.jsonc` — vars (allowed origins, max size)
-- `astro.config.mjs` — sitemap exclusion for `/aufnahme/`
+- `astro.config.mjs` — sitemap exclusion for `/record/`
 
 ### Test Coverage
 
@@ -64,7 +64,7 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 ## Acceptance Criteria
 
 **Recording (Fairphone, Android Chrome)**
-- [ ] `/aufnahme/` asks for microphone permission once, then shows a large **Aufnehmen** button
+- [ ] `/record/` asks for microphone permission once, then shows a large **Aufnehmen** button
 - [ ] If several inputs exist (e.g. a USB-C DJI receiver), a microphone selector lists them; the last choice is remembered
 - [ ] While recording, the page shows a running timer (mm:ss) and a live input-level meter, and the screen stays on (Screen Wake Lock)
 - [ ] **Stopp** ends the recording and shows a player to listen back, plus **Neu aufnehmen** and **Senden**
@@ -94,7 +94,7 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 - [ ] A notification failure does not fail the upload (`ctx.waitUntil`, errors logged)
 
 **Page hygiene**
-- [ ] `/aufnahme/` has `<meta name="robots" content="noindex, nofollow">` and is absent from the sitemap
+- [ ] `/record/` has `<meta name="robots" content="noindex, nofollow">` and is absent from the sitemap
 - [ ] The page has no 3D background and no chat widget
 - [ ] The UI is in German (Hochdeutsch), readable on a 360 px wide screen, buttons ≥ 48 px
 
@@ -111,7 +111,7 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 
 ### In Scope
 
-- `/aufnahme/` page and the `PodcastRecorder.svelte` component
+- `/record/` page and the `PodcastRecorder.svelte` component
 - IndexedDB persistence of the pending recording
 - Authenticated upload path, CORS and size and type limits in the existing Worker
 - ntfy push notification from the Worker
@@ -152,7 +152,7 @@ A static Astro page hosts a Svelte 5 recorder built on `getUserMedia` + `MediaRe
 | Metadata | R2 `customMetadata`: `note`, `durationSeconds`, `userAgent` | The publish skill gets context without a sidecar file. |
 | Notification | ntfy.sh, topic name as Worker secret `NTFY_TOPIC` (random, unguessable) | Free, no account, Android + iOS app; the topic name acts as the password. |
 | Persistence | IndexedDB (one pending recording) | `localStorage` cannot hold ~4–40 MB blobs. |
-| Layout | Minimal layout for `/aufnahme/` (no `<Three />`, no `<Chat />`) | Battery, CPU and focus while recording. |
+| Layout | Minimal layout for `/record/` (no `<Three />`, no `<Chat />`) | Battery, CPU and focus while recording. |
 | Upload progress | `XMLHttpRequest` upload events | `fetch` has no upload progress in browsers yet. |
 
 ### Phased Breakdown
@@ -160,7 +160,7 @@ A static Astro page hosts a Svelte 5 recorder built on `getUserMedia` + `MediaRe
 1. **Worker write path**: PUT, auth, validation, CORS, metadata, ntfy. Verified with `wrangler dev` + `curl`, then deployed. The read-path regression is re-checked.
 2. **Recorder component**: state machine (idle → recording → review → uploading → sent / error), mic selection, level meter, wake lock, 10-min cap. Verified in desktop Chrome with a real mic and in Playwright with a fake device.
 3. **Persistence + upload**: IndexedDB save and restore, XHR upload with progress, retry, access-code screen.
-4. **Page + hygiene**: `/aufnahme/`, minimal layout, `noindex`, sitemap exclusion, optional manifest (Q4). Then a full test on the Fairphone with the USB-C mic.
+4. **Page + hygiene**: `/record/`, minimal layout, `noindex`, sitemap exclusion, optional manifest (Q4). Then a full test on the Fairphone with the USB-C mic.
 
 ### Affected Layers
 
@@ -230,7 +230,7 @@ A static Astro page hosts a Svelte 5 recorder built on `getUserMedia` + `MediaRe
 | Q2 | ~~Fairphone OS / browser~~ — **Decided 2026-11-13: stock Android + Chrome.** | — |
 | Q3 | Is there a DJI **receiver** in the kit (USB-C), or only the transmitter? | Phase 4 test plan only |
 | Q4 | ~~Installable app?~~ — **Decided: home-screen bookmark for now; manifest later if needed.** | — |
-| Q5 | ~~URL~~ — **Decided: `/aufnahme/`.** | — |
+| Q5 | ~~URL~~ — **Decided: `/record/`.** | — |
 
 ---
 

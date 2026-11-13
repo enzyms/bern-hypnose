@@ -4,15 +4,16 @@
  * Read (public): GET/HEAD /<name>.mp3 → R2 `episodes/<name>.mp3`.
  *   Netlify proxies https://bern-hypnose.ch/podcast-audio/* here (200 rewrite in netlify.toml).
  *
- * Write (Janine's recorder at /aufnahme/): PUT /inbox/<UTC timestamp>.<ext>
- *   with `Authorization: Bearer <UPLOAD_TOKEN>` → R2 `inbox/…`, then an ntfy push to Sylvain.
+ * Write (Janine's recorder at /record/): PUT /inbox/<UTC timestamp>.<ext>
+ *   with `Authorization: Bearer <UPLOAD_TOKEN>` → R2 `inbox/…`. The 201 response carries the
+ *   ntfy topic so the page can notify Sylvain. PUT /inbox/auth-check only validates the code.
  *   `inbox/` is never readable through this Worker.
  */
 
 export interface Env {
     AUDIO: R2Bucket;
     UPLOAD_TOKEN?: string; // secret: wrangler secret put UPLOAD_TOKEN
-    NTFY_TOPIC?: string; // secret: wrangler secret put NTFY_TOPIC
+    NTFY_TOPIC?: string; // secret: wrangler secret put NTFY_TOPIC (returned to authenticated uploaders)
 }
 
 const EPISODE_PREFIX = 'episodes/';
@@ -23,6 +24,7 @@ const INBOX_PREFIX = 'inbox/';
 const INBOX_NAME = /^\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}Z\.(webm|ogg|m4a|mp4|mp3|wav|aac)$/;
 const MAX_UPLOAD_BYTES = 100 * 1024 * 1024;
 const MAX_NOTE_CHARS = 500;
+const AUTH_CHECK = 'auth-check';
 
 const ALLOWED_ORIGINS = [
     /^https:\/\/bern-hypnose\.ch$/,
@@ -32,12 +34,12 @@ const ALLOWED_ORIGINS = [
 ];
 
 export default {
-    async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    async fetch(request: Request, env: Env): Promise<Response> {
         // Accept both "/<path>" (Netlify :splat) and "/podcast-audio/<path>".
         const path = new URL(request.url).pathname.replace(/^\/(podcast-audio\/)?/, '');
 
         if (path.startsWith(INBOX_PREFIX)) {
-            return handleUpload(request, env, ctx, path.slice(INBOX_PREFIX.length));
+            return handleUpload(request, env, path.slice(INBOX_PREFIX.length));
         }
         return handleRead(request, env, path);
     },
@@ -129,7 +131,7 @@ function resolveRange(range: R2Range, size: number): { start: number; end: numbe
 // Write: raw recordings into the private inbox
 // ---------------------------------------------------------------------------
 
-async function handleUpload(request: Request, env: Env, ctx: ExecutionContext, name: string): Promise<Response> {
+async function handleUpload(request: Request, env: Env, name: string): Promise<Response> {
     const cors = corsHeaders(request.headers.get('Origin'));
     const reply = (status: number, body: Record<string, unknown> | null = null, extra: HeadersInit = {}) => {
         const headers = new Headers(cors);
@@ -147,6 +149,9 @@ async function handleUpload(request: Request, env: Env, ctx: ExecutionContext, n
     if (!(await isAuthorized(request.headers.get('Authorization'), env.UPLOAD_TOKEN))) {
         return reply(401, { error: 'unauthorized' });
     }
+
+    // Lets the recorder validate the access code once, without uploading anything.
+    if (name === AUTH_CHECK) return reply(204);
 
     if (!INBOX_NAME.test(name)) return reply(400, { error: 'invalid_name' });
 
@@ -175,9 +180,10 @@ async function handleUpload(request: Request, env: Env, ctx: ExecutionContext, n
         },
     });
 
-    if (env.NTFY_TOPIC) ctx.waitUntil(notify(env.NTFY_TOPIC, durationSeconds, note));
-
-    return reply(201, { key });
+    // ntfy.sh rejects requests coming from Workers (HTTP 522, verified 2026-11-13), so the
+    // recorder page publishes the notification itself. The topic is only revealed to an
+    // authenticated uploader.
+    return reply(201, { key, notifyTopic: env.NTFY_TOPIC ?? null });
 }
 
 function corsHeaders(origin: string | null): Headers {
@@ -207,20 +213,5 @@ function safeDecode(value: string): string {
         return decodeURIComponent(value);
     } catch {
         return value;
-    }
-}
-
-async function notify(topic: string, durationSeconds: number, note: string): Promise<void> {
-    const minutes = `${Math.floor(durationSeconds / 60)}:${String(durationSeconds % 60).padStart(2, '0')}`;
-    const message = `Neue Aufnahme von Janine (${minutes})${note ? `: ${note}` : ''}`;
-    try {
-        const response = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
-            method: 'POST',
-            body: message,
-            headers: { Title: 'Bern Hypnose Podcast', Tags: 'microphone' },
-        });
-        if (!response.ok) console.error('ntfy failed', response.status);
-    } catch (error) {
-        console.error('ntfy error', error);
     }
 }

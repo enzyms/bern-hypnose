@@ -12,6 +12,9 @@ export const podcastSeries = {
     indexable: false
 };
 
+// Janine's recorder (/record/) uploads straight to the Worker (see workers/podcast-audio).
+export const podcastUploadBase = 'https://bern-hypnose-podcast-audio.bern-hypnose-podcast-audio.workers.dev/inbox/';
+
 export async function getPublishedEpisodes(): Promise<CollectionEntry<'podcast'>[]> {
     const episodes = await getCollection('podcast', ({ data }) => !data.draft);
     return episodes.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());

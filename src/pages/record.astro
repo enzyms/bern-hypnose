@@ -1,0 +1,24 @@
+---
+// Janine's recording page. Deliberately minimal: no 3D background, no chat widget,
+// no analytics, noindex. Uploads go straight to the podcast Worker's private inbox.
+import BaseHead from '../components/BaseHead.astro';
+import PodcastRecorder from '../components/PodcastRecorder.svelte';
+import { podcastUploadBase } from '../data/podcast';
+---
+
+<!doctype html>
+<html lang="de" class="antialiased">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <BaseHead title="Aufnahme" description="Aufnahme für den Podcast von Bern Hypnose." noindex schema="none" />
+    </head>
+    <body class="bg-main text-main">
+        <main class="mx-auto flex min-h-screen max-w-md flex-col gap-8 px-4 py-8">
+            <header>
+                <p class="text-sm font-bold text-red-500">Bern Hypnose · Podcast</p>
+                <h1 class="text-3xl font-black">Aufnahme</h1>
+            </header>
+            <PodcastRecorder client:load uploadBase={podcastUploadBase} />
+        </main>
+    </body>
+</html>

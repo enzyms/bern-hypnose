@@ -27,6 +27,9 @@ export default defineConfig({
                 // Podcast is noindex during the test weeks (podcastSeries.indexable in src/data/podcast.ts)
                 if (page.includes('/podcast/')) return false;
 
+                // Janine's recording page (noindex)
+                if (page.includes('/record/')) return false;
+
                 // Now including pagination pages with self-referencing canonicals (SEO best practice)
                 // Previously excluded, but canonicals handle duplicate content better than noindex
 
