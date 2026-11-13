@@ -91,7 +91,7 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 
 **Notification**
 - [ ] After a successful upload, a push notification reaches Sylvain's phone within 60 s with "Neue Aufnahme von Janine" and the duration; it contains no audio link and no token
-- [ ] A notification failure does not fail the upload (`ctx.waitUntil`, errors logged)
+- [ ] A notification failure does not fail the upload (the page publishes to ntfy only after a 201, best effort)
 
 **Page hygiene**
 - [ ] `/record/` has `<meta name="robots" content="noindex, nofollow">` and is absent from the sitemap
@@ -114,7 +114,7 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 - `/record/` page and the `PodcastRecorder.svelte` component
 - IndexedDB persistence of the pending recording
 - Authenticated upload path, CORS and size and type limits in the existing Worker
-- ntfy push notification from the Worker
+- ntfy push notification, published by the page after a confirmed upload
 
 ### Out of Scope
 
@@ -131,7 +131,7 @@ Her phone is a **Fairphone (Android, USB-C)**. The lavalier mic is plugged into 
 
 ### Approach Summary
 
-A static Astro page hosts a Svelte 5 recorder built on `getUserMedia` + `MediaRecorder`. The recording is persisted in IndexedDB as soon as it stops, then uploaded with a single `PUT` straight to the existing Worker on `workers.dev`. The Worker checks a shared bearer token, writes to `inbox/`, and fires an ntfy notification in the background. No Netlify Function, no S3 credentials, no presigned URLs.
+A static Astro page hosts a Svelte 5 recorder built on `getUserMedia` + `MediaRecorder`. The recording is persisted in IndexedDB as soon as it stops, then uploaded with a single `PUT` straight to the existing Worker on `workers.dev`. The Worker checks a shared bearer token, writes to `inbox/`, and returns the ntfy topic; the page then publishes the notification (ntfy.sh rejects requests from Workers with HTTP 522, verified 2026-11-13). No Netlify Function, no S3 credentials, no presigned URLs.
 
 ### Options considered for the upload path
 
@@ -150,7 +150,7 @@ A static Astro page hosts a Svelte 5 recorder built on `getUserMedia` + `MediaRe
 | Auth | One long random access code (≥ 32 chars), Worker secret `UPLOAD_TOKEN`, stored in `localStorage` on her phone | Simplest thing that keeps strangers out. Only allows writing to a private folder. Rotatable with `wrangler secret put`. |
 | Object key | `inbox/<UTC timestamp>.<ext>`, generated client-side | Sortable, and the "latest recording" for the publish skill is the last key. Collisions are rejected (409). |
 | Metadata | R2 `customMetadata`: `note`, `durationSeconds`, `userAgent` | The publish skill gets context without a sidecar file. |
-| Notification | ntfy.sh, topic name as Worker secret `NTFY_TOPIC` (random, unguessable) | Free, no account, Android + iOS app; the topic name acts as the password. |
+| Notification | ntfy.sh, topic name as Worker secret `NTFY_TOPIC` (random, unguessable), returned only in the authenticated 201; the page publishes it (JSON POST to `https://ntfy.sh/`, no CORS preflight) | Free, no account, Android + iOS app. Publishing from the Worker fails (522 from ntfy.sh). |
 | Persistence | IndexedDB (one pending recording) | `localStorage` cannot hold ~4–40 MB blobs. |
 | Layout | Minimal layout for `/record/` (no `<Three />`, no `<Chat />`) | Battery, CPU and focus while recording. |
 | Upload progress | `XMLHttpRequest` upload events | `fetch` has no upload progress in browsers yet. |
