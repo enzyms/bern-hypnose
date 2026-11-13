@@ -66,3 +66,9 @@ reports/umami-archive/
 .playwright-mcp/
 claude-talk-to-figma-mcp/
 dashboard-full.jpeg
+
+# Local Netlify folder
+.netlify
+
+# Podcast publishing scratch (raw takes, transcripts)
+.podcast-work/

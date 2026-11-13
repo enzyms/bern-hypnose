@@ -1,0 +1,84 @@
+---
+import { type CollectionEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import PodcastPlayer from '../../components/PodcastPlayer.svelte';
+import ArrowLeft from '../../icons/ArrowLeft.astro';
+import { podcastSeries, getPublishedEpisodes, isoDuration, formatDuration } from '../../data/podcast';
+
+export async function getStaticPaths() {
+    const episodes = await getPublishedEpisodes();
+    return episodes.map((episode) => ({ params: { slug: episode.id }, props: { episode } }));
+}
+
+type Props = { episode: CollectionEntry<'podcast'> };
+
+const { episode } = Astro.props;
+const { title, publishDate, summary, audioUrl, duration, fileSize, episode: episodeNumber, image } = episode.data;
+const { Content } = await render(episode);
+
+const pageUrl = `https://bern-hypnose.ch/podcast/${episode.id}/`;
+
+const episodeSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'PodcastEpisode',
+    '@id': `${pageUrl}#episode`,
+    url: pageUrl,
+    name: title,
+    description: summary,
+    episodeNumber,
+    datePublished: publishDate.toISOString().slice(0, 10),
+    timeRequired: isoDuration(duration),
+    inLanguage: 'de-CH',
+    associatedMedia: {
+        '@type': 'MediaObject',
+        contentUrl: audioUrl,
+        encodingFormat: 'audio/mpeg',
+        duration: isoDuration(duration),
+        contentSize: `${fileSize}`
+    },
+    partOfSeries: {
+        '@type': 'PodcastSeries',
+        '@id': podcastSeries.id,
+        name: podcastSeries.name,
+        url: podcastSeries.url
+    },
+    author: {
+        '@type': 'Person',
+        '@id': 'https://bern-hypnose.ch/janine-aerni/#person',
+        name: 'Janine Aerni',
+        url: 'https://bern-hypnose.ch/janine-aerni/'
+    },
+    publisher: { '@id': 'https://bern-hypnose.ch/#organization' }
+};
+---
+
+<BaseLayout
+    title={title}
+    description={summary}
+    image={image}
+    canonical={pageUrl}
+    pageType="article"
+    noindex={!podcastSeries.indexable}
+    schema="none"
+>
+    <script type="application/ld+json" set:html={JSON.stringify(episodeSchema)} />
+    <article class="mb-16">
+        <header class="mb-8 relative">
+            <a class="flex items-center absolute text-red-500 hover:text-red-700 -mt-8 text-sm font-bold" href="/podcast/">
+                <ArrowLeft class="w-4 h-4 fill-current" />
+                <span>Alle Folgen</span>
+            </a>
+            <h1 class="text-balance text-3xl leading-tight font-black sm:text-5xl sm:leading-tight">{title}</h1>
+            <p class="mt-4 text-sm opacity-70">
+                Folge {episodeNumber} · <FormattedDate date={publishDate} /> · {formatDuration(duration)} Min.
+            </p>
+        </header>
+        <div class="mb-10">
+            <PodcastPlayer client:load src={audioUrl} title={title} duration={duration} />
+        </div>
+        <div class="max-w-none prose prose-dante sm:prose-lg">
+            <Content />
+        </div>
+    </article>
+</BaseLayout>

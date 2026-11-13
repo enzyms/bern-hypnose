@@ -72,4 +72,28 @@ const tags = defineCollection({
   })
 });
 
-export const collections = { blog, pages, faq, tags };
+// Weekly audio messages by Janine. Audio lives in R2 (never in git), served by
+// workers/podcast-audio and proxied by Netlify at /podcast-audio/.
+const PODCAST_AUDIO_BASE = 'https://bern-hypnose.ch/podcast-audio/';
+
+const podcast = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/podcast' }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    publishDate: z.coerce.date(),
+    summary: z.string(), // meta description + list teaser
+    audioUrl: z.string().url().startsWith(PODCAST_AUDIO_BASE, {
+      message: `audioUrl must start with ${PODCAST_AUDIO_BASE}`,
+    }),
+    duration: z.number().int().positive(), // seconds
+    fileSize: z.number().int().positive(), // bytes
+    episode: z.number().int().min(1),
+    draft: z.boolean().default(false),
+    image: z.object({
+      src: image().optional(),
+      alt: z.string().optional(),
+    }).optional(),
+  })
+});
+
+export const collections = { blog, pages, faq, tags, podcast };
