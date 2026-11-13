@@ -23,7 +23,10 @@
     let elapsed = $state(0);
     let level = $state(0);
     let notice = $state('');
-    let note = $state('');
+    let title = $state('');
+    let description = $state('');
+    const TITLE_MAX = 120;
+    const DESCRIPTION_MAX = 600;
     let progress = $state(0);
     let errorMessage = $state('');
     let restored = $state(false);
@@ -378,8 +381,9 @@
     }
 
     function send() {
-        if (!pending) return;
+        if (!pending || !title.trim()) return;
         const recording = pending;
+        const sentTitle = title.trim();
         const { name, contentType } = objectName(recording);
         phase = 'uploading';
         progress = 0;
@@ -389,7 +393,8 @@
         xhr.open('PUT', uploadBase + name);
         xhr.setRequestHeader('Authorization', `Bearer ${token}`);
         xhr.setRequestHeader('Content-Type', contentType);
-        xhr.setRequestHeader('X-Podcast-Note', encodeURIComponent(note.trim()));
+        xhr.setRequestHeader('X-Podcast-Title', encodeURIComponent(sentTitle));
+        xhr.setRequestHeader('X-Podcast-Description', encodeURIComponent(description.trim()));
         xhr.setRequestHeader('X-Podcast-Duration', String(recording.durationSeconds));
         xhr.upload.onprogress = (event) => {
             if (event.lengthComputable) progress = Math.round((event.loaded / event.total) * 100);
@@ -401,10 +406,11 @@
                 try {
                     topic = JSON.parse(xhr.responseText).notifyTopic ?? null;
                 } catch {}
-                if (xhr.status === 201 && topic) await notify(topic, recording.durationSeconds, note.trim());
+                if (xhr.status === 201 && topic) await notify(topic, recording.durationSeconds, sentTitle);
                 await clearPending().catch(() => {});
                 setPending(null);
-                note = '';
+                title = '';
+                description = '';
                 restored = false;
                 phase = 'sent';
             } else if (xhr.status === 401) {
@@ -528,14 +534,32 @@
                 <audio controls src={previewUrl} class="w-full"></audio>
             </div>
             <label class="flex flex-col gap-2">
-                <span class="font-bold">Notiz <span class="font-normal opacity-70">(optional, z. B. Arbeitstitel)</span></span>
-                <input type="text" maxlength="500" bind:value={note} class="rounded-xl border border-gray-300 p-3" />
+                <span class="font-bold">Titel</span>
+                <input
+                    type="text"
+                    required
+                    maxlength={TITLE_MAX}
+                    bind:value={title}
+                    placeholder="z. B. Mut zum ersten Schritt"
+                    class="rounded-xl border border-gray-300 p-3"
+                />
+            </label>
+            <label class="flex flex-col gap-2">
+                <span class="font-bold">Beschreibung <span class="font-normal opacity-70">(optional)</span></span>
+                <textarea
+                    rows="4"
+                    maxlength={DESCRIPTION_MAX}
+                    bind:value={description}
+                    placeholder="Worum geht es in dieser Folge?"
+                    class="rounded-xl border border-gray-300 p-3"
+                ></textarea>
             </label>
             {#if pending.blob.size > BIG_FILE_BYTES}
                 <p class="text-sm opacity-70">Grosse Datei ({Math.round(pending.blob.size / 1024 / 1024)} MB) – am besten im WLAN senden.</p>
             {/if}
             {#if errorMessage}<p class="text-red-700" role="alert">{errorMessage}</p>{/if}
-            <button type="button" class="btn-main btn-big" onclick={send}>
+            {#if !title.trim()}<p class="text-sm opacity-70">Bitte zuerst einen Titel eingeben.</p>{/if}
+            <button type="button" class="btn-main btn-big" onclick={send} disabled={!title.trim()}>
                 {phase === 'error' ? 'Erneut senden' : 'Senden'}
             </button>
             <button type="button" class="btn-secondary" onclick={discard}>Verwerfen und neu aufnehmen</button>

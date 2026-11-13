@@ -23,7 +23,8 @@ const CACHE_CONTROL = 'public, max-age=86400';
 const INBOX_PREFIX = 'inbox/';
 const INBOX_NAME = /^\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}Z\.(webm|ogg|m4a|mp4|mp3|wav|aac)$/;
 const MAX_UPLOAD_BYTES = 100 * 1024 * 1024;
-const MAX_NOTE_CHARS = 500;
+const MAX_TITLE_CHARS = 120;
+const MAX_DESCRIPTION_CHARS = 600;
 const AUTH_CHECK = 'auth-check';
 
 const ALLOWED_ORIGINS = [
@@ -175,14 +176,23 @@ async function handleUpload(request: Request, env: Env, name: string): Promise<R
     const key = INBOX_PREFIX + name;
     if (await env.AUDIO.head(key)) return reply(409, { error: 'exists', key });
 
-    const note = safeDecode(request.headers.get('X-Podcast-Note') ?? '').slice(0, MAX_NOTE_CHARS);
+    // Written by Janine on /record/: the title is mandatory, the description optional.
+    // Pages deployed before the title field send only X-Podcast-Note: accept it as the title.
+    const titleHeader = request.headers.get('X-Podcast-Title') ?? request.headers.get('X-Podcast-Note') ?? '';
+    const legacyClient = !request.headers.has('X-Podcast-Title') && request.headers.has('X-Podcast-Note');
+    const title = safeDecode(titleHeader).trim().slice(0, MAX_TITLE_CHARS);
+    const description = safeDecode(request.headers.get('X-Podcast-Description') ?? '')
+        .trim()
+        .slice(0, MAX_DESCRIPTION_CHARS);
+    if (!title && !legacyClient) return reply(400, { error: 'title_required' });
     const durationSeconds = Math.max(0, Math.round(Number(request.headers.get('X-Podcast-Duration')) || 0));
 
     // Stream the body straight into R2 (known length, no buffering).
     await env.AUDIO.put(key, request.body, {
         httpMetadata: { contentType },
         customMetadata: {
-            note,
+            title,
+            description,
             durationSeconds: String(durationSeconds),
             userAgent: (request.headers.get('User-Agent') ?? '').slice(0, 200),
         },
@@ -199,7 +209,7 @@ function corsHeaders(origin: string | null): Headers {
     if (origin && ALLOWED_ORIGINS.some((pattern) => pattern.test(origin))) {
         headers.set('Access-Control-Allow-Origin', origin);
         headers.set('Access-Control-Allow-Methods', 'PUT, OPTIONS');
-        headers.set('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-Podcast-Note, X-Podcast-Duration');
+        headers.set('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-Podcast-Title, X-Podcast-Description, X-Podcast-Note, X-Podcast-Duration');
         headers.set('Access-Control-Max-Age', '86400');
     }
     return headers;

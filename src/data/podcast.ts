@@ -17,7 +17,11 @@ export const podcastUploadBase = 'https://bern-hypnose-podcast-audio.bern-hypnos
 
 export async function getPublishedEpisodes(): Promise<CollectionEntry<'podcast'>[]> {
     const episodes = await getCollection('podcast', ({ data }) => !data.draft);
-    return episodes.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+    // Newest first; episodes published the same day fall back to the higher episode number.
+    return episodes.sort(
+        (a, b) =>
+            b.data.publishDate.getTime() - a.data.publishDate.getTime() || b.data.episode - a.data.episode
+    );
 }
 
 /** 407 → "PT6M47S" (schema.org duration) */

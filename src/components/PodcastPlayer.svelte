@@ -53,7 +53,7 @@
     }
 </script>
 
-<div class="podcast-player not-prose rounded-xl bg-white/70 dark:bg-white/10 p-4 shadow-sm">
+<div class="podcast-player not-prose rounded-xl bg-white/30 dark:bg-white/10 p-4 shadow-sm">
     <audio
         bind:this={audio}
         bind:paused
