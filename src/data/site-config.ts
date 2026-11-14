@@ -254,14 +254,27 @@ const siteConfig: SiteConfig = {
             ],
         },
         {
-            text: 'Blog',
+            // Free content by Janine. Parent links to the blog (the established page).
+            text: 'Lesen & Hören',
             href: '/blog/',
             diamondPosition: 1,
-        },
-        {
-            text: 'App',
-            href: '/app/',
-            diamondPosition: 2,
+            subPages: [
+                {
+                    text: 'Mini-Podcast',
+                    href: '/podcast/',
+                    diamondPosition: 1,
+                },
+                {
+                    text: 'Blog',
+                    href: '/blog/',
+                    diamondPosition: 1,
+                },
+                {
+                    text: 'Selbsthypnose-App',
+                    href: '/app/',
+                    diamondPosition: 2,
+                },
+            ],
         },
         {
             text: 'Über mich',
