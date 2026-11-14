@@ -1,12 +1,12 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-// TODO(Q4): series name and description still to be chosen with Janine.
 export const podcastSeries = {
     id: 'https://bern-hypnose.ch/podcast/#series',
     url: 'https://bern-hypnose.ch/podcast/',
-    name: 'Podcast von Janine Aerni',
+    name: 'Podcast', // shown on the page (h1, <title>)
+    schemaName: 'Podcast von Janine Aerni', // structured data needs a self-explanatory name
     description:
-        'Jede Woche eine kurze Botschaft von Janine Aerni: ein paar Minuten zum Durchatmen, Mut fassen und Weitergehen.',
+        'Audio Häppchen von Janine: ein paar Minuten, kleine Fünkeli fürs Herz. Nicht belehrend, sondern auf Augenhöhe – Kopf aus, Herz an.',
     // Q1: keep /podcast/ out of the index during the test weeks.
     // When switching to true, also remove the /podcast/ exclusion in astro.config.mjs (sitemap filter).
     indexable: false
