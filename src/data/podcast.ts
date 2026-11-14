@@ -7,9 +7,9 @@ export const podcastSeries = {
     schemaName: 'Podcast von Janine Aerni', // structured data needs a self-explanatory name
     description:
         'Audio Häppchen von mir: kleine Sparkles fürs Herz. Nicht belehrend, sondern auf Augenhöhe. Kopf aus, Herz an.',
-    // Q1: keep /podcast/ out of the index during the test weeks.
-    // When switching to true, also remove the /podcast/ exclusion in astro.config.mjs (sitemap filter).
-    indexable: false
+    // Indexed since 2026-11-14 (first 7 real episodes). If set back to false, also exclude
+    // /podcast/ again in the sitemap filter of astro.config.mjs.
+    indexable: true
 };
 
 // Janine's recorder (/record/) uploads straight to the Worker (see workers/podcast-audio).

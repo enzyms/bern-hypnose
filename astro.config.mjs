@@ -24,9 +24,6 @@ export default defineConfig({
                 // Exclude internal dashboard (noindex)
                 if (page.includes('/dashboard/')) return false;
 
-                // Podcast is noindex during the test weeks (podcastSeries.indexable in src/data/podcast.ts)
-                if (page.includes('/podcast/')) return false;
-
                 // Janine's recording page (noindex)
                 if (page.includes('/record/')) return false;
 
