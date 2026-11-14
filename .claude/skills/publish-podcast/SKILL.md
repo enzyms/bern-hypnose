@@ -26,7 +26,9 @@ node scripts/podcast.mjs prepare            # latest real take
 node scripts/podcast.mjs prepare inbox/<key> # a specific one
 ```
 
-It downloads the take, converts it to a loudness-normalised mono MP3 (−16 LUFS, 96 kbps) and transcribes it locally with Whisper (`turbo`, German; the first run downloads the model; a few minutes on CPU — run it in the background if it takes long). It prints `meta.json`: `workDir`, `transcriptPath`, `durationSeconds`, `fileSize`, `title`, `description` (both written by Janine on `/record/`; the title is mandatory there, the description optional).
+It downloads the take, **edits it** (`scripts/podcast-edit.mjs`: trims the silence/handling noise before the first and after the last word, shortens pauses longer than 1.4 s to 0.9 s, drops edge clicks), applies a light denoise, converts it to a loudness-normalised mono MP3 (−16 LUFS, 96 kbps) and transcribes it locally with Whisper (`turbo`, German; the first run downloads the model; a few minutes on CPU — run it in the background if it takes long). It prints `meta.json`: `workDir`, `transcriptPath`, `durationSeconds`, `fileSize`, `title`, `description` (both written by Janine on `/record/`; the title is mandatory there, the description optional).
+
+Check `meta.json → edit`: tell Sylvain what was cut. If `startsAbruptly` or `endsAbruptly` is true, the recording itself may start/end mid-word: listen and say so. To double-check a start or end, transcribe the first/last seconds of the **raw** take and compare. Whisper often hallucinates a few words at the very end of a file (foreign words, nonsense): if the raw tail does not contain them, drop them from the transcript.
 
 ## 3. Draft the episode
 
