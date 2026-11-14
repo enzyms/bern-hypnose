@@ -26,22 +26,24 @@ node scripts/podcast.mjs prepare            # latest real take
 node scripts/podcast.mjs prepare inbox/<key> # a specific one
 ```
 
-It downloads the take, converts it to a loudness-normalised mono MP3 (−16 LUFS, 96 kbps) and transcribes it locally with Whisper (`turbo`, German; the first run downloads the model; a few minutes on CPU — run it in the background if it takes long). It prints `meta.json`: `workDir`, `transcriptPath`, `durationSeconds`, `fileSize`, `title`, `description` (both written by Janine on `/record/`; the title is mandatory there, the description optional).
+It downloads the take, **edits it** (`scripts/podcast-edit.mjs`: trims the silence/handling noise before the first and after the last word, shortens pauses longer than 1.4 s to 0.9 s, drops edge clicks), applies a light denoise, converts it to a loudness-normalised mono MP3 (−16 LUFS, 96 kbps) and transcribes it locally with Whisper (`turbo`, German; the first run downloads the model; a few minutes on CPU — run it in the background if it takes long). It prints `meta.json`: `workDir`, `transcriptPath`, `durationSeconds`, `fileSize`, `title`, `description` (both written by Janine on `/record/`; the title is mandatory there, the description optional).
+
+Check `meta.json → edit`: tell Sylvain what was cut. If `startsAbruptly` or `endsAbruptly` is true, the recording itself may start/end mid-word: listen and say so. To double-check a start or end, transcribe the first/last seconds of the **raw** take and compare. Whisper often hallucinates a few words at the very end of a file (foreign words, nonsense): if the raw tail does not contain them, drop them from the transcript.
 
 ## 3. Draft the episode
 
 Read the transcript. Whisper turns Mundart into approximate Standard German: it captures the ideas, not the exact words. **Never quote it as if it were verbatim.**
 
-**Janine's own words come first.** She types the title (mandatory) and a description (optional) on her phone when she sends the take.
+**Janine's own words come first.** She types the title (mandatory) and a description (optional) on her phone when she sends the take. The episode page shows: title → summary (as intro) → player → **Transkript** (the body).
 
 - **title** — Janine's title, as she wrote it. Only fix an obvious typo, and say so to Sylvain. If it is empty (older takes), draft one: short, warm, Hochdeutsch, max ~60 characters.
-- **summary** — ≤ 160 characters, used as meta description and list teaser. If her description fits, use it as is; if it is longer, condense it faithfully (her wording, shortened); if there is none, write one or two sentences from the transcript.
-- **body** — if she wrote a description, use it **verbatim** as the body (paragraph breaks kept). Do not rewrite or embellish her text. If there is none, draft 150–300 words in Hochdeutsch, "Darum geht es in dieser Folge": the message, its key thoughts, an encouraging closing line. Plain Markdown, no headings. No `/termin/` link. A link to a related blog post (`/blog/<slug>/`) is welcome when it truly fits and Sylvain agrees; check it exists in `src/content/blog/`.
-- Whatever she wrote, still read the transcript and tell Sylvain if her title or description does not match what she says in the recording.
+- **summary** — Janine's description, **verbatim**: it is the intro shown in the list and above the player (and the meta description). If she wrote none, draft one or two sentences (≤ 160 characters) from the transcript.
+- **body** — the **Whisper transcript**, not a rewrite. Allowed: split it into paragraphs at natural pauses, fix punctuation, Swiss spelling ("ss"), and obvious mis-hearings you are sure of (tell Sylvain each one). Not allowed: rephrasing, summarising, adding sentences. The page labels it "automatisch, sinngemäss". No headings, no links.
+- Read the transcript and tell Sylvain if her title or description does not match what she says in the recording.
 - **slug** — `YYYY-MM-DD-<short-kebab-title>`, date = recording date (`recordedAt`), ASCII only (ä→ae, ö→oe, ü→ue).
 - **episode number** — highest `episode:` in `src/content/podcast/*.md` + 1, ignoring the technical test episode (`2026-11-13-test-folge.md`). For the first real episode, ask Sylvain whether to delete the test episode (and its `episodes/test-folge.mp3`) in the same commit.
 
-Show Sylvain the title, summary, body, slug and number, plus 3–4 lines of what the transcript said, so he can check nothing was misheard. Offer him the MP3 to listen to (`<workDir>/episode.mp3`).
+Show Sylvain the title, summary, the full transcript body, slug and number, so he can check nothing was misheard. Offer him the MP3 to listen to (`<workDir>/episode.mp3`).
 
 **Stop and wait for his explicit approval.** His "go" for this episode is also the approval to commit and push it.
 

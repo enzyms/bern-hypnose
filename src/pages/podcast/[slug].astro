@@ -74,11 +74,16 @@ const episodeSchema = {
                 Folge {episodeNumber} · <FormattedDate date={publishDate} /> · {formatDuration(duration)} Min.
             </p>
         </header>
+        <p class="mb-8 text-lg sm:text-xl">{summary}</p>
         <div class="mb-10">
             <PodcastPlayer client:load src={audioUrl} title={title} duration={duration} />
         </div>
-        <div class="max-w-none prose prose-dante sm:prose-lg">
-            <Content />
-        </div>
+        <section aria-labelledby="transkript">
+            <h2 id="transkript" class="mb-2 text-xl font-black">Transkript</h2>
+            <p class="mb-6 text-sm opacity-70">Automatisch erstellt aus der Aufnahme auf Berndeutsch – sinngemäss, nicht wörtlich.</p>
+            <div class="max-w-none prose prose-dante sm:prose-lg">
+                <Content />
+            </div>
+        </section>
     </article>
 </BaseLayout>

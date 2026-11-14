@@ -4,8 +4,9 @@
  *
  *   node scripts/podcast.mjs list
  *       List the private R2 inbox (needs PODCAST_UPLOAD_TOKEN in .env).
- *   node scripts/podcast.mjs prepare [inbox/<key>] [--no-transcribe]
- *       Download the latest real take (or <key>), convert to loudness-normalised mono MP3,
+ *   node scripts/podcast.mjs prepare [inbox/<key>] [--no-transcribe] [--no-edit]
+ *       Download the latest real take (or <key>), trim start/end and long pauses
+ *       (scripts/podcast-edit.mjs), light denoise, convert to loudness-normalised mono MP3,
  *       transcribe with local Whisper (German), write .podcast-work/<stamp>/meta.json.
  *   node scripts/podcast.mjs publish <workDir> <slug>
  *       Upload episode.mp3 to episodes/<slug>.mp3, archive the raw take, remove it from the
@@ -18,6 +19,7 @@
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
+import { editFilter, planEdit } from './podcast-edit.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const WORKER_DIR = join(ROOT, 'workers/podcast-audio');
@@ -66,7 +68,7 @@ async function cmdList() {
     }
 }
 
-async function cmdPrepare(keyArg, { transcribe }) {
+async function cmdPrepare(keyArg, { transcribe, edit }) {
     const items = await listInbox();
     const item = keyArg
         ? items.find((it) => it.key === keyArg)
@@ -82,10 +84,23 @@ async function cmdPrepare(keyArg, { transcribe }) {
     console.error(`↓ ${item.key}`);
     wrangler('r2', 'object', 'get', `${BUCKET}/${item.key}`, '--remote', '--file', rawPath);
 
-    console.error('♪ ffmpeg: mono, 44.1 kHz, loudnorm −16 LUFS, MP3 96 kbps');
-    run('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-i', rawPath,
-        '-ac', '1', '-ar', '44100', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11',
-        '-c:a', 'libmp3lame', '-b:a', '96k', mp3Path]);
+    // Edit (trim start/end, shorten long pauses), then gentle clean-up and loudness.
+    const CLEAN = 'highpass=f=80,afftdn=nr=10:nf=-45,loudnorm=I=-16:TP=-1.5:LRA=11';
+    const rawSeconds = Number(run('ffprobe', ['-v', 'error', '-show_entries', 'format=duration',
+        '-of', 'default=nw=1:nk=1', rawPath]).trim());
+    const plan = edit ? planEdit(rawPath, rawSeconds) : null;
+    if (plan) {
+        const r = plan.report;
+        console.error(`✂ edit: ${r.originalSeconds}s → ${r.editedSeconds}s (start −${r.trimmedStart}s, end −${r.trimmedEnd}s, ` +
+            `${r.shortenedPauses} long pause(s) shortened, ${r.droppedEdgeBlips} edge blip(s) dropped)`);
+        run('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-i', rawPath,
+            '-filter_complex', `${editFilter(plan.parts)};[cut]aformat=channel_layouts=mono,${CLEAN}[out]`,
+            '-map', '[out]', '-ar', '44100', '-c:a', 'libmp3lame', '-b:a', '96k', mp3Path]);
+    } else {
+        console.error('♪ ffmpeg: no edit, clean-up + loudnorm only');
+        run('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-i', rawPath,
+            '-ac', '1', '-ar', '44100', '-af', CLEAN, '-c:a', 'libmp3lame', '-b:a', '96k', mp3Path]);
+    }
     const durationSeconds = Math.round(Number(run('ffprobe', ['-v', 'error', '-show_entries', 'format=duration',
         '-of', 'default=nw=1:nk=1', mp3Path]).trim()));
 
@@ -108,6 +123,7 @@ async function cmdPrepare(keyArg, { transcribe }) {
         transcriptPath,
         durationSeconds,
         fileSize: statSync(mp3Path).size,
+        edit: plan?.report ?? null,
     };
     writeFileSync(join(workDir, 'meta.json'), JSON.stringify(meta, null, 2));
     console.log(JSON.stringify(meta, null, 2));
@@ -155,11 +171,11 @@ const args = rest.filter((a) => !a.startsWith('--'));
 
 try {
     if (command === 'list') await cmdList();
-    else if (command === 'prepare') await cmdPrepare(args[0], { transcribe: !flags.includes('--no-transcribe') });
+    else if (command === 'prepare') await cmdPrepare(args[0], { transcribe: !flags.includes('--no-transcribe'), edit: !flags.includes('--no-edit') });
     else if (command === 'publish') await cmdPublish(args[0], args[1]);
     else if (command === 'delete') cmdDelete(args[0], flags);
     else {
-        console.error('usage: node scripts/podcast.mjs list | prepare [inbox/<key>] [--no-transcribe] | publish <workDir> <slug> | delete inbox/<key> --yes');
+        console.error('usage: node scripts/podcast.mjs list | prepare [inbox/<key>] [--no-transcribe] [--no-edit] | publish <workDir> <slug> | delete inbox/<key> --yes');
         process.exit(2);
     }
 } catch (error) {
