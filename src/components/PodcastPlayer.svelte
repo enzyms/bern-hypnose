@@ -24,8 +24,18 @@
     const playableSrc = src.startsWith('http') ? new URL(src).pathname : src;
     const total = $derived(mediaDuration > 0 && Number.isFinite(mediaDuration) ? mediaDuration : duration);
 
+    /**
+     * Astro's client router parses the next page in a detached document before swapping it in.
+     * An <audio> parsed there runs its source selection without a browsing context, fails with
+     * "no supported sources" and stays stuck. Re-running load() in the live page fixes it.
+     */
+    function recoverIfStuck() {
+        if (audio && (audio.error || audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE)) audio.load();
+    }
+
     onMount(() => {
         enhanced = true;
+        recoverIfStuck();
         return () => {
             if (playing === audio) playing = null;
         };
@@ -38,7 +48,10 @@
 
     function toggle() {
         if (!audio) return;
-        if (audio.paused) audio.play();
+        if (audio.paused) {
+            recoverIfStuck();
+            audio.play();
+        }
         else audio.pause();
     }
 
