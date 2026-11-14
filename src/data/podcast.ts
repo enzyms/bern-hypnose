@@ -6,7 +6,7 @@ export const podcastSeries = {
     name: 'Podcast', // shown on the page (h1, <title>)
     schemaName: 'Podcast von Janine Aerni', // structured data needs a self-explanatory name
     description:
-        'Audio Häppchen von Janine: ein paar Minuten, kleine Fünkeli fürs Herz. Nicht belehrend, sondern auf Augenhöhe – Kopf aus, Herz an.',
+        'Audio Häppchen von mir: kleine Sparkles fürs Herz. Nicht belehrend, sondern auf Augenhöhe. Kopf aus, Herz an.',
     // Q1: keep /podcast/ out of the index during the test weeks.
     // When switching to true, also remove the /podcast/ exclusion in astro.config.mjs (sitemap filter).
     indexable: false
