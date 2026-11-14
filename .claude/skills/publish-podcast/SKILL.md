@@ -32,16 +32,16 @@ It downloads the take, converts it to a loudness-normalised mono MP3 (−16 LUFS
 
 Read the transcript. Whisper turns Mundart into approximate Standard German: it captures the ideas, not the exact words. **Never quote it as if it were verbatim.**
 
-**Janine's own words come first.** She types the title (mandatory) and a description (optional) on her phone when she sends the take.
+**Janine's own words come first.** She types the title (mandatory) and a description (optional) on her phone when she sends the take. The episode page shows: title → summary (as intro) → player → **Transkript** (the body).
 
 - **title** — Janine's title, as she wrote it. Only fix an obvious typo, and say so to Sylvain. If it is empty (older takes), draft one: short, warm, Hochdeutsch, max ~60 characters.
-- **summary** — ≤ 160 characters, used as meta description and list teaser. If her description fits, use it as is; if it is longer, condense it faithfully (her wording, shortened); if there is none, write one or two sentences from the transcript.
-- **body** — if she wrote a description, use it **verbatim** as the body (paragraph breaks kept). Do not rewrite or embellish her text. If there is none, draft 150–300 words in Hochdeutsch, "Darum geht es in dieser Folge": the message, its key thoughts, an encouraging closing line. Plain Markdown, no headings. No `/termin/` link. A link to a related blog post (`/blog/<slug>/`) is welcome when it truly fits and Sylvain agrees; check it exists in `src/content/blog/`.
-- Whatever she wrote, still read the transcript and tell Sylvain if her title or description does not match what she says in the recording.
+- **summary** — Janine's description, **verbatim**: it is the intro shown in the list and above the player (and the meta description). If she wrote none, draft one or two sentences (≤ 160 characters) from the transcript.
+- **body** — the **Whisper transcript**, not a rewrite. Allowed: split it into paragraphs at natural pauses, fix punctuation, Swiss spelling ("ss"), and obvious mis-hearings you are sure of (tell Sylvain each one). Not allowed: rephrasing, summarising, adding sentences. The page labels it "automatisch, sinngemäss". No headings, no links.
+- Read the transcript and tell Sylvain if her title or description does not match what she says in the recording.
 - **slug** — `YYYY-MM-DD-<short-kebab-title>`, date = recording date (`recordedAt`), ASCII only (ä→ae, ö→oe, ü→ue).
 - **episode number** — highest `episode:` in `src/content/podcast/*.md` + 1, ignoring the technical test episode (`2026-11-13-test-folge.md`). For the first real episode, ask Sylvain whether to delete the test episode (and its `episodes/test-folge.mp3`) in the same commit.
 
-Show Sylvain the title, summary, body, slug and number, plus 3–4 lines of what the transcript said, so he can check nothing was misheard. Offer him the MP3 to listen to (`<workDir>/episode.mp3`).
+Show Sylvain the title, summary, the full transcript body, slug and number, so he can check nothing was misheard. Offer him the MP3 to listen to (`<workDir>/episode.mp3`).
 
 **Stop and wait for his explicit approval.** His "go" for this episode is also the approval to commit and push it.
 
