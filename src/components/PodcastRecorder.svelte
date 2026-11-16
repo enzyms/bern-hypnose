@@ -23,6 +23,9 @@
     let elapsed = $state(0);
     let level = $state(0);
     let notice = $state('');
+    // Silence watch: a connected but dead mic (e.g. Bluetooth link dropped) records pure silence.
+    let noSound = $state(false);
+    let silentTake = $state(false);
     let title = $state('');
     let description = $state('');
     const TITLE_MAX = 120;
@@ -44,6 +47,12 @@
     let audioContext: AudioContext | null = null;
     let raf = 0;
     let wakeLock: WakeLockSentinel | null = null;
+    let meterRunning = false;
+    let heardSound = false;
+    let lastSoundAt = 0;
+
+    const SOUND_RMS = 0.003; // ≈ −50 dBFS: above a quiet room's noise floor, well below speech
+    const SILENCE_WARN_MS = 5000;
 
     const formatTime = (seconds: number) =>
         `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
@@ -230,7 +239,21 @@
         recorder.onstop = finishRecording;
         recorder.start(1000);
 
+        const track = stream.getAudioTracks()[0];
+        if (track) {
+            track.onmute = () => (noSound = true);
+            track.onunmute = () => (noSound = false);
+            track.onended = () => {
+                notice = 'Die Verbindung zum Mikrofon wurde unterbrochen. Die Aufnahme wurde gestoppt.';
+                stopRecording();
+            };
+        }
+
         startedAt = Date.now();
+        noSound = false;
+        silentTake = false;
+        heardSound = false;
+        lastSoundAt = startedAt;
         elapsed = 0;
         timer = setInterval(() => {
             elapsed = (Date.now() - startedAt) / 1000;
@@ -258,8 +281,15 @@
                 for (const sample of data) sum += sample * sample;
                 const rms = Math.sqrt(sum / data.length);
                 level = Math.min(1, rms * 4);
+                const now = Date.now();
+                if (rms > SOUND_RMS) {
+                    heardSound = true;
+                    lastSoundAt = now;
+                }
+                noSound = now - lastSoundAt > SILENCE_WARN_MS;
                 raf = requestAnimationFrame(tick);
             };
+            meterRunning = true;
             tick();
         } catch {
             /* the meter is a nicety; recording works without it */
@@ -275,16 +305,22 @@
         cancelAnimationFrame(raf);
         audioContext?.close().catch(() => {});
         audioContext = null;
-        stream?.getTracks().forEach((track) => track.stop());
+        stream?.getTracks().forEach((track) => {
+            track.onmute = track.onunmute = track.onended = null;
+            track.stop();
+        });
         stream = null;
         wakeLock?.release().catch(() => {});
         wakeLock = null;
         level = 0;
+        noSound = false;
     }
 
     async function finishRecording() {
         const mimeType = recorder?.mimeType || chunks[0]?.type || 'audio/webm';
         const durationSeconds = Math.round((Date.now() - startedAt) / 1000);
+        silentTake = meterRunning && !heardSound;
+        meterRunning = false;
         teardown();
         const recording: PendingRecording = {
             blob: new Blob(chunks, { type: mimeType }),
@@ -310,6 +346,7 @@
         const file = input.files?.[0];
         input.value = '';
         if (!file) return;
+        silentTake = false;
         const durationSeconds = await probeDuration(file);
         const recording: PendingRecording = {
             blob: file,
@@ -348,6 +385,7 @@
         await clearPending().catch(() => {});
         setPending(null);
         restored = false;
+        silentTake = false;
         notice = '';
         phase = 'idle';
     }
@@ -517,12 +555,22 @@
             </div>
             <p class="text-sm opacity-70">Aufnahme läuft · max. 10 Minuten</p>
         </div>
+        {#if noSound}
+            <p class="rounded-xl border-2 border-red-600 bg-red-50 p-4 font-bold text-red-800" role="alert">
+                Kein Ton vom Mikrofon! Prüfe, ob das Mikrofon eingeschaltet und verbunden ist. Sonst stoppen, Mikrofon neu wählen und nochmals aufnehmen.
+            </p>
+        {/if}
         <button type="button" class="btn-main btn-big" onclick={stopRecording}>
             <span class="square" aria-hidden="true"></span> Stopp
         </button>
     {:else if phase === 'review' || phase === 'error'}
         {#if restored}
             <p class="rounded-xl bg-white/70 p-4" role="status">Unversendete Aufnahme gefunden.</p>
+        {/if}
+        {#if pending && silentTake}
+            <p class="rounded-xl border-2 border-red-600 bg-red-50 p-4 font-bold text-red-800" role="alert">
+                In dieser Aufnahme ist kein Ton zu hören. Bitte Mikrofon prüfen und neu aufnehmen.
+            </p>
         {/if}
         {#if pending}
             <div class="flex flex-col gap-2">
