@@ -4,14 +4,14 @@
   "placeName": "Bern Hypnose - Janine Aerni",
   "placeUrl": "https://maps.google.com/?cid=15393771859516682512",
   "overallRating": 5,
-  "totalReviewCount": 84,
+  "totalReviewCount": 83,
   "reviewsInFile": 84,
   "accountId": "107067054292838933166",
   "locationName": "locations/15393771859516682512",
   "reviews": [
     {
       "tid": 0,
-      "googleReviewId": "manual-buschke-2026-11-24",
+      "googleReviewId": null,
       "quote": "Janine? Spitze! Ändert, stärkt, heilt! Sehr empathisch!\nIch komme wieder. Auch wenn’s nicht nötig erscheint …",
       "author": "Jürgen-G. Buschke",
       "authorPhoto": null,
@@ -19,7 +19,9 @@
       "dateFormatted": "24. November 2026",
       "createTime": "2026-11-24T12:00:00Z",
       "updateTime": "2026-11-24T12:00:00Z",
-      "reply": null
+      "reply": null,
+      "source": "email",
+      "id": "email-buschke-2026-11-24"
     },
     {
       "tid": 1,

@@ -399,19 +399,19 @@ function mergeReviews(existingReviews, newReviews) {
 
     // Add existing reviews first (to preserve them)
     for (const review of existingReviews) {
-        reviewMap.set(review.googleReviewId, review);
+        reviewMap.set(review.googleReviewId ?? review.id, review);
     }
 
     // Add/update with new reviews (newer data takes precedence for replies)
     let newCount = 0;
     let updatedCount = 0;
     for (const review of newReviews) {
-        if (!reviewMap.has(review.googleReviewId)) {
+        if (!reviewMap.has(review.googleReviewId ?? review.id)) {
             newCount++;
         } else {
             updatedCount++;
         }
-        reviewMap.set(review.googleReviewId, review);
+        reviewMap.set(review.googleReviewId ?? review.id, review);
     }
 
     // Convert back to array and sort by date (newest first)
@@ -441,8 +441,10 @@ function saveReviews(newReviews) {
     const mergedReviews = mergeReviews(existingReviews, newReviews);
 
     // Calculate overall rating
-    const totalRating = mergedReviews.reduce((sum, review) => sum + review.starRating, 0);
-    const overallRating = mergedReviews.length > 0 ? Math.round((totalRating / mergedReviews.length) * 10) / 10 : 0;
+    // Google-only stats: reviews received by email (source: "email") are shown on the site but not counted as Google reviews
+    const googleOnly = mergedReviews.filter(r => r.source !== "email");
+    const totalRating = googleOnly.reduce((sum, review) => sum + review.starRating, 0);
+    const overallRating = googleOnly.length > 0 ? Math.round((totalRating / googleOnly.length) * 10) / 10 : 0;
 
     // Extract location ID for Google Maps URL
     const locationId = LOCATION_NAME.includes('/') ? LOCATION_NAME.split('/').pop() : LOCATION_NAME;
@@ -453,7 +455,7 @@ function saveReviews(newReviews) {
         placeName: 'Bern Hypnose - Janine Aerni',
         placeUrl: `https://maps.google.com/?cid=${locationId}`,
         overallRating: overallRating,
-        totalReviewCount: mergedReviews.length,
+        totalReviewCount: googleOnly.length,
         reviewsInFile: mergedReviews.length,
         accountId: ACCOUNT_ID,
         locationName: LOCATION_NAME,

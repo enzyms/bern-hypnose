@@ -8,7 +8,7 @@ import googleReviewsData from '../data/google-reviews.json';
 
 // Get all reviews with actual text content
 const allReviewsWithText = googleReviewsData.reviews
-    .filter((review) => review.quote && review.quote.trim().length > 0)
+    .filter((review) => review.source !== 'email' && review.quote && review.quote.trim().length > 0)
     .map((review) => ({
         '@type': 'Review',
         author: { '@type': 'Person', name: review.author },

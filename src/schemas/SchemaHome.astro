@@ -33,7 +33,7 @@ const faqSchemaData = {
 
 // Generate reviews for schema - 5 latest reviews with text (matches homepage display)
 const schemaReviews = googleReviewsData.reviews
-    .filter((review) => review.quote && review.quote.trim().length > 0)
+    .filter((review) => review.source !== 'email' && review.quote && review.quote.trim().length > 0)
     .slice(0, 5)
     .map((review) => ({
         '@type': 'Review',
