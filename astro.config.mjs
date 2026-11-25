@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 import svelte from '@astrojs/svelte';
 import worker from '@astropub/worker';
 import AstroPWA from '@vite-pwa/astro';
@@ -32,9 +31,6 @@ export default defineConfig({
 
                 return true;
             }
-        }),
-        tailwind({
-            applyBaseStyles: false
         }),
         svelte(),
         worker(),
