@@ -9,6 +9,9 @@ export default defineConfig({
     site: 'https://bern-hypnose.ch',
     trailingSlash: 'always',
     output: 'static',
+    // Astro 7 defaults to 'jsx' (React-style whitespace stripping), which removes
+    // visible spaces between inline elements. Keep the Astro 5/6 behaviour.
+    compressHTML: true,
     integrations: [
         mdx(),
         sitemap({

@@ -1,11 +1,11 @@
 import { writable } from 'svelte/store';
 import imgRelaxation from '@assets/app/introspection.png';
 import imgPositiveAffirmations from '@assets/app/child.png';
-import imgRichtigWieIchBin from '@assets/app/thinking.png';
-import imgInnererOrt from '@assets/app/flowers-field.png';
-import imgGemuetlicherHerbsttag from '@assets/app/trail-two-persons.png';
-import imgWanderungInDenBergen from '@assets/app/landscape5.png';
-import imgAmFluss from '@assets/app/forest.png';
+import imgRichtigWieIchBin from '@assets/app/app-thinking.png';
+import imgInnererOrt from '@assets/app/app-flowers-field.png';
+import imgGemuetlicherHerbsttag from '@assets/app/app-trail-two-persons.png';
+import imgWanderungInDenBergen from '@assets/app/app-landscape5.png';
+import imgAmFluss from '@assets/app/app-forest.png';
 
 // Create writable stores for the selected profile and topic
 export const pageTitle = writable(null);
