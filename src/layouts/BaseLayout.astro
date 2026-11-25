@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 import Three from '../components/Three.astro';
@@ -27,7 +27,7 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
                 document.documentElement.classList.add('dark');
             }
         </script>
-        <ViewTransitions />
+        <ClientRouter />
         <Analytics />
     </head>
     <body class="bg-main text-main overflow-x-hidden">

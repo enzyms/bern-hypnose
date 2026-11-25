@@ -90,7 +90,7 @@
         vertical-align: middle;
     }
 
-    a[target='_blank'].rounded-full.text-white::after {
+    a[target='_blank'].rounded-full[class~='text-white']::after {
         background-image: url('/external-negative.svg');
     }
 

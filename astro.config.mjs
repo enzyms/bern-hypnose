@@ -1,15 +1,17 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 import svelte from '@astrojs/svelte';
 import worker from '@astropub/worker';
-import AstroPWA from '@vite-pwa/astro';
+import { AstroPWAIntegration } from '@vite-pwa/astro';
 
 export default defineConfig({
     site: 'https://bern-hypnose.ch',
     trailingSlash: 'always',
     output: 'static',
+    // Astro 7 defaults to 'jsx' (React-style whitespace stripping), which removes
+    // visible spaces between inline elements. Keep the Astro 5/6 behaviour.
+    compressHTML: true,
     integrations: [
         mdx(),
         sitemap({
@@ -33,14 +35,12 @@ export default defineConfig({
                 return true;
             }
         }),
-        tailwind({
-            applyBaseStyles: false
-        }),
         svelte(),
         worker(),
-        AstroPWA({
+        AstroPWAIntegration({
             mode: 'development',
             registerType: 'autoUpdate',
+            maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
             manifest: {
                 name: 'Bern Hypnose Web App',
                 short_name: 'Bern Hypnose',
@@ -65,8 +65,7 @@ export default defineConfig({
                     }
                 ]
             },
-            workbox: {
-                maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+            generateSW: {
                 globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,mp3,wav}'],
                 runtimeCaching: [
                     {
