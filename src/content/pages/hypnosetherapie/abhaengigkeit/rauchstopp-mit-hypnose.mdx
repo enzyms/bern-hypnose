@@ -15,8 +15,7 @@ reviewDate: "Februar 2026"
 
 import SubPagesTopics from '@components/SubPagesTopics.astro';
 
-<script type="application/ld+json">
-{JSON.stringify({
+<script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -53,8 +52,7 @@ import SubPagesTopics from '@components/SubPagesTopics.astro';
       }
     }
   ]
-})}
-</script>
+})} />
 
 ## Rauchfrei durch Hypnose
 

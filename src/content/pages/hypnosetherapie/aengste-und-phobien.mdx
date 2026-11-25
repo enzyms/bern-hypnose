@@ -16,8 +16,7 @@ import SubPagesTopics from '@components/SubPagesTopics.astro';
 import Testimonials from '@components/Testimonials.astro';
 import { YouTube } from 'astro-embed';
 
-<script type="application/ld+json">
-{JSON.stringify({
+<script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -62,8 +61,7 @@ import { YouTube } from 'astro-embed';
       }
     }
   ]
-})}
-</script>
+})} />
 
 ## Angststörungen mit Hypnose überwinden
 

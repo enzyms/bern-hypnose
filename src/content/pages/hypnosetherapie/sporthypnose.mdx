@@ -14,8 +14,7 @@ reviewDate: "November 2025"
 import SubPages from '@components/SubPages.astro';
 import { YouTube } from 'astro-embed';
 
-<script type="application/ld+json">
-{JSON.stringify({
+<script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -68,8 +67,7 @@ import { YouTube } from 'astro-embed';
       }
     }
   ]
-})}
-</script>
+})} />
 
 <div class="relative">
 

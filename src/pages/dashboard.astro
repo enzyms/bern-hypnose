@@ -104,8 +104,7 @@ const tools = [
 <BaseLayout title="Dashboard" description="Internes Dashboard – SEO, KI-Sichtbarkeit, Berichte" noindex={true}>
     <h1 class="mb-2">Dashboard</h1>
     <p class="text-sm opacity-70 mb-6">
-        SEO · KI-Sichtbarkeit · Berichte — automatisch aktualisiert (Mangools, montags). {snapshots.length}
-        {snapshots.length === 1 ? 'Snapshot' : 'Snapshots'}{latest ? `, zuletzt ${latest.date}` : ''}.
+        SEO · KI-Sichtbarkeit · Berichte — automatisch aktualisiert (Mangools, montags). {snapshots.length} {snapshots.length === 1 ? 'Snapshot' : 'Snapshots'}{latest ? `, zuletzt ${latest.date}` : ''}.
     </p>
 
     <nav class="flex flex-wrap gap-2 mb-12 not-prose" aria-label="Dashboard-Abschnitte">
