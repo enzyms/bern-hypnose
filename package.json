@@ -29,7 +29,7 @@
         "@splinetool/runtime": "^1.0.51",
         "@zakj/no-sleep": "^0.13.5",
         "astro": "^5.18.2",
-        "astro-embed": "^0.9.0",
+        "astro-embed": "^0.14.0",
         "decap-cms-app": "^3.3.2",
         "dompurify": "^3.4.12",
         "gsap": "^3.12.5",
