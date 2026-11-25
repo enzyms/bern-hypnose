@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import worker from '@astropub/worker';
-import AstroPWA from '@vite-pwa/astro';
+import { AstroPWAIntegration } from '@vite-pwa/astro';
 
 export default defineConfig({
     site: 'https://bern-hypnose.ch',
@@ -34,9 +34,10 @@ export default defineConfig({
         }),
         svelte(),
         worker(),
-        AstroPWA({
+        AstroPWAIntegration({
             mode: 'development',
             registerType: 'autoUpdate',
+            maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
             manifest: {
                 name: 'Bern Hypnose Web App',
                 short_name: 'Bern Hypnose',
@@ -61,8 +62,7 @@ export default defineConfig({
                     }
                 ]
             },
-            workbox: {
-                maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+            generateSW: {
                 globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,mp3,wav}'],
                 runtimeCaching: [
                     {
